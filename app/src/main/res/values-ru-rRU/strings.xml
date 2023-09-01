@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyApplication1</string>
+    <string name="buttonOk">Ок</string>
+    <string name="buttonConfirm">Подтвердить</string>
+    <string name="buttonCancel">Отмена</string>
+    <string name="testButton">ЗатычкаТекст</string>
+    <string name="buttonApply">Принять</string>
+    <string name="buttonNext">Далее</string>
+    <string name="buttonExit">Выход</string>
+    <string name="buttonPrevious">Назад</string>
+</resources>

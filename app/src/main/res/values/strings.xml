@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">kotlin_calculator</string>
+
+    <!--apply-->
+    <string name="buttonOk">Ok</string>
+    <string name="buttonConfirm">Confirm</string>
+    <string name="buttonApply">Apply</string>
+    <string name="buttonNext">Next</string>
+
+    <!--Cancel-->
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonPrevious">Previous</string>
+    <string name="buttonExit">Exit</string>
+
+    <!--Test previous-->
+    <string name="testButton">ExampleButtonText</string>
+</resources>
