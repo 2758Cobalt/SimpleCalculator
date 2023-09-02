@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">kotlin_calculator</string>
+    <string name="app_name" translatable="false">IosCalculator</string>
 
     <!--apply-->
     <string name="buttonOk">Ok</string>

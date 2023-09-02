@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
     private var calcField : TextView? = null
@@ -19,32 +21,31 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun numAction(view: View){
-        if(view is Button)
-        {
-            if(resultStatus)
-            {
+        // Обработчик нажатия - цыфра (0-9)
+
+        if(view is Button) {
+            if(resultStatus) {
                 calcField?.text = ""
                 resultStatus = false
             }
 
-            if(view.text == ",")
-            {
+            if(view.text == ",") {
                 if(canAddDecimal)
                 {
                     calcField?.append(view.text)
                 }
                 canAddDecimal = false
             }
-            else
-            {
+            else {
                 calcField?.append(view.text)
             }
             canAddOperation = true
         }
     }
     fun operationAction(view: View){
-        if(view is Button && canAddOperation)
-        {
+        // Обработчик нажатия - оператора (+ - x /)
+
+        if(view is Button && canAddOperation) {
             if(resultStatus)
                 resultStatus = false
 
@@ -53,10 +54,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun clearAll(view: View){
+    fun clearAll(view: View) {
+        // Обработчик нажатия - очистка поля
+
         calcField?.text = ""
+        resultStatus = false
+        canAddOperation = false
+        canAddDecimal = true
     }
     fun equalAction(view: View){
+        // Обработчик нажатия - равно(=)
+
         calcField?.text = calculateResults()
         resultStatus = true
     }
@@ -147,7 +155,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private  fun digitsOperators(): MutableList<Any>
+    private fun digitsOperators(): MutableList<Any>
     {
         val list = mutableListOf<Any>()
         var currentDigit = ""
@@ -159,17 +167,34 @@ class MainActivity : AppCompatActivity() {
                 currentDigit += character
             }
             else{
-                list.add(currentDigit.toFloat())
-                currentDigit = ""
-                list.add(character)
+                    list.add(currentDigit.toFloat())
+                    currentDigit = ""
+                    list.add(character)
             }
         }
         if(currentDigit != "")
         {
+
             list.add(currentDigit.toFloat())
+
         }
-        return  list
+        return list
     }
 
+    fun  quitApp(view : View) {
+        // Закрытие процесса
+
+        finish()
+        exitProcess(0);
+    }
+    fun convertAction(view : View){
+        val result = calcField?.text
+        var toast = Toast.makeText(this, result, Toast.LENGTH_SHORT)
+        toast.show();
+    }
+    fun debugMsg(view: View){
+        var toast = Toast.makeText(this, "test", Toast.LENGTH_SHORT)
+            toast.show();
+    }
 
 }
