@@ -1,292 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/Theme.AppCompat.NoActionBar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray30"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/resultField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:maxLines="1"
+            android:text=""
+            android:textAlignment="textEnd"
+            android:textSize="42sp"
+            app:layout_constraintBottom_toTopOf="@id/resultField"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="8dp"
+        android:layout_marginTop="96dp"
         app:columnCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:rowCount="5">
 
-        <Button
-            android:id="@+id/btn_plusSub"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray150"
-            android:foregroundTint="@color/orange"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="+"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="32dp"
-            app:rippleColor="#000000" />
 
         <Button
-            android:id="@+id/btn_percent"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray150"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="%"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="32dp"
-            app:rippleColor="@color/black" />
-
-        <Button
-            android:id="@+id/btn_ac"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:autoText="false"
-            android:backgroundTint="@color/gray150"
-            android:elegantTextHeight="false"
-            android:gravity="center_horizontal|center_vertical"
+            style="@style/buttonFunc"
+            android:onClick="clearAll"
             android:text="AC"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="28dp"
-            app:rippleColor="@color/black" />
+            app:layout_columnSpan="2"
+            app:layout_gravity="fill_horizontal" />
 
         <Button
-            android:id="@+id/btn_div"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/orange"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="÷"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="32dp"
-            android:textStyle="bold"
-            app:rippleColor="@color/white" />
+            style="@style/buttonOperator"
+            android:onClick="equalAction"
+            app:layout_columnSpan="2"
+            app:layout_gravity="fill_horizontal"
+            android:text="=" />
 
         <Button
-            android:id="@+id/btn_num7"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="7"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="7" />
 
         <Button
-            android:id="@+id/btn_num8"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="8"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="8" />
 
         <Button
-            android:id="@+id/btn_num9"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="9"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="9" />
 
         <Button
-            android:id="@+id/btn_mul"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/orange"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="x"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonOperator"
+            android:onClick="operationAction"
+            android:text="/" />
 
         <Button
-            android:id="@+id/btn_num4"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="4"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="4" />
 
         <Button
-            android:id="@+id/btn_num5"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="5"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="5" />
 
         <Button
-            android:id="@+id/btn_num6"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="6"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="6" />
 
         <Button
-            android:id="@+id/btn_plus"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/orange"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="+"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonOperator"
+            android:onClick="operationAction"
+            android:text="x" />
 
         <Button
-            android:id="@+id/btn_num1"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="1"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="1" />
 
         <Button
-            android:id="@+id/btn_num2"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="2"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="2" />
 
         <Button
-            android:id="@+id/btn_num3"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="3"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonNumber"
+            android:onClick="numAction"
+            android:text="3" />
 
         <Button
-            android:id="@+id/btn_sub"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/orange"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="-"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonOperator"
+            android:onClick="operationAction"
+            android:text="-" />
 
         <Button
-            android:id="@+id/btn_num0"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
+            style="@style/buttonNumber"
+            android:onClick="numAction"
             android:text="0"
             android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:cornerRadius="45dp"
             app:layout_columnSpan="2"
-            app:layout_gravity="fill"
-            app:rippleColor="@color/white" />
+            app:layout_gravity="fill_horizontal" />
 
         <Button
-            android:id="@+id/btn_coma"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/gray"
-            android:gravity="center_horizontal|center_vertical"
-            android:text=","
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonOperator"
+            android:onClick="operationAction"
+            android:text="," />
 
         <Button
-            android:id="@+id/btn_equal"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_margin="4dp"
-            android:backgroundTint="@color/orange"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="="
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="42dp"
-            app:rippleColor="@color/white" />
+            style="@style/buttonOperator"
+            android:onClick="operationAction"
+            android:text="+" />
 
     </androidx.gridlayout.widget.GridLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="193dp"
-        android:layout_height="127dp"
-        android:layout_margin="16dp"
-        android:text="0"
-        android:textAlignment="textEnd"
-        android:textColor="@color/white"
-        android:textSize="76sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

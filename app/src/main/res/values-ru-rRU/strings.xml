@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyApplication1</string>
+    <string name="app_name">Калькулятор</string>
     <string name="buttonOk">Ок</string>
     <string name="buttonConfirm">Подтвердить</string>
     <string name="buttonCancel">Отмена</string>
