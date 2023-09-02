@@ -11,6 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:padding="20dp">
 
         <TextView
@@ -22,7 +23,7 @@
             android:text=""
             android:textAlignment="textEnd"
             android:textSize="42sp"
-            app:layout_constraintBottom_toTopOf="@id/resultField"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,10 +34,11 @@
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="fill_horizontal|top|fill_vertical"
+        android:layout_weight="0"
         android:padding="8dp"
-        android:layout_marginTop="96dp"
         app:columnCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -51,12 +53,17 @@
             app:layout_columnSpan="2"
             app:layout_gravity="fill_horizontal" />
 
+
         <Button
             style="@style/buttonOperator"
-            android:onClick="equalAction"
-            app:layout_columnSpan="2"
-            app:layout_gravity="fill_horizontal"
-            android:text="=" />
+            android:onClick="operationAction"
+            android:text="÷" />
+
+
+        <Button
+            style="@style/buttonOperator"
+            android:onClick="operationAction"
+            android:text="x" />
 
         <Button
             style="@style/buttonNumber"
@@ -76,7 +83,7 @@
         <Button
             style="@style/buttonOperator"
             android:onClick="operationAction"
-            android:text="/" />
+            android:text="-" />
 
         <Button
             style="@style/buttonNumber"
@@ -96,7 +103,7 @@
         <Button
             style="@style/buttonOperator"
             android:onClick="operationAction"
-            android:text="x" />
+            android:text="+" />
 
         <Button
             style="@style/buttonNumber"
@@ -114,9 +121,12 @@
             android:text="3" />
 
         <Button
+            android:id="@+id/equalBtn"
             style="@style/buttonOperator"
-            android:onClick="operationAction"
-            android:text="-" />
+            android:onClick="equalAction"
+            android:text="="
+            app:layout_gravity="fill_vertical"
+            app:layout_rowSpan="2" />
 
         <Button
             style="@style/buttonNumber"
@@ -127,14 +137,9 @@
             app:layout_gravity="fill_horizontal" />
 
         <Button
-            style="@style/buttonOperator"
+            style="@style/buttonFunc"
             android:onClick="operationAction"
             android:text="," />
-
-        <Button
-            style="@style/buttonOperator"
-            android:onClick="operationAction"
-            android:text="+" />
 
     </androidx.gridlayout.widget.GridLayout>
 

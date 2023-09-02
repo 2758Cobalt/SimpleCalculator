@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private var calcField : TextView? = null
-    private var canAddOperation = false
-    private var canAddDecimal = true
-    private var resultStatus = false
+    private var canAddOperation : Boolean = false
+    private var canAddDecimal : Boolean = true
+    private var resultStatus : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
     fun operationAction(view: View){
         if(view is Button && canAddOperation)
         {
+            if(resultStatus)
+                resultStatus = false
+
             calcField?.append(view.text)
             canAddOperation = false
         }
@@ -95,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     private fun timesDivisionCalculate(passedList: MutableList<Any>): MutableList<Any>
     {
         var list = passedList
-        while (list.contains('x') || list.contains('/'))
+        while (list.contains('x') || list.contains('÷'))
         {
             list = calcTimesDiv(list)
         }
@@ -122,7 +125,7 @@ class MainActivity : AppCompatActivity() {
                         restartIndex = i + 1
                     }
 
-                    '/' ->
+                    '÷' ->
                     {
                         newList.add(prevDigit / nextDigit)
                         restartIndex = i + 1
