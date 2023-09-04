@@ -1,184 +1,130 @@
 package com.example.kotlin_calculator
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
-    private var calcField : TextView? = null
+
+
+    private val constantSymbols : Array<String> = arrayOf("+", "-", "*", "÷", "=") // constaints
+
+    private var numberFirst : Double = 0.0 // Первое число
+    private var numberSecond : Double = 0.0 // Второе число
+
+
+    private var canEnterSecondNumber : Boolean = false
     private var canAddOperation : Boolean = false
-    private var canAddDecimal : Boolean = true
     private var resultStatus : Boolean = false
+
+    private var operator : String = ""
+    private var valueField : String = ""
+
+    private lateinit var resultField : TextView // Поле с с результатом
+    private lateinit var historyField : TextView // Поле истории (отображает ранее введённые числа/операторы)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        calcField = findViewById(R.id.resultField)
 
+        resultField = findViewById(R.id.resultField)
+        historyField = findViewById(R.id.historyField)
     }
-    fun numAction(view: View){
+    fun numberEnter(view: View){
         // Обработчик нажатия - цыфра (0-9)
+        if(resultStatus)
+            restoreVariables(true)
 
-        if(view is Button) {
-            if(resultStatus) {
-                calcField?.text = ""
-                resultStatus = false
+        if(view is Button)
+        {
+            resultField.append(view.text) // К полю добавляется введенное число
+
+            if(operator == "") // если знака операции - нет
+            {
+                valueField = resultField.text.toString() // конвертирует в строку поле и хранит его
+
+                numberFirst = valueField.toDouble() // Конвертация текстового поля в тип double
+            }
+            if(canEnterSecondNumber) // Если разрешён ввод второго числа
+            {
+                valueField = resultField.text.toString() // конвертирует в строку поле и хранит его
+
+                numberSecond = valueField.toDouble() // Конвертация текстового поля в тип double
+
             }
 
-            if(view.text == ",") {
-                if(canAddDecimal)
-                {
-                    calcField?.append(view.text)
-                }
-                canAddDecimal = false
-            }
-            else {
-                calcField?.append(view.text)
-            }
-            canAddOperation = true
+            historyField.append(view.text) // Добавление чисел в поле истории
+
         }
+
+        canAddOperation = true // Разрешает назначения оператора
+
     }
-    fun operationAction(view: View){
+
+    fun operationEnter(view: View){
         // Обработчик нажатия - оператора (+ - x /)
 
-        if(view is Button && canAddOperation) {
-            if(resultStatus)
-                resultStatus = false
+        resultField.text = ""
 
-            calcField?.append(view.text)
-            canAddOperation = false
+        calcualteResult()
+
+
+        if(view is Button && canAddOperation)
+        {
+            operator = view.text.toString() // Добавление символа(оператора) в строку
+
+            historyField.append(operator)
+
+            canEnterSecondNumber = true
         }
+
+        canAddOperation = false // Блок ввода операции
+
     }
+    fun restoreVariables(clearText : Boolean = true){
+        if(clearText)
+        {
+            resultField.text = ""
+            historyField.text = ""
+        }
 
-    fun clearAll(view: View) {
-        // Обработчик нажатия - очистка поля
+        numberFirst = 0.0
+        numberSecond = 0.0
 
-        calcField?.text = ""
+        operator = ""
+
         resultStatus = false
         canAddOperation = false
-        canAddDecimal = true
+        canEnterSecondNumber = false
+
+        Log.i("InfoApp","AllClear")
+    }
+    fun calcualteResult() : Double
+    {
+        when(operator){
+            constantSymbols[0] -> numberFirst += numberSecond
+            constantSymbols[1] -> numberFirst -= numberSecond
+            constantSymbols[2] -> numberFirst *= numberSecond
+            constantSymbols[3] -> numberFirst /= numberSecond
+        }
+        numberSecond
+        return numberFirst
+    }
+    fun clearAll(view: View) {
+        // Обработчик нажатия - очистка полей
+        restoreVariables()
+
     }
     fun equalAction(view: View){
         // Обработчик нажатия - равно(=)
 
-        calcField?.text = calculateResults()
+        resultField.text = calcualteResult().toString()
+        restoreVariables(false)
         resultStatus = true
-    }
-
-    private fun calculateResults(): String {
-        val digitsOperators = digitsOperators()
-        if(digitsOperators.isEmpty()) return ""
-
-        val timeDivision = timesDivisionCalculate(digitsOperators)
-        if(timeDivision.isEmpty()) return ""
-        val result = addSubtractCalculate(timeDivision)
-        return result.toString()
-    }
-
-    private fun addSubtractCalculate(passedList: MutableList<Any>): Float
-    {
-        var result = passedList[0] as Float
-
-        for (i in passedList.indices)
-        {
-            if(passedList[i] is Char && i != passedList.lastIndex)
-            {
-                val operator = passedList[i]
-                val nextDigit = passedList[i + 1] as Float
-
-                if(operator == '+')
-                {
-                    result += nextDigit
-                }
-                if(operator == '-')
-                {
-                    result -= nextDigit
-                }
-            }
-        }
-        return result
-    }
-
-    private fun timesDivisionCalculate(passedList: MutableList<Any>): MutableList<Any>
-    {
-        var list = passedList
-        while (list.contains('x') || list.contains('÷'))
-        {
-            list = calcTimesDiv(list)
-        }
-        return list
-    }
-
-    private fun calcTimesDiv(passedList: MutableList<Any>): MutableList<Any>
-    {
-        val newList = mutableListOf<Any>()
-        var restartIndex = passedList.size
-
-        for (i in passedList.indices)
-        {
-            if(passedList[i] is Char && i != passedList.lastIndex && i < restartIndex)
-            {
-                val operator = passedList[i]
-                val prevDigit = passedList[i - 1] as Float
-                val nextDigit = passedList[i + 1] as Float
-                when (operator)
-                {
-                    'x' ->
-                    {
-                        newList.add(prevDigit * nextDigit)
-                        restartIndex = i + 1
-                    }
-
-                    '÷' ->
-                    {
-                        newList.add(prevDigit / nextDigit)
-                        restartIndex = i + 1
-                    }
-                    else ->
-                    {
-                        newList.add(prevDigit)
-                        newList.add(operator)
-                    }
-                }
-            }
-            if (i > restartIndex)
-            {
-                newList.add(passedList[i])
-            }
-        }
-
-        return newList
-
-    }
-
-    private fun digitsOperators(): MutableList<Any>
-    {
-        val list = mutableListOf<Any>()
-        var currentDigit = ""
-        val textResult : String = calcField?.text.toString()
-        for (character in textResult)
-        {
-            if(character.isDigit())
-            {
-                currentDigit += character
-            }
-            else{
-                    list.add(currentDigit.toFloat())
-                    currentDigit = ""
-                    list.add(character)
-            }
-        }
-        if(currentDigit != "")
-        {
-
-            list.add(currentDigit.toFloat())
-
-        }
-        return list
     }
 
     fun  quitApp(view : View) {
@@ -186,15 +132,6 @@ class MainActivity : AppCompatActivity() {
 
         finish()
         exitProcess(0);
-    }
-    fun convertAction(view : View){
-        val result = calcField?.text
-        var toast = Toast.makeText(this, result, Toast.LENGTH_SHORT)
-        toast.show();
-    }
-    fun debugMsg(view: View){
-        var toast = Toast.makeText(this, "test", Toast.LENGTH_SHORT)
-            toast.show();
     }
 
 }

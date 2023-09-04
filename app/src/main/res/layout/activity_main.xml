@@ -26,15 +26,17 @@
             android:textSize="24sp"
             android:text="Exit"
             tools:ignore="InefficientWeight,NestedWeights" />
+
         <Button
-            android:id="@+id/convertBtn"
+            android:id="@+id/testBtn"
             style="@style/buttonOperator"
             android:layout_width="96dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:onClick="convertAction"
+
+            android:onClick="quitApp"
+            android:text="T"
             android:textSize="24sp"
-            android:text="C"
             tools:ignore="InefficientWeight,NestedWeights" />
 
     </LinearLayout>
@@ -45,19 +47,39 @@
         android:layout_weight="1"
         android:padding="20dp">
 
-        <TextView
-            android:id="@+id/resultField"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lines="1"
-            android:maxLines="1"
-            android:text=""
-            android:textAlignment="textEnd"
-            android:textSize="42sp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/resultField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:lines="1"
+                android:maxLines="1"
+                android:textAlignment="textEnd"
+                android:textSize="42sp" />
+
+            <TextView
+                android:id="@+id/historyField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:lines="1"
+                android:maxLines="1"
+                android:textAlignment="textEnd"
+                android:textSize="24sp" />
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -87,68 +109,68 @@
 
         <Button
             style="@style/buttonOperator"
-            android:onClick="operationAction"
+            android:onClick="operationEnter"
             android:text="÷" />
 
 
         <Button
             style="@style/buttonOperator"
-            android:onClick="operationAction"
-            android:text="x" />
+            android:onClick="operationEnter"
+            android:text="*" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="7" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="8" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="9" />
 
         <Button
             style="@style/buttonOperator"
-            android:onClick="operationAction"
+            android:onClick="operationEnter"
             android:text="-" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="4" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="5" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="6" />
 
         <Button
             style="@style/buttonOperator"
-            android:onClick="operationAction"
+            android:onClick="operationEnter"
             android:text="+" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="1" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="2" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="3" />
 
         <Button
@@ -161,7 +183,7 @@
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numAction"
+            android:onClick="numberEnter"
             android:text="0"
             android:textAlignment="textStart"
             app:layout_columnSpan="2"
@@ -169,7 +191,7 @@
 
         <Button
             style="@style/buttonFunc"
-            android:onClick="operationAction"
+            android:onClick="operationEnter"
             android:text="," />
 
     </androidx.gridlayout.widget.GridLayout>
