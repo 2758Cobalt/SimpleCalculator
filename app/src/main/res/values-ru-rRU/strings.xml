@@ -3,9 +3,15 @@
     <string name="buttonOk">Ок</string>
     <string name="buttonConfirm">Подтвердить</string>
     <string name="buttonCancel">Отмена</string>
+
     <string name="testButton">ЗатычкаТекст</string>
+
     <string name="buttonApply">Принять</string>
     <string name="buttonNext">Далее</string>
     <string name="buttonExit">Выход</string>
     <string name="buttonPrevious">Назад</string>
+
+    <string name="buttonConverterLength">Длина</string>
+    <string name="buttonConverterWeight">Вес</string>
+    <string name="buttonConverterSpeed">Скорость</string>
 </resources>

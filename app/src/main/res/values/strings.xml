@@ -7,6 +7,18 @@
     <string name="buttonApply">Apply</string>
     <string name="buttonNext">Next</string>
 
+    <string name="buttonConverterWeight">Weight</string>
+    <string name="buttonConverterLength">Length</string>
+    <string name="buttonConverterSpeed">Speed</string>
+
+    <string name="symbolDiv" translatable="false">/</string>
+    <string name="symbolMul" translatable="false">*</string>
+    <string name="symbolAdd" translatable="false">-</string>
+    <string name="symbolSub" translatable="false">+</string>
+    <string name="symbolPoint" translatable="false">.</string>
+    <string name="symbolEqual" translatable="false">=</string>
+    <string name="symbolAC" translatable="false">AC</string>
+
     <!--Cancel-->
     <string name="buttonCancel">Cancel</string>
     <string name="buttonPrevious">Previous</string>

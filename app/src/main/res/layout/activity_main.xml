@@ -18,25 +18,29 @@
         <Button
             android:id="@+id/quitBtn"
             style="@style/buttonFunc"
-            android:layout_width="96dp"
+            android:layout_width="64dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
 
+
             android:onClick="quitApp"
             android:textSize="24sp"
-            android:text="Exit"
+            android:text="E"
+            android:textColor="@color/orange"
+            android:backgroundTint="@color/gray90"
             tools:ignore="InefficientWeight,NestedWeights" />
-
         <Button
-            android:id="@+id/testBtn"
-            style="@style/buttonOperator"
-            android:layout_width="96dp"
+            android:id="@+id/toConvertersBtn"
+            style="@style/buttonFunc"
+            android:layout_width="64dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
 
-            android:onClick="quitApp"
-            android:text="T"
+            android:onClick="switchToConverters"
             android:textSize="24sp"
+            android:text="C"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/gray90"
             tools:ignore="InefficientWeight,NestedWeights" />
 
     </LinearLayout>
@@ -50,10 +54,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +73,7 @@
                 android:maxLines="1"
                 android:textAlignment="textEnd"
                 android:textSize="42sp" />
+
 
             <TextView
                 android:id="@+id/historyField"
@@ -101,22 +106,25 @@
 
         <Button
             style="@style/buttonFunc"
+            android:id="@+id/acBtn"
             android:onClick="clearAll"
-            android:text="AC"
+            android:text="@string/symbolAC"
             app:layout_columnSpan="2"
             app:layout_gravity="fill_horizontal" />
 
 
         <Button
             style="@style/buttonOperator"
+            android:id="@+id/buttonOperDiv"
             android:onClick="operationEnter"
-            android:text="÷" />
+            android:text="@string/symbolDiv" />
 
 
         <Button
             style="@style/buttonOperator"
+            android:id="@+id/buttonOperMul"
             android:onClick="operationEnter"
-            android:text="*" />
+            android:text="@string/symbolMul" />
 
         <Button
             style="@style/buttonNumber"
@@ -135,8 +143,9 @@
 
         <Button
             style="@style/buttonOperator"
+            android:id="@+id/buttonOperPlus"
             android:onClick="operationEnter"
-            android:text="-" />
+            android:text="@string/symbolSub" />
 
         <Button
             style="@style/buttonNumber"
@@ -155,8 +164,9 @@
 
         <Button
             style="@style/buttonOperator"
+            android:id="@+id/buttonOperMin"
             android:onClick="operationEnter"
-            android:text="+" />
+            android:text="@string/symbolAdd" />
 
         <Button
             style="@style/buttonNumber"
@@ -177,7 +187,7 @@
             android:id="@+id/equalBtn"
             style="@style/buttonOperator"
             android:onClick="equalAction"
-            android:text="="
+            android:text="@string/symbolEqual"
             app:layout_gravity="fill_vertical"
             app:layout_rowSpan="2" />
 
@@ -191,8 +201,9 @@
 
         <Button
             style="@style/buttonFunc"
-            android:onClick="operationEnter"
-            android:text="," />
+            android:id="@+id/pointBtn"
+            android:onClick="enterPoint"
+            android:text="@string/symbolPoint" />
 
     </androidx.gridlayout.widget.GridLayout>
 
