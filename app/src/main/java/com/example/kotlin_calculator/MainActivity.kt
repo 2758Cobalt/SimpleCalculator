@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
-
-
+    // test
     private val constantSymbols : Array<String> = arrayOf("+", "-", "*", "/", "=") // constaints
 
     private val numbers = mutableListOf(0.0)
