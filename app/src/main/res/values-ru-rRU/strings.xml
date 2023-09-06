@@ -14,4 +14,7 @@
     <string name="buttonConverterLength">Длина</string>
     <string name="buttonConverterWeight">Вес</string>
     <string name="buttonConverterSpeed">Скорость</string>
+    <string name="buttonConverterSquare">Площадь</string>
+    <string name="buttonConverterData">Данные</string>
+    <string name="buttonConverterTemperature">Температура</string>
 </resources>

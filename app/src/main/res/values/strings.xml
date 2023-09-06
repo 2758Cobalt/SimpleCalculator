@@ -7,7 +7,15 @@
     <string name="buttonApply">Apply</string>
     <string name="buttonNext">Next</string>
 
+    <!--Cancel-->
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonPrevious">Previous</string>
+    <string name="buttonExit">Exit</string>
+
     <string name="buttonConverterWeight">Weight</string>
+    <string name="buttonConverterSquare">Square</string>
+    <string name="buttonConverterData">Data</string>
+    <string name="buttonConverterTemperature">Temperature</string>
     <string name="buttonConverterLength">Length</string>
     <string name="buttonConverterSpeed">Speed</string>
 
@@ -18,11 +26,6 @@
     <string name="symbolPoint" translatable="false">.</string>
     <string name="symbolEqual" translatable="false">=</string>
     <string name="symbolAC" translatable="false">AC</string>
-
-    <!--Cancel-->
-    <string name="buttonCancel">Cancel</string>
-    <string name="buttonPrevious">Previous</string>
-    <string name="buttonExit">Exit</string>
 
     <!--Test previous-->
     <string name="testButton">ExampleButtonText</string>

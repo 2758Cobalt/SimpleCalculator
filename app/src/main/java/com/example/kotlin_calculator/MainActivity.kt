@@ -89,9 +89,10 @@ class MainActivity : AppCompatActivity() {
             // 3. Запись в поле истории
             historyText.append(view.text)
         }
+        // Блок ввода операции (воизбежании повторного ввода)
+        canEnterOperation = false
 
-        canEnterOperation = false // Блок ввода операции (воизбежании повторного ввода)
-
+        // Разрешает ввод чисел
         canEnterNumber = true
 
         Log.i("InfoApp",operators.toString())
@@ -99,7 +100,6 @@ class MainActivity : AppCompatActivity() {
     }
     fun enterPoint(view: View) // Ввод точки
     {
-
         // 1. После ввода - отключает возможность повторно ввести
         canEnterPoint = false
     }
@@ -168,6 +168,9 @@ class MainActivity : AppCompatActivity() {
     }
     fun switchToMain(view: View){
         setContentView(R.layout.activity_main)
+    }
+    fun switchToWeight(view: View){
+        setContentView(R.layout.fragment_weight)
     }
 
     fun  quitApp(view : View) // Закрытие процесса
