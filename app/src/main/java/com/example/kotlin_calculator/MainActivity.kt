@@ -163,13 +163,6 @@ class MainActivity : AppCompatActivity() {
         objectButton.setTextColor(textColor)
     }
 
-    fun switchToConverters(view: View){
-        setContentView(R.layout.activity_converters)
-    }
-    fun switchToMain(view: View){
-        setContentView(R.layout.activity_main)
-    }
-
     fun  quitApp(view : View) // Закрытие процесса
     {
         finish()
