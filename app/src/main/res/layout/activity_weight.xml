@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+
+    <Button
+        style="@style/buttonOperator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:text="Selector"
+        android:textSize="18sp"
+        android:onClick="weightToSelector"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+        <Spinner
+            android:id="@+id/dropDownFrom"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/inputValue"
+            style="@style/inputTextToConvert"
+            android:layout_width="match_parent"
+            android:text="0" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:text="In" />
+
+    <Spinner
+        android:id="@+id/dropDownIn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/resultConvertation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:textSize="22sp"
+        android:text="Result"
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+    <Button
+        style="@style/buttonFunc"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textSize="18sp"
+        android:onClick="resetFields"
+        android:text="@string/buttonReset" />
+
+    <Button
+        style="@style/buttonOperator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textSize="18sp"
+        android:onClick="convertValues"
+        android:text="@string/buttonConvert" />
+    </LinearLayout>
+
+
+</LinearLayout>

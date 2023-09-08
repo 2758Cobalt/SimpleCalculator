@@ -1,5 +1,6 @@
 package com.example.kotlin_calculator
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
-    // test
+
     private val constantSymbols : Array<String> = arrayOf("+", "-", "*", "/", "=") // constaints
 
     private val numbers = mutableListOf(0.0)
@@ -161,21 +162,21 @@ class MainActivity : AppCompatActivity() {
         objectButton.setBackgroundColor(Color.parseColor(bgColor))
         objectButton.setTextColor(textColor)
     }
-
-    fun switchToConverters(view: View){
-        setContentView(R.layout.activity_converters)
-    }
-    fun switchToMain(view: View){
-        setContentView(R.layout.activity_main)
-    }
-    fun switchToWeight(view: View){
-        setContentView(R.layout.fragment_weight)
+    fun switchToConverters(view : View) {
+        // Переход в селектор (SelectorActivity)
+        startActivity(Intent(this,SelectorActivity::class.java))
+        finishAfterTransition()
     }
 
     fun  quitApp(view : View) // Закрытие процесса
     {
         finish()
-        exitProcess(0);
+        exitProcess(0)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("InfoApp","Main destroyed")
     }
 
 }

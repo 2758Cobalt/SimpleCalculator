@@ -18,8 +18,9 @@
 
         <Button
             style="@style/buttonAction"
+            android:layout_height="48dp"
             android:onClick="switchToMain"
-            android:text="Exit" />
+            android:text="@string/app_name" />
 
     </LinearLayout>
 

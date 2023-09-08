@@ -17,4 +17,8 @@
     <string name="buttonConverterSquare">Площадь</string>
     <string name="buttonConverterData">Данные</string>
     <string name="buttonConverterTemperature">Температура</string>
+    <string name="buttonConvert">Конвертировать</string>
+    <string name="tooltip_item">Величина</string>
+    <string name="tooltip_value">Значение</string>
+    <string name="buttonReset">Сбросить</string>
 </resources>

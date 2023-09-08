@@ -12,13 +12,7 @@
     <string name="buttonPrevious">Previous</string>
     <string name="buttonExit">Exit</string>
 
-    <string name="buttonConverterWeight">Weight</string>
-    <string name="buttonConverterSquare">Square</string>
-    <string name="buttonConverterData">Data</string>
-    <string name="buttonConverterTemperature">Temperature</string>
-    <string name="buttonConverterLength">Length</string>
-    <string name="buttonConverterSpeed">Speed</string>
-
+    <!--Calculator-->
     <string name="symbolDiv" translatable="false">/</string>
     <string name="symbolMul" translatable="false">*</string>
     <string name="symbolAdd" translatable="false">-</string>
@@ -29,4 +23,29 @@
 
     <!--Test previous-->
     <string name="testButton">ExampleButtonText</string>
+
+    <!--Converter-->
+    <string name="buttonConvert">Convert</string>
+    <string name="buttonReset">Reset</string>
+
+    <string name="buttonConverterWeight">Weight</string>
+    <string name="buttonConverterSquare">Square</string>
+    <string name="buttonConverterData">Data</string>
+    <string name="buttonConverterTemperature">Temperature</string>
+    <string name="buttonConverterLength">Length</string>
+    <string name="buttonConverterSpeed">Speed</string>
+
+    <string name="tooltip_item">Item</string>
+    <string name="tooltip_value">Value</string>
+
+    <string-array name="weight_values">
+        <item>μg - microgram</item>
+        <item>mg - milligram</item>
+        <item>g - gram</item>
+        <item>kg - kilogram</item>
+        <item>t - tonna</item>
+        <item>kt - kilotonna</item>
+        <item>mt - megatonna</item>
+    </string-array>
+
 </resources>
