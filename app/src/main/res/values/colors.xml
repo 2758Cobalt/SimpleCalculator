@@ -4,8 +4,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="gray150">#969696</color>
+    <color name="gray120">#787878</color>
     <color name="gray90">#5A5A5A</color>
     <color name="gray75">#4B4B4B</color>
+    <color name="gray50">#323232</color>
     <color name="gray40">#282828</color>
     <color name="gray30">#1E1E1E</color>
 

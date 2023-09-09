@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp">
-
+    android:padding="12dp"
+    tools:context=".LengthActivity">
 
     <Button
         style="@style/buttonActionOperator"
         android:layout_width="match_parent"
         android:text="@string/text_Selector"
-        android:textStyle="bold"
         android:textSize="22sp"
         android:onClick="switchToSelector" />
 
@@ -29,11 +28,12 @@
             android:layout_height="match_parent"
             style="@style/displayTextConvert"
             android:textStyle="bold"
-            android:text="@string/buttonConverterWeight" />
+            android:text="@string/buttonConverterSpeed" />
 
         <Spinner
             android:id="@+id/dropDownFrom"
-            style="@style/spinnerConvert" />
+            style="@style/spinnerConvert"
+            />
 
         <EditText
             android:id="@+id/inputValue"
@@ -41,7 +41,6 @@
             android:layout_width="match_parent"
             android:textAlignment="center"
             android:hint="@string/tooltip_enterText" />
-
     </LinearLayout>
 
 
@@ -91,6 +90,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

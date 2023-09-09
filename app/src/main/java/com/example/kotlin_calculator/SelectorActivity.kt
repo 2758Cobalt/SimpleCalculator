@@ -20,4 +20,19 @@ class SelectorActivity : AppCompatActivity() {
         startActivity(Intent(this,WeightActivity::class.java))
         finishAfterTransition()
     }
+    fun switchToLength(view : View){
+        // Переход на конвертер (LengthActivity)
+        startActivity(Intent(this,LengthActivity::class.java))
+        finishAfterTransition()
+    }
+    fun switchToSpeed(view : View){
+        // Переход на конвертер (LengthActivity)
+        startActivity(Intent(this,SpeedActivity::class.java))
+        finishAfterTransition()
+    }
+    fun switchToData(view : View){
+        // Переход на конвертер (LengthActivity)
+        startActivity(Intent(this,DataActivity::class.java))
+        finishAfterTransition()
+    }
 }

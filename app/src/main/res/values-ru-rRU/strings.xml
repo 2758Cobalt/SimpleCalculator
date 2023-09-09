@@ -18,7 +18,50 @@
     <string name="buttonConverterData">Данные</string>
     <string name="buttonConverterTemperature">Температура</string>
     <string name="buttonConvert">Конвертировать</string>
+    <string name="text_Selector">Конверторы</string>
     <string name="tooltip_item">Величина</string>
     <string name="tooltip_value">Значение</string>
     <string name="buttonReset">Сбросить</string>
+    <string name="text_In">В</string>
+    <string name="tooltip_enterText">Введите число</string>
+
+    <string-array name="weight_values">
+        <item>μg - Микрограмм</item>
+        <item>mg - Миллиграмм</item>
+        <item>g - Грамм</item>
+        <item>kg - Килограмм</item>
+        <item>t - Тонна</item>
+        <item>kt - Килотонна</item>
+        <item>mt - Мегатонна</item>
+    </string-array>
+
+    <string-array name="length_values">
+        <item>nm - Нанометр</item>
+        <item>µm - Микрометр</item>
+        <item>mm - Миллиметр</item>
+        <item>cm - Сантиметр</item>
+        <item>dm - Дециметр</item>
+        <item>m - Метр</item>
+        <item>km - Километр</item>
+    </string-array>
+
+    <string-array name="speed_values">
+        <item>c - Скорость света</item>
+        <item>м/с - Метры в секунду</item>
+        <item>км/ч - Километры в час</item>
+        <item>км/с - Километры в секунду</item>
+        <item>mph - Миль в час</item>
+        <item>mps - Миль в секунду</item>
+        <item>kn - Узлы</item>
+    </string-array>
+
+    <string-array name="data_values">
+        <item>B - Байт</item>
+        <item>KB - Килобайт</item>
+        <item>MB - Мегабайт</item>
+        <item>GB - Гигабайт</item>
+        <item>TB - Терабайт</item>
+        <item>PB - Петабайт</item>
+        <item>EB - Эксабайт</item>
+    </string-array>
 </resources>

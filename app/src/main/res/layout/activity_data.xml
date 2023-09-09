@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp">
-
+    android:padding="12dp"
+    tools:context=".LengthActivity">
 
     <Button
         style="@style/buttonActionOperator"
@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             style="@style/displayTextConvert"
             android:textStyle="bold"
-            android:text="@string/buttonConverterWeight" />
+            android:text="@string/buttonConverterData" />
 
         <Spinner
             android:id="@+id/dropDownFrom"
@@ -43,7 +43,6 @@
             android:hint="@string/tooltip_enterText" />
 
     </LinearLayout>
-
 
     <TextView
         android:id="@+id/textView2"
@@ -91,6 +90,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

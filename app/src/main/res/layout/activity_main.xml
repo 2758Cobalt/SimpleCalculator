@@ -18,27 +18,28 @@
         <Button
             android:id="@+id/quitBtn"
             style="@style/buttonFunc"
-            android:layout_width="64dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0"
+            android:layout_weight="1"
 
 
             android:onClick="quitApp"
             android:textSize="24sp"
-            android:text="E"
+            android:text="@string/buttonExit"
             android:textColor="@color/orange"
             android:backgroundTint="@color/gray90"
             tools:ignore="InefficientWeight,NestedWeights" />
         <Button
             android:id="@+id/toConvertersBtn"
             style="@style/buttonFunc"
-            android:layout_width="64dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0"
+            android:layout_weight="1"
 
             android:onClick="switchToConverters"
             android:textSize="24sp"
             android:text="C"
+            android:drawableTop="@android:drawable/ic_menu_preferences"
             android:textColor="@color/white"
             android:backgroundTint="@color/gray90"
             tools:ignore="InefficientWeight,NestedWeights" />
@@ -93,8 +94,6 @@
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_gravity="fill_horizontal|top|fill_vertical"
         android:layout_weight="0"
         android:padding="8dp"
         app:columnCount="4"

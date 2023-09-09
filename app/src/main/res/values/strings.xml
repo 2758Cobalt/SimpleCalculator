@@ -35,17 +35,52 @@
     <string name="buttonConverterLength">Length</string>
     <string name="buttonConverterSpeed">Speed</string>
 
+    <string name="text_In">In</string>
+    <string name="text_Selector">Convertors</string>
+
     <string name="tooltip_item">Item</string>
     <string name="tooltip_value">Value</string>
 
+    <string name="tooltip_enterText">Enter number</string>
+
     <string-array name="weight_values">
-        <item>μg - microgram</item>
+        <item>μg - micrograms</item>
         <item>mg - milligram</item>
         <item>g - gram</item>
         <item>kg - kilogram</item>
-        <item>t - tonna</item>
-        <item>kt - kilotonna</item>
-        <item>mt - megatonna</item>
+        <item>t - tonne</item>
+        <item>kt - kiloton</item>
+        <item>mt - megaton</item>
+    </string-array>
+
+    <string-array name="length_values">
+        <item>nm - nanometer</item>
+        <item>µm - micrometer</item>
+        <item>mm - millimeter</item>
+        <item>cm - centimeter</item>
+        <item>dm - decimeter</item>
+        <item>m - meter</item>
+        <item>km - kilometer</item>
+    </string-array>
+
+    <string-array name="speed_values">
+        <item>c - Speed of light</item>
+        <item>m/s Meter per second</item>
+        <item>km/h Kilometer per hour</item>
+        <item>km/s Kilometer per second</item>
+        <item>mph Miles per hour</item>
+        <item>mps - Miles per second</item>
+        <item>kn - Nodes</item>
+    </string-array>
+
+    <string-array name="data_values">
+        <item>B - byte</item>
+        <item>KB - kilobyte</item>
+        <item>MB - megabyte</item>
+        <item>GB - gigabyte</item>
+        <item>TB - terabyte</item>
+        <item>PB - petabyte</item>
+        <item>EB - exabyte</item>
     </string-array>
 
 </resources>
