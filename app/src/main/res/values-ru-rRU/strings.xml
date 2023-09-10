@@ -64,4 +64,12 @@
         <item>PB - Петабайт</item>
         <item>EB - Эксабайт</item>
     </string-array>
+
+    <string-array name="temperature_values">
+        <item>°C - Цельсий</item>
+        <item>℉ - Фаренгейт</item>
+        <item>K - Кельвин</item>
+        <item>°R - Ранкин</item>
+        <item>°Re - Реомюр</item>
+    </string-array>
 </resources>

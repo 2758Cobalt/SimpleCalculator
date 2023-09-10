@@ -52,91 +52,97 @@ class WeightActivity : AppCompatActivity() {
         startActivity(Intent(this,SelectorActivity::class.java))
         finishAfterTransition()
     }
-    fun calculateConvertation(view : View){
+    fun calculateConvertation(view : View) {
 
         // Подсчёт массы
-        val value = valueForConvert.text.toString().toDouble()
-        var result = 0.0
-        when(dropdownFrom.selectedItem.toString()) {
+        if(valueForConvert.text.isNotEmpty()) // Проверяет не пустое ли поле ввода
+        {
+            val value = valueForConvert.text.toString().toDouble()
+            var result = 0.0
+            when (dropdownFrom.selectedItem.toString()) {
 
-            // Микрограмм
-            constants[0] -> when(dropdownIn.selectedItem.toString()){
-                    constants[0] -> result =(value / 1) // 1
-                    constants[1] -> result =(value / 1000) // 1 : 1000 - ug -> miligram
-                    constants[2] -> result =(value / 1000000) // 1 : 1e-6 (0,000 001) -> gram
-                    constants[3] -> result =(value / 1000000000) // 1 : 1e-9 (0, 000 000 001) -> kilogram
-                    constants[4] -> result =(value / 1000000000000) // 1 : 1e-12 (0, 000 000 000 001) - tonna
-                    constants[5] -> result =(value / 1000000000000000) // 1 : 1e-15 (0, 000 000 000 001) - megatonna
-                    constants[6] -> result =(value / 1000000000000000000) // 1 : 1e-18 (0, 000 000 000 001) - kilotonna
+                // Микрограмм
+                constants[0] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 1) // 1
+                    constants[1] -> result = (value / 1000) // 1 : 1000 - ug -> miligram
+                    constants[2] -> result = (value / 1000000) // 1 : 1e-6 (0,000 001) -> gram
+                    constants[3] -> result =
+                        (value / 1000000000) // 1 : 1e-9 (0, 000 000 001) -> kilogram
+                    constants[4] -> result =
+                        (value / 1000000000000) // 1 : 1e-12 (0, 000 000 000 001) - tonna
+                    constants[5] -> result =
+                        (value / 1000000000000000) // 1 : 1e-15 (0, 000 000 000 001) - megatonna
+                    constants[6] -> result =
+                        (value / 1000000000000000000) // 1 : 1e-18 (0, 000 000 000 001) - kilotonna
                 }
 
-            // Миллиграмм
-            constants[1] ->when(dropdownIn.selectedItem.toString()){
-                    constants[0] -> result =(value / 0.001) // 1 : 0.001
-                    constants[1] -> result =(value / 1) // 1 : 1
-                    constants[2] -> result =(value / 1000) // 1 : 1e-3
-                    constants[3] -> result =(value / 1000000) // 1 : 1e-6
-                    constants[4] -> result =(value / 1000000000) // 1 : 1e-9
-                    constants[5] -> result =(value / 1000000000000) // 1 : 1e-12
-                    constants[6] -> result =(value / 1000000000000000) // 1 : 1e-15
+                // Миллиграмм
+                constants[1] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 0.001) // 1 : 0.001
+                    constants[1] -> result = (value / 1) // 1 : 1
+                    constants[2] -> result = (value / 1000) // 1 : 1e-3
+                    constants[3] -> result = (value / 1000000) // 1 : 1e-6
+                    constants[4] -> result = (value / 1000000000) // 1 : 1e-9
+                    constants[5] -> result = (value / 1000000000000) // 1 : 1e-12
+                    constants[6] -> result = (value / 1000000000000000) // 1 : 1e-15
                 }
 
-            // Грамм
-            constants[2] ->when(dropdownIn.selectedItem.toString()){
-                    constants[0] -> result =(value / 0.000001) // 1 : 1e+6
-                    constants[1] -> result =(value / 0.001) // 1 : 1e+3
-                    constants[2] -> result =(value / 1) // 1 : 1
-                    constants[3] -> result =(value / 1000) // 1 : 1e-3
-                    constants[4] -> result =(value / 1000000) // 1 : 1e-6
-                    constants[5] -> result =(value / 1000000000) // 1 : 1e-9
-                    constants[6] -> result =(value / 1000000000000) // 1 : 1e-12
-            }
+                // Грамм
+                constants[2] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 0.000001) // 1 : 1e+6
+                    constants[1] -> result = (value / 0.001) // 1 : 1e+3
+                    constants[2] -> result = (value / 1) // 1 : 1
+                    constants[3] -> result = (value / 1000) // 1 : 1e-3
+                    constants[4] -> result = (value / 1000000) // 1 : 1e-6
+                    constants[5] -> result = (value / 1000000000) // 1 : 1e-9
+                    constants[6] -> result = (value / 1000000000000) // 1 : 1e-12
+                }
 
-            // Килограмм
-            constants[3] ->when(dropdownIn.selectedItem.toString()){
-                    constants[0] -> result =(value / 0.000000001) // 1 : 1e+9
-                    constants[1] -> result =(value / 0.000001) // 1 : 1e+6
-                    constants[2] -> result =(value / 0.001) // 1 : 1e+3
-                    constants[3] -> result =(value / 1) // 1 : 1
-                    constants[4] -> result =(value / 1000) // 1 : 1e-3
-                    constants[5] -> result =(value / 1000000) // 1 : 1e-6
-                    constants[6] -> result =(value / 1000000000) // 1 : 1e-9
-            }
-            // Тонна
-            constants[4] ->when(dropdownIn.selectedItem.toString()){
-                    constants[0] -> result =(value / 0.000000000001) // 1 : 1e+12
-                    constants[1] -> result =(value / 0.000000001) // 1 : 1e+9
-                    constants[2] -> result =(value / 0.000001) // 1 : 1e+6
-                    constants[3] -> result =(value / 0.001) // 1 : 1e+3
-                    constants[4] -> result =(value / 1) // 1 : 1
-                    constants[5] -> result =(value / 1000) // 1 : 1e-3
-                    constants[6] -> result =(value / 1000000) // 1 : 1e-6
-            }
+                // Килограмм
+                constants[3] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 0.000000001) // 1 : 1e+9
+                    constants[1] -> result = (value / 0.000001) // 1 : 1e+6
+                    constants[2] -> result = (value / 0.001) // 1 : 1e+3
+                    constants[3] -> result = (value / 1) // 1 : 1
+                    constants[4] -> result = (value / 1000) // 1 : 1e-3
+                    constants[5] -> result = (value / 1000000) // 1 : 1e-6
+                    constants[6] -> result = (value / 1000000000) // 1 : 1e-9
+                }
+                // Тонна
+                constants[4] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 0.000000000001) // 1 : 1e+12
+                    constants[1] -> result = (value / 0.000000001) // 1 : 1e+9
+                    constants[2] -> result = (value / 0.000001) // 1 : 1e+6
+                    constants[3] -> result = (value / 0.001) // 1 : 1e+3
+                    constants[4] -> result = (value / 1) // 1 : 1
+                    constants[5] -> result = (value / 1000) // 1 : 1e-3
+                    constants[6] -> result = (value / 1000000) // 1 : 1e-6
+                }
 
-            // Мегатонна
-            constants[5] ->when(dropdownIn.selectedItem.toString()){
-                    constants[0] -> result =(value / 0.000000000000001) // 1 : 1e+15
-                    constants[1] -> result =(value / 0.000000000001) // 1 : 1e+12
-                    constants[2] -> result =(value / 0.000000001) // 1 : 1e+9
-                    constants[3] -> result =(value / 0.000001) // 1 : 1e+6
-                    constants[4] -> result =(value / 0.001) // 1 : 1e+3
-                    constants[5] -> result =(value / 1) // 1 : 1
-                    constants[6] -> result =(value / 1000) // 1 : 1e-3
-            }
+                // Мегатонна
+                constants[5] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 0.000000000000001) // 1 : 1e+15
+                    constants[1] -> result = (value / 0.000000000001) // 1 : 1e+12
+                    constants[2] -> result = (value / 0.000000001) // 1 : 1e+9
+                    constants[3] -> result = (value / 0.000001) // 1 : 1e+6
+                    constants[4] -> result = (value / 0.001) // 1 : 1e+3
+                    constants[5] -> result = (value / 1) // 1 : 1
+                    constants[6] -> result = (value / 1000) // 1 : 1e-3
+                }
 
-            // Килотона
-            constants[6] ->when(dropdownIn.selectedItem.toString()){
-                constants[0] -> result =(value / 0.000000000000000001) // 1 : 1e+18
-                constants[1] -> result =(value / 0.000000000000001) // 1 : 1e+15
-                constants[2] -> result =(value / 0.000000000001) // 1 : 1e+12
-                constants[3] -> result =(value / 0.000000001) // 1 : 1e+9
-                constants[4] -> result =(value / 0.000001) // 1 : 1e+6
-                constants[5] -> result =(value / 0.001) // 1 : 1e+3
-                constants[6] -> result =(value / 1) // 1 : 11
+                // Килотона
+                constants[6] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 0.000000000000000001) // 1 : 1e+18
+                    constants[1] -> result = (value / 0.000000000000001) // 1 : 1e+15
+                    constants[2] -> result = (value / 0.000000000001) // 1 : 1e+12
+                    constants[3] -> result = (value / 0.000000001) // 1 : 1e+9
+                    constants[4] -> result = (value / 0.000001) // 1 : 1e+6
+                    constants[5] -> result = (value / 0.001) // 1 : 1e+3
+                    constants[6] -> result = (value / 1) // 1 : 11
+                }
             }
+            resultConvert.text = "≈" + result.toString()
         }
-        resultConvert.text = "≈" + result.toString()
-
     }
     fun resetFields(view : View){
         // Сбрасывает значения в полях - Кнопка "Reset"

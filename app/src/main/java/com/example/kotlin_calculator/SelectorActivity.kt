@@ -35,4 +35,9 @@ class SelectorActivity : AppCompatActivity() {
         startActivity(Intent(this,DataActivity::class.java))
         finishAfterTransition()
     }
+    fun switchToTemperature(view : View){
+        // Переход на конвертер (TemperatureActivity)
+        startActivity(Intent(this,TemperatureActivity::class.java))
+        finishAfterTransition()
+    }
 }

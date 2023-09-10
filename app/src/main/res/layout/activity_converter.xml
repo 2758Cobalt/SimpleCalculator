@@ -59,6 +59,7 @@
 
         <Button
             style="@style/buttonTile"
+            android:onClick="switchToTemperature"
             android:text="@string/buttonConverterTemperature" />
 
         <Button

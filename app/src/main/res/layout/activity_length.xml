@@ -38,9 +38,7 @@
         <EditText
             android:id="@+id/inputValue"
             style="@style/inputTextToConvert"
-            android:layout_width="match_parent"
-            android:textAlignment="center"
-            android:hint="@string/tooltip_enterText"  />
+            android:layout_margin="16dp"  />
     </LinearLayout>
 
 

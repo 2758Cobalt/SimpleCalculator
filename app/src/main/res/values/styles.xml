@@ -85,10 +85,15 @@
     <style name="inputTextToConvert">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">48dp</item>
+
         <item name="android:textSize">24sp</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:backgroundTint">@color/orange</item>
         <item name="android:textCursorDrawable">@color/orange</item>
+        <item name="android:hint">@string/tooltip_enterText</item>
+
+        <item name="android:backgroundTint">@color/orange</item>
+
         <item name="android:ems">10</item>
         <item name="android:inputType">number</item>
     </style>

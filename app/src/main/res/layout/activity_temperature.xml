@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             style="@style/displayTextConvert"
             android:textStyle="bold"
-            android:text="@string/buttonConverterData" />
+            android:text="@string/buttonConverterTemperature" />
 
         <Spinner
             android:id="@+id/dropDownFrom"

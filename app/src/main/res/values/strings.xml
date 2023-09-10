@@ -83,4 +83,12 @@
         <item>EB - exabyte</item>
     </string-array>
 
+    <string-array name="temperature_values">
+        <item>°C - Celsius</item>
+        <item>℉ - Faringate</item>
+        <item>K - Kelvin</item>
+        <item>°R - Rankine</item>
+        <item>°Re - Réaumur</item>
+    </string-array>
+
 </resources>
