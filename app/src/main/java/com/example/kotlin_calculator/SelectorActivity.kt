@@ -40,4 +40,9 @@ class SelectorActivity : AppCompatActivity() {
         startActivity(Intent(this,TemperatureActivity::class.java))
         finishAfterTransition()
     }
+    fun switchToSquare(view : View){
+        // Переход на конвертер (TemperatureActivity)
+        startActivity(Intent(this,SquareActivity::class.java))
+        finishAfterTransition()
+    }
 }

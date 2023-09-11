@@ -20,7 +20,7 @@
             style="@style/buttonActionOperator"
             android:layout_height="48dp"
             android:onClick="switchToMain"
-            android:text="@string/app_name" />
+            android:text="@string/buttonPrevious" />
 
     </LinearLayout>
 
@@ -64,6 +64,7 @@
 
         <Button
             style="@style/buttonTile"
+            android:onClick="switchToSquare"
             android:text="@string/buttonConverterSquare" />
 
 

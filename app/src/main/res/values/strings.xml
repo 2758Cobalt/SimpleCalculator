@@ -26,6 +26,7 @@
 
     <!--Converter-->
     <string name="buttonConvert">Convert</string>
+    <string name="buttonCalculate">Calculate</string>
     <string name="buttonReset">Reset</string>
 
     <string name="buttonConverterWeight">Weight</string>
@@ -34,6 +35,19 @@
     <string name="buttonConverterTemperature">Temperature</string>
     <string name="buttonConverterLength">Length</string>
     <string name="buttonConverterSpeed">Speed</string>
+
+    <string name="text_labelParallelepiped">Area of the parallelepiped</string>
+    <string name="text_labelTriangleDefault">Area of the triangle</string> <!--Обычный-->
+    <string name="text_labelTtriangleIsosceles">Area of the isosceles triangle</string> <!--Равнобедренный-->
+    <string name="text_labelTriangleEquilateral">Area of the equilateral triangle</string> <!--Равносторонний-->
+
+    <!--Cube tooltip-->
+    <string name="hint_sideA">Side A</string>
+    <string name="hint_sideB">Side B</string>
+    <string name="hint_sideC">Side C</string>
+
+    <string name="tooltip_parallelepipedText">Enter the sides of the parallelepiped (if you need a rectangle, leave the field C blank or C = 0)</string>
+    <string name="tooltip_triangleText">Enter the sides of the triangle. The area is calculated using Heron\'s formula</string>
 
     <string name="text_In">In</string>
     <string name="text_Selector">Convertors</string>
@@ -89,6 +103,12 @@
         <item>K - Kelvin</item>
         <item>°R - Rankine</item>
         <item>°Re - Réaumur</item>
+    </string-array>
+
+    <string-array name="triangle_formules">
+        <item>Area of a Triangle using Base and Height</item>
+        <item>Heron\'s Formula</item>
+        <item>Area of a Triangle using Two Sides and Included Angle</item>
     </string-array>
 
 </resources>

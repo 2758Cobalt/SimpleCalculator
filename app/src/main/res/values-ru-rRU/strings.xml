@@ -72,4 +72,14 @@
         <item>°R - Ранкин</item>
         <item>°Re - Реомюр</item>
     </string-array>
+    <string name="text_labelTriangleDefault">Площадь треугольника</string>
+    <string name="text_labelTtriangleIsosceles">Площадь равнобедренного треугольника</string>
+    <string name="text_labelTriangleEquilateral">Площадь равностороннего треугольника</string>
+    <string name="hint_sideA">Сторона A</string>
+    <string name="hint_sideB">Сторона B</string>
+    <string name="hint_sideC">Сторона C</string>
+    <string name="text_labelParallelepiped">Площадь параллелепипеда</string>
+    <string name="tooltip_parallelepipedText">Введите стороны параллелепипеда (если нужен прямоугольник, оставьте сторону C пустой или 0)</string>
+    <string name="tooltip_triangleText">Введите стороны треугольника. Площадь будет расчитана по формуле герона (3 стороны)</string>
+    <string name="buttonCalculate">Расчитать</string>
 </resources>
