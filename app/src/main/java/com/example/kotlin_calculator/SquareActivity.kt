@@ -5,96 +5,145 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import kotlin.math.sqrt
 
 class SquareActivity : AppCompatActivity() {
     private lateinit var constants : Array<String>
 
-    private lateinit var square_sideA : EditText
-    private lateinit var square_sideB : EditText
-    private lateinit var square_sideC : EditText
+    private lateinit var valueForConvert : EditText
 
-    private lateinit var triangle_sideA : EditText
-    private lateinit var triangle_sideB : EditText
-    private lateinit var triangle_sideC : EditText
+    private lateinit var resultConvert : TextView
 
-    private lateinit var squareResult : TextView
-    private lateinit var triangleResult : TextView
-
+    private lateinit var dropdownFrom : Spinner
+    private lateinit var dropdownIn : Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_square)
 
-        constants = resources.getStringArray(R.array.triangle_formules)
+        constants = resources.getStringArray(R.array.square_values)
 
+        dropdownFrom = findViewById(R.id.dropDownFrom)
+        dropdownIn = findViewById(R.id.dropDownIn)
 
-        squareResult = findViewById(R.id.areaSquareResult)
-        triangleResult = findViewById(R.id.areaTriangleResult)
+        valueForConvert = findViewById(R.id.inputValue)
 
-        // Параллелепипед
-        square_sideA = findViewById(R.id.inputSideA)
-        square_sideB = findViewById(R.id.inputSideB)
-        square_sideC = findViewById(R.id.inputSideC)
+        resultConvert = findViewById(R.id.resultConvertation)
 
-        // Треугольник
-        triangle_sideA = findViewById(R.id.inputTriangleSideA)
-        triangle_sideB = findViewById(R.id.inputTriangleSideB)
-        triangle_sideC = findViewById(R.id.inputTriangleSideC)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.square_values,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Установка строкового массива
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Применение адаптера к спинеру
+            dropdownFrom.adapter = adapter
+            dropdownIn.adapter = adapter
+        }
 
     }
     fun switchToSelector(view : View){
         startActivity(Intent(this,SelectorActivity::class.java))
         finishAfterTransition()
     }
-    fun resetFieldsParallelepiped(view : View){
+
+    fun resetFields(view : View){
         // Сбрасывает значения в полях - Кнопка "Reset"
-        square_sideA.text.clear()
-        square_sideB.text.clear()
-        square_sideC.text.clear()
-        squareResult.text = getString(R.string.tooltip_parallelepipedText)
+        valueForConvert.text.clear()
+        resultConvert.text = "0"
     }
 
-    fun resetFieldsTriangle(view : View){
-        // Сбрасывает значения в полях - Кнопка "Reset"
-        triangle_sideA.text.clear()
-        triangle_sideB.text.clear()
-        triangle_sideC.text.clear()
-        triangleResult.text = getString(R.string.tooltip_triangleText)
-    }
-    fun calculateSquare(view : View){
-        var result = 0.0
-        if(square_sideA.text.isNotEmpty() && square_sideB.text.isNotEmpty())
+    fun calculateConvertation(view : View){
+        if(valueForConvert.text.isNotEmpty() ) // Проверяет не пустое ли поле ввода
         {
-            if(square_sideC.text.isEmpty() || square_sideC.text.toString() == "0")
-                square_sideC.setText("1")
+            val value = valueForConvert.text.toString().toDouble()
+            var result = 0.0
+            when (dropdownFrom.selectedItem.toString()) {
 
-            val sideA = square_sideA.text.toString().toDouble()
-            val sideB = square_sideB.text.toString().toDouble()
-            val sideC = square_sideC.text.toString().toDouble()
+                // Микроны
+                constants[0] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 1) // micron
+                    constants[1] -> result = (value / 0.001) // mili
+                    constants[2] -> result = (value / 0.0001) // centi
+                    constants[3] -> result = (value / 0.00001) // deci
+                    constants[4] -> result = (value / 0.000001) // metr
+                    constants[5] -> result = (value / 0.000000001) // kilo
+                    constants[6] -> result = (value / 0.0000000000000001) // hectare
+                }
 
+                // Миллиметры
+                constants[1] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 1000) // micron
+                    constants[1] -> result = (value / 1) // mili
+                    constants[2] -> result = (value / 0.1) // centi
+                    constants[3] -> result = (value / 0.01) // deci
+                    constants[4] -> result = (value / 0.001) // metr
+                    constants[5] -> result = (value / 0.000001) // kilo
+                    constants[6] -> result = (value / 0.0000000001) // hectare
+                }
 
-            result = 2 * ( (sideA * sideB) + (sideA * sideC) + (sideB * sideC)) // 2 (ab + ac + bc)
-            squareResult.text = "S = " + String.format("%.2f",result)
+                // Сантиметры
+                constants[2] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 10000) // micron
+                    constants[1] -> result = (value / 10) // mili
+                    constants[2] -> result = (value / 1) // centi
+                    constants[3] -> result = (value / 0.1) // deci
+                    constants[4] -> result = (value / 0.01) // metr
+                    constants[5] -> result = (value / 0.00001) // kilo
+                    constants[6] -> result = (value / 0.00000001) // hectare
+                }
 
+                // Дециметры
+                constants[3] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 100000) // micron
+                    constants[1] -> result = (value / 100) // mili
+                    constants[2] -> result = (value / 10) // centi
+                    constants[3] -> result = (value / 1) // deci
+                    constants[4] -> result = (value / 0.1) // metr
+                    constants[5] -> result = (value / 0.0001) // kilo
+                    constants[6] -> result = (value / 0.000001) // hectare
+                }
+
+                // Метры
+                constants[4] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 1000000) // micron
+                    constants[1] -> result = (value / 1000) // mili
+                    constants[2] -> result = (value / 100) // centi
+                    constants[3] -> result = (value / 10) // deci
+                    constants[4] -> result = (value / 1) // metr
+                    constants[5] -> result = (value / 0.001) // kilo
+                    constants[6] -> result = (value / 0.0001) // hectare
+                }
+
+                // Километры
+                constants[5] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 1000000000) // micron
+                    constants[1] -> result = (value / 1000000) // mili
+                    constants[2] -> result = (value / 100000) // centi
+                    constants[3] -> result = (value / 10000) // deci
+                    constants[4] -> result = (value / 1000) // metr
+                    constants[5] -> result = (value / 1) // kilo
+                    constants[6] -> result = (value / 100) // hectare
+                }
+
+                // Гектары
+                constants[6] -> when (dropdownIn.selectedItem.toString()) {
+                    constants[0] -> result = (value / 10000000000000000) // micron
+                    constants[1] -> result = (value / 10000000000) // mili
+                    constants[2] -> result = (value / 100000000) // centi
+                    constants[3] -> result = (value / 1000000) // deci
+                    constants[4] -> result = (value / 10000) // metr
+                    constants[5] -> result = (value / 0.01) // kilo
+                    constants[6] -> result = (value / 1) // hectare
+                }
+
+            }
+            resultConvert.text = "≈" + String.format("%.2f",result)
         }
-
-    }
-
-    fun calculateTriangle(view : View){
-
-        if(triangle_sideA.text.isNotEmpty() && triangle_sideB.text.isNotEmpty() && triangle_sideC.text.isNotEmpty())
-        {
-            val sideA = triangle_sideA.text.toString().toDouble()
-            val sideB = triangle_sideB.text.toString().toDouble()
-            val sideC = triangle_sideC.text.toString().toDouble()
-
-            val perimeter = (sideA + sideB + sideC) / 2
-
-            triangleResult.text = "≈" + String.format("%.2f",sqrt((perimeter) * (perimeter - sideA) * (perimeter - sideB) * (perimeter - sideC)))
-        }
-
     }
 }

@@ -29,6 +29,7 @@
     <string name="buttonCalculate">Calculate</string>
     <string name="buttonReset">Reset</string>
 
+    <string name="buttonConverterSquareFigure">Square figure</string>
     <string name="buttonConverterWeight">Weight</string>
     <string name="buttonConverterSquare">Square</string>
     <string name="buttonConverterData">Data</string>
@@ -36,18 +37,31 @@
     <string name="buttonConverterLength">Length</string>
     <string name="buttonConverterSpeed">Speed</string>
 
-    <string name="text_labelParallelepiped">Area of the parallelepiped</string>
-    <string name="text_labelTriangleDefault">Area of the triangle</string> <!--Обычный-->
-    <string name="text_labelTtriangleIsosceles">Area of the isosceles triangle</string> <!--Равнобедренный-->
-    <string name="text_labelTriangleEquilateral">Area of the equilateral triangle</string> <!--Равносторонний-->
+
+    <string name="text_labelTriangleDefault">Area Triangle</string> <!--Треугольник-->
+    <string name="text_labelTtriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
+    <string name="text_labelTriangleEquilateral">Area equilateral Triangle</string> <!--Равносторонний-->
+    <string name="text_labelRhombus">Area Rhombus</string> <!--Ромб-->
+    <string name="text_labelParallelepiped">Area Parallelepiped</string> <!--Параллелепипед-->
+    <string name="text_labelParallelogram">Area Parallelogram</string> <!--Параллелограмм-->
+    <string name="text_labelCircle">Area Circle</string> <!--Круг-->
+    <string name="text_labelTrapezoid">Area Trapezoid</string> <!--Трапеция-->
 
     <!--Cube tooltip-->
     <string name="hint_sideA">Side A</string>
     <string name="hint_sideB">Side B</string>
     <string name="hint_sideC">Side C</string>
 
+    <string name="hint_diagonalFirst">Diagonal 1</string>
+    <string name="hint_diagonalSecond">Diagonal 2</string>
+
+    <string name="hint_angle">Angle</string>
+    <string name="hint_radius">Radius</string>
+    <string name="hint_height">Height</string>
+
     <string name="tooltip_parallelepipedText">Enter the sides of the parallelepiped (if you need a rectangle, leave the field C blank or C = 0)</string>
     <string name="tooltip_triangleText">Enter the sides of the triangle. The area is calculated using Heron\'s formula</string>
+    <string name="tooltip_rhombusText">Fill only for need field and choose variant calculating of area of the rhombus</string>
 
     <string name="text_In">In</string>
     <string name="text_Selector">Convertors</string>
@@ -105,10 +119,20 @@
         <item>°Re - Réaumur</item>
     </string-array>
 
-    <string-array name="triangle_formules">
-        <item>Area of a Triangle using Base and Height</item>
-        <item>Heron\'s Formula</item>
-        <item>Area of a Triangle using Two Sides and Included Angle</item>
+    <string-array name="square_values">
+        <item>µ² - micron</item>
+        <item>µm² - millimeter</item>
+        <item>cm²- centimeter</item>
+        <item>dm² - decimeter</item>
+        <item>m² - meter</item>
+        <item>km² - kilometer</item>
+        <item>ha - hectare</item>
+    </string-array>
+
+    <string-array name="rhombus_formulas">
+        <item>Side and Height</item>
+        <item>Side and Angle</item>
+        <item>Diagonals of rhombus</item>
     </string-array>
 
 </resources>

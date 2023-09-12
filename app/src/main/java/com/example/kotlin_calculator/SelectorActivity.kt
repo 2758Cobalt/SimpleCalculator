@@ -41,8 +41,33 @@ class SelectorActivity : AppCompatActivity() {
         finishAfterTransition()
     }
     fun switchToSquare(view : View){
-        // Переход на конвертер (TemperatureActivity)
+        // Переход на конвертер (SquareActivity)
         startActivity(Intent(this,SquareActivity::class.java))
+        finishAfterTransition()
+    }
+    fun switchToAreaParallelepiped(view : View){
+        // Переход на конвертер (ParallelepipedActivity)
+        startActivity(Intent(this,ParallelepipedActivity::class.java))
+        finishAfterTransition()
+    }
+    fun switchToAreaTriangle(view : View){
+        // Переход на конвертер (TriangleActivity)
+        startActivity(Intent(this,TriangleActivity::class.java))
+        finishAfterTransition()
+    }
+    fun switchToAreaRhombus(view : View){
+        // Переход на конвертер (TriangleActivity)
+        startActivity(Intent(this,RhombusActivity::class.java))
+        finishAfterTransition()
+    }
+    fun switchToAreaCircle(view : View){
+        // Переход на конвертер (TriangleActivity)
+        startActivity(Intent(this,TriangleActivity::class.java))
+        finishAfterTransition()
+    }
+    fun switchToAreaTrapezoid(view : View){
+        // Переход на конвертер (TriangleActivity)
+        startActivity(Intent(this,TriangleActivity::class.java))
         finishAfterTransition()
     }
 }

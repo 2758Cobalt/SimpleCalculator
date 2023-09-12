@@ -17,200 +17,81 @@
         android:textSize="22sp"
         android:onClick="switchToSelector" />
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
-                android:background="@drawable/linearlayout_bg_sheet"
-                android:orientation="vertical"
-                android:padding="8dp">
+    <LinearLayout
+        android:background="@drawable/linearlayout_bg_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="12dp"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="12dp"
-                    android:background="@drawable/linearlayout_bg_sheet"
-                    android:text="@string/text_labelParallelepiped"
-                    android:textAlignment="center"
-                    android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/displayTextConvert"
+            android:textStyle="bold"
+            android:text="@string/buttonConverterSquare" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="12dp"
-                    android:lines="3"
+        <Spinner
+            android:id="@+id/dropDownFrom"
+            style="@style/spinnerConvert" />
 
-                    android:text="@string/tooltip_parallelepipedText"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+        <EditText
+            android:id="@+id/inputValue"
+            style="@style/inputTextToConvert"
+            android:layout_margin="16dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="4dp"
-                    android:orientation="horizontal">
+    </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/inputSideA"
-                        style="@style/inputTextToConvert"
-                        android:layout_width="0dp"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="12dp"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:text="@string/text_In" />
 
-                        android:hint="A"
-                        android:textSize="18sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="12dp"
+        android:orientation="vertical"
+        android:background="@drawable/linearlayout_bg_sheet">
 
-                    <EditText
-                        android:id="@+id/inputSideB"
-                        style="@style/inputTextToConvert"
-                        android:layout_width="0dp"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
-                        android:hint="B"
-                        android:textSize="18sp" />
+        <Spinner
+            android:id="@+id/dropDownIn"
+            style="@style/spinnerConvert" />
 
-                    <EditText
-                        android:id="@+id/inputSideC"
-                        style="@style/inputTextToConvert"
-                        android:layout_width="0dp"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
-                        android:hint="C"
-                        android:textSize="18sp" />
-                </LinearLayout>
+        <TextView
+            android:id="@+id/resultConvertation"
+            style="@style/displayTextConvert" />
 
-                <TextView
-                    android:id="@+id/areaSquareResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="8dp"
-
-                    android:text="@string/text_labelParallelepiped"
-                    android:textAlignment="center"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <Button
-                        style="@style/buttonAction"
-                        android:layout_width="match_parent"
-                        android:onClick="resetFieldsParallelepiped"
-                        android:text="@string/buttonReset" />
-
-                    <Button
-                        style="@style/buttonActionOperator"
-                        android:layout_width="match_parent"
-                        android:onClick="calculateSquare"
-                        android:text="@string/buttonCalculate" />
-                </LinearLayout>
-
-
-
-            </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginVertical="12dp"
-            android:background="@drawable/linearlayout_bg_sheet"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
 
-            <TextView
+            <Button
+                style="@style/buttonAction"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
-                android:background="@drawable/linearlayout_bg_sheet"
-                android:text="@string/text_labelTriangleDefault"
-                android:textAlignment="center"
-                android:textSize="24sp" />
+                android:onClick="resetFields"
+                android:text="@string/buttonReset" />
 
-            <TextView
+            <Button
+                style="@style/buttonActionOperator"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
-                android:lines="2"
-
-                android:text="@string/tooltip_triangleText"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/inputTriangleSideA"
-                    style="@style/inputTextToConvert"
-                    android:layout_width="0dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-
-                    android:hint="A"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/inputTriangleSideB"
-                    style="@style/inputTextToConvert"
-                    android:layout_width="0dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:hint="B"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/inputTriangleSideC"
-                    style="@style/inputTextToConvert"
-                    android:layout_width="0dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:hint="C"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/areaTriangleResult"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginVertical="8dp"
-
-                android:text="@string/text_labelTriangleDefault"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <Button
-                    style="@style/buttonAction"
-                    android:layout_width="match_parent"
-                    android:onClick="resetFieldsTriangle"
-                    android:text="@string/buttonReset" />
-
-                <Button
-                    style="@style/buttonActionOperator"
-                    android:layout_width="match_parent"
-                    android:onClick="calculateTriangle"
-                    android:text="@string/buttonCalculate" />
-            </LinearLayout>
-
-
+                android:onClick="calculateConvertation"
+                android:text="@string/buttonConvert" />
         </LinearLayout>
+
+    </LinearLayout>
+
+
+
 
 
 

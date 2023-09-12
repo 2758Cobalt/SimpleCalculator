@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".ParallelepipedActivity">
+
+    <Button
+        style="@style/buttonActionOperator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/text_Selector"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:onClick="switchToSelector" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="12dp"
+        android:background="@drawable/linearlayout_bg_sheet"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="12dp"
+            android:background="@drawable/linearlayout_bg_sheet"
+            android:text="@string/text_labelParallelepiped"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="12dp"
+            android:lines="3"
+
+            android:text="@string/tooltip_parallelepipedText"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/inputSideA"
+                style="@style/inputTextToConvert"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:hint="@string/hint_sideA"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/inputSideB"
+                style="@style/inputTextToConvert"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:hint="@string/hint_sideB"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/inputSideC"
+                style="@style/inputTextToConvert"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:hint="@string/hint_sideC"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/areaSquareResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="12dp"
+
+            android:text="@string/text_labelParallelepiped"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                style="@style/buttonAction"
+                android:layout_width="match_parent"
+                android:onClick="resetFields"
+                android:text="@string/buttonReset" />
+
+            <Button
+                style="@style/buttonActionOperator"
+                android:layout_width="match_parent"
+                android:onClick="calculateParallelepiped"
+                android:text="@string/buttonCalculate" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
