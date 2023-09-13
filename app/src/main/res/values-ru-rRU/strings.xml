@@ -22,7 +22,7 @@
     <string name="tooltip_item">Величина</string>
     <string name="tooltip_value">Значение</string>
     <string name="buttonReset">Сбросить</string>
-    <string name="text_In">В</string>
+    <string name="text_In">↓</string>
     <string name="tooltip_enterText">Введите число</string>
 
     <string-array name="weight_values">

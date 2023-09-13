@@ -68,7 +68,7 @@
     <string name="tooltip_circleText">Enter the radius or length for calculate area of circle</string>
     <string name="tooltip_trapezoidText">Enter the fields for calculate area of trapezoid</string>
 
-    <string name="text_In">In</string>
+    <string name="text_In">↓</string>
     <string name="text_Selector">Convertors</string>
 
     <string name="tooltip_item">Item</string>

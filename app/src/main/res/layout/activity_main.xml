@@ -21,13 +21,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-
-
             android:onClick="quitApp"
             android:textSize="24sp"
+            android:textStyle="bold"
             android:text="@string/buttonExit"
-            android:textColor="@color/orange"
-            android:backgroundTint="@color/gray90"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/orange"
             tools:ignore="InefficientWeight,NestedWeights" />
         <Button
             android:id="@+id/toConvertersBtn"
@@ -35,20 +34,19 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-
             android:onClick="switchToConverters"
             android:textSize="24sp"
-            android:text="C"
-            android:drawableTop="@android:drawable/ic_menu_preferences"
+            android:textStyle="bold"
+            android:text="@string/text_Selector"
             android:textColor="@color/white"
-            android:backgroundTint="@color/gray90"
+            android:backgroundTint="@color/orange"
             tools:ignore="InefficientWeight,NestedWeights" />
 
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="20dp">
 
@@ -90,18 +88,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:padding="8dp"
-        app:columnCount="4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:rowCount="5">
 
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:columnCount="4"
+        app:rowCount="5">
 
         <Button
             style="@style/buttonFunc"
@@ -125,6 +118,8 @@
             android:onClick="operationEnter"
             android:text="@string/symbolMul" />
 
+        <!--789-->
+
         <Button
             style="@style/buttonNumber"
             android:onClick="numberEnter"
@@ -144,8 +139,9 @@
             style="@style/buttonOperator"
             android:id="@+id/buttonOperPlus"
             android:onClick="operationEnter"
-            android:text="@string/symbolSub" />
+            android:text="@string/symbolAdd" />
 
+        <!--456-->
         <Button
             style="@style/buttonNumber"
             android:onClick="numberEnter"
@@ -163,9 +159,10 @@
 
         <Button
             style="@style/buttonOperator"
-            android:id="@+id/buttonOperMin"
+            android:id="@+id/buttonOperSub"
             android:onClick="operationEnter"
-            android:text="@string/symbolAdd" />
+            android:text="@string/symbolSub" />
+        <!--123-->
 
         <Button
             style="@style/buttonNumber"
@@ -183,26 +180,28 @@
             android:text="3" />
 
         <Button
-            android:id="@+id/equalBtn"
             style="@style/buttonOperator"
+            android:id="@+id/buttonOperEqual"
             android:onClick="equalAction"
-            android:text="@string/symbolEqual"
+            app:layout_rowSpan="2"
             app:layout_gravity="fill_vertical"
-            app:layout_rowSpan="2" />
+            android:text="@string/symbolEqual" />
 
         <Button
             style="@style/buttonNumber"
             android:onClick="numberEnter"
-            android:text="0"
             android:textAlignment="textStart"
             app:layout_columnSpan="2"
-            app:layout_gravity="fill_horizontal" />
+            app:layout_gravity="fill"
+            android:text="0" />
 
         <Button
-            style="@style/buttonFunc"
-            android:id="@+id/pointBtn"
-            android:onClick="enterPoint"
+            style="@style/buttonNumber"
+            android:onClick="numberEnter"
             android:text="@string/symbolPoint" />
+
+
+
 
     </androidx.gridlayout.widget.GridLayout>
 
