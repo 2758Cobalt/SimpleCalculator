@@ -39,7 +39,7 @@
 
 
     <string name="text_labelTriangleDefault">Area Triangle</string> <!--Треугольник-->
-    <string name="text_labelTtriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
+    <string name="text_labelTriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
     <string name="text_labelTriangleEquilateral">Area equilateral Triangle</string> <!--Равносторонний-->
     <string name="text_labelRhombus">Area Rhombus</string> <!--Ромб-->
     <string name="text_labelParallelepiped">Area Parallelepiped</string> <!--Параллелепипед-->
@@ -47,6 +47,7 @@
     <string name="text_labelCircle">Area Circle</string> <!--Круг-->
     <string name="text_labelCircleLength">Length of Circle</string> <!--Длина круга-->
     <string name="text_labelTrapezoid">Area Trapezoid</string> <!--Трапеция-->
+    <string name="text_labelMath">Mathematics</string>
 
     <!--Cube tooltip-->
     <string name="hint_sideA">Side A</string>

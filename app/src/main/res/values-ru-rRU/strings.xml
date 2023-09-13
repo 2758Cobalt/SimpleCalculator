@@ -90,8 +90,9 @@
     </string-array>
 
     <string name="text_labelTriangleDefault">Площадь треугольника</string>
-    <string name="text_labelTtriangleIsosceles">Площадь равнобедренного треугольника</string>
+    <string name="text_labelTriangleIsosceles">Площадь равнобедренного треугольника</string>
     <string name="text_labelTriangleEquilateral">Площадь равностороннего треугольника</string>
+    <string name="text_labelMath">Математика</string>
     <string name="hint_sideA">Сторона A</string>
     <string name="hint_sideB">Сторона B</string>
     <string name="hint_sideC">Сторона C</string>
