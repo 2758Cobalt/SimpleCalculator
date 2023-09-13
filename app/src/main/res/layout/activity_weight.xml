@@ -32,6 +32,10 @@
             android:textStyle="bold"
             android:text="@string/buttonConverterWeight" />
 
+        <TextView
+            style="@style/tooltipTextStyle"
+            android:text="@string/tooltip_weightText" />
+
         <Spinner
             android:id="@+id/dropDownFrom"
             style="@style/spinnerConvert" />
@@ -40,6 +44,8 @@
             android:id="@+id/inputValue"
             style="@style/inputTextToConvert"
             android:layout_margin="16dp" />
+
+
 
     <TextView
         android:id="@+id/textView2"

@@ -12,6 +12,7 @@
         android:color="@color/gray75" >
     </stroke>
 
+
     <padding
         android:left="5dp"
         android:top="5dp"

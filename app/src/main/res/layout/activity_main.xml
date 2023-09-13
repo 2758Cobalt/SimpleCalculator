@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="quitApp"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:text="@string/buttonExit"
             android:textColor="@color/white"
@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="switchToConverters"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:text="@string/text_Selector"
             android:textColor="@color/white"
@@ -93,6 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:padding="16dp"
         app:columnCount="4"
         app:rowCount="5">
 
@@ -100,9 +101,20 @@
             style="@style/buttonFunc"
             android:id="@+id/acBtn"
             android:onClick="clearAll"
-            android:text="@string/symbolAC"
-            app:layout_columnSpan="2"
-            app:layout_gravity="fill_horizontal" />
+            android:text="@string/symbolAC" />
+
+        <Button
+            style="@style/buttonFunc"
+            android:id="@+id/roundBtn"
+            android:onClick="roundResult"
+            android:text="@string/symbolRound" />
+
+
+        <Button
+            style="@style/buttonFunc"
+            android:id="@+id/buttonPercent"
+            android:onClick="percentResult"
+            android:text="@string/symbolPercent" />
 
 
         <Button
@@ -110,13 +122,6 @@
             android:id="@+id/buttonOperDiv"
             android:onClick="operationEnter"
             android:text="@string/symbolDiv" />
-
-
-        <Button
-            style="@style/buttonOperator"
-            android:id="@+id/buttonOperMul"
-            android:onClick="operationEnter"
-            android:text="@string/symbolMul" />
 
         <!--789-->
 
@@ -137,9 +142,9 @@
 
         <Button
             style="@style/buttonOperator"
-            android:id="@+id/buttonOperPlus"
+            android:id="@+id/buttonOperMul"
             android:onClick="operationEnter"
-            android:text="@string/symbolAdd" />
+            android:text="@string/symbolMul" />
 
         <!--456-->
         <Button
@@ -159,9 +164,10 @@
 
         <Button
             style="@style/buttonOperator"
-            android:id="@+id/buttonOperSub"
+            android:id="@+id/buttonOperPlus"
             android:onClick="operationEnter"
-            android:text="@string/symbolSub" />
+            android:text="@string/symbolAdd" />
+
         <!--123-->
 
         <Button
@@ -178,27 +184,32 @@
             style="@style/buttonNumber"
             android:onClick="numberEnter"
             android:text="3" />
-
         <Button
             style="@style/buttonOperator"
-            android:id="@+id/buttonOperEqual"
-            android:onClick="equalAction"
-            app:layout_rowSpan="2"
-            app:layout_gravity="fill_vertical"
-            android:text="@string/symbolEqual" />
+            android:id="@+id/buttonOperSub"
+            android:onClick="operationEnter"
+            android:text="@string/symbolSub" />
+
+
 
         <Button
             style="@style/buttonNumber"
             android:onClick="numberEnter"
-            android:textAlignment="textStart"
-            app:layout_columnSpan="2"
-            app:layout_gravity="fill"
             android:text="0" />
 
         <Button
             style="@style/buttonNumber"
-            android:onClick="numberEnter"
+            android:id="@+id/pointBtn"
+            android:onClick="enterPoint"
+
             android:text="@string/symbolPoint" />
+        <Button
+            style="@style/buttonOperator"
+            android:id="@+id/buttonOperEqual"
+            android:onClick="equalAction"
+            app:layout_columnSpan="2"
+            app:layout_gravity="fill_horizontal"
+            android:text="@string/symbolEqual" />
 
 
 

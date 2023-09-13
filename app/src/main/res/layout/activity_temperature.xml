@@ -31,6 +31,10 @@
             android:textStyle="bold"
             android:text="@string/buttonConverterTemperature" />
 
+        <TextView
+            style="@style/tooltipTextStyle"
+            android:text="@string/tooltip_temperatureText" />
+
         <Spinner
             android:id="@+id/dropDownFrom"
             style="@style/spinnerConvert" />
@@ -54,7 +58,8 @@
 
         <TextView
             android:id="@+id/resultConvertation"
-            style="@style/displayTextConvert" />
+            style="@style/displayTextConvert"
+            android:text="@string/buttonConverterTemperature"/>
 
 
         <LinearLayout

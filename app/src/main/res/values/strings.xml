@@ -13,16 +13,19 @@
     <string name="buttonExit">Exit</string>
 
     <!--Calculator-->
+    <string name="symbolPercent" translatable="false">%</string>
     <string name="symbolDiv" translatable="false">/</string>
     <string name="symbolMul" translatable="false">*</string>
-    <string name="symbolAdd" translatable="false">-</string>
-    <string name="symbolSub" translatable="false">+</string>
+    <string name="symbolSub" translatable="false">-</string>
+    <string name="symbolAdd" translatable="false">\+</string>
     <string name="symbolPoint" translatable="false">.</string>
     <string name="symbolEqual" translatable="false">=</string>
     <string name="symbolAC" translatable="false">AC</string>
+    <string name="symbolRound" translatable="false">≈</string>
 
     <!--Test previous-->
-    <string name="testButton">ExampleButtonText</string>
+    <string name="sampleButton" translatable="false">SampleButton</string>
+    <string name="sampleText" translatable="false">SampleText</string>
 
     <!--Converter-->
     <string name="buttonConvert">Convert</string>
@@ -67,6 +70,13 @@
     <string name="tooltip_rhombusText">Fill only for need field and choose variant calculating of area of the rhombus</string>
     <string name="tooltip_circleText">Enter the radius or length for calculate area of circle</string>
     <string name="tooltip_trapezoidText">Enter the fields for calculate area of trapezoid</string>
+
+    <string name="tooltip_weightText">Fill in the field to convert weight</string>
+    <string name="tooltip_lengthText">Fill in the field to convert length</string>
+    <string name="tooltip_speedText">Fill in the field to convert speed</string>
+    <string name="tooltip_dataText">Fill in the field to convert data</string>
+    <string name="tooltip_temperatureText">Fill in the field to convert temperature</string>
+    <string name="tooltip_squareText">Fill in the field to convert <b>square</b></string>
 
     <string name="text_In">↓</string>
     <string name="text_Selector">Convertors</string>
@@ -139,5 +149,6 @@
         <item>Side and Angle</item>
         <item>Diagonals of rhombus</item>
     </string-array>
+
 
 </resources>

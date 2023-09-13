@@ -25,20 +25,24 @@
         android:padding="8dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             style="@style/displayTextConvert"
             android:textStyle="bold"
             android:text="@string/buttonConverterData" />
 
+        <TextView
+            style="@style/tooltipTextStyle"
+            android:text="@string/tooltip_dataText"/>
+
         <Spinner
-            android:id="@+id/dropDownFrom"
-            style="@style/spinnerConvert" />
+            style="@style/spinnerConvert"
+            android:id="@+id/dropDownFrom" />
 
         <EditText
-            android:id="@+id/inputValue"
             style="@style/inputTextToConvert"
+            android:id="@+id/inputValue"
             android:layout_margin="16dp" />
+
+
 
     <TextView
         android:id="@+id/textView2"
@@ -54,8 +58,9 @@
             style="@style/spinnerConvert" />
 
         <TextView
+            style="@style/displayTextConvert"
             android:id="@+id/resultConvertation"
-            style="@style/displayTextConvert" />
+            android:text="@string/buttonConverterData"/>
 
 
         <LinearLayout

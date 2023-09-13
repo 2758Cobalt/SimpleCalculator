@@ -27,19 +27,11 @@
 
         <TextView
             style="@style/displayTextConvert"
-            android:textStyle="bold"
             android:text="@string/text_labelTriangleDefault" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="12dp"
-            android:lines="2"
-
-            android:text="@string/tooltip_triangleText"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            style="@style/tooltipTextStyle"
+            android:text="@string/tooltip_triangleText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,7 +67,6 @@
         <TextView
             android:id="@+id/areaTriangleResult"
             style="@style/displayTextConvert"
-            android:textStyle="bold"
             android:text="@string/text_labelTriangleDefault" />
 
         <LinearLayout

@@ -27,19 +27,11 @@
 
         <TextView
             style="@style/displayTextConvert"
-            android:textStyle="bold"
             android:text="@string/text_labelParallelepiped" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="12dp"
-            android:lines="3"
-
-            android:text="@string/tooltip_parallelepipedText"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            style="@style/tooltipTextStyle"
+            android:text="@string/tooltip_parallelepipedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +68,6 @@
         <TextView
             android:id="@+id/areaParallelepipedResult"
             style="@style/displayTextConvert"
-            android:textStyle="bold"
             android:text="@string/text_labelParallelepiped" />
 
         <LinearLayout

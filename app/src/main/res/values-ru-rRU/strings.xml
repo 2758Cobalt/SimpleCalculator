@@ -4,8 +4,6 @@
     <string name="buttonConfirm">Подтвердить</string>
     <string name="buttonCancel">Отмена</string>
 
-    <string name="testButton">ЗатычкаТекст</string>
-
     <string name="buttonApply">Принять</string>
     <string name="buttonNext">Далее</string>
     <string name="buttonExit">Выход</string>
@@ -115,4 +113,10 @@
     <string name="tooltip_circleText">Введите радиус кругачтобы расчитать площадь круга</string>
     <string name="tooltip_trapezoidText">Введите только нужные поля чтобы расчитать площадь трапеции</string>
     <string name="text_labelCircleLength">Длина круга</string>
+    <string name="tooltip_weightText">Заполните поле для конвертации веса</string>
+    <string name="tooltip_lengthText">Заполните поле для конвертации длины</string>
+    <string name="tooltip_speedText">Заполните поле для конвертации скорости</string>
+    <string name="tooltip_dataText">Заполните поле для конвертации данных</string>
+    <string name="tooltip_temperatureText">Заполните поле для конвертации температуры</string>
+    <string name="tooltip_squareText">Заполните поле для конвертации площади</string>
 </resources>

@@ -31,6 +31,10 @@
             style="@style/displayTextConvert"
             android:textStyle="bold"
             android:text="@string/buttonConverterSquare" />
+        <TextView
+            style="@style/tooltipTextStyle"
+            android:text="@string/tooltip_squareText"
+             />
 
         <Spinner
             android:id="@+id/dropDownFrom"
@@ -40,6 +44,7 @@
             android:id="@+id/inputValue"
             style="@style/inputTextToConvert"
             android:layout_margin="16dp" />
+
 
     <TextView
         android:id="@+id/textView2"
@@ -56,7 +61,8 @@
 
         <TextView
             android:id="@+id/resultConvertation"
-            style="@style/displayTextConvert" />
+            style="@style/displayTextConvert"
+            android:text="@string/text_labelTrapezoid"/>
 
 
         <LinearLayout

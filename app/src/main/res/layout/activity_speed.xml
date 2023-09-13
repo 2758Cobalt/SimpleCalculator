@@ -26,10 +26,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             style="@style/displayTextConvert"
             android:textStyle="bold"
             android:text="@string/buttonConverterSpeed" />
+
+        <TextView
+            style="@style/tooltipTextStyle"
+            android:text="@string/tooltip_speedText" />
 
         <Spinner
             android:id="@+id/dropDownFrom"
@@ -40,6 +43,8 @@
             android:id="@+id/inputValue"
             style="@style/inputTextToConvert"
             android:layout_margin="16dp" />
+
+
 
 
     <TextView

@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private  lateinit var acButton : Button
     private  lateinit var pointButton : Button
+    private  lateinit var roundButton : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         acButton = findViewById(R.id.acBtn) // Ссылка на кнопку "All clean"
         pointButton = findViewById(R.id.pointBtn) // Ссылка на кнопку "All clean"
+        roundButton = findViewById(R.id.roundBtn) // Ссылка на кнопку "round"
     }
     fun numberEnter(view: View) // Обработчик нажатия - цыфра (0-9)
     {
@@ -45,6 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         if(view is Button && canEnterNumber)
         {
+
+            Log.i("InfoApp",resultText.text.isEmpty().toString())
             // 1. Запись в основное поле
             resultText.append(view.text)
 
@@ -98,10 +102,17 @@ class MainActivity : AppCompatActivity() {
         Log.i("InfoApp",operators.toString())
 
     }
-    fun enterPoint(view: View) // Ввод точки
+    fun enterPoint(view : View) // Ввод точки
     {
         // 1. После ввода - отключает возможность повторно ввести
-        canEnterPoint = false
+        if(resultText.text.isNotEmpty()) {
+            if(!resultText.text.contains(".")){
+                resultText.append(".")
+                historyText.append(".")
+            }
+        }
+
+
     }
     private fun calculateResult() : Double{
         var result = numbers[0]
@@ -121,7 +132,6 @@ class MainActivity : AppCompatActivity() {
                 constantSymbols[3] -> result /= nextNumber
             }
         }
-        Log.d("InfoApp","Резултат:" + result.toString())
 
         numbers.clear()
         operators.clear()
@@ -132,7 +142,6 @@ class MainActivity : AppCompatActivity() {
     }
     fun equalAction(view: View) // Обработчик нажатия - равно(=)
     {
-        setButtonColor(acButton,"#FF9900", Color.WHITE)
         val result = calculateResult()
 
         resultText.text = result.toString()
@@ -153,30 +162,27 @@ class MainActivity : AppCompatActivity() {
         canEnterPoint = false
         canEnterOperation = false
         canEnterNumber = true
-        setButtonColor(acButton,"#969696", Color.BLACK)
 
         Log.d("InfoApp","Debug cleared: nums - ${numbers} | oper - ${operators}")
-    }
-    fun setButtonColor(objectButton : Button, bgColor : String, textColor : Int)
-    {
-        objectButton.setBackgroundColor(Color.parseColor(bgColor))
-        objectButton.setTextColor(textColor)
     }
     fun switchToConverters(view : View) {
         // Переход в селектор (SelectorActivity)
         startActivity(Intent(this,SelectorActivity::class.java))
         finishAfterTransition()
     }
+    fun roundResult(view : View){
+        val result = resultText.text.toString().toDouble()
+        resultText.text = (String.format("%.3f",result))
+    }
+    fun percentResult(view : View){
+        val result = resultText.text.toString().toDouble()
+        resultText.text = (result / 100.0).toString()
+    }
 
     fun  quitApp(view : View) // Закрытие процесса
     {
         finish()
         exitProcess(0)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("InfoApp","Main destroyed")
     }
 
 }
