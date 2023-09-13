@@ -8,22 +8,19 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import java.lang.Math.pow
 import kotlin.math.pow
 import kotlin.math.sin
 
 class RhombusActivity : AppCompatActivity() {
     private lateinit var constants : Array<String>
 
-    private lateinit var rhombus_sideA : EditText
-    private lateinit var rhombus_angle : EditText
-    private lateinit var rhombus_height : EditText
-    private lateinit var rhombus_diagonalFirst : EditText
-    private lateinit var rhombus_diagonalSecond : EditText
+    private lateinit var rhombusSides : EditText
+    private lateinit var rhombusAngle : EditText
+    private lateinit var rhombusHeight : EditText
+    private lateinit var rhombusDiagonalFirst : EditText
+    private lateinit var rhombusDiagonalSecond : EditText
 
     private lateinit var dropDown : Spinner
-
-
 
     private lateinit var rhombusResult : TextView
 
@@ -33,16 +30,16 @@ class RhombusActivity : AppCompatActivity() {
 
         constants = resources.getStringArray(R.array.rhombus_formulas) // Получение строкового массива
 
-        rhombusResult = findViewById(R.id.areaRhombusResult)
-        dropDown = findViewById(R.id.dropDownFormula)
+        rhombusResult = findViewById(R.id.areaRhombusResult) // Поле результат
+        dropDown = findViewById(R.id.dropDownFormula) // Формулы
 
-        // Треугольник
-        rhombus_sideA = findViewById(R.id.inputRhombusSideA)
-        rhombus_angle = findViewById(R.id.inputRhombusAngle)
-        rhombus_height = findViewById(R.id.inputRhombusHeight)
+        // Стороны ромба и прочее
+        rhombusSides = findViewById(R.id.inputRhombusSideA)
+        rhombusAngle = findViewById(R.id.inputRhombusAngle)
+        rhombusHeight = findViewById(R.id.inputRhombusHeight)
         
-        rhombus_diagonalFirst = findViewById(R.id.inputRhombusDiagonalFirst)
-        rhombus_diagonalSecond = findViewById(R.id.inputRhombusDiagonalSecond)
+        rhombusDiagonalFirst = findViewById(R.id.inputRhombusDiagonalFirst)
+        rhombusDiagonalSecond = findViewById(R.id.inputRhombusDiagonalSecond)
 
         ArrayAdapter.createFromResource(
             this,
@@ -62,12 +59,12 @@ class RhombusActivity : AppCompatActivity() {
     }
     fun resetFieldsRhombus(view : View){
         // Сбрасывает значения в полях - Кнопка "Reset"
-        rhombus_sideA.text.clear()
-        rhombus_height.text.clear()
-        rhombus_angle.text.clear()
+        rhombusSides.text.clear()
+        rhombusHeight.text.clear()
+        rhombusAngle.text.clear()
 
-        rhombus_diagonalFirst.text.clear()
-        rhombus_diagonalSecond.text.clear()
+        rhombusDiagonalFirst.text.clear()
+        rhombusDiagonalSecond.text.clear()
 
         rhombusResult.text = "Your text"//getString(R.string.tooltip_triangleText)
     }
@@ -79,23 +76,23 @@ class RhombusActivity : AppCompatActivity() {
 
         when (dropDown.selectedItem.toString()) {
             constants[0] ->
-                if(rhombus_sideA.text.isNotEmpty() && rhombus_height.text.isNotEmpty()) {
-                    val sideA = rhombus_sideA.text.toString().toDouble()
-                    val height = rhombus_height.text.toString().toDouble()
+                if(rhombusSides.text.isNotEmpty() && rhombusHeight.text.isNotEmpty()) {
+                    val sideA = rhombusSides.text.toString().toDouble()
+                    val height = rhombusHeight.text.toString().toDouble()
 
                     result = sideA * height
             }
-            constants[1] -> if(rhombus_sideA.text.isNotEmpty() && rhombus_angle.text.isNotEmpty()) {
-                val sideA = rhombus_sideA.text.toString().toDouble()
-                val sinus = rhombus_angle.text.toString().toDouble()
+            constants[1] -> if(rhombusSides.text.isNotEmpty() && rhombusAngle.text.isNotEmpty()) {
+                val sideA = rhombusSides.text.toString().toDouble()
+                val sinus = rhombusAngle.text.toString().toDouble()
 
                 result = sideA.pow(2.0) * sin(sinus)
             }
 
             constants[2] ->
-                if(rhombus_diagonalFirst.text.isNotEmpty() && rhombus_diagonalSecond.text.isNotEmpty()) {
-                    val diagonalFirst = rhombus_diagonalFirst.text.toString().toDouble()
-                    val diagonalSecond = rhombus_diagonalSecond.text.toString().toDouble()
+                if(rhombusDiagonalFirst.text.isNotEmpty() && rhombusDiagonalSecond.text.isNotEmpty()) {
+                    val diagonalFirst = rhombusDiagonalFirst.text.toString().toDouble()
+                    val diagonalSecond = rhombusDiagonalSecond.text.toString().toDouble()
 
                     result = (diagonalFirst * diagonalSecond) / 2
                 }

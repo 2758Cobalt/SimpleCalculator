@@ -49,6 +49,7 @@ class SquareActivity : AppCompatActivity() {
     }
     fun switchToSelector(view : View){
         startActivity(Intent(this,SelectorActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }
 
@@ -59,10 +60,11 @@ class SquareActivity : AppCompatActivity() {
     }
 
     fun calculateConvertation(view : View){
+        var result = 0.0
         if(valueForConvert.text.isNotEmpty() ) // Проверяет не пустое ли поле ввода
         {
             val value = valueForConvert.text.toString().toDouble()
-            var result = 0.0
+
             when (dropdownFrom.selectedItem.toString()) {
 
                 // Микроны

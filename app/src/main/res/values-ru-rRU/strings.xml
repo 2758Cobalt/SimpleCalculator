@@ -109,5 +109,9 @@
     <string name="hint_diagonalSecond">Диагональ 2</string>
     <string name="hint_radius">Радиус</string>
     <string name="hint_height">Высота</string>
+    <string name="hint_length">Длина</string>
     <string name="hint_angle">Угол</string>
+    <string name="tooltip_circleText">Введите радиус кругачтобы расчитать площадь круга</string>
+    <string name="tooltip_trapezoidText">Введите только нужные поля чтобы расчитать площадь трапеции</string>
+    <string name="text_labelCircleLength">Длина круга</string>
 </resources>

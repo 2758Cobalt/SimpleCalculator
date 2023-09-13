@@ -8,11 +8,12 @@ import android.view.View
 class SelectorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_converter)
+        setContentView(R.layout.activity_selector)
     }
     fun switchToMain(view : View){
         // Возврат на главную страницу (MainActivity)
         startActivity(Intent(this,MainActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }
     fun switchToWeight(view : View){
@@ -56,18 +57,18 @@ class SelectorActivity : AppCompatActivity() {
         finishAfterTransition()
     }
     fun switchToAreaRhombus(view : View){
-        // Переход на конвертер (TriangleActivity)
+        // Переход на конвертер (RhombusActivity)
         startActivity(Intent(this,RhombusActivity::class.java))
         finishAfterTransition()
     }
     fun switchToAreaCircle(view : View){
-        // Переход на конвертер (TriangleActivity)
-        startActivity(Intent(this,TriangleActivity::class.java))
+        // Переход на конвертер (CircleActivity)
+        startActivity(Intent(this,CircleActivity::class.java))
         finishAfterTransition()
     }
     fun switchToAreaTrapezoid(view : View){
-        // Переход на конвертер (TriangleActivity)
-        startActivity(Intent(this,TriangleActivity::class.java))
+        // Переход на конвертер (TrapezoidActivity)
+        startActivity(Intent(this,TrapezoidActivity::class.java))
         finishAfterTransition()
     }
 }

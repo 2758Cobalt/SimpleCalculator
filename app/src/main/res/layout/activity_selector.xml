@@ -110,20 +110,20 @@
         android:orientation="horizontal">
         <Button
             style="@style/buttonTile"
-            android:onClick="switchToAreaParallelepiped"
-            android:textSize="14sp"
-            android:text="@string/text_labelParallelepiped" />
+            android:onClick="switchToAreaRhombus"
+            android:textSize="18sp"
+            android:text="@string/text_labelRhombus" />
 
         <Button
             style="@style/buttonTile"
-            android:onClick="switchToAreaRhombus"
-            android:textSize="14sp"
-            android:text="@string/text_labelRhombus"/>
+            android:onClick="switchToAreaCircle"
+            android:textSize="18sp"
+            android:text="@string/text_labelCircle"/>
         <Button
             style="@style/buttonTile"
-            android:onClick="switchToAreaCircle"
-            android:textSize="14sp"
-            android:text="@string/text_labelCircle"/>
+            android:onClick="switchToAreaTrapezoid"
+            android:textSize="18sp"
+            android:text="@string/text_labelTrapezoid"/>
     </LinearLayout>
 
 

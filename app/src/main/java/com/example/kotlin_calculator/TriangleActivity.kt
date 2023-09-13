@@ -29,6 +29,7 @@ class TriangleActivity : AppCompatActivity() {
 
     fun switchToSelector(view : View){
         startActivity(Intent(this,SelectorActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }
     fun resetFieldsTriangle(view : View){

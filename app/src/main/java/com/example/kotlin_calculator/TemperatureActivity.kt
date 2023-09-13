@@ -50,6 +50,7 @@ class TemperatureActivity : AppCompatActivity() {
     fun switchToSelector(view: View) {
         // Возврат на страницу селектора
         startActivity(Intent(this, SelectorActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }
 
