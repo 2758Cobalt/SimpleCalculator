@@ -47,8 +47,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
         android:padding="20dp">
 
         <LinearLayout
@@ -56,7 +56,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +69,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:lines="1"
+                android:autoSizeMaxTextSize="12sp"
+                android:text="0"
+                android:textStyle="bold"
                 android:maxLines="1"
                 android:textAlignment="textEnd"
                 android:textSize="42sp" />
@@ -80,7 +82,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:lines="1"
                 android:maxLines="1"
                 android:textAlignment="textEnd"
                 android:textSize="24sp" />
@@ -92,140 +93,170 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical">
 
-        <LinearLayout
+        <!--AC = % /-->
+        <androidx.gridlayout.widget.GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-        </LinearLayout>
-    </LinearLayout>
-    <androidx.gridlayout.widget.GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:columnCount="4"
-        app:rowCount="5">
-
-        <Button
-            style="@style/buttonFunc"
-            android:id="@+id/acBtn"
-            android:onClick="clearAll"
-            android:text="@string/symbolAC" />
-
-        <Button
-            style="@style/buttonFunc"
-            android:id="@+id/roundBtn"
-            android:onClick="roundResult"
-            android:text="@string/symbolRound" />
-
-
-        <Button
-            style="@style/buttonFunc"
-            android:id="@+id/buttonPercent"
-            android:onClick="percentResult"
-            android:text="@string/symbolPercent" />
-
-
-        <Button
-            style="@style/buttonOperator"
-            android:id="@+id/buttonOperDiv"
-            android:onClick="operationEnter"
-            android:text="@string/symbolDiv" />
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <Button
+                style="@style/buttonFunc"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:id="@+id/acBtn"
+                android:onClick="clearAll"
+                android:text="@string/symbolAC" />
+            <Button
+                style="@style/buttonFunc"
+                android:id="@+id/roundBtn"
+                android:onClick="roundResult"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolRound" />
+            <Button
+                style="@style/buttonFunc"
+                android:id="@+id/buttonPercent"
+                android:onClick="percentResult"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolPercent" />
+            <Button
+                style="@style/buttonOperator"
+                android:onClick="operationEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolDiv" />
+        </androidx.gridlayout.widget.GridLayout>
 
         <!--789-->
-
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="7" />
-
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="8" />
-
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="9" />
-
-        <Button
-            style="@style/buttonOperator"
-            android:id="@+id/buttonOperMul"
-            android:onClick="operationEnter"
-            android:text="@string/symbolMul" />
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="7" />
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="8" />
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="9" />
+            <Button
+                style="@style/buttonOperator"
+                android:onClick="operationEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolMul" />
+        </androidx.gridlayout.widget.GridLayout>
 
         <!--456-->
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="4" />
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="4" />
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="5" />
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="6" />
+            <Button
+                style="@style/buttonOperator"
+                android:onClick="operationEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolAdd" />
 
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="5" />
-
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="6" />
-
-        <Button
-            style="@style/buttonOperator"
-            android:id="@+id/buttonOperPlus"
-            android:onClick="operationEnter"
-            android:text="@string/symbolAdd" />
+        </androidx.gridlayout.widget.GridLayout>
 
         <!--123-->
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="1" />
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="2" />
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="3" />
+            <Button
+                style="@style/buttonOperator"
+                android:onClick="operationEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolSub" />
 
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="1" />
+        </androidx.gridlayout.widget.GridLayout>
 
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="2" />
-
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="3" />
-        <Button
-            style="@style/buttonOperator"
-            android:id="@+id/buttonOperSub"
-            android:onClick="operationEnter"
-            android:text="@string/symbolSub" />
-
-
-
-        <Button
-            style="@style/buttonNumber"
-            android:onClick="numberEnter"
-            android:text="0" />
-
-        <Button
-            style="@style/buttonNumber"
-            android:id="@+id/pointBtn"
-            android:onClick="enterPoint"
-
-            android:text="@string/symbolPoint" />
-        <Button
-            style="@style/buttonOperator"
-            android:id="@+id/buttonOperEqual"
-            android:onClick="equalAction"
-            app:layout_columnSpan="2"
-            app:layout_gravity="fill_horizontal"
-            android:text="@string/symbolEqual" />
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <Button
+                style="@style/buttonFunc"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolExponent" />
+            <Button
+                style="@style/buttonNumber"
+                android:onClick="numberEnter"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="0" />
+            <Button
+                style="@style/buttonFunc"
+                android:onClick="enterPoint"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolPoint" />
+            <Button
+                style="@style/buttonOperator"
+                android:onClick="equalAction"
+                app:layout_rowWeight="1"
+                app:layout_columnWeight="1"
+                android:text="@string/symbolEqual" />
 
 
+        </androidx.gridlayout.widget.GridLayout>
 
+    </LinearLayout>
 
-    </androidx.gridlayout.widget.GridLayout>
 
 </LinearLayout>

@@ -21,12 +21,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var resultText : TextView // Поле с результатом
     private lateinit var historyText : TextView // Поле истории (отображает ранее введённые числа/операторы)
 
-    private  var canEnterPoint : Boolean = false
     private  var canEnterOperation : Boolean = false
     private  var canEnterNumber : Boolean = true
 
-    private  lateinit var acButton : Button
-    private  lateinit var pointButton : Button
     private  lateinit var roundButton : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         resultText = findViewById(R.id.resultField)
         historyText = findViewById(R.id.historyField)
 
-        acButton = findViewById(R.id.acBtn) // Ссылка на кнопку "All clean"
-        pointButton = findViewById(R.id.pointBtn) // Ссылка на кнопку "All clean"
         roundButton = findViewById(R.id.roundBtn) // Ссылка на кнопку "round"
     }
     fun numberEnter(view: View) // Обработчик нажатия - цыфра (0-9)
@@ -47,6 +42,8 @@ class MainActivity : AppCompatActivity() {
 
         if(view is Button && canEnterNumber)
         {
+            if(resultText.text == "0")
+                resultText.text = ""
 
             Log.i("InfoApp",resultText.text.isEmpty().toString())
             // 1. Запись в основное поле
@@ -64,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         canEnterOperation = true
 
         // Разрешает ввод точки (изначально выключен, воизбежании записи ".0123")
-        canEnterPoint = true
 
     }
 
@@ -112,7 +108,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
     }
     private fun calculateResult() : Double{
         var result = numbers[0]
@@ -156,10 +151,9 @@ class MainActivity : AppCompatActivity() {
         operators.clear()
         numbers.add(0.0)
 
-        resultText.text = ""
+        resultText.text = "0"
         historyText.text = ""
 
-        canEnterPoint = false
         canEnterOperation = false
         canEnterNumber = true
 

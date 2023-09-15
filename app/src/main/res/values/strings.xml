@@ -19,6 +19,7 @@
     <string name="symbolSub" translatable="false">-</string>
     <string name="symbolAdd" translatable="false">\+</string>
     <string name="symbolPoint" translatable="false">.</string>
+    <string name="symbolExponent" translatable="false">E</string>
     <string name="symbolEqual" translatable="false">=</string>
     <string name="symbolAC" translatable="false">AC</string>
     <string name="symbolRound" translatable="false">≈</string>
