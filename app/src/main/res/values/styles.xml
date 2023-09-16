@@ -133,4 +133,9 @@
 
     </style>
 
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/orange</item>
+        <item name="iconTint">@color/bottom_nav_colors</item>
+    </style>
+
 </resources>

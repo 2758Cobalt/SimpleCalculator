@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     private val numbers = mutableListOf(0.0)
     private val operators = mutableListOf<String>()
     private var calculateResult : Double = 0.0
+
+    private lateinit var bottomNavigationico : BottomNavigationView // Поле с результатом
 
     private lateinit var resultText : TextView // Поле с результатом
     private lateinit var historyText : TextView // Поле истории (отображает ранее введённые числа/операторы)
@@ -30,10 +33,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        bottomNavigationico = findViewById(R.id.navigation)
+
         resultText = findViewById(R.id.resultField)
         historyText = findViewById(R.id.historyField)
 
         roundButton = findViewById(R.id.roundBtn) // Ссылка на кнопку "round"
+
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation) // Панель навигации
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_calculator -> {
+                    // Выполните переход на HomeActivity или другую активность по вашему выбору
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.bottom_selector -> {
+                    // Выполните переход на DashboardActivity или другую активность по вашему выбору
+                    val intent = Intent(this, SelectorActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+
     }
     fun numberEnter(view: View) // Обработчик нажатия - цыфра (0-9)
     {
