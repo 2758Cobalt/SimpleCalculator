@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ParallelepipedActivity : AppCompatActivity() {
 
@@ -17,6 +18,8 @@ class ParallelepipedActivity : AppCompatActivity() {
 
     private lateinit var squareResult : TextView
 
+    private lateinit var bottomNavigationico : BottomNavigationView // Панель "меню"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parallelepiped)
@@ -26,9 +29,35 @@ class ParallelepipedActivity : AppCompatActivity() {
         squareSideC = findViewById(R.id.inputParallelepipedSideC)
 
         squareResult = findViewById(R.id.areaParallelepipedResult)
+
+        bottomNavigationico = findViewById(R.id.navigation) // Панель навигации
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
+
+        bottomNavigationView.selectedItemId = R.id.bottom_current // Назначение выбраного меню по-умолчанию (калькулятор)
+
+        // Панель навигации | Событие OnItemSelected
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_calculator -> {
+                    switchToMain()
+                    true
+                }
+                R.id.bottom_exit -> {
+                    switchToSelector()
+                    true
+                }
+                else -> false
+            }
+        }
     }
-    fun switchToSelector(view : View){
+    fun switchToSelector(){
         startActivity(Intent(this,SelectorActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
+        finishAfterTransition()
+    }
+    fun switchToMain(){
+        startActivity(Intent(this,MainActivity::class.java))
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }
@@ -37,7 +66,7 @@ class ParallelepipedActivity : AppCompatActivity() {
         squareSideA.text.clear()
         squareSideB.text.clear()
         squareSideC.text.clear()
-        squareResult.text = getString(R.string.tooltip_parallelepipedText)
+        squareResult.text = "0"
     }
     fun calculateParallelepiped(view : View) {
         var result : Double

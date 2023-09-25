@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.math.pow
 
 class DataActivity : AppCompatActivity() {
@@ -20,6 +21,8 @@ class DataActivity : AppCompatActivity() {
 
     private lateinit var dropdownFrom : Spinner
     private lateinit var dropdownIn : Spinner
+
+    private lateinit var bottomNavigationico : BottomNavigationView // Панель "меню"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,27 @@ class DataActivity : AppCompatActivity() {
 
         resultConvert = findViewById(R.id.resultConvertation)
 
+        bottomNavigationico = findViewById(R.id.navigation) //
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
+
+        bottomNavigationView.selectedItemId = R.id.bottom_current // Назначение выбраного меню по-умолчанию (калькулятор)
+
+        // Панель навигации | Событие OnItemSelected
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_calculator -> {
+                    switchToMain()
+                    true
+                }
+                R.id.bottom_exit -> {
+                    switchToSelector()
+                    true
+                }
+                else -> false
+            }
+        }
+
         ArrayAdapter.createFromResource(
             this,
             R.array.data_values,
@@ -46,9 +70,13 @@ class DataActivity : AppCompatActivity() {
         }
     }
 
-    fun switchToSelector(view: View) {
-        // Возврат на страницу селектора
-        startActivity(Intent(this, SelectorActivity::class.java))
+    fun switchToSelector(){
+        startActivity(Intent(this,SelectorActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
+        finishAfterTransition()
+    }
+    fun switchToMain(){
+        startActivity(Intent(this,MainActivity::class.java))
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }

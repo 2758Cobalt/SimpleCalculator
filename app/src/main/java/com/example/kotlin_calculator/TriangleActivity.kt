@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.math.sqrt
 
 class TriangleActivity : AppCompatActivity() {
@@ -14,6 +15,8 @@ class TriangleActivity : AppCompatActivity() {
     private lateinit var triangle_sideC : EditText
 
     private lateinit var triangleResult : TextView
+
+    private lateinit var bottomNavigationico : BottomNavigationView // Панель "меню"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +28,36 @@ class TriangleActivity : AppCompatActivity() {
         triangle_sideA = findViewById(R.id.inputTriangleSideA)
         triangle_sideB = findViewById(R.id.inputTriangleSideB)
         triangle_sideC = findViewById(R.id.inputTriangleSideC)
+
+        bottomNavigationico = findViewById(R.id.navigation) // Панель навигации
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
+
+        bottomNavigationView.selectedItemId = R.id.bottom_current // Назначение выбраного меню по-умолчанию (калькулятор)
+
+        // Панель навигации | Событие OnItemSelected
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_calculator -> {
+                    switchToMain()
+                    true
+                }
+                R.id.bottom_exit -> {
+                    switchToSelector()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
-    fun switchToSelector(view : View){
+    fun switchToSelector(){
         startActivity(Intent(this,SelectorActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
+        finishAfterTransition()
+    }
+    fun switchToMain(){
+        startActivity(Intent(this,MainActivity::class.java))
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }
@@ -37,7 +66,7 @@ class TriangleActivity : AppCompatActivity() {
         triangle_sideA.text.clear()
         triangle_sideB.text.clear()
         triangle_sideC.text.clear()
-        triangleResult.text = getString(R.string.tooltip_triangleText)
+        triangleResult.text = "0"
     }
 
     fun calculateTriangle(view : View){

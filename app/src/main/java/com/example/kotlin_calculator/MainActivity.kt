@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private val operators = mutableListOf<String>()
     private var calculateResult : Double = 0.0
 
-    private lateinit var bottomNavigationico : BottomNavigationView // Поле с результатом
+    private lateinit var bottomNavigationico : BottomNavigationView // Панель "меню"
 
     private lateinit var resultText : TextView // Поле с результатом
     private lateinit var historyText : TextView // Поле истории (отображает ранее введённые числа/операторы)
@@ -40,21 +40,21 @@ class MainActivity : AppCompatActivity() {
 
         roundButton = findViewById(R.id.roundBtn) // Ссылка на кнопку "round"
 
+        // Панель навигации
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation) // Панель навигации
+        bottomNavigationView.selectedItemId = R.id.bottom_calculator // Назначение выбраного меню по-умолчанию (калькулятор)
 
+        // Панель навигации | Событие OnItemSelected
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.bottom_calculator -> {
-                    // Выполните переход на HomeActivity или другую активность по вашему выбору
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+                R.id.bottom_selector -> {
+                    startActivity(Intent(this,SelectorActivity::class.java)) // Переход к Selector
+                    finishAfterTransition() // Закрытие текущего activity после перехода
                     true
                 }
-                R.id.bottom_selector -> {
-                    // Выполните переход на DashboardActivity или другую активность по вашему выбору
-                    val intent = Intent(this, SelectorActivity::class.java)
-                    startActivity(intent)
+                R.id.bottom_exit -> {
+                    quitApp()
                     true
                 }
                 else -> false
@@ -200,7 +200,7 @@ class MainActivity : AppCompatActivity() {
         resultText.text = (result / 100.0).toString()
     }
 
-    fun  quitApp(view : View) // Закрытие процесса
+    fun  quitApp() // Закрытие процесса
     {
         finish()
         exitProcess(0)

@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.math.pow
 import kotlin.math.sin
 
@@ -23,6 +24,8 @@ class RhombusActivity : AppCompatActivity() {
     private lateinit var dropDown : Spinner
 
     private lateinit var rhombusResult : TextView
+
+    private lateinit var bottomNavigationico : BottomNavigationView // Панель "меню"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,27 @@ class RhombusActivity : AppCompatActivity() {
         rhombusDiagonalFirst = findViewById(R.id.inputRhombusDiagonalFirst)
         rhombusDiagonalSecond = findViewById(R.id.inputRhombusDiagonalSecond)
 
+        bottomNavigationico = findViewById(R.id.navigation) // Панель навигации
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
+
+        bottomNavigationView.selectedItemId = R.id.bottom_current // Назначение выбраного меню по-умолчанию (калькулятор)
+
+        // Панель навигации | Событие OnItemSelected
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_calculator -> {
+                    switchToMain()
+                    true
+                }
+                R.id.bottom_exit -> {
+                    switchToSelector()
+                    true
+                }
+                else -> false
+            }
+        }
+
         ArrayAdapter.createFromResource(
             this,
             R.array.rhombus_formulas,
@@ -52,10 +76,14 @@ class RhombusActivity : AppCompatActivity() {
             dropDown.adapter = adapter
         }
     }
-
-    fun switchToSelector(view : View){
+    fun switchToSelector(){
         startActivity(Intent(this,SelectorActivity::class.java))
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_in_right)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
+        finishAfterTransition()
+    }
+    fun switchToMain(){
+        startActivity(Intent(this,MainActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }
     fun resetFieldsRhombus(view : View){
@@ -67,7 +95,7 @@ class RhombusActivity : AppCompatActivity() {
         rhombusDiagonalFirst.text.clear()
         rhombusDiagonalSecond.text.clear()
 
-        rhombusResult.text = "Your text"//getString(R.string.tooltip_triangleText)
+        rhombusResult.text = "0"
     }
 
     fun calculateRhombus(view : View){

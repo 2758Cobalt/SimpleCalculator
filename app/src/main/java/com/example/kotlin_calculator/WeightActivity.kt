@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.math.roundToInt
+import kotlin.system.exitProcess
 
 class WeightActivity : AppCompatActivity() {
     private lateinit var constants : Array<String>
@@ -18,6 +20,8 @@ class WeightActivity : AppCompatActivity() {
 
     private lateinit var resultConvert : TextView
 
+    private lateinit var bottomNavigationico : BottomNavigationView // Панель "меню"
+
     private lateinit var dropdownFrom : Spinner
     private lateinit var dropdownIn : Spinner
 
@@ -25,16 +29,35 @@ class WeightActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weight)
 
-        constants = resources.getStringArray(R.array.weight_values)
+        constants = resources.getStringArray(R.array.weight_values) // Константы
 
-        dropdownFrom = findViewById(R.id.dropDownFrom)
-        dropdownIn = findViewById(R.id.dropDownIn)
+        dropdownFrom = findViewById(R.id.dropDownFrom) // Первое контекст меню (из чего)
+        dropdownIn = findViewById(R.id.dropDownIn) // Второе контекст меню (во что)
 
-        valueForConvert = findViewById(R.id.inputValue)
+        valueForConvert = findViewById(R.id.inputValue) // Поле ввода
 
-        resultConvert = findViewById(R.id.resultConvertation)
+        resultConvert = findViewById(R.id.resultConvertation) // Сброс значения поля ввода
 
+        bottomNavigationico = findViewById(R.id.navigation) //
 
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
+
+        bottomNavigationView.selectedItemId = R.id.bottom_current // Назначение выбраного меню по-умолчанию (калькулятор)
+
+        // Панель навигации | Событие OnItemSelected
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_calculator -> {
+                    switchToMain()
+                    true
+                }
+                R.id.bottom_exit -> {
+                    switchToSelector()
+                    true
+                }
+                else -> false
+            }
+        }
 
         ArrayAdapter.createFromResource(
             this,
@@ -48,8 +71,13 @@ class WeightActivity : AppCompatActivity() {
             dropdownIn.adapter = adapter
         }
     }
-    fun switchToSelector(view : View){
+    fun switchToSelector(){
         startActivity(Intent(this,SelectorActivity::class.java))
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
+        finishAfterTransition()
+    }
+    fun switchToMain(){
+        startActivity(Intent(this,MainActivity::class.java))
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
         finishAfterTransition()
     }
