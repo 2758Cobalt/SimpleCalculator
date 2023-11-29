@@ -1,48 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="12dp"
-    tools:context=".ParallelepipedActivity">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginVertical="16dp"
-        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
-        android:background="@drawable/bottom_nav_bar"
-        app:itemIconSize="24dp"
-        app:itemIconTint="@color/bottom_nav_colors"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/convertor_menu" />
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:background="@drawable/linearlayout_bg_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="12dp"
-        android:background="@drawable/linearlayout_bg_sheet"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:elevation="24dp"
+        android:layout_margin="8dp"
+        android:padding="4dp">
 
         <TextView
             style="@style/displayTextConvert"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="12dp"
+            android:background="@drawable/gray75_box"
             android:text="@string/text_labelParallelepiped" />
 
         <TextView
             style="@style/tooltipTextStyle"
+            android:layout_margin="8dp"
+            android:textSize="16dp"
             android:text="@string/tooltip_parallelepipedText" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical">
+            style="@style/inputFieldToAreaContainer">
 
             <EditText
                 android:id="@+id/inputParallelepipedSideA"
@@ -67,32 +55,42 @@
                 android:layout_margin="16dp"
                 android:hint="@string/hint_sideC"
                 android:textSize="18sp" />
-
         </LinearLayout>
+
+        <TextView
+            style="@style/displayTextConvert"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/gray75_box"
+            android:layout_margin="12dp"
+            android:text="@string/text_In" />
 
         <TextView
             android:id="@+id/areaParallelepipedResult"
             style="@style/displayTextConvert"
-            android:text="@string/text_labelParallelepiped" />
+            android:background="@drawable/linearlayout_bg_sheet"
+            android:layout_margin="12dp"
+            android:hint="@string/text_labelParallelepiped"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:layout_marginTop="10dp">
 
-            <Button
-                style="@style/buttonAction"
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/buttonReset"
+                style="@style/buttonConverterReset"
                 android:layout_width="match_parent"
                 android:onClick="resetFields"
                 android:text="@string/buttonReset" />
 
-            <Button
-                style="@style/buttonActionOperator"
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/buttonConvert"
+                style="@style/buttonConverterConvert"
                 android:layout_width="match_parent"
-                android:onClick="calculateParallelepiped"
-                android:text="@string/buttonCalculate" />
+                android:onClick="calculateConvertation"
+                android:text="@string/buttonConvert" />
         </LinearLayout>
 
     </LinearLayout>

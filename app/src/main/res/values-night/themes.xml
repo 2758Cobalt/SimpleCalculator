@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.kotlin_calculator." parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="windowActionBar">false</item> <!--Toolbar-->
-        <item name="windowNoTitle">true</item> <!--Title app-->
+    <style name="AppTheme">
+        <!-- Customize your theme for night mode here -->
+        <item name="colorPrimary">@color/gray50</item>
+        <item name="colorPrimaryDark">@color/gray40</item>
+        <item name="colorAccent">@color/gray30</item>
+
+        <item name="android:statusBarColor">@color/red</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
+
+
 </resources>

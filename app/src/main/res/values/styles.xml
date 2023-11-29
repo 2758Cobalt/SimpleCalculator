@@ -1,81 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="buttonFunc">
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">96dp</item>
-        <item name="android:layout_margin">4dp</item>
-        <item name="backgroundTint">@color/gray150</item>
-        <item name="android:foregroundTint">@color/orange</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Calcualtor-->
+    <style name="buttonStyleFunctional">
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">76dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/gray150</item>
+        <item name="android:foregroundTint" tools:targetApi="lollipop">@color/orange</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="rippleColor">@color/orange</item>
         <item name="cornerRadius">12dp</item>
     </style>
 
-    <style name="buttonNumber">
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">96dp</item>
-        <item name="android:layout_margin">4dp</item>
-
-        <item name="backgroundTint">@color/gray75</item>
-        <item name="android:textSize">32sp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="rippleColor">@color/white</item>
-        <item name="cornerRadius">12dp</item>
-    </style>
-
-    <style name="buttonOperator">
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">96dp</item>
-        <item name="android:layout_margin">4dp</item>
+    <style name="buttonStyleOperator">
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">76dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:onClick">operationEnter</item>
         <item name="backgroundTint">@color/orange</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/white</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="rippleColor">@color/black</item>
         <item name="cornerRadius">12dp</item>
     </style>
 
+    <style name="buttonStyleNumber">
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">76dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="backgroundTint">@color/gray150</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="rippleColor">@color/white</item>
+    </style>
+
     <!--Selector-->
     <style name="buttonTile">
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">128dp</item>
-        <item name="android:layout_margin">4dp</item>
-        <item name="android:shadowColor">@color/orange</item>
-        <item name="backgroundTint">@color/gray40</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_height">88dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="strokeColor">@color/orange</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="maxLines">2</item>
         <item name="android:textAlignment">center</item>
         <item name="rippleColor">@color/white</item>
     </style>
 
-    <style name="buttonAction">
+    <style name="buttonConverterReset">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">48dp</item>
-        <item name="android:layout_margin">4dp</item>
-
+        <item name="android:layout_margin">12dp</item>
         <item name="backgroundTint">@color/gray150</item>
-        <item name="android:foregroundTint">@color/orange</item>
-
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/white</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/black</item>
-
+        <item name="android:textColor">@color/white</item>
         <item name="cornerRadius">8dp</item>
         <item name="rippleColor">@color/orange</item>
     </style>
 
-    <style name="buttonActionOperator">
+    <style name="buttonConverterConvert">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">48dp</item>
-        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_margin">12dp</item>
         <item name="backgroundTint">@color/orange</item>
-
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/white</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
@@ -86,36 +90,46 @@
     <style name="inputTextToConvert">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">48dp</item>
-
         <item name="android:textSize">24sp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textCursorDrawable">@color/orange</item>
+        <item name="android:textColorLink">@color/orange</item>
+        <item name="android:textColorHint">@color/white</item>
         <item name="android:hint">@string/tooltip_enterText</item>
-
-        <item name="android:backgroundTint">@color/orange</item>
-
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/orange</item>
         <item name="android:ems">10</item>
         <item name="android:inputType">number</item>
+    </style>
+
+    <style name="inputFieldToAreaContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">12dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/linearlayout_bg_sheet</item>
+        <item name="android:backgroundTint">@color/gray120</item>
+        <item name="android:elevation">20dp</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="displayTextConvert">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">48dp</item>
-        <item name="android:layout_marginVertical">16dp</item>
+        <item name="android:elevation">20dp</item>
+        <item name="android:layout_margin">12dp</item>
         <item name="android:background">@drawable/linearlayout_bg_sheet</item>
-
-        <item name="android:text">|ResultText|</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="tooltipTextStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginVertical">6dp</item>
         <item name="maxLines">3</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
@@ -126,9 +140,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_weight">1</item>
-
-        <item name="android:layout_margin">8dp</item>
-
+        <item name="android:layout_margin">12dp</item>
+        <item name="android:elevation">8dp</item>
         <item name="android:background">@drawable/spinner_bg_sheet</item>
 
     </style>

@@ -1,65 +1,50 @@
 package com.example.kotlin_calculator
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.math.pow
+import androidx.fragment.app.Fragment
 
-class DataActivity : AppCompatActivity() {
-
+class DataFragment: Fragment() {
     private lateinit var constants : Array<String>
 
     private lateinit var valueForConvert : EditText
 
     private lateinit var resultConvert : TextView
 
+    private lateinit var calculateButton: Button
+    private lateinit var resetButton: Button
+
     private lateinit var dropdownFrom : Spinner
     private lateinit var dropdownIn : Spinner
 
-    private lateinit var bottomNavigationico : BottomNavigationView // Панель "меню"
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_data)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view: View = inflater.inflate(R.layout.fragment_data, container, false) // Сам view фрагмента
 
         constants = resources.getStringArray(R.array.data_values)
 
-        dropdownFrom = findViewById(R.id.dropDownFrom)
-        dropdownIn = findViewById(R.id.dropDownIn)
+        dropdownFrom = view.findViewById(R.id.dropDownFrom)
+        dropdownIn = view.findViewById(R.id.dropDownIn)
 
-        valueForConvert = findViewById(R.id.inputValue)
+        valueForConvert = view.findViewById(R.id.inputValue)
 
-        resultConvert = findViewById(R.id.resultConvertation)
+        resultConvert = view.findViewById(R.id.resultConvertation)
 
-        bottomNavigationico = findViewById(R.id.navigation) //
+        calculateButton = view.findViewById(R.id.buttonConvert)
+        resetButton = view.findViewById(R.id.buttonReset)
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
+        calculateButton.setOnClickListener { calculateConvertation(it) }
+        resetButton.setOnClickListener { resetFields(it) }
 
-        bottomNavigationView.selectedItemId = R.id.bottom_current // Назначение выбраного меню по-умолчанию (калькулятор)
-
-        // Панель навигации | Событие OnItemSelected
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.bottom_calculator -> {
-                    switchToMain()
-                    true
-                }
-                R.id.bottom_exit -> {
-                    switchToSelector()
-                    true
-                }
-                else -> false
-            }
-        }
 
         ArrayAdapter.createFromResource(
-            this,
+            requireContext(),
             R.array.data_values,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
@@ -68,19 +53,9 @@ class DataActivity : AppCompatActivity() {
             dropdownFrom.adapter = adapter
             dropdownIn.adapter = adapter
         }
-    }
 
-    fun switchToSelector(){
-        startActivity(Intent(this,SelectorActivity::class.java))
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
-        finishAfterTransition()
+        return view
     }
-    fun switchToMain(){
-        startActivity(Intent(this,MainActivity::class.java))
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
-        finishAfterTransition()
-    }
-
     fun resetFields(view : View){
         // Сбрасывает значения в полях - Кнопка "Reset"
         resultConvert.text ="0"

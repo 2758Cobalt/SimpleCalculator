@@ -13,42 +13,6 @@
         android:theme="@style/MyTheme"
         tools:targetApi="31">
         <activity
-            android:name=".TrapezoidActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CircleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RhombusActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TriangleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ParallelepipedActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SquareActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TemperatureActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DataActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SpeedActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LengthActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WeightActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SelectorActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

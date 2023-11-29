@@ -1,18 +1,19 @@
 package com.example.kotlin_calculator
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.fragment.app.Fragment
 import kotlin.math.pow
 import kotlin.math.sin
 
-class RhombusActivity : AppCompatActivity() {
+class RhombusFragment : Fragment() {
     private lateinit var constants : Array<String>
 
     private lateinit var rhombusSides : EditText
@@ -21,52 +22,38 @@ class RhombusActivity : AppCompatActivity() {
     private lateinit var rhombusDiagonalFirst : EditText
     private lateinit var rhombusDiagonalSecond : EditText
 
+    private lateinit var calculateButton: Button
+    private lateinit var resetButton: Button
+
     private lateinit var dropDown : Spinner
 
     private lateinit var rhombusResult : TextView
 
-    private lateinit var bottomNavigationico : BottomNavigationView // Панель "меню"
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view: View = inflater.inflate(R.layout.fragment_rhombus, container, false) // Сам view фрагмента
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_rhombus)
 
         constants = resources.getStringArray(R.array.rhombus_formulas) // Получение строкового массива
 
-        rhombusResult = findViewById(R.id.areaRhombusResult) // Поле результат
-        dropDown = findViewById(R.id.dropDownFormula) // Формулы
+        rhombusResult = view.findViewById(R.id.areaRhombusResult) // Поле результат
+        dropDown = view.findViewById(R.id.dropDownFormula) // Формулы
 
         // Стороны ромба и прочее
-        rhombusSides = findViewById(R.id.inputRhombusSideA)
-        rhombusAngle = findViewById(R.id.inputRhombusAngle)
-        rhombusHeight = findViewById(R.id.inputRhombusHeight)
+        rhombusSides = view.findViewById(R.id.inputRhombusSideA)
+        rhombusAngle = view.findViewById(R.id.inputRhombusAngle)
+        rhombusHeight = view.findViewById(R.id.inputRhombusHeight)
         
-        rhombusDiagonalFirst = findViewById(R.id.inputRhombusDiagonalFirst)
-        rhombusDiagonalSecond = findViewById(R.id.inputRhombusDiagonalSecond)
+        rhombusDiagonalFirst = view.findViewById(R.id.inputRhombusDiagonalFirst)
+        rhombusDiagonalSecond = view.findViewById(R.id.inputRhombusDiagonalSecond)
+        
+        calculateButton = view.findViewById(R.id.buttonConvert)
+        resetButton = view.findViewById(R.id.buttonReset)
 
-        bottomNavigationico = findViewById(R.id.navigation) // Панель навигации
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
-
-        bottomNavigationView.selectedItemId = R.id.bottom_current // Назначение выбраного меню по-умолчанию (калькулятор)
-
-        // Панель навигации | Событие OnItemSelected
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.bottom_calculator -> {
-                    switchToMain()
-                    true
-                }
-                R.id.bottom_exit -> {
-                    switchToSelector()
-                    true
-                }
-                else -> false
-            }
-        }
+        calculateButton.setOnClickListener { calculateRhombus(it) }
+        resetButton.setOnClickListener { resetFieldsRhombus(it) }
 
         ArrayAdapter.createFromResource(
-            this,
+            requireContext(),
             R.array.rhombus_formulas,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
@@ -75,16 +62,7 @@ class RhombusActivity : AppCompatActivity() {
             // Применение адаптера к спинеру
             dropDown.adapter = adapter
         }
-    }
-    fun switchToSelector(){
-        startActivity(Intent(this,SelectorActivity::class.java))
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
-        finishAfterTransition()
-    }
-    fun switchToMain(){
-        startActivity(Intent(this,MainActivity::class.java))
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right)
-        finishAfterTransition()
+        return view
     }
     fun resetFieldsRhombus(view : View){
         // Сбрасывает значения в полях - Кнопка "Reset"

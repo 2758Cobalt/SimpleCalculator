@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/linearlayout_bg_sheet"
+        android:backgroundTint="#EFEFEF"
+        android:textColor="@color/black"
+        android:elevation="8dp"
+        android:text="@string/text_labelQuantities"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonWeight"
+            style="@style/buttonTile"
+            android:text="@string/buttonConverterWeight" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonLength"
+            style="@style/buttonTile"
+            android:text="@string/buttonConverterLength" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonSpeed"
+            style="@style/buttonTile"
+            android:text="@string/buttonConverterSpeed" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonData"
+            style="@style/buttonTile"
+            android:text="@string/buttonConverterData" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonTemperature"
+            style="@style/buttonTile"
+            android:text="@string/buttonConverterTemperature" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonSquare"
+            style="@style/buttonTile"
+            android:text="@string/buttonConverterSquare" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/linearlayout_bg_sheet"
+        android:backgroundTint="#EFEFEF"
+        android:textColor="@color/black"
+        android:elevation="8dp"
+        android:text="@string/text_labelMath"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonParallelepiped"
+            style="@style/buttonTile"
+            android:text="@string/text_labelParallelepiped" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonTriangle"
+            style="@style/buttonTile"
+            android:text="@string/text_labelTriangleDefault"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonRhombus"
+            style="@style/buttonTile"
+            android:text="@string/text_labelRhombus" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonCircle"
+            style="@style/buttonTile"
+            android:text="@string/text_labelCircle"/>
+    </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonTrapezoid"
+            style="@style/buttonTile"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:text="@string/text_labelTrapezoid"/>
+
+
+
+
+</LinearLayout>

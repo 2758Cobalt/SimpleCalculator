@@ -1,28 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.kotlin_calculator" parent="Theme.Material3.Dark">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/gold</item>
-        <item name="colorOnPrimary">@color/gold</item>
-        <item name="colorPrimaryVariant">@color/gold</item>
-        <item name="android:statusBarColor">@color/gray75</item>
+    <style name="AppTheme">
 
-        <item name="windowActionBar">false</item> <!--Toolbar-->
-        <item name="windowNoTitle">true</item> <!--Title app-->
-    </style>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/gray150</item>
+        <item name="colorAccent">@color/gray120</item>
 
-
-
-    <style name="Theme.kotlin_calculator" parent="Base.Theme.kotlin_calculator" />
-
-    <style name="Theme.kotlin_calculator.NoActionBar">
+        <item name="android:statusBarColor">@color/green</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="Theme.kotlin_calculator.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.kotlin_calculator.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

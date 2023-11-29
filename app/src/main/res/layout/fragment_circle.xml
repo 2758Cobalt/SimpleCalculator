@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@drawable/linearlayout_bg_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="24dp"
+        android:layout_margin="8dp"
+        android:padding="4dp">
+
+        <TextView
+            style="@style/displayTextConvert"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="12dp"
+            android:background="@drawable/gray75_box"
+            android:text="@string/text_labelCircle" />
+
+        <TextView
+            style="@style/tooltipTextStyle"
+            android:layout_margin="8dp"
+            android:textSize="18dp"
+            android:text="@string/tooltip_circleText" />
+
+        <LinearLayout
+            style="@style/inputFieldToAreaContainer">
+
+            <EditText
+                android:id="@+id/inputCircleRadius"
+                style="@style/inputTextToConvert"
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:hint="@string/hint_sideA"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/areaCircleResult"
+            style="@style/displayTextConvert"
+            android:hint="@string/text_labelCircle"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/buttonReset"
+                style="@style/buttonConverterReset"
+                android:layout_width="match_parent"
+                android:onClick="resetFields"
+                android:text="@string/buttonReset" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/buttonConvert"
+                style="@style/buttonConverterConvert"
+                android:layout_width="match_parent"
+                android:onClick="calculateConvertation"
+                android:text="@string/buttonCalculate" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/linearlayout_bg_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="24dp"
+        android:layout_margin="8dp"
+        android:padding="4dp">
+
+        <TextView
+            style="@style/displayTextConvert"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="12dp"
+            android:background="@drawable/gray75_box"
+            android:text="@string/text_labelCircleLength" />
+
+        <TextView
+            style="@style/tooltipTextStyle"
+            android:layout_margin="8dp"
+            android:textSize="18dp"
+            android:text="@string/tooltip_circleText" />
+
+        <LinearLayout
+            style="@style/inputFieldToAreaContainer">
+
+            <EditText
+                android:id="@+id/inputCircleLength"
+                style="@style/inputTextToConvert"
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
+                android:hint="@string/hint_length"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/areaCircleLengthResult"
+            style="@style/displayTextConvert"
+            android:hint="@string/text_labelCircleLength" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/buttonResetLength"
+                style="@style/buttonConverterReset"
+                android:layout_width="match_parent"
+                android:onClick="resetFields"
+                android:text="@string/buttonReset" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/buttonConvertLength"
+                style="@style/buttonConverterConvert"
+                android:layout_width="match_parent"
+                android:onClick="calculateConvertation"
+                android:text="@string/buttonCalculate" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,49 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:orientation="vertical"
-    tools:context=".TrapezoidActivity">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginVertical="16dp"
-        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
-        android:background="@drawable/bottom_nav_bar"
-        app:itemIconSize="24dp"
-        app:itemIconTint="@color/bottom_nav_colors"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/convertor_menu" />
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="12dp"
         android:background="@drawable/linearlayout_bg_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:elevation="24dp"
+        android:layout_margin="8dp"
+        android:padding="4dp">
 
         <TextView
             style="@style/displayTextConvert"
-            android:text="@string/text_labelTrapezoid" />
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="12dp"
+            android:background="@drawable/gray75_box"
+            android:text="@string/text_labelCircle" />
 
         <TextView
             style="@style/tooltipTextStyle"
-            android:text="@string/tooltip_trapezoidText" />
+            android:layout_margin="8dp"
+            android:textSize="18dp"
+            android:text="@string/tooltip_circleText" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="4dp"
-            android:padding="4dp"
-            android:orientation="vertical">
+            style="@style/inputFieldToAreaContainer">
 
             <EditText
                 android:id="@+id/inputTrapeziodSideA"
@@ -72,27 +59,36 @@
         </LinearLayout>
 
         <TextView
+            style="@style/displayTextConvert"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/gray75_box"
+            android:layout_margin="12dp"
+            android:text="@string/text_In" />
+
+        <TextView
             android:id="@+id/areaTrapezoidResult"
             style="@style/displayTextConvert"
-            android:text="@string/text_labelTrapezoid" />
+            android:hint="@string/text_labelTrapezoid" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:layout_marginTop="10dp">
 
-            <Button
-                style="@style/buttonAction"
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/buttonReset"
+                style="@style/buttonConverterReset"
                 android:layout_width="match_parent"
-                android:onClick="resetFieldsTrapezoid"
+                android:onClick="resetFields"
                 android:text="@string/buttonReset" />
 
-            <Button
-                style="@style/buttonActionOperator"
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/buttonConvert"
+                style="@style/buttonConverterConvert"
                 android:layout_width="match_parent"
-                android:onClick="calculateTrapezoid"
+                android:onClick="calculateConvertation"
                 android:text="@string/buttonCalculate" />
         </LinearLayout>
 
