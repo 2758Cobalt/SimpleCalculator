@@ -2,65 +2,60 @@ package com.example.kotlin_calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.system.exitProcess
+import android.view.MotionEvent
+import android.view.View
+import android.widget.Button
+import android.widget.FrameLayout
+import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var bottomNavigationView : BottomNavigationView // Панель "меню"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val calculatorFragment = CalculatorFragment() // Фрагмент Home
-        val convertersFragment = ConvertersFragment()// Фрагмент Night
+        val calculatorFragment = CalculatorFragment()
+        val convertorsFragment = ConvertersFragment()
 
         val fragmentManager = supportFragmentManager
+        val ft = fragmentManager.beginTransaction()
 
-        var fragment = fragmentManager.findFragmentById(R.id.fragment_container)
+        ft.replace(R.id.fragment_container_calculator, calculatorFragment)
+        ft.commit()
 
-        if (fragment == null) {
-            val ft = supportFragmentManager.beginTransaction()
-            ft.add(R.id.fragment_container,calculatorFragment)
-            ft.commit()
-
-            // Ссылка на bottomNavigation
-            bottomNavigationView = findViewById(R.id.fragment_navigation)
-
-            // Назначение выбраного меню по-умолчанию (калькулятор)
-            bottomNavigationView.selectedItemId = R.id.bottom_calculator
-
-            // Панель навигации | Событие OnItemSelected
-            bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.bottom_calculator -> {
-                        fragmentManager.beginTransaction().replace(R.id.fragment_container,calculatorFragment).commit()
-                        true
-                    }
-
-                    //Selector
-                    R.id.bottom_selector -> {
-                        val ft = fragmentManager.beginTransaction()
-                        ft.replace(R.id.fragment_container,convertersFragment)
-                        ft.commit()
-                        true
-                    }
-
-                    // FinishApp
-                    R.id.bottom_exit -> {
-                        Log.v("CalculatorDebug","owner: ${this@MainActivity} Выход из приложения")
-                        finish()
-                        exitProcess(0)
-                        true
-                    }
-                    else -> false
-                }
-            }
+        //val container: FrameLayout = findViewById(R.id.fragment_container_calculator)
 
 
-        }
-
+//        container.setOnTouchListener { _, event ->
+//            handleTouch(event, container)
+//            true
+//        }
     }
 
+    private fun handleTouch(event: MotionEvent, container: FrameLayout) {
+        val y = event.rawY.toInt()
+
+        val layoutParams = container.layoutParams as FrameLayout.LayoutParams
+
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                // Начало перемещения
+                val yDelta = y - layoutParams.topMargin
+                container.tag = yDelta
+            }
+            MotionEvent.ACTION_MOVE -> {
+                // Процесс перемещения
+                val yDelta = container.tag as? Int ?: 0
+                layoutParams.topMargin = y - yDelta
+                container.layoutParams = layoutParams
+            }
+            MotionEvent.ACTION_UP -> {
+                // Завершение перемещения
+                container.tag = null
+            }
+        }
+
+        // Обновление визуального представления контейнера
+        container.requestLayout()
+    }
 }

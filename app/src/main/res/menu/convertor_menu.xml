@@ -13,8 +13,8 @@
         />
     <item
         android:id="@+id/bottom_selector"
-        android:icon="@drawable/ic_curent_tab"
-        android:title="Tab"
+        android:icon="@drawable/ic_conventors"
+        android:title="Conventors"
         />
 
 

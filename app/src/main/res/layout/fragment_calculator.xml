@@ -4,23 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="bottom"
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".CalculatorFragment" >
 
+    <Button
+        android:id="@+id/triggerTest"
+        android:layout_width="128dp"
+        android:layout_height="12dp"
+        android:clickable="false"
+        style="@style/buttonMenuClickable"
+        android:contentDescription="switch_trigger"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_height="200dp"
         android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/linearlayout_bg_sheet"
             android:backgroundTint="#EFEFEF"
-            android:gravity="bottom"
             android:orientation="vertical"
+            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -35,10 +43,7 @@
                     android:id="@+id/operatorField"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:gravity="bottom|start"
-                    android:shadowColor="@color/orange"
-                    android:shadowRadius="6"
+                    android:gravity="start"
                     android:textColor="@color/gray150"
                     android:textSize="42sp"
                     android:textStyle="bold" />
@@ -47,14 +52,10 @@
                     android:id="@+id/resultField"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:autoSizeMaxTextSize="12sp"
-                    android:gravity="bottom|end"
+                    android:gravity="end"
                     android:hint="0"
                     android:maxLines="1"
-                    android:shadowColor="@color/orange"
-                    android:shadowRadius="3"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray75"
                     android:textSize="42sp"
@@ -65,7 +66,6 @@
                 android:id="@+id/historyField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:gravity="end"
                 android:hint="0"
                 android:maxLines="2"
@@ -76,21 +76,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="64dp"
-            android:layout_height="12dp"
-            android:layout_marginVertical="12dp"
-            android:backgroundTint="#E1E1E1"
-            android:contentDescription="upper_trigger"
-            android:clickable="false"
-            android:layout_gravity="center_horizontal"/>
-
         <!--AC = % /-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,19 +85,18 @@
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/ButtonClearAll"
-                style="@style/buttonStyleFunctional"
+                style="@style/buttonStyleDefault"
                 android:text="@string/symbolAC" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/buttonRound"
-                style="@style/buttonStyleFunctional"
-                android:text="@string/symbolRound" />
+                android:id="@+id/buttonPercent"
+                style="@style/buttonStyleDefault"
+                android:text="@string/symbolPercent" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/buttonSingleClear"
-                style="@style/buttonStyleFunctional"
-                android:text="\u232b" />
-
+                android:id="@+id/buttonRound"
+                style="@style/buttonStyleDefault"
+                android:text="@string/symbolRound" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/divBtn"
@@ -145,7 +129,6 @@
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/mulBtn"
                 style="@style/buttonStyleOperator"
-                app:layout_rowWeight="1"
                 android:text="@string/symbolMul" />
         </LinearLayout>
 
@@ -209,10 +192,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             app:orientation="horizontal">
+
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/buttonPercent"
-                style="@style/buttonStyleFunctional"
-                android:text="@string/symbolPercent" />
+                android:id="@+id/buttonBackSpace"
+                style="@style/buttonStyleDefault"
+                android:text="\u232b" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/num0"
@@ -221,7 +205,7 @@
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/buttonPoint"
-                style="@style/buttonStyleFunctional"
+                style="@style/buttonStyleDefault"
                 android:text="@string/symbolPoint" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -229,8 +213,6 @@
                 style="@style/buttonStyleOperator"
                 android:text="@string/symbolEqual" />
         </LinearLayout>
-
-    </LinearLayout>
 
 
 </LinearLayout>

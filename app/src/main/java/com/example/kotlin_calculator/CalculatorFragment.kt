@@ -1,32 +1,39 @@
 package com.example.kotlin_calculator
 
-
-import android.graphics.Color
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import java.util.Locale
+import kotlin.math.log
 
 class CalculatorFragment: Fragment() {
-    private val constantSymbols: Array<String> = arrayOf("+", "-", "*", "/", "=") // constraints
+    private val constantSymbols: Array<String> = arrayOf("+", "-", "*", "/", "=",".") // constraints
 
-    private val numbers = mutableListOf(0.0)
-    private val operators = mutableListOf<String>()
-    private var calculateResult: Double = 0.0
+    private val numbers = mutableListOf(0.0) // Числовой массив
+    private val operators = mutableListOf<String>() // Массив операторов
+    private var calculateResult: Double = 0.0 // Результат подсчёта
+    private var isResult: Boolean = false //
+    private var resetOperator: Boolean = false //
+    private lateinit var container: FrameLayout
 
     private lateinit var resultText: TextView // Поле с результатом
     private lateinit var historyText: TextView // Поле истории (отображает ранее введённые числа/операторы)
-
-    private lateinit var operatorText: TextView
+    private lateinit var operatorText: TextView // Поле с значком оператора
 
     private lateinit var roundButton: Button
     private lateinit var clearAllButton: Button
     private lateinit var percentButton: Button
     private lateinit var resultButton: Button
     private lateinit var pointButton: Button
+    private lateinit var backSpaceButton: Button
 
     private lateinit var operatorAdd: Button
     private lateinit var operatorSub: Button
@@ -37,8 +44,9 @@ class CalculatorFragment: Fragment() {
     private var canEnterNumber: Boolean = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(R.layout.fragment_calculator, container, false) // Сам view фрагмента
+        val view = inflater.inflate(R.layout.fragment_calculator, container, false) // Сам view фрагмента
 
+        // Ссылка на текстовые поля
         resultText = view.findViewById(R.id.resultField)
         historyText = view.findViewById(R.id.historyField)
         operatorText = view.findViewById(R.id.operatorField)
@@ -49,6 +57,7 @@ class CalculatorFragment: Fragment() {
         roundButton = view.findViewById(R.id.buttonRound) // Ссылка на кнопку "round"
         resultButton = view.findViewById(R.id.buttonResult) // Ссылка на кнопку "round"
         pointButton = view.findViewById(R.id.buttonPoint) // Ссылка на кнопку "round"
+        backSpaceButton = view.findViewById(R.id.buttonBackSpace) // Ссылка на кнопку "round"
 
         // Ссылка на кнопки операторов
         operatorAdd = view.findViewById(R.id.addBtn)
@@ -70,39 +79,37 @@ class CalculatorFragment: Fragment() {
         val btn8: Button = view.findViewById(R.id.num8)
         val btn9: Button = view.findViewById(R.id.num9)
 
-        // Слушатель нажатий Numpad
-        btn0.setOnClickListener { numberEnter(it) }
-        btn1.setOnClickListener { numberEnter(it) }
-        btn2.setOnClickListener { numberEnter(it) }
-        btn3.setOnClickListener { numberEnter(it) }
+        val numberButtonIds = arrayOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9) // Кнопки (0 1 2 3...9)
+        val operatorButtons = arrayOf(operatorAdd, operatorSub, operatorMul, operatorDiv) // Кнопки операторы (+ - * /)
 
-        btn4.setOnClickListener { numberEnter(it) }
-        btn5.setOnClickListener { numberEnter(it) }
-        btn6.setOnClickListener { numberEnter(it) }
+        for (button in numberButtonIds) {
+            // Слушатель нажатий для всего нампада(numpad)
+            button.setOnClickListener { numberEnterAction(it) }
+        }
 
-        btn7.setOnClickListener { numberEnter(it) }
-        btn8.setOnClickListener { numberEnter(it) }
-        btn9.setOnClickListener { numberEnter(it) }
+        for (operatorButton in operatorButtons) {
+            // Слушатель нажатий кнопок операторов
+            operatorButton.setOnClickListener { operationEnterAction(it) }
+        }
 
-        // Слушатель нажатий кнопок операторов
-        operatorAdd.setOnClickListener { operationEnter(it) }
-        operatorSub.setOnClickListener { operationEnter(it) }
-        operatorMul.setOnClickListener { operationEnter(it) }
-        operatorDiv.setOnClickListener { operationEnter(it) }
-
-        clearAllButton.setOnClickListener { clearAll() }
-        roundButton.setOnClickListener { roundResult() }
+        clearAllButton.setOnClickListener { clearAllAction() }
+        roundButton.setOnClickListener { roundAction() }
         percentButton.setOnClickListener { percentResult() }
         resultButton.setOnClickListener { equalAction() }
-        pointButton.setOnClickListener { enterPoint() }
+        pointButton.setOnClickListener { enterPointAction() }
+        backSpaceButton.setOnClickListener { backSpaceAction() }
 
 
         return view
     }
-    private fun numberEnter(view: View) // Обработчик нажатия - цифра (0-9)
+
+    private fun numberEnterAction(view: View) // Обработчик нажатия - цифра (0-9)
     {
-        // Константа, указывающая на последний элемент
-        val lastElementOfNums = numbers.lastIndex
+        if(isResult){
+            clearAllFields(resultField = true, historyField = true, operatorField = false)
+            isResult = false
+            canEnterNumber = true
+        }
 
         if (view is Button && canEnterNumber) {
             if (resultText.text == "0")
@@ -112,7 +119,7 @@ class CalculatorFragment: Fragment() {
             resultText.append(view.text)
 
             // 2. Добавление в массив введёного первого числа
-            numbers[lastElementOfNums] =
+            numbers[numbers.lastIndex] =
                 resultText.text.toString().replace(Regex("[+\\-*/]"), "").toDouble()
 
             // 3. Запись в поле истории
@@ -122,20 +129,36 @@ class CalculatorFragment: Fragment() {
         // Разрешает ввод операции
         canEnterOperation = true
 
-        // Разрешает ввод точки (изначально выключен, воизбежании записи ".0123")
+        isResult = false
+    }
+    private fun arrayNumberAdd(){
+        numbers[numbers.lastIndex] =
+            resultText.text.toString().replace(Regex("[+\\-*/]"), "").toDouble()
     }
 
-    private fun operationEnter(view: View) // Обработчик нажатия - оператора (+ - * /)
+    private fun operationEnterAction(view: View) // Обработчик нажатия - оператора (+ - * /)
     {
+        // Замена уже введеного оператора
+        if(!resetOperator){
+            arrayNumberAdd()
+        }
+        if (view is Button && resetOperator) // Выбор операции
+        {
+            if(operatorText.text.isNotEmpty())
+            {
+                operators[operators.lastIndex] = view.text.toString()
+                operatorText.text = view.text
+            }
+        }
+
+        // Ввод оператора
         if(canEnterOperation){
+
             numbers.add(0.0) // Добавление в массив введёного пустого числа
             operators.add("") //  Добавление в массив введёную операцию
 
-            // Константа, указывающая на последний элемент
-            val lastElementOfOperators = operators.lastIndex
-
             // Очистка основного поля
-            clearResultField()
+            clearAllFields(resultField = true, historyField = false, operatorField = false)
 
             if (view is Button && canEnterOperation) // Выбор операции
             {
@@ -146,8 +169,8 @@ class CalculatorFragment: Fragment() {
                 // 1. Запись в operator поле
                 operatorText.text = view.text
 
-                // 2. Добавление в массив введёного первого числа
-                operators[lastElementOfOperators] = operatorText.text.toString() // 2. Добавление в массив введёной операции
+                // 2. Добавление в массив введёной операции
+                operators[operators.lastIndex] = operatorText.text.toString()
 
                 // 3. Запись в поле истории
                 historyText.append(view.text)
@@ -157,22 +180,28 @@ class CalculatorFragment: Fragment() {
 
             // Разрешает ввод чисел
             canEnterNumber = true
+
+            // Разрешает замену оператора
+            resetOperator = true
+
+            // Отключает состояние результата
+            isResult = false
         }
 
     }
 
-    fun enterPoint() // Ввод точки
+    private fun enterPointAction() // Ввод точки
     {
-        // 1. После ввода - отключает возможность повторно ввести
+        // После ввода - отключает возможность повторно ввести
         if (resultText.text.isNotEmpty()) {
-            if (!resultText.text.contains(".")) {
-                resultText.append(".")
-                historyText.append(".")
+            if (!resultText.text.contains(constantSymbols[5])) {
+                resultText.append(constantSymbols[5])
+                historyText.append(constantSymbols[5])
             }
         }
     }
 
-    private fun calculateResult(): Double {
+    private fun calculateAction(): Double {
         var result = numbers[0]
 
         for (i in 1 until numbers.size) {
@@ -199,53 +228,92 @@ class CalculatorFragment: Fragment() {
 
         return result
     }
+    private fun backSpaceAction() {
+        if (!isResult && resultText.text.isNotEmpty()) {
+            /*Принцип работы
+            * 1. Пререводим в mutableList для получения каждого символа строки
+            * 2. Удаляем последний символ в обоих текстовых полях
+            * 4. mutableList переводим обратно в строку и присваиваем в текстовые поля
+            * 4. Проверяем, что result не пустой(history аналогично result) и тогда меняем старое число на новое в массиве numb
+            * Заполняем строку оставшимся символом
+            * (Для history принцип аналогичный)*/
+
+            // Переводим текст полей в спиоск (Результат - слово = [с,л,о,в,о]) и записываем в локальные переменные для удобства
+            val result = resultText.text.toMutableList()
+            val history = historyText.text.toMutableList()
+
+            // Удаляем последний элемент в обоих текстовых полях
+            result.removeLast()
+            history.removeLast()
+
+            // Переводим список обратно в строку
+            resultText.text = result.joinToString(separator = "")
+            historyText.text = history.joinToString(separator = "")
+
+            if (result.isNotEmpty()) {
+                // Заменяем последнее ввёденое число
+                numbers[numbers.lastIndex] = resultText.text.toString().toDouble()
+            }
+
+        }
+    }
+
 
     private fun equalAction() // Обработчик нажатия - равно(=)
     {
         // Расчёт результата
-        val result = calculateResult()
-        clearOperatorField()
+        val result = calculateAction()
 
-        // Запись в основное поле
+        // Очистка поля оператора
+        clearAllFields(resultField = false, historyField = false, operatorField = true)
+
+        // Запись в основное поле и запись результата в переменную
         resultText.text = result.toString()
+        calculateResult = result
+
+        // Блокировка повторного ввода числа
         canEnterNumber = false
+        isResult = true
+
     }
 
-    private fun clearAll() // Обработчик нажатия - очистка полей
+    private fun clearAllAction() // Обработчик нажатия - очистка полей
     {
+        // Очистка массивов
         numbers.clear()
-        numbers.add(0.0)
         operators.clear()
 
-        clearAllField()
+        numbers.add(0.0)
 
-        resultText.hint = "0"
-        historyText.hint = "0"
-
+        // Очистка текстовых полей
+        clearAllFields(resultField = true, historyField = true, operatorField = true)
 
         canEnterOperation = false
         canEnterNumber = true
     }
 
-    private fun roundResult() {
+    private fun roundAction(roundRange: Int = 1) {
+        // Округление результата до десятых
         val result = resultText.text.toString().toDouble()
-        resultText.text = (String.format("%.3f", result))
+        resultText.text = String.format(Locale.US, "%.${roundRange}f", result)
     }
 
     private fun percentResult() {
+        // Расчёт процента результата
         val result = resultText.text.toString().toDouble()
         resultText.text = (result / 100.0).toString()
     }
 
-    private fun clearOperatorField() { operatorText.text = "" }
-    private fun clearResultField() { resultText.text = ""; resultText.hint = "0" }
-    private fun clearHistoryField() { historyText.text = ""; historyText.hint = "0" }
+    private fun clearAllFields(resultField: Boolean, historyField: Boolean, operatorField: Boolean) {
 
-    private fun clearAllField() {
-        // Очищает Все поля
-        clearResultField()
-        clearHistoryField()
-        clearOperatorField()
+        if(resultField) resultText.text = ""; resultText.hint = "0"
+        if(historyField) historyText.text = ""; historyText.hint = "0"
+        if(operatorField) operatorText.text = ""
+
+    }
+    private fun clearTextFields(){
+        // Очищает только чисельные поля
+        clearAllFields(resultField = true, historyField = true, operatorField = false)
     }
 
 }
