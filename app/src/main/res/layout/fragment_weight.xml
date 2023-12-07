@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
     android:background="@color/white"
@@ -79,17 +80,23 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <Button
                 android:id="@+id/buttonReset"
-                style="@style/buttonConverterReset"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_number"
+                android:layout_margin="12dp"
                 android:onClick="resetFields"
                 android:text="@string/buttonReset" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <Button
                 android:id="@+id/buttonConvert"
-                style="@style/buttonConverterConvert"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_operator"
+                android:layout_margin="12dp"
                 android:onClick="calculateConvertation"
                 android:text="@string/buttonConvert" />
         </LinearLayout>

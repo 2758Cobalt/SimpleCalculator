@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 
-class ConvertersFragment: Fragment() {
+class SelectorFragment: Fragment() {
     private lateinit var buttonWeight: Button
     private lateinit var buttonLength: Button
     private lateinit var buttonSpeed: Button
@@ -39,18 +39,18 @@ class ConvertersFragment: Fragment() {
         buttonTrapezoid = view.findViewById(R.id.buttonTrapezoid)
 
 //        //Слушатели нажатий
-        buttonWeight.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, WeightFragment()).commit() }
-        buttonLength.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, LengthFragment()).commit() }
-        buttonSpeed.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, SpeedFragment()).commit() }
-        buttonData.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, DataFragment()).commit() }
-        buttonTemperature.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, TemperatureFragment()).commit() }
-        buttonSquare.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, SquareFragment()).commit() }
+        buttonWeight.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, WeightFragment()).commit() }
+        buttonLength.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, LengthFragment()).commit() }
+        buttonSpeed.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, SpeedFragment()).commit() }
+        buttonData.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, DataFragment()).commit() }
+        buttonTemperature.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, TemperatureFragment()).commit() }
+        buttonSquare.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, SquareFragment()).commit() }
 
-        buttonParallelepiped.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, ParallelepipedFragment()).commit() }
-        buttonTriangle.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, TriangleFragment()).commit() }
-        buttonRhombus.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, RhombusFragment()).commit() }
-        buttonCircle.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, CircleFragment()).commit() }
-        buttonTrapezoid.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, TrapezoidFragment()).commit() }
+        buttonParallelepiped.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, ParallelepipedFragment()).commit() }
+        buttonTriangle.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, TriangleFragment()).commit() }
+        buttonRhombus.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, RhombusFragment()).commit() }
+        buttonCircle.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, CircleFragment()).commit() }
+        buttonTrapezoid.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, TrapezoidFragment()).commit() }
 
         return view
     }

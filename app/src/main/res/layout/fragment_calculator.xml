@@ -193,15 +193,4 @@
 
     </androidx.gridlayout.widget.GridLayout>
 
-        <Button
-            android:id="@+id/calculatorMainMenu"
-            android:layout_width="128dp"
-            android:layout_height="48dp"
-            android:paddingHorizontal="16dp"
-            android:backgroundTint="@color/gray255"
-            android:text="menu"
-            android:textSize="12sp"
-            android:textColor="@color/gray150"
-            android:drawableStart="@drawable/ic_arrow_down"/>
-
 </LinearLayout>

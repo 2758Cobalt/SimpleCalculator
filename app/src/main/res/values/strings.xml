@@ -1,13 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">IosCalculator</string>
 
-    <!--apply-->
     <string name="buttonOk">Ok</string>
     <string name="buttonConfirm">Confirm</string>
     <string name="buttonApply">Apply</string>
     <string name="buttonNext">Next</string>
-
-    <!--Cancel-->
     <string name="buttonCancel">Cancel</string>
     <string name="buttonPrevious">Previous</string>
     <string name="buttonExit">Exit</string>
@@ -41,7 +38,6 @@
     <string name="buttonConverterLength">Length</string>
     <string name="buttonConverterSpeed">Speed</string>
 
-
     <string name="text_labelTriangleDefault">Area Triangle</string> <!--Треугольник-->
     <string name="text_labelTriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
     <string name="text_labelTriangleEquilateral">Area equilateral Triangle</string> <!--Равносторонний-->
@@ -66,7 +62,6 @@
 
     <string name="hint_diagonalFirst">Diagonal 1</string>
     <string name="hint_diagonalSecond">Diagonal 2</string>
-
 
     <string name="tooltip_parallelepipedText">Enter the sides of the parallelepiped (if you need a rectangle, leave the field C blank or C = 0)</string>
     <string name="tooltip_triangleText">Enter the sides of the triangle. The area is calculated using Heron\'s formula</string>

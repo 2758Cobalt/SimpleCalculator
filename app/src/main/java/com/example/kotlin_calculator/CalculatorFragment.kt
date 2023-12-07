@@ -30,8 +30,7 @@ class CalculatorFragment: Fragment() {
     private lateinit var pointButton: Button                                // Добавление точки
     private lateinit var backSpaceButton: Button                            // Удаление последнего символа
 
-    // Кнопки меню
-    private lateinit var calculatorMenu: Button
+
     private lateinit var exitMenuAction: Button
     private lateinit var optionsMenuAction: Button
 
@@ -57,7 +56,6 @@ class CalculatorFragment: Fragment() {
         equalButton = view.findViewById(R.id.buttonEqualAction)             // Ссылка на кнопку "equal"
         pointButton = view.findViewById(R.id.buttonPointAction)             // Ссылка на кнопку "point"
         backSpaceButton = view.findViewById(R.id.buttonBackSpaceAction)     // Ссылка на кнопку "backspace"
-        calculatorMenu = view.findViewById(R.id.calculatorMainMenu)         // Ссылка на кнопку "trigger"
 
         // Создание ссылок на кнопки numpad
         val numberButtonIds = arrayOf(
@@ -95,13 +93,8 @@ class CalculatorFragment: Fragment() {
         equalButton.setOnClickListener { equalAction() }
         pointButton.setOnClickListener { enterPointAction() }
         backSpaceButton.setOnClickListener { backSpaceAction() }
-        calculatorMenu.setOnClickListener { showSelectorAction() }
 
         return view
-    }
-
-    private fun showSelectorAction() {
-
     }
 
     private fun numberEnterAction(view: View) // Обработчик нажатия - цифра (0-9)

@@ -24,12 +24,12 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonWeight"
             style="@style/buttonTile"
             android:text="@string/buttonConverterWeight" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonLength"
             style="@style/buttonTile"
             android:text="@string/buttonConverterLength" />
@@ -42,12 +42,12 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonSpeed"
             style="@style/buttonTile"
             android:text="@string/buttonConverterSpeed" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonData"
             style="@style/buttonTile"
             android:text="@string/buttonConverterData" />
@@ -60,12 +60,12 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonTemperature"
             style="@style/buttonTile"
             android:text="@string/buttonConverterTemperature" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonSquare"
             style="@style/buttonTile"
             android:text="@string/buttonConverterSquare" />
@@ -91,12 +91,12 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonParallelepiped"
             style="@style/buttonTile"
             android:text="@string/text_labelParallelepiped" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonTriangle"
             style="@style/buttonTile"
             android:text="@string/text_labelTriangleDefault"/>
@@ -109,18 +109,18 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonRhombus"
             style="@style/buttonTile"
             android:text="@string/text_labelRhombus" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonCircle"
             style="@style/buttonTile"
             android:text="@string/text_labelCircle"/>
     </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <Button
             android:id="@+id/buttonTrapezoid"
             style="@style/buttonTile"
             android:layout_width="match_parent"
