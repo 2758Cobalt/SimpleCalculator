@@ -88,7 +88,7 @@
     <string name="tooltip_item">Item</string>
     <string name="tooltip_value">Value</string>
 
-    <string name="tooltip_enterText">Enter number</string>
+    <string name="tooltip_enterText">Enter the number</string>
 
     <string-array name="weight_values">
         <item>μg - micrograms</item>
