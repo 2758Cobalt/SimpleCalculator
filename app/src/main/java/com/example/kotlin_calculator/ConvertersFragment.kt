@@ -38,7 +38,7 @@ class ConvertersFragment: Fragment() {
         buttonCircle = view.findViewById(R.id.buttonCircle)
         buttonTrapezoid = view.findViewById(R.id.buttonTrapezoid)
 
-        //Слушатели нажатий
+//        //Слушатели нажатий
         buttonWeight.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, WeightFragment()).commit() }
         buttonLength.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, LengthFragment()).commit() }
         buttonSpeed.setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.fragment_container_calculator, SpeedFragment()).commit() }

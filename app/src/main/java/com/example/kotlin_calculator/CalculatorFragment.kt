@@ -1,106 +1,107 @@
 package com.example.kotlin_calculator
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import java.util.Locale
-import kotlin.math.log
 
 class CalculatorFragment: Fragment() {
     private val constantSymbols: Array<String> = arrayOf("+", "-", "*", "/", "=",".") // constraints
 
-    private val numbers = mutableListOf(0.0) // Числовой массив
-    private val operators = mutableListOf<String>() // Массив операторов
-    private var calculateResult: Double = 0.0 // Результат подсчёта
-    private var isResult: Boolean = false //
-    private var resetOperator: Boolean = false //
-    private lateinit var container: FrameLayout
+    private val numbers = mutableListOf(0.0)                                // Числовой массив
+    private val operators = mutableListOf<String>()                         // Массив операторов
+    private var calculateResult: Double = 0.0                               // Результат подсчёта
 
-    private lateinit var resultText: TextView // Поле с результатом
-    private lateinit var historyText: TextView // Поле истории (отображает ранее введённые числа/операторы)
-    private lateinit var operatorText: TextView // Поле с значком оператора
+    // Текстовые поля
+    private lateinit var resultText: TextView                               // Поле с результатом
+    private lateinit var historyText: TextView                              // Поле истории (отображает ранее введённые числа/операторы)
+    private lateinit var operatorText: TextView                             // Поле с значком оператора
 
-    private lateinit var roundButton: Button
-    private lateinit var clearAllButton: Button
-    private lateinit var percentButton: Button
-    private lateinit var resultButton: Button
-    private lateinit var pointButton: Button
-    private lateinit var backSpaceButton: Button
+    // Кнопки Функций (Round, Backspace, PercentOf, Equal...). При нажатии ->
+    private lateinit var roundButton: Button                                // Округление числа
+    private lateinit var clearAllButton: Button                             // Очистка всех полей и переменных
+    private lateinit var percentButton: Button                              // Процент числа
+    private lateinit var equalButton: Button                                // Расчёт результата записи
+    private lateinit var pointButton: Button                                // Добавление точки
+    private lateinit var backSpaceButton: Button                            // Удаление последнего символа
 
-    private lateinit var operatorAdd: Button
-    private lateinit var operatorSub: Button
-    private lateinit var operatorMul: Button
-    private lateinit var operatorDiv: Button
+    // Кнопки меню
+    private lateinit var calculatorMenu: Button
+    private lateinit var exitMenuAction: Button
+    private lateinit var optionsMenuAction: Button
 
-    private var canEnterOperation: Boolean = false
-    private var canEnterNumber: Boolean = true
+    // Логика
+    private var canEnterNumber: Boolean = true                              // Разрешает ввод числа
+    private var canEnterOperation: Boolean = false                          // Разрешает ввод операции
+    private var canPercentCalculate: Boolean = false                        // Разрешает вычислять процент
+    private var resetOperator: Boolean = false                              // Указывает возможность замены оператора
+    private var isResult: Boolean = false                                   // Если расчитан результат (нажата equalButton)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_calculator, container, false) // Сам view фрагмента
 
         // Ссылка на текстовые поля
-        resultText = view.findViewById(R.id.resultField)
-        historyText = view.findViewById(R.id.historyField)
-        operatorText = view.findViewById(R.id.operatorField)
+        resultText = view.findViewById(R.id.resultField)                    // Ссылка на тектовое поле текущей записи
+        historyText = view.findViewById(R.id.historyField)                  // Ссылка на тектовое поле истории (полной записи)
+        operatorText = view.findViewById(R.id.operatorField)                // Ссылка на тектовое поле текущего выбранного оператора
 
         // Ссылка на кнопки функций калькулятора
-        clearAllButton = view.findViewById(R.id.ButtonClearAll)// Ссылка на кнопку "AC"
-        percentButton = view.findViewById(R.id.buttonPercent)// Ссылка на кнопку "%"
-        roundButton = view.findViewById(R.id.buttonRound) // Ссылка на кнопку "round"
-        resultButton = view.findViewById(R.id.buttonResult) // Ссылка на кнопку "round"
-        pointButton = view.findViewById(R.id.buttonPoint) // Ссылка на кнопку "round"
-        backSpaceButton = view.findViewById(R.id.buttonBackSpace) // Ссылка на кнопку "round"
+        clearAllButton = view.findViewById(R.id.buttonClearAllAction)       // Ссылка на кнопку "AC"
+        percentButton = view.findViewById(R.id.buttonPercentAction)         // Ссылка на кнопку "%"
+        roundButton = view.findViewById(R.id.buttonRoundAction)             // Ссылка на кнопку "round"
+        equalButton = view.findViewById(R.id.buttonEqualAction)             // Ссылка на кнопку "equal"
+        pointButton = view.findViewById(R.id.buttonPointAction)             // Ссылка на кнопку "point"
+        backSpaceButton = view.findViewById(R.id.buttonBackSpaceAction)     // Ссылка на кнопку "backspace"
+        calculatorMenu = view.findViewById(R.id.calculatorMainMenu)         // Ссылка на кнопку "trigger"
 
-        // Ссылка на кнопки операторов
-        operatorAdd = view.findViewById(R.id.addBtn)
-        operatorSub = view.findViewById(R.id.subBtn)
-        operatorMul = view.findViewById(R.id.mulBtn)
-        operatorDiv = view.findViewById(R.id.divBtn)
+        // Создание ссылок на кнопки numpad
+        val numberButtonIds = arrayOf(
+            view.findViewById(R.id.num0) as Button,
+            view.findViewById(R.id.num1) as Button,
+            view.findViewById(R.id.num2) as Button,
+            view.findViewById(R.id.num3) as Button,
+            view.findViewById(R.id.num4) as Button,
+            view.findViewById(R.id.num5) as Button,
+            view.findViewById(R.id.num6) as Button,
+            view.findViewById(R.id.num7) as Button,
+            view.findViewById(R.id.num8) as Button,
+            view.findViewById(R.id.num9) as Button)  // Кнопки (0 1 2 3...9)
 
-        // Ссылка на Numpad
-        val btn0: Button = view.findViewById(R.id.num0)
-        val btn1: Button = view.findViewById(R.id.num1)
-        val btn2: Button = view.findViewById(R.id.num2)
-        val btn3: Button = view.findViewById(R.id.num3)
+        // Создание ссылок на кнопки операторов
+        val operatorButtons = arrayOf(
+            view.findViewById(R.id.addBtn) as Button,
+            view.findViewById(R.id.subBtn) as Button,
+            view.findViewById(R.id.mulBtn) as Button,
+            view.findViewById(R.id.divBtn) as Button) // Кнопки операторы (+ - * /)
 
-        val btn4: Button = view.findViewById(R.id.num4)
-        val btn5: Button = view.findViewById(R.id.num5)
-        val btn6: Button = view.findViewById(R.id.num6)
-
-        val btn7: Button = view.findViewById(R.id.num7)
-        val btn8: Button = view.findViewById(R.id.num8)
-        val btn9: Button = view.findViewById(R.id.num9)
-
-        val numberButtonIds = arrayOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9) // Кнопки (0 1 2 3...9)
-        val operatorButtons = arrayOf(operatorAdd, operatorSub, operatorMul, operatorDiv) // Кнопки операторы (+ - * /)
-
+        // Присвоение слушателя нажатий (OnClickListener) кнопкам
         for (button in numberButtonIds) {
-            // Слушатель нажатий для всего нампада(numpad)
-            button.setOnClickListener { numberEnterAction(it) }
+            button.setOnClickListener { numberEnterAction(it) } // Слушатель нажатий для всего нампада(numpad)
         }
 
         for (operatorButton in operatorButtons) {
-            // Слушатель нажатий кнопок операторов
-            operatorButton.setOnClickListener { operationEnterAction(it) }
+            operatorButton.setOnClickListener { operationEnterAction(it) } // Слушатель нажатий кнопок операторов
         }
 
+        // Слушатель нажатий кнопок функций
         clearAllButton.setOnClickListener { clearAllAction() }
         roundButton.setOnClickListener { roundAction() }
-        percentButton.setOnClickListener { percentResult() }
-        resultButton.setOnClickListener { equalAction() }
+        percentButton.setOnClickListener { percentAction()}
+        equalButton.setOnClickListener { equalAction() }
         pointButton.setOnClickListener { enterPointAction() }
         backSpaceButton.setOnClickListener { backSpaceAction() }
-
+        calculatorMenu.setOnClickListener { showSelectorAction() }
 
         return view
+    }
+
+    private fun showSelectorAction() {
+
     }
 
     private fun numberEnterAction(view: View) // Обработчик нажатия - цифра (0-9)
@@ -112,7 +113,7 @@ class CalculatorFragment: Fragment() {
         }
 
         if (view is Button && canEnterNumber) {
-            if (resultText.text == "0")
+            if (resultText.text.toString() == "0")
                 resultText.text = ""
 
             // 1. Запись в основное поле
@@ -129,8 +130,12 @@ class CalculatorFragment: Fragment() {
         // Разрешает ввод операции
         canEnterOperation = true
 
+        // Разрешает вычислять процент
+        canPercentCalculate = true
+
         isResult = false
     }
+
     private fun arrayNumberAdd(){
         numbers[numbers.lastIndex] =
             resultText.text.toString().replace(Regex("[+\\-*/]"), "").toDouble()
@@ -159,6 +164,7 @@ class CalculatorFragment: Fragment() {
 
             // Очистка основного поля
             clearAllFields(resultField = true, historyField = false, operatorField = false)
+
 
             if (view is Button && canEnterOperation) // Выбор операции
             {
@@ -229,8 +235,7 @@ class CalculatorFragment: Fragment() {
         return result
     }
     private fun backSpaceAction() {
-        if (!isResult && resultText.text.isNotEmpty()) {
-            /*Принцип работы
+        /*Принцип работы
             * 1. Пререводим в mutableList для получения каждого символа строки
             * 2. Удаляем последний символ в обоих текстовых полях
             * 4. mutableList переводим обратно в строку и присваиваем в текстовые поля
@@ -238,26 +243,40 @@ class CalculatorFragment: Fragment() {
             * Заполняем строку оставшимся символом
             * (Для history принцип аналогичный)*/
 
-            // Переводим текст полей в спиоск (Результат - слово = [с,л,о,в,о]) и записываем в локальные переменные для удобства
-            val result = resultText.text.toMutableList()
-            val history = historyText.text.toMutableList()
+        try{
+            if (!isResult && resultText.text.isNotEmpty()) {
 
-            // Удаляем последний элемент в обоих текстовых полях
-            result.removeLast()
-            history.removeLast()
+                // Переводим текст полей в спиоск (Результат - слово = [с,л,о,в,о]) и записываем в локальные переменные для удобства
+                val result = resultText.text.toMutableList()
+                val history = historyText.text.toMutableList()
 
-            // Переводим список обратно в строку
-            resultText.text = result.joinToString(separator = "")
-            historyText.text = history.joinToString(separator = "")
+                // Удаляем последний элемент в обоих текстовых полях
+                result.removeLast()
+                history.removeLast()
 
-            if (result.isNotEmpty()) {
-                // Заменяем последнее ввёденое число
-                numbers[numbers.lastIndex] = resultText.text.toString().toDouble()
+                // Переводим список обратно в строку
+                resultText.text = result.joinToString(separator = "")
+                historyText.text = history.joinToString(separator = "")
+
+                if (result.isNotEmpty()) {
+                    // Заменяем последнее ввёденое число
+                    debugData()
+                    numbers[numbers.lastIndex] = resultText.text.toString().toDouble()
+                }
             }
-
+        }catch (e: NumberFormatException){
+            resultText.text = "NaN"
+            historyText.text = "Error"
+            resetAllVariables(
+                enterNumber = true,
+                enterOperator = false,
+                enterPersent = false,
+                operatorReset = false,
+                result = true
+            )
         }
-    }
 
+    }
 
     private fun equalAction() // Обработчик нажатия - равно(=)
     {
@@ -273,6 +292,8 @@ class CalculatorFragment: Fragment() {
 
         // Блокировка повторного ввода числа
         canEnterNumber = false
+
+        // Назначение статуса результата (когда нажато действие "=")
         isResult = true
 
     }
@@ -287,6 +308,14 @@ class CalculatorFragment: Fragment() {
 
         // Очистка текстовых полей
         clearAllFields(resultField = true, historyField = true, operatorField = true)
+        resetAllVariables(
+            enterNumber = true,
+            enterOperator = false,
+            enterPersent = false,
+            operatorReset = false,
+            result = false
+        )
+        resultText.text = "0"
 
         canEnterOperation = false
         canEnterNumber = true
@@ -297,12 +326,16 @@ class CalculatorFragment: Fragment() {
         val result = resultText.text.toString().toDouble()
         resultText.text = String.format(Locale.US, "%.${roundRange}f", result)
     }
-
-    private fun percentResult() {
+    private fun percentAction() {
         // Расчёт процента результата
-        val result = resultText.text.toString().toDouble()
-        resultText.text = (result / 100.0).toString()
+
+        if(canPercentCalculate)
+        {
+            val result = resultText.text.toString().toDouble()
+            resultText.text = (result / 100.0).toString()
+        }
     }
+
 
     private fun clearAllFields(resultField: Boolean, historyField: Boolean, operatorField: Boolean) {
 
@@ -311,9 +344,24 @@ class CalculatorFragment: Fragment() {
         if(operatorField) operatorText.text = ""
 
     }
-    private fun clearTextFields(){
-        // Очищает только чисельные поля
-        clearAllFields(resultField = true, historyField = true, operatorField = false)
+    private fun debugData(){
+        val tagDebug = "DebugTag"
+        Log.i(tagDebug, "Array of Numbers: $numbers")
+        Log.i(tagDebug, "Array of Operators: $operators")
+
+        Log.i(tagDebug, "All booleans: \"canEnterNumber\": $canEnterNumber\n" +
+                "\"canEnterOperation\": $canEnterOperation" +
+                "\"resetOperator\": $resetOperator" +
+                "\"isResult\": $isResult")
     }
+    private fun resetAllVariables(enterNumber: Boolean,enterOperator: Boolean,enterPersent: Boolean,operatorReset: Boolean,result: Boolean){
+        canEnterNumber = enterNumber
+        canEnterOperation = enterOperator
+        canPercentCalculate = enterPersent
+        resetOperator = operatorReset
+        isResult = result
+        Log.d("DebugTag","All boolean variables has been reset")
+    }
+
 
 }

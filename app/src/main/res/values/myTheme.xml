@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="MyTheme" parent="Theme.Material3.Dark">
+    <style name="MyTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/gold</item>
         <item name="colorOnPrimary">@color/gold</item>
         <item name="colorPrimaryVariant">@color/gold</item>

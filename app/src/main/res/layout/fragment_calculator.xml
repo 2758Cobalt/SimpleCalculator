@@ -4,23 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
     android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".CalculatorFragment" >
-
-    <Button
-        android:id="@+id/triggerTest"
-        android:layout_width="128dp"
-        android:layout_height="12dp"
-        android:clickable="false"
-        style="@style/buttonMenuClickable"
-        android:contentDescription="switch_trigger"/>
+    android:padding="16dp"
+    tools:context=".MainActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:padding="20dp">
+        android:layout_height="196dp"
+        android:layout_marginVertical="8dp"
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +48,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:hint="0"
+                    android:hint="hint"
+                    android:text="0"
                     android:maxLines="1"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray75"
@@ -70,149 +65,142 @@
                 android:hint="0"
                 android:maxLines="2"
                 android:textColorHint="@color/gray120"
+                android:textColor="@color/gray150"
                 android:textSize="24sp" />
         </LinearLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--AC = % /-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:orientation="horizontal">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/darker_gray"/>
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/ButtonClearAll"
-                style="@style/buttonStyleDefault"
-                android:text="@string/symbolAC" />
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        app:rowCount="4"
+        app:columnCount="4"
+        android:layout_gravity="center">
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/buttonPercent"
-                style="@style/buttonStyleDefault"
-                android:text="@string/symbolPercent" />
+        <Button
+            android:id="@+id/buttonClearAllAction"
+            style="@style/buttonStyleDefault"
+            android:text="@string/symbolAC" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/buttonRound"
-                style="@style/buttonStyleDefault"
-                android:text="@string/symbolRound" />
+        <Button
+            android:id="@+id/buttonRoundAction"
+            style="@style/buttonStyleDefault"
+            android:text="@string/symbolRound" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/divBtn"
-                style="@style/buttonStyleOperator"
-                android:text="@string/symbolDiv" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/buttonPercentAction"
+            style="@style/buttonStyleDefault"
+            android:text="@string/symbolPercent" />
+
+        <Button
+            android:id="@+id/divBtn"
+            style="@style/buttonStyleOperator"
+            android:text="@string/symbolDiv" />
 
         <!--789-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:orientation="horizontal">
+        <Button
+            android:id="@+id/num7"
+            style="@style/buttonStyleNumber"
+            android:text="7" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num7"
-                style="@style/buttonStyleNumber"
-                android:text="7" />
+        <Button
+            android:id="@+id/num8"
+            style="@style/buttonStyleNumber"
+            android:text="8" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num8"
-                style="@style/buttonStyleNumber"
-                android:text="8" />
+        <Button
+            android:id="@+id/num9"
+            style="@style/buttonStyleNumber"
+            android:text="9" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num9"
-                style="@style/buttonStyleNumber"
-                android:text="9" />
-
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/mulBtn"
-                style="@style/buttonStyleOperator"
-                android:text="@string/symbolMul" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/mulBtn"
+            style="@style/buttonStyleOperator"
+            android:text="@string/symbolMul" />
 
         <!--456-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:orientation="horizontal">
+        <Button
+            android:id="@+id/num4"
+            style="@style/buttonStyleNumber"
+            android:text="4" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num4"
-                style="@style/buttonStyleNumber"
-                android:text="4" />
+        <Button
+            android:id="@+id/num5"
+            style="@style/buttonStyleNumber"
+            android:text="5" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num5"
-                style="@style/buttonStyleNumber"
-                android:text="5" />
+        <Button
+            android:id="@+id/num6"
+            style="@style/buttonStyleNumber"
+            android:text="6" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num6"
-                style="@style/buttonStyleNumber"
-                android:text="6" />
-
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/addBtn"
-                style="@style/buttonStyleOperator"
-                android:text="@string/symbolAdd" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/addBtn"
+            style="@style/buttonStyleOperator"
+            android:text="@string/symbolAdd" />
 
         <!--123-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:orientation="horizontal">
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num1"
-                style="@style/buttonStyleNumber"
-                android:text="1" />
+        <Button
+            android:id="@+id/num1"
+            style="@style/buttonStyleNumber"
+            android:text="1" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num2"
-                style="@style/buttonStyleNumber"
-                android:text="2" />
+        <Button
+            android:id="@+id/num2"
+            style="@style/buttonStyleNumber"
+            android:text="2" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num3"
-                style="@style/buttonStyleNumber"
-                android:text="3" />
+        <Button
+            android:id="@+id/num3"
+            style="@style/buttonStyleNumber"
+            android:text="3" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/subBtn"
-                style="@style/buttonStyleOperator"
-                android:text="@string/symbolSub" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/subBtn"
+            style="@style/buttonStyleOperator"
+            android:text="@string/symbolSub" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:orientation="horizontal">
+        <Button
+            android:id="@+id/buttonBackSpaceAction"
+            style="@style/buttonStyleDefault"
+            android:text="\u232b" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/buttonBackSpace"
-                style="@style/buttonStyleDefault"
-                android:text="\u232b" />
+        <Button
+            android:id="@+id/num0"
+            style="@style/buttonStyleNumber"
+            android:text="0" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/num0"
-                style="@style/buttonStyleNumber"
-                android:text="0" />
+        <Button
+            android:id="@+id/buttonPointAction"
+            style="@style/buttonStyleDefault"
+            android:text="@string/symbolPoint" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/buttonPoint"
-                style="@style/buttonStyleDefault"
-                android:text="@string/symbolPoint" />
+        <Button
+            android:id="@+id/buttonEqualAction"
+            style="@style/buttonStyleOperator"
+            android:text="@string/symbolEqual" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/buttonResult"
-                style="@style/buttonStyleOperator"
-                android:text="@string/symbolEqual" />
-        </LinearLayout>
+    </androidx.gridlayout.widget.GridLayout>
+
+        <Button
+            android:id="@+id/calculatorMainMenu"
+            android:layout_width="128dp"
+            android:layout_height="48dp"
+            android:paddingHorizontal="16dp"
+            android:backgroundTint="@color/gray255"
+            android:text="menu"
+            android:textSize="12sp"
+            android:textColor="@color/gray150"
+            android:drawableStart="@drawable/ic_arrow_down"/>
 
 
 </LinearLayout>
