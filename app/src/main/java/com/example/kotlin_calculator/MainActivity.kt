@@ -33,11 +33,11 @@ class MainActivity: AppCompatActivity() {
         ft.replace(R.id.fragment_container_selector, SelectorFragment())
         ft.commit()
 
-
         calculatorMenu.setOnClickListener { selectorSwitch() }
     }
 
     private fun selectorSwitch() {
+        // Временно
         selectorMode = !selectorMode
         val slideDown: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_down)
         val slideUp: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.slide_up)
@@ -74,10 +74,18 @@ class MainActivity: AppCompatActivity() {
 
 
     }
+    // Получает высоту и ширину экрана
     fun getScreenHeight(context: Context): Int {
         val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         return displayMetrics.heightPixels
+    }
+
+    fun getScreenWidth(context: Context): Int {
+        val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics.widthPixels
     }
 }

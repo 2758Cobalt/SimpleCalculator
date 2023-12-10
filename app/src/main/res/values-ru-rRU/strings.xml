@@ -120,4 +120,5 @@
     <string name="tooltip_squareText">Заполните поле для конвертации площади</string>
     <string name="text_labelQuantities">Величины</string>
     <string name="hint_speed">Скорость</string>
+    <string name="text_error">Ошибка</string>
 </resources>

@@ -50,6 +50,8 @@
     <string name="text_labelMath">Mathematics</string>
     <string name="text_labelQuantities">Quantities</string>
 
+    <string name="text_error">Error</string>
+
     <!--Cube tooltip-->
     <string name="hint_sideA">Side A</string>
     <string name="hint_sideB">Side B</string>

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import java.lang.Exception
 import java.util.Locale
 
 class CalculatorFragment: Fragment() {
@@ -30,10 +31,6 @@ class CalculatorFragment: Fragment() {
     private lateinit var pointButton: Button                                // Добавление точки
     private lateinit var backSpaceButton: Button                            // Удаление последнего символа
 
-
-    private lateinit var exitMenuAction: Button
-    private lateinit var optionsMenuAction: Button
-
     // Логика
     private var canEnterNumber: Boolean = true                              // Разрешает ввод числа
     private var canEnterOperation: Boolean = false                          // Разрешает ввод операции
@@ -42,7 +39,7 @@ class CalculatorFragment: Fragment() {
     private var isResult: Boolean = false                                   // Если расчитан результат (нажата equalButton)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_calculator, container, false) // Сам view фрагмента
+        val view = inflater.inflate(R.layout.fragment_calculator, container, false) // View фрагмента
 
         // Ссылка на текстовые поля
         resultText = view.findViewById(R.id.resultField)                    // Ссылка на тектовое поле текущей записи
@@ -99,34 +96,46 @@ class CalculatorFragment: Fragment() {
 
     private fun numberEnterAction(view: View) // Обработчик нажатия - цифра (0-9)
     {
-        if(isResult){
-            clearAllFields(resultField = true, historyField = true, operatorField = false)
+        try
+        {
+            if(isResult){
+                clearAllFields(resultField = true, historyField = true, operatorField = false)
+                isResult = false
+                canEnterNumber = true
+            }
+
+            if (view is Button && canEnterNumber) {
+                if (resultText.text.toString() == "0") // Срабатывает если первым стоит 0
+                    resultText.text = ""
+
+                if (historyText.text.toString() == "0")
+                    historyText.text = ""
+
+                // 1. Запись в основное поле
+                resultText.append(view.text)
+
+                // 2. Добавление в массив введёного первого числа
+                numbers[numbers.lastIndex] =
+                    resultText.text.toString().replace(Regex("[+\\-*/]"), "").toDouble()
+
+                // 3. Запись в поле истории
+                historyText.append(view.text)
+            }
+
+            // Разрешает ввод операции
+            canEnterOperation = true
+
+            // Разрешает вычислять процент
+            canPercentCalculate = true
+
+            // Выкл. статус результата
             isResult = false
-            canEnterNumber = true
+        }
+        catch (e: Exception)
+        {
+            errorHandler()
         }
 
-        if (view is Button && canEnterNumber) {
-            if (resultText.text.toString() == "0")
-                resultText.text = ""
-
-            // 1. Запись в основное поле
-            resultText.append(view.text)
-
-            // 2. Добавление в массив введёного первого числа
-            numbers[numbers.lastIndex] =
-                resultText.text.toString().replace(Regex("[+\\-*/]"), "").toDouble()
-
-            // 3. Запись в поле истории
-            historyText.append(view.text)
-        }
-
-        // Разрешает ввод операции
-        canEnterOperation = true
-
-        // Разрешает вычислять процент
-        canPercentCalculate = true
-
-        isResult = false
     }
 
     private fun arrayNumberAdd(){
@@ -136,57 +145,61 @@ class CalculatorFragment: Fragment() {
 
     private fun operationEnterAction(view: View) // Обработчик нажатия - оператора (+ - * /)
     {
-        // Замена уже введеного оператора
-        if(!resetOperator){
-            arrayNumberAdd()
-        }
-        if (view is Button && resetOperator) // Выбор операции
-        {
-            if(operatorText.text.isNotEmpty())
+        try {
+            if(!resetOperator) // Замена уже введеного оператора, если он есть
             {
-                operators[operators.lastIndex] = view.text.toString()
-                operatorText.text = view.text
+                arrayNumberAdd()
             }
-        }
-
-        // Ввод оператора
-        if(canEnterOperation){
-
-            numbers.add(0.0) // Добавление в массив введёного пустого числа
-            operators.add("") //  Добавление в массив введёную операцию
-
-            // Очистка основного поля
-            clearAllFields(resultField = true, historyField = false, operatorField = false)
-
-
-            if (view is Button && canEnterOperation) // Выбор операции
+            if (view is Button && resetOperator) // Выбор операции
             {
-                if (!canEnterNumber) {
-                    historyText.text = ""
-                    historyText.append(calculateResult.toString())
+                if(operatorText.text.isNotEmpty())
+                {
+                    operators[operators.lastIndex] = view.text.toString()
+                    operatorText.text = view.text
                 }
-                // 1. Запись в operator поле
-                operatorText.text = view.text
-
-                // 2. Добавление в массив введёной операции
-                operators[operators.lastIndex] = operatorText.text.toString()
-
-                // 3. Запись в поле истории
-                historyText.append(view.text)
             }
-            // Блок ввода операции (воизбежании повторного ввода)
-            canEnterOperation = false
 
-            // Разрешает ввод чисел
-            canEnterNumber = true
+            if(canEnterOperation){
 
-            // Разрешает замену оператора
-            resetOperator = true
+                numbers.add(0.0) // Добавление в массив введёного пустого числа
+                operators.add("") //  Добавление в массив введёную операцию
 
-            // Отключает состояние результата
-            isResult = false
+                // Очистка основного поля
+                clearAllFields(resultField = true, historyField = false, operatorField = false)
+
+
+                if (view is Button && canEnterOperation) // Выбор операции
+                {
+                    if (!canEnterNumber) {
+                        historyText.text = ""
+                        historyText.append(calculateResult.toString())
+                    }
+                    // 1. Запись в operator поле
+                    operatorText.text = view.text
+
+                    // 2. Добавление в массив введёной операции
+                    operators[operators.lastIndex] = operatorText.text.toString()
+
+                    // 3. Запись в поле истории
+                    historyText.append(view.text)
+                }
+                // Блок ввода операции (воизбежании повторного ввода)
+                canEnterOperation = false
+
+                // Разрешает ввод чисел
+                canEnterNumber = true
+
+                // Разрешает замену оператора
+                resetOperator = true
+
+                // Отключает состояние результата
+                isResult = false
+            }
         }
-
+        catch (e:Exception)
+        {
+            errorHandler()
+        }
     }
 
     private fun enterPointAction() // Ввод точки
@@ -200,7 +213,8 @@ class CalculatorFragment: Fragment() {
         }
     }
 
-    private fun calculateAction(): Double {
+    private fun calculateAction(): Double // Расчёт
+    {
         var result = numbers[0]
 
         for (i in 1 until numbers.size) {
@@ -227,6 +241,7 @@ class CalculatorFragment: Fragment() {
 
         return result
     }
+
     private fun backSpaceAction() {
         /*Принцип работы
             * 1. Пререводим в mutableList для получения каждого символа строки
@@ -257,21 +272,13 @@ class CalculatorFragment: Fragment() {
                     numbers[numbers.lastIndex] = resultText.text.toString().toDouble()
                 }
             }
-        }catch (e: NumberFormatException){
-            resultText.text = "NaN"
-            historyText.text = "Error"
-            resetAllVariables(
-                enterNumber = true,
-                enterOperator = false,
-                enterPersent = false,
-                operatorReset = false,
-                result = true
-            )
+        }catch (e: Exception){
+            errorHandler()
         }
 
     }
 
-    private fun equalAction() // Обработчик нажатия - равно(=)
+    private fun equalAction() // Обработчик нажатия - равно (=)
     {
         // Расчёт результата
         val result = calculateAction()
@@ -289,6 +296,7 @@ class CalculatorFragment: Fragment() {
         // Назначение статуса результата (когда нажато действие "=")
         isResult = true
 
+        setStyleView(clearAllButton, R.drawable.style_button_operator)
     }
 
     private fun clearAllAction() // Обработчик нажатия - очистка полей
@@ -301,6 +309,8 @@ class CalculatorFragment: Fragment() {
 
         // Очистка текстовых полей
         clearAllFields(resultField = true, historyField = true, operatorField = true)
+
+        // Сброс переменных
         resetAllVariables(
             enterNumber = true,
             enterOperator = false,
@@ -308,35 +318,53 @@ class CalculatorFragment: Fragment() {
             operatorReset = false,
             result = false
         )
-        resultText.text = "0"
 
-        canEnterOperation = false
-        canEnterNumber = true
+        setStyleView(clearAllButton, R.drawable.style_button_functional)
+
     }
 
-    private fun roundAction(roundRange: Int = 1) {
-        // Округление результата до десятых
+    private fun roundAction(roundRange: Int = 1) // Округление результата до десятых
+    {
         val result = resultText.text.toString().toDouble()
         resultText.text = String.format(Locale.US, "%.${roundRange}f", result)
     }
-    private fun percentAction() {
-        // Расчёт процента результата
 
-        if(canPercentCalculate)
-        {
-            val result = resultText.text.toString().toDouble()
-            resultText.text = (result / 100.0).toString()
+    private fun percentAction() // Расчёт процента результата
+    {
+        try {
+            if(canPercentCalculate)
+            {
+                val result = resultText.text.toString().toDouble()
+                resultText.text = (result / 100.0).toString()
+            }
+        }catch (e:Exception){
+
         }
+
     }
 
-
-    private fun clearAllFields(resultField: Boolean, historyField: Boolean, operatorField: Boolean) {
-
+    private fun clearAllFields(resultField: Boolean, historyField: Boolean, operatorField: Boolean) // Очистка всех полей
+    {
         if(resultField) resultText.text = ""; resultText.hint = "0"
         if(historyField) historyText.text = ""; historyText.hint = "0"
         if(operatorField) operatorText.text = ""
 
     }
+
+    private fun resetAllVariables(enterNumber: Boolean,enterOperator: Boolean,enterPersent: Boolean,operatorReset: Boolean,result: Boolean){
+        canEnterNumber = enterNumber
+        canEnterOperation = enterOperator
+        canPercentCalculate = enterPersent
+        resetOperator = operatorReset
+        isResult = result
+        Log.d("DebugTag","All boolean variables has been reset")
+    }
+
+    private fun setStyleView(viewElement: View, resId: Int) // Задаёт стиль view-элементу
+    {
+        viewElement.setBackgroundResource(resId)
+    }
+
     private fun debugData(){
         val tagDebug = "DebugTag"
         Log.i(tagDebug, "Array of Numbers: $numbers")
@@ -347,14 +375,18 @@ class CalculatorFragment: Fragment() {
                 "\"resetOperator\": $resetOperator" +
                 "\"isResult\": $isResult")
     }
-    private fun resetAllVariables(enterNumber: Boolean,enterOperator: Boolean,enterPersent: Boolean,operatorReset: Boolean,result: Boolean){
-        canEnterNumber = enterNumber
-        canEnterOperation = enterOperator
-        canPercentCalculate = enterPersent
-        resetOperator = operatorReset
-        isResult = result
-        Log.d("DebugTag","All boolean variables has been reset")
+
+    private fun errorHandler() // Обработчик ошибки
+    {
+        setStyleView(clearAllButton, R.drawable.style_button_operator)
+        resultText.text = "NaN"
+        historyText.text = "Error"
+        resetAllVariables(
+            enterNumber = true,
+            enterOperator = false,
+            enterPersent = false,
+            operatorReset = false,
+            result = true
+        )
     }
-
-
 }
