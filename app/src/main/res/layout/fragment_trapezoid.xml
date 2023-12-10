@@ -21,13 +21,13 @@
             android:layout_marginHorizontal="12dp"
             android:layout_marginVertical="12dp"
             android:background="@drawable/gray75_box"
-            android:text="@string/text_labelCircle" />
+            android:text="@string/text_labelTrapezoid" />
 
         <TextView
             style="@style/tooltipTextStyle"
             android:layout_margin="8dp"
             android:textSize="18dp"
-            android:text="@string/tooltip_circleText" />
+            android:text="@string/tooltip_trapezoidText" />
 
         <LinearLayout
             style="@style/inputFieldToAreaContainer">
@@ -77,19 +77,25 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <Button
                 android:id="@+id/buttonReset"
-                style="@style/buttonConverterReset"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_number"
+                android:layout_margin="12dp"
                 android:onClick="resetFields"
                 android:text="@string/buttonReset" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <Button
                 android:id="@+id/buttonConvert"
-                style="@style/buttonConverterConvert"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_operator"
+                android:layout_margin="12dp"
                 android:onClick="calculateConvertation"
-                android:text="@string/buttonCalculate" />
+                android:text="@string/buttonConvert" />
         </LinearLayout>
 
     </LinearLayout>

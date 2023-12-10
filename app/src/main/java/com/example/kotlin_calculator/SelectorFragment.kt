@@ -4,25 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 
 class SelectorFragment: Fragment() {
-    private lateinit var buttonWeight: Button
-    private lateinit var buttonLength: Button
-    private lateinit var buttonSpeed: Button
-    private lateinit var buttonData: Button
-    private lateinit var buttonTemperature: Button
-    private lateinit var buttonSquare: Button
+    private lateinit var buttonWeight: ImageButton
+    private lateinit var buttonLength: ImageButton
+    private lateinit var buttonSpeed: ImageButton
+    private lateinit var buttonData: ImageButton
+    private lateinit var buttonTemperature: ImageButton
+    private lateinit var buttonSquare: ImageButton
 
-    private lateinit var buttonParallelepiped: Button
-    private lateinit var buttonTriangle: Button
-    private lateinit var buttonRhombus: Button
-    private lateinit var buttonCircle: Button
-    private lateinit var buttonTrapezoid: Button
+    private lateinit var buttonParallelepiped: ImageButton
+    private lateinit var buttonTriangle: ImageButton
+    private lateinit var buttonRhombus: ImageButton
+    private lateinit var buttonCircle: ImageButton
+    private lateinit var buttonTrapezoid: ImageButton
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(R.layout.fragment_converters, container, false) // Сам view фрагмента
+        val view: View = inflater.inflate(R.layout.fragment_selector, container, false) // Сам view фрагмента
 
         //Ссылки на компоненты
         buttonWeight = view.findViewById(R.id.buttonWeight)

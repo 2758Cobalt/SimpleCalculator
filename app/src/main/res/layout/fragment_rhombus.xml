@@ -113,17 +113,23 @@
 
             <Button
                 android:id="@+id/buttonReset"
-                style="@style/buttonConverterReset"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_number"
+                android:layout_margin="12dp"
                 android:onClick="resetFieldsRhombus"
                 android:text="@string/buttonReset" />
 
             <Button
                 android:id="@+id/buttonConvert"
-                style="@style/buttonConverterConvert"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_operator"
+                android:layout_margin="12dp"
                 android:onClick="calculateRhombus"
-                android:text="@string/buttonCalculate" />
+                android:text="@string/buttonConvert" />
         </LinearLayout>
 
 

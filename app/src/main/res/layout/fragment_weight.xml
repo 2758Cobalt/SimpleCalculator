@@ -82,8 +82,8 @@
 
             <Button
                 android:id="@+id/buttonReset"
+                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/style_button_number"
                 android:layout_margin="12dp"
@@ -92,8 +92,8 @@
 
             <Button
                 android:id="@+id/buttonConvert"
+                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/style_button_operator"
                 android:layout_margin="12dp"

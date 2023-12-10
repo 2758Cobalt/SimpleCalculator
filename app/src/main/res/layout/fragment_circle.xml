@@ -50,19 +50,23 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <Button
                 android:id="@+id/buttonReset"
-                style="@style/buttonConverterReset"
-                android:layout_width="match_parent"
-                android:onClick="resetFields"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_number"
+                android:layout_margin="12dp"
                 android:text="@string/buttonReset" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <Button
                 android:id="@+id/buttonConvert"
-                style="@style/buttonConverterConvert"
-                android:layout_width="match_parent"
-                android:onClick="calculateConvertation"
-                android:text="@string/buttonCalculate" />
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_operator"
+                android:layout_margin="12dp"
+                android:text="@string/buttonConvert" />
         </LinearLayout>
 
     </LinearLayout>
@@ -112,19 +116,23 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <Button
                 android:id="@+id/buttonResetLength"
-                style="@style/buttonConverterReset"
-                android:layout_width="match_parent"
-                android:onClick="resetFields"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_number"
+                android:layout_margin="12dp"
                 android:text="@string/buttonReset" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            <Button
                 android:id="@+id/buttonConvertLength"
-                style="@style/buttonConverterConvert"
-                android:layout_width="match_parent"
-                android:onClick="calculateConvertation"
-                android:text="@string/buttonCalculate" />
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/style_button_operator"
+                android:layout_margin="12dp"
+                android:text="@string/buttonConvert" />
         </LinearLayout>
 
 

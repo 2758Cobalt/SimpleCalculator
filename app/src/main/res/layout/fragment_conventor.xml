@@ -2,9 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,12 +18,12 @@
             android:layout_marginHorizontal="12dp"
             android:layout_marginVertical="12dp"
             android:background="@drawable/gray75_box"
-            android:text="@string/buttonConverterSquare" />
+            android:text="@string/buttonConverterData" />
 
         <TextView
             style="@style/tooltipTextStyle"
             android:layout_margin="8dp"
-            android:text="@string/tooltip_squareText" />
+            android:text="@string/tooltip_dataText" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -71,7 +68,7 @@
             style="@style/displayTextConvert"
             android:background="@drawable/linearlayout_bg_sheet"
             android:layout_margin="12dp"
-            android:hint="@string/buttonConverterSquare"/>
+            android:hint="@string/buttonConverterData"/>
 
 
         <LinearLayout
