@@ -90,7 +90,6 @@ class CalculatorFragment: Fragment() {
         equalButton.setOnClickListener { equalAction() }
         pointButton.setOnClickListener { enterPointAction() }
         backSpaceButton.setOnClickListener { backSpaceAction() }
-
         return view
     }
 
@@ -236,7 +235,6 @@ class CalculatorFragment: Fragment() {
         // Очистка масивов
         numbers.clear()
         operators.clear()
-
         numbers.add(result)
 
         return result
@@ -250,7 +248,6 @@ class CalculatorFragment: Fragment() {
             * 4. Проверяем, что result не пустой(history аналогично result) и тогда меняем старое число на новое в массиве numb
             * Заполняем строку оставшимся символом
             * (Для history принцип аналогичный)*/
-
         try{
             if (!isResult && resultText.text.isNotEmpty()) {
 
@@ -304,7 +301,6 @@ class CalculatorFragment: Fragment() {
         // Очистка массивов
         numbers.clear()
         operators.clear()
-
         numbers.add(0.0)
 
         // Очистка текстовых полей

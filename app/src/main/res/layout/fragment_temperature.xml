@@ -21,7 +21,7 @@
             android:layout_marginHorizontal="12dp"
             android:layout_marginVertical="12dp"
             android:background="@drawable/gray75_box"
-            android:text="@string/buttonConverterTemperature" />
+            android:text="@string/label_temperatureText" />
 
         <TextView
             style="@style/tooltipTextStyle"
@@ -48,7 +48,7 @@
                 android:text="@string/text_To" />
 
             <Spinner
-                android:id="@+id/dropDownIn"
+                android:id="@+id/dropDownTo"
                 style="@style/spinnerConvert" />
 
         </LinearLayout>
@@ -72,7 +72,7 @@
             style="@style/displayTextConvert"
             android:background="@drawable/linearlayout_bg_sheet"
             android:layout_margin="12dp"
-            android:hint="@string/buttonConverterTemperature"/>
+            android:hint="@string/label_temperatureText"/>
 
 
         <LinearLayout

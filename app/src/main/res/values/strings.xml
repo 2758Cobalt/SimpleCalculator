@@ -31,12 +31,15 @@
     <string name="buttonReset">Reset</string>
 
     <string name="buttonConverterSquareFigure">Square figure</string>
-    <string name="buttonConverterWeight">Weight</string>
-    <string name="buttonConverterSquare">Square</string>
-    <string name="buttonConverterData">Data</string>
-    <string name="buttonConverterTemperature">Temperature</string>
-    <string name="buttonConverterLength">Length</string>
-    <string name="buttonConverterSpeed">Speed</string>
+    <string name="label_weightText">Weight</string>
+    <string name="label_lengthText">Length</string>
+    <string name="label_speedText">Speed</string>
+    <string name="label_dataText">Data</string>
+    <string name="label_temperatureText">Temperature</string>
+    <string name="label_areaText">Area</string>
+    <string name="label_volumeText">Volume</string>
+    <string name="label_frequencyText">Frequency</string>
+    <string name="label_fuelConsumptionText">fuel consumption</string>
 
     <string name="text_labelTriangleDefault">Area Triangle</string> <!--Треугольник-->
     <string name="text_labelTriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
@@ -48,7 +51,7 @@
     <string name="text_labelCircleLength">Length of Circle</string> <!--Длина круга-->
     <string name="text_labelTrapezoid">Area Trapezoid</string> <!--Трапеция-->
     <string name="text_labelMath">Mathematics</string>
-    <string name="text_labelQuantities">Quantities</string>
+    <string name="text_labelUnits">Units</string>
 
     <string name="text_error">Error</string>
 
@@ -76,7 +79,11 @@
     <string name="tooltip_speedText">Fill in the field to convert speed</string>
     <string name="tooltip_dataText">Fill in the field to convert data</string>
     <string name="tooltip_temperatureText">Fill in the field to convert temperature</string>
-    <string name="tooltip_squareText">Fill in the field to convert square</string>
+    <string name="tooltip_areaText">Fill in the field to convert square</string>
+
+    <string name="tooltip_volumeText">Fill in the field to convert volume</string>
+    <string name="tooltip_frequencyText">Fill in the field to convert frequency</string>
+    <string name="tooltip_fuelConsumptionText">Fill in the field to convert fuel consumption</string>
 
     <string name="text_In" translatable="false">↓</string>
     <string name="text_To" translatable="false">&#8594;</string>
@@ -109,10 +116,10 @@
 
     <string-array name="speed_values">
         <item>c - Speed of light</item>
-        <item>m/s Meter per second</item>
-        <item>km/h Kilometer per hour</item>
-        <item>km/s Kilometer per second</item>
-        <item>mph Miles per hour</item>
+        <item>m/s - Meter per second</item>
+        <item>km/h - Kilometer per hour</item>
+        <item>km/s - Kilometer per second</item>
+        <item>mph - Miles per hour</item>
         <item>mps - Miles per second</item>
         <item>kn - Nodes</item>
     </string-array>
@@ -135,7 +142,7 @@
         <item>°Re - Réaumur</item>
     </string-array>
 
-    <string-array name="square_values">
+    <string-array name="area_values">
         <item>µ² - micron</item>
         <item>µm² - millimeter</item>
         <item>cm²- centimeter</item>
@@ -149,6 +156,29 @@
         <item>Side and Height</item>
         <item>Side and Angle</item>
         <item>Diagonals of rhombus</item>
+    </string-array>
+
+    <string-array name="volume_values">
+        <item>ml - millilitre</item>
+        <item>l - litre</item>
+        <item>cm³ - cubic meter</item>
+        <item>ft³ - cubic foot</item>
+        <item>in³ - cubic inch</item>
+        <item>gal - gallon</item>
+    </string-array>
+
+    <string-array name="frequency_values">
+        <item>hz - hertz</item>
+        <item>khz - kilohertz</item>
+        <item>mhz - megahertz</item>
+        <item>ghz - gigahertz</item>
+
+    </string-array>
+
+    <string-array name="fuelConsumption_values">
+        <item>km/l - kilometer per liter</item>
+        <item>l/km - liter per 100 kilometres</item>
+        <item>mph/g - mile per gallon</item>
     </string-array>
 
 

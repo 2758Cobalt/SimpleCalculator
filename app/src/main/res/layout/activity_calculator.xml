@@ -37,7 +37,6 @@
         android:id="@+id/calculatorMainMenu"
         android:layout_width="128dp"
         android:layout_height="48dp"
-        android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="32dp"
         android:backgroundTint="@color/gray255"
         android:drawableStart="@drawable/ic_arrow_down"
@@ -48,5 +47,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/selectorBackMenu"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/gray255"
+        android:drawableStart="@drawable/ic_arrow_down"
+        android:paddingHorizontal="16dp"
+        android:text="back"
+        android:textColor="@color/gray150"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
