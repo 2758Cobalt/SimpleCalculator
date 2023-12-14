@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity: AppCompatActivity() {
     private lateinit var calculatorMenu: Button                         // Кнопка меню
-    private lateinit var selectorMenu: Button
 
     private lateinit var calculatorContainer : FrameLayout
     private lateinit var selectorContainer : FrameLayout
@@ -22,13 +21,11 @@ class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calculator)
+        setContentView(R.layout.activity_main)
 
         calculatorMenu = findViewById(R.id.calculatorMainMenu)         // Ссылка на кнопку "SwitchSelector"
-        selectorMenu = findViewById(R.id.selectorBackMenu)         // Ссылка на кнопку "BackToSelector"
 
         calculatorContainer = findViewById(R.id.fragment_container_calculator)
-        selectorContainer = findViewById(R.id.fragment_container_selector)
 
         val ft = supportFragmentManager.beginTransaction()
 
@@ -37,7 +34,6 @@ class MainActivity: AppCompatActivity() {
         ft.commit()
 
         calculatorMenu.setOnClickListener { selectorSwitch() }
-        selectorMenu.setOnClickListener { ft.replace(R.id.fragment_container_selector, SelectorFragment()) }
     }
 
     private fun selectorSwitch() {
