@@ -30,7 +30,6 @@
     <string name="buttonCalculate">Calculate</string>
     <string name="buttonReset">Reset</string>
 
-    <string name="buttonConverterSquareFigure">Square figure</string>
     <string name="label_weightText">Weight</string>
     <string name="label_lengthText">Length</string>
     <string name="label_speedText">Speed</string>
@@ -41,21 +40,27 @@
     <string name="label_frequencyText">Frequency</string>
     <string name="label_fuelConsumptionText">fuel consumption</string>
 
-    <string name="text_labelTriangleDefault">Area Triangle</string> <!--Треугольник-->
-    <string name="text_labelTriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
-    <string name="text_labelTriangleEquilateral">Area equilateral Triangle</string> <!--Равносторонний-->
+    <string name="label_TriangleDefault">Area Triangle</string> <!--Треугольник-->
+    <string name="label_TriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
+    <string name="label_TriangleEquilateral">Area equilateral Triangle</string> <!--Равносторонний-->
+
+    <!--  Переименовать  -->
     <string name="text_labelRhombus">Area Rhombus</string> <!--Ромб-->
-    <string name="text_labelParallelepiped">Area Parallelepiped</string> <!--Параллелепипед-->
+    <string name="label_parallelepiped">Area Parallelepiped</string> <!--Параллелепипед-->
     <string name="text_labelParallelogram">Area Parallelogram</string> <!--Параллелограмм-->
     <string name="text_labelCircle">Area Circle</string> <!--Круг-->
     <string name="text_labelCircleLength">Length of Circle</string> <!--Длина круга-->
     <string name="text_labelTrapezoid">Area Trapezoid</string> <!--Трапеция-->
-    <string name="text_labelMath">Mathematics</string>
-    <string name="text_labelUnits">Units</string>
+
+    <string name="label_algebraCalculator" translatable="false">Algebra calculator</string>
+    <string name="label_geometryCalculator" translatable="false">Geometry calculator</string>
+
+    <string name="label_geometryCategory">Geometry</string>
+    <string name="label_algebraCategory">Algebra</string>
+    <string name="label_unitsCategory">Units</string>s
 
     <string name="text_error">Error</string>
 
-    <!--Cube tooltip-->
     <string name="hint_sideA">Side A</string>
     <string name="hint_sideB">Side B</string>
     <string name="hint_sideC">Side C</string>
@@ -64,10 +69,10 @@
     <string name="hint_radius">Radius</string>
     <string name="hint_height">Height</string>
     <string name="hint_speed">Speed</string>
-
     <string name="hint_diagonalFirst">Diagonal 1</string>
     <string name="hint_diagonalSecond">Diagonal 2</string>
 
+    <!--Tooltips-->
     <string name="tooltip_parallelepipedText">Enter the sides of the parallelepiped (if you need a rectangle, leave the field C blank or C = 0)</string>
     <string name="tooltip_triangleText">Enter the sides of the triangle. The area is calculated using Heron\'s formula</string>
     <string name="tooltip_rhombusText">Fill only for need field and choose variant calculating of area of the rhombus</string>
@@ -84,17 +89,16 @@
     <string name="tooltip_volumeText">Fill in the field to convert volume</string>
     <string name="tooltip_frequencyText">Fill in the field to convert frequency</string>
     <string name="tooltip_fuelConsumptionText">Fill in the field to convert fuel consumption</string>
+    <string name="tooltip_item">Item</string>
+    <string name="tooltip_value">Value</string>
+    <string name="tooltip_enterText">Enter the number</string>
 
     <string name="text_In" translatable="false">↓</string>
     <string name="text_To" translatable="false">&#8594;</string>
     <string name="text_Selector">Convertors</string>
 
-    <string name="tooltip_item">Item</string>
-    <string name="tooltip_value">Value</string>
-
-    <string name="tooltip_enterText">Enter the number</string>
-
-    <string-array name="weight_values">
+    <!--Units Arrays-->
+    <string-array name="weight_units">
         <item>μg - micrograms</item>
         <item>mg - milligram</item>
         <item>g - gram</item>
@@ -104,7 +108,7 @@
         <item>mt - megaton</item>
     </string-array>
 
-    <string-array name="length_values">
+    <string-array name="length_units">
         <item>nm - nanometer</item>
         <item>µm - micrometer</item>
         <item>mm - millimeter</item>
@@ -114,7 +118,7 @@
         <item>km - kilometer</item>
     </string-array>
 
-    <string-array name="speed_values">
+    <string-array name="speed_units">
         <item>c - Speed of light</item>
         <item>m/s - Meter per second</item>
         <item>km/h - Kilometer per hour</item>
@@ -124,7 +128,7 @@
         <item>kn - Nodes</item>
     </string-array>
 
-    <string-array name="data_values">
+    <string-array name="data_units">
         <item>B - byte</item>
         <item>KB - kilobyte</item>
         <item>MB - megabyte</item>
@@ -134,28 +138,12 @@
         <item>EB - exabyte</item>
     </string-array>
 
-    <string-array name="temperature_values">
+    <string-array name="temperature_units">
         <item>°C - Celsius</item>
         <item>℉ - Faringate</item>
         <item>K - Kelvin</item>
         <item>°R - Rankine</item>
         <item>°Re - Réaumur</item>
-    </string-array>
-
-    <string-array name="area_values">
-        <item>µ² - micron</item>
-        <item>µm² - millimeter</item>
-        <item>cm²- centimeter</item>
-        <item>dm² - decimeter</item>
-        <item>m² - meter</item>
-        <item>km² - kilometer</item>
-        <item>ha - hectare</item>
-    </string-array>
-
-    <string-array name="rhombus_formulas">
-        <item>Side and Height</item>
-        <item>Side and Angle</item>
-        <item>Diagonals of rhombus</item>
     </string-array>
 
     <string-array name="volume_values">

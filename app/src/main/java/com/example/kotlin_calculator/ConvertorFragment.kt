@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Spinner
@@ -19,7 +18,7 @@ import androidx.fragment.app.Fragment
 class ConvertorFragment: Fragment() {
     private lateinit var constants : Array<String>
 
-    private val constantsData = Constants.constantsData
+    private val constantsData = Constants.constantsConvertsData
 
     private lateinit var labelConvertor : TextView
     private lateinit var tooltipConvertor : TextView
@@ -35,7 +34,7 @@ class ConvertorFragment: Fragment() {
     private var dataId = 0 // Набор данных
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_conventor, container, false) // View фрагмента
+        val view = inflater.inflate(R.layout.fragment_convertor, container, false) // View фрагмента
 
         labelConvertor = view.findViewById(R.id.labelConvertor)
         tooltipConvertor = view.findViewById(R.id.tooltipConvertor)

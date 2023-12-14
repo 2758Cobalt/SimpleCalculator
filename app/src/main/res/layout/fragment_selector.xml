@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -10,22 +10,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        android:background="@drawable/linearlayout_bg_sheet"
-        android:backgroundTint="#EFEFEF"
         android:textColor="@color/black"
-        android:layout_gravity="center_horizontal"
-        android:elevation="8dp"
-        android:text="@string/text_labelUnits"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textSize="24sp" />
+        android:text="@string/label_unitsCategory"
+        android:textSize="16sp" />
 
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
-        app:columnCount="3"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        app:columnCount="3">
 
         <ImageButton
             android:id="@+id/buttonWeight"
@@ -70,6 +64,13 @@
             android:text="@string/label_volumeText" />
 
         <ImageButton
+            android:id="@+id/buttonArea"
+            style="@style/buttonTile"
+            android:src="@drawable/constant_stretching"
+            android:contentDescription="@string/label_areaText"
+            android:text="@string/label_areaText" />
+
+        <ImageButton
             android:id="@+id/buttonFrequency"
             style="@style/buttonTile"
             android:src="@drawable/constant_frequency"
@@ -85,6 +86,14 @@
 
     </androidx.gridlayout.widget.GridLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:textColor="@color/black"
+        android:text="@string/label_geometryCategory"
+        android:textSize="16sp" />
+
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,87 +102,87 @@
         android:layout_gravity="center_horizontal">
 
         <ImageButton
-            android:id="@+id/buttonArea"
+            android:id="@+id/buttonGeometryParallelepiped"
             style="@style/buttonTile"
-            android:src="@drawable/area_square"
+            android:src="@drawable/area_rectangle"
             android:contentDescription="@string/label_areaText"
             android:text="@string/label_areaText" />
 
         <ImageButton
-            android:id="@+id/buttonParallelepiped"
+            android:id="@+id/buttonGeometryCube"
             style="@style/buttonTile"
-            android:src="@drawable/area_rectangle"
-            android:contentDescription="@string/tooltip_parallelepipedText"
-            android:text="@string/text_labelParallelepiped" />
+            android:src="@drawable/area_cube"
+            android:contentDescription="@string/label_parallelepiped"
+            android:text="@string/label_parallelepiped" />
 
-        <ImageButton
-            android:id="@+id/buttonRhombus"
-            style="@style/buttonTile"
-            android:src="@drawable/area_rhombus"
-            android:contentDescription="@string/tooltip_rhombusText"
-            android:text="@string/text_labelRhombus" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/buttonRhombus"-->
+<!--            style="@style/buttonTile"-->
+<!--            android:src="@drawable/area_rhombus"-->
+<!--            android:contentDescription="@string/tooltip_rhombusText"-->
+<!--            android:text="@string/text_labelRhombus" />-->
 
-        <ImageButton
-            android:id="@+id/buttonTrapezoid"
-            style="@style/buttonTile"
-            android:src="@drawable/area_trapezium"
-            android:contentDescription="@string/tooltip_trapezoidText"
-            android:text="@string/text_labelTrapezoid"/>
+<!--        <ImageButton-->
+<!--            android:id="@+id/buttonTrapezoid"-->
+<!--            style="@style/buttonTile"-->
+<!--            android:src="@drawable/area_trapezium"-->
+<!--            android:contentDescription="@string/tooltip_trapezoidText"-->
+<!--            android:text="@string/text_labelTrapezoid"/>-->
 
     </androidx.gridlayout.widget.GridLayout>
 
-    <androidx.gridlayout.widget.GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:columnCount="3"
-        android:layout_gravity="center_horizontal">
+<!--    <androidx.gridlayout.widget.GridLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginVertical="8dp"-->
+<!--        app:columnCount="3"-->
+<!--        android:layout_gravity="center_horizontal">-->
 
-        <ImageButton
-            android:id="@+id/buttonTriangle"
-            style="@style/buttonTile"
-            android:src="@drawable/area_triangle"
-            android:contentDescription="@string/tooltip_triangleText"
-            android:text="@string/text_labelTriangleDefault"/>
-        <ImageButton
-            android:id="@+id/buttonIsoscelesTriangle"
-            style="@style/buttonTile"
-            android:src="@drawable/area_triangle"
-            android:contentDescription="@string/tooltip_triangleText"
-            android:text="@string/text_labelTriangleDefault"/>
-        <ImageButton
-            android:id="@+id/buttonEquilateralTriangle"
-            style="@style/buttonTile"
-            android:src="@drawable/area_triangle"
-            android:contentDescription="@string/tooltip_triangleText"
-            android:text="@string/text_labelTriangleDefault"/>
+<!--        <ImageButton-->
+<!--            android:id="@+id/buttonTriangle"-->
+<!--            style="@style/buttonTile"-->
+<!--            android:src="@drawable/area_triangle"-->
+<!--            android:contentDescription="@string/tooltip_triangleText"-->
+<!--            android:text="@string/text_labelTriangleDefault"/>-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/buttonIsoscelesTriangle"-->
+<!--            style="@style/buttonTile"-->
+<!--            android:src="@drawable/area_triangle"-->
+<!--            android:contentDescription="@string/tooltip_triangleText"-->
+<!--            android:text="@string/text_labelTriangleDefault"/>-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/buttonEquilateralTriangle"-->
+<!--            style="@style/buttonTile"-->
+<!--            android:src="@drawable/area_triangle"-->
+<!--            android:contentDescription="@string/tooltip_triangleText"-->
+<!--            android:text="@string/text_labelTriangleDefault"/>-->
 
-    </androidx.gridlayout.widget.GridLayout>
+<!--    </androidx.gridlayout.widget.GridLayout>-->
 
-    <androidx.gridlayout.widget.GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:columnCount="3"
-        android:layout_gravity="center_horizontal">
+<!--    <androidx.gridlayout.widget.GridLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginVertical="8dp"-->
+<!--        app:columnCount="3"-->
+<!--        android:layout_gravity="center_horizontal">-->
 
-        <ImageButton
-            android:id="@+id/buttonCircle"
-            style="@style/buttonTile"
-            android:src="@drawable/area_circle"
-            android:contentDescription="@string/tooltip_circleText"
-            android:text="@string/text_labelCircle"/>
+<!--        <ImageButton-->
+<!--            android:id="@+id/buttonCircle"-->
+<!--            style="@style/buttonTile"-->
+<!--            android:src="@drawable/area_circle"-->
+<!--            android:contentDescription="@string/tooltip_circleText"-->
+<!--            android:text="@string/text_labelCircle"/>-->
 
-        <ImageButton
-            android:id="@+id/buttonLengthCircle"
-            style="@style/buttonTile"
-            android:src="@drawable/area_circle"
-            android:contentDescription="@string/tooltip_circleText"
-            android:text="@string/text_labelCircle"/>
+<!--        <ImageButton-->
+<!--            android:id="@+id/buttonLengthCircle"-->
+<!--            style="@style/buttonTile"-->
+<!--            android:src="@drawable/area_circle"-->
+<!--            android:contentDescription="@string/tooltip_circleText"-->
+<!--            android:text="@string/text_labelCircle"/>-->
 
 
 
-    </androidx.gridlayout.widget.GridLayout>
+<!--    </androidx.gridlayout.widget.GridLayout>-->
 
 
 </LinearLayout>

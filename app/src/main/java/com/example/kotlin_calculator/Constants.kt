@@ -1,19 +1,27 @@
 package com.example.kotlin_calculator
 
+import android.widget.EditText
+
 object Constants {
     // Данный файл представляет собой набор ссылок и массивов для классов программы.
     // Файл созданый с целью отделить содержимое, улучшив читабельность кода
 
     // Набор данных, нужных для метода dataSetIdGetting() класса ConvertorFragment.kt
-    val constantsData: Array<Triple<Int, Int, Int>> = arrayOf(
-        Triple(R.string.label_weightText, R.string.tooltip_weightText, R.array.weight_values),
-        Triple(R.string.label_lengthText, R.string.tooltip_lengthText, R.array.length_values),
-        Triple(R.string.label_speedText, R.string.tooltip_speedText, R.array.speed_values),
-        Triple(R.string.label_dataText, R.string.tooltip_dataText, R.array.data_values),
-        Triple(R.string.label_temperatureText, R.string.tooltip_temperatureText, R.array.temperature_values),
+    val constantsConvertsData: Array<Triple<Int, Int, Int>> = arrayOf(
+        Triple(R.string.label_weightText, R.string.tooltip_weightText, R.array.weight_units),
+        Triple(R.string.label_lengthText, R.string.tooltip_lengthText, R.array.length_units),
+        Triple(R.string.label_speedText, R.string.tooltip_speedText, R.array.speed_units),
+        Triple(R.string.label_dataText, R.string.tooltip_dataText, R.array.data_units),
+        Triple(R.string.label_temperatureText, R.string.tooltip_temperatureText, R.array.temperature_units),
         Triple(R.string.label_volumeText, R.string.tooltip_volumeText, R.array.volume_values),
         Triple(R.string.label_frequencyText, R.string.tooltip_frequencyText, R.array.frequency_values),
         Triple(R.string.label_fuelConsumptionText, R.string.tooltip_fuelConsumptionText, R.array.fuelConsumption_values))
+
+    val constantsAlgebraData: Array<Array<Int>> = arrayOf(
+        arrayOf(R.string.label_parallelepiped, R.string.tooltip_parallelepipedText),
+        arrayOf(R.string.label_dataText, R.string.tooltip_dataText)
+    )
+
 
     // Нужны для метода dataToConvert() класса ConvertorFragment.kt
     val weightConvert : Array<Array<Double>> = arrayOf(

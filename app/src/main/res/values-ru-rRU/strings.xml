@@ -17,12 +17,15 @@
     <string name="label_temperatureText">Температура</string>
     <string name="buttonConvert">Конвертировать</string>
     <string name="text_Selector">Конверторы</string>
+    <string name="tooltip_volumeText">Заполните поле для конвертации объёма</string>
+    <string name="tooltip_frequencyText">Заполните поле для конвертации частот</string>
+    <string name="tooltip_fuelConsumptionText">Заполните поле для конвертации расхода топлива</string>
     <string name="tooltip_item">Величина</string>
     <string name="tooltip_value">Значение</string>
     <string name="buttonReset">Сбросить</string>
     <string name="tooltip_enterText">Введите число</string>
 
-    <string-array name="weight_values">
+    <string-array name="weight_units">
         <item>μg - Микрограмм</item>
         <item>mg - Миллиграмм</item>
         <item>g - Грамм</item>
@@ -32,7 +35,7 @@
         <item>mt - Мегатонна</item>
     </string-array>
 
-    <string-array name="length_values">
+    <string-array name="length_units">
         <item>nm - Нанометр</item>
         <item>µm - Микрометр</item>
         <item>mm - Миллиметр</item>
@@ -42,7 +45,7 @@
         <item>km - Километр</item>
     </string-array>
 
-    <string-array name="speed_values">
+    <string-array name="speed_units">
         <item>c - Скорость света</item>
         <item>м/с - Метры в секунду</item>
         <item>км/ч - Километры в час</item>
@@ -52,7 +55,7 @@
         <item>kn - Узлы</item>
     </string-array>
 
-    <string-array name="data_values">
+    <string-array name="data_units">
         <item>B - Байт</item>
         <item>KB - Килобайт</item>
         <item>MB - Мегабайт</item>
@@ -62,7 +65,7 @@
         <item>EB - Эксабайт</item>
     </string-array>
 
-    <string-array name="temperature_values">
+    <string-array name="temperature_units">
         <item>°C - Цельсий</item>
         <item>℉ - Фаренгейт</item>
         <item>K - Кельвин</item>
@@ -86,11 +89,12 @@
         <item>Диагонали ромба</item>
     </string-array>
 
-    <string name="text_labelTriangleDefault">Площадь треугольника</string>
-    <string name="text_labelTriangleIsosceles">Площадь равнобедренного треугольника</string>
-    <string name="text_labelTriangleEquilateral">Площадь равностороннего треугольника</string>
-    <string name="text_labelParallelepiped">Площадь параллелепипеда</string>
-    <string name="text_labelMath">Математика</string>
+    <string name="label_TriangleDefault">Площадь треугольника</string>
+    <string name="label_TriangleIsosceles">Площадь равнобедренного треугольника</string>
+    <string name="label_TriangleEquilateral">Площадь равностороннего треугольника</string>
+    <string name="label_parallelepiped">Площадь параллелепипеда</string>
+    <string name="label_geometryCategory">Геометрия</string>
+    <string name="label_algebraCategory">Алгебра</string>
 
     <string name="hint_sideA">Сторона A</string>
     <string name="hint_sideB">Сторона B</string>
@@ -126,7 +130,7 @@
 
     <string name="text_labelCircleLength">Длина круга</string>
 
-    <string name="text_labelUnits">Величины</string>
+    <string name="label_unitsCategory">Калькулятор единиц</string>
     <string name="text_error">Ошибка</string>
     <string name="label_volumeText">Объём</string>
     <string name="label_frequencyText">Частота</string>

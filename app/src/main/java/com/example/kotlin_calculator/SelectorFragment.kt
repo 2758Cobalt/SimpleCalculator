@@ -32,6 +32,21 @@ class SelectorFragment: Fragment() {
             }
         }
 
+        val btn = view.findViewById(R.id.buttonGeometryParallelepiped) as ImageButton
+        val btnCube = view.findViewById(R.id.buttonGeometryCube) as ImageButton
+
+        btn.setOnClickListener {
+            val calculatorAlgebra = MathFigureFragment()
+            calculatorAlgebra.dataIdSet(0)
+            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, calculatorAlgebra).commit()
+        }
+
+        btnCube.setOnClickListener {
+            val calculatorAlgebra = MathFigureFragment()
+            calculatorAlgebra.dataIdSet(1)
+            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, calculatorAlgebra).commit()
+        }
+
 
         return view
     }

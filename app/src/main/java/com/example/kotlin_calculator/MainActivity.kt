@@ -26,6 +26,7 @@ class MainActivity: AppCompatActivity() {
         calculatorMenu = findViewById(R.id.calculatorMainMenu)         // Ссылка на кнопку "SwitchSelector"
 
         calculatorContainer = findViewById(R.id.fragment_container_calculator)
+        selectorContainer = findViewById(R.id.fragment_container_selector)
 
         val ft = supportFragmentManager.beginTransaction()
 
