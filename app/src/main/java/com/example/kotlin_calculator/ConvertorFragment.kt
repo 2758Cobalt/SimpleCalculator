@@ -13,11 +13,11 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 class ConvertorFragment: Fragment() {
     private lateinit var constants : Array<String>
-
     private val constantsData = Constants.constantsConvertsData
 
     private lateinit var labelConvertor : TextView
@@ -47,6 +47,10 @@ class ConvertorFragment: Fragment() {
         dropDownTo = view.findViewById(R.id.dropDownTo)
 
         buttonReset = view.findViewById(R.id.buttonReset)
+
+        val btnBack = view.findViewById(R.id.backToMenu) as ImageButton
+
+        btnBack.setOnClickListener {parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, SelectorFragment()).commit()  }
 
         buttonReset.setOnClickListener { resetFieldsAction() }
 
@@ -105,13 +109,16 @@ class ConvertorFragment: Fragment() {
 
             // Расчёт результата конвертации
             result = inputValue / dataMatrixCoefficient[fromIndex][toIndex]
-            Log.i("DebugTag",dataMatrixCoefficient[fromIndex][toIndex].toString())
 
             // Вывод результата
             resultConvert.text = result.toString()
 
         }
-        catch (_: NumberFormatException){
+        catch (ex: NumberFormatException){
+            Toast.makeText(context,"Перехвачено исключение: ${ex}",Toast.LENGTH_SHORT).show()
+        }
+        catch (ex: ArrayIndexOutOfBoundsException){
+            Toast.makeText(context,"Перехвачено исключение: ${ex}",Toast.LENGTH_SHORT).show()
         }
 
 
@@ -137,6 +144,9 @@ class ConvertorFragment: Fragment() {
             5 -> Constants.volumeConvert                // Объём
             6 -> Constants.frequencyConvert             // Частота
             7 -> Constants.fuelConsumptionConvert       // Расход топлива
+            8 -> Constants.pressureConvert              // Давление
+            9 -> Constants.powerConvert                 // Мощность
+            10 -> Constants.energyConvert               // Енергия
             else -> emptyArray()
         }
     }

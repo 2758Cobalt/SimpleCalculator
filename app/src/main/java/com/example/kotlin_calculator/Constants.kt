@@ -1,7 +1,5 @@
 package com.example.kotlin_calculator
 
-import android.widget.EditText
-
 object Constants {
     // Данный файл представляет собой набор ссылок и массивов для классов программы.
     // Файл созданый с целью отделить содержимое, улучшив читабельность кода
@@ -13,9 +11,12 @@ object Constants {
         Triple(R.string.label_speedText, R.string.tooltip_speedText, R.array.speed_units),
         Triple(R.string.label_dataText, R.string.tooltip_dataText, R.array.data_units),
         Triple(R.string.label_temperatureText, R.string.tooltip_temperatureText, R.array.temperature_units),
-        Triple(R.string.label_volumeText, R.string.tooltip_volumeText, R.array.volume_values),
-        Triple(R.string.label_frequencyText, R.string.tooltip_frequencyText, R.array.frequency_values),
-        Triple(R.string.label_fuelConsumptionText, R.string.tooltip_fuelConsumptionText, R.array.fuelConsumption_values))
+        Triple(R.string.label_volumeText, R.string.tooltip_volumeText, R.array.volume_units),
+        Triple(R.string.label_frequencyText, R.string.tooltip_frequencyText, R.array.frequency_units),
+        Triple(R.string.label_fuelConsumptionText, R.string.tooltip_fuelConsumptionText, R.array.fuelConsumption_units),
+        Triple(R.string.label_pressureText, R.string.tooltip_fuelConsumptionText, R.array.pressure_units),
+        Triple(R.string.label_powerText, R.string.tooltip_powerText, R.array.power_units),
+        Triple(R.string.label_energyText, R.string.tooltip_energyText, R.array.energy_units))
 
     val constantsAlgebraData: Array<Array<Int>> = arrayOf(
         arrayOf(R.string.label_parallelepiped, R.string.tooltip_parallelepipedText),
@@ -85,6 +86,35 @@ object Constants {
         arrayOf(1.0, 0.01, 0.425144),          // Километры на литр
         arrayOf(0.01, 1.0, 0.00425144),        // Литры на 100 километров
         arrayOf(2.352, .00425144, 1.0)         // Мили на 100 галлон США
+    )
+    val pressureConvert: Array<Array<Double>> = arrayOf(
+        //    Атмосфер      Бар           Паскаль
+        arrayOf(1.0,        (1 / 1.013),   (1 / 101325.0)), // Атмосфер
+        arrayOf(1.013,      1.0,           (1 / 1e5)),      // Бар
+        arrayOf(101325.0,   1e5,           1.0)             // Паскаль
+    )
+
+    val powerConvert: Array<Array<Double>> = arrayOf(
+        //     Ватт          Киловатт   Мегаватт   Гигаватт    Лошадиная сила
+        arrayOf(1.0,         1000.0,    1e6,       1e9,        735.5),              // Ватт
+        arrayOf(0.001,       1.0,       1000.0,    1e6,       (1 / 1.341)),         // Киловатт
+        arrayOf(1e-6,        0.001,     1.0,        1000.0,      (1 / 1341.0)),     // Мегаватт
+        arrayOf(1e-9,        1e-6,      0.001,    1.0,        (1 / 1.341e6)),       // Гигаватт
+        arrayOf((1 / 745.7), 1.341,     1341.0,     1.341e6,  1.0)                  // Лошадиная сила
+    )
+    val energyConvert: Array<Array<Double>> = arrayOf(
+        //     Джоуль       Калория     Килокалория   Ватт-час  Квт-час     Электронвольт   БТЕ         Терм        Фут-фунт    Эрг          Час  лошадь. силы
+        arrayOf(1.0,        4.184,      4184.0,       3600.0,   3.6e6,      (1 / 6.42e18),  1055.0,     105587000.0,1.356,      1e7,         (1 / 3.776726714733e-7)),     // Джоуль
+        arrayOf(4.184,      1.0,        1e-3,         1.16e-6,  3.27e-10,   2.62e+18,       3.965,      1e-5,       308.9,      4.184e7,     1e-24),        // Калория
+        arrayOf(4.184e3,    1e3,        1.0,          1.16e-3,  3.27e-7,    2.62e+21,       3.965e3,    1e-2,       308900.0,   4.184e10,    1e-21),        // Килокалория
+        arrayOf(3.6e6,      8.6e5,      860.0,        1.0,      2.78e-4,    2.24e+22,       3.412e6,    8.6e-3,     2.655e6,    3.6e13,      8.6e-20),      // Ватт-час
+        arrayOf(3.6e9,      8.6e8,      8.6e5,        1e3,      1.0,        2.24e+25,       3.412e9,    8.6,        2.655e9,    3.6e16,      8.6e-17),      // Киловатт-час
+        arrayOf(1.602e-19,  3.827e-20,  3.827e-23,    4.45e-26, 1.24e-29,   1.0,            1.518e-22,  3.827e-31,  1.181e-23,  1.602e-12,   3.827e-38),    // Электронвольт
+        arrayOf(1.055e3,    2.52e2,     2.52e-1,      2.93e-4,  8.21e-8,    6.59e+21,       1.0,        2.52e-5,    778.2,      1.055e10,    2.52e-22),     // БТЕ
+        arrayOf(1.055e11,   2.52e10,    2.52e7,       2.93e4,   8.21e-1,    6.59e+24,       1.0e4,      2.52e-1,    7.782e7,    1.055e14,    2.52),         // Терм
+        arrayOf(1.3558,     3.24e-1,    3.24e-4,      3.77e-7,  1.05e-10,   8.42e+17,       1.2851e-3,  3.24e-8,    1.0,        1.3558e6,    3.24e-14),     // Фут-фунт
+        arrayOf(1e-7,       2.39e-8,    2.39e-11,     2.78e-14, 7.78e-18,   6.24e+11,       9.48e-8,    2.39e-15,   7.38e-5,    1e-3,        2.39e-21),     // Эрг
+        arrayOf(1.3558e6,   3.24e5,     3.24e2,       3.77e-1,  1.05e-4,    8.42e+23,       1.2851e3,   3.24e-2,    1.0e3,      1.3558,      3.24e-11)      // Час лошадиной силы
     )
 
 /* Принцип работы с массивами метода dataToConvert():

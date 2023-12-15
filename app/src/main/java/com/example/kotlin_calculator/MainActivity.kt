@@ -10,13 +10,16 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.system.exitProcess
 
 
 class MainActivity: AppCompatActivity() {
-    private lateinit var calculatorMenu: Button                         // Кнопка меню
-
     private lateinit var calculatorContainer : FrameLayout
     private lateinit var selectorContainer : FrameLayout
+
+    private lateinit var calculatorMenu: Button       // Кнопка меню
+    private lateinit var exitAppButton : Button       // Кнопка  Выхода
+
     private var selectorMode : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +30,7 @@ class MainActivity: AppCompatActivity() {
 
         calculatorContainer = findViewById(R.id.fragment_container_calculator)
         selectorContainer = findViewById(R.id.fragment_container_selector)
+        exitAppButton = findViewById(R.id.exitApp)
 
         val ft = supportFragmentManager.beginTransaction()
 
@@ -35,6 +39,7 @@ class MainActivity: AppCompatActivity() {
         ft.commit()
 
         calculatorMenu.setOnClickListener { selectorSwitch() }
+        exitAppButton.setOnClickListener { exitProcess(0) }
     }
 
     private fun selectorSwitch() {

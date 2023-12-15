@@ -4,6 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageButton
+        android:id="@+id/backToMenu"
+        style="@style/buttonStyleOperator"
+        android:layout_width="64dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_back"
+        android:contentDescription="@string/buttonPrevious"
+        android:text="@string/buttonPrevious" />
+
     <LinearLayout
         android:background="@drawable/linearlayout_bg_sheet"
         android:layout_width="match_parent"

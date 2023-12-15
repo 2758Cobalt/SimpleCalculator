@@ -21,7 +21,14 @@ class SelectorFragment: Fragment() {
             view.findViewById(R.id.buttonTemperature) as ImageButton,
             view.findViewById(R.id.buttonVolume) as ImageButton,
             view.findViewById(R.id.buttonFrequency) as ImageButton,
-            view.findViewById(R.id.buttonFuelConsumption) as ImageButton
+            view.findViewById(R.id.buttonFuelConsumption) as ImageButton,
+            view.findViewById(R.id.buttonPressure) as ImageButton,
+            view.findViewById(R.id.buttonPower) as ImageButton,
+            view.findViewById(R.id.buttonEnergy) as ImageButton
+        )
+        val mathButtons = arrayOf(
+            view.findViewById(R.id.buttonGeometryParallelepiped) as ImageButton,
+            view.findViewById(R.id.buttonGeometryCube) as ImageButton,
         )
 
         for ((index, button) in unitButtons.withIndex()) {
@@ -32,19 +39,12 @@ class SelectorFragment: Fragment() {
             }
         }
 
-        val btn = view.findViewById(R.id.buttonGeometryParallelepiped) as ImageButton
-        val btnCube = view.findViewById(R.id.buttonGeometryCube) as ImageButton
-
-        btn.setOnClickListener {
-            val calculatorAlgebra = MathFigureFragment()
-            calculatorAlgebra.dataIdSet(0)
-            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, calculatorAlgebra).commit()
-        }
-
-        btnCube.setOnClickListener {
-            val calculatorAlgebra = MathFigureFragment()
-            calculatorAlgebra.dataIdSet(1)
-            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, calculatorAlgebra).commit()
+        for ((index, button) in mathButtons.withIndex()) {
+            button.setOnClickListener {
+                val calculatorAlgebra = MathFigureFragment()
+                calculatorAlgebra.dataIdSet(index)
+                parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, calculatorAlgebra).commit()
+            }
         }
 
 

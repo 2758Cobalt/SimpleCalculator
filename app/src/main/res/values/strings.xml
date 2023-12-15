@@ -39,6 +39,9 @@
     <string name="label_volumeText">Volume</string>
     <string name="label_frequencyText">Frequency</string>
     <string name="label_fuelConsumptionText">fuel consumption</string>
+    <string name="label_pressureText">Pressure</string>
+    <string name="label_powerText">Power</string>
+    <string name="label_energyText">Energy</string>
 
     <string name="label_TriangleDefault">Area Triangle</string> <!--Треугольник-->
     <string name="label_TriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
@@ -47,6 +50,7 @@
     <!--  Переименовать  -->
     <string name="text_labelRhombus">Area Rhombus</string> <!--Ромб-->
     <string name="label_parallelepiped">Area Parallelepiped</string> <!--Параллелепипед-->
+    <string name="label_cube">Area Cube</string> <!--Куб-->
     <string name="text_labelParallelogram">Area Parallelogram</string> <!--Параллелограмм-->
     <string name="text_labelCircle">Area Circle</string> <!--Круг-->
     <string name="text_labelCircleLength">Length of Circle</string> <!--Длина круга-->
@@ -89,6 +93,10 @@
     <string name="tooltip_volumeText">Fill in the field to convert volume</string>
     <string name="tooltip_frequencyText">Fill in the field to convert frequency</string>
     <string name="tooltip_fuelConsumptionText">Fill in the field to convert fuel consumption</string>
+    <string name="tooltip_pressureText">Fill in the field to convert pressure</string>
+    <string name="tooltip_powerText">Fill in the field to convert power</string>
+    <string name="tooltip_energyText">Fill in the field to convert energy</string>
+
     <string name="tooltip_item">Item</string>
     <string name="tooltip_value">Value</string>
     <string name="tooltip_enterText">Enter the number</string>
@@ -99,75 +107,102 @@
 
     <!--Units Arrays-->
     <string-array name="weight_units">
-        <item>μg - micrograms</item>
-        <item>mg - milligram</item>
-        <item>g - gram</item>
-        <item>kg - kilogram</item>
-        <item>t - tonne</item>
-        <item>kt - kiloton</item>
-        <item>mt - megaton</item>
+        <item>μg - micrograms</item>                        <!-- Микрограммы -->
+        <item>mg - milligram</item>                         <!-- Миллиграммы -->
+        <item>g - gram</item>                               <!-- Граммы -->
+        <item>kg - kilogram</item>                          <!-- Килограммы -->
+        <item>t - tonne</item>                              <!-- Тонны -->
+        <item>kt - kiloton</item>                           <!-- Килотонны -->
+        <item>mt - megaton</item>                           <!-- Мегатонны -->
     </string-array>
 
     <string-array name="length_units">
-        <item>nm - nanometer</item>
-        <item>µm - micrometer</item>
-        <item>mm - millimeter</item>
-        <item>cm - centimeter</item>
-        <item>dm - decimeter</item>
-        <item>m - meter</item>
-        <item>km - kilometer</item>
+        <item>nm - nanometer</item>                         <!-- Нанометры -->
+        <item>µm - micrometer</item>                        <!-- Микрометры -->
+        <item>mm - millimeter</item>                        <!-- Миллиметры -->
+        <item>cm - centimeter</item>                        <!-- Сантиметры -->
+        <item>dm - decimeter</item>                         <!-- Дециметры -->
+        <item>m - meter</item>                              <!-- Метры -->
+        <item>km - kilometer</item>                         <!-- Километры -->
     </string-array>
 
     <string-array name="speed_units">
-        <item>c - Speed of light</item>
-        <item>m/s - Meter per second</item>
-        <item>km/h - Kilometer per hour</item>
-        <item>km/s - Kilometer per second</item>
-        <item>mph - Miles per hour</item>
-        <item>mps - Miles per second</item>
-        <item>kn - Nodes</item>
+        <item>c - Speed of light</item>                     <!-- Скорость света -->
+        <item>m/s - Meter per second</item>                 <!-- Метры в секунду -->
+        <item>km/h - Kilometer per hour</item>              <!-- Километры в час -->
+        <item>km/s - Kilometer per second</item>            <!-- Километры в секунду -->
+        <item>mph - Miles per hour</item>                   <!-- Мили в час -->
+        <item>mps - Miles per second</item>                 <!-- Мили в секунду -->
+        <item>kn - Knots</item>                             <!-- Узлы -->
     </string-array>
 
     <string-array name="data_units">
-        <item>B - byte</item>
-        <item>KB - kilobyte</item>
-        <item>MB - megabyte</item>
-        <item>GB - gigabyte</item>
-        <item>TB - terabyte</item>
-        <item>PB - petabyte</item>
-        <item>EB - exabyte</item>
+        <item>B - byte</item>                               <!-- Байты -->
+        <item>KB - kilobyte</item>                          <!-- Килобайты -->
+        <item>MB - megabyte</item>                          <!-- Мегабайты -->
+        <item>GB - gigabyte</item>                          <!-- Гигабайты -->
+        <item>TB - terabyte</item>                          <!-- Терабайты -->
+        <item>PB - petabyte</item>                          <!-- Петабайты -->
+        <item>EB - exabyte</item>                           <!-- Эксабайты -->
     </string-array>
 
     <string-array name="temperature_units">
-        <item>°C - Celsius</item>
-        <item>℉ - Faringate</item>
-        <item>K - Kelvin</item>
-        <item>°R - Rankine</item>
-        <item>°Re - Réaumur</item>
+        <item>°C - Celsius</item>                           <!-- Градус Цельсия -->
+        <item>℉ - Fahrenheit</item>                         <!-- Градус Фаренгейта -->
+        <item>K - Kelvin</item>                             <!-- Кельвины -->
+        <item>°R - Rankine</item>                           <!-- Ранкин -->
+        <item>°Re - Réaumur</item>                          <!-- Градус Реомюра -->
     </string-array>
 
-    <string-array name="volume_values">
-        <item>ml - millilitre</item>
-        <item>l - litre</item>
-        <item>cm³ - cubic meter</item>
-        <item>ft³ - cubic foot</item>
-        <item>in³ - cubic inch</item>
-        <item>gal - gallon</item>
+    <string-array name="volume_units">
+        <item>ml - milliliter</item>                        <!-- Миллилитры -->
+        <item>l - liter</item>                              <!-- Литры -->
+        <item>cm³ - cubic centimeter</item>                 <!-- Кубические сантиметры -->
+        <item>ft³ - cubic foot</item>                       <!-- Кубические футы -->
+        <item>in³ - cubic inch</item>                       <!-- Кубические дюймы -->
+        <item>gal - gallon</item>                           <!-- Галлоны -->
     </string-array>
 
-    <string-array name="frequency_values">
-        <item>hz - hertz</item>
-        <item>khz - kilohertz</item>
-        <item>mhz - megahertz</item>
-        <item>ghz - gigahertz</item>
-
+    <string-array name="frequency_units">
+        <item>hz - hertz</item>                             <!-- Герцы -->
+        <item>khz - kilohertz</item>                        <!-- Килогерцы -->
+        <item>mhz - megahertz</item>                        <!-- Мегагерцы -->
+        <item>ghz - gigahertz</item>                        <!-- Гигагерцы -->
     </string-array>
 
-    <string-array name="fuelConsumption_values">
-        <item>km/l - kilometer per liter</item>
-        <item>l/km - liter per 100 kilometres</item>
-        <item>mph/g - mile per gallon</item>
+    <string-array name="fuelConsumption_units">
+        <item>km/l - kilometer per liter</item>             <!-- Километры на литр -->
+        <item>l/km - liter per 100 kilometers</item>        <!-- Литры на 100 километров -->
+        <item>mph/g - mile per gallon</item>                <!-- Мили на галлон -->
     </string-array>
 
+    <string-array name="pressure_units">
+        <item>atm - Atmosphere</item>                       <!-- Атмосфера -->
+        <item>bar - Bar</item>                              <!-- Бар -->
+        <item>Pa - Pascal</item>                            <!-- Паскаль -->
+    </string-array>
+
+    <string-array name="power_units">
+        <item>W - Watt</item>                               <!-- Ватт -->
+        <item>kW - Kilowatt</item>                          <!-- Киловатт -->
+        <item>MW - Megawatt</item>                          <!-- Мегаватт -->
+        <item>GW - Gigawatt</item>                          <!-- Гигаватт -->
+        <item>hp - Horsepower</item>                        <!-- Лошадиная сила -->
+    </string-array>
+
+    <string-array name="energy_units">
+        <item>joule</item>                                  <!-- Джоуль -->
+        <item>calorie</item>                                <!-- Калория -->
+        <item>kilocalorie</item>                            <!-- Килокалория -->
+        <item>watt-hour</item>                              <!-- Ватт-час -->
+        <item>kilowatt-hour</item>                          <!-- Киловатт-час -->
+        <item>electronvolt</item>                           <!-- Электронвольт -->
+        <item>BTU</item>                                    <!-- Британская термальная единица -->
+        <item>therm</item>                                  <!-- Терм -->
+        <item>foot-pound</item>                             <!-- Фут-фунт -->
+        <item>erg</item>                                    <!-- Эрг -->
+        <item>horsepower-hour</item>                        <!-- Час лошадиной силы -->
+        <item>quad</item>                                   <!-- Квадрильон британских тепловых единиц -->
+    </string-array>
 
 </resources>

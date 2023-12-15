@@ -34,7 +34,7 @@
     <style name="buttonTile">
         <item name="android:layout_width">76dp</item>
         <item name="android:layout_height">76dp</item>
-        <item name="android:layout_margin">6dp</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="android:elevation">6dp</item>
         <item name="android:padding">16dp</item>
         <item name="android:scaleType">centerInside</item>

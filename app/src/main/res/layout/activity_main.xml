@@ -25,27 +25,46 @@
         android:id="@+id/fragment_container_selector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="invisible"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/calculatorMainMenu"
-        android:layout_width="128dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/gray255"
-        android:drawableStart="@drawable/ic_arrow_down"
-        android:paddingHorizontal="16dp"
-        android:text="menu"
-        android:textColor="@color/gray150"
-        android:textSize="12sp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:translationZ="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/calculatorMainMenu"
+            android:layout_width="128dp"
+            android:layout_height="48dp"
+            android:layout_margin="6dp"
+            android:backgroundTint="@color/gray255"
+            android:drawableStart="@drawable/ic_arrow_down"
+            android:paddingHorizontal="16dp"
+            android:text="menu"
+            android:textColor="@color/gray150"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/exitApp"
+            android:layout_width="128dp"
+            android:layout_height="48dp"
+            android:layout_margin="6dp"
+            android:backgroundTint="@color/red70"
+            android:drawableStart="@drawable/ic_exit"
+            android:paddingHorizontal="16dp"
+            android:text="Exit"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
