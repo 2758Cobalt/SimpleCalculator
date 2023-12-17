@@ -33,7 +33,7 @@ class SelectorFragment: Fragment() {
 
         for ((index, button) in unitButtons.withIndex()) {
             button.setOnClickListener {
-                val convertorFrag = ConvertorFragment()
+                val convertorFrag = ConverterFragment()
                 convertorFrag.dataIdSet(index)
                 parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, convertorFrag).commit()
             }

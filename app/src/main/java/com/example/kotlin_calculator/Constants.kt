@@ -4,7 +4,7 @@ object Constants {
     // Данный файл представляет собой набор ссылок и массивов для классов программы.
     // Файл созданый с целью отделить содержимое, улучшив читабельность кода
 
-    // Набор данных, нужных для метода dataSetIdGetting() класса ConvertorFragment.kt
+    // Набор данных, нужных для метода dataSetIdGetting() класса ConverterFragment.kt
     val constantsConvertsData: Array<Triple<Int, Int, Int>> = arrayOf(
         Triple(R.string.label_weightText, R.string.tooltip_weightText, R.array.weight_units),
         Triple(R.string.label_lengthText, R.string.tooltip_lengthText, R.array.length_units),
@@ -24,7 +24,7 @@ object Constants {
     )
 
 
-    // Нужны для метода dataToConvert() класса ConvertorFragment.kt
+    // Нужны для метода dataToConvert() класса ConverterFragment.kt
     val weightConvert : Array<Array<Double>> = arrayOf(
         arrayOf(1.0, 1e3, 1e6, 1e9, 1e12, 1e15, 1e18),              // Микрограммы
         arrayOf(0.001, 1.0, 1000.0, 1e6, 1e9, 1e12, 1e15, 1e18),    // Миллиграммы

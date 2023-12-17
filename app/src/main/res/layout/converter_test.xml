@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="24dp"
+        android:gravity="center_horizontal"
+        android:layout_margin="8dp"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/backToMenu"
+                style="@style/buttonStyleOperator"
+                android:layout_width="64dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/buttonPrevious"
+                android:text="@string/buttonPrevious" />
+            <TextView
+                android:id="@+id/labelConvertor"
+                style="@style/displayTextConvert"
+                android:layout_margin="12dp"
+                android:background="@drawable/gray75_box"
+                android:text="@string/label_weightText" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/tooltipConvertor"
+            style="@style/tooltipTextStyle"
+            android:textStyle="italic"
+            android:text="@string/tooltip_weightText" />
+
+        <LinearLayout
+            android:background="@drawable/gray75_box"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginTop="18dp"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/dropDownFirst"
+                style="@style/spinnerConvert" />
+
+                <EditText
+                    android:id="@+id/firstInputField"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/linearlayout_bg_sheet"
+                    style="@style/inputTextToConvert" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:background="@drawable/gray75_box"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/dropDownSecond"
+                style="@style/spinnerConvert" />
+
+                <EditText
+                    android:id="@+id/secondInputField"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/linearlayout_bg_sheet"
+                    style="@style/inputTextToConvert" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/buttonPreviousConverter"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_previous_page"
+                android:background="@drawable/linearlayout_bg_sheet"
+                android:backgroundTint="@color/orange"
+                android:contentDescription="@string/buttonPrevious"
+                android:layout_margin="12dp" />
+            <ImageButton
+                android:id="@+id/buttonReset"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_clear"
+                android:background="@drawable/linearlayout_bg_sheet"
+                android:backgroundTint="@color/orange"
+                android:contentDescription="@string/buttonReset"
+                android:layout_margin="12dp" />
+
+            <ImageButton
+                android:id="@+id/buttonNextConverter"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_next_page"
+                android:background="@drawable/linearlayout_bg_sheet"
+                android:backgroundTint="@color/orange"
+                android:contentDescription="@string/buttonNext"
+                android:layout_margin="12dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

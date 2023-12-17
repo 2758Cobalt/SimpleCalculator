@@ -101,6 +101,7 @@
     <string name="tooltip_value">Value</string>
     <string name="tooltip_enterText">Enter the number</string>
 
+    <string name="text_convertSymbols" translatable="false">↓↑</string>
     <string name="text_In" translatable="false">↓</string>
     <string name="text_To" translatable="false">&#8594;</string>
     <string name="text_Selector">Convertors</string>

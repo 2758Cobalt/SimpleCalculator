@@ -23,7 +23,6 @@
             android:background="@drawable/linearlayout_bg_sheet"
             android:backgroundTint="#EFEFEF"
             android:orientation="vertical"
-            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
