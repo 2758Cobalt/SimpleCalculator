@@ -41,15 +41,20 @@
         <LinearLayout
             android:background="@drawable/gray75_box"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="196dp"
             android:layout_margin="12dp"
             android:elevation="8dp"
             android:padding="12dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-            <Spinner
-                android:id="@+id/dropDownFirst"
-                style="@style/spinnerConvert" />
+
+            <NumberPicker android:id="@+id/timePicker1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                android:background="@drawable/gray75_box" />
 
             <EditText
                 android:id="@+id/firstInputField"
@@ -68,15 +73,20 @@
         <LinearLayout
             android:background="@drawable/gray75_box"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="196dp"
             android:layout_margin="12dp"
             android:elevation="12dp"
             android:gravity="center_vertical"
             android:padding="12dp"
             android:orientation="horizontal">
-            <Spinner
-                android:id="@+id/dropDownSecond"
-                style="@style/spinnerConvert" />
+
+            <NumberPicker android:id="@+id/timePicker2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                android:background="@drawable/gray75_box" />
             <EditText
                 android:id="@+id/secondInputField"
                 android:layout_width="0dp"

@@ -6,6 +6,7 @@ import android.media.Image
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,10 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.NumberPicker
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.TimePicker
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
@@ -27,12 +30,13 @@ class ConverterFragment: Fragment() {
     private lateinit var labelConvertor : TextView
     private lateinit var tooltipConvertor : TextView
 
-    private lateinit var dropDownFirst : Spinner
-    private lateinit var dropDownSecond : Spinner
+    private lateinit var testPicker : NumberPicker
+    private lateinit var testPickerSecond : NumberPicker
 
     private lateinit var firstInputValue: EditText
     private lateinit var secondInputValue: EditText
     private var focusedField: EditText? = null
+    private var dataArrayPicker: Array<String> = arrayOf()
 
     private lateinit var buttonReset : ImageButton
     private lateinit var buttonNextPage : ImageButton
@@ -44,6 +48,11 @@ class ConverterFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_converter, container, false) // View фрагмента
 
+        // Ссылки на picker
+        testPicker = view.findViewById(R.id.timePicker1)
+        testPickerSecond = view.findViewById(R.id.timePicker2)
+
+
         // Ссылки на заголовок и описание
         labelConvertor = view.findViewById(R.id.labelConvertor)
         tooltipConvertor = view.findViewById(R.id.tooltipConvertor)
@@ -52,10 +61,6 @@ class ConverterFragment: Fragment() {
         firstInputValue = view.findViewById(R.id.firstInputField)
         secondInputValue = view.findViewById(R.id.secondInputField)
         focusedField = firstInputValue
-
-        // Ссылки на выпадающее меню
-        dropDownFirst = view.findViewById(R.id.dropDownFirst)
-        dropDownSecond = view.findViewById(R.id.dropDownSecond)
 
         // Ссылка на кнопки
         buttonReset = view.findViewById(R.id.buttonReset)
@@ -71,28 +76,28 @@ class ConverterFragment: Fragment() {
         buttonPreviousPage.setOnClickListener { dataId -= 1; resetFragmentData() }
 
         // Получение набора данных
-        updateSpinnerAdapter(dataId)
+        dataArrayPicker = resources.getStringArray(dataSetIdGetting(dataId))
+        configureNumberPicker(testPicker,dataArrayPicker)
+        configureNumberPicker(testPickerSecond,dataArrayPicker)
+
+        testPicker.setOnValueChangedListener { _, _, newVal ->
+            convertAction(true)
+        }
+        testPickerSecond.setOnValueChangedListener { _, _, newVal ->
+            convertAction(true)
+        }
 
         // Назначение слушателя выбора
-        dropDownFirst.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) { if(focusedField != null) convertAction() }
-            override fun onNothingSelected(parentView: AdapterView<*>) {}
-        }
 
         val textWatcherFirst = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {} // Вызывается до изменения текста
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { if(focusedField != null) convertAction() } // Вызывается во время изменения текста
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { if(focusedField != null) convertAction(false) } // Вызывается во время изменения текста
             override fun afterTextChanged(p0: Editable?) {} // Вызывается после изменения текста
-        }
-
-        dropDownSecond.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) { if(focusedField != null) convertAction() }
-            override fun onNothingSelected(parentView: AdapterView<*>) {}
         }
 
         val textWatcherSecond = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {} // Вызывается до изменения текста
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { if(focusedField != null) convertAction() } // Вызывается во время изменения текста
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { if(focusedField != null) convertAction(false) } // Вызывается во время изменения текста
             override fun afterTextChanged(p0: Editable?) {} // Вызывается после изменения текста
         }
 
@@ -100,10 +105,14 @@ class ConverterFragment: Fragment() {
         secondInputValue.addTextChangedListener(textWatcherSecond)
 
         firstInputValue.setOnFocusChangeListener { _, _ ->
+            focusedField!!.background = resources.getDrawable(R.drawable.linearlayout_bg_sheet)
             focusedField = firstInputValue
+            focusedField!!.background = resources.getDrawable(R.drawable.style_button_operator)
         }
         secondInputValue.setOnFocusChangeListener { _, _ ->
+            focusedField!!.background = resources.getDrawable(R.drawable.linearlayout_bg_sheet)
             focusedField = secondInputValue
+            focusedField!!.background = resources.getDrawable(R.drawable.style_button_operator)
         }
 
         return view
@@ -111,10 +120,11 @@ class ConverterFragment: Fragment() {
 
     private fun resetFieldsAction() // Сбрасывает поле в фокусе
     {
-        focusedField?.text?.clear()
+        firstInputValue.text.clear()
+        secondInputValue.text.clear()
     }
 
-    private fun convertAction() // Расчитывает результат конвертации
+    private fun convertAction(ignoreTextCheck: Boolean) // Расчитывает результат конвертации
     {
         try{
             val dataMatrixCoefficient = constantsSelection(dataId)
@@ -122,7 +132,7 @@ class ConverterFragment: Fragment() {
             var result : Double
 
             val newText = focusedField?.text.toString()
-            if (newText == focusedField?.tag) { // Текст не изменился
+            if (newText == focusedField?.tag && !ignoreTextCheck) { // Текст не изменился
                 return
             }
 
@@ -131,16 +141,27 @@ class ConverterFragment: Fragment() {
             if(focusedField!!.text.isNotEmpty()) inputValue = newText.toDouble() else return
 
 
-            // Получаем выбранные единицы измерения из выпадающих списков
-            val fromUnit = dropDownFirst.selectedItem.toString()
-            val toUnit = dropDownSecond.selectedItem.toString()
+            // Получаем выбранные единицы измерения из NumberPicker
+            val fromUnit = dataArrayPicker[testPicker.value] // Перевод из чего
+            val toUnit = dataArrayPicker[testPickerSecond.value] // Перевод во что
+            Log.i("DebugTag","Данные FromUnit: ${dataArrayPicker[testPicker.value]}\n ToUnit:${dataArrayPicker[testPickerSecond.value]}")
 
             // Получаем индексы выбранных единиц измерения в массиве constants
             val fromIndex = constants.indexOf(fromUnit)
-            val toIndex = constants.indexOf(toUnit)
+            var toIndex = constants.indexOf(toUnit)
 
             // Вывод результата
-            result = inputValue / dataMatrixCoefficient[fromIndex][toIndex]
+            Log.i("DebugTag","Первый спинер $fromIndex, Второй спинер $toIndex")
+
+            result = if (fromIndex < toIndex) {
+                Log.i("DebugTag", "От меньшего $fromIndex, к большему $toIndex")
+                inputValue / dataMatrixCoefficient[fromIndex][toIndex]
+            } else if (fromIndex > toIndex) {
+                Log.i("DebugTag", "От большего $fromIndex, к меньшему $toIndex")
+                dataMatrixCoefficient[toIndex][fromIndex] / inputValue
+            } else {
+                inputValue
+            }
 
             if(focusedField == firstInputValue){
                 secondInputValue.setText(result.toString())
@@ -186,24 +207,26 @@ class ConverterFragment: Fragment() {
     }
     private fun resetFragmentData() // Заново назначает все данные из массивов
     {
-            val selection = constantsSelection(dataId)
-            if(selection.isEmpty()) dataId = 0
-
-            dataSetIdGetting(dataId)
-            convertAction()
-            updateSpinnerAdapter(dataId)
+        focusedField = firstInputValue
+        firstInputValue.text.clear()
+        secondInputValue.text.clear()
+        val selection = constantsSelection(dataId)
+        if(selection.isEmpty()) dataId = 0
+        dataSetIdGetting(dataId)
+        dataArrayPicker = constants
+        configureNumberPicker(testPicker,dataArrayPicker)
+        configureNumberPicker(testPickerSecond,dataArrayPicker)
     }
-    private fun updateSpinnerAdapter(dataSetId: Int){
-        ArrayAdapter.createFromResource(
-            requireContext(),
-            dataSetIdGetting(dataSetId),
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // Установка строкового массива
-            // Применение адаптера к спинеру
-            dropDownFirst.adapter = adapter
-            dropDownSecond.adapter = adapter
-        }
+    private fun configureNumberPicker(numberPicker: NumberPicker, dataArray: Array<String>) {
+        numberPicker.minValue = 0
+        numberPicker.maxValue = dataArray.size - 1
+        numberPicker.displayedValues = dataArray
+        numberPicker.wrapSelectorWheel = false
+        numberPicker.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
+        numberPicker.value = 0
+
+        // Назначаем массив данных
+        numberPicker.displayedValues = dataArray
     }
 
     fun dataIdGet() : Int{

@@ -2,18 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="4dp"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:elevation="24dp"
-        android:gravity="center_horizontal"
-        android:layout_margin="8dp"
-        android:padding="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,18 +29,30 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tooltipConvertor"
+            style="@style/tooltipTextStyle"
+            android:layout_gravity="start"
+            android:layout_marginLeft="12dp"
+            android:text="@string/tooltip_weightText" />
+
         <LinearLayout
             android:background="@drawable/gray75_box"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="196dp"
             android:layout_margin="12dp"
             android:elevation="8dp"
             android:padding="12dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-            <Spinner
-                android:id="@+id/dropDownFirst"
-                style="@style/spinnerConvert" />
+
+            <NumberPicker android:id="@+id/timePicker1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                android:background="@drawable/gray75_box" />
 
             <EditText
                 android:id="@+id/firstInputField"
@@ -59,25 +62,24 @@
                 style="@style/inputTextToConvert" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tooltipConvertor"
-            style="@style/tooltipTextStyle"
-            android:layout_gravity="end"
-            android:layout_margin="12dp"
-            android:text="@string/tooltip_weightText" />
 
         <LinearLayout
             android:background="@drawable/gray75_box"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="196dp"
             android:layout_margin="12dp"
             android:elevation="12dp"
             android:gravity="center_vertical"
             android:padding="12dp"
             android:orientation="horizontal">
-            <Spinner
-                android:id="@+id/dropDownSecond"
-                style="@style/spinnerConvert" />
+
+            <NumberPicker android:id="@+id/timePicker2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                android:background="@drawable/gray75_box" />
             <EditText
                 android:id="@+id/secondInputField"
                 android:layout_width="0dp"
@@ -121,7 +123,5 @@
                 android:contentDescription="@string/buttonNext"
                 android:layout_margin="12dp" />
         </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>
