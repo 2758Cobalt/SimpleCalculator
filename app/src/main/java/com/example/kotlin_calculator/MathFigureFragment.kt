@@ -1,5 +1,6 @@
 package com.example.kotlin_calculator
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -21,7 +23,12 @@ class MathFigureFragment : Fragment() {
 
     private lateinit var buttonReset : ImageButton
 
+    private lateinit var mathCalculatorPreview : ImageView
+
+    private lateinit var drawableResource : Drawable
+
     private lateinit var inputContainerLayout: LinearLayout
+
     private var dataId = 0 // Набор данных
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -32,29 +39,34 @@ class MathFigureFragment : Fragment() {
         resultCalculation = view.findViewById(R.id.mathResult) // Поле с результатом вычисления
 
         inputContainerLayout = view.findViewById(R.id.inputContainer) // Контейнер для ввода
-        buttonReset = view.findViewById(R.id.buttonMathReset) // Контейнер для ввода
+        buttonReset = view.findViewById(R.id.buttonResetMath) // Контейнер для ввода
+        val btnBack = view.findViewById(R.id.backToMenu) as ImageButton
+
+        mathCalculatorPreview = view.findViewById(R.id.calculatorPreview)
+        mathCalculatorPreview.setImageDrawable(drawableResource)
 
         dataSetIdGetting(dataId)
 
+        btnBack.setOnClickListener {parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, SelectorFragment()).commit()  }
         buttonReset.setOnClickListener { calculateResult() }
+
 
         return view
     }
     private fun resetFieldsAction(){
-        resultCalculation.text = ""
+        for (field in dataFields){ // field : EditText
+            field.setText("")
+        }
     }
+
     private fun calculateResult(){
         when(dataId){
-            0 -> {
-                MathFormulas.calculateParallelepipedProperties(
-                    listOf(dataFields[0],dataFields[1],dataFields[2]),true, "DebugTag")
-            }
-            1 ->
-                MathFormulas.calculateCubeProperties(
-                    dataFields[0], true, "DebugTag")
+            0 ->  MathFormulas.calculateParallelepipedProperties(listOf(dataFields[0],dataFields[1],dataFields[2]),true, "DebugTag")
+            1 ->  MathFormulas.calculateCubeProperties(dataFields[0], true, "DebugTag")
         }
 
     }
+
     private fun dataSetIdGetting(dataSetIndex: Int) {
         // Назначает нужный датасет и подготавливает подсказки калькулятора под выбранный датасет
         val dataSet = constantsAlgebra[dataSetIndex]
@@ -68,6 +80,7 @@ class MathFigureFragment : Fragment() {
             1 -> dataFields = cubeInputElements()
         }
     }
+
     private fun parallelepipedInputElements(): Array<EditText> {
         // Данный метод отвечает за расстановку и настройку полей ввода данных необходимых для параллелепипеда
         val sideFields = arrayOf(EditText(context), EditText(context), EditText(context)) // Массив самих полей
@@ -96,6 +109,7 @@ class MathFigureFragment : Fragment() {
         }
         return sideFields
     }
+
     private fun cubeInputElements(): Array<EditText> {
         val sideCube = EditText(context)
 
@@ -117,12 +131,13 @@ class MathFigureFragment : Fragment() {
 
         return arrayOf(sideCube)
     }
-
     fun dataIdGet() : Int{
         return this.dataId
     }
-
     fun dataIdSet(newDataSetId : Int){
         this.dataId = newDataSetId
+    }
+    fun imageSet(newDrawable : Drawable){ // Назначает ресурс drawable для переменной
+        this.drawableResource = newDrawable
     }
 }

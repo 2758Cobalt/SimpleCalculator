@@ -115,10 +115,10 @@
     <string name="buttonCalculate">Расчитать</string>
     <string name="buttonConverterSquareFigure">Площадь фигур</string>
 
-    <string name="text_labelRhombus">Площадь ромба</string>
-    <string name="text_labelParallelogram">Площадь параллелограмма</string>
-    <string name="text_labelCircle">Площадь круга</string>
-    <string name="text_labelTrapezoid">Площадь трапеции</string>
+    <string name="label_rhombus">Площадь ромба</string>
+    <string name="label_parallelogram">Площадь параллелограмма</string>
+    <string name="label_circle">Площадь круга</string>
+    <string name="label_trapezoid">Площадь трапеции</string>
 
     <string name="hint_diagonalFirst">Диагональ 1</string>
     <string name="hint_diagonalSecond">Диагональ 2</string>
@@ -128,7 +128,7 @@
     <string name="hint_angle">Угол</string>
     <string name="hint_speed">Скорость</string>
 
-    <string name="text_labelCircleLength">Длина круга</string>
+    <string name="label_circleLength">Длина круга</string>
 
     <string name="label_unitsCategory">Калькулятор единиц</string>
     <string name="text_error">Ошибка</string>

@@ -1,5 +1,8 @@
 package com.example.kotlin_calculator
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
+import android.media.Image
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +13,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -34,24 +38,31 @@ class ConverterFragment: Fragment() {
     private lateinit var buttonNextPage : ImageButton
     private lateinit var buttonPreviousPage : ImageButton
 
+
     private var dataId = 0 // Набор данных
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.converter_test, container, false) // View фрагмента
+        val view = inflater.inflate(R.layout.fragment_converter, container, false) // View фрагмента
 
+        // Ссылки на заголовок и описание
         labelConvertor = view.findViewById(R.id.labelConvertor)
         tooltipConvertor = view.findViewById(R.id.tooltipConvertor)
 
+        // Ссылки на поля ввода
         firstInputValue = view.findViewById(R.id.firstInputField)
         secondInputValue = view.findViewById(R.id.secondInputField)
+        focusedField = firstInputValue
 
+        // Ссылки на выпадающее меню
         dropDownFirst = view.findViewById(R.id.dropDownFirst)
         dropDownSecond = view.findViewById(R.id.dropDownSecond)
 
+        // Ссылка на кнопки
         buttonReset = view.findViewById(R.id.buttonReset)
         buttonNextPage = view.findViewById(R.id.buttonNextConverter)
         buttonPreviousPage = view.findViewById(R.id.buttonPreviousConverter)
 
+        // Назначение слушателя нажатий
         val btnBack = view.findViewById(R.id.backToMenu) as ImageButton
         btnBack.setOnClickListener {parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, SelectorFragment()).commit()  }
 
@@ -59,8 +70,10 @@ class ConverterFragment: Fragment() {
         buttonNextPage.setOnClickListener { dataId += 1; resetFragmentData() }
         buttonPreviousPage.setOnClickListener { dataId -= 1; resetFragmentData() }
 
+        // Получение набора данных
         updateSpinnerAdapter(dataId)
 
+        // Назначение слушателя выбора
         dropDownFirst.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) { if(focusedField != null) convertAction() }
             override fun onNothingSelected(parentView: AdapterView<*>) {}
@@ -96,11 +109,13 @@ class ConverterFragment: Fragment() {
         return view
     }
 
-    private fun resetFieldsAction(){
+    private fun resetFieldsAction() // Сбрасывает поле в фокусе
+    {
         focusedField?.text?.clear()
     }
 
-    private fun convertAction(){
+    private fun convertAction() // Расчитывает результат конвертации
+    {
         try{
             val dataMatrixCoefficient = constantsSelection(dataId)
             var inputValue = 0.0
@@ -169,8 +184,8 @@ class ConverterFragment: Fragment() {
             else -> emptyArray()
         }
     }
-    private fun resetFragmentData(){
-
+    private fun resetFragmentData() // Заново назначает все данные из массивов
+    {
             val selection = constantsSelection(dataId)
             if(selection.isEmpty()) dataId = 0
 

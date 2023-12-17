@@ -43,6 +43,7 @@ class SelectorFragment: Fragment() {
             button.setOnClickListener {
                 val calculatorAlgebra = MathFigureFragment()
                 calculatorAlgebra.dataIdSet(index)
+                calculatorAlgebra.imageSet(button.drawable)
                 parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, calculatorAlgebra).commit()
             }
         }

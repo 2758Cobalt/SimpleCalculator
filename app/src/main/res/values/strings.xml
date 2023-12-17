@@ -47,21 +47,22 @@
     <string name="label_TriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
     <string name="label_TriangleEquilateral">Area equilateral Triangle</string> <!--Равносторонний-->
 
-    <!--  Переименовать  -->
-    <string name="text_labelRhombus">Area Rhombus</string> <!--Ромб-->
+    <string name="label_rhombus">Area Rhombus</string> <!--Ромб-->
     <string name="label_parallelepiped">Area Parallelepiped</string> <!--Параллелепипед-->
     <string name="label_cube">Area Cube</string> <!--Куб-->
-    <string name="text_labelParallelogram">Area Parallelogram</string> <!--Параллелограмм-->
-    <string name="text_labelCircle">Area Circle</string> <!--Круг-->
-    <string name="text_labelCircleLength">Length of Circle</string> <!--Длина круга-->
-    <string name="text_labelTrapezoid">Area Trapezoid</string> <!--Трапеция-->
+    <string name="label_parallelogram">Area Parallelogram</string> <!--Параллелограмм-->
+    <string name="label_circle">Area Circle</string> <!--Круг-->
+    <string name="label_circleLength">Length of Circle</string> <!--Длина круга-->
+    <string name="label_trapezoid">Area Trapezoid</string> <!--Трапеция-->
 
     <string name="label_algebraCalculator" translatable="false">Algebra calculator</string>
     <string name="label_geometryCalculator" translatable="false">Geometry calculator</string>
 
     <string name="label_geometryCategory">Geometry</string>
     <string name="label_algebraCategory">Algebra</string>
-    <string name="label_unitsCategory">Units</string>s
+    <string name="label_volumeFigureCategory">Volume Figures</string>
+    <string name="label_flatFigureCategory">Flat Figures</string>
+    <string name="label_unitsCategory">Units</string>
 
     <string name="text_error">Error</string>
 

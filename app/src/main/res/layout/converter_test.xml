@@ -38,19 +38,12 @@
 
         </LinearLayout>
 
-
-
-        <TextView
-            android:id="@+id/tooltipConvertor"
-            style="@style/tooltipTextStyle"
-            android:textStyle="italic"
-            android:text="@string/tooltip_weightText" />
-
         <LinearLayout
             android:background="@drawable/gray75_box"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:layout_marginTop="18dp"
+            android:layout_margin="12dp"
+            android:elevation="8dp"
             android:padding="12dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -58,40 +51,45 @@
                 android:id="@+id/dropDownFirst"
                 style="@style/spinnerConvert" />
 
-                <EditText
-                    android:id="@+id/firstInputField"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/linearlayout_bg_sheet"
-                    style="@style/inputTextToConvert" />
-
+            <EditText
+                android:id="@+id/firstInputField"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/linearlayout_bg_sheet"
+                style="@style/inputTextToConvert" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tooltipConvertor"
+            style="@style/tooltipTextStyle"
+            android:layout_gravity="end"
+            android:text="@string/tooltip_weightText" />
 
         <LinearLayout
             android:background="@drawable/gray75_box"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:elevation="12dp"
             android:gravity="center_vertical"
             android:padding="12dp"
             android:orientation="horizontal">
             <Spinner
                 android:id="@+id/dropDownSecond"
                 style="@style/spinnerConvert" />
-
-                <EditText
-                    android:id="@+id/secondInputField"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/linearlayout_bg_sheet"
-                    style="@style/inputTextToConvert" />
+            <EditText
+                android:id="@+id/secondInputField"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/linearlayout_bg_sheet"
+                style="@style/inputTextToConvert" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:elevation="8dp"
             android:orientation="horizontal">
             <ImageButton
                 android:id="@+id/buttonPreviousConverter"
