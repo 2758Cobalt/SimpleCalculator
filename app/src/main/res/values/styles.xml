@@ -31,7 +31,7 @@
     </style>
 
     <!--Selector-->
-    <style name="buttonTile">
+    <style name="buttonTile" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:layout_width">76dp</item>
         <item name="android:layout_height">76dp</item>
         <item name="android:layout_margin">10dp</item>
@@ -56,12 +56,14 @@
     <style name="inputTextToConvert">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">48dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:backgroundTint">@color/white240</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textStyle">bold</item>
+
+        <item name="android:textColor">@color/black</item>
         <item name="android:textCursorDrawable">@color/orange</item>
         <item name="android:textColorLink">@color/orange</item>
-        <item name="android:textColorHint">@color/gray255</item>
+        <item name="android:textColorHint">@color/gray120</item>
 
         <item name="android:hint">@string/tooltip_enterText</item>
         <item name="android:ems">10</item>
@@ -82,11 +84,10 @@
     <style name="displayTextConvert">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">48dp</item>
-        <item name="android:elevation">6dp</item>
+        <item name="android:background">@drawable/linearlayout_bg_sheet</item>
+        <item name="android:backgroundTint">@color/white240</item>
         <item name="android:layout_margin">12dp</item>
-        <item name="android:background">@drawable/style_button_operator</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
     </style>
@@ -97,7 +98,7 @@
         <item name="maxLines">3</item>
         <item name="android:textColor">@color/gray120</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:text">@string/sampleText</item>
     </style>
 
@@ -112,6 +113,12 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/orange</item>
         <item name="iconTint">@color/bottom_nav_colors</item>
+    </style>
+
+    <style name="numPicker" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/black</item>
+        <item name="colorControlNormal">@color/orange</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
     </style>
 
 </resources>

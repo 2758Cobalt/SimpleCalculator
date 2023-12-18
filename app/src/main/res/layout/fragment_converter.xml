@@ -4,87 +4,69 @@
     android:layout_height="match_parent"
     android:padding="4dp"
     android:gravity="center_horizontal"
+    android:background="@color/white"
     android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/backToMenu"
-                style="@style/buttonStyleOperator"
-                android:layout_width="64dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_back"
-                android:contentDescription="@string/buttonPrevious"
-                android:text="@string/buttonPrevious" />
-            <TextView
-                android:id="@+id/labelConvertor"
-                style="@style/displayTextConvert"
-                android:layout_margin="12dp"
-                android:background="@drawable/gray75_box"
-                android:text="@string/label_weightText" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/labelConvertor"
+            style="@style/displayTextConvert"
+            android:textColor="@color/gray120"
+            android:text="@string/label_weightText" />
 
         <TextView
             android:id="@+id/tooltipConvertor"
             style="@style/tooltipTextStyle"
             android:layout_gravity="start"
-            android:layout_marginLeft="12dp"
+            android:layout_margin="12dp"
             android:text="@string/tooltip_weightText" />
 
         <LinearLayout
-            android:background="@drawable/gray75_box"
             android:layout_width="match_parent"
             android:layout_height="196dp"
-            android:layout_margin="12dp"
             android:elevation="8dp"
-            android:padding="12dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <NumberPicker android:id="@+id/timePicker1"
+            <NumberPicker
+                android:id="@+id/firstNumberPicker"
+                android:theme="@style/numPicker"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.3"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:elevation="8dp"
-                android:background="@drawable/gray75_box" />
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="32dp"
+                android:elevation="8dp" />
 
             <EditText
                 android:id="@+id/firstInputField"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/linearlayout_bg_sheet"
+                android:layout_weight="0.5"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="4dp"
                 style="@style/inputTextToConvert" />
         </LinearLayout>
 
 
         <LinearLayout
-            android:background="@drawable/gray75_box"
             android:layout_width="match_parent"
             android:layout_height="196dp"
-            android:layout_margin="12dp"
-            android:elevation="12dp"
             android:gravity="center_vertical"
-            android:padding="12dp"
             android:orientation="horizontal">
 
-            <NumberPicker android:id="@+id/timePicker2"
+            <NumberPicker android:id="@+id/secondNumberPicker"
+                android:theme="@style/numPicker"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.3"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:elevation="8dp"
-                android:background="@drawable/gray75_box" />
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="32dp"
+                android:elevation="8dp" />
             <EditText
                 android:id="@+id/secondInputField"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/linearlayout_bg_sheet"
+                android:layout_weight="0.5"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="4dp"
                 style="@style/inputTextToConvert" />
         </LinearLayout>
 
@@ -103,6 +85,7 @@
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/buttonPrevious"
                 android:layout_margin="12dp" />
+
             <ImageButton
                 android:id="@+id/buttonReset"
                 android:layout_width="48dp"
@@ -123,5 +106,14 @@
                 android:contentDescription="@string/buttonNext"
                 android:layout_margin="12dp" />
         </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/backToMenu"
+        style="@style/buttonStyleOperator"
+        android:layout_width="64dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_back"
+        android:contentDescription="@string/buttonPrevious"
+        android:text="@string/buttonPrevious" />
 
 </LinearLayout>

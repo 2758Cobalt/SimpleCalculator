@@ -25,7 +25,7 @@ object Constants {
 
 
     // Нужны для метода dataToConvert() класса ConverterFragment.kt
-    val weightConvert : Array<Array<Double>> = arrayOf(
+    private val weightConvert : Array<Array<Double>> = arrayOf(
         //      Микрограммы     Миллиграммы     Граммы  Килограммы  Тонны   Килотонны   Мегатонны
         arrayOf(1.0,            1e3,            1e6,    1e9,        1e12,   1e15,       1e18),     //Микрограммы
         arrayOf(0.001,          1.0,            1000.0, 1e6,        1e9,    1e12,       1e15),     //Миллиграммы
@@ -35,7 +35,7 @@ object Constants {
         arrayOf(1e-15,          1e-12,          1e-9,   1e-6,       1e-3,   1.0,        1e3 ),     // Килотонны
         arrayOf(1e-18,          1e-15,          1e-12,  1e-9,       1e-6,   1e-3,       1.0)       // Мегатонны
     )
-    val lengthConvert: Array<Array<Double>> = arrayOf(
+    private val lengthConvert: Array<Array<Double>> = arrayOf(
         //      Нанометры   Микрометры   Миллиметры  Сантиметры  Дециметры Метры  Километры
         arrayOf(1.0,        1000.0,      1e6,        1e7,        1e8,      1e9,   1e12),  // Нанометры
         arrayOf(0.001,      1.0,         1000.0,     1e4,        1e5,      1e6,   1e9),   // Микрометры
@@ -45,7 +45,7 @@ object Constants {
         arrayOf(1e-9,       1e-6,        1e-3,       1e-2,       1e-1,     1.0,   1e-4),  // Метры
         arrayOf(1e-12,      1e-9,        1e-6,       1e-5,       1e-4,     1e-3,  1.0)    // Километры
     )
-    val speedConvert: Array<Array<Double>> = arrayOf(
+    private val speedConvert: Array<Array<Double>> = arrayOf(
         //      Скорость света      М/с             Км/ч             Км/с              М/ч              Мл/с                 Уз
         arrayOf(1.0,                299792458.0,    1079252848.8,    299792.458,       670616629.3844,  186282.39705122,     582749918.36357),   // Скорость света (c=299 792 458)
         arrayOf(3.3356e-9,          1.0,            3.6,             1000.0,           2.23694,         1.94384,             3.28084),         // М/с (метры в секунду)
@@ -55,7 +55,7 @@ object Constants {
         arrayOf(5.3681937522257e-10, 83333.0,       5793.6384,       1.609344,         3600.0,          1.0,                 3128.31447087),   // Мл/с (миля в секунду)
         arrayOf(1.7160019563934e-10, 0.5144,        1.851999999984,  0.000514,         1.1507794480136, 0.00031966095778156, 1.0)             // Уз (узлы)
     )
-    val dataConvert: Array<Array<Double>> = arrayOf(
+    private val dataConvert: Array<Array<Double>> = arrayOf(
         //      Байт        КилоБайт    МегаБайт   ГигаБайт   ТераБайт   ПетаБайт   ЭксаБайт
         arrayOf(1e0,        1e-3,       1e-6,      1e-9,      1e-12,     1e-15,     1e-18),        // Байт
         arrayOf(1e3,        1e0,        1e-3,      1e-6,      1e-9,      1e-12,     1e-15),        // КилоБайт
@@ -65,7 +65,7 @@ object Constants {
         arrayOf(1e15,       1e12,       1e9,       1e6,       1e3,       1e0,       1e-3),         // ПетаБайт
         arrayOf(1e18,       1e15,       1e12,      1e9,       1e6,       1e3,       1e0)           // ЭксаБайт
     )
-    val temperatureConvert: Array<Array<Double>> = arrayOf(
+    private val temperatureConvert: Array<Array<Double>> = arrayOf(
         //      Цельсий     Фаренгейт      Кельвин      Ранкин       Реомюр
         arrayOf(1.0,        (9.0 / 5.0),   273.15,      273.15 * 1.8, (4.0 / 5.0)),          // Цельсий
         arrayOf((5.0 / 9.0), 1.0,           459.67 * (5.0 / 9.0), 459.67,       (4.0 / 9.0)),  // Фаренгейт
@@ -73,7 +73,7 @@ object Constants {
         arrayOf((5.0 / 9.0), 1.0 - 459.67,  5.0 / 9.0,    1.0,          4.0 / 9.0),            // Ранкин
         arrayOf(5.0 / 4.0,   (9.0 / 4.0),   5.0 / 4.0 + 273.15, 9.0 / 4.0 + 491.67, 1.0)    // Реомюр
     )
-    val volumeConvert: Array<Array<Double>> = arrayOf(
+    private val volumeConvert: Array<Array<Double>> = arrayOf(
         //      Миллилитры  Литры         Кубические метры  Кубические футы   Кубические дюймы  Американские галлоны
         arrayOf(1.0,        1e3,          1e6,              28320.0,           16.387,            3785.4),              // Миллилитры
         arrayOf(1e-3,       1.0,          1e3,              28.317,            (1 / 61.024),        3.7854),              // Литры
@@ -82,26 +82,26 @@ object Constants {
         arrayOf((1 /16.3871), 61.024,       61020.0,         1728.0,            1.0,               231.0),               // Кубические дюймы
         arrayOf((1 / 3785.0),  (1 / 3.785),  264.2,          7.48,              (1 / 231.0),        1.0)                 // Американские галлоны
     )
-    val frequencyConvert: Array<Array<Double>> = arrayOf(
+    private val frequencyConvert: Array<Array<Double>> = arrayOf(
         //      Герц         Килогерц     Мегагерц    Гигагерц
         arrayOf(1.0,         1e3,         1e6,         1e9),        // Герц
         arrayOf(1e-3,        1.0,         1e3,         1e6),        // Килогерц
         arrayOf(1e-6,        1e-3,        1.0,         1e3),        // Мегагерц
         arrayOf(1e-9,        1e-6,        1e-3,        1.0)         // Гигагерц
     )
-    val fuelConsumptionConvert: Array<Array<Double>> = arrayOf(
+    private val fuelConsumptionConvert: Array<Array<Double>> = arrayOf(
         //      Километры на литр   Литры на 100 км         Мили на 100 галлон США
         arrayOf(1.0,                0.01,                   0.425144),            // Километры на литр
         arrayOf(0.01,               1.0,                    0.00425144),          // Литры на 100 километров
         arrayOf(2.352,              0.00425144,             1.0)                  // Мили на 100 галлон США
     )
-    val pressureConvert: Array<Array<Double>> = arrayOf(
+    private val pressureConvert: Array<Array<Double>> = arrayOf(
         //    Атмосфер      Бар           Паскаль
         arrayOf(1.0,        (1 / 1.013),   (1 / 101325.0)), // Атмосфер
         arrayOf(1.013,      1.0,           (1 / 1e5)),      // Бар
         arrayOf(101325.0,   1e5,           1.0)             // Паскаль
     )
-    val powerConvert: Array<Array<Double>> = arrayOf(
+    private val powerConvert: Array<Array<Double>> = arrayOf(
         //     Ватт          Киловатт   Мегаватт   Гигаватт    Лошадиная сила
         arrayOf(1.0,         1000.0,    1e6,       1e9,        735.5),              // Ватт
         arrayOf(0.001,       1.0,       1000.0,    1e6,       (1 / 1.341)),         // Киловатт
@@ -109,7 +109,7 @@ object Constants {
         arrayOf(1e-9,        1e-6,      0.001,    1.0,        (1 / 1.341e6)),       // Гигаватт
         arrayOf((1 / 745.7), 1.341,     1341.0,     1.341e6,  1.0)                  // Лошадиная сила
     )
-    val energyConvert: Array<Array<Double>> = arrayOf(
+    private val energyConvert: Array<Array<Double>> = arrayOf(
         //     Джоуль       Калория     Килокалория   Ватт-час  Квт-час     Электронвольт   БТЕ         Терм        Фут-фунт    Эрг          Час  лошадь. силы
         arrayOf(1.0,        4.184,      4184.0,       3600.0,   3.6e6,      (1 / 6.42e18),  1055.0,     105587000.0,1.356,      1e7,         (1 / 3.776726714733e-7)),     // Джоуль
         arrayOf(4.184,      1.0,        1e-3,         1.16e-6,  3.27e-10,   2.62e+18,       3.965,      1e-5,       308.9,      4.184e7,     1e-24),        // Калория
@@ -123,19 +123,33 @@ object Constants {
         arrayOf(1e-7,       2.39e-8,    2.39e-11,     2.78e-14, 7.78e-18,   6.24e+11,       9.48e-8,    2.39e-15,   7.38e-5,    1e-3,        2.39e-21),     // Эрг
         arrayOf(1.3558e6,   3.24e5,     3.24e2,       3.77e-1,  1.05e-4,    8.42e+23,       1.2851e3,   3.24e-2,    1.0e3,      1.3558,      3.24e-11)      // Час лошадиной силы
     )
+    // Массив с массивами единиц
+    val CONVERTERS: List<Array<Array<Double>>> = listOf(
+            weightConvert,
+            lengthConvert,
+            speedConvert,
+            dataConvert,
+            temperatureConvert,
+            volumeConvert,
+            frequencyConvert,
+            fuelConsumptionConvert,
+            pressureConvert,
+            powerConvert,
+            energyConvert
+        )
 
-/* Принцип работы с массивами метода dataToConvert():
-   Предположим, что входные данные представлены в единицах "сантиметр", и их необходимо конвертировать в единицы "километр".
-   В данном контексте, "сантиметр" - это величина, подлежащая конвертации, а "километр" - целевая единица измерения.
-   Массив задает соотношение между первым аргументом и каждым последующим:
-       arrayOf(1, 0.01, 1e-5) для конвертации в сантиметры,
-       arrayOf(100, 1, 0.001) для конвертации в метры,
-       arrayOf(1e5, 1000, 1) для конвертации в километры.
-   Эта матрица имеет структуру, схожую с диагональной матрицей:
-           [1 0 0 0]
-           [0 1 0 0]
-           [0 0 1 0]
-           [0 0 0 1]    и тд.
-*/
+    /* Принцип работы с массивами метода dataToConvert():
+       Предположим, что входные данные представлены в единицах "сантиметр", и их необходимо конвертировать в единицы "километр".
+       В данном контексте, "сантиметр" - это величина, подлежащая конвертации, а "километр" - целевая единица измерения.
+       Массив задает соотношение между первым аргументом и каждым последующим:
+           arrayOf(1, 0.01, 1e-5) для конвертации в сантиметры,
+           arrayOf(100, 1, 0.001) для конвертации в метры,
+           arrayOf(1e5, 1000, 1) для конвертации в километры.
+       Эта матрица имеет структуру, схожую с диагональной матрицей:
+               [1 0 0 0]
+               [0 1 0 0]
+               [0 0 1 0]
+               [0 0 0 1]    и тд.
+    */
 
 }

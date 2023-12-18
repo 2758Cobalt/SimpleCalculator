@@ -1,8 +1,6 @@
 package com.example.kotlin_calculator
 
-import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
-import android.media.Image
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,48 +8,40 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.NumberPicker
-import android.widget.Spinner
 import android.widget.TextView
-import android.widget.TimePicker
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
-
 class ConverterFragment: Fragment() {
+    private var dataArrayPicker: Array<String> = arrayOf()
     private lateinit var constants : Array<String>
+    private var dataId: Int = 0 // Набор данных
     private val constantsData = Constants.constantsConvertsData
 
     private lateinit var labelConvertor : TextView
     private lateinit var tooltipConvertor : TextView
 
-    private lateinit var testPicker : NumberPicker
-    private lateinit var testPickerSecond : NumberPicker
+    private lateinit var firstPicker : NumberPicker
+    private lateinit var secondPicker : NumberPicker
 
     private lateinit var firstInputValue: EditText
     private lateinit var secondInputValue: EditText
     private var focusedField: EditText? = null
-    private var dataArrayPicker: Array<String> = arrayOf()
 
     private lateinit var buttonReset : ImageButton
     private lateinit var buttonNextPage : ImageButton
     private lateinit var buttonPreviousPage : ImageButton
 
-
-    private var dataId = 0 // Набор данных
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_converter, container, false) // View фрагмента
 
         // Ссылки на picker
-        testPicker = view.findViewById(R.id.timePicker1)
-        testPickerSecond = view.findViewById(R.id.timePicker2)
-
+        firstPicker = view.findViewById(R.id.firstNumberPicker)
+        secondPicker = view.findViewById(R.id.secondNumberPicker)
 
         // Ссылки на заголовок и описание
         labelConvertor = view.findViewById(R.id.labelConvertor)
@@ -71,54 +61,59 @@ class ConverterFragment: Fragment() {
         val btnBack = view.findViewById(R.id.backToMenu) as ImageButton
         btnBack.setOnClickListener {parentFragmentManager.beginTransaction().replace(R.id.fragment_container_selector, SelectorFragment()).commit()  }
 
-        buttonReset.setOnClickListener { resetFieldsAction() }
-        buttonNextPage.setOnClickListener { dataId += 1; resetFragmentData() }
-        buttonPreviousPage.setOnClickListener { dataId -= 1; resetFragmentData() }
+        // Слушатель нажатий для кнопок сброса и переключения
+        buttonReset.setOnClickListener { resetFieldsAction() }                            // Сбрасывает поля
+        buttonNextPage.setOnClickListener { replaceDataFragment(dataId + 1) }          // Замена данных на новые
+        buttonPreviousPage.setOnClickListener { replaceDataFragment(dataId - 1) }      // Замена данных на новые
 
         // Получение набора данных
         dataArrayPicker = resources.getStringArray(dataSetIdGetting(dataId))
-        configureNumberPicker(testPicker,dataArrayPicker)
-        configureNumberPicker(testPickerSecond,dataArrayPicker)
+        configureNumberPicker(firstPicker,dataArrayPicker)
+        configureNumberPicker(secondPicker,dataArrayPicker)
 
-        testPicker.setOnValueChangedListener { _, _, newVal ->
+        firstPicker.setOnValueChangedListener { _, _, newVal ->
             convertAction(true)
         }
-        testPickerSecond.setOnValueChangedListener { _, _, newVal ->
+        secondPicker.setOnValueChangedListener { _, _, newVal ->
             convertAction(true)
         }
 
-        // Назначение слушателя выбора
-
+        // Наблюдатель текста, следит за изменением текста и вызывает соответственные методы
         val textWatcherFirst = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {} // Вызывается до изменения текста
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { if(focusedField != null) convertAction(false) } // Вызывается во время изменения текста
             override fun afterTextChanged(p0: Editable?) {} // Вызывается после изменения текста
         }
-
         val textWatcherSecond = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {} // Вызывается до изменения текста
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { if(focusedField != null) convertAction(false) } // Вызывается во время изменения текста
             override fun afterTextChanged(p0: Editable?) {} // Вызывается после изменения текста
         }
 
+        // Назначениет наблютателя
         firstInputValue.addTextChangedListener(textWatcherFirst)
         secondInputValue.addTextChangedListener(textWatcherSecond)
 
+        // Назначает цвет подчёркивания editText
+        val colorStateEnabled = ContextCompat.getColor(requireContext(), R.color.orange)
+        val colorStateDisabled = ContextCompat.getColor(requireContext(), R.color.white240)
+
+        // Слушатель нажатий на поля ввода (Смена параметра backgroundTint)
         firstInputValue.setOnFocusChangeListener { _, _ ->
-            focusedField!!.background = resources.getDrawable(R.drawable.linearlayout_bg_sheet)
             focusedField = firstInputValue
-            focusedField!!.background = resources.getDrawable(R.drawable.style_button_operator)
+            firstInputValue.backgroundTintList = ColorStateList.valueOf(colorStateEnabled)
+            secondInputValue.backgroundTintList = ColorStateList.valueOf(colorStateDisabled)
         }
-        secondInputValue.setOnFocusChangeListener { _, _ ->
-            focusedField!!.background = resources.getDrawable(R.drawable.linearlayout_bg_sheet)
+        secondInputValue.setOnFocusChangeListener{ _, _ ->
             focusedField = secondInputValue
-            focusedField!!.background = resources.getDrawable(R.drawable.style_button_operator)
+            secondInputValue.backgroundTintList = ColorStateList.valueOf(colorStateEnabled)
+            firstInputValue.backgroundTintList = ColorStateList.valueOf(colorStateDisabled)
         }
 
         return view
     }
 
-    private fun resetFieldsAction() // Сбрасывает поле в фокусе
+    private fun resetFieldsAction() // Сбрасывает поля
     {
         firstInputValue.text.clear()
         secondInputValue.text.clear()
@@ -140,35 +135,24 @@ class ConverterFragment: Fragment() {
             focusedField?.tag = newText
             if(focusedField!!.text.isNotEmpty()) inputValue = newText.toDouble() else return
 
-
             // Получаем выбранные единицы измерения из NumberPicker
-            val fromUnit = dataArrayPicker[testPicker.value] // Перевод из чего
-            val toUnit = dataArrayPicker[testPickerSecond.value] // Перевод во что
-            Log.i("DebugTag","Данные FromUnit: ${dataArrayPicker[testPicker.value]}\n ToUnit:${dataArrayPicker[testPickerSecond.value]}")
+            val fromUnit = dataArrayPicker[firstPicker.value] // Перевод из чего
+            val toUnit = dataArrayPicker[secondPicker.value] // Перевод во что
 
             // Получаем индексы выбранных единиц измерения в массиве constants
             val fromIndex = constants.indexOf(fromUnit)
             var toIndex = constants.indexOf(toUnit)
 
             // Вывод результата
-            Log.i("DebugTag","Первый спинер $fromIndex, Второй спинер $toIndex")
-
-            result = if (fromIndex < toIndex) {
-                Log.i("DebugTag", "От меньшего $fromIndex, к большему $toIndex")
-                inputValue / dataMatrixCoefficient[fromIndex][toIndex]
-            } else if (fromIndex > toIndex) {
-                Log.i("DebugTag", "От большего $fromIndex, к меньшему $toIndex")
-                dataMatrixCoefficient[toIndex][fromIndex] / inputValue
-            } else {
-                inputValue
-            }
-
-            if(focusedField == firstInputValue){
+            if(focusedField!! == firstInputValue){// Если первое активное поле
+                result = inputValue / dataMatrixCoefficient[toIndex][fromIndex]
                 secondInputValue.setText(result.toString())
             }
-            if(focusedField == secondInputValue){
+            if(focusedField!! == secondInputValue){ // Если второе активное поле
+                result = inputValue / dataMatrixCoefficient[fromIndex][toIndex]
                 firstInputValue.setText(result.toString())
             }
+
 
         }
         catch (ex: NumberFormatException){
@@ -177,8 +161,8 @@ class ConverterFragment: Fragment() {
         catch (ex: ArrayIndexOutOfBoundsException){
             Toast.makeText(context,"Перехвачено исключение: ${ex}",Toast.LENGTH_SHORT).show()
         }
-
     }
+
     private fun dataSetIdGetting(dataSetIndex: Int): Int {
         // Назначает нужный датасет и подготавливает подсказки конвертора под выбранный датасет
         val dataSet = constantsData[dataSetIndex]
@@ -188,25 +172,18 @@ class ConverterFragment: Fragment() {
         return dataSet.third
     }
 
-    private fun constantsSelection(dataResId: Int): Array<Array<Double>> // Принцип работы представлен в Constains.kt
-    {
+    private fun constantsSelection(dataResId: Int): Array<Array<Double>> {
         return when (dataResId) {
-            0 -> Constants.weightConvert                // Вес
-            1 -> Constants.lengthConvert                // Длина
-            2 -> Constants.speedConvert                 // Скорость
-            3 -> Constants.dataConvert                  // Объем информации
-            4 -> Constants.temperatureConvert           // Температура
-            5 -> Constants.volumeConvert                // Объём
-            6 -> Constants.frequencyConvert             // Частота
-            7 -> Constants.fuelConsumptionConvert       // Расход топлива
-            8 -> Constants.pressureConvert              // Давление
-            9 -> Constants.powerConvert                 // Мощность
-            10 -> Constants.energyConvert               // Енергия
+            in 0 until Constants.CONVERTERS.size -> {
+                Constants.CONVERTERS[dataResId]
+            }
             else -> emptyArray()
         }
     }
-    private fun resetFragmentData() // Заново назначает все данные из массивов
+
+    private fun replaceDataFragment(newDataSet : Int) // Заново назначает все данные из массивов
     {
+        dataIdSet(newDataSet)
         focusedField = firstInputValue
         firstInputValue.text.clear()
         secondInputValue.text.clear()
@@ -214,9 +191,10 @@ class ConverterFragment: Fragment() {
         if(selection.isEmpty()) dataId = 0
         dataSetIdGetting(dataId)
         dataArrayPicker = constants
-        configureNumberPicker(testPicker,dataArrayPicker)
-        configureNumberPicker(testPickerSecond,dataArrayPicker)
+        configureNumberPicker(firstPicker,dataArrayPicker)
+        configureNumberPicker(secondPicker,dataArrayPicker)
     }
+
     private fun configureNumberPicker(numberPicker: NumberPicker, dataArray: Array<String>) {
         numberPicker.minValue = 0
         numberPicker.maxValue = dataArray.size - 1
@@ -227,10 +205,6 @@ class ConverterFragment: Fragment() {
 
         // Назначаем массив данных
         numberPicker.displayedValues = dataArray
-    }
-
-    fun dataIdGet() : Int{
-        return this.dataId
     }
 
     fun dataIdSet(newDataSetId : Int){

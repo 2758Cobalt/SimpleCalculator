@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/linearlayout_bg_sheet"
-            android:backgroundTint="#EFEFEF"
+            android:backgroundTint="#F0F0F0"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
         android:layout_width="48dp"
         android:layout_height="8dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/white200"
+        android:backgroundTint="@color/white240"
         android:background="@drawable/linearlayout_bg_sheet"/>
 
     <!--Numpad-->
