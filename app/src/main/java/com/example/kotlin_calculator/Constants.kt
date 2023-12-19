@@ -12,17 +12,20 @@ object Constants {
         Triple(R.string.label_dataText, R.string.tooltip_dataText, R.array.data_units),
         Triple(R.string.label_temperatureText, R.string.tooltip_temperatureText, R.array.temperature_units),
         Triple(R.string.label_volumeText, R.string.tooltip_volumeText, R.array.volume_units),
+        Triple(R.string.label_areaText, R.string.tooltip_areaText, R.array.area_units),
         Triple(R.string.label_frequencyText, R.string.tooltip_frequencyText, R.array.frequency_units),
         Triple(R.string.label_fuelConsumptionText, R.string.tooltip_fuelConsumptionText, R.array.fuelConsumption_units),
         Triple(R.string.label_pressureText, R.string.tooltip_fuelConsumptionText, R.array.pressure_units),
         Triple(R.string.label_powerText, R.string.tooltip_powerText, R.array.power_units),
         Triple(R.string.label_energyText, R.string.tooltip_energyText, R.array.energy_units))
 
-    val constantsAlgebraData: Array<Array<Int>> = arrayOf(
+    val constantsMathData: Array<Array<Int>> = arrayOf(
         arrayOf(R.string.label_parallelepiped, R.string.tooltip_parallelepipedText),
-        arrayOf(R.string.label_dataText, R.string.tooltip_dataText)
+        arrayOf(R.string.label_pyramid, R.string.tooltip_dataText),
+        arrayOf(R.string.label_cylinder, R.string.tooltip_dataText),
+        arrayOf(R.string.label_cone, R.string.tooltip_dataText),
+        arrayOf(R.string.label_sphere, R.string.tooltip_dataText)
     )
-
 
     // Нужны для метода dataToConvert() класса ConverterFragment.kt
     private val weightConvert : Array<Array<Double>> = arrayOf(
@@ -39,10 +42,10 @@ object Constants {
         //      Нанометры   Микрометры   Миллиметры  Сантиметры  Дециметры Метры  Километры
         arrayOf(1.0,        1000.0,      1e6,        1e7,        1e8,      1e9,   1e12),  // Нанометры
         arrayOf(0.001,      1.0,         1000.0,     1e4,        1e5,      1e6,   1e9),   // Микрометры
-        arrayOf(1e-6,       1e-3,        1.0,        1e-1,       1e-2,     1e-3,  1e-6),  // Миллиметры
-        arrayOf(1e-7,       1e-4,        1e-1,       1.0,        1e-1,     1e-2,  1e-5),  // Сантиметры
-        arrayOf(1e-8,       1e-5,        1e-2,       1e-1,       1.0,      1e-1,  1e-4),  // Дециметры
-        arrayOf(1e-9,       1e-6,        1e-3,       1e-2,       1e-1,     1.0,   1e-4),  // Метры
+        arrayOf(1e-6,       1e-3,        1.0,        1e1,        1e2,      1e3,   1e6),  // Миллиметры
+        arrayOf(1e-7,       1e-4,        1e-1,       1.0,        1e1,      1e2,   1e5),  // Сантиметры
+        arrayOf(1e-8,       1e-5,        1e-2,       1e-1,       1.0,      1e1,   1e4),  // Дециметры
+        arrayOf(1e-9,       1e-6,        1e-3,       1e-2,       1e-1,     1.0,   1e4),  // Метры
         arrayOf(1e-12,      1e-9,        1e-6,       1e-5,       1e-4,     1e-3,  1.0)    // Километры
     )
     private val speedConvert: Array<Array<Double>> = arrayOf(
@@ -81,6 +84,16 @@ object Constants {
         arrayOf((1 / 28320.0), (1 / 28.317), 35.315,        1.0,               (1 / 1728.0),       (1 / 7.481)),          // Кубические футы
         arrayOf((1 /16.3871), 61.024,       61020.0,         1728.0,            1.0,               231.0),               // Кубические дюймы
         arrayOf((1 / 3785.0),  (1 / 3.785),  264.2,          7.48,              (1 / 231.0),        1.0)                 // Американские галлоны
+    )
+    private val areaConvert: Array<Array<Double>> = arrayOf(
+        //      Микроны     Миллиметры    Сантиметры  Дециметры   Метры   Километры    Гектары
+        arrayOf(1.0,        1e-3,         1e-4,       1e-5,       1e-6,   1e-9,        1e-16),  // Микроны
+        arrayOf(1e3,        1.0,          1e-3,       1e-4,       1e-5,   1e-6,        1e-9),   // Миллиметры
+        arrayOf(1e4,        1e3,          1.0,        1e-3,       1e-4,   1e-5,        1e-6),   // Сантиметры
+        arrayOf(1e5,        1e4,          1e3,        1.0,        1e-3,   1e-4,        1e-5),   // Дециметры
+        arrayOf(1e6,        1e5,          1e4,        1e3,        1.0,    1e-3,        1e-4),   // Метры
+        arrayOf(1e9,        1e6,          1e5,        1e4,        1e3,    1.0,         1e-3),   // Километры
+        arrayOf(1e16,       1e9,          1e6,        1e5,        1e4,    1e3,         1.0)    // Гектары
     )
     private val frequencyConvert: Array<Array<Double>> = arrayOf(
         //      Герц         Килогерц     Мегагерц    Гигагерц
@@ -131,6 +144,7 @@ object Constants {
             dataConvert,
             temperatureConvert,
             volumeConvert,
+            areaConvert,
             frequencyConvert,
             fuelConsumptionConvert,
             pressureConvert,

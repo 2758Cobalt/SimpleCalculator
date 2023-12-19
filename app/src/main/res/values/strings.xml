@@ -43,20 +43,36 @@
     <string name="label_powerText">Power</string>
     <string name="label_energyText">Energy</string>
 
-    <string name="label_TriangleDefault">Area Triangle</string> <!--Треугольник-->
-    <string name="label_TriangleIsosceles">Area isosceles Triangle</string> <!--Равнобедренный-->
-    <string name="label_TriangleEquilateral">Area equilateral Triangle</string> <!--Равносторонний-->
+    <string name="label_resultTotalArea">Total area</string>                <!--Полная площадь-->
+    <string name="label_resultLateralArea">Lateral area</string>            <!--Боковая площадь-->
+    <string name="label_resultVolume">Volume</string>                       <!--Объём-->
 
-    <string name="label_rhombus">Area Rhombus</string> <!--Ромб-->
-    <string name="label_parallelepiped">Area Parallelepiped</string> <!--Параллелепипед-->
-    <string name="label_cube">Area Cube</string> <!--Куб-->
-    <string name="label_parallelogram">Area Parallelogram</string> <!--Параллелограмм-->
-    <string name="label_circle">Area Circle</string> <!--Круг-->
-    <string name="label_circleLength">Length of Circle</string> <!--Длина круга-->
-    <string name="label_trapezoid">Area Trapezoid</string> <!--Трапеция-->
+
+    <string name="label_parallelepiped">Parallelepiped</string>             <!--Параллелепипед или кубоид-->
+    <string name="label_pyramid">Pyramid</string>                           <!--Пирамида-->
+    <string name="label_cylinder">Cylinder</string>                         <!--Цилиндр-->
+    <string name="label_cone">Cone</string>                                 <!--Конус-->
+    <string name="label_sphere">Sphere</string>                             <!--Сфера-->
+    <string name="label_prism">Prism</string>                               <!--Призма-->
+
+    <string name="label_dodecahedron">Dodecahedron</string>                 <!--Додекаэдр-->
+    <string name="label_octahedron">Octahedron</string>                     <!--Октаэдр-->
+    <string name="label_icosahedron">Icosahedron</string>                   <!--Икосаэдр -->
+    <string name="label_tetrahedron">Tetrahedron</string>                   <!--Тетраэдр-->
+
+    <!--Тела-->
+    <string name="label_parallelogram">Parallelogram</string>               <!--Параллелограмм-->
+    <string name="label_circle">Circle</string>                             <!--Круг-->
+    <string name="label_circleLength">Length of Circle</string>             <!--Длина круга-->
+    <string name="label_trapezoid">Trapezoid</string>                       <!--Трапеция-->
 
     <string name="label_algebraCalculator" translatable="false">Algebra calculator</string>
     <string name="label_geometryCalculator" translatable="false">Geometry calculator</string>
+
+    <!--Ф игуры-->
+    <string name="label_rectangle">Rectangle</string>                       <!--Прямоугольник-->
+    <string name="label_triangle">Triangle</string>                         <!--Треугольник-->
+    <string name="label_rhombus">Rhombus</string>                           <!--Ромб-->
 
     <string name="label_geometryCategory">Geometry</string>
     <string name="label_algebraCategory">Algebra</string>
@@ -66,6 +82,7 @@
 
     <string name="text_error">Error</string>
 
+    <!--Подсказки-->
     <string name="hint_sideA">Side A</string>
     <string name="hint_sideB">Side B</string>
     <string name="hint_sideC">Side C</string>
@@ -163,6 +180,16 @@
         <item>ft³ - cubic foot</item>                       <!-- Кубические футы -->
         <item>in³ - cubic inch</item>                       <!-- Кубические дюймы -->
         <item>gal - gallon</item>                           <!-- Галлоны -->
+    </string-array>
+
+    <string-array name="area_units">
+        <item>µ² - micron</item>
+        <item>µm² - millimeter</item>
+        <item>cm²- centimeter</item>
+        <item>dm² - decimeter</item>
+        <item>m² - meter</item>
+        <item>km² - kilometer</item>
+        <item>ha - gectar</item>
     </string-array>
 
     <string-array name="frequency_units">

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -12,26 +13,11 @@
         android:layout_margin="8dp"
         android:padding="4dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:orientation="horizontal">
-            <ImageButton
-                android:id="@+id/backToMenu"
-                style="@style/buttonStyleOperator"
-                android:layout_width="64dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_back"
-                android:contentDescription="@string/buttonPrevious"
-                android:text="@string/buttonPrevious" />
-            <TextView
-                android:id="@+id/labelMathCalculator"
-                style="@style/displayTextConvert"
-                android:layout_margin="12dp"
-                android:background="@drawable/gray75_box"
-                android:text="@string/label_algebraCalculator" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/labelMathCalculator"
+            style="@style/displayTextConvert"
+            android:textColor="@color/gray120"
+            android:text="@string/label_algebraCalculator" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,6 +25,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/calculatorPreview"
                 android:layout_width="64dp"
@@ -79,16 +66,16 @@
             android:text="@string/text_In" />
 
         <LinearLayout
+            android:id="@+id/resultContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/gray75_box"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/mathResult"
-                style="@style/displayTextConvert"
-                android:hint="@string/label_geometryCalculator"/>
         </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,5 +112,13 @@
         </LinearLayout>
 
     </LinearLayout>
+    <ImageButton
+        android:id="@+id/backToMenu"
+        style="@style/buttonStyleOperator"
+        android:layout_width="64dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_back"
+        android:contentDescription="@string/buttonPrevious"
+        android:text="@string/buttonPrevious" />
 
 </LinearLayout>

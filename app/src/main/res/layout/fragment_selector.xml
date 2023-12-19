@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:textColor="@color/black"
-        android:text="@string/label_geometryCategory"
+        android:text="@string/label_volumeFigureCategory"
         android:textSize="16sp" />
 
     <androidx.gridlayout.widget.GridLayout
@@ -120,18 +120,85 @@
         android:layout_gravity="center_horizontal">
 
         <ImageButton
-            android:id="@+id/buttonGeometryParallelepiped"
+            android:id="@+id/buttonMathParallelepiped"
             style="@style/buttonTile"
-            android:src="@drawable/area_rectangle"
+            android:src="@drawable/area_parallelepiped"
+            android:contentDescription="@string/label_parallelepiped"
+            android:text="@string/label_parallelepiped" />
+
+
+        <ImageButton
+            android:id="@+id/buttonMathPyramid"
+            style="@style/buttonTile"
+            android:src="@drawable/area_pyramid"
+            android:contentDescription="@string/label_pyramid"
+            android:text="@string/label_pyramid" />
+
+        <ImageButton
+            android:id="@+id/buttonMathCylinder"
+            style="@style/buttonTile"
+            android:src="@drawable/area_cylinder"
+            android:contentDescription="@string/label_cylinder"
+            android:text="@string/label_cylinder" />
+
+        <ImageButton
+            android:id="@+id/buttonMathCone"
+            style="@style/buttonTile"
+            android:src="@drawable/area_cone"
+            android:contentDescription="@string/label_cylinder"
+            android:text="@string/label_cylinder" />
+
+        <ImageButton
+            android:id="@+id/buttonMathSphere"
+            style="@style/buttonTile"
+            android:src="@drawable/area_sphere"
+            android:contentDescription="@string/label_sphere"
+            android:text="@string/label_sphere" />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:textColor="@color/black"
+        android:text="@string/label_flatFigureCategory"
+        android:textSize="16sp" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        app:columnCount="3"
+        android:layout_gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/buttonMathSquare"
+            style="@style/buttonTile"
+            android:src="@drawable/area_square"
             android:contentDescription="@string/label_parallelepiped"
             android:text="@string/label_parallelepiped" />
 
         <ImageButton
-            android:id="@+id/buttonGeometryCube"
+            android:id="@+id/buttonMathRectangle"
             style="@style/buttonTile"
-            android:src="@drawable/area_cube"
-            android:contentDescription="@string/label_cube"
+            android:src="@drawable/area_flat_rectangle"
+            android:contentDescription="@string/label_parallelepiped"
             android:text="@string/label_parallelepiped" />
+
+        <ImageButton
+            android:id="@+id/buttonMathRhombus"
+            style="@style/buttonTile"
+            android:src="@drawable/area_rhombus"
+            android:contentDescription="@string/label_rhombus"
+            android:text="@string/label_rhombus" />
+
+        <ImageButton
+            android:id="@+id/buttonMathTriangle"
+            style="@style/buttonTile"
+            android:src="@drawable/area_triangle"
+            android:contentDescription="@string/tooltip_triangleText"
+            android:text="@string/tooltip_triangleText" />
 
     </androidx.gridlayout.widget.GridLayout>
 

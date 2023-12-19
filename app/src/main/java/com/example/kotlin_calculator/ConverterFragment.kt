@@ -148,12 +148,10 @@ class ConverterFragment: Fragment() {
                 result = inputValue / dataMatrixCoefficient[toIndex][fromIndex]
                 secondInputValue.setText(result.toString())
             }
-            if(focusedField!! == secondInputValue){ // Если второе активное поле
+            if(focusedField!! == secondInputValue) { // Если второе активное поле
                 result = inputValue / dataMatrixCoefficient[fromIndex][toIndex]
                 firstInputValue.setText(result.toString())
             }
-
-
         }
         catch (ex: NumberFormatException){
             Toast.makeText(context,"Перехвачено исключение: ${ex}",Toast.LENGTH_SHORT).show()
@@ -181,19 +179,22 @@ class ConverterFragment: Fragment() {
         }
     }
 
-    private fun replaceDataFragment(newDataSet : Int) // Заново назначает все данные из массивов
-    {
+    private fun replaceDataFragment(newDataSet: Int) { // Заменяет текущий датасет на новый (след по индексу)
         dataIdSet(newDataSet)
         focusedField = firstInputValue
-        firstInputValue.text.clear()
-        secondInputValue.text.clear()
+        resetFieldsAction()
+
         val selection = constantsSelection(dataId)
-        if(selection.isEmpty()) dataId = 0
+        if (selection.isEmpty()) {
+            dataId = 0
+        }
+
         dataSetIdGetting(dataId)
         dataArrayPicker = constants
-        configureNumberPicker(firstPicker,dataArrayPicker)
-        configureNumberPicker(secondPicker,dataArrayPicker)
+        configureNumberPicker(firstPicker, dataArrayPicker)
+        configureNumberPicker(secondPicker, dataArrayPicker)
     }
+
 
     private fun configureNumberPicker(numberPicker: NumberPicker, dataArray: Array<String>) {
         numberPicker.minValue = 0

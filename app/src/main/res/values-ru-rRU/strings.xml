@@ -73,7 +73,7 @@
         <item>°Re - Реомюр</item>
     </string-array>
 
-    <string-array name="area_values">
+    <string-array name="area_units">
         <item>µ² - Микрон</item>
         <item>µm² - Миллиметр</item>
         <item>cm²- Сантиметр</item>

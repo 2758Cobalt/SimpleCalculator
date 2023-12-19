@@ -20,6 +20,7 @@ class SelectorFragment: Fragment() {
             view.findViewById(R.id.buttonData) as ImageButton,
             view.findViewById(R.id.buttonTemperature) as ImageButton,
             view.findViewById(R.id.buttonVolume) as ImageButton,
+            view.findViewById(R.id.buttonArea) as ImageButton,
             view.findViewById(R.id.buttonFrequency) as ImageButton,
             view.findViewById(R.id.buttonFuelConsumption) as ImageButton,
             view.findViewById(R.id.buttonPressure) as ImageButton,
@@ -27,8 +28,11 @@ class SelectorFragment: Fragment() {
             view.findViewById(R.id.buttonEnergy) as ImageButton
         )
         val mathButtons = arrayOf(
-            view.findViewById(R.id.buttonGeometryParallelepiped) as ImageButton,
-            view.findViewById(R.id.buttonGeometryCube) as ImageButton,
+            view.findViewById(R.id.buttonMathParallelepiped) as ImageButton,
+            view.findViewById(R.id.buttonMathPyramid) as ImageButton,
+            view.findViewById(R.id.buttonMathCylinder) as ImageButton,
+            view.findViewById(R.id.buttonMathCone) as ImageButton,
+            view.findViewById(R.id.buttonMathSphere) as ImageButton
         )
 
         for ((index, button) in unitButtons.withIndex()) {
