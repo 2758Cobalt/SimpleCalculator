@@ -74,10 +74,10 @@ class MathFigureFragment : Fragment() {
     }
 
     // Метод для добавления готовой разметки в контейнер и возврата ссылок на TextView с идентификатором resultTextMath
-    private fun addViewsToContainer(container: LinearLayout, count: Int): Array<TextView?>? {
+    private fun addViewsToContainer(container: LinearLayout, countResultFields: Int): Array<TextView?>? {
         val inflater = LayoutInflater.from(context)
-        val addedTextViews = arrayOfNulls<TextView>(count)
-        for (i in 0 until count) {
+        val addedTextViews = arrayOfNulls<TextView>(countResultFields)
+        for (i in 0 until countResultFields) {
             // Замените на свой идентификатор готовой разметки
             val resultMathLayout: View = inflater.inflate(R.layout.result_math, container, false)
 
@@ -111,53 +111,54 @@ class MathFigureFragment : Fragment() {
         tooltipCalculator.text = resources.getText(dataSet[1])
         when(dataId){
             0 -> { // Параллелепипед (куб)
-                dataFields = parallelepipedInputElements()
+                dataFields = inputElementsGenerator(arrayOf(
+                    R.string.hint_sideA,
+                    R.string.hint_sideB,
+                    R.string.hint_sideC), 3, inputContainerLayout)
+
                 textFields = addViewsToContainer(resultContainerLayout, 3)!!
-                hintSetToText(textFields, arrayOf(
-                    arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea, R.string.label_resultVolume))
-                )
+                hintSetToText(textFields, arrayOf(arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea, R.string.label_resultVolume)))
             }
             1 -> { // Пирамида
-                dataFields = pyramidInputElements()
+                dataFields = inputElementsGenerator(arrayOf(
+                    R.string.hint_sideA,
+                    R.string.hint_height), 2, inputContainerLayout)
+
                 textFields = addViewsToContainer(resultContainerLayout, 3)!!
-                hintSetToText(textFields, arrayOf(
-                    arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea, R.string.label_resultVolume))
-                )
+                hintSetToText(textFields, arrayOf(arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea, R.string.label_resultVolume)))
             }
             2 -> { // Цилиндр
-                dataFields = pyramidInputElements()
+                dataFields = inputElementsGenerator(arrayOf(
+                    R.string.hint_radius,
+                    R.string.hint_height), 2, inputContainerLayout)
                 textFields = addViewsToContainer(resultContainerLayout, 3)!!
-                hintSetToText(textFields, arrayOf(
-                    arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea, R.string.label_resultVolume))
-                )
+                hintSetToText(textFields, arrayOf(arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea, R.string.label_resultVolume)))
             }
             3 -> { // Конус
-                dataFields = pyramidInputElements()
+                dataFields = inputElementsGenerator(arrayOf(
+                    R.string.hint_radius,
+                    R.string.hint_height), 2, inputContainerLayout)
+
                 textFields = addViewsToContainer(resultContainerLayout, 3)!!
-                hintSetToText(textFields, arrayOf(
-                    arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea, R.string.label_resultVolume))
-                )
+                hintSetToText(textFields, arrayOf(arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea, R.string.label_resultVolume)))
             }
             4 -> { // Сфера
-                dataFields = pyramidInputElements()
+                dataFields = inputElementsGenerator(arrayOf(
+                    R.string.hint_radius), 1, inputContainerLayout)
+
                 textFields = addViewsToContainer(resultContainerLayout, 2)!!
-                hintSetToText(textFields, arrayOf(
-                    arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea))
-                )
+                hintSetToText(textFields, arrayOf(arrayOf(R.string.label_resultTotalArea, R.string.label_resultLateralArea)))
             }
         }
     }
 
-    private fun parallelepipedInputElements(): Array<EditText> {
+    private fun inputElementsGenerator(inputFieldsHintId: Array<Int>, countInputsField: Int, container: LinearLayout): Array<EditText> {
+        var editTextArray: Array<EditText> = arrayOf()
         // Данный метод отвечает за расстановку и настройку полей ввода данных необходимых для параллелепипеда
-        val sideFields = arrayOf(EditText(context), EditText(context), EditText(context)) // Массив самих полей
 
-        sideFields[0].hint = resources.getText(R.string.hint_sideA)
-        sideFields[1].hint = resources.getText(R.string.hint_sideB)
-        sideFields[2].hint = resources.getText(R.string.hint_sideC)
-
-        for (field in sideFields) {
-            field.layoutParams = LinearLayout.LayoutParams(
+        for (index in 0 until countInputsField) {
+            var inputTextElement = EditText(context)
+            inputTextElement.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT).apply {
                 setMargins(
@@ -166,40 +167,17 @@ class MathFigureFragment : Fragment() {
                     resources.getDimensionPixelSize(R.dimen.nav_header_vertical_spacing),
                     resources.getDimensionPixelSize(R.dimen.nav_header_vertical_spacing))
             }
-            field.textSize = 16F
-            field.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
-            field.setEms(10)
-            field.inputType = InputType.TYPE_CLASS_NUMBER
+            inputTextElement.textSize = 16F
+            inputTextElement.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+            inputTextElement.hint = resources.getText(inputFieldsHintId[index])
+            inputTextElement.setEms(10)
+            inputTextElement.inputType = InputType.TYPE_CLASS_NUMBER
 
-            inputContainerLayout.addView(field) // Добавляет элемент в контейнер
+
+            container.addView((inputTextElement))
+            editTextArray += inputTextElement
         }
-        return sideFields
-    }
-    private fun pyramidInputElements(): Array<EditText> {
-        // Данный метод отвечает за расстановку и настройку полей ввода данных необходимых для параллелепипеда
-        val sideFields = arrayOf(EditText(context), EditText(context)) // Массив самих полей
-
-        sideFields[0].hint = resources.getText(R.string.hint_sideA)
-        sideFields[1].hint = resources.getText(R.string.hint_height)
-
-        for (field in sideFields) {
-            field.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT).apply {
-                setMargins(
-                    resources.getDimensionPixelSize(R.dimen.nav_header_vertical_spacing),
-                    resources.getDimensionPixelSize(R.dimen.nav_header_vertical_spacing),
-                    resources.getDimensionPixelSize(R.dimen.nav_header_vertical_spacing),
-                    resources.getDimensionPixelSize(R.dimen.nav_header_vertical_spacing))
-            }
-            field.textSize = 16F
-            field.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
-            field.setEms(10)
-            field.inputType = InputType.TYPE_CLASS_NUMBER
-
-            inputContainerLayout.addView(field) // Добавляет элемент в контейнер
-        }
-        return sideFields
+        return editTextArray
     }
 
     fun dataIdSet(newDataSetId : Int){
