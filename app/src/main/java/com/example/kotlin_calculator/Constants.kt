@@ -19,12 +19,17 @@ object Constants {
         Triple(R.string.label_powerText, R.string.tooltip_powerText, R.array.power_units),
         Triple(R.string.label_energyText, R.string.tooltip_energyText, R.array.energy_units))
 
+    // Массив с ссылками для мат. категории
     val constantsMathData: Array<Array<Int>> = arrayOf(
         arrayOf(R.string.label_parallelepiped, R.string.tooltip_parallelepipedText),
         arrayOf(R.string.label_pyramid, R.string.tooltip_dataText),
         arrayOf(R.string.label_cylinder, R.string.tooltip_dataText),
         arrayOf(R.string.label_cone, R.string.tooltip_dataText),
-        arrayOf(R.string.label_sphere, R.string.tooltip_dataText)
+        arrayOf(R.string.label_sphere, R.string.tooltip_dataText),
+        arrayOf(R.string.label_prism, R.string.tooltip_dataText),
+        arrayOf(R.string.label_rectangle, R.string.tooltip_dataText),
+        arrayOf(R.string.label_triangle, R.string.tooltip_dataText),
+        arrayOf(R.string.label_rhombus, R.string.tooltip_dataText)
     )
 
     // Нужны для метода dataToConvert() класса ConverterFragment.kt

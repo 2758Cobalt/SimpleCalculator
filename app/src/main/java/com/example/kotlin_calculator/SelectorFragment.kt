@@ -27,12 +27,16 @@ class SelectorFragment: Fragment() {
             view.findViewById(R.id.buttonPower) as ImageButton,
             view.findViewById(R.id.buttonEnergy) as ImageButton
         )
-        val mathButtons = arrayOf(
+        val mathSolidsButtons = arrayOf(
             view.findViewById(R.id.buttonMathParallelepiped) as ImageButton,
             view.findViewById(R.id.buttonMathPyramid) as ImageButton,
             view.findViewById(R.id.buttonMathCylinder) as ImageButton,
             view.findViewById(R.id.buttonMathCone) as ImageButton,
-            view.findViewById(R.id.buttonMathSphere) as ImageButton
+            view.findViewById(R.id.buttonMathSphere) as ImageButton,
+            view.findViewById(R.id.buttonMathPrism) as ImageButton,
+            view.findViewById(R.id.buttonMathRectangle) as ImageButton,
+            view.findViewById(R.id.buttonMathTriangle) as ImageButton,
+            view.findViewById(R.id.buttonMathRhombus) as ImageButton,
         )
 
         for ((index, button) in unitButtons.withIndex()) {
@@ -43,7 +47,7 @@ class SelectorFragment: Fragment() {
             }
         }
 
-        for ((index, button) in mathButtons.withIndex()) {
+        for ((index, button) in mathSolidsButtons.withIndex()) {
             button.setOnClickListener {
                 val calculatorAlgebra = MathFigureFragment()
                 calculatorAlgebra.dataIdSet(index)

@@ -43,6 +43,10 @@
     <string name="label_powerText">Power</string>
     <string name="label_energyText">Energy</string>
 
+    <string name="label_resultArea">Area</string>                     <!--Площадь-->
+    <string name="label_resultPerimeter">Perimeter</string>                <!--Периметр-->
+    <string name="label_resultDiagonal">Diagonal</string>                <!--Периметр-->
+
     <string name="label_resultTotalArea">Total area</string>                <!--Полная площадь-->
     <string name="label_resultLateralArea">Lateral area</string>            <!--Боковая площадь-->
     <string name="label_resultVolume">Volume</string>                       <!--Объём-->
@@ -76,8 +80,8 @@
 
     <string name="label_geometryCategory">Geometry</string>
     <string name="label_algebraCategory">Algebra</string>
-    <string name="label_volumeFigureCategory">Volume Figures</string>
-    <string name="label_flatFigureCategory">Flat Figures</string>
+    <string name="label_solidsCategory">Geometry solids</string>
+    <string name="label_figuresCategory">Figures</string>
     <string name="label_unitsCategory">Units</string>
 
     <string name="text_error">Error</string>
