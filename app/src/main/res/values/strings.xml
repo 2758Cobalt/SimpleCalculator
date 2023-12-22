@@ -18,7 +18,8 @@
     <string name="symbolPoint" translatable="false">.</string>
     <string name="symbolExponent" translatable="false">E</string>
     <string name="symbolEqual" translatable="false">=</string>
-    <string name="symbolAC" translatable="false">C</string>
+    <string name="symbolAC" translatable="false">AC</string>
+    <string name="symbolC" translatable="false">C</string>
     <string name="symbolRound" translatable="false">≈</string>
 
     <!--Test previous-->
@@ -30,28 +31,40 @@
     <string name="buttonCalculate">Calculate</string>
     <string name="buttonReset">Reset</string>
 
-    <string name="label_weightText">Weight</string>
-    <string name="label_lengthText">Length</string>
-    <string name="label_speedText">Speed</string>
-    <string name="label_dataText">Data</string>
-    <string name="label_temperatureText">Temperature</string>
-    <string name="label_areaText">Area</string>
-    <string name="label_volumeText">Volume</string>
-    <string name="label_frequencyText">Frequency</string>
-    <string name="label_fuelConsumptionText">fuel consumption</string>
-    <string name="label_pressureText">Pressure</string>
-    <string name="label_powerText">Power</string>
-    <string name="label_energyText">Energy</string>
+    <string name="label_weightText">Weight</string>                             <!--Вес-->
+    <string name="label_lengthText">Length</string>                             <!--Длина-->
+    <string name="label_speedText">Speed</string>                               <!--Скорость-->
+    <string name="label_dataText">Data size</string>                            <!--Объём данных-->
+    <string name="label_temperatureText">Temperature</string>                   <!--Температура-->
+    <string name="label_areaText">Area</string>                                 <!--Площадь-->
+    <string name="label_volumeText">Volume</string>                             <!--Объём-->
+    <string name="label_frequencyText">Frequency</string>                       <!--Частота-->
+    <string name="label_fuelConsumptionText">fuel consumption</string>          <!--Расход топлива-->
+    <string name="label_pressureText">Pressure</string>                         <!--Давление-->
+    <string name="label_powerText">Power</string>                               <!--Мощность-->
+    <string name="label_energyText">Energy</string>                             <!--Энергия(Работа)-->
 
-    <string name="label_resultArea">Area</string>                     <!--Площадь-->
-    <string name="label_resultPerimeter">Perimeter</string>                <!--Периметр-->
-    <string name="label_resultDiagonal">Diagonal</string>                <!--Периметр-->
+    <string name="label_resultArea">Area</string>                               <!--Площадь-->
+    <string name="label_resultPerimeter">Perimeter</string>                     <!--Периметр-->
+    <string name="label_resultDiagonal">Diagonal</string>                       <!--Периметр-->
 
-    <string name="label_resultTotalArea">Total area</string>                <!--Полная площадь-->
-    <string name="label_resultLateralArea">Lateral area</string>            <!--Боковая площадь-->
-    <string name="label_resultVolume">Volume</string>                       <!--Объём-->
+    <string name="label_resultTotalAreaHint">Total area</string>                <!--Полная площадь-->
+    <string name="label_resultLateralAreaHint">Lateral area</string>            <!--Боковая площадь-->
+    <string name="label_resultVolumeHint">Volume</string>                       <!--Объём-->
 
+    <string name="symbol_area" translatable="false">S =</string>
+    <string name="symbol_lateralArea" translatable="false">Sₗₐₜₑᵣₐₗ =</string>
+    <string name="symbol_totalArea" translatable="false">Sₜₒₜₐₗ =</string>
+    <string name="symbol_volume" translatable="false">V =</string>
+    <string name="symbol_perimeter" translatable="false">P =</string>
+    <string name="symbol_height" translatable="false">H =</string>
+    <string name="symbol_length" translatable="false">L =</string>
+    <string name="symbol_diagonal" translatable="false">d =</string>
+    <string name="symbol_diagonalFirst" translatable="false">d₁ =</string>
+    <string name="symbol_diagonalSecond" translatable="false">d₂ =</string>
 
+    <!--Тела-->
+    <string name="label_circleLength">Length of Circle</string>             <!--Длина круга-->
     <string name="label_parallelepiped">Parallelepiped</string>             <!--Параллелепипед или кубоид-->
     <string name="label_pyramid">Pyramid</string>                           <!--Пирамида-->
     <string name="label_cylinder">Cylinder</string>                         <!--Цилиндр-->
@@ -64,25 +77,25 @@
     <string name="label_icosahedron">Icosahedron</string>                   <!--Икосаэдр -->
     <string name="label_tetrahedron">Tetrahedron</string>                   <!--Тетраэдр-->
 
-    <!--Тела-->
-    <string name="label_parallelogram">Parallelogram</string>               <!--Параллелограмм-->
-    <string name="label_circle">Circle</string>                             <!--Круг-->
-    <string name="label_circleLength">Length of Circle</string>             <!--Длина круга-->
-    <string name="label_trapezoid">Trapezoid</string>                       <!--Трапеция-->
 
     <string name="label_algebraCalculator" translatable="false">Algebra calculator</string>
     <string name="label_geometryCalculator" translatable="false">Geometry calculator</string>
 
-    <!--Ф игуры-->
+    <!--Фигуры-->
     <string name="label_rectangle">Rectangle</string>                       <!--Прямоугольник-->
     <string name="label_triangle">Triangle</string>                         <!--Треугольник-->
     <string name="label_rhombus">Rhombus</string>                           <!--Ромб-->
+    <string name="label_circle">Circle</string>                             <!--Круг-->
+    <string name="label_trapezium">Trapezium</string>                       <!--Трапеция-->
 
+    <!--Categories-->
     <string name="label_geometryCategory">Geometry</string>
     <string name="label_algebraCategory">Algebra</string>
-    <string name="label_solidsCategory">Geometry solids</string>
-    <string name="label_figuresCategory">Figures</string>
     <string name="label_unitsCategory">Units</string>
+
+    <!--Sub categories-->
+    <string name="label_bodiesSubCategory">Bodies</string>
+    <string name="label_shapesSubCategory">Shapes</string>
 
     <string name="text_error">Error</string>
 
@@ -95,11 +108,12 @@
     <string name="hint_radius">Radius</string>
     <string name="hint_height">Height</string>
     <string name="hint_speed">Speed</string>
+    <string name="hint_diagonal">Diagonal</string>
     <string name="hint_diagonalFirst">Diagonal 1</string>
     <string name="hint_diagonalSecond">Diagonal 2</string>
 
     <!--Tooltips-->
-    <string name="tooltip_parallelepipedText">Enter the sides of the parallelepiped (if you need a rectangle, leave the field C blank or C = 0)</string>
+    <string name="tooltip_parallelepipedText">Enter the sides of the parallelepiped</string>
     <string name="tooltip_triangleText">Enter the sides of the triangle. The area is calculated using Heron\'s formula</string>
     <string name="tooltip_rhombusText">Fill only for need field and choose variant calculating of area of the rhombus</string>
     <string name="tooltip_circleText">Enter the radius or length for calculate area of circle</string>
@@ -127,6 +141,7 @@
     <string name="text_In" translatable="false">↓</string>
     <string name="text_To" translatable="false">&#8594;</string>
     <string name="text_Selector">Convertors</string>
+
 
     <!--Units Arrays-->
     <string-array name="weight_units">
@@ -229,7 +244,7 @@
         <item>kilocalorie</item>                            <!-- Килокалория -->
         <item>watt-hour</item>                              <!-- Ватт-час -->
         <item>kilowatt-hour</item>                          <!-- Киловатт-час -->
-        <item>electronvolt</item>                           <!-- Электронвольт -->
+        <item>electron volt</item>                           <!-- Электронвольт -->
         <item>BTU</item>                                    <!-- Британская термальная единица -->
         <item>therm</item>                                  <!-- Терм -->
         <item>foot-pound</item>                             <!-- Фут-фунт -->

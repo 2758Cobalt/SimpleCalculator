@@ -36,7 +36,7 @@
                 android:src="@drawable/area_cube"/>
 
             <TextView
-                android:id="@+id/tooltipMathCalculator"
+                android:id="@+id/descMathCalculator"
                 style="@style/tooltipTextStyle"
                 android:text="@string/tooltip_parallelepipedText" />
 
@@ -44,11 +44,10 @@
 
         <LinearLayout
             android:id="@+id/inputContainer"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
-            android:backgroundTint="@color/gray120"
-            android:background="@drawable/linearlayout_bg_sheet"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
         </LinearLayout>
@@ -70,7 +69,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:background="@drawable/gray75_box"
             android:orientation="vertical">
 
         </LinearLayout>
@@ -109,6 +107,8 @@
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/buttonNext"
                 android:layout_margin="12dp" />
+
+
         </LinearLayout>
 
     </LinearLayout>

@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:textColor="@color/black"
-        android:text="@string/label_solidsCategory"
+        android:text="@string/label_bodiesSubCategory"
         android:textSize="16sp" />
 
     <androidx.gridlayout.widget.GridLayout
@@ -169,7 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:textColor="@color/black"
-        android:text="@string/label_figuresCategory"
+        android:text="@string/label_shapesSubCategory"
         android:textSize="16sp" />
 
     <androidx.gridlayout.widget.GridLayout

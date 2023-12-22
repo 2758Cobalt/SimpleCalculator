@@ -37,6 +37,8 @@ class SelectorFragment: Fragment() {
             view.findViewById(R.id.buttonMathRectangle) as ImageButton,
             view.findViewById(R.id.buttonMathTriangle) as ImageButton,
             view.findViewById(R.id.buttonMathRhombus) as ImageButton,
+            view.findViewById(R.id.buttonMathCircle) as ImageButton,
+            view.findViewById(R.id.buttonMathTrapezium) as ImageButton
         )
 
         for ((index, button) in unitButtons.withIndex()) {

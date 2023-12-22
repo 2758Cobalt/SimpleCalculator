@@ -12,14 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/white_roundcorner_box"
+        android:background="@drawable/white_round_corner_box"
         android:padding="16dp"
         android:translationZ="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <FrameLayout
         android:id="@+id/fragment_container_selector"
@@ -45,7 +44,6 @@
             android:id="@+id/calculatorMainMenu"
             android:layout_width="128dp"
             android:layout_height="48dp"
-            android:layout_margin="6dp"
             android:backgroundTint="@color/gray255"
             android:drawableStart="@drawable/ic_arrow_down"
             android:paddingHorizontal="16dp"
@@ -57,7 +55,6 @@
             android:id="@+id/exitApp"
             android:layout_width="128dp"
             android:layout_height="48dp"
-            android:layout_margin="6dp"
             android:backgroundTint="@color/red70"
             android:drawableStart="@drawable/ic_exit"
             android:paddingHorizontal="16dp"

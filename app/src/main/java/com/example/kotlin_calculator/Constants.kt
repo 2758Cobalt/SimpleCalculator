@@ -29,7 +29,9 @@ object Constants {
         arrayOf(R.string.label_prism, R.string.tooltip_dataText),
         arrayOf(R.string.label_rectangle, R.string.tooltip_dataText),
         arrayOf(R.string.label_triangle, R.string.tooltip_dataText),
-        arrayOf(R.string.label_rhombus, R.string.tooltip_dataText)
+        arrayOf(R.string.label_rhombus, R.string.tooltip_dataText),
+        arrayOf(R.string.label_circle, R.string.tooltip_dataText),
+        arrayOf(R.string.label_trapezium, R.string.tooltip_dataText)
     )
 
     // Нужны для метода dataToConvert() класса ConverterFragment.kt
@@ -154,8 +156,7 @@ object Constants {
             fuelConsumptionConvert,
             pressureConvert,
             powerConvert,
-            energyConvert
-        )
+            energyConvert)
 
     /* Принцип работы с массивами метода dataToConvert():
        Предположим, что входные данные представлены в единицах "сантиметр", и их необходимо конвертировать в единицы "километр".

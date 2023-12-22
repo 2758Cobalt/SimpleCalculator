@@ -298,10 +298,10 @@ object GeometricFiguresFormulas {
         val sideB = dataFields[1].text.toString().toDouble()
         val sideC = dataFields[2].text.toString().toDouble()
 
-        val perimeter = sideA + sideB + sideC                            // Периметр треугольника
+        val perimeter = sideA + sideB + sideC                               // Периметр треугольника
         val s = sqrt(perimeter / 2 * (perimeter / 2 - sideA) *
-                (perimeter / 2 - sideB) * (perimeter / 2 - sideC))         // Площадь треугольника
-        val height = 2 * s / sideA                                       // Высота треугольника из стороны A
+                (perimeter / 2 - sideB) * (perimeter / 2 - sideC))          // Площадь треугольника
+        val height = 2 * s / sideA                                          // Высота треугольника из стороны A
 
         // Длины медиан треугольника
 //        val medianA = 0.5 * sqrt(2 * sideB * sideB + 2 * sideC * sideC - sideA * sideA)
@@ -336,5 +336,76 @@ object GeometricFiguresFormulas {
             String.format(Locale.US, "%.${3}f", perimeter).toDouble(),
             String.format(Locale.US, "%.${3}f", height).toDouble(),
             String.format(Locale.US, "%.${3}f", s).toDouble())
+    }
+
+    /**
+     * Функция calculateCircleProperties принимает EditText для радиуса круга,
+     * вычисляет его перевод в тип double, а затем вычисляет площадь и длину окружности.
+     *
+     * @param radiusField EditText, представляющий радиус круга.
+     * @param log Флаг для включения/выключения вывода отладочной информации в Log.
+     * @param debugTag Тег для отладочного вывода в Log.
+     *
+     * @return Массив типа Double, содержащий вычисленные значения площади и длины окружности.
+     */
+
+    fun calculateCircleProperties(dataFields: List<EditText>, log: Boolean, debugTag: String): Array<Double> {
+        val radius = dataFields[0].text.toString().toDouble()
+
+        val area = Math.PI * radius * radius         // Площадь круга
+        val circumference = 2 * Math.PI * radius     // Длина окружности
+
+        if (log) {
+            Log.i(debugTag, "Текущий радиус круга: ${dataFields[0].text}")
+            Log.i(debugTag, "Результаты расчётов круга:\n" +
+                    "Площадь: $area\n" +
+                    "Длина окружности: $circumference")
+        }
+
+        return arrayOf(
+            String.format(Locale.US, "%.${3}f", area).toDouble(),
+            String.format(Locale.US, "%.${3}f", circumference).toDouble())
+    }
+
+    /**
+     * Функция calculateTrapezoidProperties принимает EditText'ы для длин оснований трапеции,
+     * длины боковых сторон и высоты трапеции, вычисляет их перевод в тип double,
+     * а затем вычисляет площадь, периметр и высоту трапеции.
+     *
+     * @param baseAField EditText, представляющий длину основания A трапеции.
+     * @param baseBField EditText, представляющий длину основания B трапеции.
+     * @param side1Field EditText, представляющий длину боковой стороны трапеции.
+     * @param side2Field EditText, представляющий длину боковой стороны трапеции.
+     * @param heightField EditText, представляющий высоту трапеции.
+     * @param log Флаг для включения/выключения вывода отладочной информации в Log.
+     * @param debugTag Тег для отладочного вывода в Log.
+     *
+     * @return Массив типа Double, содержащий вычисленные значения площади, периметра и высоты трапеции.
+     */
+
+    fun calculateTrapezoidProperties(dataFields: List<EditText>, log: Boolean, debugTag: String): Array<Double> {
+        val baseA = dataFields[0].text.toString().toDouble()
+        val baseB = dataFields[1].text.toString().toDouble()
+        val side1 = dataFields[2].text.toString().toDouble()
+        val side2 = dataFields[3].text.toString().toDouble()
+        val height = dataFields[4].text.toString().toDouble()
+
+        val area = 0.5 * (baseA + baseB) * height      // Площадь трапеции
+        val perimeter = baseA + baseB + side1 + side2   // Периметр трапеции
+
+        if (log) {
+            Log.i(debugTag, "Текущие длины оснований трапеции: ${dataFields[0].text}, ${dataFields[1].text}\n" +
+                    "Длины боковых сторон: ${dataFields[2].text}, ${dataFields[3].text}\n" +
+                    "Высота трапеции: ${dataFields[4].text}")
+            Log.i(debugTag, "Результаты расчётов трапеции:\n" +
+                    "Площадь: $area\n" +
+                    "Периметр: $perimeter\n" +
+                    "Высота: $height")
+        }
+
+        return arrayOf(
+            String.format(Locale.US, "%.${3}f", area).toDouble(),
+            String.format(Locale.US, "%.${3}f", perimeter).toDouble(),
+            String.format(Locale.US, "%.${3}f", height).toDouble())
     }
 }

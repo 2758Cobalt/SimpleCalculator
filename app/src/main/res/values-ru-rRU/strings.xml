@@ -17,9 +17,12 @@
     <string name="label_temperatureText">Температура</string>
     <string name="buttonConvert">Конвертировать</string>
     <string name="text_Selector">Конверторы</string>
-    <string name="tooltip_volumeText">Заполните поле для конвертации объёма</string>
-    <string name="tooltip_frequencyText">Заполните поле для конвертации частот</string>
-    <string name="tooltip_fuelConsumptionText">Заполните поле для конвертации расхода топлива</string>
+    <string name="tooltip_volumeText">Заполните поле для перевода единиц объёма</string>
+    <string name="tooltip_frequencyText">Заполните поле для перевода единиц частот</string>
+    <string name="tooltip_fuelConsumptionText">Заполните поле для перевода единиц расхода топлива</string>
+    <string name="tooltip_pressureText">Заполните поле для перевода единиц давления</string>
+    <string name="tooltip_powerText">Заполните поле для перевода единиц мощности</string>
+    <string name="tooltip_energyText">Заполните поле для перевода единиц энергии</string>
     <string name="tooltip_item">Величина</string>
     <string name="tooltip_value">Значение</string>
     <string name="buttonReset">Сбросить</string>
@@ -73,6 +76,15 @@
         <item>°Re - Реомюр</item>
     </string-array>
 
+    <string-array name="volume_units">
+        <item>ml - миллилитр</item>                        <!-- Миллилитры -->
+        <item>l - литр</item>                              <!-- Литры -->
+        <item>cm³ - куб. сантиметр</item>                 <!-- Кубические сантиметры -->
+        <item>ft³ - куб. фут</item>                       <!-- Кубические футы -->
+        <item>in³ - куб. дюйм</item>                       <!-- Кубические дюймы -->
+        <item>gal - галлон США</item>                           <!-- Галлоны -->
+    </string-array>
+
     <string-array name="area_units">
         <item>µ² - Микрон</item>
         <item>µm² - Миллиметр</item>
@@ -83,15 +95,51 @@
         <item>ha - Гектар</item>
     </string-array>
 
-    <string-array name="rhombus_formulas">
-        <item>Сторона и высота</item>
-        <item>Стороны и угол между нимим</item>
-        <item>Диагонали ромба</item>
+
+    <string-array name="frequency_units">
+        <item>hz - герц</item>                                  <!-- Герцы -->
+        <item>khz - килогерц</item>                             <!-- Килогерцы -->
+        <item>mhz - мегагерц</item>                             <!-- Мегагерцы -->
+        <item>ghz - гигагерц</item>                             <!-- Гигагерцы -->
     </string-array>
 
-    <string name="label_TriangleDefault">Площадь треугольника</string>
-    <string name="label_TriangleIsosceles">Площадь равнобедренного треугольника</string>
-    <string name="label_TriangleEquilateral">Площадь равностороннего треугольника</string>
+    <string-array name="fuelConsumption_units">
+        <item>km/l - километр на литр</item>                    <!-- Километры на литр -->
+        <item>l/km - литры на 100 километров</item>             <!-- Литры на 100 километров -->
+        <item>mph/g - мили на галлон</item>                     <!-- Мили на галлон -->
+    </string-array>
+
+    <string-array name="pressure_units">
+        <item>atm - атмосфера</item>                            <!-- Атмосфера -->
+        <item>bar - бар</item>                                  <!-- Бар -->
+        <item>Pa - паскаль</item>                               <!-- Паскаль -->
+    </string-array>
+
+    <string-array name="power_units">
+        <item>W - ватт</item>                                   <!-- Ватт -->
+        <item>kW - киловатт</item>                              <!-- Киловатт -->
+        <item>MW - мегаватт</item>                              <!-- Мегаватт -->
+        <item>GW - гигаватт</item>                              <!-- Гигаватт -->
+        <item>hp - лошадиная сила</item>                        <!-- Лошадиная сила -->
+    </string-array>
+
+    <string-array name="energy_units">
+        <item>джоуль</item>                                     <!-- Джоуль -->
+        <item>калория</item>                                    <!-- Калория -->
+        <item>килокалория</item>                                <!-- Килокалория -->
+        <item>ватт-час</item>                                   <!-- Ватт-час -->
+        <item>киловатт-hour</item>                              <!-- Киловатт-час -->
+        <item>электронвольт</item>                              <!-- Электронвольт -->
+        <item>Британская терм. е.</item>                        <!-- Британская термальная единица -->
+        <item>Терм</item>                                       <!-- Терм -->
+        <item>Фут-фунт</item>                                   <!-- Фут-фунт -->
+        <item>Эрг</item>                                        <!-- Эрг -->
+        <item>Час лошадийной силы</item>                        <!-- Час лошадиной силы -->
+        <item>Квадрильон британских тепл. е.</item>             <!-- Квадрильон британских тепловых единиц -->
+    </string-array>
+
+    <string name="label_bodiesSubCategory">Тела</string>
+    <string name="label_shapesSubCategory">Фигуры</string>
     <string name="label_parallelepiped">Площадь параллелепипеда</string>
     <string name="label_geometryCategory">Геометрия</string>
     <string name="label_algebraCategory">Алгебра</string>
@@ -105,21 +153,31 @@
     <string name="tooltip_rhombusText">Введите только нужные поля и выберите способ вычисления площади ромба</string>
     <string name="tooltip_circleText">Введите радиус кругачтобы расчитать площадь круга</string>
     <string name="tooltip_trapezoidText">Введите только нужные поля чтобы расчитать площадь трапеции</string>
-    <string name="tooltip_weightText">Заполните поле для конвертации веса</string>
-    <string name="tooltip_lengthText">Заполните поле для конвертации длины</string>
-    <string name="tooltip_speedText">Заполните поле для конвертации скорости</string>
-    <string name="tooltip_dataText">Заполните поле для конвертации данных</string>
-    <string name="tooltip_temperatureText">Заполните поле для конвертации температуры</string>
-    <string name="tooltip_areaText">Заполните поле для конвертации площади</string>
+    <string name="tooltip_weightText">Заполните поле для перевода единиц веса</string>
+    <string name="tooltip_lengthText">Заполните поле для перевода единиц длины</string>
+    <string name="tooltip_speedText">Заполните поле для перевода единиц скорости</string>
+    <string name="tooltip_dataText">Заполните поле для перевода единиц объёма данных</string>
+    <string name="tooltip_temperatureText">Заполните поле для перевода единиц температуры</string>
+    <string name="tooltip_areaText">Заполните поле для перевода единиц площади</string>
 
     <string name="buttonCalculate">Расчитать</string>
-    <string name="buttonConverterSquareFigure">Площадь фигур</string>
 
+    <string name="label_pyramid">Пирамида</string>
+    <string name="label_cylinder">Цилиндр</string>
+    <string name="label_cone">Конус</string>
+    <string name="label_sphere">Сфера</string>
+    <string name="label_prism">Призма</string>
+    <string name="label_dodecahedron">Додекаэдр</string>
+    <string name="label_octahedron">Октаэдр</string>
+    <string name="label_icosahedron">Икосаэдр</string>
+    <string name="label_tetrahedron">Тетраэдр</string>
+    <string name="label_rectangle">Прямоугольник</string>
+    <string name="label_triangle">Треугольник</string>
     <string name="label_rhombus">Площадь ромба</string>
-    <string name="label_parallelogram">Площадь параллелограмма</string>
     <string name="label_circle">Площадь круга</string>
-    <string name="label_trapezoid">Площадь трапеции</string>
+    <string name="label_trapezium">Площадь трапеции</string>
 
+    <string name="hint_diagonal">Диагональ</string>
     <string name="hint_diagonalFirst">Диагональ 1</string>
     <string name="hint_diagonalSecond">Диагональ 2</string>
     <string name="hint_radius">Радиус</string>
@@ -128,6 +186,15 @@
     <string name="hint_angle">Угол</string>
     <string name="hint_speed">Скорость</string>
 
+    <string name="label_pressureText">Давление</string>
+    <string name="label_powerText">Мощность</string>
+    <string name="label_energyText">Энергия</string>
+    <string name="label_resultArea">Площадь</string>
+    <string name="label_resultPerimeter">Периметр</string>
+    <string name="label_resultDiagonal">Диагональ</string>
+    <string name="label_resultTotalAreaHint">Полная площадь</string>
+    <string name="label_resultLateralAreaHint">Боковая площадь</string>
+    <string name="label_resultVolumeHint">Объём</string>
     <string name="label_circleLength">Длина круга</string>
 
     <string name="label_unitsCategory">Калькулятор единиц</string>
