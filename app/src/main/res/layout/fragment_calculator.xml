@@ -10,14 +10,6 @@
     android:padding="16dp"
     tools:context=".MainActivity" >
 
-<!--    <ImageButton-->
-<!--        android:id="@+id/buttonHistory"-->
-<!--        style="@style/buttonStyleDefault"-->
-<!--        android:scaleType="centerInside"-->
-<!--        android:adjustViewBounds="true"-->
-<!--        android:contentDescription="@string/sampleText"-->
-<!--        android:src="@drawable/ic_history"/>-->
-
     <!--Текстовые поля-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -42,15 +34,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/operatorField"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:textColor="@color/gray150"
-                    android:textSize="42sp"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/resultField"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -61,8 +44,7 @@
                     android:maxLines="1"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray75"
-                    android:textSize="42sp"
-                    android:textStyle="bold" />
+                    android:textSize="42sp" />
             </LinearLayout>
 
             <TextView
@@ -74,6 +56,7 @@
                 android:maxLines="2"
                 android:textColorHint="@color/gray120"
                 android:textColor="@color/gray150"
+                android:textStyle="bold"
                 android:textSize="24sp" />
             <TextView
                 android:id="@+id/memoryField"
@@ -117,46 +100,60 @@
         android:backgroundTint="@color/white240"
         android:background="@drawable/linearlayout_bg_sheet"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <HorizontalScrollView
+        android:layout_width="364dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:background="@drawable/linearlayout_bg_sheet"
-        android:backgroundTint="@color/white240"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/buttonClearAllAction"
-            style="@style/buttonStyleDefault"
-            android:text="@string/symbolAC" />
-        <Button
-            android:id="@+id/buttonMemoryClear"
-            style="@style/buttonStyleDefault"
-            android:text="MC" />
+        android:backgroundTint="@color/white240">
 
-        <Button
-            android:id="@+id/buttonMemoryRead"
-            style="@style/buttonStyleDefault"
-            android:text="MR"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/buttonMemoryAdd"
-            style="@style/buttonStyleDefault"
-            android:text="MS"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/buttonMemoryClear"
+                style="@style/buttonStyleDefault"
+                android:text="MC" />
+
+            <Button
+                android:id="@+id/buttonMemoryRead"
+                style="@style/buttonStyleDefault"
+                android:text="MR"/>
+
+            <Button
+                android:id="@+id/buttonMemoryAdd"
+                style="@style/buttonStyleDefault"
+                android:text="MS"/>
+
+            <Button
+                android:id="@+id/buttonRoundBracketOpen"
+                style="@style/buttonStyleOperator"
+                android:text="("/>
+
+            <Button
+                android:id="@+id/buttonRoundBracketClose"
+                style="@style/buttonStyleOperator"
+                android:text=")"/>
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
 
     <!--Numpad-->
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
-        app:rowCount="4"
+        app:rowCount="6"
         app:columnCount="4"
         android:layout_gravity="center">
 
         <Button
-            android:id="@+id/buttonClearAction"
+            android:id="@+id/buttonClearAllAction"
             style="@style/buttonStyleDefault"
-            android:text="@string/symbolC" />
+            android:text="@string/symbolAC" />
 
         <Button
             android:id="@+id/buttonRoundAction"
@@ -257,7 +254,5 @@
             android:text="@string/symbolEqual" />
 
     </androidx.gridlayout.widget.GridLayout>
-
-
 
 </LinearLayout>
