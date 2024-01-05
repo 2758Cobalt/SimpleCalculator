@@ -87,6 +87,9 @@
     <string name="label_rhombus">Rhombus</string>                           <!--Ромб-->
     <string name="label_circle">Circle</string>                             <!--Круг-->
     <string name="label_trapezium">Trapezium</string>                       <!--Трапеция-->
+    <string name="label_sector">Sector</string>                             <!--Сектор-->
+    <string name="label_ellipse">Ellipse</string>                           <!--Эллипс-->
+    <string name="label_parallelogram">Parallelogram</string>               <!--Параллелограм-->
 
     <!--Categories-->
     <string name="label_geometryCategory">Geometry</string>

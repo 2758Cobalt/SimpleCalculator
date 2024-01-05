@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
 
+        <ImageView
+            android:id="@+id/backToMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:src="@drawable/baseline_arrow_back_32"
+            android:contentDescription="@string/buttonPrevious"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/labelMathCalculator"
+            style="@style/displayTextConvert"
+            android:layout_width="wrap_content"
+            android:text="@string/label_algebraCalculator"
+            android:textColor="@color/gray120"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,11 +42,6 @@
         android:layout_margin="8dp"
         android:padding="4dp">
 
-        <TextView
-            android:id="@+id/labelMathCalculator"
-            style="@style/displayTextConvert"
-            android:textColor="@color/gray120"
-            android:text="@string/label_algebraCalculator" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,7 +57,7 @@
                 android:layout_margin="8dp"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
-                android:src="@drawable/area_cube"/>
+                android:src="@drawable/body_cube"/>
 
             <TextView
                 android:id="@+id/descMathCalculator"
@@ -83,7 +107,7 @@
                 android:id="@+id/buttonPreviousMath"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_previous_page"
+                android:src="@drawable/baseline_subdirectory_arrow_left_32"
                 android:background="@drawable/linearlayout_bg_sheet"
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/buttonPrevious"
@@ -92,7 +116,7 @@
                 android:id="@+id/buttonResetMath"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_clear"
+                android:src="@drawable/baseline_playlist_remove_24"
                 android:background="@drawable/linearlayout_bg_sheet"
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/buttonReset"
@@ -102,7 +126,7 @@
                 android:id="@+id/buttonNextMath"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_next_page"
+                android:src="@drawable/baseline_arrow_right_alt_32"
                 android:background="@drawable/linearlayout_bg_sheet"
                 android:backgroundTint="@color/orange"
                 android:contentDescription="@string/buttonNext"
@@ -112,13 +136,5 @@
         </LinearLayout>
 
     </LinearLayout>
-    <ImageButton
-        android:id="@+id/backToMenu"
-        style="@style/buttonStyleOperator"
-        android:layout_width="64dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_back"
-        android:contentDescription="@string/buttonPrevious"
-        android:text="@string/buttonPrevious" />
 
 </LinearLayout>

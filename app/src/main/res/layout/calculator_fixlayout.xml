@@ -77,8 +77,8 @@
 
         <ImageView
             android:id="@+id/buttonHistory"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="16dp"
             android:background="@null"
@@ -98,10 +98,7 @@
             android:src="@drawable/baseline_settings_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
     <TextView
         android:id="@+id/textView"
@@ -132,11 +129,6 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonAutoMemorySave"
-                style="@style/buttonStyleDefault"
-                android:text="AMS" />
 
             <Button
                 android:id="@+id/buttonMemoryClear"
@@ -177,21 +169,10 @@
                 android:id="@+id/buttonInvertNumber"
                 style="@style/buttonStyleDefault"
                 android:text="+/-" />
-
             <Button
                 android:id="@+id/buttonPowerNumber"
                 style="@style/buttonStyleDefault"
                 android:text="Х²" />
-
-            <Button
-                android:id="@+id/buttonSqrt"
-                style="@style/buttonStyleDefault"
-                android:text="√x" />
-
-<!--            <Button-->
-<!--                android:id="@+id/buttonPercentAction"-->
-<!--                style="@style/buttonStyleDefault"-->
-<!--                android:text="@string/symbolPercent" />-->
 
         </LinearLayout>
 
@@ -205,23 +186,23 @@
         android:layout_gravity="center"
         android:layout_marginVertical="8dp"
         app:columnCount="4"
+        app:rowCount="5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/quickToolbar"
-        app:layout_constraintStart_toStartOf="@+id/quickToolbar"
-        app:rowCount="5">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/buttonRoundBracketOpen"
-            style="@style/buttonStyleDefault"
-            app:layout_columnSpan="2"
+            style="@style/buttonStyleOperator"
             app:layout_columnWeight="1"
+            app:layout_columnSpan="2"
             android:text="(" />
 
         <Button
             android:id="@+id/buttonRoundBracketClose"
-            style="@style/buttonStyleDefault"
-            app:layout_columnSpan="2"
+            style="@style/buttonStyleOperator"
             app:layout_columnWeight="1"
+            app:layout_columnSpan="2"
             android:text=")" />
 
         <Button
@@ -235,9 +216,9 @@
             android:text="@string/symbolRound" />
 
         <Button
-            android:id="@+id/buttonBackSpaceAction"
+            android:id="@+id/buttonPercentAction"
             style="@style/buttonStyleDefault"
-            android:text="\u232b" />
+            android:text="@string/symbolPercent" />
 
         <Button
             android:id="@+id/divBtn"
@@ -308,21 +289,24 @@
             style="@style/buttonStyleOperator"
             android:text="@string/symbolSub" />
 
-
         <Button
-            android:id="@+id/buttonPointAction"
+            android:id="@+id/buttonBackSpaceAction"
             style="@style/buttonStyleDefault"
-            android:text="@string/symbolPoint" />
+            android:text="\u232b" />
+
         <Button
             android:id="@+id/num0"
             style="@style/buttonStyleNumber"
             android:text="0" />
 
         <Button
+            android:id="@+id/buttonPointAction"
+            style="@style/buttonStyleDefault"
+            android:text="@string/symbolPoint" />
+
+        <Button
             android:id="@+id/buttonEqualAction"
             style="@style/buttonStyleOperator"
-            app:layout_columnSpan="2"
-            app:layout_columnWeight="1"
             android:text="@string/symbolEqual" />
 
     </androidx.gridlayout.widget.GridLayout>

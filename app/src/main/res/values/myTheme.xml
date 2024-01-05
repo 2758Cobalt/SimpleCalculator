@@ -4,7 +4,7 @@
         <item name="colorPrimary">@color/gold</item>
         <item name="colorOnPrimary">@color/gold</item>
         <item name="colorPrimaryVariant">@color/gold</item>
-        <item name="android:statusBarColor">@color/gray75</item>
+        <item name="android:statusBarColor">@color/white200</item>
 
         <item name="colorPrimaryDark">@color/gold</item>
         <item name="colorControlActivated">@color/orange</item>
