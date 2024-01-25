@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">IosCalculator</string>
 
-    <string name="buttonOk">Ok</string>
+    <string name="buttonOk">OK</string>
     <string name="buttonConfirm">Confirm</string>
     <string name="buttonApply">Apply</string>
     <string name="buttonNext">Next</string>
@@ -9,49 +9,62 @@
     <string name="buttonPrevious">Previous</string>
     <string name="buttonExit">Exit</string>
 
+    <string name="labelCalculator">Calculator</string>
+    <string name="labelConverters">Converters</string>
+
+    <string name="demo_converters">Coming soon!\ncontent will be added in future updates</string>
+
     <!--Calculator-->
-    <string name="symbolPercent" translatable="false">%</string>
+    <string name="symbolMemorySave" translatable="false">MS</string>
+    <string name="symbolMemoryRead" translatable="false">MR</string>
+    <string name="symbolMemoryClear" translatable="false">MC</string>
+
+    <string name="symbolPI" translatable="false">π</string>
+    <string name="symbolExp" translatable="false">e</string>
+    <string name="symbolInvert" translatable="false">1/x</string>
+
+    <string name="symbolCubeSqrt" translatable="false">&#8731;</string>
+    <string name="symbolFactorial" translatable="false">x!</string>
+    <string name="symbolSqrt" translatable="false">√x</string>
+    <string name="symbolPower" translatable="false">x&#178;</string>
+    <string name="symbolCloseBracket" translatable="false">)</string>
+    <string name="symbolOpenBracket" translatable="false">(</string>
+
     <string name="symbolDiv" translatable="false">/</string>
     <string name="symbolMul" translatable="false">*</string>
     <string name="symbolSub" translatable="false">-</string>
-    <string name="symbolAdd" translatable="false">\+</string>
+    <string name="symbolAdd" translatable="false">+</string>
     <string name="symbolPoint" translatable="false">.</string>
-    <string name="symbolExponent" translatable="false">E</string>
-    <string name="symbolEqual" translatable="false">=</string>
-    <string name="symbolAC" translatable="false">AC</string>
-    <string name="symbolC" translatable="false">C</string>
-    <string name="symbolRound" translatable="false">≈</string>
 
-    <!--Test previous-->
-    <string name="sampleButton" translatable="false">SampleButton</string>
-    <string name="sampleText" translatable="false">SampleText</string>
+    <string name="symbolBackSpace" translatable="false">\u232b</string>
+    <string name="symbolAC" translatable="false">AC</string>
+    <string name="symbolCE" translatable="false">CE</string>
+    <string name="symbolEqual" translatable="false">=</string>
+    <string name="symbolRound" translatable="false">≈</string>
+    <string name="symbolPercent" translatable="false">%</string>
+    <string name="symbolPercentConvert" translatable="false">%...</string>
+
+    <string name="symbolNum0" translatable="false">0</string>
+    <string name="symbolNum1" translatable="false">1</string>
+    <string name="symbolNum2" translatable="false">2</string>
+    <string name="symbolNum3" translatable="false">3</string>
+    <string name="symbolNum4" translatable="false">4</string>
+    <string name="symbolNum5" translatable="false">5</string>
+    <string name="symbolNum6" translatable="false">6</string>
+    <string name="symbolNum7" translatable="false">7</string>
+    <string name="symbolNum8" translatable="false">8</string>
+    <string name="symbolNum9" translatable="false">9</string>
+    <string name="symbolMemoryAdd" translatable="false">M+</string>
+    <string name="symbolMemorySub" translatable="false">M-</string>
+    <string name="symbolMemoryMul" translatable="false">M*</string>
+    <string name="symbolMemoryDiv" translatable="false">M/</string>
+
+    <string name="symbolSin" translatable="false">sin</string>
+    <string name="symbolCos" translatable="false">cos</string>
+    <string name="symbolTg" translatable="false">tg</string>
+    <string name="symbolCtg" translatable="false">ctg</string>
 
     <!--Converter-->
-    <string name="buttonConvert">Convert</string>
-    <string name="buttonCalculate">Calculate</string>
-    <string name="buttonReset">Reset</string>
-
-    <string name="label_weightText">Weight</string>                             <!--Вес-->
-    <string name="label_lengthText">Length</string>                             <!--Длина-->
-    <string name="label_speedText">Speed</string>                               <!--Скорость-->
-    <string name="label_dataText">Data size</string>                            <!--Объём данных-->
-    <string name="label_temperatureText">Temperature</string>                   <!--Температура-->
-    <string name="label_areaText">Area</string>                                 <!--Площадь-->
-    <string name="label_volumeText">Volume</string>                             <!--Объём-->
-    <string name="label_frequencyText">Frequency</string>                       <!--Частота-->
-    <string name="label_fuelConsumptionText">fuel consumption</string>          <!--Расход топлива-->
-    <string name="label_pressureText">Pressure</string>                         <!--Давление-->
-    <string name="label_powerText">Power</string>                               <!--Мощность-->
-    <string name="label_energyText">Energy</string>                             <!--Энергия(Работа)-->
-
-    <string name="label_resultArea">Area</string>                               <!--Площадь-->
-    <string name="label_resultPerimeter">Perimeter</string>                     <!--Периметр-->
-    <string name="label_resultDiagonal">Diagonal</string>                       <!--Периметр-->
-
-    <string name="label_resultTotalAreaHint">Total area</string>                <!--Полная площадь-->
-    <string name="label_resultLateralAreaHint">Lateral area</string>            <!--Боковая площадь-->
-    <string name="label_resultVolumeHint">Volume</string>                       <!--Объём-->
-
     <string name="symbol_area" translatable="false">S =</string>
     <string name="symbol_lateralArea" translatable="false">Sₗₐₜₑᵣₐₗ =</string>
     <string name="symbol_totalArea" translatable="false">Sₜₒₜₐₗ =</string>
@@ -63,197 +76,44 @@
     <string name="symbol_diagonalFirst" translatable="false">d₁ =</string>
     <string name="symbol_diagonalSecond" translatable="false">d₂ =</string>
 
-    <!--Тела-->
-    <string name="label_circleLength">Length of Circle</string>             <!--Длина круга-->
-    <string name="label_parallelepiped">Parallelepiped</string>             <!--Параллелепипед или кубоид-->
-    <string name="label_pyramid">Pyramid</string>                           <!--Пирамида-->
-    <string name="label_cylinder">Cylinder</string>                         <!--Цилиндр-->
-    <string name="label_cone">Cone</string>                                 <!--Конус-->
-    <string name="label_sphere">Sphere</string>                             <!--Сфера-->
-    <string name="label_prism">Prism</string>                               <!--Призма-->
+    <!--Test previous-->
+    <string name="sampleButton" translatable="false">SampleButton</string>
+    <string name="sampleText" translatable="false">SampleText</string>
 
-    <string name="label_dodecahedron">Dodecahedron</string>                 <!--Додекаэдр-->
-    <string name="label_octahedron">Octahedron</string>                     <!--Октаэдр-->
-    <string name="label_icosahedron">Icosahedron</string>                   <!--Икосаэдр -->
-    <string name="label_tetrahedron">Tetrahedron</string>                   <!--Тетраэдр-->
+    <string name="tooltip_enterText">Enter Text</string>
+    <string name="labelQuickBar">Quick Access Toolbar</string>
 
+    <string name="text_roundRange">Round up: </string>
+    <string name="editText_enterNum">Enter number</string>
 
-    <string name="label_algebraCalculator" translatable="false">Algebra calculator</string>
-    <string name="label_geometryCalculator" translatable="false">Geometry calculator</string>
+    <string name="text_EnterSin">Enter Sin() number and press enter for convert</string>
+    <string name="text_EnterCos">Enter Cos() number and press enter for convert</string>
+    <string name="text_EnterTan">Enter Tan() number and press enter for convert</string>
+    <string name="text_EnterCtg">Enter Ctg() number and press enter for convert</string>
+    <string name="text_EnterExp">Enter number and press enter for convert to EXP"</string>
 
-    <!--Фигуры-->
-    <string name="label_rectangle">Rectangle</string>                       <!--Прямоугольник-->
-    <string name="label_triangle">Triangle</string>                         <!--Треугольник-->
-    <string name="label_rhombus">Rhombus</string>                           <!--Ромб-->
-    <string name="label_circle">Circle</string>                             <!--Круг-->
-    <string name="label_trapezium">Trapezium</string>                       <!--Трапеция-->
-    <string name="label_sector">Sector</string>                             <!--Сектор-->
-    <string name="label_ellipse">Ellipse</string>                           <!--Эллипс-->
-    <string name="label_parallelogram">Parallelogram</string>               <!--Параллелограм-->
+    <string name="labelFragment_trigonometry">Trigonometry</string>
 
-    <!--Categories-->
-    <string name="label_geometryCategory">Geometry</string>
-    <string name="label_algebraCategory">Algebra</string>
-    <string name="label_unitsCategory">Units</string>
+    <string name="preference_memoryAutoSave">AutoSave to memory</string>
+    <string name="preference_memorySaveType">Save to memory</string>
+    <string name="preference_leftMode">Left hand mode</string>
+    <string name="preference_expandMode">expand keyboard</string>
 
-    <!--Sub categories-->
-    <string name="label_bodiesSubCategory">Bodies</string>
-    <string name="label_shapesSubCategory">Shapes</string>
+    <string name="preference_leftModeDesc">will be mirror keyboard for left hand</string>
+    <string name="preference_expandModeDesc">add to keyboard top row with additional functions</string>
+    <string name="preference_memoryAutoSaveDesc">will be auto save result to memory</string>
+    <string name="preference_memorySaveTypeDesc">save result/input to memory</string>
 
-    <string name="text_error">Error</string>
-
-    <!--Подсказки-->
-    <string name="hint_sideA">Side A</string>
-    <string name="hint_sideB">Side B</string>
-    <string name="hint_sideC">Side C</string>
-    <string name="hint_length">Length</string>
-    <string name="hint_angle">Angle</string>
-    <string name="hint_radius">Radius</string>
-    <string name="hint_height">Height</string>
-    <string name="hint_speed">Speed</string>
-    <string name="hint_diagonal">Diagonal</string>
-    <string name="hint_diagonalFirst">Diagonal 1</string>
-    <string name="hint_diagonalSecond">Diagonal 2</string>
-
-    <!--Tooltips-->
-    <string name="tooltip_parallelepipedText">Enter the sides of the parallelepiped</string>
-    <string name="tooltip_triangleText">Enter the sides of the triangle. The area is calculated using Heron\'s formula</string>
-    <string name="tooltip_rhombusText">Fill only for need field and choose variant calculating of area of the rhombus</string>
-    <string name="tooltip_circleText">Enter the radius or length for calculate area of circle</string>
-    <string name="tooltip_trapezoidText">Enter the fields for calculate area of trapezoid</string>
-
-    <string name="tooltip_weightText">Fill in the field to convert weight</string>
-    <string name="tooltip_lengthText">Fill in the field to convert length</string>
-    <string name="tooltip_speedText">Fill in the field to convert speed</string>
-    <string name="tooltip_dataText">Fill in the field to convert data</string>
-    <string name="tooltip_temperatureText">Fill in the field to convert temperature</string>
-    <string name="tooltip_areaText">Fill in the field to convert square</string>
-
-    <string name="tooltip_volumeText">Fill in the field to convert volume</string>
-    <string name="tooltip_frequencyText">Fill in the field to convert frequency</string>
-    <string name="tooltip_fuelConsumptionText">Fill in the field to convert fuel consumption</string>
-    <string name="tooltip_pressureText">Fill in the field to convert pressure</string>
-    <string name="tooltip_powerText">Fill in the field to convert power</string>
-    <string name="tooltip_energyText">Fill in the field to convert energy</string>
-
-    <string name="tooltip_item">Item</string>
-    <string name="tooltip_value">Value</string>
-    <string name="tooltip_enterText">Enter the number</string>
-
-    <string name="text_convertSymbols" translatable="false">↓↑</string>
-    <string name="text_In" translatable="false">↓</string>
-    <string name="text_To" translatable="false">&#8594;</string>
-    <string name="text_Selector">Convertors</string>
+    <string name="text_failCalculate">Fail</string>
 
 
-    <!--Units Arrays-->
-    <string-array name="weight_units">
-        <item>μg - micrograms</item>                        <!-- Микрограммы -->
-        <item>mg - milligram</item>                         <!-- Миллиграммы -->
-        <item>g - gram</item>                               <!-- Граммы -->
-        <item>kg - kilogram</item>                          <!-- Килограммы -->
-        <item>t - tonne</item>                              <!-- Тонны -->
-        <item>kt - kiloton</item>                           <!-- Килотонны -->
-        <item>mt - megaton</item>                           <!-- Мегатонны -->
-    </string-array>
+    <string name="system_restartMessage">Restart app for </string>
 
-    <string-array name="length_units">
-        <item>nm - nanometer</item>                         <!-- Нанометры -->
-        <item>µm - micrometer</item>                        <!-- Микрометры -->
-        <item>mm - millimeter</item>                        <!-- Миллиметры -->
-        <item>cm - centimeter</item>                        <!-- Сантиметры -->
-        <item>dm - decimeter</item>                         <!-- Дециметры -->
-        <item>m - meter</item>                              <!-- Метры -->
-        <item>km - kilometer</item>                         <!-- Километры -->
-    </string-array>
 
-    <string-array name="speed_units">
-        <item>c - Speed of light</item>                     <!-- Скорость света -->
-        <item>m/s - Meter per second</item>                 <!-- Метры в секунду -->
-        <item>km/h - Kilometer per hour</item>              <!-- Километры в час -->
-        <item>km/s - Kilometer per second</item>            <!-- Километры в секунду -->
-        <item>mph - Miles per hour</item>                   <!-- Мили в час -->
-        <item>mps - Miles per second</item>                 <!-- Мили в секунду -->
-        <item>kn - Knots</item>                             <!-- Узлы -->
-    </string-array>
 
-    <string-array name="data_units">
-        <item>B - byte</item>                               <!-- Байты -->
-        <item>KB - kilobyte</item>                          <!-- Килобайты -->
-        <item>MB - megabyte</item>                          <!-- Мегабайты -->
-        <item>GB - gigabyte</item>                          <!-- Гигабайты -->
-        <item>TB - terabyte</item>                          <!-- Терабайты -->
-        <item>PB - petabyte</item>                          <!-- Петабайты -->
-        <item>EB - exabyte</item>                           <!-- Эксабайты -->
-    </string-array>
-
-    <string-array name="temperature_units">
-        <item>°C - Celsius</item>                           <!-- Градус Цельсия -->
-        <item>℉ - Fahrenheit</item>                         <!-- Градус Фаренгейта -->
-        <item>K - Kelvin</item>                             <!-- Кельвины -->
-        <item>°R - Rankine</item>                           <!-- Ранкин -->
-        <item>°Re - Réaumur</item>                          <!-- Градус Реомюра -->
-    </string-array>
-
-    <string-array name="volume_units">
-        <item>ml - milliliter</item>                        <!-- Миллилитры -->
-        <item>l - liter</item>                              <!-- Литры -->
-        <item>cm³ - cubic centimeter</item>                 <!-- Кубические сантиметры -->
-        <item>ft³ - cubic foot</item>                       <!-- Кубические футы -->
-        <item>in³ - cubic inch</item>                       <!-- Кубические дюймы -->
-        <item>gal - gallon</item>                           <!-- Галлоны -->
-    </string-array>
-
-    <string-array name="area_units">
-        <item>µ² - micron</item>
-        <item>µm² - millimeter</item>
-        <item>cm²- centimeter</item>
-        <item>dm² - decimeter</item>
-        <item>m² - meter</item>
-        <item>km² - kilometer</item>
-        <item>ha - gectar</item>
-    </string-array>
-
-    <string-array name="frequency_units">
-        <item>hz - hertz</item>                             <!-- Герцы -->
-        <item>khz - kilohertz</item>                        <!-- Килогерцы -->
-        <item>mhz - megahertz</item>                        <!-- Мегагерцы -->
-        <item>ghz - gigahertz</item>                        <!-- Гигагерцы -->
-    </string-array>
-
-    <string-array name="fuelConsumption_units">
-        <item>km/l - kilometer per liter</item>             <!-- Километры на литр -->
-        <item>l/km - liter per 100 kilometers</item>        <!-- Литры на 100 километров -->
-        <item>mph/g - mile per gallon</item>                <!-- Мили на галлон -->
-    </string-array>
-
-    <string-array name="pressure_units">
-        <item>atm - Atmosphere</item>                       <!-- Атмосфера -->
-        <item>bar - Bar</item>                              <!-- Бар -->
-        <item>Pa - Pascal</item>                            <!-- Паскаль -->
-    </string-array>
-
-    <string-array name="power_units">
-        <item>W - Watt</item>                               <!-- Ватт -->
-        <item>kW - Kilowatt</item>                          <!-- Киловатт -->
-        <item>MW - Megawatt</item>                          <!-- Мегаватт -->
-        <item>GW - Gigawatt</item>                          <!-- Гигаватт -->
-        <item>hp - Horsepower</item>                        <!-- Лошадиная сила -->
-    </string-array>
-
-    <string-array name="energy_units">
-        <item>joule</item>                                  <!-- Джоуль -->
-        <item>calorie</item>                                <!-- Калория -->
-        <item>kilocalorie</item>                            <!-- Килокалория -->
-        <item>watt-hour</item>                              <!-- Ватт-час -->
-        <item>kilowatt-hour</item>                          <!-- Киловатт-час -->
-        <item>electron volt</item>                           <!-- Электронвольт -->
-        <item>BTU</item>                                    <!-- Британская термальная единица -->
-        <item>therm</item>                                  <!-- Терм -->
-        <item>foot-pound</item>                             <!-- Фут-фунт -->
-        <item>erg</item>                                    <!-- Эрг -->
-        <item>horsepower-hour</item>                        <!-- Час лошадиной силы -->
-        <item>quad</item>                                   <!-- Квадрильон британских тепловых единиц -->
-    </string-array>
+    <string name="keyMemoryAutoSave" translatable="false">key_memoryAutoSave</string>
+    <string name="keyLeftHandMode" translatable="false">key_leftHandMode</string>
+    <string name="keyExpandKeyboardMode" translatable="false">key_expandKeyboardMode</string>
+    <string name="keyPrivacyPolity" translatable="false">key_privacyPolity</string>
 
 </resources>

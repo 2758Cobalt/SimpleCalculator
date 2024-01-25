@@ -1,339 +1,398 @@
 package com.example.kotlin_calculator.fragments
 
-import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.example.kotlin_calculator.R
 import com.example.kotlin_calculator.activities.HistoryActivity
 import com.example.kotlin_calculator.activities.OptionsActivity
+import com.example.kotlin_calculator.adapters.NumPadPagerAdapter
 import com.example.kotlin_calculator.references.CalculatorCore
 import com.example.kotlin_calculator.references.ConstantsCalculator
+import com.example.kotlin_calculator.references.History
 import com.example.kotlin_calculator.references.Memory
 import java.util.Locale
-
+import kotlin.math.abs
 
 class CalculatorFragment: Fragment() {
-    private val memory: Memory by lazy { Memory() }                                            // Объект памяти
-    private var calculateResult: Double = 0.0                                   // Результат подсчёта
+    private lateinit var sharedPreferences: SharedPreferences                       // Объект предпочтений
+    private val memory: Memory by lazy { Memory() }                                 // Объект памяти
+    private val history: History by lazy { History() }                                 // Объект памяти
+    private var calculateResult: Double = 0.0                                       // Результат подсчёта
 
-    // Настройки
-    private var buttonBoxSize = 200                                            // Experimental
+    private lateinit var numpadPager: ViewPager2
+    private lateinit var pagerAdapter: NumPadPagerAdapter
 
     // Логика
-    private var canEnterOperand = true                                          // Возможность вводить операнд
-    private var canEnterOperation = true                                        // Возможность вводить операцию
-    private var canPowerEnter = true                                            // Вохзможность вводить знак возведения в степень
-    private var canSqrtEnter = true                                             // Возможность вводить квадратный корень
-    private var canSwapOperation = false                                        // Возможность заменить оператор
-    private var memoryAutoSaveResult = false                                    // Автосохранение результата вычислений в память
+    private var canEnterOperand = true                                              // Возможность вводить операнд
+    private var canEnterOperation = true                                            // Возможность вводить операцию
+    private var canPowerEnter = true                                                // Вохзможность вводить знак возведения в степень
+    private var canSqrtEnter = true                                                 // Возможность вводить квадратный корень
+    private var canPercentEnter = true                                              // Возможность вводить процент
+    private var canFactorialEnter = true                                            // Возможность вводить факториал
+    private var canPointEnter = true                                                // Возможность вводить точку
 
-    // Массивы с кнопками
-    private var numberButtons: Array<Button> = arrayOf()                         // Массив с ссылками кнопок цифр
-    private var operatorButtons: Array<Button> = arrayOf()                      // Массив с ссылками кнопок операторов
-    private var functionalButtons: Array<Button> = arrayOf()                    // Массив с фукциями калькулятора
-    private var additionalButtons: Array<Button> = arrayOf()                    // Массив с допольнительными кнопками для панели быстрого доступа
-    private var quickContent: Array<Button> = arrayOf()                         // Массив, в котором хранятся кнопки панели быстрого доступа
-    private var historyExpressions: Array<String> = arrayOf()                   // Массив, хранящий историю
+    private var memoryAutoSaveResult = false                                        // Автосохранение в память
 
-    // Текстовые поля
-    private lateinit var inputExpression: TextView                              // Поле с результатом
-    private lateinit var resultExpression: TextView                             // Поле истории (отображает ранее введённые числа/операторы)
-    private lateinit var memoryTextView: TextView                               // Поле отображающее данных в памяти
+    var expandMode = false                                                          // Расширеный режим в обычном нампаде
+    var leftHandMode = false                                                        // Режим левой руки
 
-    private lateinit var quickContainer: LinearLayout
+    // References
+    private val displayCalculator: DisplayFragment = DisplayFragment()
+    private val converterDisplay: ConverterFragment = ConverterFragment()
+
+    private val numpadFragment: NumpadFragment = NumpadFragment()
+    private val engineeringFragment: EngineeringFragment = EngineeringFragment()
 
     // Кнопки "иконки"
-    private lateinit var optionsIcon: ImageView                                 // Открывает настройки
-    private lateinit var historyIcon: ImageView                                 // Открывает историю
+    private lateinit var optionsButton: com.google.android.material.floatingactionbutton.FloatingActionButton      // Открывает настройки
+    private lateinit var historyButton: com.google.android.material.floatingactionbutton.FloatingActionButton      // Открывает историю
+    private lateinit var displayCard: CardView
 
-    private var fullCalculatorExpression: String = ""                           // Строка в которую записывается история (полное выражение)
-    private var expression: String = ""
+    private var expressionResult: String = "0"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        sharedPreferences = getPreferenceObject()                                   // Получение объекта
+        getPreferences(sharedPreferences)                                           // Получение сохранений
+
+        // Передаёт ссылку на себя для доступа к фрагменту
+        numpadFragment.setParentFragment(this@CalculatorFragment)
+        converterDisplay.setParentFragment(this@CalculatorFragment)
+        engineeringFragment.setParentFragment(this@CalculatorFragment)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_calculator, container, false) // View фрагмента
+        return inflater.inflate(R.layout.fragment_calculator, container, false) // View фрагмента
+    }
 
-        // Ссылка на текстовые поля
-        inputExpression = view.findViewById(R.id.resultField)             // Ссылка на тектовое поле текущей записи
-        resultExpression = view.findViewById(R.id.historyField)           // Ссылка на тектовое поле истории (полной записи)
-        memoryTextView = view.findViewById(R.id.memoryField)                    // Ссылка на тектовое поле памяти
-
-        quickContainer = view.findViewById(R.id.quickToolBarContent)
-
-        optionsIcon = view.findViewById(R.id.buttonOptions)                     // Ссылка на кнопку "options"
-        historyIcon = view.findViewById(R.id.buttonHistory)                     // Ссылка на кнопку "history"
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Настройка пейджера для клавиатуры
 
 
-        // Создание и запись ссылок в массив
-        numberButtons = ConstantsCalculator.numberButtonIds.map { view.findViewById<Button>(it) }.toTypedArray()
-        operatorButtons =  ConstantsCalculator.operatorButtonIds.map { view.findViewById<Button>(it) }.toTypedArray()
-        functionalButtons =  ConstantsCalculator.functionalButtonIds.map { view.findViewById<Button>(it) }.toTypedArray()
-        additionalButtons =  ConstantsCalculator.additionalButtonIds.map { view.findViewById<Button>(it) }.toTypedArray()
+        numpadPager = view.findViewById(R.id.numpadPager) as ViewPager2
 
-        quickContent = arrayOf(
-            additionalButtons[0],
-            additionalButtons[1],
-            additionalButtons[2],
-            additionalButtons[3],
-            functionalButtons[8],
-            functionalButtons[9]
-        )
-        fillQuickAccessToolbar(quickContent,quickContainer)
+        optionsButton = view.findViewById(R.id.buttonOptions)                       // Ссылка на кнопку "options"
+        historyButton = view.findViewById(R.id.buttonHistory)                       // Ссылка на кнопку "history"
 
-        // Присвоение слушателя нажатий (OnClickListener) кнопкам с операндами
-        for ((index,numberButton) in numberButtons.withIndex()) {
-            numberButton.setOnClickListener { numberEnterAction(ConstantsCalculator.operandConstants[index]) } // Слушатель нажатий для всего нампада(numpad)
-            setButtonParams(numberButton,buttonBoxSize)
+        displayCard = view.findViewById(R.id.displayContainer)
+
+        pagerAdapter = NumPadPagerAdapter(requireActivity(), arrayListOf(numpadFragment,engineeringFragment))
+        numpadPager.adapter = pagerAdapter
+        numpadPager.offscreenPageLimit = 1 // Предзагрузка  страницы пейджера
+
+        // Анимация
+        numpadPager.setPageTransformer { page, position ->
+            val absPosition = abs(position)
+            page.alpha = 1f - absPosition
+            page.scaleY = 0.85f + (1f + absPosition) * 0.15f
+            page.scaleX = 0.85f + (1f + absPosition) * 0.15f
         }
 
-        // Присвоение слушателя нажатий (OnClickListener) кнопкам с операцией
-        for ((index,operatorButton) in operatorButtons.withIndex()) {
-            operatorButton.setOnClickListener { operationEnterAction(ConstantsCalculator.operatorConstants[index]) } // Слушатель нажатий кнопок операторов
-            setButtonParams(operatorButton,buttonBoxSize)
-        }
+//        val bottomSheetBehavior = BottomSheetBehavior.from(view.findViewById(R.id.bottom_sheet))
+//        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+//
+//        // Настройка поведения при свайпе
+//        bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+//            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+//                // Можете выполнить дополнительные действия при изменении сдвига
+//            }
+//
+//            override fun onStateChanged(bottomSheet: View, newState: Int) {
+//                // Обработка изменения состояния, если необходимо
+//            }
+//        })
 
-        // Присвоение слушателя нажатий (OnClickListener) кнопкам с доп функциями
-        for (functionalButton in functionalButtons) {
-            setButtonParams(functionalButton, buttonBoxSize)
-        }
 
-        // Присвоение слушателя нажатий (OnClickListener) кнопкам в панели быстрого доступа
-        for (quickBtn in quickContent) {
-            setButtonParams(quickBtn, buttonBoxSize - 50)
-        }
-
-        // Слушатель нажатий кнопок функций
-        functionalButtons[0].setOnClickListener { clearAllAction() }
-        functionalButtons[1].setOnClickListener { roundAction() }
-        functionalButtons[2].setOnClickListener { equalAction() }
-        functionalButtons[3].setOnClickListener { enterPointAction() }
-        functionalButtons[4].setOnClickListener { backSpaceAction() }
-        functionalButtons[8].setOnClickListener { powerAction() }
-        functionalButtons[9].setOnClickListener { sqrtAction() }
-
-        // Скобки
-
-        // Открывает скобку
-        functionalButtons[5].setOnClickListener { numberEnterAction(ConstantsCalculator.operatorConstants[6]) }
-
-        // Закрывает скобку
-        functionalButtons[6].setOnClickListener { numberEnterAction(ConstantsCalculator.operatorConstants[7]) }
+        // Заменяет пустоту на displayFragment
+        parentFragmentManager.beginTransaction().replace(R.id.displayContainer, displayCalculator).commit()
 
         // Иконки настроек и истории
-        optionsIcon.setOnClickListener { startActivity(Intent(requireContext(), OptionsActivity::class.java)) } // Option Icon
-        historyIcon.setOnClickListener { startActivity(Intent(requireContext(), HistoryActivity::class.java)) } // History Icon
+        optionsButton.setOnClickListener { startActivity(Intent(requireContext(), OptionsActivity::class.java)) } // Option Icon
+        historyButton.setOnClickListener { startActivity(Intent(requireContext(), HistoryActivity::class.java)) } // Option Icon
 
-        additionalButtons[0].setOnClickListener { memory.save(expression) }         // MS
-        additionalButtons[1].setOnClickListener { memory.read() }                   // MR
-        additionalButtons[2].setOnClickListener { memory.clear(); memoryTextView.text = ""  }                  // MC
-        additionalButtons[3].setOnClickListener {                            // AMS - Auto Memory Save
-            memoryAutoSaveResult = !memoryAutoSaveResult
-            if (memoryAutoSaveResult)
-                additionalButtons[3].setBackgroundResource(R.drawable.style_button_operator)
-            else
-                additionalButtons[3].setBackgroundResource(R.drawable.style_button_functional)
-        }
-
-
-        return view
+        displayCard.layoutParams.height = getScreenHeight(25f).toInt()
     }
 
-    private fun numberEnterAction(numberSymbol: String) // Обработчик нажатия - цифра (0-9) и скобки
+    override fun onResume() {
+        super.onResume()
+        // После возобновлении фрагмента, получает из настроек ключи и обновляет перменные согласно ключам
+        getPreferences(sharedPreferences)
+    }
+
+    fun setConvertDisplay(dataSetId: Int){
+        converterDisplay.dataId = dataSetId
+        converterDisplay.show(parentFragmentManager,converterDisplay.tag)
+    }
+
+    fun numberEnterAction(numberSymbol: String) // Обработчик нажатия - цифра (0-9) и скобки
     {
-        if(inputExpression.text.toString() == "0") // Стирает ноль если он стоит первым
-            inputExpression.text = ""
-
-
-        // Если доступен ввод числа
-        inputExpression.append(numberSymbol)
+        displayCalculator.enterToExpression(numberSymbol)
         changeAccessVariableInput(canEnterOperand,
             operationEnter = true,
-            swapOperator = false,
             powerEnter = true,
-            sqrtEnter = true
-        )
+            sqrtEnter = true,
+            factorialEnter = true)
+        canPercentEnter = true
+
+        equalAction()
     }
-    private fun operationEnterAction(operator: String, ignoreRechange: Boolean = false) // Обработчик нажатия - оператора (+ - * /)
+
+    fun operationEnterAction(operator: String) // Обработчик нажатия - оператора (+ - * /)
     {
-        if(inputExpression.text == "0")
-            inputExpression.text = ""
         if (canEnterOperation){
-            inputExpression.append(operator)
+            displayCalculator.enterToExpression(operator)
 
             changeAccessVariableInput(canEnterOperand,
                 operationEnter = true,
-                swapOperator = true,
                 powerEnter = canPowerEnter,
-                sqrtEnter = canSqrtEnter
-            )
-        }
-        if(canSwapOperation && !ignoreRechange){
-            //Замена оператора
-            backSpaceAction()
-            inputExpression.append(operator)
+                sqrtEnter = canSqrtEnter,
+                factorialEnter = canFactorialEnter)
+            canPointEnter = true
         }
     }
 
-    private fun sqrtAction() {
-        // Вызов квадратного корня
-        if(canSqrtEnter){
-            canEnterOperation = true
-            operationEnterAction("√", true)
-            canSqrtEnter = false
-        }
+    fun sqrtAction() { // Добавляет знак квадратного корня
+        canEnterOperation = true
+        operationEnterAction("√")
+        equalAction()
     }
 
-    private fun powerAction() {
-        // Вызов возведения в степень
-        if (canPowerEnter){
-            operationEnterAction("^")
-            canPowerEnter = false
-        }
+    fun powerAction() { // Добавляет знак возведения в степень
+        operationEnterAction("^")
+        equalAction()
     }
 
-    private fun enterPointAction() // Ввод точки
+    fun percentAction() { // Добавляет знак процента в поле ввода
+        canEnterOperation = true
+        operationEnterAction("%")
+        equalAction()
+    }
+
+    fun factorialAction() {
+        canEnterOperation = true
+        operationEnterAction("!")
+        equalAction()
+    }
+
+    fun invertAction() {
+        canEnterOperation = true
+        displayCalculator.textFields[0].text = "1/" + CalculatorCore.closeExpressionString(displayCalculator.textFields[0].text.toString())
+        equalAction()
+    }
+
+    fun enterPointAction() // Ввод точки
     {
         // После ввода - отключает возможность повторно ввести
-        if (inputExpression.text.isNotEmpty()) {
-            inputExpression.append(ConstantsCalculator.operatorConstants[5])
-        }
+        if (canPointEnter)
+            displayCalculator.enterToExpression(ConstantsCalculator.operatorConstants[5])
+        canPointEnter = false
     }
 
     // Расчитывает результат и возвращает его
     private fun calculateAction(): Double{
-        return CalculatorCore.calculateExpression(inputExpression.text.toString())
+        val newExpression = CalculatorCore.dynamicAnalyzeExpression(displayCalculator.textFields[0].text.toString())
+        displayCalculator.textFields[0].text = newExpression
+        return CalculatorCore.calculateExpression(newExpression)
     }
 
-    private fun backSpaceAction() {
+    fun backSpaceAction() {
         try {
-            if (inputExpression.text.isNotEmpty()) {
+            val deletedLastSymbol = displayCalculator.clearLastSymbolFromExpression(displayCalculator.textFields[0])
 
-                // Переводим текст поля в список символов (Результат - слово = [с,л,о,в,о]) и записываем в локальные переменные для удобства
-                val result = inputExpression.text.toMutableList()
-
-                // Удаляем последний элемент в текстовом поле
-                result.removeLast()
-
-                // Переводим список обратно в строку
-                inputExpression.text = result.joinToString(separator = "")
-
+            // Если удалённый символ совпадает с одним символом из массива
+            if (ConstantsCalculator.operandConstants.contains(deletedLastSymbol.toString())){
+                canEnterOperation = true
             }
+            // Если удалённый символ - '.' (точка)
+            if (deletedLastSymbol == '.')
+                canPointEnter = true
+
+            equalAction()
         } catch (e: Exception) {
             errorHandler()
         }
     }
 
-
-    private fun equalAction() // Событие вычислена результата
+    fun equalAction() // Событие вычислена результата
     {
         try {
+            // Расчёт результата и запись в основное поле и запись результата в переменную
+            displayCalculator.checkTextFields()
 
+            calculateResult = calculateAction()
+            val result = StringBuilder(calculateResult.toString())
 
-            // Расчёт результата
-            val result = calculateAction()
+            if (result[result.lastIndex - 1] == '.' && result[result.lastIndex] == '0'){ // Если в ответе последний символ после точки = 0 - значит число является типом Int
+                displayCalculator.setResultField(calculateResult.toInt().toString()) // Вывод в Int
+            }
+            else{
+                displayCalculator.setResultField(calculateResult.toString()) // Вывод в Double
 
-            // Запись в основное поле и запись результата в переменную
-            calculateResult = result
+            }
+            expressionResult = calculateResult.toString()
 
-            resultExpression.text = calculateResult.toString()
-            expression = resultExpression.text.toString()
+            // Если автосохранение включено
+            if(memoryAutoSaveResult){
+                memorySave()
+            }
 
-
-            saveExpressionToHistory()
         }
         catch (_: Exception){
             errorHandler()
         }
     }
 
-
-    private fun roundAction(roundRange: Int = 1) // Округление результата до десятых
+    fun roundAction(roundRange: Int = 1) // Округление результата до десятых
     {
-        val roundedResult = resultExpression.text.toString().toDouble()
-        resultExpression.text = String.format(Locale.US, "%.${roundRange}f", roundedResult)
+        val roundedResult = displayCalculator.textFields[1].text.toString().toDouble()
+        displayCalculator.textFields[1].text = String.format(Locale.US, "%.${roundRange}f", roundedResult)
     }
 
-
-    private fun clearAllAction() // Обработчик нажатия - очистка полей
+    fun clearAllAction() // Обработчик нажатия - очистка полей
     {
-        // Очистка текстовых полей
-        clearAllFields(resultField = true, expressionField = true, true)
+        displayCalculator.clearTextField(
+            inputField = true,
+            resultField = true,
+            memoryField = false)
+
+        changeAccessVariableInput(true,
+            operationEnter = true,
+            powerEnter = true,
+            sqrtEnter = true,
+            factorialEnter = true)
+        canPercentEnter = true
     }
 
-    private fun changeAccessVariableInput(numberOperand: Boolean = true, operationEnter: Boolean = false, swapOperator: Boolean = false,
-                                          powerEnter: Boolean = false, sqrtEnter: Boolean = false){
+    fun clearGroupAction() {
+
+        displayCalculator.textFields[0].text = removeDigitsFromEnd(displayCalculator.textFields[0].text.toString())
+        equalAction()
+    }
+
+    companion object{
+        private fun removeDigitsFromEnd(input: String): String { // Удаляет число цифр из строки
+            val stringBuilder = StringBuilder(input)
+            if (input.isNotEmpty()) {
+                var index = stringBuilder.length - 1
+
+                if (!stringBuilder[index].isDigit()) {
+                    stringBuilder.deleteCharAt(index)
+                }
+                else{
+                    // Находим первый символ, который не является цифрой
+                    while (index >= 0 && stringBuilder[index].isDigit()) {
+                        stringBuilder.deleteCharAt(index)
+                        index--
+                    }
+                }
+            }
+            return stringBuilder.toString()
+        }
+    }
+
+    private fun changeAccessVariableInput(numberOperand: Boolean = true, operationEnter: Boolean = false,
+                                          powerEnter: Boolean = false, sqrtEnter: Boolean = false, factorialEnter: Boolean = false){
         canEnterOperand = numberOperand
         canEnterOperation = operationEnter
-        canSwapOperation = swapOperator
         canPowerEnter = powerEnter
         canSqrtEnter = sqrtEnter
+        canFactorialEnter = factorialEnter
     }
 
-    private fun clearAllFields(resultField: Boolean, expressionField: Boolean, fullExpression: Boolean) // Очистка всех полей
-    {
-        if(resultField) inputExpression.text = "0"
-        if(expressionField){
-            expression = "0"
-            resultExpression.text = "0"}
-        if(fullExpression) fullCalculatorExpression = ""
+    // Работа с памятью
+    fun memorySave(){
+        if (expressionResult.isNotEmpty()){
+            val savedMemoryValue = memory.save(expressionResult.toDouble())
+            displayCalculator.setMemoryField(memory.read().toString())
+        }
     }
 
+    fun memoryRead(){
+        if (expressionResult.isNotEmpty()){
+            val readMemory = memory.read()
+            operationEnterAction("*")
+            displayCalculator.enterToExpression(readMemory.toString())
+            equalAction()
+        }
+    }
+
+    fun memoryClear() {
+        memory.clear()
+        displayCalculator.clearTextField(inputField = false, resultField = false, memoryField = true)
+    }
+
+    fun memoryResultAdd(){
+        memory.addToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
+        val readMemory = memory.read()
+        displayCalculator.setMemoryField(readMemory.toString())
+    }
+
+    fun memoryResultSub(){
+        memory.subToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
+        val readMemory = memory.read()
+        displayCalculator.setMemoryField(readMemory.toString())
+    }
+    fun memoryResultMul(){
+        memory.mulToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
+        val readMemory = memory.read()
+        displayCalculator.setMemoryField(readMemory.toString())
+    }
+    fun memoryResultDiv(){
+        memory.divToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
+        val readMemory = memory.read()
+        displayCalculator.setMemoryField(readMemory.toString())
+    }
+
+    fun saveExpressionToHistory(){
+        if(expressionResult.isNotEmpty()){
+            history.saveToHistory(calculateResult.toString(),expressionResult)
+
+            Log.i("DebugTag","История:")
+            
+        }
+    }
+
+    fun pushExpressionToLast(){
+        if(expressionResult.isNotEmpty()){
+            displayCalculator.enterToLastExpression()
+            displayCalculator.setInputField(displayCalculator.textFields[1].text.toString())
+            equalAction()
+        }
+    }
 
     private fun errorHandler() // Обработчик ошибки
     {
-        resultExpression.text = "Failed calculation"
+        displayCalculator.textFields[1].text = "..."
     }
 
-    private fun saveExpressionToHistory(){
-        historyExpressions += expression
-
-        Log.i("DebugTag","История:")
-        for ((index, historyElement) in historyExpressions.withIndex()){
-            Log.i("DebugTag","Запись №$index: $historyElement")
-        }
-
+    // Preferences
+    private fun getPreferenceObject(): SharedPreferences {
+        return requireContext().getSharedPreferences(
+            ConstantsCalculator.vault,
+            Context.MODE_PRIVATE
+        )
     }
 
-
-    private fun setButtonParams(button: Button, size: Int = 140){
-        // Назначает параметры кнопке
-        button.layoutParams.width = size
-        button.layoutParams.height = size
-        button.setTextSize(TypedValue.COMPLEX_UNIT_SP, (size / 10) + 4f)
-        Log.i("DebugTag",button.textSize.toString())
+    private fun getPreferences(sharedPreferences: SharedPreferences) {
+        memoryAutoSaveResult = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[0], false)
+        leftHandMode = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[1], false)
+        expandMode = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[2], false)
     }
 
-    private fun fillQuickAccessToolbar(buttonArray: Array<Button>, container: ViewGroup?){
-        // Заполняет панель быстрого доступа кнопками
-        container?.removeAllViews()
-        for(button in buttonArray){
-            container?.addView(button)
-        }
+    private fun getScreenHeight(percentScreen: Float): Float {
+        val heightPixels = resources.displayMetrics.heightPixels
+        return heightPixels * (percentScreen / 100f)
     }
 
-    private fun buildDialog(title: String, description: String, bindPositive: Runnable){
-        // Вызов диалога
-        val builder = AlertDialog.Builder(context)
-            .setTitle(title)
-            .setMessage(description)
-
-        builder.setPositiveButton("Yes") { _, _ -> // Действия при нажатии кнопки "Ок"
-            bindPositive.run()
-        }
-
-        builder.setNegativeButton("No") { dialog, _ ->  // Действия при нажатии кнопки "Отмена"
-            dialog.dismiss()
-        }
-
-        builder.create().show()  // Создаёт диалог
-    }
 }

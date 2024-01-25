@@ -6,324 +6,120 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activities.MainActivity" >
+    tools:context=".activities.MainActivity">
 
-    <!--Текстовые поля-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/displayContainer"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginVertical="8dp"
+        android:layout_height="256dp"
+        android:layout_marginVertical="16dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/linearlayout_bg_sheet"
-            android:backgroundTint="#F0F0F0"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonHistory"
+        style="@style/floatButtonStyle"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="History"
+        app:layout_constraintBottom_toBottomOf="@+id/displayContainer"
+        app:layout_constraintStart_toStartOf="@+id/displayContainer"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/resultField"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:hint="@string/tooltip_enterText"
-                    android:maxLines="1"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray75"
-                    android:textSize="42sp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/historyField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:maxLines="2"
-                android:text="0"
-                android:textColor="@color/gray150"
-                android:textColorHint="@color/gray120"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/memoryField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:maxLines="1"
-                android:textColor="@color/gray150"
-                android:textColorHint="@color/gray120"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/buttonHistory"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="16dp"
-            android:background="@null"
-            android:contentDescription="@string/sampleText"
-            android:src="@drawable/baseline_history_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/buttonOptions"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:background="@null"
-            android:contentDescription="@string/sampleText"
-            android:src="@drawable/baseline_settings_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonOptions"
+        style="@style/floatButtonStyle"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Settings"
+        android:src="@drawable/settings_24"
+        app:layout_constraintBottom_toBottomOf="@+id/displayContainer"
+        app:layout_constraintEnd_toEndOf="@+id/displayContainer"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended" />
 
 
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:id="@+id/displayCoordinatorContainer"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="128dp"-->
+<!--        android:animateLayoutChanges="false"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/displayContainer"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/displayContainer"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/displayContainer">-->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="4dp"
-        android:text="Quick Access Toolbar"
-        android:textAlignment="center"
-        android:textColor="@color/white200"
-        app:layout_constraintBottom_toTopOf="@+id/quickToolbar"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout" />
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:id="@+id/bottom_sheet"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="128dp"-->
+<!--            app:behavior_peekHeight="64dp"-->
+<!--            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:orientation="vertical">-->
 
-    <HorizontalScrollView
-        android:id="@+id/quickToolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/linearlayout_bg_sheet"
-        android:backgroundTint="@color/white240"
-        app:layout_constraintBottom_toTopOf="@+id/numpadLayout"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout">
+<!--                <View-->
+<!--                    android:layout_width="96dp"-->
+<!--                    android:layout_height="6dp"-->
+<!--                    android:layout_margin="12dp"-->
+<!--                    android:background="@drawable/calculator_display"-->
+<!--                    android:backgroundTint="@color/gray150"/>-->
 
-        <LinearLayout
-            android:id="@+id/quickToolBarContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal">-->
 
-            <Button
-                android:id="@+id/buttonAutoMemorySave"
-                style="@style/buttonStyleDefault"
-                android:text="AMS" />
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        android:id="@+id/buttonPowerAction"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="@string/symbolPower" />-->
 
-            <Button
-                android:id="@+id/buttonMemoryClear"
-                style="@style/buttonStyleDefault"
-                android:text="MC" />
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        android:id="@+id/buttonSqrtAction"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="@string/symbolPower" />-->
 
-            <Button
-                android:id="@+id/buttonMemoryRead"
-                style="@style/buttonStyleDefault"
-                android:text="MR" />
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        android:id="@+id/buttonFactorialAction"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="@string/symbolPower" />-->
 
-            <Button
-                android:id="@+id/buttonMemoryAdd"
-                style="@style/buttonStyleDefault"
-                android:text="MS" />
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        android:id="@+id/buttonInvert"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="@string/symbolPower" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
 
-            <Button
-                android:id="@+id/buttonMemoryResultAdd"
-                style="@style/buttonStyleDefault"
-                android:text="M+" />
+<!--        </androidx.core.widget.NestedScrollView>-->
 
-            <Button
-                android:id="@+id/buttonMemoryResultSub"
-                style="@style/buttonStyleDefault"
-                android:text="M-" />
-
-            <Button
-                android:id="@+id/buttonMemoryResultMul"
-                style="@style/buttonStyleDefault"
-                android:text="M*" />
-
-            <Button
-                android:id="@+id/buttonMemoryResultDiv"
-                style="@style/buttonStyleDefault"
-                android:text="M/" />
-
-            <Button
-                android:id="@+id/buttonInvertNumber"
-                style="@style/buttonStyleDefault"
-                android:text="+/-" />
-
-            <Button
-                android:id="@+id/buttonPowerNumber"
-                style="@style/buttonStyleDefault"
-                android:text="Х²" />
-
-            <Button
-                android:id="@+id/buttonSqrt"
-                style="@style/buttonStyleDefault"
-                android:text="√x" />
-
-<!--            <Button-->
-<!--                android:id="@+id/buttonPercentAction"-->
-<!--                style="@style/buttonStyleDefault"-->
-<!--                android:text="@string/symbolPercent" />-->
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
-
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
     <!--Numpad-->
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/numpadLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/numpadPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginVertical="8dp"
-        app:columnCount="4"
+        android:layout_margin="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/quickToolbar"
-        app:layout_constraintStart_toStartOf="@+id/quickToolbar"
-        app:rowCount="5">
+        app:layout_constraintEnd_toEndOf="@+id/displayContainer"
+        app:layout_constraintStart_toStartOf="@+id/displayContainer"
+        app:layout_constraintTop_toBottomOf="@+id/displayContainer" />
 
-        <Button
-            android:id="@+id/buttonRoundBracketOpen"
-            style="@style/buttonStyleDefault"
-            app:layout_columnSpan="2"
-            app:layout_columnWeight="1"
-            android:text="(" />
-
-        <Button
-            android:id="@+id/buttonRoundBracketClose"
-            style="@style/buttonStyleDefault"
-            app:layout_columnSpan="2"
-            app:layout_columnWeight="1"
-            android:text=")" />
-
-        <Button
-            android:id="@+id/buttonClearAllAction"
-            style="@style/buttonStyleDefault"
-            android:text="@string/symbolAC" />
-
-        <Button
-            android:id="@+id/buttonRoundAction"
-            style="@style/buttonStyleDefault"
-            android:text="@string/symbolRound" />
-
-        <Button
-            android:id="@+id/buttonBackSpaceAction"
-            style="@style/buttonStyleDefault"
-            android:text="\u232b" />
-
-        <Button
-            android:id="@+id/divBtn"
-            style="@style/buttonStyleOperator"
-            android:text="@string/symbolDiv" />
-
-        <!--789-->
-        <Button
-            android:id="@+id/num7"
-            style="@style/buttonStyleNumber"
-            android:backgroundTint="@color/gray150"
-            android:text="7" />
-
-        <Button
-            android:id="@+id/num8"
-            style="@style/buttonStyleNumber"
-            android:text="8" />
-
-        <Button
-            android:id="@+id/num9"
-            style="@style/buttonStyleNumber"
-            android:text="9" />
-
-        <Button
-            android:id="@+id/mulBtn"
-            style="@style/buttonStyleOperator"
-            android:text="@string/symbolMul" />
-
-        <!--456-->
-        <Button
-            android:id="@+id/num4"
-            style="@style/buttonStyleNumber"
-            android:text="4" />
-
-        <Button
-            android:id="@+id/num5"
-            style="@style/buttonStyleNumber"
-            android:text="5" />
-
-        <Button
-            android:id="@+id/num6"
-            style="@style/buttonStyleNumber"
-            android:text="6" />
-
-        <Button
-            android:id="@+id/addBtn"
-            style="@style/buttonStyleOperator"
-            android:text="@string/symbolAdd" />
-
-        <!--123-->
-        <Button
-            android:id="@+id/num1"
-            style="@style/buttonStyleNumber"
-            android:text="1" />
-
-        <Button
-            android:id="@+id/num2"
-            style="@style/buttonStyleNumber"
-            android:text="2" />
-
-        <Button
-            android:id="@+id/num3"
-            style="@style/buttonStyleNumber"
-            android:text="3" />
-
-        <Button
-            android:id="@+id/subBtn"
-            style="@style/buttonStyleOperator"
-            android:text="@string/symbolSub" />
-
-
-        <Button
-            android:id="@+id/buttonPointAction"
-            style="@style/buttonStyleDefault"
-            android:text="@string/symbolPoint" />
-        <Button
-            android:id="@+id/num0"
-            style="@style/buttonStyleNumber"
-            android:text="0" />
-
-        <Button
-            android:id="@+id/buttonEqualAction"
-            style="@style/buttonStyleOperator"
-            app:layout_columnSpan="2"
-            app:layout_columnWeight="1"
-            android:text="@string/symbolEqual" />
-
-    </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

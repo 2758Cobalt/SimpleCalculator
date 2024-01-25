@@ -1,14 +1,41 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="AppTheme">
-        <!-- Customize your theme for night mode here -->
-        <item name="colorPrimary">@color/gray50</item>
-        <item name="colorPrimaryDark">@color/gray40</item>
-        <item name="colorAccent">@color/gray30</item>
+    <style name="MyTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-        <item name="android:statusBarColor">@color/red</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/dark_theme_primary</item>
+        <item name="colorPrimaryVariant">@color/theme_primaryVariant</item>
+        <item name="colorOnPrimary">@color/dark_displayOrange</item>
+
+        <item name="colorSecondary">@color/dark_theme_secondary</item>
+
+        <item name="colorAccent">@color/dark_theme_accent</item>
+
+
+        <item name="android:statusBarColor">@color/gray30</item>
+        <item name="colorControlActivated">@color/orange</item>
+
+        <item name="windowActionBar">false</item> <!--Toolbar-->
+        <item name="windowNoTitle">true</item> <!--Title app-->
+    </style>
+
+    <style name="appBackground">
+        <item name="android:background">@drawable/dark_style</item>
+    </style>
+
+    <style name="inputFieldText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white200</item>
+    </style>
+
+    <style name="resultFieldText">
+        <item name="android:textColor">@color/white200</item>
+        <item name="android:textColorHint">#979797</item>
+    </style>
+
+    <style name="expandButtonTheme" parent="numberButtonStyle">
+        <item name="android:backgroundTint">@color/gray120</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="elevationOverlayColor">@color/white</item>
     </style>
 
 

@@ -5,6 +5,26 @@
     <color name="white240">#F0F0F0</color>
     <color name="white200">#C8C8C8</color>
 
+    <color name="light_stroke">#ECECEC</color>
+    <color name="light_PinkSecondary">#FFF5FD</color>
+
+    <color name="light_OrangeSecondary">#FFF9F5</color>
+
+    <color name="light_displayOrange">#FFF2E9</color>
+    <color name="dark_displayOrange">#372A21</color>
+
+    <color name="theme_primary">#ffa425</color>
+    <color name="theme_primaryVariant">#ffdfb1</color>
+    <color name="theme_secondary">#fff3e0</color>
+    <color name="theme_accent">#ffca7f</color>
+
+    <!-- Для темной темы -->
+    <color name="dark_theme_primary">#959595</color>
+    <color name="dark_theme_primaryVariant">#5a3d00</color>
+    <color name="dark_theme_secondary">#616161</color>
+    <color name="dark_theme_accent">#664c00</color>
+
+
     <color name="gray255">#E1E1E1</color>
     <color name="gray150">#969696</color>
     <color name="gray120">#787878</color>
@@ -24,6 +44,5 @@
 
     <color name="green">#00ff44</color>
     <color name="lime">#80ffa2</color>
-
 
 </resources>

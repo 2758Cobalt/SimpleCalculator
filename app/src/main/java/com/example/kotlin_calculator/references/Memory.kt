@@ -1,39 +1,45 @@
 package com.example.kotlin_calculator.references
 
-class Memory {
-    private lateinit var memoryStorage: String
-    var memoryAutoSave: Boolean = false
+import android.util.Log
 
-    fun save(expression: String){
-        memoryStorage = expression
+class Memory {
+    private var memoryStorage: Double = 0.0
+    private val LOG_TAG = "Memory"
+
+    fun save(newValue: Double){
+        memoryStorage = newValue
     }
-    fun read() : String{
+
+    fun read() : Double{
         return memoryStorage
     }
 
     fun clear(){
-        memoryStorage = ""
+        memoryStorage = 0.0
     }
 
-    private fun checkStorage() : Boolean{
-        if (memoryStorage.isEmpty()) return false
-        if (memoryStorage.isNotEmpty()) return true
-        return false
+
+    fun addToResult(currentResult: Double): Double {
+        val result = memoryStorage + currentResult
+        save(result)
+        return result
     }
 
-    private fun addToResult(currentResult: Double): Double {
-        return currentResult + memoryStorage.toDouble()
+    fun subToResult(currentResult: Double): Double {
+        val result = memoryStorage - currentResult
+        save(result)
+        return result
     }
 
-    private fun subToResult(currentResult: Double): Double {
-        return currentResult - memoryStorage.toDouble()
+    fun mulToResult(currentResult: Double): Double {
+        val result = memoryStorage * currentResult
+        save(result)
+        return result
     }
 
-    private fun mulToResult(currentResult: Double): Double {
-        return currentResult * memoryStorage.toDouble()
-    }
-
-    private fun divToResult(currentResult: Double): Double {
-        return currentResult / memoryStorage.toDouble()
+    fun divToResult(currentResult: Double): Double {
+        val result = memoryStorage / currentResult
+        save(result)
+        return result
     }
 }

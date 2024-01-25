@@ -3,6 +3,7 @@ package com.example.kotlin_calculator.references
 import android.content.Context
 import android.util.DisplayMetrics
 import android.view.WindowManager
+import java.lang.Math.sqrt
 
 class DisplayFormat {
     // Получает высоту и ширину экрана
@@ -29,5 +30,10 @@ class DisplayFormat {
         val screenHeight = displayMetrics.heightPixels
 
         return Pair(screenWidth, screenHeight)
+    }
+
+    fun calculatePPI(width: Int, height: Int, diagonalSize: Double): Double {
+        val diagonalPixels = sqrt((width * width + height * height).toDouble())
+        return diagonalPixels / diagonalSize
     }
 }

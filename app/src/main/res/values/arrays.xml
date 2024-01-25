@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="buttons_entries">
+        <item>Memory add</item>
+        <item>Memory read</item>
+        <item>Memory clear</item>
+
+        <item>M+ - Memory add to result</item>
+        <item>M- - Memory subtract from result</item>
+        <item>M* - Memory multiply by result</item>
+        <item>M/ - Memory divide by the result</item>
+
+        <item>sin() - sine</item>
+        <item>cos() - cosine</item>
+        <item>tga() - tangent</item>
+        <item>ctg() - cotangent</item>
+    </string-array>
+
+
+    <string-array name="buttons_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+
+
+</resources>

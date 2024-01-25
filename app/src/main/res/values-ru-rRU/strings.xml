@@ -9,197 +9,24 @@
     <string name="buttonExit">Выход</string>
     <string name="buttonPrevious">Назад</string>
 
-    <string name="label_lengthText">Длина</string>
-    <string name="label_weightText">Вес</string>
-    <string name="label_speedText">Скорость</string>
-    <string name="label_areaText">Площадь</string>
-    <string name="label_dataText">Данные</string>
-    <string name="label_temperatureText">Температура</string>
-    <string name="buttonConvert">Конвертировать</string>
-    <string name="text_Selector">Конверторы</string>
-    <string name="tooltip_volumeText">Заполните поле для перевода единиц объёма</string>
-    <string name="tooltip_frequencyText">Заполните поле для перевода единиц частот</string>
-    <string name="tooltip_fuelConsumptionText">Заполните поле для перевода единиц расхода топлива</string>
-    <string name="tooltip_pressureText">Заполните поле для перевода единиц давления</string>
-    <string name="tooltip_powerText">Заполните поле для перевода единиц мощности</string>
-    <string name="tooltip_energyText">Заполните поле для перевода единиц энергии</string>
-    <string name="tooltip_item">Величина</string>
-    <string name="tooltip_value">Значение</string>
-    <string name="buttonReset">Сбросить</string>
-    <string name="tooltip_enterText">Введите число</string>
+    <string name="labelCalculator">Калькулятор</string>
+    <string name="labelConverters">Конверторы</string>
 
-    <string-array name="weight_units">
-        <item>μg - Микрограмм</item>
-        <item>mg - Миллиграмм</item>
-        <item>g - Грамм</item>
-        <item>kg - Килограмм</item>
-        <item>t - Тонна</item>
-        <item>kt - Килотонна</item>
-        <item>mt - Мегатонна</item>
-    </string-array>
+    <string name="demo_converters">Скоро!\nКонтент появится в будущих обновленях</string>
+    <string name="tooltip_enterText">Введите текст</string>
+    <string name="labelQuickBar">Панель быстрого доступа</string>
+    <string name="text_roundRange">Знаков после запятой</string>
+    <string name="editText_enterNum">Введите число</string>
+    <string name="text_EnterSin">Введите угол для вычисления синуса угла</string>
+    <string name="text_EnterCos">Введите угол для вычисления косинуса угла</string>
+    <string name="text_EnterTan">Введите угол для вычисления тагненса  угла</string>
+    <string name="text_EnterCtg">Введите угол для вычисления котангенса угла</string>
+    <string name="text_EnterExp">Введите число для конвертации</string>
+    <string name="labelFragment_trigonometry">Тригонометрия</string>
+    <string name="preference_memoryAutoSave">Автосохранение в память</string>
+    <string name="preference_memorySaveType">Сохранение в память</string>
+    <string name="preference_memoryAutoSaveDesc">Будет автоматически сохранять результат в память</string>
+    <string name="text_failCalculate">Ошибка</string>
+    <string name="preference_memorySaveTypeDesc">Сохранять в память результат или поле с вводом</string>
 
-    <string-array name="length_units">
-        <item>nm - Нанометр</item>
-        <item>µm - Микрометр</item>
-        <item>mm - Миллиметр</item>
-        <item>cm - Сантиметр</item>
-        <item>dm - Дециметр</item>
-        <item>m - Метр</item>
-        <item>km - Километр</item>
-    </string-array>
-
-    <string-array name="speed_units">
-        <item>c - Скорость света</item>
-        <item>м/с - Метры в секунду</item>
-        <item>км/ч - Километры в час</item>
-        <item>км/с - Километры в секунду</item>
-        <item>mph - Миль в час</item>
-        <item>mps - Миль в секунду</item>
-        <item>kn - Узлы</item>
-    </string-array>
-
-    <string-array name="data_units">
-        <item>B - Байт</item>
-        <item>KB - Килобайт</item>
-        <item>MB - Мегабайт</item>
-        <item>GB - Гигабайт</item>
-        <item>TB - Терабайт</item>
-        <item>PB - Петабайт</item>
-        <item>EB - Эксабайт</item>
-    </string-array>
-
-    <string-array name="temperature_units">
-        <item>°C - Цельсий</item>
-        <item>℉ - Фаренгейт</item>
-        <item>K - Кельвин</item>
-        <item>°R - Ранкин</item>
-        <item>°Re - Реомюр</item>
-    </string-array>
-
-    <string-array name="volume_units">
-        <item>ml - миллилитр</item>                        <!-- Миллилитры -->
-        <item>l - литр</item>                              <!-- Литры -->
-        <item>cm³ - куб. сантиметр</item>                 <!-- Кубические сантиметры -->
-        <item>ft³ - куб. фут</item>                       <!-- Кубические футы -->
-        <item>in³ - куб. дюйм</item>                       <!-- Кубические дюймы -->
-        <item>gal - галлон США</item>                           <!-- Галлоны -->
-    </string-array>
-
-    <string-array name="area_units">
-        <item>µ² - Микрон</item>
-        <item>µm² - Миллиметр</item>
-        <item>cm²- Сантиметр</item>
-        <item>dm² - Дециметр</item>
-        <item>m² - метр</item>
-        <item>km² - Километр</item>
-        <item>ha - Гектар</item>
-    </string-array>
-
-
-    <string-array name="frequency_units">
-        <item>hz - герц</item>                                  <!-- Герцы -->
-        <item>khz - килогерц</item>                             <!-- Килогерцы -->
-        <item>mhz - мегагерц</item>                             <!-- Мегагерцы -->
-        <item>ghz - гигагерц</item>                             <!-- Гигагерцы -->
-    </string-array>
-
-    <string-array name="fuelConsumption_units">
-        <item>km/l - километр на литр</item>                    <!-- Километры на литр -->
-        <item>l/km - литры на 100 километров</item>             <!-- Литры на 100 километров -->
-        <item>mph/g - мили на галлон</item>                     <!-- Мили на галлон -->
-    </string-array>
-
-    <string-array name="pressure_units">
-        <item>atm - атмосфера</item>                            <!-- Атмосфера -->
-        <item>bar - бар</item>                                  <!-- Бар -->
-        <item>Pa - паскаль</item>                               <!-- Паскаль -->
-    </string-array>
-
-    <string-array name="power_units">
-        <item>W - ватт</item>                                   <!-- Ватт -->
-        <item>kW - киловатт</item>                              <!-- Киловатт -->
-        <item>MW - мегаватт</item>                              <!-- Мегаватт -->
-        <item>GW - гигаватт</item>                              <!-- Гигаватт -->
-        <item>hp - лошадиная сила</item>                        <!-- Лошадиная сила -->
-    </string-array>
-
-    <string-array name="energy_units">
-        <item>джоуль</item>                                     <!-- Джоуль -->
-        <item>калория</item>                                    <!-- Калория -->
-        <item>килокалория</item>                                <!-- Килокалория -->
-        <item>ватт-час</item>                                   <!-- Ватт-час -->
-        <item>киловатт-hour</item>                              <!-- Киловатт-час -->
-        <item>электронвольт</item>                              <!-- Электронвольт -->
-        <item>Британская терм. е.</item>                        <!-- Британская термальная единица -->
-        <item>Терм</item>                                       <!-- Терм -->
-        <item>Фут-фунт</item>                                   <!-- Фут-фунт -->
-        <item>Эрг</item>                                        <!-- Эрг -->
-        <item>Час лошадийной силы</item>                        <!-- Час лошадиной силы -->
-        <item>Квадрильон британских тепл. е.</item>             <!-- Квадрильон британских тепловых единиц -->
-    </string-array>
-
-    <string name="label_bodiesSubCategory">Тела</string>
-    <string name="label_shapesSubCategory">Фигуры</string>
-    <string name="label_parallelepiped">Площадь параллелепипеда</string>
-    <string name="label_geometryCategory">Геометрия</string>
-    <string name="label_algebraCategory">Алгебра</string>
-
-    <string name="hint_sideA">Сторона A</string>
-    <string name="hint_sideB">Сторона B</string>
-    <string name="hint_sideC">Сторона C</string>
-
-    <string name="tooltip_parallelepipedText">Введите стороны параллелепипеда (если нужен прямоугольник, оставьте сторону C пустой или 0)</string>
-    <string name="tooltip_triangleText">Введите стороны треугольника. Площадь будет расчитана по формуле герона (3 стороны)</string>
-    <string name="tooltip_rhombusText">Введите только нужные поля и выберите способ вычисления площади ромба</string>
-    <string name="tooltip_circleText">Введите радиус кругачтобы расчитать площадь круга</string>
-    <string name="tooltip_trapezoidText">Введите только нужные поля чтобы расчитать площадь трапеции</string>
-    <string name="tooltip_weightText">Заполните поле для перевода единиц веса</string>
-    <string name="tooltip_lengthText">Заполните поле для перевода единиц длины</string>
-    <string name="tooltip_speedText">Заполните поле для перевода единиц скорости</string>
-    <string name="tooltip_dataText">Заполните поле для перевода единиц объёма данных</string>
-    <string name="tooltip_temperatureText">Заполните поле для перевода единиц температуры</string>
-    <string name="tooltip_areaText">Заполните поле для перевода единиц площади</string>
-
-    <string name="buttonCalculate">Расчитать</string>
-
-    <string name="label_pyramid">Пирамида</string>
-    <string name="label_cylinder">Цилиндр</string>
-    <string name="label_cone">Конус</string>
-    <string name="label_sphere">Сфера</string>
-    <string name="label_prism">Призма</string>
-    <string name="label_dodecahedron">Додекаэдр</string>
-    <string name="label_octahedron">Октаэдр</string>
-    <string name="label_icosahedron">Икосаэдр</string>
-    <string name="label_tetrahedron">Тетраэдр</string>
-    <string name="label_rectangle">Прямоугольник</string>
-    <string name="label_triangle">Треугольник</string>
-    <string name="label_rhombus">Площадь ромба</string>
-    <string name="label_circle">Площадь круга</string>
-    <string name="label_trapezium">Площадь трапеции</string>
-
-    <string name="hint_diagonal">Диагональ</string>
-    <string name="hint_diagonalFirst">Диагональ 1</string>
-    <string name="hint_diagonalSecond">Диагональ 2</string>
-    <string name="hint_radius">Радиус</string>
-    <string name="hint_height">Высота</string>
-    <string name="hint_length">Длина</string>
-    <string name="hint_angle">Угол</string>
-    <string name="hint_speed">Скорость</string>
-
-    <string name="label_pressureText">Давление</string>
-    <string name="label_powerText">Мощность</string>
-    <string name="label_energyText">Энергия</string>
-    <string name="label_resultArea">Площадь</string>
-    <string name="label_resultPerimeter">Периметр</string>
-    <string name="label_resultDiagonal">Диагональ</string>
-    <string name="label_resultTotalAreaHint">Полная площадь</string>
-    <string name="label_resultLateralAreaHint">Боковая площадь</string>
-    <string name="label_resultVolumeHint">Объём</string>
-    <string name="label_circleLength">Длина круга</string>
-
-    <string name="label_unitsCategory">Калькулятор единиц</string>
-    <string name="text_error">Ошибка</string>
-    <string name="label_volumeText">Объём</string>
-    <string name="label_frequencyText">Частота</string>
-    <string name="label_fuelConsumptionText">Расход топлива</string>
 </resources>
