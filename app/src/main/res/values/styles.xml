@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="numPicker" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/black</item>
@@ -12,5 +12,8 @@
         <item name="cornerSize">16dp</item>
     </style>
 
+    <style name="appBackground">
+        <item name="android:background">@drawable/new_style</item>
+    </style>
 
 </resources>

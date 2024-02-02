@@ -3,7 +3,7 @@
     <style name="MyTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <item name="colorPrimary">@color/dark_theme_primary</item>
-        <item name="colorPrimaryVariant">@color/theme_primaryVariant</item>
+        <item name="colorPrimaryVariant">@color/dark_theme_primaryVariant</item>
         <item name="colorOnPrimary">@color/dark_displayOrange</item>
 
         <item name="colorSecondary">@color/dark_theme_secondary</item>
@@ -16,10 +16,6 @@
 
         <item name="windowActionBar">false</item> <!--Toolbar-->
         <item name="windowNoTitle">true</item> <!--Title app-->
-    </style>
-
-    <style name="appBackground">
-        <item name="android:background">@drawable/dark_style</item>
     </style>
 
     <style name="inputFieldText">

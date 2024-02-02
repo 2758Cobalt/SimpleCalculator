@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    app:layout_constraintBottom_toTopOf="@+id/quickPanelLabel"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/calculatorLabel">
+
+    <TextView
+        android:id="@+id/lastExpressionField"
+        style="@style/resultFieldText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:hint="0"
+        android:text="0"
+        android:background="?attr/selectableItemBackground"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeLabel" />
+
+    <ScrollView
+        android:id="@+id/inputScroll"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastExpressionField">
+
+        <TextView
+            android:id="@+id/inputField"
+            style="@style/inputFieldText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:gravity="end"
+            android:hint="0"
+            android:text="0"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </ScrollView>
+
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/inputScroll"
+        app:layout_constraintStart_toStartOf="@+id/inputScroll"
+        app:layout_constraintTop_toBottomOf="@+id/inputScroll" />
+
+    <ScrollView
+        android:id="@+id/outputScroll"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/inputScroll"
+        app:layout_constraintTop_toBottomOf="@+id/inputScroll">
+
+        <TextView
+            android:id="@+id/outputField"
+            style="@style/resultFieldText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:autoSizeMaxTextSize="18sp"
+            android:autoSizeMinTextSize="12sp"
+            android:maxLines="2"
+            android:hint="..."
+            android:alpha="0.7"
+            android:text="0"
+            android:textSize="18sp"
+            tools:targetApi="o" />
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/memoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="Memory"
+        android:textColor="@color/gray150"
+        android:textColorHint="@color/gray150"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/typeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rd"
+        android:textColor="@color/gray150"
+        android:textColorHint="@color/gray150"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/memoryField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:gravity="start"
+        android:maxLines="1"
+        android:text="0"
+        android:textColor="@color/gray150"
+        android:textColorHint="@color/gray150"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/memoryLabel"
+        app:layout_constraintTop_toTopOf="@+id/memoryLabel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>

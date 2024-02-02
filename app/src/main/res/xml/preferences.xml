@@ -4,39 +4,68 @@
 
     <!-- Группа настроек -->
 
-    <PreferenceCategory
-        android:title="Calculator">
+    <PreferenceCategory android:title="Calculator">
 
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="key_memoryAutoSave"
-            android:title="@string/preference_memoryAutoSave"
             android:summary="@string/preference_memoryAutoSaveDesc"
-            android:defaultValue="true" />
-
+            android:title="@string/preference_memoryAutoSave" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:title="Keyboard">
 
-    <SwitchPreference
-        android:key="key_leftHandMode"
-        android:title="@string/preference_leftMode"
-        android:summary="@string/preference_leftModeDesc"
-        android:defaultValue="false" />
+        <SwitchPreference
+            android:key="key_leftHandMode"
+            android:title="@string/preference_leftMode"
+            android:summary="@string/preference_leftModeDesc"
+            android:defaultValue="false" />
 
-    <CheckBoxPreference
-        android:key="key_expandKeyboardMode"
-        android:title="@string/preference_expandMode"
-        android:summary="@string/preference_expandModeDesc"
-        android:defaultValue="false" />
+        <SwitchPreference
+            android:key="key_miniKeyboardMode"
+            android:title="@string/preference_miniMode"
+            android:summary="@string/preference_miniModeDesc"
+            android:defaultValue="false" />
+
+        <SwitchPreference
+            android:key="key_vibration"
+            android:title="@string/preference_vibration"
+            android:summary="@string/preference_vibrationDesc"
+            android:defaultValue="true" />
+
+        <EditTextPreference
+            android:key="key_roundRange"
+            android:title="@string/preference_roundRange"
+            android:defaultValue="3"
+            android:inputType="numberDecimal"
+            android:digits="0123456789"
+            android:summary="@string/preference_roundRangeDesc" />
+
     </PreferenceCategory>
 
-<PreferenceCategory
-    android:title="About">
-    <Preference
-        app:key="@string/keyPrivacyPolity"
-        app:title="Privacy polity"
-        app:summary="privacy polity" />
-</PreferenceCategory>
+    <PreferenceCategory
+        android:title="About">
+        <Preference
+            app:key="key_privacyPolicy"
+            app:title="Privacy policy"
+            app:summary="Click here to read our privacy policy." />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/preference_support">
+        <Preference
+            app:title="@string/preference_thanksTest"
+            app:summary="@string/preference_thanksTestDesc" />
+
+        <Preference
+            android:key="key_telegram"
+            android:icon="@drawable/baseline_send_24"
+            app:title="Telegram"
+            app:summary="@string/preference_telegram" />
+
+    </PreferenceCategory>
+
+
 
 </PreferenceScreen>

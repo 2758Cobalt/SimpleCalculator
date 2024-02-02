@@ -9,24 +9,18 @@
         <item name="colorSecondary">@color/theme_secondary</item>
 
         <item name="colorAccent">@color/theme_accent</item>
-
-        <item name="android:statusBarColor">@color/white200</item>
-
-        <item name="colorPrimaryDark">@color/gold</item>
-
-
         <item name="colorSurface">@color/white</item>
 
 
+        <item name="colorControlHighlight">@color/theme_primary</item>
         <item name="colorControlActivated">@color/orange</item>
 
-        <item name="windowActionBar">false</item> <!--Toolbar-->
-        <item name="windowNoTitle">true</item> <!--Title app-->
+
+        <item name="android:statusBarColor">#988F89</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="appBackground">
-        <item name="android:background">@drawable/new_style</item>
-    </style>
 
     <!--Тема для полей-->
     <style name="inputFieldText">

@@ -19,9 +19,9 @@
     <color name="theme_accent">#ffca7f</color>
 
     <!-- Для темной темы -->
-    <color name="dark_theme_primary">#959595</color>
-    <color name="dark_theme_primaryVariant">#5a3d00</color>
-    <color name="dark_theme_secondary">#616161</color>
+    <color name="dark_theme_primary">#d0891d</color>
+    <color name="dark_theme_primaryVariant">#A59072</color>
+    <color name="dark_theme_secondary">#8F887D</color>
     <color name="dark_theme_accent">#664c00</color>
 
 

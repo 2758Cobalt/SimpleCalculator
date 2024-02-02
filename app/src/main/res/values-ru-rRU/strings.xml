@@ -10,23 +10,34 @@
     <string name="buttonPrevious">Назад</string>
 
     <string name="labelCalculator">Калькулятор</string>
-    <string name="labelConverters">Конверторы</string>
 
-    <string name="demo_converters">Скоро!\nКонтент появится в будущих обновленях</string>
+    <string name="symbolRad">Радианы</string>
+    <string name="symbolDeg">Градусы</string>
     <string name="tooltip_enterText">Введите текст</string>
     <string name="labelQuickBar">Панель быстрого доступа</string>
     <string name="text_roundRange">Знаков после запятой</string>
     <string name="editText_enterNum">Введите число</string>
-    <string name="text_EnterSin">Введите угол для вычисления синуса угла</string>
-    <string name="text_EnterCos">Введите угол для вычисления косинуса угла</string>
-    <string name="text_EnterTan">Введите угол для вычисления тагненса  угла</string>
-    <string name="text_EnterCtg">Введите угол для вычисления котангенса угла</string>
-    <string name="text_EnterExp">Введите число для конвертации</string>
+    <string name="system_restartMessage">Перезапустите приложение</string>
     <string name="labelFragment_trigonometry">Тригонометрия</string>
     <string name="preference_memoryAutoSave">Автосохранение в память</string>
-    <string name="preference_memorySaveType">Сохранение в память</string>
     <string name="preference_memoryAutoSaveDesc">Будет автоматически сохранять результат в память</string>
+    <string name="preference_leftMode">Режим левой руки</string>
+    <string name="preference_leftModeDesc">Отзеркаливает клавиатуру для левой руки</string>
+    <string name="preference_miniMode">Уменьшить клавиатуру</string>
+    <string name="preference_miniModeDesc">Позволяет уменьшать клавиатуру</string>
+    <string name="preference_miniModeIndicate">Клавиатура уменьшена</string>
+    <string name="preference_miniModeIndicateHint">Нажмите \'↖\' для выхода</string>
+    <string name="preference_roundRange">Результат тригонометрической функции</string>
+    <string name="preference_roundRangeDesc">Задайте количество знаков после запятой. Результат будет округлён до</string>
+    <string name="preference_vibration">Вибрация</string>
+    <string name="preference_vibrationDesc">Вибро отлклик при нажатии на кнопки</string>
     <string name="text_failCalculate">Ошибка</string>
-    <string name="preference_memorySaveTypeDesc">Сохранять в память результат или поле с вводом</string>
+    <string name="preference_privacyPolicy">Политика конфиденциальности</string>
+    <string name="preference_privacyPolicyDesc">Нажмите здесь, чтобы ознакомиться с нашей политикой конфиденциальности</string>
+    <string name="preference_thanksTest">Спасибо за тест приложения!</string>
+    <string name="preference_thanksTestDesc">Приложение находится на этапе тестирования. Если вы обнаружили баги, краши, ошибки локализации - прошу сообщить в мой телеграмм</string>
+    <string name="preference_telegram">Уведомить о проблеме</string>
+    <string name="preference_support">Тех. поддержка</string>
+    <string name="preference_email">Отправить отзыв на электронную почту</string>
 
 </resources>

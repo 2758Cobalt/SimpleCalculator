@@ -36,7 +36,7 @@
     </style>
 
     <style name="expandButtonStyle" parent="numberButtonStyle">
-        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:backgroundTint">@color/gray150</item>
         <item name="android:textColor">@color/black</item>
     </style>
 

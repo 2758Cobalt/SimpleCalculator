@@ -1,140 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
 
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/rootContainer"
-        android:layout_width="0dp"
-        android:layout_height="512dp"
-        android:animateLayoutChanges="true"
-        app:columnCount="4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <!--Expand Row-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSqrtAction"
+        style="@style/expandButtonStyle"
+        android:text="@string/symbolSqrt" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonPowerAction"
-            style="@style/expandButtonStyle"
-            android:text="@string/symbolPower" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonFactorialAction"
+        style="@style/expandButtonStyle"
+        android:text="@string/symbolFactorial" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonSqrtAction"
-            style="@style/expandButtonStyle"
-            android:backgroundTint="@color/white"
-            android:text="@string/symbolSqrt" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonInvert"
+        style="@style/expandButtonStyle"
+        android:text="@string/symbolInvert" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonFactorialAction"
-            style="@style/expandButtonStyle"
-            android:text="@string/symbolFactorial" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonPI"
+        style="@style/expandButtonStyle"
+        android:text="@string/symbolPI"
+        app:layout_column="3"
+        app:layout_row="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonInvert"
-            style="@style/expandButtonStyle"
-            android:text="@string/symbolInvert" />
+            <!--Memory Row-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMemorySave"
+        style="@style/secondaryButtonStyle"
+        android:text="@string/symbolMemorySave"
+        app:layout_column="0"
+        app:layout_row="1" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonPI"
-            style="@style/secondaryButtonStyle"
-            android:text="@string/symbolPI"
-            app:layout_column="2"
-            app:layout_row="2" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMemoryRead"
+        style="@style/secondaryButtonStyle"
+        android:text="@string/symbolMemoryRead"
+        app:layout_column="1"
+        app:layout_row="1" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonExp"
-            style="@style/secondaryButtonStyle"
-            android:backgroundTint="@color/white"
-            android:text="@string/symbolExp"
-            app:layout_column="2"
-            app:layout_row="3" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMemoryClear"
+        style="@style/secondaryButtonStyle"
+        android:text="@string/symbolMemoryClear"
+        app:layout_column="2"
+        app:layout_row="1" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonPercentEnter"
-            style="@style/secondaryButtonStyle"
-            android:text="@string/symbolPercentConvert"
-            app:layout_column="0"
-            app:layout_row="4" />
+                <!--Memory operations-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMemoryResultAdd"
+        style="@style/primaryButtonStyle"
+        android:text="@string/symbolMemoryAdd"
+        app:layout_column="3"
+        app:layout_row="1" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMemorySave"
-            style="@style/secondaryButtonStyle"
-            android:text="@string/symbolMemorySave"
-            app:layout_column="0"
-            app:layout_row="1" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMemoryResultSub"
+        style="@style/primaryButtonStyle"
+        android:text="@string/symbolMemorySub"
+        app:layout_column="3"
+        app:layout_row="2" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMemoryRead"
-            style="@style/secondaryButtonStyle"
-            android:text="@string/symbolMemoryRead"
-            app:layout_column="1"
-            app:layout_row="1" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMemoryResultMul"
+        style="@style/primaryButtonStyle"
+        android:text="@string/symbolMemoryMul"
+        app:layout_column="3"
+        app:layout_row="3" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMemoryClear"
-            style="@style/secondaryButtonStyle"
-            android:text="@string/symbolMemoryClear"
-            app:layout_column="2"
-            app:layout_row="1" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMemoryResultDiv"
+        style="@style/primaryButtonStyle"
+        android:text="@string/symbolMemoryDiv"
+        app:layout_column="3"
+        app:layout_row="4" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMemoryResultAdd"
-            style="@style/primaryButtonStyle"
-            android:text="@string/symbolMemoryAdd"
-            app:layout_column="3"
-            app:layout_row="1" />
+                <!--TrigonometryBtns-->
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMemoryResultSub"
-            style="@style/primaryButtonStyle"
-            android:text="@string/symbolMemorySub"
-            app:layout_column="3"
-            app:layout_row="2" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSin"
+        style="@style/numberButtonStyle"
+        android:text="@string/symbolSin"
+        app:layout_column="0"
+        app:layout_row="2" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMemoryResultMul"
-            style="@style/primaryButtonStyle"
-            android:text="@string/symbolMemoryMul"
-            app:layout_column="3"
-            app:layout_row="3" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCos"
+        style="@style/numberButtonStyle"
+        android:text="@string/symbolCos"
+        app:layout_column="1"
+        app:layout_row="2" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMemoryResultDiv"
-            style="@style/primaryButtonStyle"
-            android:text="@string/symbolMemoryDiv"
-            app:layout_column="3"
-            app:layout_row="4" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonTan"
+        style="@style/numberButtonStyle"
+        android:text="@string/symbolTan"
+        app:layout_column="0"
+        app:layout_row="3" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonSin"
-            style="@style/numberButtonStyle"
-            android:text="@string/symbolSin"
-            app:layout_column="0"
-            app:layout_row="2" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonCos"
-            style="@style/numberButtonStyle"
-            android:text="@string/symbolCos"
-            app:layout_column="1"
-            app:layout_row="2" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonTan"
-            style="@style/numberButtonStyle"
-            android:text="@string/symbolTg"
-            app:layout_column="0"
-            app:layout_row="3" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonCtg"
-            style="@style/numberButtonStyle"
-            android:text="@string/symbolCtg"
-            app:layout_column="1"
-            app:layout_row="3" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCtg"
+        style="@style/numberButtonStyle"
+        android:text="@string/symbolCot"
+        app:layout_column="1"
+        app:layout_row="3" />
 
 
-    </androidx.gridlayout.widget.GridLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonLog"
+        style="@style/secondaryButtonStyle"
+        android:text="@string/symbolLog"
+        app:layout_column="2"
+        app:layout_row="3" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonExp"
+        style="@style/secondaryButtonStyle"
+        android:text="@string/symbolExp"
+        app:layout_row="2"
+        app:layout_column="2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonLn"
+        style="@style/secondaryButtonStyle"
+        android:text="@string/symbolLn"
+        app:layout_column="2"
+        app:layout_row="4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonRad"
+        style="@style/expandButtonStyle"
+        android:text="@string/symbolRad"
+        android:textSize="16sp"
+        app:layout_column="0"
+        app:layout_row="4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonDeg"
+        style="@style/expandButtonStyle"
+        android:text="@string/symbolDeg"
+        android:textSize="16sp"
+        app:layout_column="1"
+        app:layout_row="4" />
+
+</androidx.gridlayout.widget.GridLayout>

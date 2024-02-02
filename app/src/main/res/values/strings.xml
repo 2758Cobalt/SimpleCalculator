@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">IosCalculator</string>
+    <string name="app_name" translatable="false">Simple Calculator</string>
 
     <string name="buttonOk">OK</string>
     <string name="buttonConfirm">Confirm</string>
@@ -10,71 +10,62 @@
     <string name="buttonExit">Exit</string>
 
     <string name="labelCalculator">Calculator</string>
-    <string name="labelConverters">Converters</string>
-
-    <string name="demo_converters">Coming soon!\ncontent will be added in future updates</string>
 
     <!--Calculator-->
-    <string name="symbolMemorySave" translatable="false">MS</string>
-    <string name="symbolMemoryRead" translatable="false">MR</string>
-    <string name="symbolMemoryClear" translatable="false">MC</string>
+    <string name="symbolMemorySave" translatable="false">&#77;&#83;</string>
+    <string name="symbolMemoryRead" translatable="false">&#77;&#82;</string>
+    <string name="symbolMemoryClear" translatable="false">&#77;&#67;</string>
 
-    <string name="symbolPI" translatable="false">π</string>
-    <string name="symbolExp" translatable="false">e</string>
-    <string name="symbolInvert" translatable="false">1/x</string>
+    <string name="symbolSqrt" translatable="false">&#8730;x</string>
+    <string name="symbolFactorial" translatable="false">x&#33;</string>
+    <string name="symbolInvert" translatable="false">1&#8260;x</string>
+    <string name="symbolPI" translatable="false">&#960;</string>
 
-    <string name="symbolCubeSqrt" translatable="false">&#8731;</string>
-    <string name="symbolFactorial" translatable="false">x!</string>
-    <string name="symbolSqrt" translatable="false">√x</string>
+    <string name="symbolExp" translatable="false">&#101;</string>
     <string name="symbolPower" translatable="false">x&#178;</string>
-    <string name="symbolCloseBracket" translatable="false">)</string>
-    <string name="symbolOpenBracket" translatable="false">(</string>
+    <string name="symbolCloseBracket" translatable="false">&#41;</string>
+    <string name="symbolOpenBracket" translatable="false">&#40;</string>
 
-    <string name="symbolDiv" translatable="false">/</string>
-    <string name="symbolMul" translatable="false">*</string>
-    <string name="symbolSub" translatable="false">-</string>
-    <string name="symbolAdd" translatable="false">+</string>
-    <string name="symbolPoint" translatable="false">.</string>
-
-    <string name="symbolBackSpace" translatable="false">\u232b</string>
+    <string name="symbolBackSpace" translatable="false">&#9003;</string>
     <string name="symbolAC" translatable="false">AC</string>
     <string name="symbolCE" translatable="false">CE</string>
-    <string name="symbolEqual" translatable="false">=</string>
-    <string name="symbolRound" translatable="false">≈</string>
-    <string name="symbolPercent" translatable="false">%</string>
-    <string name="symbolPercentConvert" translatable="false">%...</string>
+    <string name="symbolEqual" translatable="false">&#61;</string>
+    <string name="symbolPercent" translatable="false">&#37;</string>
 
-    <string name="symbolNum0" translatable="false">0</string>
-    <string name="symbolNum1" translatable="false">1</string>
-    <string name="symbolNum2" translatable="false">2</string>
-    <string name="symbolNum3" translatable="false">3</string>
-    <string name="symbolNum4" translatable="false">4</string>
-    <string name="symbolNum5" translatable="false">5</string>
-    <string name="symbolNum6" translatable="false">6</string>
-    <string name="symbolNum7" translatable="false">7</string>
-    <string name="symbolNum8" translatable="false">8</string>
-    <string name="symbolNum9" translatable="false">9</string>
+    <string name="symbolNum0" translatable="false">&#48;</string>
+    <string name="symbolNum1" translatable="false">&#49;</string>
+    <string name="symbolNum2" translatable="false">&#50;</string>
+    <string name="symbolNum3" translatable="false">&#51;</string>
+    <string name="symbolNum4" translatable="false">&#52;</string>
+    <string name="symbolNum5" translatable="false">&#53;</string>
+    <string name="symbolNum6" translatable="false">&#54;</string>
+    <string name="symbolNum7" translatable="false">&#55;</string>
+    <string name="symbolNum8" translatable="false">&#56;</string>
+    <string name="symbolNum9" translatable="false">&#57;</string>
+
+    <string name="symbolDiv" translatable="false">&#47;</string>
+    <string name="symbolMul" translatable="false">&#215;</string>
+    <string name="symbolSub" translatable="false">&#45;</string>
+    <string name="symbolAdd" translatable="false">&#43;</string>
+    <string name="symbolPoint" translatable="false">&#46;</string>
+
+
+
     <string name="symbolMemoryAdd" translatable="false">M+</string>
     <string name="symbolMemorySub" translatable="false">M-</string>
-    <string name="symbolMemoryMul" translatable="false">M*</string>
+    <string name="symbolMemoryMul" translatable="false">M&#215;</string>
     <string name="symbolMemoryDiv" translatable="false">M/</string>
 
     <string name="symbolSin" translatable="false">sin</string>
     <string name="symbolCos" translatable="false">cos</string>
-    <string name="symbolTg" translatable="false">tg</string>
-    <string name="symbolCtg" translatable="false">ctg</string>
+    <string name="symbolTan" translatable="false">tan</string>
+    <string name="symbolCot" translatable="false">cot</string>
 
-    <!--Converter-->
-    <string name="symbol_area" translatable="false">S =</string>
-    <string name="symbol_lateralArea" translatable="false">Sₗₐₜₑᵣₐₗ =</string>
-    <string name="symbol_totalArea" translatable="false">Sₜₒₜₐₗ =</string>
-    <string name="symbol_volume" translatable="false">V =</string>
-    <string name="symbol_perimeter" translatable="false">P =</string>
-    <string name="symbol_height" translatable="false">H =</string>
-    <string name="symbol_length" translatable="false">L =</string>
-    <string name="symbol_diagonal" translatable="false">d =</string>
-    <string name="symbol_diagonalFirst" translatable="false">d₁ =</string>
-    <string name="symbol_diagonalSecond" translatable="false">d₂ =</string>
+    <string name="symbolLog" translatable="false">log</string>
+    <string name="symbolLn" translatable="false">ln</string>
+
+    <string name="symbolRad">Radians</string>
+    <string name="symbolDeg">Degrees</string>
 
     <!--Test previous-->
     <string name="sampleButton" translatable="false">SampleButton</string>
@@ -86,34 +77,43 @@
     <string name="text_roundRange">Round up: </string>
     <string name="editText_enterNum">Enter number</string>
 
-    <string name="text_EnterSin">Enter Sin() number and press enter for convert</string>
-    <string name="text_EnterCos">Enter Cos() number and press enter for convert</string>
-    <string name="text_EnterTan">Enter Tan() number and press enter for convert</string>
-    <string name="text_EnterCtg">Enter Ctg() number and press enter for convert</string>
-    <string name="text_EnterExp">Enter number and press enter for convert to EXP"</string>
-
     <string name="labelFragment_trigonometry">Trigonometry</string>
 
     <string name="preference_memoryAutoSave">AutoSave to memory</string>
-    <string name="preference_memorySaveType">Save to memory</string>
-    <string name="preference_leftMode">Left hand mode</string>
-    <string name="preference_expandMode">expand keyboard</string>
-
-    <string name="preference_leftModeDesc">will be mirror keyboard for left hand</string>
-    <string name="preference_expandModeDesc">add to keyboard top row with additional functions</string>
     <string name="preference_memoryAutoSaveDesc">will be auto save result to memory</string>
-    <string name="preference_memorySaveTypeDesc">save result/input to memory</string>
+
+    <string name="preference_leftMode">Left hand mode</string>
+    <string name="preference_leftModeDesc">Will be mirror keyboard for left hand</string>
+
+    <string name="preference_miniMode">Allow minimize keyboard</string>
+    <string name="preference_miniModeDesc">Allows you to minimize the keyboard</string>
+
+    <string name="preference_miniModeIndicate">keyboard reduced</string>
+    <string name="preference_miniModeIndicateHint">press \'↖\' to exit</string>
+
+    <string name="preference_roundRange">Round up result of trigonometry function</string>
+    <string name="preference_roundRangeDesc">Trigonometry result has been rounded to</string>
+
+    <string name="preference_vibration">Vibrate</string>
+    <string name="preference_vibrationDesc">Vibrate when a button is clicked</string>
+
+
+    <string name="preference_privacyPolicy">Privacy policy</string>
+    <string name="preference_privacyPolicyDesc">Click here to read our privacy policy</string>
+
 
     <string name="text_failCalculate">Fail</string>
 
 
-    <string name="system_restartMessage">Restart app for </string>
+    <string name="system_restartMessage">Restart app for apply</string>
 
+    <string name="preference_thanksTest">Thanks for the app test!</string>
+    <string name="preference_thanksTestDesc">The application is still in the testing phase.\nIf you have found bugs, crashes or localization errors - please inform me in my telegram</string>
 
+    <string name="preference_support">Support</string>
 
-    <string name="keyMemoryAutoSave" translatable="false">key_memoryAutoSave</string>
-    <string name="keyLeftHandMode" translatable="false">key_leftHandMode</string>
-    <string name="keyExpandKeyboardMode" translatable="false">key_expandKeyboardMode</string>
-    <string name="keyPrivacyPolity" translatable="false">key_privacyPolity</string>
+    <string name="preference_telegram">Report a problem</string>
+    <string name="preference_email">E-mail feedback</string>
+
 
 </resources>

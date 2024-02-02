@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buttonOk">OK</string>
+    <string name="buttonConfirm">Potwierdź</string>
+    <string name="buttonApply">Zastosuj</string>
+    <string name="buttonNext">Dalej</string>
+    <string name="buttonCancel">Anuluj</string>
+    <string name="buttonPrevious">Wstecz</string>
+    <string name="buttonExit">Wyjście</string>
+
+    <string name="labelCalculator">Kalkulator</string>
+
+
+    <string name="symbolRad">Grzejniki</string>
+    <string name="symbolDeg">Stopnie</string>
+    <string name="tooltip_enterText">Wprowadź tekst</string>
+    <string name="labelQuickBar">Szybki Pasek Dostępu</string>
+
+    <string name="text_roundRange">Zaokrąglić: </string>
+    <string name="editText_enterNum">Wprowadź liczbę</string>
+
+    <string name="labelFragment_trigonometry">Trygonometria</string>
+
+    <string name="preference_memoryAutoSave">Automatyczne zapisywanie do pamięci</string>
+    <string name="preference_memoryAutoSaveDesc">Automatycznie zapisze wynik do pamięci</string>
+
+    <string name="preference_leftMode">Tryb lewej ręki</string>
+    <string name="preference_leftModeDesc">Lustro klawiatury dla lewej ręki</string>
+
+    <string name="preference_miniMode">Zezwalaj na minimalizowanie klawiatury</string>
+    <string name="preference_miniModeDesc">Pozwala na minimalizowanie klawiatury</string>
+
+    <string name="preference_miniModeIndicate">Zmniejszona klawiatura</string>
+    <string name="preference_miniModeIndicateHint">naciśnij \'↖\' aby wyjść</string>
+
+    <string name="preference_roundRange">Zaokrąglić wynik funkcji trygonometrycznej</string>
+    <string name="preference_roundRangeDesc">Wynik trygonometrii zostanie zaokrąglony do</string>
+
+    <string name="preference_vibration">Wibracje</string>
+    <string name="preference_vibrationDesc">Wibruj przy naciśnięciu przycisku</string>
+
+    <string name="preference_privacyPolicy">Polityka prywatności</string>
+    <string name="preference_privacyPolicyDesc">Kliknij tutaj, aby przeczytać naszą politykę prywatności</string>
+
+    <string name="text_failCalculate">Błąd</string>
+
+    <string name="system_restartMessage">Uruchom ponownie aplikację, aby zastosować zmiany</string>
+
+    <string name="preference_thanksTest">Dzięki za przetestowanie aplikacji!</string>
+    <string name="preference_thanksTestDesc">Aplikacja jest w fazie testów.\nJeśli znalazłeś błędy, awarie lub błędy lokalizacyjne - proszę poinformuj mnie przez telegram</string>
+
+    <string name="preference_support">Wsparcie</string>
+
+    <string name="preference_telegram">Zgłoś problem</string>
+    <string name="preference_email">Wyślij mi opinie na e-mail</string>
+
+</resources>
