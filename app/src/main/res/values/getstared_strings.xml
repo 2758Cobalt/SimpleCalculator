@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getStarted_titles">
+        <item>Добро пожаловать в Simple Calculator</item>
+    </string-array>
+
+    <string-array name="getStarted_subTitles">
+        <item>Калькулятор - с простым дизайном и базовым набором функционала для проведения расчётов</item>
+    </string-array>
+</resources>

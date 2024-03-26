@@ -13,6 +13,8 @@ class EngineeringFragment: Fragment() {
     private var calculatorFragment: CalculatorFragment? = parentFragment as CalculatorFragment?
     private lateinit var rootContainer : androidx.gridlayout.widget.GridLayout
 
+    private var angleTypeIsDegress: Boolean = true
+
     private lateinit var sqrtButton: Button
     private lateinit var factorialButton: Button
     private lateinit var invertButton: Button
@@ -37,10 +39,9 @@ class EngineeringFragment: Fragment() {
     private lateinit var logButton: Button
     private lateinit var lnButton: Button
 
-    private lateinit var degButton: Button
-    private lateinit var radButton: Button
+    private lateinit var angleTypeButton: Button
 
-    fun setParentFragment(parent: CalculatorFragment){
+    fun setParentFragment(parent: CalculatorFragment) {
         calculatorFragment = parent
     }
 
@@ -76,10 +77,11 @@ class EngineeringFragment: Fragment() {
         lnButton = view.findViewById(R.id.buttonLn)
         logButton = view.findViewById(R.id.buttonLog)
 
-        degButton = view.findViewById(R.id.buttonDeg)
-        radButton = view.findViewById(R.id.buttonRad)
+        angleTypeButton = view.findViewById(R.id.buttonAngleType)
+        angleTypeButton.setText(if(angleTypeIsDegress) R.string.symbolDeg else R.string.symbolRad)
 
-        sqrtButton.setOnClickListener { calculatorFragment?.sqrtAction() }
+
+        sqrtButton.setOnClickListener { calculatorFragment?.sqrtAction();calculatorFragment?.enterTrigonometryFunc(6) }
         factorialButton.setOnClickListener { calculatorFragment?.factorialAction() }
         invertButton.setOnClickListener { calculatorFragment?.invertAction() }
 
@@ -106,8 +108,10 @@ class EngineeringFragment: Fragment() {
         logButton.setOnClickListener { calculatorFragment?.enterTrigonometryFunc(4) }
         lnButton.setOnClickListener { calculatorFragment?.enterTrigonometryFunc(5) }
 
-        degButton.setOnClickListener { calculatorFragment?.switchModeToDeg(true) }
-        radButton.setOnClickListener { calculatorFragment?.switchModeToDeg(false) }
-
+        angleTypeButton.setOnClickListener {
+            calculatorFragment?.setTypeAngle(angleTypeIsDegress)                                            // Вызываем функцию, которая передаёт статус переключателя
+            angleTypeIsDegress = !angleTypeIsDegress                                                        // Переключение типа угла
+            angleTypeButton.setText( if(angleTypeIsDegress) R.string.symbolDeg else R.string.symbolRad )    // Назначить текст 'градусы', если true, в противном случае 'радианы'
+        }
     }
 }

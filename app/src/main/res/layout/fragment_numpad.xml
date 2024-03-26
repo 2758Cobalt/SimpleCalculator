@@ -11,13 +11,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonRoundBracketOpen"
-        style="@style/numberButtonStyle"
+        style="@style/expandButtonStyle"
         android:text="@string/symbolOpenBracket"
         app:layout_columnSpan="2" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonRoundBracketClose"
-        style="@style/numberButtonStyle"
+        style="@style/expandButtonStyle"
         android:text="@string/symbolCloseBracket"
         app:layout_columnSpan="2" />
 
@@ -25,14 +25,14 @@
         android:id="@+id/buttonPowerAction"
         style="@style/secondaryButtonStyle"
         app:layout_row="1"
-        app:layout_column="0"
+        app:layout_column="1"
         android:text="@string/symbolPower" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonPercentAction"
         style='@style/secondaryButtonStyle'
         app:layout_row="1"
-        app:layout_column="1"
+        app:layout_column="0"
         android:text="@string/symbolPercent" />
 
     <com.google.android.material.button.MaterialButton

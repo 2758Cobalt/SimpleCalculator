@@ -1,5 +1,6 @@
 package com.cobaltumapps.simplecalculator.fragments
 
+import Calculator
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -8,18 +9,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.cobaltumapps.simplecalculator.R
+import com.cobaltumapps.simplecalculator.activities.ConverterActivity
 import com.cobaltumapps.simplecalculator.activities.OptionsActivity
 import com.cobaltumapps.simplecalculator.adapters.NumPadPagerAdapter
 import com.cobaltumapps.simplecalculator.references.Animations
-import com.cobaltumapps.simplecalculator.references.CalculatorCore
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.references.Memory
-import com.cobaltumapps.simplecalculator.references.Vibration
+import com.cobaltumapps.simplecalculator.references.Services
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import kotlin.math.abs
@@ -36,30 +38,35 @@ class CalculatorFragment: Fragment() {
     private var memoryAutoSaveResult = false                                        // Автосохранение в память
     var leftHandMode: Boolean = false                                               // Режим левой руки
     private var miniMode: Boolean = false                                           // Состояние мини-клавиатуры (true/false)
-    private var roundRangePreference: Int = 3
     private var miniModePreference: Boolean = false
     private var vibrationPreference: Boolean = false
 
     // References
-    private val displayFragment: DisplayFragment = DisplayFragment()
-    private val numpadFragment: NumpadFragment = NumpadFragment()
-    private val engineeringFragment: EngineeringFragment = EngineeringFragment()
+    private val calculator: Calculator = Calculator() // Объект калькулятора
+    private val displayFragment: DisplayFragment = DisplayFragment()                // Фрагмент дисплея калькулятора
+    private val numpadFragment: NumpadFragment = NumpadFragment()                   // Фрагмент обычной клавиатуры
+    private val engineeringFragment: EngineeringFragment = EngineeringFragment()    // Фрагмент научной клавиатуры
     private val memory: Memory by lazy { Memory() }                                 // Объект памяти
-    private lateinit var sharedPreferences: SharedPreferences                       // Объект предпочтений
+
+    private lateinit var sharedPreferences: SharedPreferences                       // Хранилище
 
     // Кнопки "иконки"
-    private lateinit var optionsButton: ImageButton     // Открывает настройки
-    private lateinit var miniModeButton: ImageButton     // Включает мини-режим
+    private lateinit var optionsButton: ImageView     // Открывает настройки
+    private lateinit var miniModeButton: ImageView     // Включает мини-режим
+    private lateinit var convertersButton: ImageView     // Иконка бекспейса
+    private lateinit var backspaceIconButton: ImageView     // Иконка бекспейса
+    private lateinit var clearAllAlternativeButton: ImageView     // Иконка бекспейса
+
     private lateinit var displayCard: com.google.android.material.card.MaterialCardView
 
     private lateinit var titleMiniMode: TextView
-    private lateinit var subTitleMiniMode: TextView
 
     private var expressionResult: String = "0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferences = getPreferenceObject()                                   // Получение объекта
+
         // Передаёт ссылку на себя для доступа к фрагменту
         numpadFragment.setParentFragment(this@CalculatorFragment)
         engineeringFragment.setParentFragment(this@CalculatorFragment)
@@ -73,12 +80,16 @@ class CalculatorFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Настройка пейджера для клавиатуры
 
-        displayCard = view.findViewById(R.id.displayContainer)
+        displayCard = view.findViewById(R.id.displayCard)
         numpadPager = view.findViewById(R.id.numpadPager) as ViewPager2
 
-        optionsButton = view.findViewById(R.id.buttonOptions)                       // Ссылка на кнопку "options"
-        miniModeButton = view.findViewById(R.id.buttonMiniMode)                       // Ссылка на кнопку "options"
+        optionsButton = view.findViewById(R.id.buttonOptions)                         // Ссылка на кнопку "options"
+        miniModeButton = view.findViewById(R.id.buttonMiniMode)                       // Ссылка на кнопку "miniMode"
+        backspaceIconButton = view.findViewById(R.id.buttonBackspace)                 // Ссылка на кнопку "backspace"
+        convertersButton = view.findViewById(R.id.buttonConverters)                   // Ссылка на кнопку "converters"
+        clearAllAlternativeButton = view.findViewById(R.id.buttonClearAllAlternative)
 
+        backspaceIconButton.alpha = 0f
 
         pagerAdapter = NumPadPagerAdapter(requireActivity(), arrayListOf(numpadFragment,engineeringFragment))
         numpadPager.adapter = pagerAdapter
@@ -96,163 +107,164 @@ class CalculatorFragment: Fragment() {
             page.translationX = if (pos < 0) width * pos else -width * pos * 0.25f
         }
 
-        titleMiniMode = view.findViewById(R.id.miniModeTitle)
-        subTitleMiniMode = view.findViewById(R.id.miniModeSubtitle)
+        numpadPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                val progress = position + positionOffset
+                backspaceIconButton.alpha = progress
+            }
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                backspaceIconButton.isEnabled = position == 1
+            }
+        })
 
+
+        titleMiniMode = view.findViewById(R.id.miniModeTitle)
         titleMiniMode.alpha = 0f
-        subTitleMiniMode.alpha = 0f
 
         // Заменяет пустоту на displayFragment
-        parentFragmentManager.beginTransaction().replace(R.id.displayContainer, displayFragment).commit()
+        parentFragmentManager.beginTransaction().replace(R.id.displayCard, displayFragment).commit()
 
         // Иконки настроек и истории
-        optionsButton.setOnClickListener { startActivity(Intent(requireContext(), OptionsActivity::class.java)) } // Option Icon
-        miniModeButton.setOnClickListener { miniModeSet(miniMode); Log.i("DebugTag","miniMode: $miniMode preference: $miniModePreference"); miniMode = !miniMode } // Option Icon
+        optionsButton.setOnClickListener { startActivity(Intent(requireContext(), OptionsActivity::class.java));  } // Option Icon
+        miniModeButton.setOnClickListener { miniModeSet(miniMode); miniMode = !miniMode
+            Animations.playAnimation(requireActivity(),miniModeButton,R.anim.scale_out,Animations.overshootInterpolator) } // MiniMode Icon
+
+        backspaceIconButton.setOnClickListener { backSpaceAction(); playVibration(5) }
+        backspaceIconButton.setOnLongClickListener { clearAllAction(); playVibration(20); true }
+
+        clearAllAlternativeButton.setOnClickListener { clearAllAction(); playVibration(20); }
+
+        convertersButton.setOnClickListener { startActivity(Intent(requireActivity(),ConverterActivity::class.java)) }
+
     }
 
     override fun onResume() {
         super.onResume()
-        switchModeToDeg(false)
+        setTypeAngle(false)
         // После возобновлении фрагмента, получает из настроек ключи и обновляет перменные согласно ключам
         getPreferences(sharedPreferences) // Получение сохраненных настроек
 
         miniMode = miniModePreference
 
         if (miniModePreference){
-            miniModeButton.visibility = View.VISIBLE // Включает кнопку минимода
-            if (leftHandMode)
-                miniModeButton.rotation = 180f
-            else
-                miniModeButton.rotation = 90f
+            miniModeButton.isEnabled = true
+            miniModeButton.alpha = 1f
+            miniModeButton.rotation = -45f
         }
         else{
-            miniModeButton.visibility = View.GONE // Выключает кнопку минимода
-
+            miniModeButton.isEnabled = false
+            miniModeButton.alpha = 0f
         }
     }
 
     override fun onPause() {
         super.onPause()
         // Возвращает клавиатуру в обычный режим, если включён минимод
-        if (miniModePreference){
-            miniModeSet(false)
+        if (miniModePreference) {
             miniMode = false
+            miniModeSet(false)
         }
     }
 
 
     fun playVibration(duration: Long){
-        if (vibrationPreference)
-            Vibration.playVibro(requireContext(), duration)
+        if (vibrationPreference) Services.playVibration(requireContext(), duration)
     }
 
 
-    private fun miniModeSet(reduce: Boolean){
+    // required review                                                      --------------------------------------------------------------------------------
+    private fun miniModeSet(reduce: Boolean) {
         val duration: Long = 400
+        val startScale: Float
+        val endScale: Float
+        val startAlpha: Float
+        val endAlpha: Float
+        val pivotX: Float
+        val pivotY: Float
+
         if (reduce) {
-            Animations.animatePropertyChange(titleMiniMode,"alpha",0f,0.7f, duration, Animations.overshootInterpolator)
-            Animations.animatePropertyChange(subTitleMiniMode,"alpha",0f,1f, duration, Animations.overshootInterpolator)
-            if (!leftHandMode){
-                Animations.animatePropertyChange(numpadPager,"scaleX",1f,0.75f, duration, Animations.overshootInterpolator)
-                Animations.animatePropertyChange(numpadPager,"scaleY",1f,0.75f, duration, Animations.overshootInterpolator)
-                Animations.animatePropertyChange(miniModeButton,"rotation",90f,270f, duration, Animations.overshootInterpolator)
-
-
-
-                numpadPager.pivotX = numpadPager.width.toFloat()
-                numpadPager.pivotY = numpadPager.height.toFloat()
-            }
-            else{
-                Animations.animatePropertyChange(numpadPager,"scaleX",1f,0.75f,duration, Animations.overshootInterpolator)
-                Animations.animatePropertyChange(numpadPager,"scaleY",1f,0.75f,duration, Animations.overshootInterpolator)
-                Animations.animatePropertyChange(miniModeButton,"rotation",180f,360f,duration, Animations.overshootInterpolator)
-
-                numpadPager.pivotX = 0f
-                numpadPager.pivotY = numpadPager.height.toFloat()
-            }
+            startScale = 1f
+            endScale = 0.75f
+            startAlpha = 0f
+            endAlpha = 0.7f
+            pivotX = if (!leftHandMode) numpadPager.width.toFloat() else 0f
+            pivotY = numpadPager.height.toFloat()
         } else {
-            Animations.animatePropertyChange(titleMiniMode,"alpha",0.7f,0f, duration, Animations.overshootInterpolator)
-            Animations.animatePropertyChange(subTitleMiniMode,"alpha",1f,0f, duration, Animations.overshootInterpolator)
-            if (!leftHandMode){
-                Animations.animatePropertyChange(numpadPager,"scaleX",0.75f,1f,duration, Animations.overshootInterpolator)
-                Animations.animatePropertyChange(numpadPager,"scaleY",0.75f,1f,duration, Animations.overshootInterpolator)
-                Animations.animatePropertyChange(miniModeButton,"rotation",270f,90f,duration, Animations.overshootInterpolator)
-
-                numpadPager.pivotX = numpadPager.width.toFloat()
-                numpadPager.pivotY = numpadPager.height.toFloat()
-            }
-            else{
-                Animations.animatePropertyChange(numpadPager,"scaleX",0.75f,1f,duration, Animations.overshootInterpolator)
-                Animations.animatePropertyChange(numpadPager,"scaleY",0.75f,1f,duration, Animations.overshootInterpolator)
-                Animations.animatePropertyChange(miniModeButton,"rotation",360f,180f,duration, Animations.overshootInterpolator)
-
-                numpadPager.pivotX = 0f
-                numpadPager.pivotY = numpadPager.height.toFloat()
-            }
+            startScale = 0.75f
+            endScale = 1f
+            startAlpha = 0.7f
+            endAlpha = 0f
+            pivotX = if (!leftHandMode) numpadPager.width.toFloat() else 0f
+            pivotY = numpadPager.height.toFloat()
         }
+
+        miniModeButton.setImageDrawable(ResourcesCompat.getDrawable(resources, if (reduce) R.drawable.baseline_unfold_more_32 else R.drawable.baseline_unfold_less_32, resources.newTheme())) // Смена иконки мини-режима
+
+        Animations.animatePropertyChange(titleMiniMode, "alpha", startAlpha, endAlpha, duration, Animations.overshootInterpolator)
+        numpadPager.pivotX = pivotX
+        numpadPager.pivotY = pivotY
+        viewScaling(numpadPager, startScale, endScale, duration)
+    }
+
+
+    private fun viewScaling(view: View,scaleFrom: Float = 0.75f, scaleTo: Float = 1f,duration: Long = 300){
+        Animations.animatePropertyChange(view,"scaleX",scaleFrom,scaleTo,duration, Animations.overshootInterpolator)
+        Animations.animatePropertyChange(view,"scaleY",scaleFrom,scaleTo,duration, Animations.overshootInterpolator)
+
     }
 
     fun numberEnterAction(numberSymbol: String) // Обработчик нажатия - цифра (0-9) и скобки
     {
-        val input = displayFragment.getInputStringBuilder()
-
-        when(input.last()){
-            ConstantsCalculator.symbolCloseBracket -> {
-                if (numberSymbol != ")")
-                    displayFragment.enterToExpression(getString(R.string.symbolAdd))
-            }
-
-        }
-
         displayFragment.enterToExpression(numberSymbol)
-
-        equalAction()
+        calculateExpression()
     }
 
     fun operationEnterAction(operator: String,ignoreAutoRechange: Boolean = false) // Обработчик нажатия - оператора (+ - * /)
     {
         val input = displayFragment.getInputStringBuilder()
+        val lastSymbol = input.last()
 
         if (!ignoreAutoRechange){
-            if (input.last() in setOf(ConstantsCalculator.symbolAdd,ConstantsCalculator.symbolSub,
+
+            if (lastSymbol in setOf(
+                    ConstantsCalculator.symbolAdd,ConstantsCalculator.symbolSub,
                     ConstantsCalculator.symbolMul,ConstantsCalculator.symbolDiv,
-                    ConstantsCalculator.symbolPower,ConstantsCalculator.symbolPoint))
+                    ConstantsCalculator.symbolPower,ConstantsCalculator.symbolPoint,ConstantsCalculator.symbolFactorial))
             {
-                if (input.last() != ConstantsCalculator.symbolSqrt)
+                if (lastSymbol != ConstantsCalculator.symbolSqrt)
                     backSpaceAction()
             }
-            if (input.last() != ConstantsCalculator.symbolSqrt){
+            if (lastSymbol != ConstantsCalculator.symbolSqrt){
                 displayFragment.enterToExpression(operator)
             }
         }
         else{
             displayFragment.enterToExpression(operator)
         }
+        canPointEnter = true
+        calculateExpression()
     }
 
     fun sqrtAction() { // Добавляет знак квадратного корня
-        operationEnterAction("$ConstantsCalculator.symbolSqrt")
-        equalAction()
+        operationEnterAction("${ConstantsCalculator.symbolSqrt}")
     }
 
     fun powerAction() { // Добавляет знак возведения в степень
         operationEnterAction("${ConstantsCalculator.symbolPower}")
-        equalAction()
     }
 
     fun percentAction() { // Добавляет знак процента в поле ввода
         operationEnterAction("${ConstantsCalculator.symbolPercent}")
-        equalAction()
     }
 
     fun factorialAction() {
         operationEnterAction("${ConstantsCalculator.symbolFactorial}")
-        equalAction()
     }
 
     fun invertAction() {
-        displayFragment.textFields[0].text = CalculatorCore.closeExpressionString(displayFragment.textFields[0].text.toString())
-        equalAction()
+        displayFragment.setInputField( calculator.closeExpressionString(displayFragment.getInputField() ))
+        calculateExpression()
     }
 
     fun enterTrigonometryFunc(dataSetId: Int){
@@ -284,41 +296,57 @@ class CalculatorFragment: Fragment() {
 
     // Расчитывает результат и возвращает его
     private fun calculateAction(): Double{
-        CalculatorCore.roundRange = roundRangePreference
-        val newExpression = CalculatorCore.dynamicAnalyzeExpression(displayFragment.textFields[0].text.toString(),CalculatorCore.toDeg, CalculatorCore.roundRange)
-        displayFragment.textFields[0].text = newExpression
-        return CalculatorCore.calculateExpression(newExpression)
+        // Получение введённого выражения
+        val expression = displayFragment.textFields[0].text.toString()
+
+        // Объявление калькулятора и передача выражения
+        val calculator = Calculator(expression)
+
+        // Вызов метода "calculate" и расчёт результата
+        calculator.calculate(true)
+
+        return calculator.getResult()
     }
 
-    fun equalAction() // Событие вычислена результата
+    fun calculateExpression() // Событие вычислена результата
     {
         try {
             // Расчёт результата и запись в основное поле и запись результата в переменную
             displayFragment.checkTextFields()
 
             calculateResult = calculateAction()
-            val result = StringBuilder(calculateResult.toString())
-            val format = DecimalFormat("#.###########")
-            val bigDecimal = BigDecimal(calculateResult)
 
+            // Если результат вычислений - бесконечность
+            if (calculateResult.isInfinite())
+                displayFragment.setResultField(resources.getString(R.string.error_infinite))
 
-            if (result[result.lastIndex - 1] == '.' && result[result.lastIndex] == '0'){ // Если в ответе последний символ после точки = 0 - значит число является типом Int
-                displayFragment.setResultField(
-                    format.format(bigDecimal).toString()) // Вывод в Int
-            }
+            // Если результат вычислений - не число
+            if (calculateResult.isNaN())
+                displayFragment.setResultField(resources.getString(R.string.error_nan))
+
             else{
-                displayFragment.setResultField(format.format(bigDecimal).toString().replace(',', '.')) // Вывод в Double с заменой запятой на точку
+                val result = StringBuilder(calculateResult.toString())
+                val format = DecimalFormat("#.###########")
+                val bigDecimal = BigDecimal(calculateResult)
 
-            }
-            expressionResult = calculateResult.toString()
-            // Если автосохранение включено
-            if(memoryAutoSaveResult){
-                memorySave()
+                if (result[result.lastIndex - 1] == '.' && result[result.lastIndex] == '0'){ // Если в ответе последний символ после точки = 0 - значит число является типом Int
+                    displayFragment.setResultField(
+                        format.format(bigDecimal).toString()) // Вывод в Int
+                }
+                else{
+                    displayFragment.setResultField(format.format(bigDecimal).toString().replace(',', '.')) // Вывод в Double с заменой запятой на точку
+
+                }
+                expressionResult = calculateResult.toString()
+                // Если автосохранение включено
+                if(memoryAutoSaveResult){
+                    memorySave()
+                }
             }
 
         }
-        catch (_: Exception){
-            errorHandler()
+        catch (ex: Exception){
+            Log.e("DebugTag",ex.toString())
         }
     }
 
@@ -326,13 +354,12 @@ class CalculatorFragment: Fragment() {
         try {
             val deletedLastSymbol = displayFragment.clearLastSymbolFromExpression(displayFragment.textFields[0])
 
-            // Если удалённый символ совпадает с одним символом из массива
             // Если удалённый символ - '.' (точка)
             if (deletedLastSymbol == '.')
                 canPointEnter = true
 
-            equalAction()
-        } catch (e: Exception) {
+            calculateExpression()
+        } catch (ex: Exception) {
             errorHandler()
         }
     }
@@ -349,30 +376,27 @@ class CalculatorFragment: Fragment() {
     }
 
     fun clearGroupAction() {
-
         displayFragment.textFields[0].text = removeDigitsFromEnd(displayFragment.textFields[0].text.toString())
-        equalAction()
+        calculateExpression()
     }
 
-    companion object{
-        private fun removeDigitsFromEnd(input: String): String { // Удаляет число цифр из строки
-            val stringBuilder = StringBuilder(input)
-            if (input.isNotEmpty()) {
-                var index = stringBuilder.length - 1
+    private fun removeDigitsFromEnd(input: String): String { // Удаляет число цифр из строки
+        val stringBuilder = StringBuilder(input)
+        if (input.isNotEmpty()) {
+            var index = stringBuilder.length - 1
 
-                if (!stringBuilder[index].isDigit()) {
+            if (!stringBuilder[index].isDigit()) {
+                stringBuilder.deleteCharAt(index)
+            }
+            else{
+                // Находим первый символ, который не является цифрой
+                while (index >= 0 && stringBuilder[index].isDigit()) {
                     stringBuilder.deleteCharAt(index)
-                }
-                else{
-                    // Находим первый символ, который не является цифрой
-                    while (index >= 0 && stringBuilder[index].isDigit()) {
-                        stringBuilder.deleteCharAt(index)
-                        index--
-                    }
+                    index--
                 }
             }
-            return stringBuilder.toString()
         }
+        return stringBuilder.toString()
     }
 
     // Работа с памятью
@@ -388,7 +412,7 @@ class CalculatorFragment: Fragment() {
             val readMemory = memory.read()
             operationEnterAction(getString(R.string.symbolMul))
             displayFragment.enterToExpression(readMemory.toString())
-            equalAction()
+            calculateExpression()
         }
     }
 
@@ -423,13 +447,13 @@ class CalculatorFragment: Fragment() {
         if(expressionResult.isNotEmpty()){
             displayFragment.enterToLastExpression()
             displayFragment.setInputField(displayFragment.textFields[1].text.toString().replace(" ",""))
-            equalAction()
+            calculateExpression()
         }
     }
 
     private fun errorHandler() // Обработчик ошибки
     {
-        displayFragment.setResultField(resources.getString(R.string.text_failCalculate))
+        displayFragment.setResultField(resources.getString(R.string.error_failCalculate))
     }
 
     // Preferences
@@ -444,13 +468,14 @@ class CalculatorFragment: Fragment() {
         memoryAutoSaveResult = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[0], false)
         leftHandMode = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[1], false)
         miniModePreference = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[2], false)
-        roundRangePreference = sharedPreferences.getString(ConstantsCalculator.keysPreferences[3],"3")!!.toInt()
-        vibrationPreference = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[4], false)
+        vibrationPreference = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[3], true)
     }
 
-    fun switchModeToDeg(toDeg: Boolean) {
-        displayFragment.calculateForDeg(toDeg)
-        CalculatorCore.toDeg = toDeg
+    fun setTypeAngle(isDegree: Boolean) {
+        displayFragment.updateAngleType(isDegree)
+        calculator.setRadiansState(isDegree)
+        Log.i("DebugTag",calculator.getRadiansState().toString())
+        calculateExpression()
     }
 
 }

@@ -4,7 +4,7 @@
 
     <!-- Группа настроек -->
 
-    <PreferenceCategory android:title="Calculator">
+    <PreferenceCategory android:title="@string/preferenceTitle_calculatorCategory">
 
         <CheckBoxPreference
             android:defaultValue="false"
@@ -14,7 +14,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Keyboard">
+        android:title="@string/preferenceTitle_keyboardCategory">
 
         <SwitchPreference
             android:key="key_leftHandMode"
@@ -34,36 +34,14 @@
             android:summary="@string/preference_vibrationDesc"
             android:defaultValue="true" />
 
-        <EditTextPreference
-            android:key="key_roundRange"
-            android:title="@string/preference_roundRange"
-            android:defaultValue="3"
-            android:inputType="numberDecimal"
-            android:digits="0123456789"
-            android:summary="@string/preference_roundRangeDesc" />
-
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="About">
+        android:title="@string/preferenceTitle_aboutCategory">
         <Preference
             app:key="key_privacyPolicy"
             app:title="Privacy policy"
             app:summary="Click here to read our privacy policy." />
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/preference_support">
-        <Preference
-            app:title="@string/preference_thanksTest"
-            app:summary="@string/preference_thanksTestDesc" />
-
-        <Preference
-            android:key="key_telegram"
-            android:icon="@drawable/baseline_send_24"
-            app:title="Telegram"
-            app:summary="@string/preference_telegram" />
-
     </PreferenceCategory>
 
 

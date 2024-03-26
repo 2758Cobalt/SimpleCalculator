@@ -19,7 +19,9 @@
         <item name="android:statusBarColor">#988F89</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
+
 
 
     <!--Тема для полей-->

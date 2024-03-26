@@ -10,13 +10,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonRoundBracketOpen"
-        style="@style/numberButtonStyle"
+        style="@style/expandButtonStyle"
         android:text="@string/symbolOpenBracket"
         app:layout_columnSpan="2" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonRoundBracketClose"
-        style="@style/numberButtonStyle"
+        style="@style/expandButtonStyle"
         android:text="@string/symbolCloseBracket"
         app:layout_columnSpan="2" />
 

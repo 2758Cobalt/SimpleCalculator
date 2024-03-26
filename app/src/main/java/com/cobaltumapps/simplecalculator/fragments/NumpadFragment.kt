@@ -34,6 +34,7 @@ class NumpadFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return if (calculatorFragment?.leftHandMode == false){
             inflater.inflate(R.layout.fragment_numpad, container, false) // View фрагмента
+
         } else{
             inflater.inflate(R.layout.fragment_numpad_leftmode, container, false)
         }
@@ -75,7 +76,7 @@ class NumpadFragment: Fragment() {
         // Слушатель нажатий кнопок функций
         clearGroupButton.setOnClickListener { calculatorFragment?.clearGroupAction(); calculatorFragment?.playVibration(5) }
         powerButton.setOnClickListener { calculatorFragment?.powerAction();                 calculatorFragment?.playVibration(5) }
-        equalButton.setOnClickListener { calculatorFragment?.equalAction(); calculatorFragment?.pushExpressionToLast(); calculatorFragment?.playVibration(20)}
+        equalButton.setOnClickListener { calculatorFragment?.calculateExpression(); calculatorFragment?.pushExpressionToLast(); calculatorFragment?.playVibration(20)}
         pointButton.setOnClickListener { calculatorFragment?.enterPointAction(); calculatorFragment?.playVibration(5)}
 
         backspaceButton.setOnClickListener { calculatorFragment?.backSpaceAction(); calculatorFragment?.playVibration(5) }

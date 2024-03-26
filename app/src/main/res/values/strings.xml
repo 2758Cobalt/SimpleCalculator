@@ -43,13 +43,11 @@
     <string name="symbolNum8" translatable="false">&#56;</string>
     <string name="symbolNum9" translatable="false">&#57;</string>
 
-    <string name="symbolDiv" translatable="false">&#47;</string>
+    <string name="symbolDiv" translatable="false">&#247;</string>
     <string name="symbolMul" translatable="false">&#215;</string>
     <string name="symbolSub" translatable="false">&#45;</string>
     <string name="symbolAdd" translatable="false">&#43;</string>
     <string name="symbolPoint" translatable="false">&#46;</string>
-
-
 
     <string name="symbolMemoryAdd" translatable="false">M+</string>
     <string name="symbolMemorySub" translatable="false">M-</string>
@@ -63,18 +61,24 @@
 
     <string name="symbolLog" translatable="false">log</string>
     <string name="symbolLn" translatable="false">ln</string>
+    <string name="symbolAbs" translatable="false">|x|</string>
 
-    <string name="symbolRad">Radians</string>
-    <string name="symbolDeg">Degrees</string>
+    <string name="text_degrees">Degrees</string>
+    <string name="text_radians">Radians</string>
+
+
+    <string name="symbolRad">RAD</string>
+    <string name="symbolDeg">DEG</string>
+
+
+    <string name="display_memory">Memory</string>
 
     <!--Test previous-->
     <string name="sampleButton" translatable="false">SampleButton</string>
     <string name="sampleText" translatable="false">SampleText</string>
 
     <string name="tooltip_enterText">Enter Text</string>
-    <string name="labelQuickBar">Quick Access Toolbar</string>
 
-    <string name="text_roundRange">Round up: </string>
     <string name="editText_enterNum">Enter number</string>
 
     <string name="labelFragment_trigonometry">Trigonometry</string>
@@ -85,35 +89,54 @@
     <string name="preference_leftMode">Left hand mode</string>
     <string name="preference_leftModeDesc">Will be mirror keyboard for left hand</string>
 
-    <string name="preference_miniMode">Allow minimize keyboard</string>
-    <string name="preference_miniModeDesc">Allows you to minimize the keyboard</string>
+    <string name="preference_miniMode">One-handed mode</string>
+    <string name="preference_miniModeDesc">Allows you to activate one-handed mode</string>
 
     <string name="preference_miniModeIndicate">keyboard reduced</string>
-    <string name="preference_miniModeIndicateHint">press \'↖\' to exit</string>
-
-    <string name="preference_roundRange">Round up result of trigonometry function</string>
-    <string name="preference_roundRangeDesc">Trigonometry result has been rounded to</string>
 
     <string name="preference_vibration">Vibrate</string>
     <string name="preference_vibrationDesc">Vibrate when a button is clicked</string>
+
+    <string name="preference_swapBackSpace">Reverse buttons "point" and "backspace"</string>
+    <string name="preference_swapBackSpaceDesc">Reverses the "dot" and "backspace" buttons</string>
 
 
     <string name="preference_privacyPolicy">Privacy policy</string>
     <string name="preference_privacyPolicyDesc">Click here to read our privacy policy</string>
 
 
-    <string name="text_failCalculate">Fail</string>
+    <string name="error_failCalculate">Fail</string>
+    <string name="error_numberFormatException">Incorrect expression</string>
+
+    <string name="error_infinite" translatable="false">&#8734;</string>
+    <string name="error_nan">Nan</string>
 
 
-    <string name="system_restartMessage">Restart app for apply</string>
+    <string name="preferenceTitle_calculatorCategory">Calculator</string>
+    <string name="preferenceTitle_keyboardCategory">Keyboard</string>
+    <string name="preferenceTitle_aboutCategory">About</string>
+    <string name="preferenceTitle_supportCategory">Support</string>
+
+
+    <string name="system_restartMessage">Restart app for apply changes</string>
 
     <string name="preference_thanksTest">Thanks for the app test!</string>
     <string name="preference_thanksTestDesc">The application is still in the testing phase.\nIf you have found bugs, crashes or localization errors - please inform me in my telegram</string>
 
-    <string name="preference_support">Support</string>
 
     <string name="preference_telegram">Report a problem</string>
     <string name="preference_email">E-mail feedback</string>
+
+    <string name="clipboard">Copyed to clipboard</string>
+
+    <string name="button_selector">Comming soon!</string>
+
+
+    <string name="contentDescription_backspace">Back space</string>
+    <string name="contentDescription_settings">Settings</string>
+    <string name="contentDescription_ClearAll">Clear all fields</string>
+
+    <string name="contentDescription_LastExpressionTextField">last expression text field</string>
 
 
 </resources>

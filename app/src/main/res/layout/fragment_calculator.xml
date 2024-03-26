@@ -1,89 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:background="@null"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    app:layoutDescription="@xml/fragment_calculator_scene"
     tools:context=".activities.MainActivity">
 
+    <!--InDragedCard-->
+
+    <LinearLayout
+        android:id="@+id/pullContainer"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/buttonClearAllAlternative"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/contentDescription_ClearAll"
+            android:elevation="4dp"
+            android:src="@drawable/baseline_delete_outline_32"
+            app:tint="@color/tomato" />
+    </LinearLayout>
+
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/displayContainer"
+        android:id="@+id/displayCard"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="14dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="3dp"
-        app:layout_constraintVertical_weight="0.6"
-        app:layout_constraintBottom_toTopOf="@+id/numpadPager"
+        app:layout_constraintBottom_toTopOf="@+id/displayCardGuidLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/buttonOptions"
-        android:layout_width="48sp"
-        android:layout_height="48sp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/new_style_round"
-        android:contentDescription="@string/sampleText"
+    <View
+        android:id="@+id/pullTab"
+        android:layout_width="96dp"
+        android:layout_height="4dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/calculator_display"
+        android:alpha="0.5"
         android:elevation="4dp"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/settings_24"
-        app:layout_constraintBottom_toBottomOf="@+id/displayContainer"
-        app:layout_constraintEnd_toEndOf="@+id/displayContainer" />
+        app:layout_constraintBottom_toBottomOf="@+id/displayCard"
+        app:layout_constraintEnd_toEndOf="@+id/displayCard"
+        app:layout_constraintStart_toStartOf="@+id/displayCard" />
 
-    <ImageButton
-        android:id="@+id/buttonMiniMode"
-        android:layout_width="48sp"
-        android:layout_height="48sp"
-        android:layout_margin="8dp"
-        android:background="@drawable/new_style_round"
-        android:backgroundTint="@color/theme_secondary"
-        android:contentDescription="@string/sampleText"
-        android:elevation="4dp"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:rotation="90"
-        android:src="@drawable/baseline_arrow_outward_24"
-        app:layout_constraintBottom_toBottomOf="@+id/displayContainer"
-        app:layout_constraintEnd_toStartOf="@+id/buttonOptions" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/displayCardGuidLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/miniModeGuidLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
 
     <TextView
         android:id="@+id/miniModeTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:alpha="0.7"
+        android:autoSizeMaxTextSize="18sp"
+        android:autoSizeMinTextSize="6sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         android:text="@string/preference_miniModeIndicate"
         android:textAlignment="center"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="@+id/numpadPager"
-        app:layout_constraintStart_toStartOf="@+id/numpadPager"
-        app:layout_constraintTop_toTopOf="@+id/numpadPager" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonOptions"
+        app:layout_constraintStart_toEndOf="@+id/buttonMiniMode"
+        app:layout_constraintTop_toBottomOf="@+id/miniModeGuidLine"
+        tools:ignore="TextContrastCheck"
+        tools:targetApi="o" />
 
-    <TextView
-        android:id="@+id/miniModeSubtitle"
-        android:layout_width="0dp"
+    <ImageView
+        android:id="@+id/buttonMiniMode"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:alpha="1"
-        android:text="@string/preference_miniModeIndicateHint"
-        android:textAlignment="center"
-        android:textSize="28sp"
+        android:layout_marginStart="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/preference_miniModeIndicate"
+        android:rotation="-45"
+        android:src="@drawable/baseline_unfold_less_32"
+        app:layout_constraintStart_toStartOf="@+id/displayCard"
+        app:layout_constraintTop_toTopOf="@+id/miniModeGuidLine"/>
 
-        app:layout_constraintEnd_toEndOf="@+id/miniModeTitle"
-        app:layout_constraintStart_toStartOf="@+id/miniModeTitle"
-        app:layout_constraintTop_toBottomOf="@+id/miniModeTitle" />
+    <ImageView
+        android:id="@+id/buttonConverters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="visible"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Converters"
+        android:elevation="5dp"
+        android:src="@drawable/baseline_backup_table_24"
+        app:layout_constraintBottom_toBottomOf="@+id/displayCard"
+        app:layout_constraintStart_toStartOf="@+id/displayCard" />
+
+    <ImageView
+        android:id="@+id/buttonOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/contentDescription_settings"
+        android:src="@drawable/baseline_settings_24"
+        app:layout_constraintEnd_toEndOf="@+id/displayCard"
+        app:layout_constraintTop_toTopOf="@+id/miniModeGuidLine" />
+
+    <ImageView
+        android:id="@+id/buttonBackspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/contentDescription_backspace"
+        android:src="@drawable/baseline_backspace_32"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonOptions"
+        app:layout_constraintEnd_toStartOf="@+id/buttonOptions"
+        app:layout_constraintTop_toTopOf="@+id/buttonOptions" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/numpadGuidLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.38" />
 
     <!--Numpad-->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/numpadPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="12dp"
-        app:layout_constraintVertical_weight="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/displayContainer"
-        app:layout_constraintStart_toStartOf="@+id/displayContainer"
-        app:layout_constraintTop_toBottomOf="@+id/displayContainer" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadGuidLine" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -1,13 +1,17 @@
 package com.cobaltumapps.simplecalculator.references
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.widget.Toast
+import com.cobaltumapps.simplecalculator.R
 
-object Vibration {
+object Services {
 
-    fun playVibro(context: Context, duration: Long = 100) {
+    fun playVibration(context: Context, duration: Long = 100) {
         // Получаем экземпляр Vibrator из системы
         val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
@@ -26,6 +30,13 @@ object Vibration {
             @Suppress("DEPRECATION")
             vibrator.vibrate(duration)
         }
+    }
+
+    fun copyToClipboard(context: Context, text: String) {
+        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("text", text)
+        clipboard.setPrimaryClip(clip)
+        Toast.makeText(context,context.resources.getText(R.string.clipboard),Toast.LENGTH_SHORT).show()
     }
 
 }

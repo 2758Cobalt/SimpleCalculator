@@ -13,10 +13,9 @@
 
     <string name="symbolRad">Grzejniki</string>
     <string name="symbolDeg">Stopnie</string>
+    <string name="display_memory">Pamięć</string>
     <string name="tooltip_enterText">Wprowadź tekst</string>
-    <string name="labelQuickBar">Szybki Pasek Dostępu</string>
 
-    <string name="text_roundRange">Zaokrąglić: </string>
     <string name="editText_enterNum">Wprowadź liczbę</string>
 
     <string name="labelFragment_trigonometry">Trygonometria</string>
@@ -31,10 +30,6 @@
     <string name="preference_miniModeDesc">Pozwala na minimalizowanie klawiatury</string>
 
     <string name="preference_miniModeIndicate">Zmniejszona klawiatura</string>
-    <string name="preference_miniModeIndicateHint">naciśnij \'↖\' aby wyjść</string>
-
-    <string name="preference_roundRange">Zaokrąglić wynik funkcji trygonometrycznej</string>
-    <string name="preference_roundRangeDesc">Wynik trygonometrii zostanie zaokrąglony do</string>
 
     <string name="preference_vibration">Wibracje</string>
     <string name="preference_vibrationDesc">Wibruj przy naciśnięciu przycisku</string>
@@ -42,16 +37,25 @@
     <string name="preference_privacyPolicy">Polityka prywatności</string>
     <string name="preference_privacyPolicyDesc">Kliknij tutaj, aby przeczytać naszą politykę prywatności</string>
 
-    <string name="text_failCalculate">Błąd</string>
+    <string name="error_failCalculate">Błąd</string>
 
     <string name="system_restartMessage">Uruchom ponownie aplikację, aby zastosować zmiany</string>
 
     <string name="preference_thanksTest">Dzięki za przetestowanie aplikacji!</string>
     <string name="preference_thanksTestDesc">Aplikacja jest w fazie testów.\nJeśli znalazłeś błędy, awarie lub błędy lokalizacyjne - proszę poinformuj mnie przez telegram</string>
 
-    <string name="preference_support">Wsparcie</string>
+    <string name="preferenceTitle_supportCategory">Wsparcie</string>
 
     <string name="preference_telegram">Zgłoś problem</string>
     <string name="preference_email">Wyślij mi opinie na e-mail</string>
+    <string name="text_degrees">stopnie</string>
+    <string name="text_radians">radiany</string>
+    <string name="error_numberFormatException">Nieprawidłowe wyrażenie</string>
+    <string name="error_nan">Nie liczba</string>
+    <string name="preferenceTitle_calculatorCategory">Kalkulator</string>
+    <string name="preferenceTitle_keyboardCategory">Klawiatura</string>
+    <string name="preferenceTitle_aboutCategory">Inne</string>
+    <string name="preference_swapBackSpace">Zmień przyciski \"kropki\" i \"kasowania\".</string>
+    <string name="preference_swapBackSpaceDesc">Odwrócenie przycisków \"kropka\" i \"kasowanie\"</string>
 
 </resources>

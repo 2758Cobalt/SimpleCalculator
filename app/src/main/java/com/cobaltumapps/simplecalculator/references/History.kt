@@ -1,25 +1,31 @@
 package com.cobaltumapps.simplecalculator.references
 
-class History {
-    private var historyResultStorage: Array<String> = arrayOf()
-    private var historyExpressionStorage: Array<String> = arrayOf()
+import android.util.Log
+private const val DEBUG_TAG = "History"
 
-    fun saveToHistory(expression: String, result: String){
-        historyResultStorage += result
-        historyExpressionStorage += expression
-    }
-
-    fun getResult(index: Int): String{
-        return historyResultStorage[index]
-    }
-    fun getExpressionFromHistory(index: Int): String{
-        return historyExpressionStorage[index]
-    }
-
-    fun getAllResult():  Array<String>{
-        return historyResultStorage
-    }
-    fun getAllExpressionns(): Array<String> {
-        return historyExpressionStorage
-    }
+open class History {
+    private val vault = ""
 }
+
+class HistoryWriter: History() {
+
+    fun read(history: HistoryData): HistoryData{
+        Log.i(DEBUG_TAG,"\n" +
+                "history object: $history\n" +
+                "input expression: \"${history.inputExpression}\"\n" +
+                "result expression: \"${history.resultExpression}\"")
+        return history
+    }
+
+    fun write(history: HistoryData){
+        TODO("Реализовать запись истории в хранилище")
+    }
+    fun clear(){
+        TODO("Реализовать очистку всей истории")
+    }
+
+}
+data class HistoryData(
+    var inputExpression: String,
+    var resultExpression: String
+)

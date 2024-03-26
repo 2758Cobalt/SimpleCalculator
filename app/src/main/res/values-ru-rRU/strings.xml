@@ -11,11 +11,10 @@
 
     <string name="labelCalculator">Калькулятор</string>
 
-    <string name="symbolRad">Радианы</string>
-    <string name="symbolDeg">Градусы</string>
+    <string name="symbolRad">РАД</string>
+    <string name="symbolDeg">ГРАД</string>
+    <string name="display_memory">Память</string>
     <string name="tooltip_enterText">Введите текст</string>
-    <string name="labelQuickBar">Панель быстрого доступа</string>
-    <string name="text_roundRange">Знаков после запятой</string>
     <string name="editText_enterNum">Введите число</string>
     <string name="system_restartMessage">Перезапустите приложение</string>
     <string name="labelFragment_trigonometry">Тригонометрия</string>
@@ -23,21 +22,27 @@
     <string name="preference_memoryAutoSaveDesc">Будет автоматически сохранять результат в память</string>
     <string name="preference_leftMode">Режим левой руки</string>
     <string name="preference_leftModeDesc">Отзеркаливает клавиатуру для левой руки</string>
-    <string name="preference_miniMode">Уменьшить клавиатуру</string>
-    <string name="preference_miniModeDesc">Позволяет уменьшать клавиатуру</string>
+    <string name="preference_miniMode">Управление одной рукой</string>
+    <string name="preference_miniModeDesc">Позволяет включать режим управления одной рукой</string>
     <string name="preference_miniModeIndicate">Клавиатура уменьшена</string>
-    <string name="preference_miniModeIndicateHint">Нажмите \'↖\' для выхода</string>
-    <string name="preference_roundRange">Результат тригонометрической функции</string>
-    <string name="preference_roundRangeDesc">Задайте количество знаков после запятой. Результат будет округлён до</string>
     <string name="preference_vibration">Вибрация</string>
     <string name="preference_vibrationDesc">Вибро отлклик при нажатии на кнопки</string>
-    <string name="text_failCalculate">Ошибка</string>
+    <string name="error_failCalculate">Ошибка</string>
     <string name="preference_privacyPolicy">Политика конфиденциальности</string>
     <string name="preference_privacyPolicyDesc">Нажмите здесь, чтобы ознакомиться с нашей политикой конфиденциальности</string>
     <string name="preference_thanksTest">Спасибо за тест приложения!</string>
     <string name="preference_thanksTestDesc">Приложение находится на этапе тестирования. Если вы обнаружили баги, краши, ошибки локализации - прошу сообщить в мой телеграмм</string>
     <string name="preference_telegram">Уведомить о проблеме</string>
-    <string name="preference_support">Тех. поддержка</string>
+    <string name="preferenceTitle_supportCategory">Поддержка</string>
     <string name="preference_email">Отправить отзыв на электронную почту</string>
+    <string name="text_degrees">Градусы</string>
+    <string name="text_radians">Радианы</string>
+    <string name="error_numberFormatException">Некорректное выражение</string>
+    <string name="error_nan">Не число</string>
+    <string name="preferenceTitle_calculatorCategory">Калькулятор</string>
+    <string name="preferenceTitle_keyboardCategory">Клавиатура</string>
+    <string name="preferenceTitle_aboutCategory">Прочее</string>
+    <string name="preference_swapBackSpace">Сменить кнопки \"точка\" и \"стереть\"</string>
+    <string name="preference_swapBackSpaceDesc">Меняет кнопки \"точка\" и \"стереть\" местами</string>
 
 </resources>

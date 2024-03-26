@@ -2,124 +2,141 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="HardcodedText"
+
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@null"
     android:padding="12dp"
     app:layout_constraintBottom_toTopOf="@+id/quickPanelLabel"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/calculatorLabel">
 
+    <View
+        android:id="@+id/lastTextSheet"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.1"
+        android:background="@drawable/calculator_display"
+        android:backgroundTint="@color/gray150"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/angleTypeField" />
+
     <TextView
         android:id="@+id/lastExpressionField"
         style="@style/resultFieldText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
         android:alpha="0.5"
+        android:autoSizeMaxTextSize="20sp"
+        android:autoSizeMinTextSize="2sp"
+        android:autoSizeStepGranularity="1sp"
+        android:autoSizeTextType="uniform"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical|end"
         android:hint="0"
         android:text="0"
-        android:background="?attr/selectableItemBackground"
-        android:textAlignment="textEnd"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typeLabel" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lastTextSheet"
+        app:layout_constraintEnd_toEndOf="@+id/lastTextSheet"
+        app:layout_constraintStart_toStartOf="@+id/lastTextSheet"
+        app:layout_constraintTop_toTopOf="@+id/lastTextSheet"
+        tools:targetApi="o" />
 
-    <ScrollView
-        android:id="@+id/inputScroll"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/inputField"
+        style="@style/inputFieldText"
         android:layout_width="match_parent"
-        android:layout_height="48sp"
-        android:layout_marginTop="8dp"
+        android:layout_height="32dp"
+        android:layout_marginHorizontal="8dp"
+        android:autoSizeMaxTextSize="24sp"
+        android:autoSizeMinTextSize="2sp"
+        android:autoSizeStepGranularity="1sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_vertical|end"
+        android:hint="0"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/outputField"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastExpressionField">
-
-        <TextView
-            android:id="@+id/inputField"
-            style="@style/inputFieldText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:alpha="0.7"
-            android:gravity="end"
-            android:hint="0"
-            android:text="0"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </ScrollView>
-
+        app:layout_constraintTop_toBottomOf="@+id/lastTextSheet"
+        tools:targetApi="o" />
 
     <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/inputScroll"
-        app:layout_constraintStart_toStartOf="@+id/inputScroll"
-        app:layout_constraintTop_toBottomOf="@+id/inputScroll" />
-
-    <ScrollView
-        android:id="@+id/outputScroll"
+        android:id="@+id/materialDivider"
         android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/outputField"
+        app:layout_constraintEnd_toEndOf="@+id/inputField"
+        app:layout_constraintStart_toStartOf="@+id/inputField" />
+
+    <TextView
+        android:id="@+id/outputField"
+        style="@style/resultFieldText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="8dp"
+        android:alpha="0.7"
+        android:autoSizeMaxTextSize="24sp"
+        android:autoSizeMinTextSize="4sp"
+        android:autoSizeStepGranularity="1sp"
+        android:autoSizeTextType="uniform"
+        android:background="?attr/selectableItemBackground"
+        android:hint="..."
+        android:text="0"
+        android:textSize="24sp"
+        android:gravity="center_vertical|end"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/inputScroll"
-        app:layout_constraintTop_toBottomOf="@+id/inputScroll">
-
-        <TextView
-            android:id="@+id/outputField"
-            style="@style/resultFieldText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:autoSizeMaxTextSize="18sp"
-            android:autoSizeMinTextSize="12sp"
-            android:maxLines="2"
-            android:hint="..."
-            android:alpha="0.7"
-            android:text="0"
-            android:textSize="18sp"
-            tools:targetApi="o" />
-    </ScrollView>
-
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/inputField"
+        app:layout_constraintTop_toBottomOf="@+id/inputField"
+        tools:targetApi="o" />
 
     <TextView
         android:id="@+id/memoryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:text="Memory"
-        android:textColor="@color/gray150"
-        android:textColorHint="@color/gray150"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/typeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="rd"
-        android:textColor="@color/gray150"
+        android:text="@string/display_memory"
+        android:textColor="#757575"
         android:textColorHint="@color/gray150"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/memoryField"
+        android:id="@+id/angleTypeField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:text="@string/text_degrees"
+        android:textColor="#757575"
+        android:textColorHint="@color/gray150"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/memoryField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:gravity="start"
         android:maxLines="1"
         android:text="0"
-        android:textColor="@color/gray150"
+        android:textColor="#757575"
         android:textColorHint="@color/gray150"
         android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/angleTypeField"
         app:layout_constraintStart_toEndOf="@+id/memoryLabel"
         app:layout_constraintTop_toTopOf="@+id/memoryLabel" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

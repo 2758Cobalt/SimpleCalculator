@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.references.Animations
+import com.cobaltumapps.simplecalculator.references.Services
+
 
 class DisplayFragment: Fragment() {
     private val LOG_TAG = "Display"
@@ -16,7 +18,7 @@ class DisplayFragment: Fragment() {
     private lateinit var resultTextField: TextView
     private lateinit var lastExpressionTextField: TextView
     private lateinit var memoryTextField: TextView
-    private lateinit var inputTypeTextField: TextView
+    private lateinit var angleTypeTextField: TextView
 
     var textFields: Array<TextView> = arrayOf()
 
@@ -32,13 +34,13 @@ class DisplayFragment: Fragment() {
         resultTextField= view.findViewById(R.id.outputField)
         lastExpressionTextField = view.findViewById(R.id.lastExpressionField)
         memoryTextField = view.findViewById(R.id.memoryField)
-        inputTypeTextField = view.findViewById(R.id.typeLabel)
+        angleTypeTextField = view.findViewById(R.id.angleTypeField)
 
         // Стандартные значения для свойств
         textFields = arrayOf(inputTextField,resultTextField,memoryTextField)
 
         lastExpressionTextField.setOnClickListener {
-            Animations.animatePropertyChange(lastExpressionTextField,"textSize", 28f, 24f, 200, Animations.overshootInterpolator)
+            Animations.animatePropertyChange(lastExpressionTextField,"textSize", 24f, 20f, 200, Animations.overshootInterpolator)
             if (StringBuilder(lastExpressionTextField.text)[0] != '0') // Если поле с последним вводом равно нулю или пустое
             {
                 inputTextField.text = lastExpressionTextField.text
@@ -48,19 +50,19 @@ class DisplayFragment: Fragment() {
         }
 
         lastExpressionTextField.setOnLongClickListener {
-            Animations.animatePropertyChange(lastExpressionTextField,"textSize", 28f, 24f, 200, Animations.overshootInterpolator)
+            Animations.animatePropertyChange(lastExpressionTextField,"textSize", 24f, 20f, 200, Animations.overshootInterpolator)
             lastExpressionTextField.text = "0"
             true }
+
+        resultTextField.setOnClickListener {
+            Services.copyToClipboard(requireContext(),resultTextField.text.toString())
+        }
     }
 
-    fun calculateForDeg(toDeg: Boolean){
-        if (toDeg){
-            inputTypeTextField.setText(R.string.symbolDeg)
-        }
-        else{
-            inputTypeTextField.setText(R.string.symbolRad)
-        }
-        Animations.animatePropertyChange(inputTypeTextField,"textSize", 16f, 12f, 400, Animations.overshootInterpolator)
+
+    fun updateAngleType(isDegree: Boolean){
+        angleTypeTextField.setText( if(isDegree) R.string.text_degrees else R.string.text_radians )
+        Animations.animatePropertyChange(angleTypeTextField,"textSize", 16f, 12f, 400, Animations.overshootInterpolator)
     }
 
     // Добавляет символ к содержимому текстового поля с введёнными данными
@@ -72,8 +74,8 @@ class DisplayFragment: Fragment() {
             && inputData.length < 2
             && symbol != "0"
             && symbol !in setOf(
-                getString(R.string.symbolAdd), getString(R.string.symbolSub),
-                getString(R.string.symbolMul), getString(R.string.symbolDiv),
+                getString(R.string.symbolAdd),
+                getString(R.string.symbolMul),  getString(R.string.symbolDiv),
                 getString(R.string.symbolPoint))
             )
         {
@@ -87,14 +89,12 @@ class DisplayFragment: Fragment() {
         checkTextFields()
     }
 
-    fun getInputStringBuilder(): StringBuilder {
-        return StringBuilder(inputTextField.text.toString())
-    }
+
 
     // Добавляет символ к содержимому текстового поля
     fun enterToLastExpression() {
         lastExpressionTextField.text = inputTextField.text
-        Animations.animatePropertyChange(lastExpressionTextField,"textSize", 28f, 24f, 400, Animations.overshootInterpolator)
+        Animations.animatePropertyChange(lastExpressionTextField,"textSize", 24f, 20f, 400, Animations.overshootInterpolator)
     }
 
     fun setInputField(result: String) {
@@ -106,7 +106,18 @@ class DisplayFragment: Fragment() {
     fun setResultField(result: String) {
         resultTextField.text = result
         checkTextFields()
-        Animations.animatePropertyChange(resultTextField,"textSize", 20f, 18f, 100, Animations.overshootInterpolator)
+    }
+
+    fun getResultField(): String{
+        return this.resultTextField.text.toString()
+    }
+
+    fun getInputField():String{
+        return this.inputTextField.text.toString()
+    }
+
+    fun getLastField(): String{
+        return this.lastExpressionTextField.text.toString()
     }
 
     // Принудительно назначает память
@@ -152,6 +163,10 @@ class DisplayFragment: Fragment() {
             memoryTextField.text = "0"
 
         checkTextFields()
+    }
+
+    fun getInputStringBuilder(): StringBuilder {
+        return StringBuilder(inputTextField.text.toString())
     }
 
 }

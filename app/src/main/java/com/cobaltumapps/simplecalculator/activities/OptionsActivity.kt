@@ -11,13 +11,12 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.CheckBoxPreference
-import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
-import com.cobaltumapps.simplecalculator.references.Vibration
+import com.cobaltumapps.simplecalculator.references.Services
 
 class OptionsActivity : AppCompatActivity() {
 
@@ -45,8 +44,7 @@ class OptionsActivity : AppCompatActivity() {
             val autoSavePreference = findPreference<CheckBoxPreference>(ConstantsCalculator.keysPreferences[0]) as CheckBoxPreference
             val leftHandModePreference = findPreference<SwitchPreference>(ConstantsCalculator.keysPreferences[1]) as SwitchPreference
             val miniModePreference = findPreference<SwitchPreference>(ConstantsCalculator.keysPreferences[2]) as SwitchPreference
-            val roundRangePreference = findPreference<EditTextPreference>(ConstantsCalculator.keysPreferences[3]) as EditTextPreference
-            val vibrationPreference = findPreference<SwitchPreference>(ConstantsCalculator.keysPreferences[4]) as SwitchPreference
+            val vibrationPreference = findPreference<SwitchPreference>(ConstantsCalculator.keysPreferences[3]) as SwitchPreference
 
             val privacyPolicy = findPreference<Preference>("key_privacyPolicy")
             val supportTelegram = findPreference<Preference>("key_telegram")
@@ -55,17 +53,14 @@ class OptionsActivity : AppCompatActivity() {
                 sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[0], false),
                 sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[1], false),
                 sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[2], false),
-                sharedPreferences.getString(ConstantsCalculator.keysPreferences[3], "3").toString(),
-                sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[4], false)
+                sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[3], false)
             )
 
             // Назначает настройки из хранилища
             autoSavePreference.isChecked = oldSharedPreference[0] as Boolean
             leftHandModePreference.isChecked = oldSharedPreference[1] as Boolean
             miniModePreference.isChecked = oldSharedPreference[2] as Boolean
-            roundRangePreference.text = oldSharedPreference[3] as String
-
-            updateSummaryEditText(roundRangePreference)
+            vibrationPreference.isChecked = oldSharedPreference[3] as Boolean
 
             autoSavePreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, newValue ->
@@ -84,27 +79,18 @@ class OptionsActivity : AppCompatActivity() {
                     saveBooleanPreferences(ConstantsCalculator.keysPreferences[2], newValue as Boolean)
                     true
                 }
-            roundRangePreference.setOnPreferenceChangeListener{ _, newValue ->
-                saveStringPreferences(ConstantsCalculator.keysPreferences[3], newValue as String)
-                updateSummaryEditText(roundRangePreference)
-                true
-            }
 
             vibrationPreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, newValue ->
                     if (newValue as Boolean)
-                        Vibration.playVibro(requireContext(),5)
+                        Services.playVibration(requireContext(),5)
 
-                    saveBooleanPreferences(ConstantsCalculator.keysPreferences[4], newValue)
+                    saveBooleanPreferences(ConstantsCalculator.keysPreferences[3], newValue)
                     true
                 }
 
-            privacyPolicy?.setOnPreferenceClickListener { startActivity(intent);true }
-            supportTelegram?.setOnPreferenceClickListener { startActivity(intentTelegram);true }
-        }
-
-        private fun updateSummaryEditText(editTextPreference: EditTextPreference){
-            editTextPreference.summary ="${resources.getString(R.string.preference_roundRangeDesc)}: ${sharedPreferences.getString(ConstantsCalculator.keysPreferences[3], "0")}"
+            privacyPolicy?.setOnPreferenceClickListener { startActivity(intent); true }
+            supportTelegram?.setOnPreferenceClickListener { startActivity(intentTelegram); true }
         }
 
         private fun saveBooleanPreferences(key: String, variable: Boolean) {
@@ -112,11 +98,7 @@ class OptionsActivity : AppCompatActivity() {
             editor.putBoolean(key, variable)
             editor.apply()
         }
-        private fun saveStringPreferences(key: String, variable: String) {
-            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.putString(key, variable)
-            editor.apply()
-        }
+
 
     }
 
