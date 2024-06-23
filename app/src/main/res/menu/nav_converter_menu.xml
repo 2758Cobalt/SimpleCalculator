@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:title="Converters">
+
+            <menu>
+                <item
+                    android:id="@+id/menu_weight"
+                    android:icon="@drawable/ic_weight"
+                    android:title="@string/converter_weight"/>
+
+                <item
+                    android:id="@+id/menu_length"
+                    android:icon="@drawable/ic_length"
+                    android:title="@string/converter_length"/>
+
+                <item
+                    android:id="@+id/menu_time"
+                    android:icon="@drawable/ic_time"
+                    android:title="@string/converter_time"/>
+
+                <item
+                    android:id="@+id/menu_speed"
+                    android:icon="@drawable/ic_speed"
+                    android:title="@string/converter_speed"/>
+
+                <item
+                    android:id="@+id/menu_temperature"
+                    android:icon="@drawable/ic_temperatures"
+                    android:title="@string/converter_temperature"/>
+
+                <item
+                    android:id="@+id/menu_volume"
+                    android:icon="@drawable/ic_volume"
+                    android:title="@string/converter_volume"/>
+
+                <item
+                    android:id="@+id/menu_area"
+                    android:icon="@drawable/ic_area"
+                    android:title="@string/converter_area"/>
+
+                <item
+                    android:id="@+id/menu_frequency"
+                    android:icon="@drawable/ic_frequency"
+                    android:title="@string/converter_frequency"/>
+
+                <item
+                    android:id="@+id/menu_data"
+                    android:icon="@drawable/ic_data"
+                    android:title="@string/converter_data"/>
+            </menu>
+
+        </item>
+
+        <item
+            android:title="Algebra">
+            <menu>
+                <item
+                    android:id="@+id/menu_ratio"
+                    android:icon="@drawable/ic_length"
+                    android:title="@string/converter_algebra_ratio"/>
+
+            </menu>
+        </item>
+
+        <item
+            android:title="Geometry">
+            <menu>
+                <item
+                    android:id="@+id/menu_square"
+                    android:icon="@drawable/ic_frequency"
+                    android:title="@string/converter_geometry_square"/>
+
+            </menu>
+        </item>
+
+        <item
+            android:title="Finance">
+            <menu>
+                <item
+                    android:id="@+id/menu_unit_price"
+                    android:icon="@drawable/ic_weight"
+                    android:title="@string/converter_unit_price"/>
+
+            </menu>
+        </item>
+
+        <item
+            android:title="Other">
+        </item>
+
+
+    </group>
+</menu>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buttonOk">OK</string>
+    <string name="buttonConfirm">Confirmer</string>
+    <string name="buttonApply">Appliquer</string>
+    <string name="buttonNext">Suivant</string>
+    <string name="buttonStart">Démarrer</string>
+    <string name="buttonCancel">Annuler</string>
+    <string name="buttonPrevious">Précédent</string>
+    <string name="buttonSkip">Passer</string>
+    <string name="buttonExit">Quitter</string>
+
+    <string name="labelCalculator">Calculatrice</string>
+
+    <!--Calculatrice-->
+
+    <string name="text_degrees">Degrés</string>
+    <string name="text_radians">Radians</string>
+
+    <string name="symbolRad">RAD</string>
+    <string name="symbolDeg">DEG</string>
+
+    <string name="display_memory">Mémoire</string>
+
+    <string name="tooltip_enterText">Entrer du texte</string>
+
+    <string name="editText_enterNum">Entrez un numéro</string>
+
+    <string name="labelFragment_trigonometry">Trigonométrie</string>
+
+    <string name="preference_memoryAutoSave">Sauvegarde automatique en mémoire</string>
+    <string name="preference_memoryAutoSaveDesc">Le résultat sera automatiquement sauvegardé en mémoire</string>
+
+    <string name="preference_saveLastCalculation">Conserver l\'historique des calculs</string>
+    <string name="preference_saveLastCalculationDesc">Conserver le dernier historique des calculs</string>
+
+    <string name="preference_leftMode">Mode gaucher</string>
+    <string name="preference_leftModeDesc">Afficher un clavier inversé pour les gauchers</string>
+
+    <string name="preference_miniMode">Mode une main</string>
+    <string name="preference_miniModeDesc">Vous permet d\'activer le mode une main</string>
+
+    <string name="preference_miniModeIndicate">clavier réduit</string>
+
+    <string name="preference_vibration">Vibration</string>
+    <string name="preference_vibrationDesc">Vibrer lorsqu\'un bouton est pressé</string>
+
+    <string name="preference_swapBackSpace">Échanger les boutons "point" et "retour"</string>
+    <string name="preference_swapBackSpaceDesc">Échanger les boutons "point" et "retour"</string>
+
+    <string name="preference_privacyPolicy">Politique de confidentialité</string>
+    <string name="preference_privacyPolicyDesc">Cliquez ici pour lire notre politique de confidentialité</string>
+
+    <string name="error_failCalculate">Échec</string>
+    <string name="error_numberFormatException">Expression incorrecte</string>
+
+    <string name="error_nan">Nan</string>
+
+    <string name="preferenceTitle_calculatorCategory">Calculatrice</string>
+    <string name="preferenceTitle_keyboardCategory">Clavier</string>
+
+
+    <string name="preferenceTitle_aboutCategory">À propos de l\'application</string>
+    <string name="preferenceTitle_supportCategory">Support</string>
+
+    <string name="system_restartMessage">Redémarrez l\'application pour appliquer les modifications</string>
+
+    <string name="system_copyToClipboard">Copié dans le presse-papiers</string>
+
+    <string name="contentDescription_backspace">Retour arrière</string>
+    <string name="contentDescription_settings">Paramètres</string>
+    <string name="contentDescription_ClearAll">Effacer tous les champs</string>
+
+    <string name="contentDescription_LastExpressionTextField">champ de texte de la dernière expression</string>
+
+    <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="navigation_drawer_close">Fermer le tiroir de navigation</string>
+
+    <string name="action_settings">Paramètres</string>
+
+    <string name="updateBoard_title">Quoi de neuf</string>
+    <string name="updateBoard_appVersion">Version de l\'application</string>
+
+    <!--Converters-->
+
+    <string name="converter_weight">Poids</string>
+    <string name="converter_length">Longueur</string>
+    <string name="converter_time">Temps</string>
+    <string name="converter_speed">Vitesse</string>
+    <string name="converter_temperature">Température</string>
+    <string name="converter_volume">Volume</string>
+    <string name="converter_area">Surface</string>
+    <string name="converter_frequency">Fréquence</string>
+    <string name="converter_data">Volume de données</string>
+    <string name="updateBoard_summary">Cliquez pour afficher le tableau</string>
+
+</resources>

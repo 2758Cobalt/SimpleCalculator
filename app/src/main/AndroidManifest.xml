@@ -16,16 +16,19 @@
         android:theme="@style/MyTheme"
         tools:targetApi="33">
         <activity
-            android:name=".activities.GetStartedActivity"
+            android:name=".onBoarding.OnBoardingActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activities.ConverterActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activities.OptionsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
+            android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:exported="true">
             <intent-filter>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array translatable="false" name="weight_symbols">
+        <item>µg</item>
+        <item>mg</item>
+        <item>g</item>
+        <item>kg</item>
+        <item>t</item>
+        <item>kt</item>
+        <item>Mt</item>
+    </string-array>
+
+    <string-array translatable="false" name="time_symbols">
+        <item>ps</item>
+        <item>ns</item>
+        <item>ms</item>
+        <item>s</item>
+        <item>m</item>
+        <item>h</item>
+        <item>d</item>
+        <item>wk</item>
+        <item>yr</item>
+        <item>ct</item>
+    </string-array>
+
+    <string-array translatable="false" name="length_symbols">
+        <item>nm</item>
+        <item>µm</item>
+        <item>mm</item>
+        <item>cm</item>
+        <item>dm</item>
+        <item>m</item>
+        <item>km</item>
+    </string-array>
+
+    <string-array translatable="false" name="data_symbols">
+        <item>bit</item>
+        <item>B</item>
+        <item>KB</item>
+        <item>MB</item>
+        <item>GB</item>
+        <item>TB</item>
+        <item>PB</item>
+        <item>EB</item>
+        <item>ZB</item>
+        <item>YB</item>
+    </string-array>
+
+    <string-array name="area_symbols" translated="false">
+        <item>nm²</item>
+        <item>µm²</item>
+        <item>mm²</item>
+        <item>cm²</item>
+        <item>dm²</item>
+        <item>m²</item>
+        <item>dam²</item>
+        <item>km²</item>
+    </string-array>
+
+    <string-array name="temperature_symbols" translated="false">
+        <item>°C</item>
+        <item>°F</item>
+        <item>K</item>
+        <item>°R</item>
+        <item>°Ré</item>
+    </string-array>
+
+    <string-array name="volume_symbols" translated="false">
+        <item>mL</item>
+        <item>L</item>
+        <item>m³</item>
+        <item>ft³</item>
+        <item>in³</item>
+        <item>gal</item>
+    </string-array>
+
+    <string-array name="speed_symbols" translated="false">
+        <item>km/h</item>
+        <item>mph</item>
+        <item>km/s</item>
+        <item>mi/s</item>
+        <item>m/s</item>
+        <item>kn</item>
+        <item>C</item>
+    </string-array>
+
+    <string-array name="frequency_symbols" translated="false">
+        <item>Hz</item>
+        <item>kHz</item>
+        <item>MHz</item>
+        <item>GHz</item>
+    </string-array>
+
+</resources>

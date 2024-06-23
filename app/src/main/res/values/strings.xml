@@ -5,64 +5,15 @@
     <string name="buttonConfirm">Confirm</string>
     <string name="buttonApply">Apply</string>
     <string name="buttonNext">Next</string>
+    <string name="buttonStart">Start</string>
     <string name="buttonCancel">Cancel</string>
     <string name="buttonPrevious">Previous</string>
+    <string name="buttonSkip">Skip</string>
     <string name="buttonExit">Exit</string>
 
     <string name="labelCalculator">Calculator</string>
 
-    <!--Calculator-->
-    <string name="symbolMemorySave" translatable="false">&#77;&#83;</string>
-    <string name="symbolMemoryRead" translatable="false">&#77;&#82;</string>
-    <string name="symbolMemoryClear" translatable="false">&#77;&#67;</string>
-
-    <string name="symbolSqrt" translatable="false">&#8730;x</string>
-    <string name="symbolFactorial" translatable="false">x&#33;</string>
-    <string name="symbolInvert" translatable="false">1&#8260;x</string>
-    <string name="symbolPI" translatable="false">&#960;</string>
-
-    <string name="symbolExp" translatable="false">&#101;</string>
-    <string name="symbolPower" translatable="false">x&#178;</string>
-    <string name="symbolCloseBracket" translatable="false">&#41;</string>
-    <string name="symbolOpenBracket" translatable="false">&#40;</string>
-
-    <string name="symbolBackSpace" translatable="false">&#9003;</string>
-    <string name="symbolAC" translatable="false">AC</string>
-    <string name="symbolCE" translatable="false">CE</string>
-    <string name="symbolEqual" translatable="false">&#61;</string>
-    <string name="symbolPercent" translatable="false">&#37;</string>
-
-    <string name="symbolNum0" translatable="false">&#48;</string>
-    <string name="symbolNum1" translatable="false">&#49;</string>
-    <string name="symbolNum2" translatable="false">&#50;</string>
-    <string name="symbolNum3" translatable="false">&#51;</string>
-    <string name="symbolNum4" translatable="false">&#52;</string>
-    <string name="symbolNum5" translatable="false">&#53;</string>
-    <string name="symbolNum6" translatable="false">&#54;</string>
-    <string name="symbolNum7" translatable="false">&#55;</string>
-    <string name="symbolNum8" translatable="false">&#56;</string>
-    <string name="symbolNum9" translatable="false">&#57;</string>
-
-    <string name="symbolDiv" translatable="false">&#247;</string>
-    <string name="symbolMul" translatable="false">&#215;</string>
-    <string name="symbolSub" translatable="false">&#45;</string>
-    <string name="symbolAdd" translatable="false">&#43;</string>
-    <string name="symbolPoint" translatable="false">&#46;</string>
-
-    <string name="symbolMemoryAdd" translatable="false">M+</string>
-    <string name="symbolMemorySub" translatable="false">M-</string>
-    <string name="symbolMemoryMul" translatable="false">M&#215;</string>
-    <string name="symbolMemoryDiv" translatable="false">M/</string>
-
-    <string name="symbolSin" translatable="false">sin</string>
-    <string name="symbolCos" translatable="false">cos</string>
-    <string name="symbolTan" translatable="false">tan</string>
-    <string name="symbolCot" translatable="false">cot</string>
-
-    <string name="symbolLog" translatable="false">log</string>
-    <string name="symbolLn" translatable="false">ln</string>
-    <string name="symbolAbs" translatable="false">|x|</string>
-
+    <!--com.cobaltumapps.simplecalculator.system.Calculator-->
     <string name="text_degrees">Degrees</string>
     <string name="text_radians">Radians</string>
 
@@ -70,6 +21,12 @@
     <string name="symbolRad">RAD</string>
     <string name="symbolDeg">DEG</string>
 
+
+    <string name="converter_UnitInputHint">Enter a value</string>
+    <string name="converter_UnitTypeHint">Select a unit of measurement</string>
+
+
+    <string name="drawerMenuButton_description">Open navigation menu</string>
 
     <string name="display_memory">Memory</string>
 
@@ -85,6 +42,9 @@
 
     <string name="preference_memoryAutoSave">AutoSave to memory</string>
     <string name="preference_memoryAutoSaveDesc">will be auto save result to memory</string>
+
+    <string name="preference_saveLastCalculation">Keep the calculation record</string>
+    <string name="preference_saveLastCalculationDesc">Keep the last calculation record</string>
 
     <string name="preference_leftMode">Left hand mode</string>
     <string name="preference_leftModeDesc">Will be mirror keyboard for left hand</string>
@@ -120,16 +80,8 @@
 
     <string name="system_restartMessage">Restart app for apply changes</string>
 
-    <string name="preference_thanksTest">Thanks for the app test!</string>
-    <string name="preference_thanksTestDesc">The application is still in the testing phase.\nIf you have found bugs, crashes or localization errors - please inform me in my telegram</string>
 
-
-    <string name="preference_telegram">Report a problem</string>
-    <string name="preference_email">E-mail feedback</string>
-
-    <string name="clipboard">Copyed to clipboard</string>
-
-    <string name="button_selector">Comming soon!</string>
+    <string name="system_copyToClipboard">Copyed to clipboard</string>
 
 
     <string name="contentDescription_backspace">Back space</string>
@@ -138,5 +90,14 @@
 
     <string name="contentDescription_LastExpressionTextField">last expression text field</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="updateBoard_title">What\'s new</string>
+    <string name="updateBoard_appVersion">Release version</string>
+
+    <string name="updateBoard_summary">Click to show board</string>
 
 </resources>

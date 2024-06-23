@@ -1,15 +1,15 @@
-package com.cobaltumapps.simplecalculator.activities
+package com.cobaltumapps.simplecalculator.onBoarding
 
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.cobaltumapps.simplecalculator.R
-import com.cobaltumapps.simplecalculator.onBoarding.ViewPagerAdapter
-import com.cobaltumapps.simplecalculator.onBoarding.ViewPagerFragment
-import com.cobaltumapps.simplecalculator.onBoarding.onBoardingContent
 
-class GetStartedActivity : AppCompatActivity() {
+class OnBoardingActivity : AppCompatActivity() {
+    private lateinit var nextButton: Button
+    private lateinit var skipButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_started)
@@ -17,8 +17,7 @@ class GetStartedActivity : AppCompatActivity() {
         var pageList: List<ViewPagerFragment> = listOf()
 
         // Картинки для getStarted
-        val thumbnailsResources = listOf(
-            R.drawable.sticker_calculator)
+        val thumbnailsResources = resources.obtainTypedArray(R.array.getStarted_stickers)
 
         // Заголовок для getStarted
         val startedTitles = resources.getStringArray(R.array.getStarted_titles).toList()
@@ -27,17 +26,23 @@ class GetStartedActivity : AppCompatActivity() {
         val startedSubTitles = resources.getStringArray(R.array.getStarted_subTitles).toList()
 
         for (index in startedTitles.indices){
-            val newFragment = ViewPagerFragment(this, onBoardingContent(
-                thumbnailsResources[index],
+            val newFragment = ViewPagerFragment()
+            newFragment.setNewContent(
+                onBoardingContent(
+                thumbnailsResources.getResourceId(index,-1),
                 startedTitles[index],
-                startedSubTitles[index]) )
+                startedSubTitles[index])
+            )
 
             // Добавляет в массив созданный фрагмент
             pageList = pageList.plus(newFragment)
 
         }
 
-        val nextButton = findViewById<Button>(R.id.getStartButton)
+        thumbnailsResources.recycle()
+
+        nextButton = findViewById(R.id.nextButton)
+        skipButton = findViewById(R.id.skipButton)
 
         val viewPager2 = findViewById<ViewPager2>(R.id.getStartedPlace)
 
@@ -47,15 +52,16 @@ class GetStartedActivity : AppCompatActivity() {
         viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 if (position == pageList.size - 1){
-                    nextButton.text = "start"
+                    nextButton.text = getString(R.string.buttonStart)
                     nextButton.setOnClickListener { finish() }
                 }
                 else{
-                    nextButton.text = "next"
+                    nextButton.text = getString(R.string.buttonNext)
                     nextButton.setOnClickListener { viewPager2.currentItem = viewPager2.currentItem + 1 }
                 }
             }
         })
+        skipButton.setOnClickListener { finish() }
 
     }
 }

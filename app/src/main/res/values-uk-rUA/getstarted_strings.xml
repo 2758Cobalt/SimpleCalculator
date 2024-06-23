@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getStarted_titles">
+        <item>Ласкаво просимо в Простий Калькулятор</item>
+        <item>Виконуйте прості обчислення - зручно</item>
+        <item>Змінюйте теми в залежності від часу доби</item>
+    </string-array>
+    <string-array name="getStarted_subTitles">
+        <item>Простий калькулятор з простим дизайном та базовим набором функцій для виконання обчислень</item>
+        <item>Зручно виконуйте різноманітні обчислення</item>
+        <item>Додаток підтримує як світлу, так і темну теми</item>
+    </string-array>
+</resources>

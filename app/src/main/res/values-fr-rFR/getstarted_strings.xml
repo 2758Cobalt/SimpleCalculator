@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getStarted_titles">
+        <item>Bienvenue sur Simple Calculator</item>
+        <item>Effectuez des calculs simples - de manière pratique</item>
+        <item>Changez de thème en fonction de l\'heure de la journée</item>
+    </string-array>
+    <string-array name="getStarted_subTitles">
+        <item>Une calculatrice simple avec un design simple et un ensemble de fonctionnalités de base pour effectuer des calculs</item>
+        <item>Effectuez facilement divers calculs</item>
+        <item>L\'application prend en charge les thèmes clair et sombre</item>
+    </string-array>
+
+</resources>

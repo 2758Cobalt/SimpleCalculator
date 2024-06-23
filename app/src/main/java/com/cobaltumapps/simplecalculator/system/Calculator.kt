@@ -1,3 +1,4 @@
+package com.cobaltumapps.simplecalculator.system
 
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
 import java.math.BigInteger
@@ -21,7 +22,7 @@ private const val lnSymbol = "ln"
 
 class Calculator(private val expression: String = "",private var trimRange: Int = 9,private var toRadians: Boolean = true) {
 
-    private var result: Double = 0.0 // результат
+    private var result: Double = 0.0 // Результат подсчёта
 
     private val symbolAdd = ConstantsCalculator.symbolAdd
     private val symbolSub = ConstantsCalculator.symbolSub
@@ -36,6 +37,14 @@ class Calculator(private val expression: String = "",private var trimRange: Int 
     private val symbolOpenBracket = ConstantsCalculator.symbolOpenBracket
     private val symbolCloseBracket = ConstantsCalculator.symbolCloseBracket
     private val symbolPoint = ConstantsCalculator.symbolPoint
+
+    private val sinSymbol = ConstantsCalculator.sinSymbol
+    private val cosSymbol = ConstantsCalculator.cosSymbol
+    private val tanSymbol = ConstantsCalculator.tanSymbol
+    private val cotSymbol = ConstantsCalculator.cotSymbol
+
+    private val logSymbol = ConstantsCalculator.logSymbol
+    private val lnSymbol = ConstantsCalculator.lnSymbol
 
     // Возращает результат
     fun getResult(): Double {
@@ -210,7 +219,8 @@ class Calculator(private val expression: String = "",private var trimRange: Int 
     }
 
     private fun calculateExpression(expression: String): Double {
-        val stackOperands = Stack<Double>() // Локальный стек с операндами(числами,аргументом операции)
+        val stackOperands =
+            Stack<Double>() // Локальный стек с операндами(числами,аргументом операции)
         val stackOperators = Stack<Char>() // Локальный стек с операторами
 
 
@@ -255,6 +265,7 @@ class Calculator(private val expression: String = "",private var trimRange: Int 
                 x == symbolCloseBracket -> {
                     if (i + 1 < expression.length && expression[i + 1].isDigit())  {
                         println(expression[i + 1])
+
                         // Добавляет оператор умножение перед скобкой при его отсутствии
                         stackOperators.push(symbolMul)
                         stackOperands.push(currentNumber.toString().toDouble())
@@ -272,6 +283,7 @@ class Calculator(private val expression: String = "",private var trimRange: Int 
                     if (stackOperators.isNotEmpty() && stackOperators.peek() == symbolCloseBracket) {
                         stackOperators.pop() // Удаляет '(' из стека
                     }
+
                 }
 
                 else -> {
@@ -308,9 +320,9 @@ class Calculator(private val expression: String = "",private var trimRange: Int 
     private fun getPrecedence(operator: Char): Int {
         return when (operator) {
             symbolAdd, symbolSub -> 1
-            symbolMul, symbolDiv, symbolSqrt -> 2
+            symbolMul, symbolFactorial, symbolDiv, symbolSqrt -> 2
             symbolPower -> 3
-            symbolPercent, symbolFactorial-> 4 // Наивысший приоритет
+            symbolPercent -> 4 // Наивысший приоритет
             else -> 0  // Для '('
         }
     }

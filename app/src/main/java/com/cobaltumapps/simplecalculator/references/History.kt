@@ -1,27 +1,32 @@
 package com.cobaltumapps.simplecalculator.references
 
 import android.util.Log
-private const val DEBUG_TAG = "History"
 
 open class History {
-    private val vault = ""
+    //Ключ к хранилищу
+    private val vaultKey = "SC_HistoryVault"
 }
 
 class HistoryWriter: History() {
 
     fun read(history: HistoryData): HistoryData{
-        Log.i(DEBUG_TAG,"\n" +
+        Log.i(LogTags.LOG_HISTORY,"\n" +
                 "history object: $history\n" +
                 "input expression: \"${history.inputExpression}\"\n" +
                 "result expression: \"${history.resultExpression}\"")
         return history
     }
 
-    fun write(history: HistoryData){
-        TODO("Реализовать запись истории в хранилище")
+    fun save(history: HistoryData){
+        TODO("Реализовать сохранение записи в историю записей")
     }
+
     fun clear(){
-        TODO("Реализовать очистку всей истории")
+        TODO("Реализовать очистку всех записей истории")
+    }
+
+    fun edit(entryId: Int){
+        TODO("Реализовать редактирование записи истории")
     }
 
 }

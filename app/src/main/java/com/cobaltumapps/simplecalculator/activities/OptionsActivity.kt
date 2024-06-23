@@ -15,7 +15,9 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.cobaltumapps.simplecalculator.R
+import com.cobaltumapps.simplecalculator.dialogs.UpdateBoardDialogFragment
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.references.PreferenceKeys
 import com.cobaltumapps.simplecalculator.references.Services
 
 class OptionsActivity : AppCompatActivity() {
@@ -32,51 +34,59 @@ class OptionsActivity : AppCompatActivity() {
 
     class SettingsFragment : PreferenceFragmentCompat() {
         private lateinit var sharedPreferences: SharedPreferences
-        private var oldSharedPreference: Array<Any> = arrayOf()
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.preferences, rootKey)
             sharedPreferences = requireContext().getSharedPreferences(ConstantsCalculator.vault,Context.MODE_PRIVATE)
 
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(ConstantsCalculator.privacyPolicyLink))
-            val intentTelegram = Intent(Intent.ACTION_VIEW, Uri.parse(ConstantsCalculator.telegramLink))
 
-            val autoSavePreference = findPreference<CheckBoxPreference>(ConstantsCalculator.keysPreferences[0]) as CheckBoxPreference
-            val leftHandModePreference = findPreference<SwitchPreference>(ConstantsCalculator.keysPreferences[1]) as SwitchPreference
-            val miniModePreference = findPreference<SwitchPreference>(ConstantsCalculator.keysPreferences[2]) as SwitchPreference
-            val vibrationPreference = findPreference<SwitchPreference>(ConstantsCalculator.keysPreferences[3]) as SwitchPreference
+            // com.cobaltumapps.simplecalculator.system.Calculator
+            val autoSavePreference = findPreference<CheckBoxPreference>(PreferenceKeys.keyMemoryAutoSave) as CheckBoxPreference
+            val saveLastCalculationPreference = findPreference<CheckBoxPreference>(PreferenceKeys.keySaveLastCalculation) as CheckBoxPreference
 
-            val privacyPolicy = findPreference<Preference>("key_privacyPolicy")
-            val supportTelegram = findPreference<Preference>("key_telegram")
+            // Keyboard
+            val leftHandModePreference = findPreference<SwitchPreference>(PreferenceKeys.keyLeftHandMode) as SwitchPreference
+            val oneHandedModePreference = findPreference<SwitchPreference>(PreferenceKeys.keyOneHandedMode) as SwitchPreference
+            val vibrationPreference = findPreference<SwitchPreference>(PreferenceKeys.keyAllowVibration) as SwitchPreference
 
-            oldSharedPreference = arrayOf(
-                sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[0], false),
-                sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[1], false),
-                sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[2], false),
-                sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[3], false)
-            )
+            // Info
+            val privacyPolicy = findPreference<Preference>(PreferenceKeys.keyPrivacyPolicy)
+            val versionAppPreference = findPreference<Preference>(PreferenceKeys.keyVersionApp)
+            val whatsNewPreference = findPreference<Preference>(PreferenceKeys.keyUpdateInfo)
+
 
             // Назначает настройки из хранилища
-            autoSavePreference.isChecked = oldSharedPreference[0] as Boolean
-            leftHandModePreference.isChecked = oldSharedPreference[1] as Boolean
-            miniModePreference.isChecked = oldSharedPreference[2] as Boolean
-            vibrationPreference.isChecked = oldSharedPreference[3] as Boolean
+            autoSavePreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keyMemoryAutoSave, false)
+            saveLastCalculationPreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keySaveLastCalculation, true)
+
+            leftHandModePreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keyLeftHandMode, false)
+            oneHandedModePreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keyOneHandedMode, false)
+            vibrationPreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keyAllowVibration, true)
 
             autoSavePreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, newValue ->
-                    saveBooleanPreferences(ConstantsCalculator.keysPreferences[0], newValue as Boolean)
+                    saveBooleanPreferences(PreferenceKeys.keyMemoryAutoSave, newValue as Boolean)
                     true
                 }
+
+            saveLastCalculationPreference.onPreferenceChangeListener =
+                Preference.OnPreferenceChangeListener { _, newValue ->
+                    saveBooleanPreferences(PreferenceKeys.keySaveLastCalculation, newValue as Boolean)
+                    true
+                }
+
             leftHandModePreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, newValue ->
-                    saveBooleanPreferences(ConstantsCalculator.keysPreferences[1], newValue as Boolean)
+                    saveBooleanPreferences(PreferenceKeys.keyLeftHandMode, newValue as Boolean)
                     Toast.makeText(context,resources.getString(R.string.system_restartMessage),Toast.LENGTH_LONG).show()
 
                     true
                 }
-            miniModePreference.onPreferenceChangeListener =
+
+            oneHandedModePreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, newValue ->
-                    saveBooleanPreferences(ConstantsCalculator.keysPreferences[2], newValue as Boolean)
+                    saveBooleanPreferences(PreferenceKeys.keyOneHandedMode, newValue as Boolean)
                     true
                 }
 
@@ -85,12 +95,16 @@ class OptionsActivity : AppCompatActivity() {
                     if (newValue as Boolean)
                         Services.playVibration(requireContext(),5)
 
-                    saveBooleanPreferences(ConstantsCalculator.keysPreferences[3], newValue)
+                    saveBooleanPreferences(PreferenceKeys.keyAllowVibration, newValue)
                     true
                 }
 
+
             privacyPolicy?.setOnPreferenceClickListener { startActivity(intent); true }
-            supportTelegram?.setOnPreferenceClickListener { startActivity(intentTelegram); true }
+            whatsNewPreference?.setOnPreferenceClickListener { UpdateBoardDialogFragment().show(parentFragmentManager,UpdateBoardDialogFragment.TAG); true }
+
+            val pkgInfo = context?.packageManager!!.getPackageInfo(context?.packageName!!,0)
+            versionAppPreference?.summary = "${pkgInfo.versionName} (${pkgInfo.versionCode})"
         }
 
         private fun saveBooleanPreferences(key: String, variable: Boolean) {

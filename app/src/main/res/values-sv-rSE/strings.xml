@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buttonOk">Okej</string>
+    <string name="buttonConfirm">Bekräfta</string>
+    <string name="buttonApply">Tillämpa</string>
+    <string name="buttonNext">Nästa</string>
+    <string name="buttonStart">Starta</string>
+    <string name="buttonCancel">Avbryt</string>
+    <string name="buttonPrevious">Föregående</string>
+    <string name="buttonSkip">Hoppa över</string>
+    <string name="buttonExit">Avsluta</string>
+
+    <string name="labelCalculator">Kalkylator</string>
+
+    <!--com.cobaltumapps.simplecalculator.system.Calculator-->
+
+    <string name="text_degrees">Grader</string>
+    <string name="text_radians">Radianer</string>
+
+    <string name="symbolRad">RAD</string>
+    <string name="symbolDeg">DEG</string>
+
+    <string name="display_memory">Minne</string>
+
+    <string name="tooltip_enterText">Skriv in text</string>
+
+    <string name="editText_enterNum">Ange ett nummer</string>
+
+    <string name="labelFragment_trigonometry">Trigonometri</string>
+
+    <string name="preference_memoryAutoSave">Automatiskt spara i minnet</string>
+    <string name="preference_memoryAutoSaveDesc">Resultatet kommer att sparas automatiskt i minnet</string>
+    <string name="preference_saveLastCalculation">Spara beräkning</string>
+    <string name="preference_saveLastCalculationDesc">Spara den senaste beräkningen</string>
+    <string name="preference_leftMode">Vänsterhänt läge</string>
+    <string name="preference_leftModeDesc">Visa spegelvänd tangentbord för vänsterhänta</string>
+    <string name="preference_miniMode">Enhandsläge</string>
+    <string name="preference_miniModeDesc">Tillåter dig att aktivera enhandsläge</string>
+    <string name="preference_miniModeIndicate">minskad tangentbord</string>
+    <string name="preference_vibration">Vibration</string>
+    <string name="preference_vibrationDesc">Vibrera när en knapp trycks</string>
+    <string name="preference_swapBackSpace">Byt ut knapparna "punkt" och "backspace"</string>
+    <string name="preference_swapBackSpaceDesc">Byt ut "punkt" och "backspace" knapparna</string>
+    <string name="preference_privacyPolicy">Integritetspolicy</string>
+    <string name="preference_privacyPolicyDesc">Klicka här för att läsa vår integritetspolicy</string>
+
+    <string name="error_failCalculate">Misslyckades</string>
+    <string name="error_numberFormatException">Felaktigt uttryck</string>
+
+    <string name="error_nan">Nan</string>
+
+    <string name="preferenceTitle_calculatorCategory">Kalkylator</string>
+    <string name="preferenceTitle_keyboardCategory">Tangentbord</string>
+
+
+    <string name="preferenceTitle_aboutCategory">Om appen</string>
+    <string name="preferenceTitle_supportCategory">Support</string>
+
+    <string name="system_restartMessage">Starta om appen för att tillämpa ändringarna</string>
+
+    <string name="system_copyToClipboard">Kopierad till Urklipp</string>
+
+    <string name="contentDescription_backspace">Bakåt</string>
+    <string name="contentDescription_settings">Inställningar</string>
+    <string name="contentDescription_ClearAll">Rensa alla fält</string>
+
+    <string name="contentDescription_LastExpressionTextField">senaste uttryckstextfältet</string>
+
+    <string name="navigation_drawer_open">Öppna navigeringsfältet</string>
+    <string name="navigation_drawer_close">Stäng navigeringsfältet</string>
+
+    <string name="action_settings">Inställningar</string>
+
+    <string name="updateBoard_title">Vad är nytt</string>
+    <string name="updateBoard_appVersion">Appversion</string>
+
+    <!--Converters-->
+
+    <string name="converter_weight">Vikt</string>
+    <string name="converter_length">Längd</string>
+    <string name="converter_time">Tid</string>
+    <string name="converter_speed">Hastighet</string>
+    <string name="converter_temperature">Temperatur</string>
+    <string name="converter_volume">Volym</string>
+    <string name="converter_area">Area</string>
+    <string name="converter_frequency">Frekvens</string>
+    <string name="converter_data">Datastorlek</string>
+    <string name="updateBoard_summary">Klicka för att visa tavlan</string>
+
+</resources>

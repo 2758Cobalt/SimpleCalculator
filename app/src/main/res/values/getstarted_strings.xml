@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getStarted_titles">
+        <item>Welcome to Simple Calculator</item>
+        <item>Do simple calculations - conveniently</item>
+        <item>Change themes depending on the time of day</item>
+    </string-array>
+
+    <string-array name="getStarted_subTitles">
+        <item>A simple calculator with a simple design and a basic set of functionality for making calculations</item>
+        <item>Conveniently perform various calculations</item>
+        <item>The app supports both light theme and dark theme</item>
+    </string-array>
+</resources>
+

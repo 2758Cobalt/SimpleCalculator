@@ -1,6 +1,5 @@
 package com.cobaltumapps.simplecalculator.fragments
 
-import Calculator
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
@@ -17,21 +17,29 @@ import androidx.viewpager2.widget.ViewPager2
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.activities.ConverterActivity
 import com.cobaltumapps.simplecalculator.activities.OptionsActivity
-import com.cobaltumapps.simplecalculator.adapters.NumPadPagerAdapter
+import com.cobaltumapps.simplecalculator.adapters.NumpadPagerAdapter
+import com.cobaltumapps.simplecalculator.dialogs.UpdateBoardDialogFragment
 import com.cobaltumapps.simplecalculator.references.Animations
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.references.Memory
+import com.cobaltumapps.simplecalculator.references.PreferenceKeys
 import com.cobaltumapps.simplecalculator.references.Services
+import com.cobaltumapps.simplecalculator.references.SharedKeys
+import com.cobaltumapps.simplecalculator.system.Calculator
 import java.math.BigDecimal
-import java.text.DecimalFormat
 import kotlin.math.abs
 import kotlin.math.min
 
+private const val KEYSTORE_UPDATEBOARD_STATE_SHOW = "updateBoardState_key"
+private const val LOG_TAG_CALCULATOR = "DebugCalculator"
+
+private const val UPDATEBOARD_FORCELAUCNH = false // Принудительно показывает окно "Что нового"
+private const val CONVERTER_TEST = true // Включает кнопку для перехода на конвертеры
 
 class CalculatorFragment: Fragment() {
     private var calculateResult: Double = 0.0                                       // Результат подсчёта
-    private lateinit var numpadPager: ViewPager2
-    private lateinit var pagerAdapter: NumPadPagerAdapter
+    lateinit var numpadPager: ViewPager2
+    private lateinit var pagerAdapter: NumpadPagerAdapter
 
     // Логика
     private var canPointEnter = true                                                // Возможность вводить точку
@@ -40,13 +48,16 @@ class CalculatorFragment: Fragment() {
     private var miniMode: Boolean = false                                           // Состояние мини-клавиатуры (true/false)
     private var miniModePreference: Boolean = false
     private var vibrationPreference: Boolean = false
+    private var saveLastCalculationPreference: Boolean = false
 
     // References
-    private val calculator: Calculator = Calculator() // Объект калькулятора
+    private val calculatorSystem: Calculator = Calculator() // Объект калькулятора
     private val displayFragment: DisplayFragment = DisplayFragment()                // Фрагмент дисплея калькулятора
     private val numpadFragment: NumpadFragment = NumpadFragment()                   // Фрагмент обычной клавиатуры
     private val engineeringFragment: EngineeringFragment = EngineeringFragment()    // Фрагмент научной клавиатуры
     private val memory: Memory by lazy { Memory() }                                 // Объект памяти
+
+    private val converterActivity = ConverterActivity() // Активити конвертора
 
     private lateinit var sharedPreferences: SharedPreferences                       // Хранилище
 
@@ -55,19 +66,23 @@ class CalculatorFragment: Fragment() {
     private lateinit var miniModeButton: ImageView     // Включает мини-режим
     private lateinit var convertersButton: ImageView     // Иконка бекспейса
     private lateinit var backspaceIconButton: ImageView     // Иконка бекспейса
-    private lateinit var clearAllAlternativeButton: ImageView     // Иконка бекспейса
 
-    private lateinit var displayCard: com.google.android.material.card.MaterialCardView
+    private lateinit var clearAllFullscreenButton: ImageView     // Иконка полной очистки в полноэкранном режиме
+    private lateinit var settingsFullscreenButton: ImageView     // Иконка настроек в полноэкранном режиме
+
+    private lateinit var displayCard: FrameLayout
 
     private lateinit var titleMiniMode: TextView
 
     private var expressionResult: String = "0"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferences = getPreferenceObject()                                   // Получение объекта
 
         // Передаёт ссылку на себя для доступа к фрагменту
+        displayFragment.setParentFragment(this@CalculatorFragment)
         numpadFragment.setParentFragment(this@CalculatorFragment)
         engineeringFragment.setParentFragment(this@CalculatorFragment)
     }
@@ -87,11 +102,13 @@ class CalculatorFragment: Fragment() {
         miniModeButton = view.findViewById(R.id.buttonMiniMode)                       // Ссылка на кнопку "miniMode"
         backspaceIconButton = view.findViewById(R.id.buttonBackspace)                 // Ссылка на кнопку "backspace"
         convertersButton = view.findViewById(R.id.buttonConverters)                   // Ссылка на кнопку "converters"
-        clearAllAlternativeButton = view.findViewById(R.id.buttonClearAllAlternative)
+
+        clearAllFullscreenButton = view.findViewById(R.id.buttonClearAllFullscreen)
+        settingsFullscreenButton = view.findViewById(R.id.buttonSettingsFullscreen)
 
         backspaceIconButton.alpha = 0f
 
-        pagerAdapter = NumPadPagerAdapter(requireActivity(), arrayListOf(numpadFragment,engineeringFragment))
+        pagerAdapter = NumpadPagerAdapter(requireActivity(), arrayListOf(numpadFragment,engineeringFragment))
         numpadPager.adapter = pagerAdapter
         numpadPager.offscreenPageLimit = 1 // Предзагрузка  страницы пейджера
 
@@ -133,15 +150,48 @@ class CalculatorFragment: Fragment() {
         backspaceIconButton.setOnClickListener { backSpaceAction(); playVibration(5) }
         backspaceIconButton.setOnLongClickListener { clearAllAction(); playVibration(20); true }
 
-        clearAllAlternativeButton.setOnClickListener { clearAllAction(); playVibration(20); }
+        clearAllFullscreenButton.setOnClickListener { clearAllAction(); displayFragment.clearLastExpression(); playVibration(20); }
+        settingsFullscreenButton.setOnClickListener { optionsButton.callOnClick() }
 
-        convertersButton.setOnClickListener { startActivity(Intent(requireActivity(),ConverterActivity::class.java)) }
+        if (CONVERTER_TEST)
+            convertersButton.setOnClickListener { startActivity(Intent(requireActivity(),converterActivity::class.java)) }
+        else
+            convertersButton.visibility = View.GONE
 
+        val versionCode = context?.packageManager!!.getPackageInfo(context?.packageName!!,0).versionCode
+
+        if (UPDATEBOARD_FORCELAUCNH){
+            UpdateBoardDialogFragment().show(parentFragmentManager,UpdateBoardDialogFragment.TAG)
+        }
+        else{
+            if (sharedPreferences.getInt(KEYSTORE_UPDATEBOARD_STATE_SHOW,0) != versionCode){
+                UpdateBoardDialogFragment().show(parentFragmentManager,UpdateBoardDialogFragment.TAG)
+
+                val editor = sharedPreferences.edit()
+                editor.putInt(KEYSTORE_UPDATEBOARD_STATE_SHOW,versionCode)
+                editor.apply()
+            }
+        }
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        // Возвращает клавиатуру в обычный режим, если включён минимод
+        if (miniModePreference) {
+            miniMode = false
+            miniModeSet(false)
+        }
+
+        // Сохранения значений в дисплее при остановке фрагмента
+        saveData()
     }
 
     override fun onResume() {
         super.onResume()
         setTypeAngle(false)
+
         // После возобновлении фрагмента, получает из настроек ключи и обновляет перменные согласно ключам
         getPreferences(sharedPreferences) // Получение сохраненных настроек
 
@@ -156,22 +206,15 @@ class CalculatorFragment: Fragment() {
             miniModeButton.isEnabled = false
             miniModeButton.alpha = 0f
         }
-    }
 
-    override fun onPause() {
-        super.onPause()
-        // Возвращает клавиатуру в обычный режим, если включён минимод
-        if (miniModePreference) {
-            miniMode = false
-            miniModeSet(false)
-        }
+        // Загрузка значений в дисплей при возобновлении фрагмента
+        loadData()
     }
 
 
     fun playVibration(duration: Long){
         if (vibrationPreference) Services.playVibration(requireContext(), duration)
     }
-
 
     // required review                                                      --------------------------------------------------------------------------------
     private fun miniModeSet(reduce: Boolean) {
@@ -208,7 +251,7 @@ class CalculatorFragment: Fragment() {
     }
 
 
-    private fun viewScaling(view: View,scaleFrom: Float = 0.75f, scaleTo: Float = 1f,duration: Long = 300){
+    private fun viewScaling(view: View,scaleFrom: Float = 0.75f, scaleTo: Float = 1f, duration: Long = 300){
         Animations.animatePropertyChange(view,"scaleX",scaleFrom,scaleTo,duration, Animations.overshootInterpolator)
         Animations.animatePropertyChange(view,"scaleY",scaleFrom,scaleTo,duration, Animations.overshootInterpolator)
 
@@ -216,7 +259,11 @@ class CalculatorFragment: Fragment() {
 
     fun numberEnterAction(numberSymbol: String) // Обработчик нажатия - цифра (0-9) и скобки
     {
+        if (displayFragment.getInputField().last() == ConstantsCalculator.symbolFactorial){
+            displayFragment.enterToExpression(ConstantsCalculator.symbolMul.toString())
+        }
         displayFragment.enterToExpression(numberSymbol)
+        playVibration(5)
         calculateExpression()
     }
 
@@ -230,7 +277,7 @@ class CalculatorFragment: Fragment() {
             if (lastSymbol in setOf(
                     ConstantsCalculator.symbolAdd,ConstantsCalculator.symbolSub,
                     ConstantsCalculator.symbolMul,ConstantsCalculator.symbolDiv,
-                    ConstantsCalculator.symbolPower,ConstantsCalculator.symbolPoint,ConstantsCalculator.symbolFactorial))
+                    ConstantsCalculator.symbolPower,ConstantsCalculator.symbolPoint))
             {
                 if (lastSymbol != ConstantsCalculator.symbolSqrt)
                     backSpaceAction()
@@ -242,7 +289,9 @@ class CalculatorFragment: Fragment() {
         else{
             displayFragment.enterToExpression(operator)
         }
+
         canPointEnter = true
+        playVibration(10)
         calculateExpression()
     }
 
@@ -253,17 +302,22 @@ class CalculatorFragment: Fragment() {
     fun powerAction() { // Добавляет знак возведения в степень
         operationEnterAction("${ConstantsCalculator.symbolPower}")
     }
+    fun equalAction(){
+        calculateExpression()
+    }
 
     fun percentAction() { // Добавляет знак процента в поле ввода
         operationEnterAction("${ConstantsCalculator.symbolPercent}")
     }
 
     fun factorialAction() {
+        // Вставляем символ факториала в строку выражения
         operationEnterAction("${ConstantsCalculator.symbolFactorial}")
+
     }
 
     fun invertAction() {
-        displayFragment.setInputField( calculator.closeExpressionString(displayFragment.getInputField() ))
+        displayFragment.setInputField( calculatorSystem.closeExpressionString(displayFragment.getInputField() ))
         calculateExpression()
     }
 
@@ -297,7 +351,7 @@ class CalculatorFragment: Fragment() {
     // Расчитывает результат и возвращает его
     private fun calculateAction(): Double{
         // Получение введённого выражения
-        val expression = displayFragment.textFields[0].text.toString()
+        val expression = displayFragment.getInputField()
 
         // Объявление калькулятора и передача выражения
         val calculator = Calculator(expression)
@@ -325,19 +379,23 @@ class CalculatorFragment: Fragment() {
                 displayFragment.setResultField(resources.getString(R.string.error_nan))
 
             else{
+                // Результат
                 val result = StringBuilder(calculateResult.toString())
-                val format = DecimalFormat("#.###########")
-                val bigDecimal = BigDecimal(calculateResult)
 
                 if (result[result.lastIndex - 1] == '.' && result[result.lastIndex] == '0'){ // Если в ответе последний символ после точки = 0 - значит число является типом Int
-                    displayFragment.setResultField(
-                        format.format(bigDecimal).toString()) // Вывод в Int
+                    val builder = StringBuilder(result)
+                        .deleteAt(result.lastIndex)
+                        .deleteAt(result.lastIndex - 1)
+                    displayFragment.setResultField(builder.toString()) // Вывод в Int
+                    Log.i(LOG_TAG_CALCULATOR,"result is \"int\" type")
                 }
                 else{
-                    displayFragment.setResultField(format.format(bigDecimal).toString().replace(',', '.')) // Вывод в Double с заменой запятой на точку
+                    displayFragment.setResultField(result.toString().replace(',', '.')) // Вывод в Double с заменой запятой на точку
+                    Log.i(LOG_TAG_CALCULATOR,"result is \"double\" type")
 
                 }
                 expressionResult = calculateResult.toString()
+
                 // Если автосохранение включено
                 if(memoryAutoSaveResult){
                     memorySave()
@@ -443,10 +501,19 @@ class CalculatorFragment: Fragment() {
         displayFragment.setMemoryField(readMemory.toString())
     }
 
-    fun pushExpressionToLast(){
-        if(expressionResult.isNotEmpty()){
+    fun pushExpressionToLast() {
+        if (expressionResult.isNotEmpty()) {
             displayFragment.enterToLastExpression()
-            displayFragment.setInputField(displayFragment.textFields[1].text.toString().replace(" ",""))
+
+            // Преобразовываем результат из научного формата в полное число
+            val resultWithoutScientificNotation = try {
+                BigDecimal(displayFragment.getResultField().replace(" ", "")).toPlainString()
+            } catch (e: NumberFormatException) {
+                // Если преобразование не удаётся, используем исходную строку
+                displayFragment.getResultField()
+            }
+
+            displayFragment.setInputField(resultWithoutScientificNotation)
             calculateExpression()
         }
     }
@@ -465,17 +532,39 @@ class CalculatorFragment: Fragment() {
     }
 
     private fun getPreferences(sharedPreferences: SharedPreferences) {
-        memoryAutoSaveResult = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[0], false)
-        leftHandMode = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[1], false)
-        miniModePreference = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[2], false)
-        vibrationPreference = sharedPreferences.getBoolean(ConstantsCalculator.keysPreferences[3], true)
+        memoryAutoSaveResult = sharedPreferences.getBoolean(PreferenceKeys.keyMemoryAutoSave, false)
+        saveLastCalculationPreference = sharedPreferences.getBoolean(PreferenceKeys.keySaveLastCalculation, true)
+
+        leftHandMode = sharedPreferences.getBoolean(PreferenceKeys.keyLeftHandMode, false)
+        miniModePreference = sharedPreferences.getBoolean(PreferenceKeys.keyOneHandedMode, false)
+        vibrationPreference = sharedPreferences.getBoolean(PreferenceKeys.keyAllowVibration, true)
     }
 
     fun setTypeAngle(isDegree: Boolean) {
         displayFragment.updateAngleType(isDegree)
-        calculator.setRadiansState(isDegree)
-        Log.i("DebugTag",calculator.getRadiansState().toString())
+        calculatorSystem.setRadiansState(isDegree)
         calculateExpression()
+    }
+
+    private fun loadData(){
+        if (saveLastCalculationPreference){
+            displayFragment.setLastField(sharedPreferences.getString(SharedKeys.lastExpressionKey,"0")!!)
+            displayFragment.setInputField(sharedPreferences.getString(SharedKeys.inputExpressionKey,"0")!!)
+            displayFragment.setResultField(sharedPreferences.getString(SharedKeys.resultExpressionKey,"0")!!)
+        }
+    }
+
+    fun saveData(){
+        if (saveLastCalculationPreference){
+            val editor = sharedPreferences.edit()
+
+            editor.putString(SharedKeys.lastExpressionKey,displayFragment.getLastField())
+            editor.putString(SharedKeys.inputExpressionKey,displayFragment.getInputField())
+            editor.putString(SharedKeys.resultExpressionKey,displayFragment.getResultField())
+
+            editor.apply()
+
+        }
     }
 
 }

@@ -4,58 +4,91 @@
     <string name="buttonConfirm">Potwierdź</string>
     <string name="buttonApply">Zastosuj</string>
     <string name="buttonNext">Dalej</string>
+    <string name="buttonStart">Rozpocznij</string>
     <string name="buttonCancel">Anuluj</string>
     <string name="buttonPrevious">Wstecz</string>
-    <string name="buttonExit">Wyjście</string>
+    <string name="buttonSkip">Pomiń</string>
+    <string name="buttonExit">Wyjdź</string>
 
     <string name="labelCalculator">Kalkulator</string>
 
+    <!--Kalkulator-->
 
-    <string name="symbolRad">Grzejniki</string>
-    <string name="symbolDeg">Stopnie</string>
+    <string name="text_degrees">Stopnie</string>
+    <string name="text_radians">Radiany</string>
+
+    <string name="symbolRad">RAD</string>
+    <string name="symbolDeg">STOPNIE</string>
+
     <string name="display_memory">Pamięć</string>
+
     <string name="tooltip_enterText">Wprowadź tekst</string>
 
     <string name="editText_enterNum">Wprowadź liczbę</string>
 
     <string name="labelFragment_trigonometry">Trygonometria</string>
 
-    <string name="preference_memoryAutoSave">Automatyczne zapisywanie do pamięci</string>
-    <string name="preference_memoryAutoSaveDesc">Automatycznie zapisze wynik do pamięci</string>
+    <string name="preference_memoryAutoSave">Automatyczne zapisywanie w pamięci</string>
+    <string name="preference_memoryAutoSaveDesc">Wynik zostanie automatycznie zapisany w pamięci</string>
+    <string name="preference_saveLastCalculation">Zapisz obliczenia</string>
+    <string name="preference_saveLastCalculationDesc">Zapisz ostatnie obliczenia</string>
+    <string name="preference_leftMode">Tryb leworęczny</string>
+    <string name="preference_leftModeDesc">Pokaż klawiaturę lustrzaną dla osób leworęcznych</string>
 
-    <string name="preference_leftMode">Tryb lewej ręki</string>
-    <string name="preference_leftModeDesc">Lustro klawiatury dla lewej ręki</string>
+    <string name="preference_miniMode">Tryb jednoręki</string>
+    <string name="preference_miniModeDesc">Pozwala aktywować tryb jednoręki</string>
 
-    <string name="preference_miniMode">Zezwalaj na minimalizowanie klawiatury</string>
-    <string name="preference_miniModeDesc">Pozwala na minimalizowanie klawiatury</string>
+    <string name="preference_miniModeIndicate">zmniejszona klawiatura</string>
 
-    <string name="preference_miniModeIndicate">Zmniejszona klawiatura</string>
+    <string name="preference_vibration">Wibracja</string>
+    <string name="preference_vibrationDesc">Wibruje po naciśnięciu przycisku</string>
 
-    <string name="preference_vibration">Wibracje</string>
-    <string name="preference_vibrationDesc">Wibruj przy naciśnięciu przycisku</string>
+    <string name="preference_swapBackSpace">Zamień przyciski "kropka" i "backspace"</string>
+    <string name="preference_swapBackSpaceDesc">Zamień przyciski "kropka" i "backspace"</string>
 
     <string name="preference_privacyPolicy">Polityka prywatności</string>
     <string name="preference_privacyPolicyDesc">Kliknij tutaj, aby przeczytać naszą politykę prywatności</string>
 
     <string name="error_failCalculate">Błąd</string>
+    <string name="error_numberFormatException">Nieprawidłowe wyrażenie</string>
+
+    <string name="error_nan">Nan</string>
+
+    <string name="preferenceTitle_calculatorCategory">Kalkulator</string>
+    <string name="preferenceTitle_keyboardCategory">Klawiatura</string>
+
+
+    <string name="preferenceTitle_aboutCategory">O aplikacji</string>
+    <string name="preferenceTitle_supportCategory">Wsparcie</string>
 
     <string name="system_restartMessage">Uruchom ponownie aplikację, aby zastosować zmiany</string>
 
-    <string name="preference_thanksTest">Dzięki za przetestowanie aplikacji!</string>
-    <string name="preference_thanksTestDesc">Aplikacja jest w fazie testów.\nJeśli znalazłeś błędy, awarie lub błędy lokalizacyjne - proszę poinformuj mnie przez telegram</string>
+    <string name="system_copyToClipboard">Skopiowano do schowka</string>
 
-    <string name="preferenceTitle_supportCategory">Wsparcie</string>
+    <string name="contentDescription_backspace">Wstecz</string>
+    <string name="contentDescription_settings">Ustawienia</string>
+    <string name="contentDescription_ClearAll">Wyczyść wszystkie pola</string>
 
-    <string name="preference_telegram">Zgłoś problem</string>
-    <string name="preference_email">Wyślij mi opinie na e-mail</string>
-    <string name="text_degrees">stopnie</string>
-    <string name="text_radians">radiany</string>
-    <string name="error_numberFormatException">Nieprawidłowe wyrażenie</string>
-    <string name="error_nan">Nie liczba</string>
-    <string name="preferenceTitle_calculatorCategory">Kalkulator</string>
-    <string name="preferenceTitle_keyboardCategory">Klawiatura</string>
-    <string name="preferenceTitle_aboutCategory">Inne</string>
-    <string name="preference_swapBackSpace">Zmień przyciski \"kropki\" i \"kasowania\".</string>
-    <string name="preference_swapBackSpaceDesc">Odwrócenie przycisków \"kropka\" i \"kasowanie\"</string>
+    <string name="contentDescription_LastExpressionTextField">pole tekstowe ostatniego wyrażenia</string>
+
+    <string name="navigation_drawer_open">Otwórz menu nawigacyjne</string>
+    <string name="navigation_drawer_close">Zamknij menu nawigacyjne</string>
+
+    <string name="action_settings">Ustawienia</string>
+
+    <string name="updateBoard_title">Co nowego</string>
+    <string name="updateBoard_appVersion">Wersja aplikacji</string>
+
+    <string name="converter_weight">Waga</string>
+    <string name="converter_length">Długość</string>
+    <string name="converter_time">Czas</string>
+    <string name="converter_speed">Prędkość</string>
+    <string name="converter_temperature">Temperatura</string>
+    <string name="converter_volume">Objętość</string>
+    <string name="converter_area">Powierzchnia</string>
+    <string name="converter_frequency">Częstotliwość</string>
+    <string name="converter_data">Dane</string>
+    <string name="updateBoard_summary">Kliknij, aby wyświetlić planszę</string>
+
 
 </resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="buttonOk">OK</string>
+    <string name="buttonConfirm">Conferma</string>
+    <string name="buttonApply">Applica</string>
+    <string name="buttonNext">Avanti</string>
+    <string name="buttonStart">Inizio</string>
+    <string name="buttonCancel">Annulla</string>
+    <string name="buttonPrevious">Precedente</string>
+    <string name="buttonSkip">Salta</string>
+    <string name="buttonExit">Esci</string>
+
+    <string name="labelCalculator">Calcolatrice</string>
+
+    <!--Calcolatrice-->
+
+    <string name="text_degrees">Gradi</string>
+    <string name="text_radians">Radianti</string>
+
+    <string name="symbolRad">RAD</string>
+    <string name="symbolDeg">GRADI</string>
+
+    <string name="display_memory">Memoria</string>
+
+    <string name="tooltip_enterText">Inserisci testo</string>
+
+    <string name="editText_enterNum">Inserisci un numero</string>
+
+    <string name="labelFragment_trigonometry">Trigonometria</string>
+
+    <string name="preference_memoryAutoSave">Salva automaticamente in memoria</string>
+    <string name="preference_memoryAutoSaveDesc">Il risultato verrà salvato automaticamente in memoria</string>
+    <string name="preference_saveLastCalculation">Salva calcolo</string>
+    <string name="preference_saveLastCalculationDesc">Salva l\'ultimo calcolo</string>
+    <string name="preference_leftMode">Modalità mancina</string>
+    <string name="preference_leftModeDesc">Mostra una tastiera speculare per mancini</string>
+    <string name="preference_miniMode">Modalità a una mano</string>
+    <string name="preference_miniModeDesc">Consente di attivare la modalità a una mano</string>
+    <string name="preference_miniModeIndicate">tastiera ridotta</string>
+    <string name="preference_vibration">Vibrazione</string>
+    <string name="preference_vibrationDesc">Vibra quando viene premuto un pulsante</string>
+    <string name="preference_swapBackSpace">Scambia i pulsanti "punto" e "backspace"</string>
+    <string name="preference_swapBackSpaceDesc">Scambia i pulsanti "punto" e "backspace"</string>
+    <string name="preference_privacyPolicy">Informativa sulla privacy</string>
+    <string name="preference_privacyPolicyDesc">Clicca qui per leggere la nostra informativa sulla privacy</string>
+
+    <string name="error_failCalculate">Errore</string>
+    <string name="error_numberFormatException">Espressione non valida</string>
+
+    <string name="error_nan">Nan</string>
+
+    <string name="preferenceTitle_calculatorCategory">Calcolatrice</string>
+    <string name="preferenceTitle_keyboardCategory">Tastiera</string>
+
+
+    <string name="preferenceTitle_aboutCategory">Informazioni sull\'applicazione</string>
+    <string name="preferenceTitle_supportCategory">Supporto</string>
+
+    <string name="system_restartMessage">Riavviare l\'applicazione per applicare le modifiche</string>
+
+    <string name="system_copyToClipboard">Copiato negli appunti</string>
+
+    <string name="contentDescription_backspace">Indietro</string>
+    <string name="contentDescription_settings">Impostazioni</string>
+    <string name="contentDescription_ClearAll">Cancella tutti i campi</string>
+
+    <string name="contentDescription_LastExpressionTextField">campo di testo dell\'ultima espressione</string>
+
+    <string name="navigation_drawer_open">Apri il menu di navigazione</string>
+    <string name="navigation_drawer_close">Chiudi il menu di navigazione</string>
+
+    <string name="action_settings">Impostazioni</string>
+
+    <string name="updateBoard_title">Novità</string>
+    <string name="updateBoard_appVersion">Versione dell\'applicazione</string>
+
+    <!--Converters-->
+
+    <string name="converter_weight">Peso</string>
+    <string name="converter_length">Lunghezza</string>
+    <string name="converter_time">Tempo</string>
+    <string name="converter_speed">Velocità</string>
+    <string name="converter_temperature">Temperatura</string>
+    <string name="converter_volume">Volume</string>
+    <string name="converter_area">Area</string>
+    <string name="converter_frequency">Frequenza</string>
+    <string name="converter_data">Dati</string>
+    <string name="updateBoard_summary">Fare clic per visualizzare la scheda</string>
+
+</resources>

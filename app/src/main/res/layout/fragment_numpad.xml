@@ -40,7 +40,7 @@
         style="@style/secondaryButtonStyle"
         app:layout_row="1"
         app:layout_column="2"
-        android:text="@string/symbolCE" />
+        android:text="@string/symbolAC" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/divBtn"

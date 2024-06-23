@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buttonOk">Добре</string>
+    <string name="buttonConfirm">Підтвердити</string>
+    <string name="buttonApply">Застосувати</string>
+    <string name="buttonNext">Далі</string>
+    <string name="buttonStart">Початок</string>
+    <string name="buttonCancel">Скасувати</string>
+    <string name="buttonPrevious">Попередній</string>
+    <string name="buttonSkip">Пропустити</string>
+    <string name="buttonExit">Вихід</string>
+
+    <string name="labelCalculator">Калькулятор</string>
+
+    <string name="updateBoard_title">Що нового</string>
+    <string name="updateBoard_appVersion">Версія додатка</string>
+
+    <string name="text_degrees">Градуси</string>
+    <string name="text_radians">Радіани</string>
+
+    <string name="symbolRad">РАД</string>
+    <string name="symbolDeg">ГРАД</string>
+
+    <string name="display_memory">Пам\'ять</string>
+
+    <string name="tooltip_enterText">Введіть текст</string>
+    <string name="editText_enterNum">Введіть число</string>
+
+    <string name="labelFragment_trigonometry">Тригонометрія</string>
+
+    <string name="preference_memoryAutoSave">Автоматичне збереження у пам\'ять</string>
+    <string name="preference_memoryAutoSaveDesc">Результат буде автоматично збережено в пам\'ять</string>
+    <string name="preference_saveLastCalculation">Зберігати розрахунок</string>
+    <string name="preference_saveLastCalculationDesc">Зберігати останній розрахунок</string>
+    <string name="preference_leftMode">Ліворучний режим</string>
+    <string name="preference_leftModeDesc">Для лівшів буде відображено дзеркальну клавіатуру</string>
+    <string name="preference_miniMode">Режим однієї руки</string>
+    <string name="preference_miniModeDesc">Дозволяє активувати режим однієї руки</string>
+    <string name="preference_miniModeIndicate">Клавіатура зменшена</string>
+    <string name="preference_vibration">Вібрація</string>
+    <string name="preference_vibrationDesc">Вібрувати при натисканні кнопки</string>
+    <string name="preference_swapBackSpace">Поміняти кнопки "крапка" і "видалення"</string>
+    <string name="preference_swapBackSpaceDesc">Поміняти місцями кнопки "крапка" і "видалення"</string>
+    <string name="preference_privacyPolicy">Політика конфіденційності</string>
+    <string name="preference_privacyPolicyDesc">Натисніть тут, щоб прочитати нашу політику конфіденційності</string>
+
+
+    <string name="error_failCalculate">Помилка</string>
+    <string name="error_numberFormatException">Некоректний вираз</string>
+
+    <string name="error_nan">Nan</string>
+
+    <string name="preferenceTitle_calculatorCategory">Калькулятор</string>
+    <string name="preferenceTitle_keyboardCategory">Клавіатура</string>
+    <string name="preferenceTitle_aboutCategory">Про додаток</string>
+    <string name="preferenceTitle_supportCategory">Підтримка</string>
+
+    <string name="system_restartMessage">Перезапустіть додаток, щоб застосувати зміни</string>
+
+    <string name="contentDescription_backspace">Видалення</string>
+    <string name="contentDescription_settings">Налаштування</string>
+    <string name="contentDescription_ClearAll">Очистити всі поля</string>
+
+    <string name="contentDescription_LastExpressionTextField">Останній вираз</string>
+
+    <string name="navigation_drawer_open">Відкрити меню</string>
+    <string name="navigation_drawer_close">Закрити меню</string>
+
+    <string name="action_settings">Налаштування</string>
+    <string name="system_copyToClipboard">Скопійовано у буфер обміну</string>
+
+    <!--Converter-->
+
+    <string name="converter_weight">Вага</string>
+    <string name="converter_length">Довжина</string>
+    <string name="converter_time">Час</string>
+    <string name="converter_speed">Швидкість</string>
+    <string name="converter_temperature">Температура</string>
+    <string name="converter_volume">Об\'єм</string>
+    <string name="converter_area">Площа</string>
+    <string name="converter_frequency">Частота</string>
+    <string name="converter_data">Об\'єм даних</string>
+    <string name="updateBoard_summary">Натисність щоб відобразити вікно</string>
+
+</resources>

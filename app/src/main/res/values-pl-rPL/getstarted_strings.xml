@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getStarted_titles">
+        <item>Witaj w Prostym Kalkulatorze</item>
+        <item>Wykonuj proste obliczenia - wygodnie</item>
+        <item>Zmień motywy w zależności od pory dnia</item>
+    </string-array>
+    <string-array name="getStarted_subTitles">
+        <item>Prosty kalkulator z prostym projektem i podstawowym zestawem funkcji do wykonywania obliczeń</item>
+        <item>Wygodnie wykonuj różne obliczenia</item>
+        <item>Aplikacja obsługuje zarówno jasny, jak i ciemny motyw</item>
+    </string-array>
+</resources>

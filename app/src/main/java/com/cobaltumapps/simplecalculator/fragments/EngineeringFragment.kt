@@ -81,7 +81,7 @@ class EngineeringFragment: Fragment() {
         angleTypeButton.setText(if(angleTypeIsDegress) R.string.symbolDeg else R.string.symbolRad)
 
 
-        sqrtButton.setOnClickListener { calculatorFragment?.sqrtAction();calculatorFragment?.enterTrigonometryFunc(6) }
+        sqrtButton.setOnClickListener { calculatorFragment?.sqrtAction() }
         factorialButton.setOnClickListener { calculatorFragment?.factorialAction() }
         invertButton.setOnClickListener { calculatorFragment?.invertAction() }
 

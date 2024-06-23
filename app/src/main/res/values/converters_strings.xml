@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="converter_length">Length</string>
+    <string name="converter_time">Time</string>
+    <string name="converter_speed">Speed</string>
+
+    <string name="converter_temperature">Temperature</string>
+    <string name="converter_volume">Volume</string>
+    <string name="converter_area">Area</string>
+
+    <string name="converter_frequency">Frequency</string>
+    <string name="converter_data">Data</string>
+
+
+    <string name="converter_algebra_ratio">Ratio</string>
+
+    <string name="converter_geometry_square">Square</string>
+
+    <string name="converter_unit_price">Unit price</string>
+
+    <string name="converter_input_hint">Enter a value</string>
+</resources>

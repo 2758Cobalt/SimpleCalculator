@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="updateBoard_news">
+        <item>Fixed an issue with display appearance in dark mode</item>
+        <item>Text in settings has become more contrast</item>
+        <item>Some elements have been changed</item>
+    </string-array>
+</resources>

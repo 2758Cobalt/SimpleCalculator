@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getStarted_titles">
+        <item>Willkommen bei Simple Calculator</item>
+        <item>Führen Sie einfache Berechnungen bequem durch</item>
+        <item>Ändern Sie je nach Tageszeit das Design</item>
+    </string-array>
+    <string-array name="getStarted_subTitles">
+        <item>Ein einfacher Taschenrechner mit einem einfachen Design und einem grundlegenden Satz von Funktionen zum Durchführen von Berechnungen</item>
+        <item>Führen Sie bequem verschiedene Berechnungen durch</item>
+        <item>Die App unterstützt sowohl den hellen als auch den dunklen Modus</item>
+    </string-array>
+</resources>

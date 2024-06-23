@@ -1,6 +1,8 @@
 package com.cobaltumapps.simplecalculator.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +13,12 @@ import com.cobaltumapps.simplecalculator.references.Animations
 import com.cobaltumapps.simplecalculator.references.Services
 
 
+
 class DisplayFragment: Fragment() {
     private val LOG_TAG = "Display"
+    private var previousLineCount = 1
+
+    private lateinit var calculatorFragment: CalculatorFragment
 
     private lateinit var inputTextField: TextView
     private lateinit var resultTextField: TextView
@@ -22,10 +28,13 @@ class DisplayFragment: Fragment() {
 
     var textFields: Array<TextView> = arrayOf()
 
+    fun setParentFragment(parent: CalculatorFragment){
+        calculatorFragment = parent
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_display, container, false) // View фрагмента
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -46,17 +55,42 @@ class DisplayFragment: Fragment() {
                 inputTextField.text = lastExpressionTextField.text
                 resultTextField.text = "0"
                 lastExpressionTextField.text = "0"
+                calculatorFragment.calculateExpression()
             }
         }
 
         lastExpressionTextField.setOnLongClickListener {
-            Animations.animatePropertyChange(lastExpressionTextField,"textSize", 24f, 20f, 200, Animations.overshootInterpolator)
-            lastExpressionTextField.text = "0"
+            clearLastExpression()
             true }
 
         resultTextField.setOnClickListener {
             Services.copyToClipboard(requireContext(),resultTextField.text.toString())
         }
+
+        // Наблюдатель за изменениях текста
+        inputTextField.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+                // Проверка количества строк
+                val lineCount = inputTextField.lineCount
+
+                // Если количество строк изменилось, вызов requestLayout() - перерасчёта макета
+                if (lineCount != previousLineCount) {
+                    inputTextField.requestLayout()
+                    previousLineCount = lineCount
+                }
+            }
+
+        })
+    }
+
+    fun clearLastExpression(){
+        Animations.animatePropertyChange(lastExpressionTextField,"textSize", 24f, 20f, 200, Animations.overshootInterpolator)
+        lastExpressionTextField.text = "0"
     }
 
 
@@ -90,21 +124,24 @@ class DisplayFragment: Fragment() {
     }
 
 
-
     // Добавляет символ к содержимому текстового поля
     fun enterToLastExpression() {
         lastExpressionTextField.text = inputTextField.text
         Animations.animatePropertyChange(lastExpressionTextField,"textSize", 24f, 20f, 400, Animations.overshootInterpolator)
     }
 
-    fun setInputField(result: String) {
-        inputTextField.text = result
+    fun setInputField(newInput: String) {
+        inputTextField.text = newInput
         checkTextFields()
     }
 
     // Принудительно назначает результат
-    fun setResultField(result: String) {
-        resultTextField.text = result
+    fun setResultField(newResult: String) {
+        resultTextField.text = newResult
+        checkTextFields()
+    }
+    fun setLastField(newLast: String) {
+        lastExpressionTextField.text = newLast
         checkTextFields()
     }
 

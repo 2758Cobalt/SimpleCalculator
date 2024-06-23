@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tooltip_enterText">पाठ दर्ज करें</string>
+    <string name="editText_enterNum">संख्या दर्ज करें</string>
+    <string name="labelFragment_trigonometry">त्रिकोणमिति</string>
+
+    <string name="preference_memoryAutoSave">मेमोरी में ऑटो सेव</string>
+    <string name="preference_memoryAutoSaveDesc">परिणाम को स्वचालित रूप से मेमोरी में सहेजा जाएगा</string>
+    <string name="preference_saveLastCalculation">गणना का रिकॉर्ड रखें</string>
+    <string name="preference_saveLastCalculationDesc">अंतिम गणना का रिकॉर्ड रखें</string>
+    <string name="preference_leftMode">बाएं हाथ का मोड</string>
+    <string name="preference_leftModeDesc">बाएं हाथ के लिए मिरर कीबोर्ड होगा</string>
+    <string name="preference_miniMode">एक हाथ का मोड</string>
+    <string name="preference_miniModeDesc">आपको एक हाथ का मोड सक्रिय करने की अनुमति देता है</string>
+    <string name="preference_miniModeIndicate">कीबोर्ड को कम किया गया</string>
+    <string name="preference_vibration">वाइब्रेट</string>
+    <string name="preference_vibrationDesc">जब किसी बटन को क्लिक किया जाता है तो वाइब्रेट होता है</string>
+    <string name="preference_swapBackSpace">"बिंदु" और "बैकस्पेस" बटनों को उलटा करें</string>
+    <string name="preference_swapBackSpaceDesc">"डॉट" और "बैकस्पेस" बटनों को उलट देता है</string>
+    <string name="preference_privacyPolicy">गोपनीयता नीति</string>
+    <string name="preference_privacyPolicyDesc">हमारी गोपनीयता नीति को पढ़ने के लिए यहाँ क्लिक करें</string>
+    <string name="preferenceTitle_calculatorCategory">कैलकुलेटर</string>
+    <string name="preferenceTitle_keyboardCategory">कीबोर्ड</string>
+    <string name="preferenceTitle_aboutCategory">ऐप के बारे में</string>
+    <string name="preferenceTitle_supportCategory">समर्थन</string>
+
+    <string name="error_failCalculate">असफल</string>
+    <string name="error_numberFormatException">गलत अभिव्यक्ति</string>
+    <string name="error_nan">नान</string>
+
+    <string name="system_restartMessage">परिवर्तनों को लागू करने के लिए ऐप को पुनः आरंभ करें</string>
+    <string name="system_copyToClipboard">क्लिपबोर्ड पर कॉपी किया गया</string>
+
+    <string name="contentDescription_backspace">बैक स्पेस</string>
+    <string name="contentDescription_settings">सेटिंग्स</string>
+    <string name="contentDescription_ClearAll">सभी क्षेत्रों को साफ़ करें</string>
+    <string name="contentDescription_LastExpressionTextField">अंतिम अभिव्यक्ति पाठ क्षेत्र</string>
+
+    <string name="navigation_drawer_open">नेविगेशन ड्रॉअर खोलें</string>
+    <string name="navigation_drawer_close">नेविगेशन ड्रॉअर बंद करें</string>
+    <string name="action_settings">सेटिंग्स</string>
+
+    <string name="updateBoard_title">नवीनतम क्या है</string>
+    <string name="updateBoard_appVersion">रिलीज़ संस्करण</string>
+
+    <string name="text_degrees">डिग्री</string>
+    <string name="text_radians">रेडियन</string>
+    <string name="symbolRad">रैड</string>
+    <string name="symbolDeg">डेग्री</string>
+    <string name="display_memory">मेमोरी</string>
+    <string name="buttonOk">ठीक है</string>
+    <string name="buttonConfirm">पुष्टि करें</string>
+    <string name="buttonApply">लागू करें</string>
+    <string name="buttonNext">आगे</string>
+    <string name="buttonStart">प्रारंभ</string>
+    <string name="buttonCancel">रद्द करें</string>
+    <string name="buttonPrevious">पिछला</string>
+    <string name="buttonSkip">छोड़ें</string>
+    <string name="buttonExit">बाहर निकलें</string>
+    <string name="labelCalculator">कैलकुलेटर</string>
+
+    <!--Converters-->
+
+    <string name="converter_weight">वजन</string>
+    <string name="converter_length">लंबाई</string>
+    <string name="converter_time">समय</string>
+    <string name="converter_speed">गति</string>
+    <string name="converter_temperature">तापमान</string>
+    <string name="converter_volume">आयतन</string>
+    <string name="converter_area">क्षेत्रफल</string>
+    <string name="converter_frequency">फ़्रीक्वेंसी</string>
+    <string name="converter_data">डेटा</string>
+    <string name="updateBoard_summary">बोर्ड दिखाने के लिए क्लिक करें</string>
+
+</resources>

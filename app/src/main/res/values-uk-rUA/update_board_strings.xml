@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="updateBoard_news">
+        <item>Виправлена помилка з відображенням дисплея у темній темі</item>
+        <item>Текст у налаштуваннях став більш контрастним</item>
+        <item>Деякі елементи змінено</item>
+    </string-array>
+
+</resources>

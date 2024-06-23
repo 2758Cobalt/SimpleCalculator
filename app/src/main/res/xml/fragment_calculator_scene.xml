@@ -9,7 +9,8 @@
         <OnSwipe
             motion:touchAnchorId="@+id/displayCard"
             motion:dragDirection="dragDown"
-            motion:touchAnchorSide="bottom" />
+            motion:touchAnchorSide="bottom"/>
+
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -26,33 +27,27 @@
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/displayCardGuidLine"
-            motion:layout_constraintGuide_percent="0.9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Constraint
             android:id="@+id/displayCard"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
+            android:layout_marginHorizontal="0dp"
+            motion:layout_constraintHeight_percent="0.9"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintBottom_toTopOf="@+id/displayCardGuidLine" />
         <Constraint
             android:id="@+id/numpadPager"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:visibility="invisible"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/numpadGuidLine"
-            motion:layout_constraintStart_toStartOf="parent" />
+            motion:layout_constraintHeight_percent="0.6"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/buttonOptions" />
         <Constraint
             android:id="@+id/pullContainer"
             android:layout_width="wrap_content"
@@ -70,5 +65,6 @@
             motion:layout_constraintBottom_toBottomOf="@+id/displayCard"
             motion:layout_constraintStart_toStartOf="@+id/displayCard"
             />
+
     </ConstraintSet>
 </MotionScene>

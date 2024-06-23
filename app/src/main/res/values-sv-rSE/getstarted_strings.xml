@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getStarted_titles">
+        <item>Välkommen till Simple Calculator</item>
+        <item>Gör enkla beräkningar - bekvämt</item>
+        <item>Ändra teman beroende på tiden på dagen</item>
+    </string-array>
+    <string-array name="getStarted_subTitles">
+        <item>En enkel miniräknare med en enkel design och en grundläggande uppsättning funktioner för att göra beräkningar</item>
+        <item>Gör olika beräkningar bekvämt</item>
+        <item>Appen stöder både ljusa och mörka teman</item>
+    </string-array>
+</resources>

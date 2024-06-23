@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="getStarted_titles">
+        <item>सिम्पल कैलकुलेटर में आपका स्वागत है</item>
+        <item>सरल गणना करें - सरलता से</item>
+        <item>दिन के समय के आधार पर थीम बदलें</item>
+    </string-array>
+    <string-array name="getStarted_subTitles">
+        <item>एक सरल कैलकुलेटर जिसमें एक सरल डिज़ाइन और गणना करने के लिए मूल फ़ंक्शनलिटी का एक बेसिक सेट है</item>
+        <item>विभिन्न गणनाएँ सरलता से करें</item>
+        <item>ऐप दोनों प्रकार के थीम, प्रकाश और अंधेरे थीम का समर्थन करता है</item>
+    </string-array>
+</resources>

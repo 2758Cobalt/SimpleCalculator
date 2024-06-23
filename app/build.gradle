@@ -13,8 +13,8 @@ android {
         minSdk 23
         targetSdk 33
         targetSdkVersion 33
-        versionCode 12
-        versionName "1.2"
+        versionCode 23
+        versionName "1.42"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,21 +36,26 @@ android {
     }
 
     buildToolsVersion '30.0.3'
+    buildFeatures {
+        viewBinding false
+    }
 
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.21"
-    implementation 'androidx.core:core-ktx:1.12.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
     implementation 'androidx.preference:preference-ktx:1.2.1'
 
-    implementation 'androidx.core:core-splashscreen:1.1.0-alpha02'
 
+    implementation 'com.google.android.gms:play-services-ads:23.1.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.2'
 
-    implementation 'com.google.android.gms:play-services-ads:23.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.7'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.7'
 }

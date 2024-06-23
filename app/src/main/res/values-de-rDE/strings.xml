@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buttonOk">OK</string>
+    <string name="buttonConfirm">Bestätigen</string>
+    <string name="buttonApply">Anwenden</string>
+    <string name="buttonNext">Weiter</string>
+    <string name="buttonStart">Starten</string>
+    <string name="buttonCancel">Abbrechen</string>
+    <string name="buttonPrevious">Zurück</string>
+    <string name="buttonSkip">Überspringen</string>
+    <string name="buttonExit">Beenden</string>
+
+    <string name="labelCalculator">Taschenrechner</string>
+
+    <!--Rechner-->
+
+    <string name="text_degrees">Grad</string>
+    <string name="text_radians">Bogenmaß</string>
+
+    <string name="symbolRad">RAD</string>
+    <string name="symbolDeg">DEG</string>
+
+    <string name="display_memory">Speicher</string>
+
+    <string name="tooltip_enterText">Text eingeben</string>
+
+    <string name="editText_enterNum">Geben Sie eine Zahl ein</string>
+
+    <string name="labelFragment_trigonometry">Trigonometrie</string>
+
+    <string name="preference_memoryAutoSave">Automatisches Speichern im Speicher</string>
+    <string name="preference_memoryAutoSaveDesc">Das Ergebnis wird automatisch im Speicher gespeichert</string>
+
+    <string name="preference_saveLastCalculation">Berechnung speichern</string>
+    <string name="preference_saveLastCalculationDesc">Letzte Berechnung speichern</string>
+
+
+    <string name="preference_leftMode">Linkshändermodus</string>
+    <string name="preference_leftModeDesc">Zeigen Sie eine gespiegelte Tastatur für Linkshänder an</string>
+
+    <string name="preference_miniMode">Einhandmodus</string>
+    <string name="preference_miniModeDesc">Ermöglicht es Ihnen, den Einhandmodus zu aktivieren</string>
+
+    <string name="preference_miniModeIndicate">verkleinerte Tastatur</string>
+
+    <string name="preference_vibration">Vibration</string>
+    <string name="preference_vibrationDesc">Vibriert beim Drücken einer Taste</string>
+
+    <string name="preference_swapBackSpace">Tauschen Sie die Tasten "Punkt" und "Rücktaste" aus</string>
+    <string name="preference_swapBackSpaceDesc">Tauscht die "Punkt" und "Rücktaste" Tasten aus</string>
+
+    <string name="preference_privacyPolicy">Datenschutzrichtlinie</string>
+    <string name="preference_privacyPolicyDesc">Klicken Sie hier, um unsere Datenschutzrichtlinie zu lesen</string>
+
+    <string name="error_failCalculate">Fehler</string>
+    <string name="error_numberFormatException">Ungültiger Ausdruck</string>
+
+    <string name="error_nan">Nan</string>
+
+    <string name="preferenceTitle_calculatorCategory">Rechner</string>
+    <string name="preferenceTitle_keyboardCategory">Tastatur</string>
+
+
+    <string name="preferenceTitle_aboutCategory">Über die App</string>
+    <string name="preferenceTitle_supportCategory">Support</string>
+
+    <string name="system_restartMessage">Starten Sie die App neu, um die Änderungen zu übernehmen</string>
+
+    <string name="system_copyToClipboard">In die Zwischenablage kopiert</string>
+
+    <string name="contentDescription_backspace">Rücktaste</string>
+    <string name="contentDescription_settings">Einstellungen</string>
+    <string name="contentDescription_ClearAll">Alle Felder löschen</string>
+
+    <string name="contentDescription_LastExpressionTextField">Textfeld des letzten Ausdrucks</string>
+
+    <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
+    <string name="navigation_drawer_close">Navigationsleiste schließen</string>
+
+    <string name="action_settings">Einstellungen</string>
+
+    <string name="updateBoard_title">Was ist neu</string>
+    <string name="updateBoard_appVersion">Appversion</string>
+
+
+    <!--Converters-->
+
+    <string name="converter_weight">Gewicht</string>
+    <string name="converter_length">Länge</string>
+    <string name="converter_time">Zeit</string>
+    <string name="converter_speed">Geschwindigkeit</string>
+    <string name="converter_temperature">Temperatur</string>
+    <string name="converter_volume">Volumen</string>
+    <string name="converter_area">Fläche</string>
+    <string name="converter_frequency">Frequenz</string>
+    <string name="converter_data">Datenmenge</string>
+    <string name="updateBoard_summary">Zum Anzeigen der Tafel anklicken</string>
+
+</resources>

@@ -1,9 +1,13 @@
 package com.cobaltumapps.simplecalculator.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.cobaltumapps.simplecalculator.R
@@ -40,6 +44,7 @@ class NumpadFragment: Fragment() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -63,29 +68,93 @@ class NumpadFragment: Fragment() {
 
         // Присвоение слушателя нажатий (OnClickListener) кнопкам с операндами
         for ((index,numberButton) in numberButtons.withIndex()) {
-            numberButton.setOnClickListener { numberEnterAction(ConstantsCalculator.operandConstants[index]); calculatorFragment?.playVibration(5) } // Слушатель нажатий для всего нампада(numpad)
+            numberButton.setOnClickListener { numberEnterAction(ConstantsCalculator.operandConstants[index]) } // Слушатель нажатий для всего нампада(numpad)
 
         }
 
         // Присвоение слушателя нажатий (OnClickListener) кнопкам с операцией
         for ((index,operatorButton) in operatorButtons.withIndex()) {
-            operatorButton.setOnClickListener { operationEnterAction(ConstantsCalculator.operatorConstants[index]); calculatorFragment?.playVibration(5) } // Слушатель нажатий кнопок операторов
+            operatorButton.setOnClickListener { operationEnterAction(ConstantsCalculator.operatorConstants[index])} // Слушатель нажатий кнопок операторов
         }
 
 
         // Слушатель нажатий кнопок функций
-        clearGroupButton.setOnClickListener { calculatorFragment?.clearGroupAction(); calculatorFragment?.playVibration(5) }
-        powerButton.setOnClickListener { calculatorFragment?.powerAction();                 calculatorFragment?.playVibration(5) }
-        equalButton.setOnClickListener { calculatorFragment?.calculateExpression(); calculatorFragment?.pushExpressionToLast(); calculatorFragment?.playVibration(20)}
-        pointButton.setOnClickListener { calculatorFragment?.enterPointAction(); calculatorFragment?.playVibration(5)}
+        clearGroupButton.setOnClickListener { calculatorFragment?.clearAllAction() }
+        powerButton.setOnClickListener { calculatorFragment?.powerAction() }
+        equalButton.setOnClickListener { calculatorFragment?.equalAction(); calculatorFragment?.pushExpressionToLast() }
+        pointButton.setOnClickListener { calculatorFragment?.enterPointAction() }
 
-        backspaceButton.setOnClickListener { calculatorFragment?.backSpaceAction(); calculatorFragment?.playVibration(5) }
-        backspaceButton.setOnLongClickListener { calculatorFragment?.clearAllAction(); calculatorFragment?.playVibration(20); true } // Обработчик длинного нажатия (удерживая нажатие 1 сек)
 
-        openBracketButton.setOnClickListener { numberEnterAction(ConstantsCalculator.operatorConstants[6]); calculatorFragment?.playVibration(5) }     // Открывает скобку
-        closeBracketButton.setOnClickListener { numberEnterAction(ConstantsCalculator.operatorConstants[7]); calculatorFragment?.playVibration(5) }     // Закрывает скобку
+        backspaceButton.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                // Получаем размеры кнопки
+                val width = backspaceButton.width
+                val height = backspaceButton.height
 
-        percentButton.setOnClickListener { calculatorFragment?.percentAction(); calculatorFragment?.playVibration(5) }
+                // Удаляем слушатель, чтобы он больше не вызывался
+                backspaceButton.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
+
+        //backspaceButton.setOnLongClickListener { calculatorFragment?.clearGroupAction(); calculatorFragment?.playVibration(5); true } // Обработчик длинного нажатия (удерживая нажатие 1 сек)
+
+        val delay = 500
+        val handler = Handler()
+        val deleteAction = object : Runnable {
+            override fun run() {
+                calculatorFragment?.clearGroupAction()
+                calculatorFragment?.playVibration(5)
+                handler.postDelayed(this, 100L)
+            }
+        }
+
+        backspaceButton.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    // При нажатии
+                    calculatorFragment?.backSpaceAction()
+                    calculatorFragment?.playVibration(10)
+                    handler.postDelayed(deleteAction, delay.toLong())
+                    calculatorFragment?.numpadPager?.isUserInputEnabled = false
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    // Получаем координаты кнопки
+                    val buttonLocation = IntArray(2)
+                    view.getLocationOnScreen(buttonLocation)
+                    val buttonX = buttonLocation[0]
+                    val buttonY = buttonLocation[1]
+
+                    // Получаем размеры кнопки
+                    val buttonWidth = view.width
+                    val buttonHeight = view.height
+
+                    // Получаем координаты пальца
+                    val fingerX = event.rawX.toInt()
+                    val fingerY = event.rawY.toInt()
+
+                    // Проверяем, находится ли палец в пределах кнопки
+                    if (fingerX < buttonX || fingerX > buttonX + buttonWidth ||
+                        fingerY < buttonY || fingerY > buttonY + buttonHeight
+                    ) {
+                        // Если палец вышел за пределы кнопки, удаляем задачу
+                        handler.removeCallbacks(deleteAction)
+                        calculatorFragment?.numpadPager?.isUserInputEnabled = true
+                    }
+                }
+                MotionEvent.ACTION_UP -> {
+                    // При отпускании
+                    handler.removeCallbacks(deleteAction)
+                    calculatorFragment?.numpadPager?.isUserInputEnabled = true
+                }
+            }
+            false
+        }
+
+
+        openBracketButton.setOnClickListener { numberEnterAction(ConstantsCalculator.operatorConstants[6]) }     // Открывает скобку
+        closeBracketButton.setOnClickListener { numberEnterAction(ConstantsCalculator.operatorConstants[7]) }     // Закрывает скобку
+
+        percentButton.setOnClickListener { calculatorFragment?.percentAction() }
     }
 
 

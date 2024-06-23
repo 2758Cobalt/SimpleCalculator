@@ -11,6 +11,7 @@ import com.cobaltumapps.simplecalculator.R
 
 object Services {
 
+    // Воспроизводит вибрацию
     fun playVibration(context: Context, duration: Long = 100) {
         // Получаем экземпляр Vibrator из системы
         val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
@@ -32,11 +33,12 @@ object Services {
         }
     }
 
+    // Копирует в буфер обмена
     fun copyToClipboard(context: Context, text: String) {
         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("text", text)
         clipboard.setPrimaryClip(clip)
-        Toast.makeText(context,context.resources.getText(R.string.clipboard),Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,context.resources.getText(R.string.system_copyToClipboard),Toast.LENGTH_SHORT).show()
     }
 
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="updateBoard_news">
+        <item>Åtgärdat ett problem med skärmvisning i mörkt läge</item>
+        <item>Texten i inställningarna har blivit mer kontrastrik</item>
+        <item>Några element har ändrats</item>
+    </string-array>
+
+</resources>

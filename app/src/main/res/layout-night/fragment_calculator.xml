@@ -1,0 +1,162 @@
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:background="@null"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    app:layoutDescription="@xml/fragment_calculator_scene"
+    tools:context=".activities.MainActivity">
+
+    <!--InDragedCard-->
+
+    <LinearLayout
+        android:id="@+id/pullContainer"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/buttonClearAllFullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/contentDescription_ClearAll"
+            android:elevation="4dp"
+            android:src="@drawable/baseline_delete_outline_32"
+            app:tint="@color/tomato" />
+        <ImageView
+            android:id="@+id/buttonSettingsFullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/contentDescription_settings"
+            android:elevation="4dp"
+            android:src="@drawable/baseline_settings_24"
+            app:tint="@color/orange" />
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/displayCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:elevation="3dp"
+        android:background="@drawable/calculator_display"
+        android:backgroundTint="@color/gray50"
+        app:layout_constraintBottom_toTopOf="@+id/buttonOptions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/pullTab"
+        android:layout_width="96dp"
+        android:layout_height="4dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/calculator_display"
+        android:alpha="0.5"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/displayCard"
+        app:layout_constraintEnd_toEndOf="@+id/displayCard"
+        app:layout_constraintStart_toStartOf="@+id/displayCard" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/miniModeGuidLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <TextView
+        android:id="@+id/miniModeTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:autoSizeMaxTextSize="18sp"
+        android:autoSizeMinTextSize="6sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:text="@string/preference_miniModeIndicate"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonOptions"
+        app:layout_constraintStart_toEndOf="@+id/buttonMiniMode"
+        app:layout_constraintTop_toBottomOf="@+id/miniModeGuidLine"
+        tools:ignore="TextContrastCheck"
+        tools:targetApi="o" />
+
+    <ImageView
+        android:id="@+id/buttonMiniMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/preference_miniModeIndicate"
+        android:rotation="-45"
+        android:src="@drawable/baseline_unfold_less_32"
+        app:layout_constraintStart_toStartOf="@+id/displayCard"
+        app:layout_constraintTop_toTopOf="@+id/miniModeGuidLine"/>
+
+    <ImageView
+        android:id="@+id/buttonConverters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="visible"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Converters"
+        android:elevation="5dp"
+        android:src="@drawable/baseline_backup_table_24"
+        app:layout_constraintBottom_toBottomOf="@+id/displayCard"
+        app:layout_constraintStart_toStartOf="@+id/displayCard" />
+
+    <ImageView
+        android:id="@+id/buttonOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/contentDescription_settings"
+        android:src="@drawable/baseline_settings_24"
+        app:layout_constraintEnd_toEndOf="@+id/displayCard"
+        app:layout_constraintTop_toTopOf="@+id/miniModeGuidLine" />
+
+    <ImageView
+        android:id="@+id/buttonBackspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/contentDescription_backspace"
+        android:src="@drawable/baseline_backspace_32"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonOptions"
+        app:layout_constraintEnd_toStartOf="@+id/buttonOptions"
+        app:layout_constraintTop_toTopOf="@+id/buttonOptions" />
+
+    <!--Numpad-->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/numpadPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonOptions" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

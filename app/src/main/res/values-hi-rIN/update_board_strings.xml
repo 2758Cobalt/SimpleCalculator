@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="updateBoard_news">
+        <item>डार्क मोड में डिस्प्ले दिखाने में आई समस्या का समाधान किया गया</item>
+        <item>सेटिंग्स में टेक्स्ट अधिक कॉन्ट्रास्ट हो गया है</item>
+        <item>कुछ तत्वों में परिवर्तन किया गया है</item>
+    </string-array>
+
+</resources>

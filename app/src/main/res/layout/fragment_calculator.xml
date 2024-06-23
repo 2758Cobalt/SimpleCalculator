@@ -22,31 +22,45 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/buttonClearAllAlternative"
+            android:id="@+id/buttonClearAllFullscreen"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/contentDescription_ClearAll"
             android:elevation="4dp"
             android:src="@drawable/baseline_delete_outline_32"
             app:tint="@color/tomato" />
+        <ImageView
+            android:id="@+id/buttonSettingsFullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/contentDescription_settings"
+            android:elevation="4dp"
+            android:src="@drawable/baseline_settings_24"
+            app:tint="@color/orange" />
     </LinearLayout>
 
-    <com.google.android.material.card.MaterialCardView
+
+    <FrameLayout
         android:id="@+id/displayCard"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:orientation="vertical"
-        android:paddingBottom="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/displayCardGuidLine"
+        android:paddingBottom="16dp"
+        android:elevation="3dp"
+        android:background="@drawable/calculator_display"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonOptions"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <View
         android:id="@+id/pullTab"
@@ -59,13 +73,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/displayCard"
         app:layout_constraintEnd_toEndOf="@+id/displayCard"
         app:layout_constraintStart_toStartOf="@+id/displayCard" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/displayCardGuidLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.32" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/miniModeGuidLine"
@@ -140,24 +147,16 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonOptions"
         app:layout_constraintTop_toTopOf="@+id/buttonOptions" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/numpadGuidLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.38" />
-
     <!--Numpad-->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/numpadPager"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintHeight_percent="0.6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numpadGuidLine" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonOptions" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

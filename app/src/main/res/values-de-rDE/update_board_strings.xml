@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="updateBoard_news">
+        <item>Fehler bei der Anzeige im Dunkelmodus behoben</item>
+        <item>Text in den Einstellungen ist nun kontrastreicher</item>
+        <item>Einige Elemente wurden geändert</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="preferences_keys">
+        <item>key_memoryAutoSave</item>
+        <item>key_leftHandMode</item>
+        <item>key_miniKeyboardMode</item>
+        <item>key_vibration</item>
+        <item>key_privacyPolicy</item>
+        <item>key_versionApp</item>
+        <item>key_updateInfo</item>
+        <item>key_saveLastCalculation</item>
+    </string-array>
+</resources>

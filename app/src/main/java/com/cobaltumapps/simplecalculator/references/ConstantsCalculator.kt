@@ -12,6 +12,14 @@ object ConstantsCalculator {
     const val symbolFactorial = '!'
     const val symbolSqrt = '√'
 
+    const val sinSymbol = "sin"
+    const val cosSymbol = "cos"
+    const val tanSymbol = "tan"
+    const val cotSymbol = "cot"
+
+    const val logSymbol = "log"
+    const val lnSymbol = "ln"
+
     const val symbolOpenBracket = '('
     const val symbolCloseBracket = ')'
     const val symbolPoint = '.'
@@ -25,7 +33,6 @@ object ConstantsCalculator {
     val operandConstants: List<String> by lazy { listOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9") }  // Символы для кнопок
     //val functionalConstants: Array<String> by lazy { arrayOf("x&#178;","√x","x!","±") }  // Символы для кнопок
 
-    val keysPreferences = listOf("key_memoryAutoSave","key_leftHandMode","key_miniKeyboardMode","key_vibration")
     const val vault = "preferences"
 
     // Создание ссылок на кнопки numpad
