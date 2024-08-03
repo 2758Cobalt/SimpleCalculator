@@ -20,6 +20,7 @@
     <string name="symbolRad">RAD</string>
     <string name="symbolDeg">DEG</string>
 
+    <string name="drawerMenuButton_description">Ouvrir le menu de navigation</string>
     <string name="display_memory">Mémoire</string>
 
     <string name="tooltip_enterText">Entrer du texte</string>
@@ -83,6 +84,8 @@
 
     <!--Converters-->
 
+    <string name="converter_unitInputHint">Saisir une valeur</string>
+    <string name="converter_header">Convertisseurs d\'unités</string>
     <string name="converter_weight">Poids</string>
     <string name="converter_length">Longueur</string>
     <string name="converter_time">Temps</string>
@@ -93,5 +96,6 @@
     <string name="converter_frequency">Fréquence</string>
     <string name="converter_data">Volume de données</string>
     <string name="updateBoard_summary">Cliquez pour afficher le tableau</string>
+    <string name="converter_category_general">Général</string>
 
 </resources>

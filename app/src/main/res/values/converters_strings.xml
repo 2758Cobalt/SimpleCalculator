@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--UI-->
+    <string name="converter_unitInputHint">Enter a value</string>
+    <string name="converter_header">Unit converters</string>
+
+
+    <!--Units-->
+    <string name="converter_weight">Weight</string>
     <string name="converter_length">Length</string>
     <string name="converter_time">Time</string>
-    <string name="converter_speed">Speed</string>
 
+    <string name="converter_speed">Speed</string>
     <string name="converter_temperature">Temperature</string>
     <string name="converter_volume">Volume</string>
-    <string name="converter_area">Area</string>
 
+    <string name="converter_area">Area</string>
     <string name="converter_frequency">Frequency</string>
     <string name="converter_data">Data</string>
 
-
-    <string name="converter_algebra_ratio">Ratio</string>
-
+    <!--Coming soon-->
+    <string name="converter_math_ratio">Ratio</string>
     <string name="converter_geometry_square">Square</string>
-
     <string name="converter_unit_price">Unit price</string>
+    <!--Coming soon-->
 
-    <string name="converter_input_hint">Enter a value</string>
+    <!--Mechanics-->
+    <string name="converter_revolutions">Revolutions</string>
+
+    <!--Categories-->
+    <string name="converter_category_general">General</string>
+
+    <!--Coming soon-->
+    <string name="converter_category_energy">Energy</string>
+    <string name="converter_category_electronics">Electronics</string>
+
+    <string name="converter_category_mechanics">Mechanics</string>
+
+    <string name="converter_category_math">Math</string>
+    <string name="converter_category_geometry">Geometry formulas</string>
+    <!--Coming soon-->
+
 </resources>

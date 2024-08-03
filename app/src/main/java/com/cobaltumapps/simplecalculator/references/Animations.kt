@@ -15,6 +15,7 @@ object Animations {
         interpolator?.let { animation.interpolator = it }
         animObject.startAnimation(animation)
     }
+
     fun animatePropertyChange(view: View, property: String, startValue: Float, endValue: Float, duration: Long, interpolator: Interpolator?) {
         val animator = ObjectAnimator.ofFloat(view, property, startValue, endValue)
         animator.duration = duration

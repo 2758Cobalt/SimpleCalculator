@@ -7,7 +7,7 @@
         android:checkableBehavior="single">
 
         <item
-            android:title="Converters">
+            android:title="@string/converter_category_general">
 
             <menu>
                 <item
@@ -58,42 +58,42 @@
 
         </item>
 
-        <item
-            android:title="Algebra">
-            <menu>
-                <item
-                    android:id="@+id/menu_ratio"
-                    android:icon="@drawable/ic_length"
-                    android:title="@string/converter_algebra_ratio"/>
+<!--        <item-->
+<!--            android:title="Algebra">-->
+<!--            <menu>-->
+<!--                <item-->
+<!--                    android:id="@+id/menu_ratio"-->
+<!--                    android:icon="@drawable/ic_length"-->
+<!--                    android:title="@string/converter_algebra_ratio"/>-->
 
-            </menu>
-        </item>
+<!--            </menu>-->
+<!--        </item>-->
 
-        <item
-            android:title="Geometry">
-            <menu>
-                <item
-                    android:id="@+id/menu_square"
-                    android:icon="@drawable/ic_frequency"
-                    android:title="@string/converter_geometry_square"/>
+<!--        <item-->
+<!--            android:title="Geometry">-->
+<!--            <menu>-->
+<!--                <item-->
+<!--                    android:id="@+id/menu_square"-->
+<!--                    android:icon="@drawable/ic_frequency"-->
+<!--                    android:title="@string/converter_geometry_square"/>-->
 
-            </menu>
-        </item>
+<!--            </menu>-->
+<!--        </item>-->
 
-        <item
-            android:title="Finance">
-            <menu>
-                <item
-                    android:id="@+id/menu_unit_price"
-                    android:icon="@drawable/ic_weight"
-                    android:title="@string/converter_unit_price"/>
+<!--        <item-->
+<!--            android:title="Finance">-->
+<!--            <menu>-->
+<!--                <item-->
+<!--                    android:id="@+id/menu_unit_price"-->
+<!--                    android:icon="@drawable/ic_weight"-->
+<!--                    android:title="@string/converter_unit_price"/>-->
 
-            </menu>
-        </item>
+<!--            </menu>-->
+<!--        </item>-->
 
-        <item
-            android:title="Other">
-        </item>
+<!--        <item-->
+<!--            android:title="Other">-->
+<!--        </item>-->
 
 
     </group>

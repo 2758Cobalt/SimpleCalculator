@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.R
-import com.cobaltumapps.simplecalculator.converterNavigation.UnitModel
+import com.cobaltumapps.simplecalculator.interfaces.OnAdapterItemClickListener
+import com.cobaltumapps.simplecalculator.models.UnitRecyclerModel
 import com.cobaltumapps.simplecalculator.references.Services
 
 class ConverterRecyclerAdapter(
     private val context: Context,
-    private var unitsList: List<UnitModel> = listOf(UnitModel("None","-1",false)),
-    private var specialSymbols: List<String> = listOf()
+    var unitsList: List<UnitRecyclerModel> = listOf(UnitRecyclerModel("None","-1",false)),
+    var specialSymbols: List<String> = listOf()
 
 ) : RecyclerView.Adapter<ConverterRecyclerAdapter.ConverterHolder>() {
+    lateinit var listener: OnAdapterItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConverterHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.recycler_item_converter_unit, parent, false)
@@ -27,10 +29,10 @@ class ConverterRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ConverterHolder, position: Int) {
-        // Получаем объект UnitModel
+        // Получаем объект UnitRecyclerModel
         val unit = unitsList[position]
 
-        // Назначаем текущему объекту пустышке информацию объекта UnitModel
+        // Назначаем текущему объекту пустышке информацию объекта UnitRecyclerModel
         holder.setUnit(unit)
 
 
@@ -45,14 +47,25 @@ class ConverterRecyclerAdapter(
             holder.unitSymbolBox.text = unit.getTitle().first().uppercase()
 
         // Проверяет выбран ли элемент
-        if (holder.unitSelectedState)
+        if (holder.unitSelectedState){
             holder.unitCard.setBackgroundResource(R.drawable.shape_white_box_selected)
-        else
+
+            holder.unitSymbolBox.setBackgroundResource(R.drawable.shape_gradient_orange_box)
+        }
+        else{
             holder.unitCard.setBackgroundResource(R.drawable.shape_white_box)
+
+            holder.unitSymbolBox.setBackgroundResource(R.drawable.shape_gray_box)
+        }
 
         // Обработка нажатия на элемент
         holder.itemView.setOnClickListener {
+            listener.onItemClick(position)
+        }
+
+        holder.itemView.setOnLongClickListener {
             Services.copyToClipboard(context, holder.unitResultField.text.toString())
+            true
         }
 
     }
@@ -74,7 +87,7 @@ class ConverterRecyclerAdapter(
             unitSelectedState = false
         }
 
-        fun setUnit(unit: UnitModel){
+        fun setUnit(unit: UnitRecyclerModel){
             unitTitleField.text = unit.getTitle()
             unitResultField.text = unit.getResult()
             unitSelectedState = unit.getSelection()

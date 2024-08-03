@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="updateBoard_news">
-        <item>Correction d\'un problème d\'affichage en mode sombre</item>
-        <item>Le texte dans les paramètres est devenu plus contrasté</item>
-        <item>Certains éléments ont été modifiés</item>
+        <item>Convertisseurs d\'unités ajoutés</item>
+        <item>Correction de certains problèmes d\'affichage de texte long</item>
+        <item>Correction des bugs sur la page d\'accueil qui provoquaient des plantages de l\'application</item>
     </string-array>
 
 </resources>

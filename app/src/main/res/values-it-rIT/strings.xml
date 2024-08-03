@@ -21,6 +21,7 @@
     <string name="symbolRad">RAD</string>
     <string name="symbolDeg">GRADI</string>
 
+    <string name="drawerMenuButton_description">Aprire il menu di navigazione</string>
     <string name="display_memory">Memoria</string>
 
     <string name="tooltip_enterText">Inserisci testo</string>
@@ -77,6 +78,8 @@
 
     <!--Converters-->
 
+    <string name="converter_unitInputHint">Immettere un valore</string>
+    <string name="converter_header">Convertitori di unità</string>
     <string name="converter_weight">Peso</string>
     <string name="converter_length">Lunghezza</string>
     <string name="converter_time">Tempo</string>
@@ -87,5 +90,6 @@
     <string name="converter_frequency">Frequenza</string>
     <string name="converter_data">Dati</string>
     <string name="updateBoard_summary">Fare clic per visualizzare la scheda</string>
+    <string name="converter_category_general">Generale</string>
 
 </resources>

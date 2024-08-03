@@ -18,7 +18,7 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.dialogs.UpdateBoardDialogFragment
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.references.PreferenceKeys
-import com.cobaltumapps.simplecalculator.references.Services
+import com.cobaltumapps.simplecalculator.services.VibratorService
 
 class OptionsActivity : AppCompatActivity() {
 
@@ -92,8 +92,12 @@ class OptionsActivity : AppCompatActivity() {
 
             vibrationPreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, newValue ->
-                    if (newValue as Boolean)
-                        Services.playVibration(requireContext(),5)
+
+                    if (newValue as Boolean){
+                        val vibrator = VibratorService()
+                        vibrator.context = context
+                        vibrator.playVibration(5)
+                    }
 
                     saveBooleanPreferences(PreferenceKeys.keyAllowVibration, newValue)
                     true

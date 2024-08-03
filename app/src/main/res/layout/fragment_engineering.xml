@@ -29,7 +29,7 @@
         app:layout_column="3"
         app:layout_row="0" />
 
-            <!--Memory Row-->
+            <!--MemoryManager Row-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonMemorySave"
         style="@style/secondaryButtonStyle"
@@ -51,7 +51,7 @@
         app:layout_column="2"
         app:layout_row="1" />
 
-                <!--Memory operations-->
+                <!--MemoryManager operations-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonMemoryResultAdd"
         style="@style/primaryButtonStyle"

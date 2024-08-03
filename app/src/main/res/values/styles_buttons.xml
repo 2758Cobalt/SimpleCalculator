@@ -46,7 +46,7 @@
     </style>
 
     <style name="converterButtonStyle" parent="numberButtonStyle">
-        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:backgroundTint">?attr/colorSecondary</item>
         <item name="android:textSize">20dp</item>
     </style>
 
@@ -54,24 +54,6 @@
         <item name="android:backgroundTint">?attr/colorPrimary</item>
         <item name="rippleColor">@color/white</item>
         <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="SelectorButtonStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">4dp</item>
-
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:insetTop">0dp</item>
-
-        <item name="android:backgroundTint">@color/white</item>
-
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20dp</item>
-
-        <item name="cornerRadius">8dip</item>
-
-        <item name="rippleColor">@color/orange</item>
     </style>
 
 

@@ -5,25 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="76dp"
     android:layout_margin="8dp"
+    android:background="@drawable/shape_white_box"
+    android:clickable="true"
     android:elevation="2dp"
     android:focusable="true"
-    android:clickable="true"
-    android:foreground="?attr/selectableItemBackgroundBorderless"
-    android:background="@drawable/shape_white_box">
+    android:foreground="?attr/selectableItemBackgroundBorderless">
 
     <TextView
         android:id="@+id/unitSymbol"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="8dp"
-        android:background="@drawable/shape_gradient_orange_box"
+        android:background="@drawable/shape_gray_box"
         android:elevation="3dp"
         android:gravity="center"
+        android:maxLength="4"
         android:paddingHorizontal="8dp"
-        android:maxLength="3"
-        android:textColor="@color/white"
         android:text="Q"
-        android:textSize="16dp"
+        android:textColor="@color/gray50"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,25 +35,25 @@
         android:layout_margin="8dp"
         android:gravity="center_vertical"
         android:text="Unit"
-        android:textSize="14sp"
         android:textColor="@color/gray50"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/unitSymbol"
+        app:layout_constraintEnd_toStartOf="@+id/unitConvertInput"
         app:layout_constraintStart_toEndOf="@+id/unitSymbol"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/unitSymbol" />
 
 
     <TextView
         android:id="@+id/unitConvertInput"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:gravity="center"
-        android:text="0.000"
+        android:text="0.0"
         android:textSize="12sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/unitSymbol"
-        app:layout_constraintTop_toBottomOf="@+id/unitTitle" />
+        app:layout_constraintTop_toTopOf="@+id/unitTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

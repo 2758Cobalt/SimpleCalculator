@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="updateBoard_news">
-        <item>Naprawiono problem z wyświetlaniem w trybie ciemnym</item>
-        <item>Tekst w ustawieniach stał się bardziej kontrastowy</item>
-        <item>Zmieniono niektóre elementy</item>
+        <item>Dodano konwertery jednostek miary</item>
+        <item>Naprawiono niektóre problemy z wyświetlaniem dużego tekstu</item>
+        <item>Naprawiono błędy na stronie startowej, które powodowały awarie aplikacji</item>
+
     </string-array>
 
 </resources>

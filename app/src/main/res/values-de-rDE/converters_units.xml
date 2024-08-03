@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Вес / Weight-->
+
+    <string-array name="weight_unit">
+        <item>Mikrogramm</item>
+        <item>Milligramm</item>
+        <item>Gramm</item>
+        <item>Kilogramm</item>
+        <item>Tonne</item>
+        <item>Kilotonne</item>
+        <item>Megatonne</item>
+    </string-array>
+
+    <string-array name="time_unit">
+        <item>Nanosekunden</item>
+        <item>Mikrosekunden</item>
+        <item>Millisekunden</item>
+        <item>Sekunden</item>
+        <item>Minuten</item>
+        <item>Stunden</item>
+        <item>Tage</item>
+        <item>Wochen</item>
+        <item>Monate</item>
+        <item>Jahre</item>
+        <item>Jahrhunderte</item>
+    </string-array>
+
+    <string-array name="length_unit">
+        <item>Nanometer</item>
+        <item>Mikrometer</item>
+        <item>Millimeter</item>
+        <item>Zentimeter</item>
+        <item>Dekimeter</item>
+        <item>Meter</item>
+        <item>Kilometer</item>
+    </string-array>
+
+    <string-array name="speed_unit">
+        <item>Kilometer pro Stunde</item>
+        <item>Kilometer pro Sekunde</item>
+        <item>Meilen pro Sekunde</item>
+        <item>Meilen pro Stunde</item>
+        <item>Meter pro Sekunde</item>
+        <item>Knoten</item>
+        <item>Lichtgeschwindigkeit</item>
+    </string-array>
+
+    <string-array name="temperature_unit">
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+        <item>Kelvin</item>
+        <item>Rankine</item>
+        <item>Reaumur</item>
+    </string-array>
+
+    <string-array name="volume_unit">
+        <item>Milliliter</item>
+        <item>Liter</item>
+        <item>Kubikmeter</item>
+        <item>Kubikfuß</item>
+        <item>Kubikzoll</item>
+        <item>US-Gallonen</item>
+    </string-array>
+
+    <string-array name="area_unit">
+        <item>Nanometer&#178;</item>
+        <item>Mikrometer&#178;</item>
+        <item>Millimeter&#178;</item>
+        <item>Zentimeter&#178;</item>
+        <item>Dezimeter&#178;</item>
+        <item>Meter&#178;</item>
+        <item>Dekameter&#178;</item>
+        <item>Kilometer&#178;</item>
+    </string-array>
+
+    <string-array name="frequency_unit">
+        <item>Hertz</item>
+        <item>Kilohertz</item>
+        <item>Megahertz</item>
+        <item>Gigahertz</item>
+    </string-array>
+
+    <string-array name="data_unit">
+        <item>Bit</item>
+        <item>Byte</item>
+        <item>Kilobyte</item>
+        <item>Megabyte</item>
+        <item>Gigabyte</item>
+        <item>Terabyte</item>
+        <item>Petabyte</item>
+        <item>Exabyte</item>
+        <item>Zettabyte</item>
+        <item>Yottabyte</item>
+    </string-array>
+
+</resources>

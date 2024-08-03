@@ -5,10 +5,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cobaltumapps.simplecalculator.R
-import com.cobaltumapps.simplecalculator.fragments.CalculatorFragment
+import com.cobaltumapps.simplecalculator.fragments.calculator.CalculatorFragment
 import com.cobaltumapps.simplecalculator.onBoarding.OnBoardingActivity
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
 import com.google.android.gms.ads.AdRequest
@@ -18,11 +17,13 @@ import com.google.android.gms.ads.MobileAds
 private const val KEYSTORE_GETSTARTED = "getStarted_key"
 private const val GETSTARTED_FORCE_LAUNCH = false // Игнорит статус показа и запускает стартовый экран (для тестов)
 private const val LOG_TAG = "DebugTag"
+
 class MainActivity: AppCompatActivity() {
 
     private lateinit var mAdView : AdView
     private lateinit var adRequest : AdRequest
     private lateinit var sharedPreferences: SharedPreferences
+
     private val handler = Handler()
     private val delayMillis = 45000L // 20 секунд
 
@@ -85,7 +86,6 @@ class MainActivity: AppCompatActivity() {
             mAdView.loadAd(adRequest)
 
         }
-        Log.i(LOG_TAG,"Advertising request")
     }
 
     override fun onDestroy() {

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="updateBoard_news">
-        <item>Risolto un problema con la visualizzazione del display in modalità scura</item>
-        <item>Il testo nelle impostazioni è diventato più contrastato</item>
-        <item>Alcuni elementi sono stati modificati</item>
+        <item>Aggiunti convertitori di unità di misura</item>
+        <item>Risolti alcuni problemi di visualizzazione del testo grande</item>
+        <item>Correzione di errori nella pagina iniziale che causavano arresti anomali dell\'app</item>
+
     </string-array>
 
 </resources>

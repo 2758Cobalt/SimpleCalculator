@@ -21,6 +21,7 @@
     <string name="symbolRad">РАД</string>
     <string name="symbolDeg">ГРАД</string>
 
+    <string name="drawerMenuButton_description">Відкрити меню навігації</string>
     <string name="display_memory">Пам\'ять</string>
 
     <string name="tooltip_enterText">Введіть текст</string>
@@ -71,6 +72,8 @@
 
     <!--Converter-->
 
+    <string name="converter_unitInputHint">Введіть значення</string>
+    <string name="converter_header">Перетворювачі одиниць виміру</string>
     <string name="converter_weight">Вага</string>
     <string name="converter_length">Довжина</string>
     <string name="converter_time">Час</string>
@@ -81,5 +84,6 @@
     <string name="converter_frequency">Частота</string>
     <string name="converter_data">Об\'єм даних</string>
     <string name="updateBoard_summary">Натисність щоб відобразити вікно</string>
+    <string name="converter_category_general">Загальне</string>
 
 </resources>

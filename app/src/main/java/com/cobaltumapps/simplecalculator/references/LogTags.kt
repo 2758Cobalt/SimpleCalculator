@@ -5,4 +5,8 @@ object LogTags {
 
 
     const val LOG_HISTORY = "SC_History"
+    const val LOG_EXCEPTIONS = "SC_Exceptions"
+
+    // Services
+    const val LOG_VIBRATOR_SERVICE = "SC_VibratorService"
 }

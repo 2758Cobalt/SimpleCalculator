@@ -20,6 +20,7 @@
     <string name="symbolRad">RAD</string>
     <string name="symbolDeg">DEG</string>
 
+    <string name="drawerMenuButton_description">Navigationsmenü öffnen</string>
     <string name="display_memory">Speicher</string>
 
     <string name="tooltip_enterText">Text eingeben</string>
@@ -85,6 +86,8 @@
 
     <!--Converters-->
 
+    <string name="converter_unitInputHint">Einen Wert eingeben</string>
+    <string name="converter_header">Einheitsumrichter</string>
     <string name="converter_weight">Gewicht</string>
     <string name="converter_length">Länge</string>
     <string name="converter_time">Zeit</string>
@@ -95,5 +98,6 @@
     <string name="converter_frequency">Frequenz</string>
     <string name="converter_data">Datenmenge</string>
     <string name="updateBoard_summary">Zum Anzeigen der Tafel anklicken</string>
+    <string name="converter_category_general">Allgemein</string>
 
 </resources>

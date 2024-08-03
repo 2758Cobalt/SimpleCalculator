@@ -17,7 +17,6 @@
         tools:targetApi="33">
         <activity
             android:name=".onBoarding.OnBoardingActivity"
-            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activities.ConverterActivity"

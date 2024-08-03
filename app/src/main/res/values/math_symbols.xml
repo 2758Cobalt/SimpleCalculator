@@ -19,6 +19,7 @@
     <string name="symbolC" translatable="false">C</string>
     <string name="symbolEqual" translatable="false">&#61;</string>
     <string name="symbolPercent" translatable="false">&#37;</string>
+    <string name="symbolEnter" translatable="false">Enter\n&#8626;</string>
 
     <string name="symbolNum00" translatable="false">&#48;&#48;</string>
     <string name="symbolNum0" translatable="false">&#48;</string>

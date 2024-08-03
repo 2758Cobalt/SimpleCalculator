@@ -4,93 +4,95 @@
     <!--Вес / Weight-->
 
     <string-array name="weight_unit">
-        <item>Микрограмм</item>
-        <item>Миллиграмм</item>
-        <item>Грамм</item>
-        <item>Килограмм</item>
-        <item>Тонна</item>
-        <item>Килотонна</item>
-        <item>Мегатонна</item>
+        <item>Microgram</item>
+        <item>Milligram</item>
+        <item>Gram</item>
+        <item>Kilogram</item>
+        <item>Tonne</item>
+        <item>Kiloton</item>
+        <item>Megaton</item>
     </string-array>
 
     <string-array name="time_unit">
-        <item>Пикосекунды</item>
-        <item>Наносекунды</item>
-        <item>Миллисекунды</item>
-        <item>Секунды</item>
-        <item>Минуты</item>
-        <item>Часы</item>
-        <item>Дни</item>
-        <item>Недели</item>
-        <item>Года</item>
-        <item>Века</item>
+        <item>Nanoseconds</item>
+        <item>Microseconds</item>
+        <item>Milliseconds</item>
+        <item>Seconds</item>
+        <item>Minutes</item>
+        <item>Hours</item>
+        <item>Days</item>
+        <item>Weeks</item>
+        <item>Months</item>
+        <item>Years</item>
+        <item>Centuries</item>
     </string-array>
 
     <string-array name="length_unit">
-        <item>Нанометры</item>
-        <item>Микрометры</item>
-        <item>Миллиметры</item>
-        <item>Сантиметры</item>
-        <item>Дециметры</item>
-        <item>Метры</item>
-        <item>Километры</item>
+        <item>Nanometers</item>
+        <item>Micrometers</item>
+        <item>Millimeters</item>
+        <item>Centimeters</item>
+        <item>Decimeters</item>
+        <item>Meters</item>
+        <item>Kilometers</item>
     </string-array>
 
     <string-array name="speed_unit">
-        <item>километры в час</item>
-        <item>миля в час</item>
-        <item>километры в секунду</item>
-        <item>миля в секунду</item>
-        <item>метры в секунду</item>
-        <item>узлы</item>
-        <item>Скрость света</item>
+        <item>Kilometers per hour</item>
+        <item>Kilometers per second</item>
+        <item>Miles per hour</item>
+        <item>Miles per second</item>
+        <item>Meters per second</item>
+        <item>Knots</item>
+        <item>Speed of Light</item>
     </string-array>
 
     <string-array name="temperature_unit">
-        <item>Цельсий</item>
-        <item>Фаренгейт</item>
-        <item>Кельвин</item>
-        <item>Ранкин</item>
-        <item>Реомюр</item>
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+        <item>Kelvin</item>
+        <item>Rankine</item>
+        <item>Reaumur</item>
     </string-array>
 
     <string-array name="volume_unit">
-        <item>Миллилитры</item>
-        <item>Литры</item>
-        <item>Кубические метры</item>
-        <item>Кубические футы</item>
-        <item>Кубические дюймы</item>
-        <item>Американские галлоны</item>
+        <item>Milliliters</item>
+        <item>Liters</item>
+        <item>Cubic meters</item>
+        <item>Cubic feet</item>
+        <item>Cubic inches</item>
+        <item>US gallons</item>
     </string-array>
 
     <string-array name="area_unit">
-        <item>Нанометр&#178;</item>
-        <item>Микрометр&#178;</item>
-        <item>Миллиметр&#178;</item>
-        <item>Сантиметр&#178;</item>
-        <item>Дециметр&#178;</item>
-        <item>Метр&#178;</item>
-        <item>Декаметр&#178;</item>
-        <item>Километр&#178;</item>
+        <item>Nanometers&#178;</item>
+        <item>Micrometers&#178;</item>
+        <item>Millimeters&#178;</item>
+        <item>Centimeters&#178;</item>
+        <item>Decimeters&#178;</item>
+        <item>Meters&#178;</item>
+        <item>Dekameters&#178;</item>
+        <item>Kilometers&#178;</item>
     </string-array>
 
     <string-array name="frequency_unit">
-        <item>Герц</item>
-        <item>Килогерц</item>
-        <item>Мегагерц</item>
-        <item>Гигагерц</item>
+        <item>Hertz</item>
+        <item>Kilohertz</item>
+        <item>Megahertz</item>
+        <item>Gigahertz</item>
     </string-array>
 
     <string-array name="data_unit">
-        <item>Бит</item>
-        <item>Байт</item>
-        <item>Килобайт</item>
-        <item>Мегабайт</item>
-        <item>Гигабайт</item>
-        <item>Петабайт</item>
-        <item>Терабайт</item>
-        <item>Эксабайт</item>
-        <item>Зеттабайт</item>
-        <item>Йоттабайт</item>
+        <item>Bit</item>
+        <item>Byte</item>
+        <item>Kilobyte</item>
+        <item>Megabyte</item>
+        <item>Gigabyte</item>
+        <item>Terabyte</item>
+        <item>Petabyte</item>
+        <item>Exabyte</item>
+        <item>Zettabyte</item>
+        <item>Yottabyte</item>
     </string-array>
+
 </resources>

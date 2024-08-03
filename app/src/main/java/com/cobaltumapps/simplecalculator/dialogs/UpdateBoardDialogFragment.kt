@@ -41,7 +41,7 @@ class UpdateBoardDialogFragment: DialogFragment() {
         updateNotes = view.findViewById(R.id.updateNotes)
 
         if (dialog != null && dialog!!.window != null) {
-            dialog!!.window!!.setBackgroundDrawableResource(R.drawable.updateboard_dialog)
+            dialog!!.window!!.setBackgroundDrawableResource(R.drawable.shape_gradient_dialog)
         }
 
         updateNotes.text = ""

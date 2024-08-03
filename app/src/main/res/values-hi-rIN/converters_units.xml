@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="weight_unit">
+        <item>माइक्रोग्राम</item>
+        <item>मिलीग्राम</item>
+        <item>ग्राम</item>
+        <item>किलोग्राम</item>
+        <item>टन</item>
+        <item>किलोटन</item>
+        <item>मेगाटन</item>
+    </string-array>
+
+    <string-array name="time_unit">
+        <item>नैनोसेकंड</item>
+        <item>माइक्रोसेकंड</item>
+        <item>मिलीसेकंड</item>
+        <item>सेकंड</item>
+        <item>मिनट</item>
+        <item>घंटे</item>
+        <item>दिन</item>
+        <item>सप्ताह</item>
+        <item>महीने</item>
+        <item>साल</item>
+        <item>शताब्दी</item>
+    </string-array>
+
+    <string-array name="length_unit">
+        <item>नैनोमीटर</item>
+        <item>माइक्रोमीटर</item>
+        <item>मिलीमीटर</item>
+        <item>सेंटीमीटर</item>
+        <item>डेसीमीटर</item>
+        <item>मीटर</item>
+        <item>किलोमीटर</item>
+    </string-array>
+
+    <string-array name="speed_unit">
+        <item>किलोमीटर प्रति घंटा</item>
+        <item>किलोमीटर प्रति सेकंड</item>
+        <item>मील प्रति घंटा</item>
+        <item>मील प्रति सेकंड</item>
+        <item>मीटर प्रति सेकंड</item>
+        <item>गाँठ</item>
+        <item>प्रकाश की गति</item>
+    </string-array>
+
+    <string-array name="temperature_unit">
+        <item>सेल्सियस</item>
+        <item>फारेनहाइट</item>
+        <item>केल्विन</item>
+        <item>रैंकिन</item>
+        <item>रिओम्यूर</item>
+    </string-array>
+
+    <string-array name="volume_unit">
+        <item>मिलीलीटर</item>
+        <item>लीटर</item>
+        <item>घन मीटर</item>
+        <item>घन फुट</item>
+        <item>घन इंच</item>
+        <item>अमेरिकी गैलन</item>
+    </string-array>
+
+    <string-array name="area_unit">
+        <item>वर्ग नैनोमीटर</item>
+        <item>वर्ग माइक्रोमीटर</item>
+        <item>वर्ग मिलीमीटर</item>
+        <item>वर्ग सेंटीमीटर</item>
+        <item>वर्ग डेसीमीटर</item>
+        <item>वर्ग मीटर</item>
+        <item>वर्ग डेकामिटर</item>
+        <item>वर्ग किलोमीटर</item>
+    </string-array>
+
+    <string-array name="frequency_unit">
+        <item>हर्ट्ज</item>
+        <item>किलोहर्ट्ज</item>
+        <item>मेगाहर्ट्ज</item>
+        <item>गिगाहर्ट्ज</item>
+    </string-array>
+
+    <string-array name="data_unit">
+        <item>बिट</item>
+        <item>बाइट</item>
+        <item>किलोबाइट</item>
+        <item>मेगाबाइट</item>
+        <item>गीगाबाइट</item>
+        <item>टेरेबाइट</item>
+        <item>पेटाबाइट</item>
+        <item>एग्जाबाइट</item>
+        <item>ज़ेटाबाइट</item>
+        <item>योट्टाबाइट</item>
+    </string-array>
+
+</resources>

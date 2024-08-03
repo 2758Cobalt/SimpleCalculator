@@ -5,4 +5,12 @@ interface NumpadListener{
     fun onClickPointButton()
     fun onClickAllClearButton()
     fun onClickBackSpaceButton()
+    fun onClickEnterButton()
+}
+
+// Расширяет базовый интерфейс
+interface AdvancedNumpadListener: NumpadListener{
+    fun onClickMemorySave()
+    fun onClickMemoryRead()
+    fun onClickMemoryClear()
 }

@@ -22,4 +22,10 @@ object SharedKeys{
     const val lastExpressionKey = "key_lastExpression"
     const val resultExpressionKey = "key_resultExpression"
     const val inputExpressionKey = "key_inputExpression"
+
+}
+
+object IntentKeys{
+    const val memoryKey = "key_memoryManagerValue"
+    const val vibrationBlockKey = "key_vibrationBlocked"
 }

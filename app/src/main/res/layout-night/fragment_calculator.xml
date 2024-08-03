@@ -29,7 +29,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/contentDescription_ClearAll"
             android:elevation="4dp"
-            android:src="@drawable/baseline_delete_outline_32"
+            android:src="@drawable/ic_action_delete"
             app:tint="@color/tomato" />
         <ImageView
             android:id="@+id/buttonSettingsFullscreen"
@@ -39,7 +39,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/contentDescription_settings"
             android:elevation="4dp"
-            android:src="@drawable/baseline_settings_24"
+            android:src="@drawable/ic_setting"
             app:tint="@color/orange" />
     </LinearLayout>
 
@@ -94,7 +94,7 @@
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/buttonOptions"
-        app:layout_constraintStart_toEndOf="@+id/buttonMiniMode"
+        app:layout_constraintStart_toEndOf="@+id/buttonConverters"
         app:layout_constraintTop_toBottomOf="@+id/miniModeGuidLine"
         tools:ignore="TextContrastCheck"
         tools:targetApi="o" />
@@ -107,22 +107,22 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/preference_miniModeIndicate"
         android:rotation="-45"
-        android:src="@drawable/baseline_unfold_less_32"
-        app:layout_constraintStart_toStartOf="@+id/displayCard"
-        app:layout_constraintTop_toTopOf="@+id/miniModeGuidLine"/>
+        android:src="@drawable/ic_numpad_reduce"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonConverters"
+        app:layout_constraintStart_toEndOf="@+id/buttonConverters"
+        app:layout_constraintTop_toTopOf="@+id/buttonConverters"/>
 
     <ImageView
         android:id="@+id/buttonConverters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:visibility="visible"
+        android:layout_marginStart="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Converters"
-        android:elevation="5dp"
-        android:src="@drawable/baseline_backup_table_24"
-        app:layout_constraintBottom_toBottomOf="@+id/displayCard"
-        app:layout_constraintStart_toStartOf="@+id/displayCard" />
+        android:src="@drawable/ic_navigate_converter"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/displayCard"
+        app:layout_constraintTop_toTopOf="@+id/miniModeGuidLine" />
 
     <ImageView
         android:id="@+id/buttonOptions"
@@ -131,7 +131,7 @@
         android:layout_marginEnd="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/contentDescription_settings"
-        android:src="@drawable/baseline_settings_24"
+        android:src="@drawable/ic_setting"
         app:layout_constraintEnd_toEndOf="@+id/displayCard"
         app:layout_constraintTop_toTopOf="@+id/miniModeGuidLine" />
 
@@ -142,7 +142,7 @@
         android:layout_marginEnd="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/contentDescription_backspace"
-        android:src="@drawable/baseline_backspace_32"
+        android:src="@drawable/ic_action_backspace"
         app:layout_constraintBottom_toBottomOf="@+id/buttonOptions"
         app:layout_constraintEnd_toStartOf="@+id/buttonOptions"
         app:layout_constraintTop_toTopOf="@+id/buttonOptions" />

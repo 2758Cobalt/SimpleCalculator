@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="weight_unit">
+        <item>Mikrogram</item>
+        <item>Miligram</item>
+        <item>Gram</item>
+        <item>Kilogram</item>
+        <item>Tona</item>
+        <item>Kilotona</item>
+        <item>Megatona</item>
+    </string-array>
+
+    <string-array name="time_unit">
+        <item>Nanosekunder</item>
+        <item>Mikrosekunder</item>
+        <item>Millisekunder</item>
+        <item>Sekunder</item>
+        <item>Minuter</item>
+        <item>Timme</item>
+        <item>Dagar</item>
+        <item>Veckor</item>
+        <item>Månader</item>
+        <item>År</item>
+        <item>Åldrar</item>
+    </string-array>
+
+    <string-array name="length_unit">
+        <item>Nanometry</item>
+        <item>Mikrometry</item>
+        <item>Milimetry</item>
+        <item>Centymetry</item>
+        <item>Dekametry</item>
+        <item>Metry</item>
+        <item>Kilometry</item>
+    </string-array>
+
+    <string-array name="speed_unit">
+        <item>Kilometry na godzinę</item>
+        <item>Kilometry na sekundę</item>
+        <item>Mile na godzinę</item>
+        <item>Mile na sekundę</item>
+        <item>Metry na sekundę</item>
+        <item>Węzły</item>
+        <item>Prędkość światła</item>
+    </string-array>
+
+    <string-array name="temperature_unit">
+        <item>Celsjusz</item>
+        <item>Fahrenheit</item>
+        <item>Kelwin</item>
+        <item>Rankine</item>
+        <item>Reaumur</item>
+    </string-array>
+
+    <string-array name="volume_unit">
+        <item>Mililitry</item>
+        <item>Litry</item>
+        <item>Metry sześcienne</item>
+        <item>Stopy sześcienne</item>
+        <item>Cale sześcienne</item>
+        <item>Galony amerykańskie</item>
+    </string-array>
+
+    <string-array name="area_unit">
+        <item>Nanometr&#178;</item>
+        <item>Mikrometr&#178;</item>
+        <item>Milimetr&#178;</item>
+        <item>Centymetr&#178;</item>
+        <item>Dekametr&#178;</item>
+        <item>Metr&#178;</item>
+        <item>Decametr&#178;</item>
+        <item>Kilometr&#178;</item>
+    </string-array>
+
+    <string-array name="frequency_unit">
+        <item>Herc</item>
+        <item>Kiloherc</item>
+        <item>Megaherc</item>
+        <item>Gigaherc</item>
+    </string-array>
+
+    <string-array name="data_unit">
+        <item>Bit</item>
+        <item>Bajt</item>
+        <item>Kilobajt</item>
+        <item>Megabajt</item>
+        <item>Gigabajt</item>
+        <item>Terabajt</item>
+        <item>Petabajt</item>
+        <item>Eksabajt</item>
+        <item>Zettabajt</item>
+        <item>Jottabajt</item>
+    </string-array>
+
+</resources>

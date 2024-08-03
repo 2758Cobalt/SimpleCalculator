@@ -20,6 +20,7 @@
     <string name="symbolRad">RAD</string>
     <string name="symbolDeg">STOPNIE</string>
 
+    <string name="drawerMenuButton_description">Otwórz menu nawigacji</string>
     <string name="display_memory">Pamięć</string>
 
     <string name="tooltip_enterText">Wprowadź tekst</string>
@@ -79,6 +80,8 @@
     <string name="updateBoard_title">Co nowego</string>
     <string name="updateBoard_appVersion">Wersja aplikacji</string>
 
+    <string name="converter_unitInputHint">Wprowadź wartość</string>
+    <string name="converter_header">Konwertery jednostek</string>
     <string name="converter_weight">Waga</string>
     <string name="converter_length">Długość</string>
     <string name="converter_time">Czas</string>
@@ -89,6 +92,7 @@
     <string name="converter_frequency">Częstotliwość</string>
     <string name="converter_data">Dane</string>
     <string name="updateBoard_summary">Kliknij, aby wyświetlić planszę</string>
+    <string name="converter_category_general">Ogólny</string>
 
 
 </resources>

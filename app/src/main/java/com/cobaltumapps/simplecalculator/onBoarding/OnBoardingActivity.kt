@@ -10,9 +10,11 @@ class OnBoardingActivity : AppCompatActivity() {
     private lateinit var nextButton: Button
     private lateinit var skipButton: Button
 
+    private lateinit var viewPager2: ViewPager2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_get_started)
+        setContentView(R.layout.activity_onboarding)
 
         var pageList: List<ViewPagerFragment> = listOf()
 
@@ -44,7 +46,7 @@ class OnBoardingActivity : AppCompatActivity() {
         nextButton = findViewById(R.id.nextButton)
         skipButton = findViewById(R.id.skipButton)
 
-        val viewPager2 = findViewById<ViewPager2>(R.id.getStartedPlace)
+        viewPager2 = findViewById(R.id.getStartedPlace)
 
         val adapter = ViewPagerAdapter(pageList,supportFragmentManager,lifecycle)
         viewPager2.adapter = adapter
@@ -64,4 +66,5 @@ class OnBoardingActivity : AppCompatActivity() {
         skipButton.setOnClickListener { finish() }
 
     }
+
 }

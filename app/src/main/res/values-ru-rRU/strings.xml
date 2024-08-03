@@ -13,6 +13,7 @@
 
     <string name="symbolRad">РАД</string>
     <string name="symbolDeg">ГРАД</string>
+    <string name="drawerMenuButton_description">Открыть меню навигации</string>
     <string name="display_memory">Память</string>
     <string name="tooltip_enterText">Введите текст</string>
     <string name="editText_enterNum">Введите число</string>
@@ -47,6 +48,8 @@
     <string name="buttonSkip">Пропустить</string>
     <string name="updateBoard_title">Что нового</string>
     <string name="updateBoard_appVersion">Последняя версия</string>
+    <string name="converter_unitInputHint">Введите значение</string>
+    <string name="converter_header">Конвертеры единиц измерения</string>
     <string name="converter_weight">Вес</string>
     <string name="converter_length">Длина</string>
     <string name="converter_time">Время</string>
@@ -64,5 +67,6 @@
     <string name="navigation_drawer_close">Закрыть меню</string>
     <string name="action_settings">Настройки</string>
     <string name="updateBoard_summary">Нажмите чтобы отобразить окно</string>
+    <string name="converter_category_general">Общее</string>
 
 </resources>

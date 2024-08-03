@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">Simple Calculator</string>
 
+    <string name="labelCalculator">Calculator</string>
+
     <string name="buttonOk">OK</string>
     <string name="buttonConfirm">Confirm</string>
     <string name="buttonApply">Apply</string>
@@ -11,9 +13,7 @@
     <string name="buttonSkip">Skip</string>
     <string name="buttonExit">Exit</string>
 
-    <string name="labelCalculator">Calculator</string>
 
-    <!--com.cobaltumapps.simplecalculator.system.Calculator-->
     <string name="text_degrees">Degrees</string>
     <string name="text_radians">Radians</string>
 
@@ -22,15 +22,10 @@
     <string name="symbolDeg">DEG</string>
 
 
-    <string name="converter_UnitInputHint">Enter a value</string>
-    <string name="converter_UnitTypeHint">Select a unit of measurement</string>
-
-
     <string name="drawerMenuButton_description">Open navigation menu</string>
 
     <string name="display_memory">Memory</string>
 
-    <!--Test previous-->
     <string name="sampleButton" translatable="false">SampleButton</string>
     <string name="sampleText" translatable="false">SampleText</string>
 
@@ -81,7 +76,7 @@
     <string name="system_restartMessage">Restart app for apply changes</string>
 
 
-    <string name="system_copyToClipboard">Copyed to clipboard</string>
+    <string name="system_copyToClipboard">Copied to clipboard</string>
 
 
     <string name="contentDescription_backspace">Back space</string>

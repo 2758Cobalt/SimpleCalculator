@@ -20,6 +20,7 @@
     <string name="symbolRad">RAD</string>
     <string name="symbolDeg">DEG</string>
 
+    <string name="drawerMenuButton_description">Öppna navigeringsmenyn</string>
     <string name="display_memory">Minne</string>
 
     <string name="tooltip_enterText">Skriv in text</string>
@@ -76,6 +77,8 @@
 
     <!--Converters-->
 
+    <string name="converter_unitInputHint">Ange ett värde</string>
+    <string name="converter_header">Enhetsomvandlare</string>
     <string name="converter_weight">Vikt</string>
     <string name="converter_length">Längd</string>
     <string name="converter_time">Tid</string>
@@ -86,5 +89,6 @@
     <string name="converter_frequency">Frekvens</string>
     <string name="converter_data">Datastorlek</string>
     <string name="updateBoard_summary">Klicka för att visa tavlan</string>
+    <string name="converter_category_general">Allmän</string>
 
 </resources>
