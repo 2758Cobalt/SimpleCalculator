@@ -440,12 +440,14 @@ class CalculatorFragment: Fragment() {
             calculateResult = calculateAction()
 
             // Если результат вычислений - бесконечность
-            if (calculateResult.isInfinite())
+            if (calculateResult.isInfinite()){
                 displayFragment.setResultField(resources.getString(R.string.error_infinite))
+            }
 
             // Если результат вычислений - не число
-            if (calculateResult.isNaN())
+            if (calculateResult.isNaN()){
                 displayFragment.setResultField(resources.getString(R.string.error_nan))
+            }
 
             else{
                 // Результат
@@ -529,9 +531,10 @@ class CalculatorFragment: Fragment() {
     fun memorySave(){
         if (expressionResult.isNotEmpty()){
 
-            if (expressionResult.contains('.')) memory.save(expressionResult.toDouble())
-            else memory.save(expressionResult.toInt())
-
+            if (expressionResult.isDouble())
+                memory.save(expressionResult.toDouble())
+            if (expressionResult.isInt())
+                memory.save(expressionResult.toInt())
             Log.i(LOG_TAG_CALCULATOR,expressionResult)
 
             updateMemoryField()
@@ -553,20 +556,23 @@ class CalculatorFragment: Fragment() {
     }
 
     fun memoryResultAdd(){
-        memory.addToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
+        memory.addToResult(expressionResult.toDouble()); Log.i("DebugTag","yes") // Добавляет новую запись к старой записи
         updateMemoryField()
     }
 
     fun memoryResultSub(){
-        memory.subToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
+        if (expressionResult.isDouble() || expressionResult.isInt())
+            memory.subToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
         updateMemoryField()
     }
     fun memoryResultMul(){
-        memory.mulToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
+        if (expressionResult.isDouble() || expressionResult.isInt())
+            memory.mulToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
         updateMemoryField()
     }
     fun memoryResultDiv(){
-        memory.divToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
+        if (expressionResult.isDouble() || expressionResult.isInt())
+            memory.divToResult(expressionResult.toDouble()) // Добавляет новую запись к старой записи
         updateMemoryField()
     }
 
@@ -639,4 +645,24 @@ class CalculatorFragment: Fragment() {
         }
     }
 
+    fun checkAndConvert(value: String): Number? {
+        return when {
+            value.isDouble() -> value.toDouble()
+            value.isInt() -> value.toInt()
+            else -> null
+        }
+    }
+
+    fun String.isDouble(): Boolean {
+        return this.toDoubleOrNull() != null
+    }
+
+    fun String.isInfinite(): Boolean {
+        return (this.isDouble()) &&
+        (this.toDouble() != Double.POSITIVE_INFINITY || this.toDouble() != Double.NEGATIVE_INFINITY)
+    }
+
+    fun String.isInt(): Boolean {
+        return this.toIntOrNull() != null
+    }
 }
