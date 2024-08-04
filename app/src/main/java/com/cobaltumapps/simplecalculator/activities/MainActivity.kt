@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.cobaltumapps.simplecalculator.R
-import com.cobaltumapps.simplecalculator.fragments.calculator.CalculatorFragment
 import com.cobaltumapps.simplecalculator.onBoarding.OnBoardingActivity
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.v15.calculator.host.CalculatorFragmentN
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
@@ -36,7 +36,7 @@ class MainActivity: AppCompatActivity() {
         }
     }
 
-    private val calculator: CalculatorFragment = CalculatorFragment()
+    private val calculator: CalculatorFragmentN = CalculatorFragmentN()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +61,8 @@ class MainActivity: AppCompatActivity() {
         }
         else
             startActivity(Intent(this@MainActivity, OnBoardingActivity::class.java))
+
+
 
     }
 
@@ -89,7 +91,7 @@ class MainActivity: AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        calculator.saveData()
+        //calculator.saveData()
         super.onDestroy()
     }
 }

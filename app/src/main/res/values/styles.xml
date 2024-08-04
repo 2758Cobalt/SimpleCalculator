@@ -16,4 +16,50 @@
         <item name="android:background">@drawable/bg_theme</item>
     </style>
 
+    <style name="numpad_general" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+
+        <item name="android:stateListAnimator">@null</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+
+
+    <style name="numpad_primaryButtons_n" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">8dp</item>
+
+        <item name="android:stateListAnimator">@null</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+
+
+        <item name="android:backgroundTint">#fff3e0</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="rippleColor">@color/theme_primary</item>
+
+        <item name="cornerRadius">24dip</item>
+
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMaxTextSize">16dp</item>
+        <item name="autoSizeMinTextSize">6dp</item>
+        <item name="autoSizeStepGranularity">2dp</item>
+    </style>
+
+    <style name="numpad_secondaryButtons_n" parent="numpad_primaryButtons_n">
+        <item name="android:backgroundTint">#ffd28b</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="rippleColor">@color/theme_accent</item>
+    </style>
+
+    <style name="numpad_operatorButtons_n" parent="numpad_secondaryButtons_n">
+        <item name="android:backgroundTint">#ffa425</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="rippleColor">@color/white</item>
+    </style>
+
 </resources>
