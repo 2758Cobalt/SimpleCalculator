@@ -95,4 +95,6 @@
 
     <string name="updateBoard_summary">Click to show board</string>
 
+    <!-- Display - memory -->
+    <string name="display_memory_n" translatable="false">M: %s</string>
 </resources>
