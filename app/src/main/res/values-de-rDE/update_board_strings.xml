@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="updateBoard_news">
-        <item>Einheitenumrechner hinzugefügt</item>
-        <item>Einige Darstellungsprobleme mit großem Text behoben</item>
-        <item>Fehler auf der Startseite behoben, die zum Absturz der App führten</item>
-
+        <item>Bei der Umrechnung einiger Werte wurden Überarbeitungen vorgenommen</item>
     </string-array>
 
 </resources>

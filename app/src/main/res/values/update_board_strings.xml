@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="updateBoard_news">
-        <item>Added unit of measure converters</item>
-        <item>Fixed some problems with displaying large text</item>
-        <item>Bugs on the start page that caused the application to crash have been fixed</item>
+        <item>Revisions were made to the conversion of some values</item>
     </string-array>
 </resources>

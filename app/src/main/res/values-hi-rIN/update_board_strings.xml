@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="updateBoard_news">
-        <item>माप इकाइयों के कन्वर्टर जोड़े गए</item>
-        <item>बड़े टेक्स्ट के प्रदर्शन से संबंधित कुछ समस्याओं को ठीक किया गया</item>
-        <item>स्टार्ट पेज पर त्रुटियों को ठीक किया गया, जिससे ऐप क्रैश हो रही थी</item>
-
+        <item>कुछ मूल्यों के रूपांतरण में सुधार किए गए हैं</item>
     </string-array>
 
 </resources>

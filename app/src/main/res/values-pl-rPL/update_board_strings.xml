@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="updateBoard_news">
-        <item>Dodano konwertery jednostek miary</item>
-        <item>Naprawiono niektóre problemy z wyświetlaniem dużego tekstu</item>
-        <item>Naprawiono błędy na stronie startowej, które powodowały awarie aplikacji</item>
-
+        <item>Wprowadzono poprawki do konwersji niektórych wartości</item>
     </string-array>
 
 </resources>
