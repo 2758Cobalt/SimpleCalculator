@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.v15.calculator
+package com.cobaltumapps.simplecalculator.v15.calculator.display
 
 import android.os.Bundle
 import android.view.LayoutInflater
