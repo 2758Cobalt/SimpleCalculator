@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/historyContainer"
+    android:layout_width="match_parent"
+    android:layout_height="96dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/historyCard"
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="4dp">
+
+        <TextView
+            android:id="@+id/historyExpressionField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:text="512 x 5 / ( 2 + 15 )"
+            android:gravity="end|center_vertical"
+            android:textSize="18dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</LinearLayout>

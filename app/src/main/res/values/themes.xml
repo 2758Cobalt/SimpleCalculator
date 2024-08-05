@@ -1,26 +1,25 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="MyTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="MyTheme" parent="AppTheme">
 
-        <item name="colorPrimary">@color/theme_primary</item>
-        <item name="colorPrimaryVariant">@color/theme_primaryVariant</item>
-        <item name="colorOnPrimary">@color/light_displayOrange</item>
+<!--        <item name="colorPrimary">@color/theme_primary</item>-->
+<!--        <item name="colorPrimaryVariant">@color/theme_primaryVariant</item>-->
+<!--        <item name="colorOnPrimary">@color/light_displayOrange</item>-->
 
-        <item name="colorSecondary">@color/theme_secondary</item>
+<!--        <item name="colorSecondary">@color/theme_secondary</item>-->
 
-        <item name="colorAccent">@color/theme_accent</item>
-        <item name="colorSurface">@color/white</item>
-        <item name="colorControlHighlight">@color/theme_primary</item>
-        <item name="colorControlActivated">@color/orange</item>
+<!--        <item name="colorAccent">@color/theme_accent</item>-->
+<!--        <item name="colorSurface">@color/white</item>-->
+<!--        <item name="colorControlHighlight">@color/theme_primary</item>-->
+<!--        <item name="colorControlActivated">@color/orange</item>-->
 
 
-        <item name="android:statusBarColor">#988F89</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/md_theme_surfaceVariant</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <!-- Google Material 3 -->
-    <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginVertical="8dp"
@@ -32,22 +33,24 @@
 
                 <TextView
                     android:id="@+id/displayMemoryField"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_gray_box"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:paddingHorizontal="16dp"
+                    android:layout_marginEnd="32dp"
                     android:text="@string/display_memory_n"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/display_angle_mode_field"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/display_angle_mode_field"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="end"
-                    android:background="@drawable/shape_gray_box"
                     android:paddingHorizontal="16dp"
                     android:text="RAD"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>

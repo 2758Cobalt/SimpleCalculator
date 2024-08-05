@@ -1,5 +1,7 @@
 package com.cobaltumapps.simplecalculator.references
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.view.View
@@ -16,10 +18,25 @@ object Animations {
         animObject.startAnimation(animation)
     }
 
-    fun animatePropertyChange(view: View, property: String, startValue: Float, endValue: Float, duration: Long, interpolator: Interpolator?) {
+    fun animatePropertyChange(
+        view: View,
+        property: String,
+        startValue: Float,
+        endValue: Float,
+        duration: Long,
+        interpolator: Interpolator? = null,
+        onEnd: (() -> Unit)? = null
+    ) {
         val animator = ObjectAnimator.ofFloat(view, property, startValue, endValue)
         animator.duration = duration
         interpolator?.let { animator.interpolator = it }
+
+        animator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                onEnd?.invoke()
+            }
+        })
+
         animator.start()
     }
 
