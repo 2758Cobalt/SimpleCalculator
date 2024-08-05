@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="16dp"
+    android:backgroundTint="?attr/colorPrimary"
+    android:gravity="top">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="64dp"
+            android:layout_height="4dp"
+            android:layout_marginVertical="12dp"
+            android:alpha="0.6"
+            android:layout_gravity="center_horizontal|top"
+            android:background="@drawable/shape_white_box"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolMemorySave"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolMemoryRead"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolMemoryClear"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolMemoryAdd"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolSqrt"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolFactorial"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolInvert"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolMemorySub"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolSin"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolCos"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolLog"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolMemoryMul"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolTan"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolCot"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolLn"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolMemoryDiv"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolExp"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolPI"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="|x|"/>
+
+            <TextView
+                style="@style/engineering_numpad_buttons"
+                android:text="@string/symbolRad"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
