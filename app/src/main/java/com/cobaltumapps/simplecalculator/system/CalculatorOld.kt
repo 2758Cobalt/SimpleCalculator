@@ -20,7 +20,7 @@ private const val cotSymbol = "cot"
 private const val logSymbol = "log"
 private const val lnSymbol = "ln"
 
-class Calculator(private val expression: String = "",private var trimRange: Int = 9,private var toRadians: Boolean = true) {
+open class CalculatorOld(private val expression: String = "", private var trimRange: Int = 9, private var toRadians: Boolean = true) {
 
     private var result: Double = 0.0 // Результат подсчёта
 

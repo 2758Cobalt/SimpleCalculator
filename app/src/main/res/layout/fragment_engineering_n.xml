@@ -1,138 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/Widget.Material3.CardView.Outlined"
     android:id="@+id/engineeringCard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/theme_primary"
+    android:layout_marginTop="8dp"
     android:layout_marginBottom="-16dp"
     app:cardCornerRadius="16dp"
     android:gravity="top">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <View
+            android:id="@+id/numpadEngSwipeView"
+            android:layout_width="32dp"
+            android:layout_height="2dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/numpad_sheet_n"
+            android:backgroundTint="@color/numpad_divider_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Group 1 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngMS"
+            style="@style/numpad_engineering"
             android:layout_width="64dp"
-            android:layout_height="4dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/white"
-            android:alpha="0.4"
-            android:layout_gravity="center_horizontal|top" />
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolMemorySave"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngMR"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngSwipeView" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolMemorySave"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngMR"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolMemoryRead"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngMC"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngMS"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngSwipeView" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolMemoryRead"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngMC"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolMemoryClear"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryAdd"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngMR"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngSwipeView" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolMemoryClear"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngMemoryAdd"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolMemoryAdd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngMC"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngSwipeView" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolMemoryAdd"/>
-        </LinearLayout>
+        <!-- Group 2 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngSqrt"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolSqrt"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngFactorial"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngMS" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolSqrt"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngFactorial"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolFactorial"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngInvert"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngSqrt"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngMR" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolFactorial"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngInvert"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolInvert"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngMemorySub"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngFactorial"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngMC" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolInvert"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngMemorySub"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/symbolMemorySub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngInvert"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryAdd" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolMemorySub"/>
-        </LinearLayout>
+        <!-- Group 3 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngSin"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolSin"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngCos"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngSqrt" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolSin"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngCos"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolCos"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngLog"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngSin"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngFactorial" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolCos"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngLog"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolLog"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryMul"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngCos"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngInvert" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolLog"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngMemoryMul"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/symbolMemoryMul"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngLog"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngMemorySub" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolMemoryMul"/>
-        </LinearLayout>
+        <!-- Group 3 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngTan"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolTan"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngCot"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngSin" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolTan"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngCot"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolCot"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngLn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngTan"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngCos" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolCot"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngLn"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolLn"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryDiv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngCot"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngLog" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolLn"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngMemoryDiv"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/symbolMemoryDiv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngLn"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryMul" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolMemoryDiv"/>
-        </LinearLayout>
+        <!-- Group 4 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngExp"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolExp"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngPi"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngTan" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolExp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngPi"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolPI"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngAbs"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngExp"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngCot" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolPI"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngAbs"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:text="@string/symbolAbs"
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngAngleType"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngPi"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngLn" />
 
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="|x|"/>
-
-            <TextView
-                style="@style/engineering_numpad_buttons"
-                android:text="@string/symbolRad"/>
-        </LinearLayout>
-    </LinearLayout>
-
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/numpadEngAngleType"
+            style="@style/numpad_engineering"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/symbolRad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngAbs"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryDiv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

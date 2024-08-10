@@ -5,31 +5,101 @@
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/displayHolder"
+        android:id="@+id/calculatorDisplayHolder"
         android:layout_width="match_parent"
-        android:layout_height="128dp"
+        android:layout_height="164dp"
         android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/calculatorNavigationLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/calculatorDisplayHolder"
+        app:layout_constraintStart_toStartOf="@+id/calculatorDisplayHolder"
+        app:layout_constraintTop_toBottomOf="@+id/calculatorDisplayHolder">
+
+        <ImageButton
+            android:id="@+id/calculatorConvertersIcon"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:contentDescription="Converters"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_navigate_converter" />
+
+        <ImageButton
+            android:id="@+id/calculatorMinimizeIcon"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:rotation="-45"
+            android:contentDescription="@string/preference_miniMode"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_numpad_reduce" />
+
+        <TextView
+            android:id="@+id/calculatorReduceTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:gravity="center"
+            android:alpha="0.7"
+            android:text="@string/preference_miniModeIndicate"
+            android:textSize="18dp" />
+
+        <ImageButton
+            android:id="@+id/calculatorBackSpaceIcon"
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:contentDescription="@string/contentDescription_backspace"
+            android:src="@drawable/ic_action_backspace" />
+
+        <ImageButton
+            android:id="@+id/calculatorSettingsIcon"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:contentDescription="@string/action_settings"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_setting" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calculatorRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="96dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/displayHolder"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculatorHistoryClearFab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculatorNavigationLayout" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:id="@+id/calculatorHistoryClearFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:elevation="2dp"
+        android:contentDescription="ClearHistory"
+        android:backgroundTint="@color/md_theme_errorContainer"
+        app:iconTint="@color/md_theme_error"
+        app:icon="@drawable/ic_clear_history"
         app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/numpadGuideLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
@@ -38,34 +108,29 @@
         android:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numpadGuideLine">
+        app:layout_constraintTop_toBottomOf="@+id/calculatorNavigationLayout"
+        app:layout_constraintVertical_bias="1.0">
 
-        <LinearLayout
-            android:id="@+id/numpadBottomSheet"
+        <FrameLayout
+            android:id="@+id/numpadHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:behavior_peekHeight="96dp"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-            <FrameLayout
-                android:id="@+id/numpadHolder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:elevation="2dp"
-                android:paddingBottom="24dp" />
-        </LinearLayout>
+            android:elevation="4dp"
+            android:paddingBottom="24dp"
+            app:behavior_peekHeight="32dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
 
         <FrameLayout
             android:id="@+id/engineeringNumpadHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:elevation="3dp"
+            android:elevation="5dp"
             android:paddingHorizontal="8dp"
             app:behavior_hideable="false"
             app:behavior_peekHeight="32dp"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"/>
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

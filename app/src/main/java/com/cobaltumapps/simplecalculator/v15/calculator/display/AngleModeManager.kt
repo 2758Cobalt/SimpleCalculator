@@ -1,15 +1,11 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.display
 
-class AngleModeManager {
-    // Класс, отвечающий за смену режима перевода углов
-    private enum class RadAngleMode {
-        DEG, RAD
-    }
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
-    fun setRadAngleMode(isEnabled: Boolean): String {
-        return when(isEnabled){
-            true -> RadAngleMode.RAD.toString()
-            false -> RadAngleMode.DEG.toString()
-        }
+// Класс, отвечающий за смену режима перевода углов
+class AngleModeManager {
+
+    fun setRadAngleMode(angleMode: AngleMode): String {
+        return angleMode.name
     }
 }

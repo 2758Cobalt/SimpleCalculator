@@ -12,7 +12,7 @@
 
     <string name="labelCalculator">Kalkylator</string>
 
-    <!--com.cobaltumapps.simplecalculator.system.Calculator-->
+    <!--com.cobaltumapps.simplecalculator.system.CalculatorOldOld-->
 
     <string name="text_degrees">Grader</string>
     <string name="text_radians">Radianer</string>

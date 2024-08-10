@@ -1,7 +1,8 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces
 
-interface MemoryOperations {
-    fun save(writtenValue: Number)
+
+interface MemoryCRUD {
+    fun save(value: Number)
     fun read(): Number
     fun clear()
 }

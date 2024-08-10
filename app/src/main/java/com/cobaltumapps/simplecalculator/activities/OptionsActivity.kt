@@ -41,7 +41,7 @@ class OptionsActivity : AppCompatActivity() {
 
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(ConstantsCalculator.privacyPolicyLink))
 
-            // com.cobaltumapps.simplecalculator.system.Calculator
+            // com.cobaltumapps.simplecalculator.system.CalculatorOld
             val autoSavePreference = findPreference<CheckBoxPreference>(PreferenceKeys.keyMemoryAutoSave) as CheckBoxPreference
             val saveLastCalculationPreference = findPreference<CheckBoxPreference>(PreferenceKeys.keySaveLastCalculation) as CheckBoxPreference
 

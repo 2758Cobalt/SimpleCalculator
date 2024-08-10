@@ -1,36 +1,35 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.memory
 
-import android.util.Log
-import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemoryOperations
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemoryCRUD
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemorySharedStorage
 
-open class MemoryLogger: MemoryOperations {
-    private var memoryListener: MemoryOperations? = null
-
-    fun setListener(newListener: MemoryOperations){
-        memoryListener = newListener
-    }
-
-    override fun save(writtenValue: Number) {
-        memoryListener.let {
-            Log.d(LOG_TAG, "New value is added to storage. Storage: $writtenValue")
-        }
+class MemoryLogger: MemoryCRUD, MemorySharedStorage {
+    override fun save(value: Number) {
+        TODO("Not yet implemented")
     }
 
     override fun read(): Number {
-        memoryListener.let {
-            Log.d(LOG_TAG, "Storage was read")
-        }
-        return -1
+        TODO("Not yet implemented")
     }
 
     override fun clear() {
-        memoryListener.let {
-            Log.d(LOG_TAG, "Storage is cleared")
-        }
+        TODO("Not yet implemented")
     }
 
-    companion object{
-        private const val LOG_TAG = "LogMemory"
+    override fun saveMemoryToStorage() {
+        TODO("Not yet implemented")
     }
+
+    override fun loadMemoryToStorage() {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateMemoryInStorage() {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeMemoryInStorage() {
+        TODO("Not yet implemented")
+    }
+
 }
-

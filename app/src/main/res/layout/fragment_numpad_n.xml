@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/numpad_sheet_n"
@@ -22,25 +23,25 @@
 
     <!-- First row -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadPercent"
+        android:id="@+id/numpadBrackets"
         android:layout_width="0dp"
         android:layout_height="0dp"
         style="@style/numpad_secondaryButtons_n"
-        android:text="@string/symbolPercent"
+        android:text="@string/symbolBrackets"
         app:layout_constraintBottom_toTopOf="@+id/numpadNum7"
-        app:layout_constraintEnd_toStartOf="@+id/numpadPower"
+        app:layout_constraintEnd_toStartOf="@+id/numpadPercent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadPower"
+        android:id="@+id/numpadPercent"
         style="@style/numpad_secondaryButtons_n"
-        android:text="@string/symbolPower"
+        android:text="@string/symbolPercent"
         app:layout_constraintBottom_toTopOf="@+id/numpadNum8"
         app:layout_constraintEnd_toStartOf="@+id/numpadAllClear"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadPercent"
+        app:layout_constraintStart_toEndOf="@+id/numpadBrackets"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
@@ -50,7 +51,7 @@
         app:layout_constraintBottom_toTopOf="@+id/numpadNum9"
         app:layout_constraintEnd_toStartOf="@+id/numpadDivide"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadPower"
+        app:layout_constraintStart_toEndOf="@+id/numpadPercent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
@@ -65,14 +66,14 @@
 
     <!-- Second row -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadNum7"
         style="@style/numpad_tertiaryButtons_n"
+        android:id="@+id/numpadNum7"
         android:text="@string/symbolNum7"
         app:layout_constraintBottom_toTopOf="@+id/numpadNum4"
         app:layout_constraintEnd_toStartOf="@+id/numpadNum8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numpadPercent" />
+        app:layout_constraintTop_toBottomOf="@+id/numpadBrackets" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadNum8"
@@ -82,7 +83,7 @@
         app:layout_constraintEnd_toStartOf="@+id/numpadNum9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadNum7"
-        app:layout_constraintTop_toBottomOf="@+id/numpadPower" />
+        app:layout_constraintTop_toBottomOf="@+id/numpadPercent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadNum9"

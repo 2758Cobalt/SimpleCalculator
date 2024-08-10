@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="numpad_primaryButtons_n" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">8dp</item>
+
+        <item name="android:stateListAnimator">@null</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+
+        <item name="android:backgroundTint">@color/md_theme_primaryContainer</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="rippleColor">@color/md_theme_primaryContainer</item>
+
+        <item name="cornerRadius">24dip</item>
+        <item name="android:elevation">2dp</item>
+
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="autoSizeMinTextSize">6dp</item>
+        <item name="autoSizeStepGranularity">2dp</item>
+    </style>
+
+    <style name="numpad_secondaryButtons_n" parent="numpad_primaryButtons_n">
+        <item name="android:backgroundTint">@color/md_theme_onPrimary</item>
+        <item name="android:textColor">@color/md_theme_onSecondaryContainer</item>
+    </style>
+
+    <style name="numpad_tertiaryButtons_n" parent="numpad_primaryButtons_n">
+        <item name="android:backgroundTint">@color/md_theme_secondaryContainer</item>
+        <item name="android:textColor">@color/md_theme_onTertiaryContainer</item>
+        <item name="rippleColor">@color/md_theme_primary</item>
+    </style>
+
+    <style name="numpad_engineering" parent="Widget.Material3.Button.TextButton">
+    </style>
+</resources>

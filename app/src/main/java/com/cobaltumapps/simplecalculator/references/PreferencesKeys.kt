@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.references
 
 object PreferenceKeys {
-    // com.cobaltumapps.simplecalculator.system.Calculator
+    // com.cobaltumapps.simplecalculator.system.CalculatorOld
     const val keyMemoryAutoSave = "key_memoryAutoSave"
     const val keySaveLastCalculation = "key_saveLastCalculation"
 

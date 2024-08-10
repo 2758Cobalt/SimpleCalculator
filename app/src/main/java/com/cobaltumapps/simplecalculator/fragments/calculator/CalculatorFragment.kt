@@ -30,7 +30,7 @@ import com.cobaltumapps.simplecalculator.references.LogTags
 import com.cobaltumapps.simplecalculator.references.PreferenceKeys
 import com.cobaltumapps.simplecalculator.references.SharedKeys
 import com.cobaltumapps.simplecalculator.services.VibratorService
-import com.cobaltumapps.simplecalculator.system.Calculator
+import com.cobaltumapps.simplecalculator.system.CalculatorOld
 import java.math.BigDecimal
 import kotlin.math.abs
 import kotlin.math.min
@@ -58,7 +58,7 @@ class CalculatorFragment: Fragment() {
 
     // References
     private val vibrator = VibratorService()
-    private val calculatorSystem: Calculator = Calculator() // Объект калькулятора
+    private val calculatorOldSystem: CalculatorOld = CalculatorOld() // Объект калькулятора
     private val displayFragment: DisplayFragment = DisplayFragment()                // Фрагмент дисплея калькулятора
     private val numpadFragment: NumpadFragment = NumpadFragment()                   // Фрагмент обычной клавиатуры
     private val engineeringFragment: EngineeringFragment = EngineeringFragment()    // Фрагмент научной клавиатуры
@@ -378,7 +378,7 @@ class CalculatorFragment: Fragment() {
     }
 
     fun invertAction() {
-        displayFragment.setInputField( calculatorSystem.closeExpressionString(displayFragment.getInputField() ))
+        displayFragment.setInputField( calculatorOldSystem.closeExpressionString(displayFragment.getInputField() ))
         calculateExpression()
     }
 
@@ -423,12 +423,12 @@ class CalculatorFragment: Fragment() {
         val expression = displayFragment.getInputField()
 
         // Объявление калькулятора и передача выражения
-        val calculator = Calculator(expression)
+        val calculatorOld = CalculatorOld(expression)
 
         // Вызов метода "calculate" и расчёт результата
-        calculator.calculate(true)
+        calculatorOld.calculate(true)
 
-        return calculator.getResult()
+        return calculatorOld.getResult()
     }
 
     fun calculateExpression() // Событие вычислена результата
@@ -620,7 +620,7 @@ class CalculatorFragment: Fragment() {
 
     fun setTypeAngle(isDegree: Boolean) {
         displayFragment.updateAngleType(isDegree)
-        calculatorSystem.setRadiansState(isDegree)
+        calculatorOldSystem.setRadiansState(isDegree)
         calculateExpression()
     }
 

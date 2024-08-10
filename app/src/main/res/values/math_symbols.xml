@@ -14,6 +14,8 @@
     <string name="symbolCloseBracket" translatable="false">&#41;</string>
     <string name="symbolOpenBracket" translatable="false">&#40;</string>
 
+    <string name="symbolBrackets" translatable="false">&#40; &#41;</string>
+
     <string name="symbolBackSpace" translatable="false">&#9003;</string>
     <string name="symbolAC" translatable="false">AC</string>
     <string name="symbolC" translatable="false">C</string>
