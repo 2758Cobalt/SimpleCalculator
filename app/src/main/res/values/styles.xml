@@ -20,4 +20,9 @@
         <item name="android:textSize">18dp</item>
     </style>
 
+    <style name="materialIconButtonFilledTonalErrorStyle" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="android:backgroundTint">@color/md_theme_errorContainer</item>
+        <item name="iconTint">@color/md_theme_error</item>
+    </style>
+
 </resources>

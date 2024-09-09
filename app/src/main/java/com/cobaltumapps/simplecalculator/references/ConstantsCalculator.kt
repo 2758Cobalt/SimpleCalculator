@@ -11,6 +11,8 @@ object ConstantsCalculator {
     const val symbolPercent = '%'
     const val symbolFactorial = '!'
     const val symbolSqrt = '√'
+    const val symbolPI = 'π'
+    const val symbolExp = 'e'
 
     const val sinSymbol = "sin"
     const val cosSymbol = "cos"

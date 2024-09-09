@@ -45,7 +45,7 @@ class OptionsActivity : AppCompatActivity() {
             val autoSavePreference = findPreference<CheckBoxPreference>(PreferenceKeys.keyMemoryAutoSave) as CheckBoxPreference
             val saveLastCalculationPreference = findPreference<CheckBoxPreference>(PreferenceKeys.keySaveLastCalculation) as CheckBoxPreference
 
-            // Keyboard
+            // KeyboardMaster
             val leftHandModePreference = findPreference<SwitchPreference>(PreferenceKeys.keyLeftHandMode) as SwitchPreference
             val oneHandedModePreference = findPreference<SwitchPreference>(PreferenceKeys.keyOneHandedMode) as SwitchPreference
             val vibrationPreference = findPreference<SwitchPreference>(PreferenceKeys.keyAllowVibration) as SwitchPreference

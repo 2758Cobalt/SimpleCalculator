@@ -1,0 +1,41 @@
+package com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers
+
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.NumpadKeyboard
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.loggers.NumpadLogger
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardNumpadListener
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardControllerMaster
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardMaster
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+
+// Котроллер, который контроллирует действия numpad
+class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener {
+    private val numpadLogger = NumpadLogger()
+
+    override fun getInstance(instance: KeyboardMaster) {
+        controlledKeyboardMaster = instance as NumpadKeyboard
+    }
+
+    // Обработка нажатий и действий
+    override fun onClickNumber(number: Number) {
+        mediator?.handleNumberClick(number)
+        numpadLogger.onClickNumber(number)
+    }
+
+    override fun onClickMathOperation(operation: MathOperation) {
+        mediator?.handleMathOperationClick(operation)
+        numpadLogger.onClickMathOperation(operation)
+    }
+
+    override fun onClickSpecialOperation(operation: KeyboardSpecialOperation) {
+        mediator?.handleSpecialOperationClick(operation)
+        numpadLogger.onClickSpecialOperation(operation)
+    }
+
+    override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
+        mediator?.handleSpecialFunctionClick(function)
+        numpadLogger.onClickSpecialFunction(function)
+    }
+
+}

@@ -16,20 +16,23 @@
         android:theme="@style/MyTheme"
         tools:targetApi="33">
         <activity
+            android:name=".v15.activities.MainCalculatorActivity"
+            android:exported="false" />
+        <activity
             android:name=".onBoarding.OnBoardingActivity"
             android:exported="false" />
         <activity
             android:name=".activities.ConverterActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.OptionsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

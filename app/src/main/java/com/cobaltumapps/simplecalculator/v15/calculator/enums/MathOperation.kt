@@ -10,7 +10,6 @@ enum class MathOperation (val symbol: Char) {
     Divide(ConstantsCalculator.symbolDiv),
 
     Point(ConstantsCalculator.symbolPoint),
-    Percent(ConstantsCalculator.symbolPercent),
 
     OpenBracket(ConstantsCalculator.symbolOpenBracket),
     CloseBracket(ConstantsCalculator.symbolCloseBracket)

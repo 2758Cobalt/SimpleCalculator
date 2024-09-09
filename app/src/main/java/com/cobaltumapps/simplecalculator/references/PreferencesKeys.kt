@@ -5,7 +5,7 @@ object PreferenceKeys {
     const val keyMemoryAutoSave = "key_memoryAutoSave"
     const val keySaveLastCalculation = "key_saveLastCalculation"
 
-    // Keyboard
+    // KeyboardMaster
     const val keyLeftHandMode = "key_leftHandMode"
     const val keyOneHandedMode = "key_miniKeyboardMode"
     const val keyAllowVibration = "key_vibration"

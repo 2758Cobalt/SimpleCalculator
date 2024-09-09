@@ -17,31 +17,29 @@
         android:id="@+id/calculatorNavigationLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/calculatorDisplayHolder"
         app:layout_constraintStart_toStartOf="@+id/calculatorDisplayHolder"
         app:layout_constraintTop_toBottomOf="@+id/calculatorDisplayHolder">
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorConvertersIcon"
-            style="?attr/materialIconButtonFilledStyle"
+            style="?attr/materialIconButtonStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
-            android:contentDescription="Converters"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_navigate_converter" />
+            app:icon="@drawable/ic_navigate_converter"
+            android:contentDescription="Converters" />
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorMinimizeIcon"
-            style="?attr/materialIconButtonFilledStyle"
+            style="?attr/materialIconButtonStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
             android:rotation="-45"
             android:contentDescription="@string/preference_miniMode"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_numpad_reduce" />
+            app:icon="@drawable/ic_numpad_reduce" />
 
         <TextView
             android:id="@+id/calculatorReduceTitle"
@@ -55,51 +53,33 @@
             android:text="@string/preference_miniModeIndicate"
             android:textSize="18dp" />
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorBackSpaceIcon"
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            style="?attr/materialIconButtonStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
             android:contentDescription="@string/contentDescription_backspace"
-            android:src="@drawable/ic_action_backspace" />
+            app:icon="@drawable/ic_action_backspace" />
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorSettingsIcon"
-            style="?attr/materialIconButtonFilledStyle"
+            style="?attr/materialIconButtonStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
             android:contentDescription="@string/action_settings"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_setting" />
+            app:icon="@drawable/ic_setting" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/calculatorRecyclerView"
+    <FrameLayout
+        android:id="@+id/calculatorHistoryHolder"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="64dp"
         android:layout_marginHorizontal="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/calculatorHistoryClearFab"
+        app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculatorNavigationLayout" />
-
-    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-        android:id="@+id/calculatorHistoryClearFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:elevation="2dp"
-        android:contentDescription="ClearHistory"
-        android:backgroundTint="@color/md_theme_errorContainer"
-        app:iconTint="@color/md_theme_error"
-        app:icon="@drawable/ic_clear_history"
-        app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
