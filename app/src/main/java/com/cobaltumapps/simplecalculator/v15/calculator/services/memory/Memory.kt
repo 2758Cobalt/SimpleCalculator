@@ -2,20 +2,19 @@ package com.cobaltumapps.simplecalculator.v15.calculator.services.memory
 
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemoryCRUD
 
-
 open class Memory: MemoryCRUD {
-    private var memoryStorage = 0f
+    private var memoryStorage: Double = 0.0
 
     override fun save(value: Number) {
-        memoryStorage = value.toFloat()
+        memoryStorage = value.toDouble()
     }
 
-    override fun read(): Float {
+    override fun read(): Double {
         return memoryStorage
     }
 
     override fun clear() {
-        memoryStorage = 0f
+        memoryStorage = 0.0
     }
 }
 
