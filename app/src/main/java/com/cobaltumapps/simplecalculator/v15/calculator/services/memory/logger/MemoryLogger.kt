@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.memory.logger
 
 import android.util.Log
-import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryController
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemoryController
 
 class MemoryLogger: MemoryController {
     override fun saveMemoryValue(value: Number, onSuccessful: ((result: Boolean) -> Unit?)) {
