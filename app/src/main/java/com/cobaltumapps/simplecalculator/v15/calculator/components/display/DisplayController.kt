@@ -2,11 +2,13 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayControl
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.ValueTranslator
 
 open class DisplayController(
     private var displayComponent: DisplayComponent
 ): DisplayControl {
     private var displayLogger = DisplayLogger()
+    private val displayValueTranslator = ValueTranslator()
 
     override fun setAngleField(angleMode: AngleMode) {
         displayComponent.setAngleField(angleMode)
@@ -24,7 +26,9 @@ open class DisplayController(
     }
 
     override fun setResultField(newResult: String) {
-        displayComponent.setResultField(newResult)
+        displayComponent.setResultField(
+            displayValueTranslator.translate(newResult.toDouble())
+        )
         displayLogger.setResultField(newResult)
     }
 
