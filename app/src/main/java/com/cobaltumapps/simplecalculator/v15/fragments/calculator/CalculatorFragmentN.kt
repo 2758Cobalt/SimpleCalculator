@@ -28,7 +28,7 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.Enginee
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-// Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора
+/** Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора */
 class CalculatorFragmentN(
     private val calculatorListener: CalculatorListener
 ): Fragment(), MainActivityListener, NumpadBottomBehaviorListener,
@@ -99,6 +99,7 @@ class CalculatorFragmentN(
         }
     }
 
+    /** Метод, который вызывается при смене состояния BottomSheet Numpad-клавиатуры */
     override fun onStateNumpadChanged(bottomSheet: View, newState: Int) {
         historyDisplayFragment.onStateNumpadChanged(bottomSheet, newState)
         when(newState) {
@@ -107,11 +108,13 @@ class CalculatorFragmentN(
         }
     }
 
+    /** Метод, который вызывается при смене состояния BottomSheet EngineeringNumpad-клавиатуры */
     override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {
         historyDisplayFragment.onStateEngNumpadChanged(bottomSheet, newState)
         engineeringSwiper.onStateEngNumpadChanged(bottomSheet, newState)
     }
 
+    /** Метод, обновляющий предпочтения (нгстройки) */
     override fun updatePreferences(newUserPreferences: UserPreferences) {
     }
 
