@@ -87,6 +87,7 @@ class MediatorController: MediatorClickHandler {
                 displayController?.setExpressionField(calculatorController?.closeExpressionString()!!)
             }
 
+            // Memory
             KeyboardSpecialFunction.MemorySave -> {
                 memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
             }
@@ -100,29 +101,22 @@ class MediatorController: MediatorClickHandler {
                 memoryService?.clearMemory { result -> displayController?.setMemoryField(result) }
             }
 
-//            KeyboardSpecialFunction.MemoryAdd -> {
-//                val result = memoryService?.readMemory()!! + calculatorController?.getCalculatedExpression()?.toFloat()!!
-//                memoryService?.saveMemoryValue(result)
-//                displayController?.setMemoryField(memoryService?.readMemory()!!)
-//            }
-//
-//            KeyboardSpecialFunction.MemorySubtract -> {
-//                val result = memoryService?.readMemory()!! - calculatorController?.getCalculatedExpression()?.toFloat()!!
-//                memoryService?.saveMemoryValue(result)
-//                displayController?.setMemoryField(memoryService?.readMemory()!!)
-//            }
-//
-//            KeyboardSpecialFunction.MemoryMultiply -> {
-//                val result = memoryService?.readMemory()!! * calculatorController?.getCalculatedExpression()?.toFloat()!!
-//                memoryService?.saveMemoryValue(result)
-//                displayController?.setMemoryField(memoryService?.readMemory()!!)
-//            }
-//
-//            KeyboardSpecialFunction.MemoryDivide -> {
-//                val result = memoryService?.readMemory()!! / calculatorController?.getCalculatedExpression()?.toFloat()!!
-//                memoryService?.saveMemoryValue(result)
-//                displayController?.setMemoryField(memoryService?.readMemory()!!)
-//            }
+            // Memory operations
+            KeyboardSpecialFunction.MemoryAdd -> {
+                memoryService?.addToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+            }
+
+            KeyboardSpecialFunction.MemorySubtract -> {
+                memoryService?.subtractFromMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+            }
+
+            KeyboardSpecialFunction.MemoryMultiply -> {
+                memoryService?.multiplyToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+            }
+
+            KeyboardSpecialFunction.MemoryDivide -> {
+                memoryService?.divideAtMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+            }
 
 //            KeyboardSpecialFunction.AngleMode -> {
 //                val newAngleMode = calculatorController?.setSwitchAngleMode()
