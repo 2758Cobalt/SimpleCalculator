@@ -118,10 +118,12 @@ class MediatorController: MediatorClickHandler {
                 memoryService?.divideAtMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
             }
 
-//            KeyboardSpecialFunction.AngleMode -> {
-//                val newAngleMode = calculatorController?.setSwitchAngleMode()
-//                displayController?.setAngleField(newAngleMode!!)
-//            }
+            // Angle mode
+            KeyboardSpecialFunction.AngleMode -> {
+                displayController?.setAngleField(
+                    calculatorController?.setSwitchAngleMode()!!
+                )
+            }
 
             // Функция - пропускает действие (если нужно)
             KeyboardSpecialFunction.Skip -> {
