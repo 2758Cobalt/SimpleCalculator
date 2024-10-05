@@ -9,6 +9,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFun
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HistoryData
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
@@ -58,6 +59,8 @@ class MediatorController: MediatorClickHandler {
 
                     displayController?.setExpressionField(userExpression)
                     displayController?.setResultField(calculatedResult)
+
+                    historyService?.addExpressionItem(HistoryData(userExpression, calculatedResult))
                 }
             }
 
