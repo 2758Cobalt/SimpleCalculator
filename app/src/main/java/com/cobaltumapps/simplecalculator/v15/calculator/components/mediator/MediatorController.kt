@@ -1,32 +1,23 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.mediator
 
 import android.util.Log
-import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorControllerImpl
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HistoryData
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 
-interface MediatorClickHandle {
-    fun handleNumberClick(number: Number)
-    fun handleMathOperationClick(operation: MathOperation)
-    fun handleSpecialOperationClick(operation: KeyboardSpecialOperation)
-    fun handleSpecialFunctionClick(function: KeyboardSpecialFunction)
-}
-
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
-class MediatorImpl: MediatorClickHandle, HolderOnClickListener {
+class MediatorController: MediatorClickHandler {
     // Calculator
-    var calculatorController: CalculatorControllerImpl? = null
+    var calculatorController: CalculatorController? = null
 
     // Display
-    var displayController: DisplayControllerImpl? = null
+    var displayController: DisplayController? = null
 
     // Keyboards
     var numpadController: NumpadController? = null
@@ -67,14 +58,6 @@ class MediatorImpl: MediatorClickHandle, HolderOnClickListener {
 
                     displayController?.setExpressionField(userExpression)
                     displayController?.setResultField(calculatedResult)
-
-                    historyService?.addExpressionItem(
-                        HistoryData(
-                            it.getUserExpression().getExpression(),
-                            it.getCalculatedExpression().toString()
-                        )
-                    )
-
                 }
             }
 
@@ -101,49 +84,50 @@ class MediatorImpl: MediatorClickHandle, HolderOnClickListener {
                 displayController?.setExpressionField(calculatorController?.closeExpressionString()!!)
             }
 
-            KeyboardSpecialFunction.MemorySave -> {
-                memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!)
-                displayController?.setMemoryField(memoryService?.readMemory()!!)
-            }
+//            KeyboardSpecialFunction.MemorySave -> {
+//                memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!)
+//                displayController?.setMemoryField(memoryService?.readMemory()!!)
+//            }
+//
+//            KeyboardSpecialFunction.MemoryRead -> {
+//                calculatorController?.addToExpression(memoryService?.readMemory().toString())
+//                updateDisplay()
+//            }
+//
+//            KeyboardSpecialFunction.MemoryClear -> {
+//                memoryService?.clearMemory()
+//                displayController?.setMemoryField(memoryService?.readMemory()!!)
+//            }
+//
+//            KeyboardSpecialFunction.MemoryAdd -> {
+//                val result = memoryService?.readMemory()!! + calculatorController?.getCalculatedExpression()?.toFloat()!!
+//                memoryService?.saveMemoryValue(result)
+//                displayController?.setMemoryField(memoryService?.readMemory()!!)
+//            }
+//
+//            KeyboardSpecialFunction.MemorySubtract -> {
+//                val result = memoryService?.readMemory()!! - calculatorController?.getCalculatedExpression()?.toFloat()!!
+//                memoryService?.saveMemoryValue(result)
+//                displayController?.setMemoryField(memoryService?.readMemory()!!)
+//            }
+//
+//            KeyboardSpecialFunction.MemoryMultiply -> {
+//                val result = memoryService?.readMemory()!! * calculatorController?.getCalculatedExpression()?.toFloat()!!
+//                memoryService?.saveMemoryValue(result)
+//                displayController?.setMemoryField(memoryService?.readMemory()!!)
+//            }
+//
+//            KeyboardSpecialFunction.MemoryDivide -> {
+//                val result = memoryService?.readMemory()!! / calculatorController?.getCalculatedExpression()?.toFloat()!!
+//                memoryService?.saveMemoryValue(result)
+//                displayController?.setMemoryField(memoryService?.readMemory()!!)
+//            }
 
-            KeyboardSpecialFunction.MemoryRead -> {
-                calculatorController?.addToExpression(memoryService?.readMemory().toString())
-                updateDisplay()
-            }
+//            KeyboardSpecialFunction.AngleMode -> {
+//                val newAngleMode = calculatorController?.setSwitchAngleMode()
+//                displayController?.setAngleField(newAngleMode!!)
+//            }
 
-            KeyboardSpecialFunction.MemoryClear -> {
-                memoryService?.clearMemory()
-                displayController?.setMemoryField(memoryService?.readMemory()!!)
-            }
-
-            KeyboardSpecialFunction.MemoryAdd -> {
-                val result = memoryService?.readMemory()!! + calculatorController?.getCalculatedExpression()?.toFloat()!!
-                memoryService?.saveMemoryValue(result)
-                displayController?.setMemoryField(memoryService?.readMemory()!!)
-            }
-
-            KeyboardSpecialFunction.MemorySubtract -> {
-                val result = memoryService?.readMemory()!! - calculatorController?.getCalculatedExpression()?.toFloat()!!
-                memoryService?.saveMemoryValue(result)
-                displayController?.setMemoryField(memoryService?.readMemory()!!)
-            }
-
-            KeyboardSpecialFunction.MemoryMultiply -> {
-                val result = memoryService?.readMemory()!! * calculatorController?.getCalculatedExpression()?.toFloat()!!
-                memoryService?.saveMemoryValue(result)
-                displayController?.setMemoryField(memoryService?.readMemory()!!)
-            }
-
-            KeyboardSpecialFunction.MemoryDivide -> {
-                val result = memoryService?.readMemory()!! / calculatorController?.getCalculatedExpression()?.toFloat()!!
-                memoryService?.saveMemoryValue(result)
-                displayController?.setMemoryField(memoryService?.readMemory()!!)
-            }
-
-            KeyboardSpecialFunction.AngleMode -> {
-                val newAngleMode = calculatorController?.setSwitchAngleMode()
-                displayController?.setAngleField(newAngleMode!!)
-            }
             // Функция - пропускает действие (если нужно)
             KeyboardSpecialFunction.Skip -> {
                 Log.d(LOG_TAG, "The special function is skipped")
@@ -153,11 +137,11 @@ class MediatorImpl: MediatorClickHandle, HolderOnClickListener {
         }
     }
 
-    override fun onHistoryItemClicked(expression: String) {
-        calculatorController?.setExpression(expression)
-        updateDisplay()
-        Log.d(LOG_TAG, "history clicked: Loaded history expression: $expression")
-    }
+//    override fun onHistoryItemClicked(expression: String) {
+//        calculatorController?.setExpression(expression)
+//        updateDisplay()
+//    }
+
 
     private fun updateDisplay() {
         displayController?.setExpressionField(

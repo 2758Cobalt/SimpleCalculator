@@ -1,51 +1,43 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
-import android.content.Context
 import androidx.fragment.app.Fragment
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayAngleViewer
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayComponentProperties
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayMemoryViewer
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewerListener
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewer
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewerCleaner
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
 open class DisplayComponent:
     Fragment(),
-    DisplayComponentProperties,
-    DisplayViewerListener,
+    DisplayViewer,
+    DisplayViewerCleaner,
     DisplayMemoryViewer,
     DisplayAngleViewer
 {
-    private var displayControllerImpl: DisplayControllerImpl? = null
-    var displayAnimator: DisplayAnimator? = DisplayAnimator()
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        // Передача экземпляра this -> DisplayControllerImpl
-        displayControllerImpl?.setNewDisplayInstance(this)
-    }
+    var displayController: DisplayController = DisplayController(this)
+    var displayAnimator: DisplayAnimator = DisplayAnimator()
 
     override fun setAngleField(angleMode: AngleMode) {
-        displayControllerImpl?.setAngleField(angleMode)
+        displayController.setAngleField(angleMode)
     }
 
     override fun setMemoryField(memoryValue: Number) {
-        displayControllerImpl?.setMemoryField(memoryValue)
+        displayController.setMemoryField(memoryValue)
     }
 
     override fun setExpressionField(newExpression: String) {
-        displayControllerImpl?.setExpressionField(newExpression)
+        displayController.setExpressionField(newExpression)
     }
 
     override fun setResultField(newResult: String) {
-        displayControllerImpl?.setResultField(newResult)
+        displayController.setResultField(newResult)
     }
 
-    override fun setNewDisplayController(controller: DisplayControllerImpl) {
-        this.displayControllerImpl = controller
+    override fun clearExpressionField() {
+        displayController.clearExpressionField()
     }
 
-    override fun setNewDisplayAnimator(animator: DisplayAnimator) {
-        this.displayAnimator = animator
+    override fun clearResultField() {
+        displayController.clearResultField()
     }
 }

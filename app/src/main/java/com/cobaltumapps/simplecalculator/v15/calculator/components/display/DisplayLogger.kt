@@ -3,12 +3,12 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayAngleViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayMemoryViewer
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewerCleaner
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewerListener
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
 class DisplayLogger:
-    DisplayViewerListener,
+    DisplayViewer,
     DisplayViewerCleaner,
     DisplayMemoryViewer,
     DisplayAngleViewer

@@ -4,8 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerHistoryItemBinding
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 
-class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: HolderOnClickListener? = null): RecyclerView.Adapter<HistoryItemHolder>() {
+class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: HolderOnClickListener? = null): RecyclerView.Adapter<HistoryItemHolder>(),
+    HistoryController
+{
     private var expressionsHistoryList: MutableList<HistoryData> = mutableListOf()
 
     // Создаёт макет для каждого холдера
@@ -31,24 +34,26 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
         expressionsHistoryList = newExpressionList
     }
 
-    // Добавляет новый объект Expression
-    fun addNewItem(historyData: HistoryData){
-        expressionsHistoryList.addItem(historyData)
-    }
-
-    fun removeItem(index: Int) {
-        expressionsHistoryList.removeItem(index)
-    }
-
     fun getItemList(): List<HistoryData> {
         return expressionsHistoryList
     }
 
-    fun clearHistoryList() {
+    override fun addExpressionItem(historyData: HistoryData) {
+        expressionsHistoryList.addItem(historyData)
+    }
+
+    override fun updateExpressionItem(historyData: HistoryData, pos: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeExpressionItem(index: Int) {
+        expressionsHistoryList.removeItem(index)
+    }
+
+    override fun clearExpressionItem() {
+        val oldestSize = expressionsHistoryList.size
         expressionsHistoryList.clear()
-        for (index in expressionsHistoryList.indices) {
-            removeItem(index)
-        }
+        notifyItemRangeRemoved(0, oldestSize)
     }
 
     /* Функции расширения - extensions */

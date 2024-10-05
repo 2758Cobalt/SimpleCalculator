@@ -9,18 +9,24 @@ import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayNBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayComponent
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
+// Фрагмент, содержащий дисплей калькулятора. Является наследником Display-компонента
 class DisplayFragmentN: DisplayComponent()  {
     private val binding by lazy { FragmentDisplayNBinding.inflate(layoutInflater) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        displayAnimator?.setNewBinding(binding)
+        displayAnimator.setNewBinding(binding)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setMemoryField(0)
-        binding.displayResultField.pivotY = 100f
+
+        binding.displayResultField.apply {
+            pivotX = 100f
+            pivotY = 100f
+        }
+
     }
 
     override fun setAngleField(angleMode: AngleMode) {
@@ -39,7 +45,8 @@ class DisplayFragmentN: DisplayComponent()  {
 
     // Устанавливаем значение в поле с результатом
     override fun setResultField(newResult: String) {
-        binding.displayResultField.text = "= $newResult"
+        binding.displayResultField.text = newResult
+            //getString(R.string.symbolResult, newResult)
     }
 
 }

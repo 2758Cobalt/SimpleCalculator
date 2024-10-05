@@ -1,11 +1,11 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.logger
 
 import android.util.Log
-import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
-import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorControllerOperations
+import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.interfaces.CalculatorControllerCalculation
+import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.interfaces.CalculatorControllerOperations
 import com.cobaltumapps.simplecalculator.v15.calculator.components.expression.Expression
 
-class CalculatorControllerLogger: CalculatorController, CalculatorControllerOperations {
+class CalculatorControllerCalculationLogger: CalculatorControllerCalculation, CalculatorControllerOperations {
     companion object {
         const val LOG_TAG = "SC_CalcControllerTag"
     }

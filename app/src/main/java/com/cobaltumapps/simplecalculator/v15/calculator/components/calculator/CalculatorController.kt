@@ -1,22 +1,27 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.calculator
 
-import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.logger.CalculatorControllerLogger
+import android.util.Log
+import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.interfaces.CalculatorControllerCalculation
+import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.interfaces.CalculatorControllerOperations
+import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.logger.CalculatorControllerCalculationLogger
 import com.cobaltumapps.simplecalculator.v15.calculator.components.expression.Expression
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.managers.ExpressionRemover
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
 
 /* Реализация контроллера калькулятора */
-class CalculatorControllerImpl : CalculatorController, CalculatorControllerOperations {
+class CalculatorController(private var calculatorInstance: CalculatorCore? = null): CalculatorControllerCalculation,
+    CalculatorControllerOperations {
     private var currentAngleMode = AngleMode.RAD
-    private var calculatorControllerLogger = CalculatorControllerLogger()
-    private var calculatorInstance: CalculatorCore? = null
+    private var calculatorControllerLogger = CalculatorControllerCalculationLogger()
 
-    private var calculatorExpressionRemover = ExpressionRemover()
+    private val calculatorExpressionRemover = ExpressionRemover()
     private var userExpression = Expression()
 
-    fun setNewCalculatorInstance(instance: CalculatorCore) {
-        calculatorInstance = instance
+    init {
+        if (calculatorInstance == null) {
+            Log.e(LOG_TAG, "!!! Calculator core instance is null !!!")
+        }
     }
 
     // Добавляет к текущему выражению новый символ (элемент)
@@ -121,16 +126,3 @@ class CalculatorControllerImpl : CalculatorController, CalculatorControllerOpera
     }
 }
 
-/* Интерфейс контроллера калькулятора */
-interface CalculatorController {
-    fun calculateExpression(): String
-    fun getCalculatedExpression(): Double
-}
-
-interface CalculatorControllerOperations {
-    fun addToExpression(newElement: String): String
-    fun getUserExpression(): Expression
-    fun removeLastSymbolExpression()
-    fun removeDigitsGroup()
-    fun clearExpression()
-}

@@ -1,23 +1,10 @@
 <resources>
     <!-- Base application theme. -->
     <style name="MyTheme" parent="AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightStatusBar">true</item>
 
-<!--        <item name="colorPrimary">@color/dark_theme_primary</item>-->
-<!--        <item name="colorPrimaryVariant">@color/dark_theme_primaryVariant</item>-->
-<!--        <item name="colorOnPrimary">@color/dark_displayOrange</item>-->
-
-<!--        <item name="colorSecondary">@color/dark_theme_secondary</item>-->
-
-<!--        <item name="colorAccent">@color/orange</item>-->
-
-
-<!--        <item name="android:statusBarColor">@color/gray30</item>-->
-<!--        <item name="colorControlActivated">@color/orange</item>-->
-
-<!--        <item name="windowActionBar">false</item> &lt;!&ndash;Toolbar&ndash;&gt;-->
-<!--        <item name="windowNoTitle">true</item> &lt;!&ndash;Title app&ndash;&gt;-->
-
-        <item name="android:statusBarColor">@color/md_theme_surfaceVariant</item>
+        <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
     <!-- Google Material 3 -->

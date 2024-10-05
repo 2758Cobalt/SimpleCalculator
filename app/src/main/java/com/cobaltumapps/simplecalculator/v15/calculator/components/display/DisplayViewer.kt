@@ -6,10 +6,10 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayNBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayAngleViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayMemoryViewer
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewerListener
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
-class DisplayViewer(private val context: Context): DisplayViewerListener, DisplayMemoryViewer, DisplayAngleViewer {
+class DisplayViewer(private val context: Context): DisplayViewer, DisplayMemoryViewer, DisplayAngleViewer {
     private var displayBinding: FragmentDisplayNBinding? = null
 
     fun setNewDisplayBinding(binding: FragmentDisplayNBinding) {

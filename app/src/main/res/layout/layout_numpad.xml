@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/fragment_numpad_n">
+
+    <!-- First row -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadOpenBracket"
+        style="@style/numpad_secondaryButtons_n"
+        android:text="@string/symbolOpenBracket"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum7"
+        app:layout_constraintEnd_toStartOf="@+id/numpadCloseBracket"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadCloseBracket"
+        style="@style/numpad_secondaryButtons_n"
+        android:text="@string/symbolCloseBracket"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum8"
+        app:layout_constraintEnd_toStartOf="@+id/numpadAllClear"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadOpenBracket"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadAllClear"
+        style="@style/numpad_secondaryButtons_n"
+        android:text="@string/symbolAC"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum9"
+        app:layout_constraintEnd_toStartOf="@+id/numpadDivide"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadCloseBracket"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadDivide"
+        style="@style/numpad_primaryButtons_n"
+        android:text="@string/symbolDiv"
+        app:layout_constraintBottom_toTopOf="@+id/numpadMul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadAllClear"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Second row -->
+    <com.google.android.material.button.MaterialButton
+        style="@style/numpad_tertiaryButtons_n"
+        android:id="@+id/numpadNum7"
+        android:text="@string/symbolNum7"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum4"
+        app:layout_constraintEnd_toStartOf="@+id/numpadNum8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadOpenBracket" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum8"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum8"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum5"
+        app:layout_constraintEnd_toStartOf="@+id/numpadNum9"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum7"
+        app:layout_constraintTop_toBottomOf="@+id/numpadCloseBracket" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum9"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum9"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum6"
+        app:layout_constraintEnd_toStartOf="@+id/numpadMul"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum8"
+        app:layout_constraintTop_toBottomOf="@+id/numpadAllClear" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadMul"
+        style="@style/numpad_primaryButtons_n"
+        android:text="@string/symbolMul"
+        app:layout_constraintBottom_toTopOf="@+id/numpadSub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum9"
+        app:layout_constraintTop_toBottomOf="@+id/numpadDivide" />
+
+    <!-- Third row -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum4"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum4"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum1"
+        app:layout_constraintEnd_toStartOf="@+id/numpadNum5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum7" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum5"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum5"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum2"
+        app:layout_constraintEnd_toStartOf="@+id/numpadNum6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum4"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum8" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum6"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum6"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum3"
+        app:layout_constraintEnd_toStartOf="@+id/numpadSub"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum5"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum9" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadSub"
+        style="@style/numpad_primaryButtons_n"
+        android:text="@string/symbolSub"
+        app:layout_constraintBottom_toTopOf="@+id/numpadAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum6"
+        app:layout_constraintTop_toBottomOf="@+id/numpadMul" />
+
+    <!-- Four row -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum1"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum1"
+        app:layout_constraintBottom_toTopOf="@+id/numpadPoint"
+        app:layout_constraintEnd_toStartOf="@+id/numpadNum2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum2"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum2"
+        app:layout_constraintBottom_toTopOf="@+id/numpadNum0"
+        app:layout_constraintEnd_toStartOf="@+id/numpadNum3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum1"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum3"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum3"
+        app:layout_constraintBottom_toTopOf="@+id/numpadBackspace"
+        app:layout_constraintEnd_toStartOf="@+id/numpadAdd"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum2"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum6" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadAdd"
+        style="@style/numpad_primaryButtons_n"
+        android:text="@string/symbolAdd"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEqual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum3"
+        app:layout_constraintTop_toBottomOf="@+id/numpadSub" />
+
+    <!-- Four row -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadPoint"
+        style="@style/numpad_secondaryButtons_n"
+        android:text="@string/symbolPoint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/numpadNum0"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadNum0"
+        style="@style/numpad_tertiaryButtons_n"
+        android:text="@string/symbolNum0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/numpadBackspace"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadPoint"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadBackspace"
+        style="@style/numpad_secondaryButtons_n"
+        android:text="@string/symbolBackSpace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEqual"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadNum0"
+        app:layout_constraintTop_toBottomOf="@+id/numpadNum3" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEqual"
+        style="@style/numpad_primaryButtons_n"
+        android:text="@string/symbolEqual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadBackspace"
+        app:layout_constraintTop_toBottomOf="@+id/numpadAdd" />
+</merge>

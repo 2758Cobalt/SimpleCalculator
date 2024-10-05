@@ -1,19 +1,29 @@
-package com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage
+package com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers
 
+import android.content.Context
 import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.HistoryCleaner
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.HistoryLoader
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.HistorySaver
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.interfaces.HistoryStorageCleaner
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.interfaces.HistoryStorageLoader
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.interfaces.HistoryStorageSaver
+import com.cobaltumapps.simplecalculator.v15.sqlite.SqliteDatabaseHelper
+import com.cobaltumapps.simplecalculator.v15.sqlite.SqliteRoomDatabase
 
-class HistoryStorageController: HistoryStorageSaver,
+class HistoryStorageController(context: Context?): HistoryStorageSaver,
     HistoryStorageLoader, HistoryStorageCleaner
 
 {
-    private val historySaver = HistorySaver()
-    private val historyLoader = HistoryLoader()
-    private val historyCleaner = HistoryCleaner()
+    private val roomSqliteManager by lazy { SqliteRoomDatabase.getDatabase(context!!) }
+    private val sqliteDatabaseHelper = SqliteDatabaseHelper(context)
     private val historyStorageLogger = HistoryStorageLogger()
+
+    private val historySaver = HistorySaver(roomSqliteManager)
+    private val historyLoader = HistoryLoader(roomSqliteManager)
+    private val historyCleaner = HistoryCleaner(sqliteDatabaseHelper)
+
 
     init {
         Log.d(LOG_TAG, "Instance ${javaClass.simpleName} has been created")
@@ -22,6 +32,7 @@ class HistoryStorageController: HistoryStorageSaver,
     override fun save(historyData: HistoryData) {
         historySaver.save(historyData)
         historyStorageLogger.save(historyData)
+
     }
 
     override fun load(): HistoryData {
@@ -39,24 +50,3 @@ class HistoryStorageController: HistoryStorageSaver,
     }
 }
 
-class HistoryStorageLogger: HistoryStorageSaver, HistoryStorageLoader, HistoryStorageCleaner {
-    companion object {
-        const val LOG_TAG = "SC_HistoryStorageLoggerTag"
-    }
-
-    override fun save(historyData: HistoryData) {
-        Log.d(LOG_TAG, "HistoryStorage: Save the data of history:" +
-                "\nExpression: ${historyData.expression}" +
-                "\nResult: ${historyData.result}")
-    }
-
-    override fun load(): HistoryData {
-        Log.d(LOG_TAG, "HistoryStorage: The data of history has been loaded")
-        return HistoryData("", "")
-    }
-
-    override fun clear() {
-        Log.d(LOG_TAG, "HistoryStorage: The data of history has been cleared")
-    }
-
-}

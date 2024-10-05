@@ -24,5 +24,29 @@
         <item name="android:backgroundTint">@color/md_theme_errorContainer</item>
         <item name="iconTint">@color/md_theme_error</item>
     </style>
+    
+    <style name="SC.Keyboard.Sheet" parent="Widget.Material3.CardView.Filled">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.KeyboardSheet</item>
+    </style>
+
+    <style name="SC.EngineeringKeyboard" parent="SC.Keyboard.Sheet">
+        <item name="android:backgroundTint">@color/theme_primary</item>
+    </style>
+
+    <style name="SC.EngineeringDragHandle" parent="Widget.Material3.BottomSheet.DragHandle">
+        <item name="tint">@color/md_theme_surfaceVariant</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.KeyboardSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+    
+
+
+
 
 </resources>

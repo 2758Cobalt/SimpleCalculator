@@ -56,7 +56,7 @@ class MainActivity: AppCompatActivity(), CalculatorListener {
         sharedPreferences = this.getSharedPreferences(ConstantsCalculator.vault, Context.MODE_PRIVATE)
 
         // Проверяем был ли показан стартовый экран
-        if (!BOARDING_FORCE_LAUNCH){
+        if (!BOARDING_FORCE_LAUNCH) {
             if (!sharedPreferences.getBoolean(KEYSTORE_BOARDING, false)){
                 startActivity(Intent(this@MainActivity, OnBoardingActivity::class.java))
 

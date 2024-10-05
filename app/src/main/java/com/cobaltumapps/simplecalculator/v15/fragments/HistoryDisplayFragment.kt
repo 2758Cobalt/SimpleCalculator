@@ -1,7 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,20 +11,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBinding
 import com.cobaltumapps.simplecalculator.references.Animations
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HolderOnClickListener
-import com.cobaltumapps.simplecalculator.v15.constants.Properties
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers.HistoryStorageController
+import com.cobaltumapps.simplecalculator.v15.constants.Property
+import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
+import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener): Fragment() {
+class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener, EngineeringBottomBehaviorListener {
     private val binding by lazy { FragmentHistoryDisplayBinding.inflate(layoutInflater) }
-    val historyAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener) }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
-    = binding.root
+    val historyAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener) }
+    private val historyControllerImpl = HistoryControllerImpl(historyAdapter)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        historyControllerImpl.historyStorageController = HistoryStorageController(context)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hideHistory()
+
 
         binding.apply {
             historyRecyclerView.apply {
@@ -37,7 +46,8 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener): Frag
             with(historyDisplayClearFab) {
                 isVisible = false
                 setOnClickListener {
-                    historyAdapter.clearHistoryList()
+                    historyAdapter.clearExpressionItem()
+                    historyControllerImpl.historyStorageController?.clear()
                     hideHistory()
                 }
             }
@@ -65,7 +75,7 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener): Frag
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     when(direction) {
                         ItemTouchHelper.START -> {
-                            historyAdapter.removeItem(viewHolder.bindingAdapterPosition)
+                            historyAdapter.removeExpressionItem(viewHolder.bindingAdapterPosition)
                         }
                     }
                 }
@@ -74,28 +84,75 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener): Frag
         touchHelper.attachToRecyclerView(binding.historyRecyclerView)
     }
 
-    fun showHistory(duration: Long = 400L) {
-        binding.apply {
-            historyRecyclerView.isVisible = true
-            historyDisplayClearFab.isVisible = true
+    private fun showHistory() {
+        binding.historyRecyclerView.apply {
+            isVisible = true
+            Animations.animatePropertyChange(
+                this,
+                Property.alpha.name,
+                this.alpha,
+                1f,
+                DEF_ANIM_DURATION)
+
+            showClearHistoryFab()
         }
-        Log.d(LOG_TAG, "HistoryFragment was showed")
-        Animations.animatePropertyChange(binding.historyRecyclerView, Properties.alpha, 0f, 1f, duration)
-        Animations.animatePropertyChange(binding.historyDisplayClearFab, Properties.alpha, 0f, 1f, duration)
     }
 
-    fun hideHistory(duration: Long = 400L) {
-        Log.d(LOG_TAG, "HistoryFragment was hidden")
-        Animations.animatePropertyChange(binding.historyRecyclerView, Properties.alpha, 1f, 0f, duration)
-        Animations.animatePropertyChange(binding.historyDisplayClearFab, Properties.alpha, 1f, 0f, duration) {
-            binding.apply {
-                historyRecyclerView.isVisible = false
-                historyDisplayClearFab.isVisible = false
+    private fun hideHistory() {
+        binding.historyRecyclerView.apply {
+            Animations.animatePropertyChange(
+                this,
+                Property.alpha.name,
+                this.alpha,
+                0f,
+                DEF_ANIM_DURATION) {
+                isVisible = false
+                hideClearHistoryFab()
             }
+        }
+    }
+
+    private fun showClearHistoryFab() {
+        if (historyAdapter.itemCount > 0) {
+            binding.historyDisplayClearFab.apply {
+                isVisible = true
+                Animations.animatePropertyChange(
+                    this,
+                    Property.alpha.name,
+                    this.alpha,
+                    1f,
+                    DEF_ANIM_DURATION
+                )
+            }
+        }
+    }
+
+    private fun hideClearHistoryFab() {
+        binding.historyDisplayClearFab.apply {
+            Animations.animatePropertyChange(
+                this,
+                Property.alpha.name,
+                this.alpha,
+                0f,
+                DEF_ANIM_DURATION
+            ) {
+                isVisible = false
+            }
+        }
+    }
+
+    override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {
+    }
+
+    override fun onStateNumpadChanged(bottomSheet: View, newState: Int) {
+        when(newState) {
+            BottomSheetBehavior.STATE_EXPANDED -> hideHistory()
+            BottomSheetBehavior.STATE_COLLAPSED -> showHistory()
         }
     }
 
     companion object {
         const val LOG_TAG = "SC_HistoryDisplayTag"
+        const val DEF_ANIM_DURATION = 400L
     }
 }

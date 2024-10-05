@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/fragment_engineering_n">
+
+
+    <!-- Group 1 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngMS"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolMemorySave"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngMR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngSwipeView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngMR"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolMemoryRead"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngMC"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngMS"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngSwipeView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngMC"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolMemoryClear"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryAdd"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngMR"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngSwipeView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngMemoryAdd"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolMemoryAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngMC"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngSwipeView" />
+
+    <!-- Group 2 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngSqrt"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolSqrt"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngFactorial"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngPercent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngMR" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngFactorial"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolFactorial"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngMemorySub"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngSqrt"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngMC" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngInvert"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolInvert"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryMul"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngCos"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngFactorial" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngMemorySub"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="@string/symbolMemorySub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngFactorial"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryAdd" />
+
+    <!-- Group 3 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngSin"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolSin"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngCos"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngPercent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngCos"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolCos"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngInvert"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngSin"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngSqrt" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngLog"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolLog"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryDiv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngCot"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngInvert" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngMemoryMul"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="@string/symbolMemoryMul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngInvert"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngMemorySub" />
+
+    <!-- Group 3 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngTan"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolTan"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngCot"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngSin" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngCot"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolCot"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngLog"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngTan"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngCos" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngLn"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolLn"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngAngleType"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngPi"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngLog" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngMemoryDiv"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="@string/symbolMemoryDiv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngLog"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryMul" />
+
+    <!-- Group 4 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngExp"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolExp"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngPi"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngTan" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngPi"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolPI"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngLn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngExp"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngCot" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngPercent"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:text="@string/symbolPercent"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngSqrt"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngMS" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngAngleType"
+        style="@style/numpad_engineering"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="@string/symbolRad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngLn"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryDiv" />
+</merge>

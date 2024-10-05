@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SC.EngineeringKeyboard" parent="SC.Keyboard.Sheet">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.KeyboardSheet</item>
+        <item name="android:backgroundTint">@color/md_theme_surfaceContainerLowest</item>
+    </style>
+</resources>

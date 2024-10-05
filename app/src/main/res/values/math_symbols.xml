@@ -55,4 +55,7 @@
     <string name="symbolLn" translatable="false">ln</string>
     <string name="symbolAbs" translatable="false">|x|</string>
 
+
+    <string name="symbolResult" translatable="false">= %s</string>
+
 </resources>
