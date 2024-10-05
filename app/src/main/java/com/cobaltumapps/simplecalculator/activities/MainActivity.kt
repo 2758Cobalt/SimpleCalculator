@@ -26,8 +26,6 @@ class MainActivity: AppCompatActivity(), CalculatorListener {
     private lateinit var adRequest : AdRequest
     private lateinit var sharedPreferences: SharedPreferences
 
-
-
     private val handler = Handler()
     private val delayMillis = 45000L // 20 секунд
 
@@ -113,13 +111,4 @@ class MainActivity: AppCompatActivity(), CalculatorListener {
     override fun goSettings() {
         preferencesManager.openPreferencesService()
     }
-}
-
-interface CalculatorListener {
-    fun goConverters()
-    fun goSettings()
-}
-
-interface MainActivityListener {
-    fun updatePreferences(newUserPreferences: UserPreferences)
 }
