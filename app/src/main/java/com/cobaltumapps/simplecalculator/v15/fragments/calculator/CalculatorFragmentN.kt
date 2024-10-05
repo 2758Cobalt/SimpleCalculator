@@ -53,6 +53,7 @@ class CalculatorFragmentN(
 
     private val mediatorController = MediatorController()
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textAllCaps="true"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="@string/preferenceTitle_calculatorCategory" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/prefAutoSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:checked="false"
+                android:text="@string/preference_memoryAutoSave" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/prefKeepLastRecord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:checked="true"
+                android:text="@string/preference_saveLastCalculationDesc" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/prefToOldCalculator"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:icon="@drawable/ic_calculator"
+                app:iconPadding="8dp"
+                app:iconGravity="end"
+                android:text="@string/preference_backToOldCalculator"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textAllCaps="true"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="@string/preferenceTitle_keyboardCategory" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingHorizontal="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/prefLeftHandMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:checked="false"
+                android:text="@string/preference_leftMode" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/prefOneHandedMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:checked="false"
+                android:text="@string/preference_miniMode" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/prefVibration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:checked="true"
+                android:text="@string/preference_vibration" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textAllCaps="true"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="@string/preferenceTitle_aboutCategory" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingHorizontal="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/prefPrivacyPolicy"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:iconPadding="8dp"
+                app:iconGravity="end"
+                app:icon="@drawable/ic_go_link"
+                android:text="@string/preference_privacyPolicy"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/prefNews"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:iconPadding="8dp"
+                app:iconGravity="end"
+                app:icon="@drawable/ic_news"
+                android:text="@string/updateBoard_title"/>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textAllCaps="true"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="@string/updateBoard_appVersion" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingHorizontal="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/prefReleaseVersion"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textAllCaps="true"
+                android:textAlignment="textStart"
+                android:textSize="14sp"
+                android:text="1.0 (12)"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

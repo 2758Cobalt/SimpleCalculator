@@ -10,6 +10,7 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityMainBinding
 import com.cobaltumapps.simplecalculator.onBoarding.OnBoardingActivity
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.v15.calculator.services.PreferencesService
 import com.cobaltumapps.simplecalculator.v15.constants.UserPreferences
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragmentN
 import com.cobaltumapps.simplecalculator.v15.google.AdManager
@@ -25,6 +26,8 @@ class MainActivity: AppCompatActivity(), CalculatorListener {
     private lateinit var adRequest : AdRequest
     private lateinit var sharedPreferences: SharedPreferences
 
+
+
     private val handler = Handler()
     private val delayMillis = 45000L // 20 секунд
 
@@ -38,6 +41,7 @@ class MainActivity: AppCompatActivity(), CalculatorListener {
     }
 
     private val calculator: CalculatorFragmentN = CalculatorFragmentN(this)
+    private val preferencesService by lazy { PreferencesService(this) }
 
     companion object {
         private const val KEYSTORE_BOARDING = "SC_MainActivity_key"
@@ -107,8 +111,7 @@ class MainActivity: AppCompatActivity(), CalculatorListener {
     }
 
     override fun goSettings() {
-        val intent = Intent(this, OptionsActivity::class.java)
-        startActivity(intent)
+        preferencesService.openPreferencesService()
     }
 }
 
