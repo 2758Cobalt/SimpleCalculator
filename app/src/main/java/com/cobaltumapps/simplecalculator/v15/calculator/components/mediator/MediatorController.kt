@@ -87,21 +87,19 @@ class MediatorController: MediatorClickHandler {
                 displayController?.setExpressionField(calculatorController?.closeExpressionString()!!)
             }
 
-//            KeyboardSpecialFunction.MemorySave -> {
-//                memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!)
-//                displayController?.setMemoryField(memoryService?.readMemory()!!)
-//            }
-//
-//            KeyboardSpecialFunction.MemoryRead -> {
-//                calculatorController?.addToExpression(memoryService?.readMemory().toString())
-//                updateDisplay()
-//            }
-//
-//            KeyboardSpecialFunction.MemoryClear -> {
-//                memoryService?.clearMemory()
-//                displayController?.setMemoryField(memoryService?.readMemory()!!)
-//            }
-//
+            KeyboardSpecialFunction.MemorySave -> {
+                memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+            }
+
+            KeyboardSpecialFunction.MemoryRead -> {
+                calculatorController?.setExpression(memoryService?.readMemory()!!)
+                updateDisplay()
+            }
+
+            KeyboardSpecialFunction.MemoryClear -> {
+                memoryService?.clearMemory { result -> displayController?.setMemoryField(result) }
+            }
+
 //            KeyboardSpecialFunction.MemoryAdd -> {
 //                val result = memoryService?.readMemory()!! + calculatorController?.getCalculatedExpression()?.toFloat()!!
 //                memoryService?.saveMemoryValue(result)
