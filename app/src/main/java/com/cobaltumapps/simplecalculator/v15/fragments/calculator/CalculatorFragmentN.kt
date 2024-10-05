@@ -44,7 +44,7 @@ class CalculatorFragmentN(
     private val numpadController = NumpadController()
     private val engineeringController = EngineeringController()
 
-    private val engineeringSwiper = EngineeringSwiper()
+    private val engineeringSwiper by lazy { EngineeringSwiper(binding.calculatorBackSpaceIcon) }
 
     private val calculatorCoreInstance = CalculatorCore()
     private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
@@ -76,6 +76,7 @@ class CalculatorFragmentN(
             // Backspace icon
             calculatorBackSpaceIcon.apply {
                 isVisible = false
+                alpha = 0f
                 setOnClickListener {
                     mediatorController.handleSpecialFunctionClick(KeyboardSpecialFunction.Backspace)
                 }
@@ -104,15 +105,7 @@ class CalculatorFragmentN(
 
     override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {
         historyDisplayFragment.onStateEngNumpadChanged(bottomSheet, newState)
-
-
-        engineeringSwiper.swapEnable(
-            binding.calculatorBackSpaceIcon,
-            when (newState) {
-                BottomSheetBehavior.STATE_EXPANDED -> true
-                BottomSheetBehavior.STATE_COLLAPSED -> false
-                else -> false
-            })
+        engineeringSwiper.onStateEngNumpadChanged(bottomSheet, newState)
     }
 
     override fun updatePreferences(newUserPreferences: UserPreferences) {
