@@ -3,8 +3,8 @@ package com.cobaltumapps.simplecalculator.v15.calculator.services.memory
 import android.util.Log
 
 interface MemoryController {
-    fun saveMemoryValue(value: Number)
-    fun readMemory(): Float
+    fun saveMemoryValue(value: Number, onSuccessful: ((result: Boolean) -> Unit?))
+    fun readMemory(): Double
     fun clearMemory()
 }
 
@@ -12,12 +12,13 @@ class MemoryControllerImpl: MemoryController {
     private val memory = Memory()
     private val memoryLogger = MemoryLogger()
 
-    override fun saveMemoryValue(value: Number) {
+    override fun saveMemoryValue(value: Number, onSuccessful: ((result: Boolean) -> Unit?)) {
         memory.save(value)
-        memoryLogger.saveMemoryValue(value)
+        memoryLogger.saveMemoryValue(value, onSuccessful)
+        onSuccessful.invoke(true)
     }
 
-    override fun readMemory(): Float {
+    override fun readMemory(): Double {
         memoryLogger.readMemory()
         return memory.read()
     }
@@ -29,13 +30,13 @@ class MemoryControllerImpl: MemoryController {
 }
 
 class MemoryLogger: MemoryController {
-    override fun saveMemoryValue(value: Number) {
+    override fun saveMemoryValue(value: Number, onSuccessful: ((result: Boolean) -> Unit?)) {
         Log.d(LOG_TAG, "The value: $value has been saved to the memory")
     }
 
-    override fun readMemory(): Float {
+    override fun readMemory(): Double {
         Log.d(LOG_TAG, "The memory has been read")
-        return 0f
+        return 0.0
     }
 
     override fun clearMemory() {
