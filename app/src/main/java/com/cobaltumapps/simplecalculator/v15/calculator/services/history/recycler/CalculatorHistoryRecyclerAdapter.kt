@@ -13,25 +13,25 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
 {
     private var expressionsHistoryList: MutableList<HistoryData> = mutableListOf()
 
-    // Создаёт макет для каждого холдера
+    /** Создаёт макет для каждого холдера */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryItemHolder {
         val binding = RecyclerHistoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HistoryItemHolder(binding)
     }
 
-    // Возвращает полный список элементов
+    /** Возвращает полный список элементов */
     override fun getItemCount(): Int {
         return expressionsHistoryList.size
     }
 
-    // Привязывает логику для каждого холдера
+    /** Привязывает логику для каждого холдера */
     override fun onBindViewHolder(holder: HistoryItemHolder, position: Int) {
         val historyObject = expressionsHistoryList[position]
         holder.bind(historyObject)
         holder.bindOnClickHistoryItem(onClickHistoryListener)
     }
 
-    // Устанавливает новый список истории (если необходимо)
+    /** Устанавливает новый список истории (если необходимо) */
     fun setNewList(newExpressionList: MutableList<HistoryData>){
         expressionsHistoryList = newExpressionList
     }
