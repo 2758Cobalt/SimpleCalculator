@@ -12,15 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBinding
 import com.cobaltumapps.simplecalculator.references.Animations
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers.HistoryStorageController
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener, EngineeringBottomBehaviorListener {
+class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener, EngineeringBottomBehaviorListener,
+    HistoryAdapterUpdater {
     private val binding by lazy { FragmentHistoryDisplayBinding.inflate(layoutInflater) }
 
     val historyAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener) }
@@ -51,6 +53,8 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
                     hideHistory()
                 }
             }
+
+            historyAdapter.updaterListener = this@HistoryDisplayFragment
         }
 
         val touchHelper = ItemTouchHelper(
@@ -139,6 +143,20 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
                 isVisible = false
             }
         }
+    }
+
+    private fun checkListSize(): Boolean {
+        val checkResult = historyAdapter.getItemList().isEmpty()
+        if (checkResult)
+            hideClearHistoryFab()
+        else
+            showClearHistoryFab()
+
+        return checkResult
+    }
+
+    override fun updateAdapter() {
+        checkListSize()
     }
 
     override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {

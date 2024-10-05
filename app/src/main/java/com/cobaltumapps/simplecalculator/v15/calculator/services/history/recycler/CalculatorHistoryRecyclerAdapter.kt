@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerHistoryItemBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 
@@ -12,6 +13,7 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
     HistoryController
 {
     private var expressionsHistoryList: MutableList<HistoryData> = mutableListOf()
+    var updaterListener: HistoryAdapterUpdater? = null
 
     /** Создаёт макет для каждого холдера */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryItemHolder {
@@ -43,16 +45,19 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
     /** Добавляет новый элемент в список выражений */
     override fun addExpressionItem(historyData: HistoryData) {
         expressionsHistoryList.addItem(historyData)
+        updaterListener?.updateAdapter()
     }
 
     /** Обновляет элемент в нужной позиции */
     override fun updateExpressionItem(historyData: HistoryData, pos: Int) {
         expressionsHistoryList[pos] = historyData
+        updaterListener?.updateAdapter()
     }
 
     /** Удаляет элемент в нужной позиции */
     override fun removeExpressionItem(index: Int) {
         expressionsHistoryList.removeItem(index)
+        updaterListener?.updateAdapter()
     }
 
     /** Удаляет последний элемент */
@@ -79,5 +84,7 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
         const val LOG_TAG = "SC_CalculatorHistoryRecyclerTag"
         const val STATE_TAG = "SC_InstanceStateCalcHistoryTag"
     }
+
+
 }
 
