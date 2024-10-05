@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.services.history
 
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers.HistoryStorageController
 
 class HistoryControllerImpl(private val historyRecyclerAdapter: CalculatorHistoryRecyclerAdapter): HistoryController {

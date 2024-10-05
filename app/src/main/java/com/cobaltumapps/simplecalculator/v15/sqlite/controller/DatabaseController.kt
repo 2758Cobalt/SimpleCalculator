@@ -1,6 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.sqlite.controller
 
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 
 interface DatabaseController {
     fun insertHistoryData(historyData: HistoryData)

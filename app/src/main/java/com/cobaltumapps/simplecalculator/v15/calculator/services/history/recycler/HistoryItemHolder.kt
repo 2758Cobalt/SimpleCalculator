@@ -3,10 +3,8 @@ package com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycl
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerHistoryItemBinding
-
-interface HolderOnClickListener {
-    fun onHistoryItemClicked(expression: String)
-}
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 
 // Класс, реализующий объект истории
 class HistoryItemHolder(private val itemBinding: RecyclerHistoryItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {

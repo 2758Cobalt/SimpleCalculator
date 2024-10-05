@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.services.history.storag
 
 import android.content.Context
 import android.util.Log
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.HistoryCleaner
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.HistoryLoader
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.HistorySaver

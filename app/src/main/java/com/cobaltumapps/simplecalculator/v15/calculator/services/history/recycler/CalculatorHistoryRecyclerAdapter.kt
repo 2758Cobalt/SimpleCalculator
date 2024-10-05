@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerHistoryItemBinding
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 
 class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: HolderOnClickListener? = null): RecyclerView.Adapter<HistoryItemHolder>(),
     HistoryController
@@ -75,7 +77,3 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
     }
 }
 
-data class HistoryData(
-    var expression: String,
-    var result: String
-)

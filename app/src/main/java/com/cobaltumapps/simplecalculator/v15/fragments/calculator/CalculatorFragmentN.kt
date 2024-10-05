@@ -35,7 +35,7 @@ class CalculatorFragmentN(
     EngineeringBottomBehaviorListener {
 
     private val binding by lazy { FragmentCalculatorNBinding.inflate(layoutInflater) }
-    private val historyDisplayFragment by lazy { HistoryDisplayFragment(null) }
+    private val historyDisplayFragment by lazy { HistoryDisplayFragment(mediatorController) }
 
     // Fragments
     private val displayFragment = DisplayFragmentN()

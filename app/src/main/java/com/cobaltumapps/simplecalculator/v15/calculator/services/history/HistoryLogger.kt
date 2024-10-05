@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.services.history
 
 import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 
 class HistoryLogger: HistoryController {
     private val msgPrefix = javaClass.simpleName

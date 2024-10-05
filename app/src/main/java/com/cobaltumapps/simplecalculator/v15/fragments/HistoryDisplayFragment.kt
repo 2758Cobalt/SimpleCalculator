@@ -13,7 +13,7 @@ import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBindi
 import com.cobaltumapps.simplecalculator.references.Animations
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HolderOnClickListener
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers.HistoryStorageController
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener

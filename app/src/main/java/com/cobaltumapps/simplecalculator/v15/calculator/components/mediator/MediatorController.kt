@@ -9,11 +9,12 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFun
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
-class MediatorController: MediatorClickHandler {
+class MediatorController: MediatorClickHandler, HolderOnClickListener {
     // Calculator
     var calculatorController: CalculatorController? = null
 
@@ -134,10 +135,12 @@ class MediatorController: MediatorClickHandler {
         }
     }
 
-//    override fun onHistoryItemClicked(expression: String) {
-//        calculatorController?.setExpression(expression)
-//        updateDisplay()
-//    }
+    /** При нажатии на элемент "Истории" - устанавливает в калькулятор выбраное выражение. Возвращает выбраное выражение */
+    override fun onHistoryItemClicked(expression: String): String {
+        calculatorController?.setExpression(expression)
+        updateDisplay()
+        return expression
+    }
 
 
     private fun updateDisplay() {
