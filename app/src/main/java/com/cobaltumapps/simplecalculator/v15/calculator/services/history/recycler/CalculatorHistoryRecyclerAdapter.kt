@@ -40,18 +40,22 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
         return expressionsHistoryList
     }
 
+    /** Добавляет новый элемент в список выражений */
     override fun addExpressionItem(historyData: HistoryData) {
         expressionsHistoryList.addItem(historyData)
     }
 
+    /** Обновляет элемент в нужной позиции */
     override fun updateExpressionItem(historyData: HistoryData, pos: Int) {
-        TODO("Not yet implemented")
+        expressionsHistoryList[pos] = historyData
     }
 
+    /** Удаляет элемент в нужной позиции */
     override fun removeExpressionItem(index: Int) {
         expressionsHistoryList.removeItem(index)
     }
 
+    /** Удаляет последний элемент */
     override fun clearExpressionItem() {
         val oldestSize = expressionsHistoryList.size
         expressionsHistoryList.clear()
