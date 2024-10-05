@@ -7,10 +7,10 @@ class MemoryControllerImpl: MemoryController {
     private val memory = Memory()
     private val memoryLogger = MemoryLogger()
 
-    override fun saveMemoryValue(value: Number, onSuccessful: ((result: Boolean) -> Unit?)) {
+    override fun saveMemoryValue(value: Number, onSuccessful: ((result: Double) -> Unit?)) {
         memory.save(value)
         memoryLogger.saveMemoryValue(value, onSuccessful)
-        onSuccessful.invoke(true)
+        onSuccessful.invoke(memory.read())
     }
 
     override fun readMemory(): Double {
@@ -18,9 +18,10 @@ class MemoryControllerImpl: MemoryController {
         return memory.read()
     }
 
-    override fun clearMemory() {
+    override fun clearMemory(onSuccessful: ((result: Double) -> Unit?)) {
         memory.clear()
-        memoryLogger.clearMemory()
+        memoryLogger.clearMemory(onSuccessful)
+        onSuccessful.invoke(memory.read())
     }
 }
 
