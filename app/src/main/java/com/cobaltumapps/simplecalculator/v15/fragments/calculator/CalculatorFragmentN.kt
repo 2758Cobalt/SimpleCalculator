@@ -16,6 +16,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.numpad.engineering.EngineeringSwiper
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
 import com.cobaltumapps.simplecalculator.v15.constants.UserPreferences
 import com.cobaltumapps.simplecalculator.v15.fragments.HistoryDisplayFragment
@@ -61,6 +62,7 @@ class CalculatorFragmentN(
                 displayController = displayFragment.displayController
                 numpadController = this@CalculatorFragmentN.numpadController
                 engNumpadController = engineeringController
+                historyService = HistoryControllerImpl(historyDisplayFragment.historyAdapter)
 
                 // System
                 calculatorController = this@CalculatorFragmentN.calculatorController
