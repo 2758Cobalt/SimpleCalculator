@@ -36,6 +36,11 @@ class CalculatorController(private var calculatorInstance: CalculatorCore? = nul
         updateCalculatorExpression()
     }
 
+    fun setExpression(newExpression: Number) {
+        userExpression.setNewExpression(newExpression.toString())
+        updateCalculatorExpression()
+    }
+
     // Возвращает текущее выражение
     override fun getUserExpression(): Expression {
         return userExpression
