@@ -1,0 +1,3 @@
+package com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces
+
+interface PreferencesDataManagerListener: PreferencesLoaderListener, PreferencesSaverListener
