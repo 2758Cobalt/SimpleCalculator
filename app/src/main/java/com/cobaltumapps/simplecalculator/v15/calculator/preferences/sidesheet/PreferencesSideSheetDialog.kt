@@ -13,8 +13,6 @@ import com.google.android.material.snackbar.Snackbar
 class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
     private val binding by lazy { SideSheetPreferencesBinding.inflate(layoutInflater) }
 
-    private val appReloadingSnackBar by lazy { Snackbar.make(binding.root, getString(context, R.string.system_restartMessage), Snackbar.LENGTH_SHORT) }
-
     // Configuration
     var preferencesUserData = PreferencesUserData()
 
@@ -33,7 +31,7 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
                 preferencesUserData.leftHandedMode = checked
 
                 if (checked)
-                    appReloadingSnackBar.show()
+                    Snackbar.make(binding.root, getString(context, R.string.system_restartMessage), Snackbar.LENGTH_SHORT).show()
             }
 
             prefOneHandedMode.setOnCheckedChangeListener { _, checked -> preferencesUserData.oneHandedMode = checked }
@@ -59,11 +57,6 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
             val pkgInfo = context.packageManager.getPackageInfo(context.packageName!!,0)
             prefReleaseVersion.text = "${pkgInfo.versionName} (${pkgInfo.versionCode})"
         }
-    }
-
-    override fun dismiss() {
-        appReloadingSnackBar.dismiss()
-        super.dismiss()
     }
 }
 
