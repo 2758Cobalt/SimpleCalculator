@@ -1,0 +1,9 @@
+package com.cobaltumapps.simplecalculator.v15.calculator.preferences.data
+
+data class PreferencesUserData (
+    var memoryAutoSave: Boolean = false,
+    var keepLastRecord: Boolean = true,
+    var leftHandedMode: Boolean = false,
+    var oneHandedMode: Boolean = false,
+    var allowVibration: Boolean = true,
+)
