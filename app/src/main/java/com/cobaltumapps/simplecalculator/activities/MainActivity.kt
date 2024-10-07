@@ -11,7 +11,6 @@ import com.cobaltumapps.simplecalculator.databinding.ActivityMainBinding
 import com.cobaltumapps.simplecalculator.onBoarding.OnBoardingActivity
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
-import com.cobaltumapps.simplecalculator.v15.constants.UserPreferences
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragmentN
 import com.cobaltumapps.simplecalculator.v15.google.AdManager
 import com.google.android.gms.ads.AdRequest
@@ -70,7 +69,7 @@ class MainActivity: AppCompatActivity(), CalculatorListener {
         else
             startActivity(Intent(this@MainActivity, OnBoardingActivity::class.java))
 
-        calculator.updatePreferences(UserPreferences())
+        //calculator.updatePreferences(UserPreferences())
     }
 
 
@@ -109,6 +108,6 @@ class MainActivity: AppCompatActivity(), CalculatorListener {
     }
 
     override fun goSettings() {
-        preferencesManager.openPreferencesService()
+        preferencesManager.openPreferencesDialog()
     }
 }

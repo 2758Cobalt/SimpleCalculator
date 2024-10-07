@@ -13,7 +13,6 @@ import com.cobaltumapps.simplecalculator.databinding.ActivityMainCalculatorBindi
 import com.cobaltumapps.simplecalculator.onBoarding.OnBoardingActivity
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
-import com.cobaltumapps.simplecalculator.v15.constants.UserPreferences
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragmentN
 
 class MainCalculatorActivity : AppCompatActivity(), CalculatorListener {
@@ -53,8 +52,7 @@ class MainCalculatorActivity : AppCompatActivity(), CalculatorListener {
         }
         else
             startActivity(Intent(this@MainCalculatorActivity, OnBoardingActivity::class.java))
-
-        calculator.updatePreferences(UserPreferences())
+        calculator.preferencesManager = this.preferencesManager
     }
 
 
@@ -64,6 +62,6 @@ class MainCalculatorActivity : AppCompatActivity(), CalculatorListener {
     }
 
     override fun goSettings() {
-        preferencesManager.openPreferencesService()
+        preferencesManager.openPreferencesDialog()
     }
 }

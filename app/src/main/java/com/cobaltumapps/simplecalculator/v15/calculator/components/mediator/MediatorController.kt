@@ -8,13 +8,16 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
-class MediatorController: MediatorClickHandler, HolderOnClickListener {
+class MediatorController: MediatorClickHandler, HolderOnClickListener, PreferencesUpdaterListener {
+    private var preferencesUserData = PreferencesUserData()
     // Calculator
     var calculatorController: CalculatorController? = null
 
@@ -62,6 +65,11 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
                     displayController?.setResultField(calculatedResult)
 
                     historyService?.addExpressionItem(HistoryData(userExpression, calculatedResult))
+
+                    if (preferencesUserData.memoryAutoSave) {
+                        handleSpecialFunctionClick(KeyboardSpecialFunction.MemorySave)
+                        Log.w("DebugTag", "autosave to memory")
+                    }
                 }
             }
 
@@ -142,6 +150,17 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
         return expression
     }
 
+    /** Метод, обновляющий предпочтения (нгстройки) */
+    override fun updatePreferences(newPrefConfig: PreferencesUserData) {
+        this.preferencesUserData = newPrefConfig
+        Log.i("DebugTag", "preferences in mediator has been updated:")
+        Log.i("DebugTag", "Updated data:\n" +
+                "autoSaveMemory: ${newPrefConfig.memoryAutoSave}\n" +
+                "keepLastRecord: ${newPrefConfig.keepLastRecord}\n" +
+                "leftHand: ${newPrefConfig.leftHandedMode}\n" +
+                "oneHand: ${newPrefConfig.oneHandedMode}\n" +
+                "allowVibration: ${newPrefConfig.allowVibration}")
+    }
 
     private fun updateDisplay() {
         displayController?.setExpressionField(

@@ -11,7 +11,7 @@ class PreferencesSaver(
 ) : PreferencesSaverListener {
 
     /** Сохраняет набор предпочтений */
-    override fun saveData(newData: PreferencesUserData): PreferencesUserData {
+    override fun saveData(newData: PreferencesUserData) {
         val editor = sharedPreferences.edit()
         with(editor) {
             putBoolean(PreferenceKeys.keyMemoryAutoSave, newData.memoryAutoSave)
@@ -20,9 +20,9 @@ class PreferencesSaver(
             putBoolean(PreferenceKeys.keyOneHandedMode, newData.oneHandedMode)
             putBoolean(PreferenceKeys.keyAllowVibration, newData.allowVibration)
         }
+        editor.apply()
 
         listener?.saveData(newData)
-        return newData
     }
 
     /** Сохраняет предпочтение */

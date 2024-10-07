@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.cobaltumapps.simplecalculator.activities.CalculatorListener
-import com.cobaltumapps.simplecalculator.activities.MainActivityListener
 import com.cobaltumapps.simplecalculator.databinding.FragmentCalculatorNBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
@@ -16,10 +15,10 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.numpad.engineering.EngineeringSwiper
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
-import com.cobaltumapps.simplecalculator.v15.constants.UserPreferences
 import com.cobaltumapps.simplecalculator.v15.fragments.HistoryDisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragmentN
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.EngineeringNumpadFragmentN
@@ -31,7 +30,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 /** Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора */
 class CalculatorFragmentN(
     private val calculatorListener: CalculatorListener
-): Fragment(), MainActivityListener, NumpadBottomBehaviorListener,
+): Fragment(), NumpadBottomBehaviorListener,
     EngineeringBottomBehaviorListener {
 
     private val binding by lazy { FragmentCalculatorNBinding.inflate(layoutInflater) }
@@ -52,6 +51,7 @@ class CalculatorFragmentN(
     private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
 
     private val mediatorController = MediatorController()
+    lateinit var preferencesManager: PreferencesManager
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = binding.root
@@ -70,6 +70,12 @@ class CalculatorFragmentN(
                 // System
                 calculatorController = this@CalculatorFragmentN.calculatorController
             }
+
+            preferencesManager.updaterListener = mediatorController
+
+            // Load data from sharedPreferences
+            val loadedConfig = preferencesManager.loadData()
+            mediatorController.updatePreferences(loadedConfig)
 
             numpadFragment.setNewKeyboardController(numpadController)
             engineeringFragment.setNewKeyboardController(engineeringController)
@@ -113,10 +119,6 @@ class CalculatorFragmentN(
     override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {
         historyDisplayFragment.onStateEngNumpadChanged(bottomSheet, newState)
         engineeringSwiper.onStateEngNumpadChanged(bottomSheet, newState)
-    }
-
-    /** Метод, обновляющий предпочтения (нгстройки) */
-    override fun updatePreferences(newUserPreferences: UserPreferences) {
     }
 
 }

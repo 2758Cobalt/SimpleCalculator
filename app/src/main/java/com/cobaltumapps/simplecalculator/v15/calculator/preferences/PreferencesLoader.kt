@@ -20,6 +20,7 @@ class PreferencesLoader(
                 getBoolean(PreferenceKeys.keyAllowVibration, true)
             )
         }
+
         listener?.loadData()
         return loadedConfig
     }

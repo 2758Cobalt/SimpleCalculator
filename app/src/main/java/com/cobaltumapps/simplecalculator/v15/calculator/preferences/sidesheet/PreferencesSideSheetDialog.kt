@@ -58,5 +58,19 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
             prefReleaseVersion.text = "${pkgInfo.versionName} (${pkgInfo.versionCode})"
         }
     }
+
+    fun loadConfig(newConfig: PreferencesUserData) {
+        binding.apply {
+            with(newConfig) {
+                prefAutoSave.isChecked = memoryAutoSave
+                prefKeepLastRecord.isChecked = keepLastRecord
+                prefLeftHandMode.isChecked = leftHandedMode
+                prefOneHandedMode.isChecked = oneHandedMode
+                prefVibration.isChecked = allowVibration
+            }
+        }
+
+        this.preferencesUserData = newConfig
+    }
 }
 

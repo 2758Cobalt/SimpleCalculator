@@ -611,7 +611,7 @@ class CalculatorFragment: Fragment() {
 
     private fun getPreferences(sharedPreferences: SharedPreferences) {
         memoryAutoSaveResult = sharedPreferences.getBoolean(PreferenceKeys.keyMemoryAutoSave, false)
-        saveLastCalculationPreference = sharedPreferences.getBoolean(PreferenceKeys.keySaveLastCalculation, true)
+        saveLastCalculationPreference = sharedPreferences.getBoolean(PreferenceKeys.keyKeepLastRecord, true)
 
         leftHandMode = sharedPreferences.getBoolean(PreferenceKeys.keyLeftHandMode, false)
         miniModePreference = sharedPreferences.getBoolean(PreferenceKeys.keyOneHandedMode, false)

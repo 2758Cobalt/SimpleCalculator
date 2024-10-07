@@ -1,23 +1,46 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.preferences
 
 import android.content.Context
-import android.view.View
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesController
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.sidesheet.PreferencesSideSheet
-import com.google.android.material.sidesheet.SideSheetCallback
+import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesDataManagerListener
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.sidesheet.PreferencesSideSheetDialog
 
-class PreferencesManager(context: Context): SideSheetCallback() {
-    private val sideSheetDialog = PreferencesSideSheet(context)
-    var preferenceListener: PreferencesController? = null
+/**Основной менеджер, отвечающий за работу с данными предпочтений*/
+class PreferencesManager(context: Context): PreferencesDataManagerListener {
+    private val sharedPreferences by lazy { context.getSharedPreferences(ConstantsCalculator.vault,Context.MODE_PRIVATE) }
 
-    fun openPreferencesService() {
+    private val sideSheetDialog = PreferencesSideSheetDialog(context)
+
+    val preferencesDataManager = PreferencesDataManager(sharedPreferences)
+
+    var updaterListener: PreferencesUpdaterListener? = null
+
+    init {
+        sideSheetDialog.setOnShowListener {
+            sideSheetDialog.loadConfig(loadData())
+        }
+
+        sideSheetDialog.setOnDismissListener {
+            saveData(sideSheetDialog.preferencesUserData)
+            updaterListener?.updatePreferences(sideSheetDialog.preferencesUserData)
+        }
+    }
+
+    override fun loadData(): PreferencesUserData {
+        return preferencesDataManager.loadData()
+    }
+
+    override fun saveData(newData: PreferencesUserData) {
+        preferencesDataManager.saveData(newData)
+    }
+
+    fun openPreferencesDialog() {
         sideSheetDialog.show()
     }
 
-    override fun onStateChanged(sheet: View, newState: Int) {
-    }
-
-    override fun onSlide(sheet: View, slideOffset: Float) {
+    fun closePreferencesDialog() {
+        sideSheetDialog.dismiss()
     }
 }
-

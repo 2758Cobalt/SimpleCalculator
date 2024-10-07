@@ -43,7 +43,7 @@ class OptionsActivity : AppCompatActivity() {
 
             // com.cobaltumapps.simplecalculator.system.CalculatorOld
             val autoSavePreference = findPreference<CheckBoxPreference>(PreferenceKeys.keyMemoryAutoSave) as CheckBoxPreference
-            val saveLastCalculationPreference = findPreference<CheckBoxPreference>(PreferenceKeys.keySaveLastCalculation) as CheckBoxPreference
+            val saveLastCalculationPreference = findPreference<CheckBoxPreference>(PreferenceKeys.keyKeepLastRecord) as CheckBoxPreference
 
             // KeyboardMaster
             val leftHandModePreference = findPreference<SwitchPreference>(PreferenceKeys.keyLeftHandMode) as SwitchPreference
@@ -58,7 +58,7 @@ class OptionsActivity : AppCompatActivity() {
 
             // Назначает настройки из хранилища
             autoSavePreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keyMemoryAutoSave, false)
-            saveLastCalculationPreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keySaveLastCalculation, true)
+            saveLastCalculationPreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keyKeepLastRecord, true)
 
             leftHandModePreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keyLeftHandMode, false)
             oneHandedModePreference.isChecked = sharedPreferences.getBoolean(PreferenceKeys.keyOneHandedMode, false)
@@ -72,7 +72,7 @@ class OptionsActivity : AppCompatActivity() {
 
             saveLastCalculationPreference.onPreferenceChangeListener =
                 Preference.OnPreferenceChangeListener { _, newValue ->
-                    saveBooleanPreferences(PreferenceKeys.keySaveLastCalculation, newValue as Boolean)
+                    saveBooleanPreferences(PreferenceKeys.keyKeepLastRecord, newValue as Boolean)
                     true
                 }
 
