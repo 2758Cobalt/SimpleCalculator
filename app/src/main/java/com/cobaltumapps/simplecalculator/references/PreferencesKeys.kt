@@ -3,7 +3,7 @@ package com.cobaltumapps.simplecalculator.references
 object PreferenceKeys {
     // com.cobaltumapps.simplecalculator.system.CalculatorOld
     const val keyMemoryAutoSave = "key_memoryAutoSave"
-    const val keySaveLastCalculation = "key_saveLastCalculation"
+    const val keyKeepLastRecord = "key_saveLastCalculation"
 
     // KeyboardMaster
     const val keyLeftHandMode = "key_leftHandMode"
