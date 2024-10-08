@@ -1,6 +1,6 @@
 package com.cobaltumapps.simplecalculator.activities
 
-interface CalculatorListener {
+interface CalculatorNavigationListener {
     fun goConverters()
     fun goSettings()
 }

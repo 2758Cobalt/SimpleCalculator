@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.cobaltumapps.simplecalculator.activities.CalculatorListener
+import com.cobaltumapps.simplecalculator.activities.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.databinding.FragmentCalculatorNBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
@@ -29,7 +29,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 /** Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора */
 class CalculatorFragmentN(
-    private val calculatorListener: CalculatorListener
+    private val calculatorNavigationListener: CalculatorNavigationListener
 ): Fragment(), NumpadBottomBehaviorListener,
     EngineeringBottomBehaviorListener {
 
@@ -88,8 +88,8 @@ class CalculatorFragmentN(
                 }
             }
 
-            calculatorConvertersIcon.setOnClickListener { calculatorListener.goConverters() }
-            calculatorSettingsIcon.setOnClickListener { calculatorListener.goSettings() }
+            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener.goConverters() }
+            calculatorSettingsIcon.setOnClickListener { calculatorNavigationListener.goSettings() }
 
             // Add mediator as a updater listener
             preferencesManager.updaterListener = mediatorController

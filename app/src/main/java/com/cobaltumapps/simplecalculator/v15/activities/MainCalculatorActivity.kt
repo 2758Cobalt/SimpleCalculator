@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.cobaltumapps.simplecalculator.R
-import com.cobaltumapps.simplecalculator.activities.CalculatorListener
+import com.cobaltumapps.simplecalculator.activities.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.activities.ConverterActivity
 import com.cobaltumapps.simplecalculator.databinding.ActivityMainCalculatorBinding
 import com.cobaltumapps.simplecalculator.onBoarding.OnBoardingActivity
@@ -15,7 +15,7 @@ import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragmentN
 
-class MainCalculatorActivity : AppCompatActivity(), CalculatorListener {
+class MainCalculatorActivity : AppCompatActivity(), CalculatorNavigationListener {
     private val binding by lazy { ActivityMainCalculatorBinding.inflate(layoutInflater) }
     private lateinit var sharedPreferences: SharedPreferences
 

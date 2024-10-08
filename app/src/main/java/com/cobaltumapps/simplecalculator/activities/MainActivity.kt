@@ -17,7 +17,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 
-class MainActivity: AppCompatActivity(), CalculatorListener {
+class MainActivity: AppCompatActivity(), CalculatorNavigationListener {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private var adManager = AdManager()
 
