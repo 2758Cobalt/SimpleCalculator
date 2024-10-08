@@ -60,6 +60,7 @@ class CalculatorFragmentN(
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
 
+            // Setup the mediator controller
             mediatorController.apply {
                 displayController = displayFragment.displayController
                 numpadController = this@CalculatorFragmentN.numpadController
@@ -67,24 +68,18 @@ class CalculatorFragmentN(
                 historyService = HistoryControllerImpl(historyDisplayFragment.historyAdapter)
                 memoryService = MemoryControllerImpl()
 
-                // System
                 calculatorController = this@CalculatorFragmentN.calculatorController
             }
 
-            preferencesManager.updaterListener = mediatorController
-
-            // Load data from sharedPreferences
-            val loadedConfig = preferencesManager.loadData()
-            mediatorController.updatePreferences(loadedConfig)
-
+            // Setup the controllers
             numpadFragment.setNewKeyboardController(numpadController)
             engineeringFragment.setNewKeyboardController(engineeringController)
 
-            // Setup mediator
+            // Setup the keyboard controllers
             numpadController.setNewMediator(mediatorController)
             engineeringController.setNewMediator(mediatorController)
 
-            // Backspace icon
+            // The backspace icon
             calculatorBackSpaceIcon.apply {
                 isVisible = false
                 alpha = 0f
@@ -95,6 +90,13 @@ class CalculatorFragmentN(
 
             calculatorConvertersIcon.setOnClickListener { calculatorListener.goConverters() }
             calculatorSettingsIcon.setOnClickListener { calculatorListener.goSettings() }
+
+            // Add mediator as a updater listener
+            preferencesManager.updaterListener = mediatorController
+
+            // Load data from preferences
+            val loadedConfig = preferencesManager.loadData()
+            mediatorController.updatePreferences(loadedConfig)
 
             // Display fragments
             parentFragmentManager.commit {
