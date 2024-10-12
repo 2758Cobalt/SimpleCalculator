@@ -5,8 +5,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOpe
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 
 interface MediatorClickHandler {
-    fun handleNumberClick(number: Number)
-    fun handleMathOperationClick(operation: MathOperation)
-    fun handleSpecialOperationClick(operation: KeyboardSpecialOperation)
-    fun handleSpecialFunctionClick(function: KeyboardSpecialFunction)
+    fun handleOnClickNumber(number: Number)
+    fun handleOnClickMathOperation(operation: MathOperation)
+    fun handleOnClickSpecialOperation(operation: KeyboardSpecialOperation)
+    fun handleOnClickSpecialFunction(function: KeyboardSpecialFunction)
 }
