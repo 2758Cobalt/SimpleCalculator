@@ -100,6 +100,8 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
             numpadController.setVibrationListener(vibrationService)
 
+            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener?.goConverters() }
+            calculatorMenuIcon.setOnClickListener { calculatorNavigationListener?.openNavigationMenu() }
             // The backspace icon
             calculatorBackSpaceIcon.apply {
                 alpha = 0f
@@ -108,7 +110,6 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
                 }
             }
 
-            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener?.goConverters() }
             calculatorSettingsIcon.setOnClickListener { preferencesManager.openPreferencesDialog() }
 
             // Add mediator as a updater listener

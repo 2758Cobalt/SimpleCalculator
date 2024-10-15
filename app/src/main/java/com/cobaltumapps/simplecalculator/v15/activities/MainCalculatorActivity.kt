@@ -3,6 +3,7 @@ package com.cobaltumapps.simplecalculator.v15.activities
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.commit
 import com.cobaltumapps.simplecalculator.activities.ConverterActivity
 import com.cobaltumapps.simplecalculator.databinding.ActivityMainCalculatorBinding
@@ -35,6 +36,10 @@ class MainCalculatorActivity : AppCompatActivity(), CalculatorNavigationListener
         startActivity(
             Intent(this, ConverterActivity::class.java)
         )
+    }
+
+    override fun openNavigationMenu() {
+        binding.mainDrawer.openDrawer(GravityCompat.START)
     }
 
     companion object {
