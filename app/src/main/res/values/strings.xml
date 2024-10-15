@@ -53,7 +53,7 @@
     <string name="preference_vibrationDesc">Vibrate when a button is clicked</string>
 
     <string name="preference_vibrationStrength">Vibration response strength</string>
-    <string name="preference_vibrationStrength">Set the strength of the vibration response</string>
+    <string name="preference_vibrationStrengthDesc">Set the strength of the vibration response</string>
 
     <string name="preference_swapBackSpace">Reverse buttons "point" and "backspace"</string>
     <string name="preference_swapBackSpaceDesc">Reverses the "dot" and "backspace" buttons</string>
