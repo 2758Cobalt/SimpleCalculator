@@ -107,4 +107,7 @@ class MainActivity: AppCompatActivity(), CalculatorNavigationListener {
         val intent = Intent(this, ConverterActivity::class.java)
         startActivity(intent)
     }
+
+    override fun openNavigationMenu() {
+    }
 }
