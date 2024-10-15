@@ -12,16 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBinding
 import com.cobaltumapps.simplecalculator.references.Animations
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers.HistoryStorageController
 import com.cobaltumapps.simplecalculator.v15.constants.Property
-import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener, EngineeringBottomBehaviorListener,
+class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener,
     HistoryAdapterUpdater {
     private val binding by lazy { FragmentHistoryDisplayBinding.inflate(layoutInflater) }
 
@@ -45,12 +44,13 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
                 adapter = historyAdapter
             }
 
-            with(historyDisplayClearFab) {
+            historyDisplayClearFab.apply {
                 isVisible = false
                 setOnClickListener {
                     historyAdapter.clearExpressionItem()
                     historyControllerImpl.historyStorageController?.clear()
                     hideHistory()
+                    showHistoryHint()
                 }
             }
 
@@ -88,7 +88,9 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
         touchHelper.attachToRecyclerView(binding.historyRecyclerView)
     }
 
-    private fun showHistory() {
+
+    /** Показывает список истории */
+    private fun showHistory(forceAnimate: Boolean = false) {
         binding.historyRecyclerView.apply {
             isVisible = true
             Animations.animatePropertyChange(
@@ -96,26 +98,30 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
                 Property.alpha.name,
                 this.alpha,
                 1f,
-                DEF_ANIM_DURATION)
-
+                if (!forceAnimate) DEF_ANIM_DURATION
+                else 0L
+            )
             showClearHistoryFab()
         }
     }
 
-    private fun hideHistory() {
+    /** Прячет список истории */
+    private fun hideHistory(forceAnimate: Boolean = false) {
         binding.historyRecyclerView.apply {
             Animations.animatePropertyChange(
                 this,
                 Property.alpha.name,
                 this.alpha,
                 0f,
-                DEF_ANIM_DURATION) {
+                if (!forceAnimate) DEF_ANIM_DURATION
+                else 0L) {
                 isVisible = false
                 hideClearHistoryFab()
             }
         }
     }
 
+    /** Показывает кнопку очистки истории */
     private fun showClearHistoryFab() {
         if (historyAdapter.itemCount > 0) {
             binding.historyDisplayClearFab.apply {
@@ -131,6 +137,7 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
         }
     }
 
+    /** Прячет кнопку очистки истории */
     private fun hideClearHistoryFab() {
         binding.historyDisplayClearFab.apply {
             Animations.animatePropertyChange(
@@ -145,12 +152,27 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
         }
     }
 
+    /** Показывает подсказку */
+    private fun showHistoryHint() {
+        binding.historyListHint.isVisible = true
+    }
+
+    /** Прячет подсказку */
+    private fun hideHistoryHint() {
+        binding.historyListHint.isVisible = false
+    }
+
+    /** Проверяет размер списка */
     private fun checkListSize(): Boolean {
         val checkResult = historyAdapter.getItemList().isEmpty()
-        if (checkResult)
+        if (checkResult) {
             hideClearHistoryFab()
-        else
+            showHistoryHint()
+        }
+        else {
             showClearHistoryFab()
+            hideHistoryHint()
+        }
 
         return checkResult
     }
@@ -159,12 +181,9 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
         checkListSize()
     }
 
-    override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {
-    }
-
     override fun onStateNumpadChanged(bottomSheet: View, newState: Int) {
         when(newState) {
-            BottomSheetBehavior.STATE_EXPANDED -> hideHistory()
+            BottomSheetBehavior.STATE_EXPANDED -> hideHistory(true)
             BottomSheetBehavior.STATE_COLLAPSED -> showHistory()
         }
     }
