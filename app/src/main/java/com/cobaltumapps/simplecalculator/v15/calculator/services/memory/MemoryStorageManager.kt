@@ -1,8 +1,8 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.memory
 
-import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemoryCRUD
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemoryStorageController
 
-open class Memory: MemoryCRUD {
+open class MemoryStorageManager: MemoryStorageController {
     private var memoryStorage: Double = 0.0
 
     override fun save(value: Number) {

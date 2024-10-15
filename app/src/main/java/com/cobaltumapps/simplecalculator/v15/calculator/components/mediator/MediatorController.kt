@@ -96,7 +96,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
                 displayController?.setExpressionField(calculatorController?.closeExpressionString()!!)
             }
 
-            // Memory
+            // MemoryStorageManager
             KeyboardSpecialFunction.MemorySave -> {
                 memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
             }
@@ -110,7 +110,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
                 memoryService?.clearMemory { result -> displayController?.setMemoryField(result) }
             }
 
-            // Memory operations
+            // MemoryStorageManager operations
             KeyboardSpecialFunction.MemoryAdd -> {
                 memoryService?.addToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
             }
