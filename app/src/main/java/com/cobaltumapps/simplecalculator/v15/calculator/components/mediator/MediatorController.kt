@@ -62,9 +62,9 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
                     val userExpression = it.getUserExpression().getExpression()
                     val calculatedResult = it.calculateExpression()
 
-                    displayController?.setExpressionField(userExpression)
                     displayController?.setResultField(calculatedResult)
 
+                    // Добавляем в историю новый элемент
                     historyService?.addExpressionItem(HistoryData(userExpression, calculatedResult))
 
                     if (preferencesUserData.memoryAutoSave) {

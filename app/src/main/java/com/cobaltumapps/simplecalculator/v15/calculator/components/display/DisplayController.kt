@@ -41,9 +41,11 @@ open class DisplayController(
             displayValueTranslator.translate(newResult.toDouble())
         )
 
-        canAnimateResult = true
-        displayComponent.displayAnimator.playDisplayResultAnim()
-        displayLogger.setResultField(newResult)
+        if (!canAnimateResult) {
+            canAnimateResult = true
+            displayComponent.displayAnimator.playDisplayResultAnim()
+        }
+            displayLogger.setResultField(newResult)
     }
 
     // Очистка выражения
