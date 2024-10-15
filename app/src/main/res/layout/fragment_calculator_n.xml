@@ -17,22 +17,13 @@
         android:id="@+id/calculatorNavigationLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:paddingHorizontal="24dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/calculatorDisplayHolder"
         app:layout_constraintStart_toStartOf="@+id/calculatorDisplayHolder"
         app:layout_constraintTop_toBottomOf="@+id/calculatorDisplayHolder"
         tools:showIn="@layout/fragment_calculator_n">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/calculatorConvertersIcon"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_toEndOf="@id/calculatorMenuIcon"
-            app:icon="@drawable/ic_navigate_converter"
-            android:contentDescription="Converters" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorMenuIcon"
