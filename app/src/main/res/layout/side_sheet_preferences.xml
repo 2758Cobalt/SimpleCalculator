@@ -10,14 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="16dp">
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/prefResetPreferences"
-            style="?attr/materialIconButtonFilledTonalStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_gravity="end"
-            app:icon="@drawable/ic_reset_preferences" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
@@ -49,17 +41,6 @@
                 android:checked="true"
                 android:text="@string/preference_saveLastCalculationDesc" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/prefToOldCalculator"
-                style="?attr/materialIconButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:icon="@drawable/ic_calculator"
-                app:iconPadding="8dp"
-                app:iconGravity="end"
-                android:text="@string/preference_backToOldCalculator"/>
-
         </LinearLayout>
 
         <com.google.android.material.textview.MaterialTextView
@@ -76,14 +57,6 @@
             android:layout_margin="8dp"
             android:paddingHorizontal="16dp"
             android:orientation="vertical">
-
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/prefLeftHandMode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:checked="false"
-                android:text="@string/preference_leftMode" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/prefOneHandedMode"
@@ -105,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Vibrate strength"
+                android:text="@string/preference_vibrationStrength"
                 android:textAppearance="@style/TextAppearance.Material3.TitleSmall"/>
 
             <com.google.android.material.slider.Slider
@@ -116,6 +89,7 @@
                 android:stepSize="1"
                 android:valueFrom="1"
                 android:valueTo="10"
+                android:value="1"
                 android:contentDescription="Slider" />
 
         </LinearLayout>
@@ -145,17 +119,6 @@
                 app:icon="@drawable/ic_go_link"
                 android:text="@string/preference_privacyPolicy"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/prefNews"
-                style="?attr/materialIconButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:iconPadding="8dp"
-                app:iconGravity="end"
-                app:icon="@drawable/ic_news"
-                android:text="@string/updateBoard_title"/>
-
 
         </LinearLayout>
 
@@ -164,16 +127,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textAllCaps="true"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
             android:text="@string/updateBoard_appVersion" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="8dp"
             android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
@@ -185,8 +146,19 @@
                 android:textAllCaps="true"
                 android:textAlignment="textStart"
                 android:textSize="14sp"
-                android:text="1.0 (12)"
+                android:text="1.0 (01)"
                 tools:ignore="HardcodedText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/prefResetPreferences"
+                style="?attr/materialIconButtonFilledStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_gravity="end"
+                android:text="Reset"
+                app:iconPadding="8dp"
+                app:icon="@drawable/ic_reset_preferences" />
 
         </LinearLayout>
 
