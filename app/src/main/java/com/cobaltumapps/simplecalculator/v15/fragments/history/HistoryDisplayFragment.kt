@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.v15.fragments
+package com.cobaltumapps.simplecalculator.v15.fragments.history
 
 import android.os.Bundle
 import android.view.LayoutInflater

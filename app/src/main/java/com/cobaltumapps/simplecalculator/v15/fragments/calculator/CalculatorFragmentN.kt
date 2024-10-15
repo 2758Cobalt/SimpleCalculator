@@ -19,8 +19,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesM
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
-import com.cobaltumapps.simplecalculator.v15.fragments.HistoryDisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragmentN
+import com.cobaltumapps.simplecalculator.v15.fragments.history.HistoryDisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.EngineeringNumpadFragmentN
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.NumpadFragmentN
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
@@ -32,12 +32,12 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
     EngineeringBottomBehaviorListener {
 
     private val binding by lazy { FragmentCalculatorNBinding.inflate(layoutInflater) }
-    private val historyDisplayFragment by lazy { HistoryDisplayFragment(mediatorController) }
 
     // Fragments
     private val displayFragment by lazy { DisplayFragmentN() }
     private val numpadFragment by lazy { NumpadFragmentN(numpadController, this) }
     private val engineeringFragment by lazy { EngineeringNumpadFragmentN(engineeringController, this) }
+    private val historyDisplayFragment by lazy { HistoryDisplayFragment(mediatorController) }
 
     // Controllers
     private val numpadController = NumpadController()
