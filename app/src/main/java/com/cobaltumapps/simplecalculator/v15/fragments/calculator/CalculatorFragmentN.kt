@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.cobaltumapps.simplecalculator.databinding.FragmentCalculatorNBinding
@@ -36,7 +35,7 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
     private val historyDisplayFragment by lazy { HistoryDisplayFragment(mediatorController) }
 
     // Fragments
-    private var displayFragment = DisplayFragmentN()
+    private val displayFragment by lazy { DisplayFragmentN() }
     private val numpadFragment by lazy { NumpadFragmentN(numpadController, this) }
     private val engineeringFragment by lazy { EngineeringNumpadFragmentN(engineeringController, this) }
 
@@ -44,12 +43,14 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
     private val numpadController = NumpadController()
     private val engineeringController = EngineeringController()
 
+    private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
+    private val mediatorController = MediatorController()
+
+    // Instance
     private val engineeringSwiper by lazy { EngineeringSwiper(binding.calculatorBackSpaceIcon) }
 
     private val calculatorCoreInstance = CalculatorCore()
-    private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
 
-    private val mediatorController = MediatorController()
     private val preferencesManager by lazy { PreferencesManager(requireContext()) }
 
     private var calculatorNavigationListener: CalculatorNavigationListener? = null
@@ -97,7 +98,6 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
             // The backspace icon
             calculatorBackSpaceIcon.apply {
-                isVisible = false
                 alpha = 0f
                 setOnClickListener {
                     mediatorController.handleOnClickSpecialFunction(KeyboardSpecialFunction.Backspace)
@@ -137,8 +137,16 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
     /** Метод, который вызывается при смене состояния BottomSheet EngineeringNumpad-клавиатуры */
     override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {
-        historyDisplayFragment.onStateEngNumpadChanged(bottomSheet, newState)
-        engineeringSwiper.onStateEngNumpadChanged(bottomSheet, newState)
+    }
+
+    override fun onSlideEngNumpad(bottomSheet: View, slideOffset: Float) {
+        val multiplier = 25f
+        binding.apply {
+            numpadHolder.scaleX = 1f - (slideOffset / multiplier)
+            numpadHolder.scaleY = 1f - (slideOffset / multiplier)
+        }
+
+        engineeringSwiper.onSlideEngNumpad(bottomSheet, slideOffset)
     }
 
     companion object {
