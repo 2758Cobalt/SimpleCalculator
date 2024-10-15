@@ -10,6 +10,7 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityMainBinding
 import com.cobaltumapps.simplecalculator.onBoarding.OnBoardingActivity
 import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragmentN
 import com.cobaltumapps.simplecalculator.v15.google.AdManager
@@ -37,7 +38,7 @@ class MainActivity: AppCompatActivity(), CalculatorNavigationListener {
         }
     }
 
-    private val calculator: CalculatorFragmentN = CalculatorFragmentN(this)
+    private val calculator: CalculatorFragmentN = CalculatorFragmentN()
     private val preferencesManager by lazy { PreferencesManager(this) }
 
     companion object {
@@ -105,9 +106,5 @@ class MainActivity: AppCompatActivity(), CalculatorNavigationListener {
     override fun goConverters() {
         val intent = Intent(this, ConverterActivity::class.java)
         startActivity(intent)
-    }
-
-    override fun goSettings() {
-        preferencesManager.openPreferencesDialog()
     }
 }

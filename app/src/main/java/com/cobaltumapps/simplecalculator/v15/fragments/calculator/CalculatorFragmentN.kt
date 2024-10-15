@@ -1,5 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.calculator
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +8,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.cobaltumapps.simplecalculator.activities.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.databinding.FragmentCalculatorNBinding
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
@@ -28,18 +29,16 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadB
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 /** Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора */
-class CalculatorFragmentN(
-    private val calculatorNavigationListener: CalculatorNavigationListener
-): Fragment(), NumpadBottomBehaviorListener,
+class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
     EngineeringBottomBehaviorListener {
 
     private val binding by lazy { FragmentCalculatorNBinding.inflate(layoutInflater) }
     private val historyDisplayFragment by lazy { HistoryDisplayFragment(mediatorController) }
 
     // Fragments
-    private val displayFragment = DisplayFragmentN()
-    private val numpadFragment = NumpadFragmentN(this)
-    private val engineeringFragment = EngineeringNumpadFragmentN(this)
+    private var displayFragment = DisplayFragmentN()
+    private val numpadFragment by lazy { NumpadFragmentN(numpadController, this) }
+    private val engineeringFragment by lazy { EngineeringNumpadFragmentN(engineeringController, this) }
 
     // Controllers
     private val numpadController = NumpadController()
@@ -51,15 +50,36 @@ class CalculatorFragmentN(
     private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
 
     private val mediatorController = MediatorController()
-    lateinit var preferencesManager: PreferencesManager
+    private val preferencesManager by lazy { PreferencesManager(requireContext()) }
 
+    private var calculatorNavigationListener: CalculatorNavigationListener? = null
+
+    fun setCalculatorNavigationListener(listener: CalculatorNavigationListener?) {
+        calculatorNavigationListener = listener
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is CalculatorNavigationListener) {
+            calculatorNavigationListener = context
+        } else {
+            throw RuntimeException("$context must implement CalculatorNavigationListener")
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Setup the keyboard controllers
+        numpadController.setNewMediator(mediatorController)
+        engineeringController.setNewMediator(mediatorController)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-
             // Setup the mediator controller
             mediatorController.apply {
                 displayController = displayFragment.displayController
@@ -75,21 +95,17 @@ class CalculatorFragmentN(
             numpadFragment.setNewKeyboardController(numpadController)
             engineeringFragment.setNewKeyboardController(engineeringController)
 
-            // Setup the keyboard controllers
-            numpadController.setNewMediator(mediatorController)
-            engineeringController.setNewMediator(mediatorController)
-
             // The backspace icon
             calculatorBackSpaceIcon.apply {
                 isVisible = false
                 alpha = 0f
                 setOnClickListener {
-                    mediatorController.handleSpecialFunctionClick(KeyboardSpecialFunction.Backspace)
+                    mediatorController.handleOnClickSpecialFunction(KeyboardSpecialFunction.Backspace)
                 }
             }
 
-            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener.goConverters() }
-            calculatorSettingsIcon.setOnClickListener { calculatorNavigationListener.goSettings() }
+            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener?.goConverters() }
+            calculatorSettingsIcon.setOnClickListener { preferencesManager.openPreferencesDialog() }
 
             // Add mediator as a updater listener
             preferencesManager.updaterListener = mediatorController
@@ -99,11 +115,13 @@ class CalculatorFragmentN(
             mediatorController.updatePreferences(loadedConfig)
 
             // Display fragments
-            parentFragmentManager.commit {
-                replace(calculatorDisplayHolder.id, displayFragment)
-                replace(numpadHolder.id, numpadFragment)
-                replace(engineeringNumpadHolder.id, engineeringFragment)
-                replace(calculatorHistoryHolder.id, historyDisplayFragment)
+            if (savedInstanceState == null) {
+                parentFragmentManager.commit {
+                    add(calculatorDisplayHolder.id, displayFragment, DisplayFragmentN.TAG)
+                    add(numpadHolder.id, numpadFragment, NumpadFragmentN.TAG)
+                    add(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragmentN.TAG)
+                    add(calculatorHistoryHolder.id, historyDisplayFragment)
+                }
             }
         }
     }
@@ -123,4 +141,7 @@ class CalculatorFragmentN(
         engineeringSwiper.onStateEngNumpadChanged(bottomSheet, newState)
     }
 
+    companion object {
+        const val TAG = "SC_CalculatorFragmentTag"
+    }
 }
