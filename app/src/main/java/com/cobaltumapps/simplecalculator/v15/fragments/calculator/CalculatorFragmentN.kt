@@ -18,6 +18,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.numpad.engineering.Engin
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
 import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragmentN
 import com.cobaltumapps.simplecalculator.v15.fragments.history.HistoryDisplayFragment
@@ -45,6 +46,8 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
     private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
     private val mediatorController = MediatorController()
+
+    private val vibrationService by lazy { VibrationService(requireContext()) }
 
     // Instance
     private val engineeringSwiper by lazy { EngineeringSwiper(binding.calculatorBackSpaceIcon) }
@@ -91,10 +94,11 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
                 calculatorController = this@CalculatorFragmentN.calculatorController
             }
-
             // Setup the controllers
             numpadFragment.setNewKeyboardController(numpadController)
             engineeringFragment.setNewKeyboardController(engineeringController)
+
+            numpadController.setVibrationListener(vibrationService)
 
             // The backspace icon
             calculatorBackSpaceIcon.apply {
