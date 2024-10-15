@@ -6,4 +6,5 @@ data class PreferencesUserData (
     var leftHandedMode: Boolean = false,
     var oneHandedMode: Boolean = false,
     var allowVibration: Boolean = true,
+    var vibrationStrength: Long = 1L,
 )

@@ -19,6 +19,7 @@ class PreferencesSaver(
             putBoolean(PreferenceKeys.keyLeftHandMode, newData.leftHandedMode)
             putBoolean(PreferenceKeys.keyOneHandedMode, newData.oneHandedMode)
             putBoolean(PreferenceKeys.keyAllowVibration, newData.allowVibration)
+            putLong(PreferenceKeys.keyVibrationStrength, newData.vibrationStrength)
         }
         editor.apply()
 

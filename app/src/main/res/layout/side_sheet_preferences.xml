@@ -24,9 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textAllCaps="true"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
             android:text="@string/preferenceTitle_calculatorCategory" />
 
         <LinearLayout
@@ -69,9 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textAllCaps="true"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
             android:text="@string/preferenceTitle_keyboardCategory" />
 
         <LinearLayout
@@ -105,6 +101,23 @@
                 android:checked="true"
                 android:text="@string/preference_vibration" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Vibrate strength"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"/>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/prefVibrationStrengthSlider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:stepSize="1"
+                android:valueFrom="1"
+                android:valueTo="10"
+                android:contentDescription="Slider" />
+
         </LinearLayout>
 
         <com.google.android.material.textview.MaterialTextView
@@ -112,9 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textAllCaps="true"
-            android:textAlignment="textStart"
-            android:textStyle="bold"
-            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
             android:text="@string/preferenceTitle_aboutCategory" />
 
         <LinearLayout

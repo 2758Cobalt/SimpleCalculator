@@ -8,16 +8,20 @@ import com.cobaltumapps.simplecalculator.databinding.SideSheetPreferencesBinding
 import com.cobaltumapps.simplecalculator.services.VibratorService
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
 import com.google.android.material.sidesheet.SideSheetDialog
+import com.google.android.material.slider.Slider
 import com.google.android.material.snackbar.Snackbar
 
 class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
     private val binding by lazy { SideSheetPreferencesBinding.inflate(layoutInflater) }
+    private var vibrationStrength = 5L
 
     // Configuration
     var preferencesUserData = PreferencesUserData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val vibrator = VibratorService()
+        vibrator.context = context
 
         binding.apply {
             setContentView(root)
@@ -38,13 +42,23 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
 
             prefVibration.setOnCheckedChangeListener { _, checked ->
                 if (checked) {
-                    val vibrator = VibratorService()
-                    vibrator.context = context
-                    vibrator.playVibration(5)
+                    vibrator.playVibration(vibrationStrength)
                 }
 
                 preferencesUserData.allowVibration = checked
+                prefVibrationStrengthSlider.isEnabled = checked
             }
+
+            prefVibrationStrengthSlider.addOnSliderTouchListener(object: Slider.OnSliderTouchListener {
+                override fun onStartTrackingTouch(slider: Slider) {
+                }
+
+                override fun onStopTrackingTouch(slider: Slider) {
+                    vibrationStrength = (slider.value * 10).toLong()
+                    vibrator.playVibration(vibrationStrength)
+                    preferencesUserData.vibrationStrength = vibrationStrength
+                }
+            })
 
             // Back to old calculator
             prefToOldCalculator.setOnClickListener {  }
@@ -67,6 +81,7 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
                 prefLeftHandMode.isChecked = leftHandedMode
                 prefOneHandedMode.isChecked = oneHandedMode
                 prefVibration.isChecked = allowVibration
+                prefVibrationStrengthSlider.value = vibrationStrength.toFloat() / 10
             }
         }
 

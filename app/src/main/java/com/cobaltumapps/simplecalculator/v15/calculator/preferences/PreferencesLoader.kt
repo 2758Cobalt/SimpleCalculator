@@ -17,7 +17,8 @@ class PreferencesLoader(
                 getBoolean(PreferenceKeys.keyKeepLastRecord, true),
                 getBoolean(PreferenceKeys.keyLeftHandMode, false),
                 getBoolean(PreferenceKeys.keyOneHandedMode, false),
-                getBoolean(PreferenceKeys.keyAllowVibration, true)
+                getBoolean(PreferenceKeys.keyAllowVibration, true),
+                getLong(PreferenceKeys.keyVibrationStrength, 1L)
             )
         }
 
