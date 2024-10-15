@@ -71,6 +71,10 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
                 prefKeepLastRecord.isChecked = keepLastRecord
                 prefOneHandedMode.isChecked = oneHandedMode
                 prefVibration.isChecked = allowVibration
+                if (vibrationStrength < prefVibrationStrengthSlider.valueFrom || vibrationStrength > prefVibrationStrengthSlider.valueTo) {
+                    vibrationStrength = prefVibrationStrengthSlider.valueFrom.toLong()
+                    prefVibrationStrengthSlider.value = prefVibrationStrengthSlider.valueFrom
+                }
                 prefVibrationStrengthSlider.value = vibrationStrength.toFloat()
             }
         }
