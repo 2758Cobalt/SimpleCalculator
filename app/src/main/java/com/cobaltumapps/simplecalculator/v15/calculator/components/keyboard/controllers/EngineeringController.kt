@@ -10,12 +10,12 @@ class EngineeringController : KeyboardControllerMaster(), KeyboardSpecialFunctio
     private val engineeringLogger = EngineeringLogger()
 
     override fun onClickSpecialOperation(operation: KeyboardSpecialOperation) {
-        mediator?.handleSpecialOperationClick(operation)
+        mediator?.handleOnClickSpecialOperation(operation)
         engineeringLogger.onClickSpecialOperation(operation)
     }
 
     override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
-        mediator?.handleSpecialFunctionClick(function)
+        mediator?.handleOnClickSpecialFunction(function)
         engineeringLogger.onClickSpecialFunction(function)
     }
 
