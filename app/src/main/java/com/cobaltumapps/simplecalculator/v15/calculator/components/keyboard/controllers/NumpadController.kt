@@ -20,21 +20,25 @@ class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener {
     // Обработка нажатий и действий
     override fun onClickNumber(number: Number) {
         mediator?.handleOnClickNumber(number)
+        vibrationServiceListener?.playVibration()
         numpadLogger.onClickNumber(number)
     }
 
     override fun onClickMathOperation(operation: MathOperation) {
         mediator?.handleOnClickMathOperation(operation)
+        vibrationServiceListener?.playVibration()
         numpadLogger.onClickMathOperation(operation)
     }
 
     override fun onClickSpecialOperation(operation: KeyboardSpecialOperation) {
         mediator?.handleOnClickSpecialOperation(operation)
+        vibrationServiceListener?.playVibration()
         numpadLogger.onClickSpecialOperation(operation)
     }
 
     override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
         mediator?.handleOnClickSpecialFunction(function)
+        vibrationServiceListener?.playVibration()
         numpadLogger.onClickSpecialFunction(function)
     }
 
