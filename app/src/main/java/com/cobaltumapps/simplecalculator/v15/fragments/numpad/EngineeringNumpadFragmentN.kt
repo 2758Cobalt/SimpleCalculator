@@ -53,7 +53,9 @@ class EngineeringNumpadFragmentN(
                     bottomBehaviorListener?.onStateEngNumpadChanged(bottomSheet, newState)
                 }
 
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    bottomBehaviorListener?.onSlideEngNumpad(bottomSheet, slideOffset)
+                }
             })
 
             bindingEngContent.apply {
