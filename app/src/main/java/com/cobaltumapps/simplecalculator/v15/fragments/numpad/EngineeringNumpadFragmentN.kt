@@ -1,5 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.numpad
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import com.cobaltumapps.simplecalculator.databinding.FragmentEngineeringNBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutEngineeringBinding
 import com.cobaltumapps.simplecalculator.references.Animations
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.EngineeringNumpadKeyboard
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.constants.Property
@@ -17,6 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 
 class EngineeringNumpadFragmentN(
+    private var engController: EngineeringController? = null,
     private var bottomBehaviorListener: EngineeringBottomBehaviorListener? = null
 ): EngineeringNumpadKeyboard() {
 
@@ -26,6 +29,14 @@ class EngineeringNumpadFragmentN(
     private val numpadEngBottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.numpadEngLayout) }
 
     private var angleModeChanged = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (engController == null) {
+            engController = EngineeringController()
+            setNewKeyboardController(engController!!)
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = binding.root
 
@@ -98,6 +109,11 @@ class EngineeringNumpadFragmentN(
             300L) {
             numpadEngBottomSheetBehavior.isDraggable = isActivated
         }
+    }
+
+    companion object {
+        const val LOG_TAG = "SC_EngNumpadFragmentTag"
+        const val TAG = "SC_EngNumpadFragmentTag"
     }
 
 }

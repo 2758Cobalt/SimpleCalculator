@@ -1,6 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.numpad
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -10,12 +11,14 @@ import android.view.ViewGroup
 import com.cobaltumapps.simplecalculator.databinding.FragmentNumpadNBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutNumpadBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.NumpadKeyboard
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class NumpadFragmentN(
+    private var numpadController: NumpadController? = null,
     private var numpadBottomBehaviorListener: NumpadBottomBehaviorListener? = null
 ): NumpadKeyboard() {
     // Binding
@@ -23,6 +26,14 @@ class NumpadFragmentN(
     private val bindingNumpadContent by lazy { LayoutNumpadBinding.bind(binding.root) }
 
     private var isInputOpenBracket = true
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (numpadController == null) {
+            numpadController = NumpadController()
+            setNewKeyboardController(numpadController!!)
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = binding.root
 
@@ -136,6 +147,7 @@ class NumpadFragmentN(
 
     companion object {
         const val LOG_TAG = "SC_NumpadFragmentTag"
+        const val TAG = "SC_NumpadFragmentTag"
     }
 
 }
