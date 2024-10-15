@@ -4,18 +4,15 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.inte
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.loggers.KeyboardControllerLogger
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
 
-open class KeyboardControllerMaster: KeyboardInstanceGetter {
+open class KeyboardControllerMaster(
+    protected var mediator: MediatorController? = null
+): KeyboardInstanceGetter {
     protected val keyboardControllerLogger = KeyboardControllerLogger()
 
     protected var controlledKeyboardMaster: KeyboardMaster? = null
-    protected var mediator: MediatorController? = null
 
     fun setNewMediator(mediatorController: MediatorController) {
         mediator = mediatorController
-    }
-
-    protected fun setControlledKeyboard(keyboard: KeyboardMaster) {
-        this.controlledKeyboardMaster = keyboard
     }
 
     override fun getInstance(instance: KeyboardMaster) {
