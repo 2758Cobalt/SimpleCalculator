@@ -33,26 +33,27 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     var memoryService: MemoryControllerImpl? = null
 
     // Обработка клика (число)
-    override fun handleNumberClick(number: Number) {
+    override fun handleOnClickNumber(number: Number) {
         val newExpression = calculatorController?.addToExpression(number.toString())!!
         displayController?.setExpressionField(newExpression)
+        Log.i("DebugTag", "worked")
     }
 
     // Обрабокта клика (мат. операция)
-    override fun handleMathOperationClick(operation: MathOperation) {
+    override fun handleOnClickMathOperation(operation: MathOperation) {
         val newExpression = calculatorController?.addToExpression(operation.symbol.toString())!!
         displayController?.setExpressionField(newExpression)
     }
 
     // Обработка клика (спец. операция)
-    override fun handleSpecialOperationClick(operation: KeyboardSpecialOperation) {
+    override fun handleOnClickSpecialOperation(operation: KeyboardSpecialOperation) {
         // Тут описываются только особенные операции, если такие есть
         val newExpression = calculatorController?.addToExpression(operation.symbol)!!
         displayController?.setExpressionField(newExpression)
     }
 
     // Обработка клика (спец. функция)
-    override fun handleSpecialFunctionClick(function: KeyboardSpecialFunction) {
+    override fun handleOnClickSpecialFunction(function: KeyboardSpecialFunction) {
         when(function) {
 
             // Функция - равно (=)
@@ -67,8 +68,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
                     historyService?.addExpressionItem(HistoryData(userExpression, calculatedResult))
 
                     if (preferencesUserData.memoryAutoSave) {
-                        handleSpecialFunctionClick(KeyboardSpecialFunction.MemorySave)
-                        Log.w("DebugTag", "autosave to memory")
+                        handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
                     }
                 }
             }
@@ -153,8 +153,8 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     /** Метод, обновляющий предпочтения (нгстройки) */
     override fun updatePreferences(newPrefConfig: PreferencesUserData) {
         this.preferencesUserData = newPrefConfig
-        Log.i("DebugTag", "preferences in mediator has been updated:")
-        Log.i("DebugTag", "Updated data:\n" +
+        Log.i(LOG_TAG, "preferences in mediator has been updated:")
+        Log.i(LOG_TAG, "Updated data:\n" +
                 "autoSaveMemory: ${newPrefConfig.memoryAutoSave}\n" +
                 "keepLastRecord: ${newPrefConfig.keepLastRecord}\n" +
                 "leftHand: ${newPrefConfig.leftHandedMode}\n" +
