@@ -13,7 +13,8 @@ class ValueTranslator {
                 try {
                     if (value % 1 == 0.0) value.toInt()
                     else value
-                } catch (ex: NumberFormatException) {
+                }
+                catch (ex: NumberFormatException) {
                     Log.d(LOG_TAG, "NumberFormatException: Value can't translated to Int")
                     value
                 }

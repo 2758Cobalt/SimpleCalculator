@@ -14,7 +14,7 @@ class DisplayAnimator : DisplayAnimations {
         displaybinding = newBinding
     }
 
-    override fun playDisplayResultAnim() {
+    override fun playDisplayResultAnim(onEnd: (() -> Unit)?) {
         displaybinding?.displayResultField?.isVisible = true
         Animations.animatePropertyChange(
             displaybinding?.displayResultField!!,
@@ -26,7 +26,7 @@ class DisplayAnimator : DisplayAnimations {
         )
     }
 
-    override fun playHiddenResultAnim() {
+    override fun playHiddenResultAnim(onEnd: (() -> Unit)?) {
         Animations.animatePropertyChange(
             displaybinding?.displayResultField!!,
             Property.scaleY.name,
@@ -36,6 +36,7 @@ class DisplayAnimator : DisplayAnimations {
             Animations.overshootInterpolator
         ) {
             displaybinding?.displayResultField?.isVisible = false
+            onEnd?.invoke()
         }
     }
 

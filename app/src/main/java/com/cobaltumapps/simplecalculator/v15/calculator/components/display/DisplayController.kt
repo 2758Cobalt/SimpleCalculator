@@ -10,42 +10,59 @@ open class DisplayController(
     private var displayLogger = DisplayLogger()
     private val displayValueTranslator = ValueTranslator()
 
+    // Logic
+    private var canAnimateResult = false
+
+    // Установка значения типа угла
     override fun setAngleField(angleMode: AngleMode) {
         displayComponent.setAngleField(angleMode)
         displayLogger.setAngleField(angleMode)
     }
 
+    // Установка значения в поле памяти
     override fun setMemoryField(memoryValue: Number) {
         displayComponent.setMemoryField(memoryValue)
         displayLogger.setMemoryField(memoryValue)
     }
 
+    // Установка значения в поле выражения
     override fun setExpressionField(newExpression: String) {
         displayComponent.setExpressionField(newExpression)
+        if (canAnimateResult) {
+            displayComponent.displayAnimator.playHiddenResultAnim()
+            canAnimateResult = false
+        }
         displayLogger.setExpressionField(newExpression)
     }
 
+    // Установка значение в поле результата
     override fun setResultField(newResult: String) {
         displayComponent.setResultField(
             displayValueTranslator.translate(newResult.toDouble())
         )
+
+        canAnimateResult = true
+        displayComponent.displayAnimator.playDisplayResultAnim()
         displayLogger.setResultField(newResult)
     }
 
+    // Очистка выражения
     override fun clearExpressionField() {
         displayComponent.setExpressionField("")
         displayLogger.clearExpressionField()
     }
 
-    // Очищает результат
+    // Очистка результата
     override fun clearResultField() {
-        displayComponent.setResultField("")
+        displayComponent.displayAnimator.playHiddenResultAnim {
+            displayComponent.setResultField("")
+        }
         displayLogger.clearResultField()
     }
 
     fun allClearFields() {
+        canAnimateResult = false
         clearResultField()
         clearExpressionField()
     }
 }
-

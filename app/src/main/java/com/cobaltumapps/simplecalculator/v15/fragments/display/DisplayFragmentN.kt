@@ -15,6 +15,12 @@ class DisplayFragmentN: DisplayComponent()  {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         displayAnimator.setNewBinding(binding)
+
+        binding.displayResultField.apply {
+            pivotX = 100f
+            pivotY = 100f
+        }
+
         return binding.root
     }
 
@@ -22,31 +28,53 @@ class DisplayFragmentN: DisplayComponent()  {
         super.onViewCreated(view, savedInstanceState)
         setMemoryField(0)
 
-        binding.displayResultField.apply {
-            pivotX = 100f
-            pivotY = 100f
+        /* Если состояние пересоздано - восстанавливаем значения в полях */
+        savedInstanceState?.apply {
+            binding.displayExpressionField.text = getString(KEY_DISPLAY_FIELD, "")
+            binding.displayResultField.text = getString(KEY_RESULT_FIELD, "")
+            binding.displayMemoryField.text = getString(KEY_MEMORY_FIELD, "")
+            binding.displayAngleModeField.text = getString(KEY_ANGLE_FIELD, "")
         }
-
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        with(binding) {
+            with(outState) {
+                putString(KEY_DISPLAY_FIELD, displayExpressionField.text.toString())
+                putString(KEY_RESULT_FIELD, displayResultField.text.toString())
+                putString(KEY_MEMORY_FIELD, displayMemoryField.text.toString())
+                putString(KEY_ANGLE_FIELD, displayAngleModeField.text.toString())
+            }
+        }
+    }
+
+    // Установка типа угла
     override fun setAngleField(angleMode: AngleMode) {
         binding.displayAngleModeField.text = angleMode.name
     }
 
-    // Устанавливаем значение любого числового типа в поле памяти
+    // Установка любого числового значения в поле памяти
     override fun setMemoryField(memoryValue: Number) {
         binding.displayMemoryField.text = getString(R.string.display_memory_n).format(memoryValue.toString())
     }
 
-    // Устанавливаем значение любого числового типа в поле выражения
+    // Установка любого числового значения в поле выражения
     override fun setExpressionField(newExpression: String) {
         binding.displayExpressionField.text = newExpression
     }
 
-    // Устанавливаем значение в поле с результатом
+    // Установка значение в поле с результатом
     override fun setResultField(newResult: String) {
         binding.displayResultField.text = newResult
-            //getString(R.string.symbolResult, newResult)
+    }
+
+    companion object {
+        const val KEY_DISPLAY_FIELD = "SC_SavedStateDisplayField"
+        const val KEY_RESULT_FIELD = "SC_SavedStateResultField"
+        const val KEY_MEMORY_FIELD = "SC_SavedStateMemoryField"
+        const val KEY_ANGLE_FIELD = "SC_SavedStateAngleField"
+        const val TAG = "SC_DisplayFragmentTag"
     }
 
 }

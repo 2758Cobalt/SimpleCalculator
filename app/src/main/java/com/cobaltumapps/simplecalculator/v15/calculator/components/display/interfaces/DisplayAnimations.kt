@@ -2,8 +2,8 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.display.inte
 
 interface DisplayAnimations {
 
-    fun playDisplayResultAnim()
-    fun playHiddenResultAnim()
+    fun playDisplayResultAnim(onEnd: (() -> Unit)? = null)
+    fun playHiddenResultAnim(onEnd: (() -> Unit)? = null)
 
 
     fun playClearAnimation(onEnd: (() -> Unit)?)
