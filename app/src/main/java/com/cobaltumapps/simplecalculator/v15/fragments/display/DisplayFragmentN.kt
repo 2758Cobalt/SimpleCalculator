@@ -2,6 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.fragments.display
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,8 @@ class DisplayFragmentN: DisplayComponent()  {
                 pivotX = 100f
                 pivotY = 100f
             }
+
+            displayExpressionField.inputType = InputType.TYPE_NULL
         }
 
 
