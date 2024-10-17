@@ -1,5 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.display
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,13 +14,17 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 class DisplayFragmentN: DisplayComponent()  {
     private val binding by lazy { FragmentDisplayNBinding.inflate(layoutInflater) }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         displayAnimator.setNewBinding(binding)
 
-        binding.displayResultField.apply {
-            pivotX = 100f
-            pivotY = 100f
+        binding.apply {
+            displayResultField.apply {
+                pivotX = 100f
+                pivotY = 100f
+            }
         }
+
 
         return binding.root
     }
@@ -30,7 +35,7 @@ class DisplayFragmentN: DisplayComponent()  {
 
         /* Если состояние пересоздано - восстанавливаем значения в полях */
         savedInstanceState?.apply {
-            binding.displayExpressionField.text = getString(KEY_DISPLAY_FIELD, "")
+            binding.displayExpressionField.setText(getString(KEY_DISPLAY_FIELD, ""))
             binding.displayResultField.text = getString(KEY_RESULT_FIELD, "")
             binding.displayMemoryField.text = getString(KEY_MEMORY_FIELD, "")
             binding.displayAngleModeField.text = getString(KEY_ANGLE_FIELD, "")
@@ -61,7 +66,7 @@ class DisplayFragmentN: DisplayComponent()  {
 
     // Установка любого числового значения в поле выражения
     override fun setExpressionField(newExpression: String) {
-        binding.displayExpressionField.text = newExpression
+        binding.displayExpressionField.setText(newExpression)
     }
 
     // Установка значение в поле с результатом

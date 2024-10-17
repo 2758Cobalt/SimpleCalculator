@@ -17,7 +17,7 @@ class DisplayViewer(private val context: Context): DisplayViewer, DisplayMemoryV
     }
 
     override fun setExpressionField(newExpression: String) {
-        displayBinding?.displayExpressionField?.text = newExpression
+        displayBinding?.displayExpressionField?.setText(newExpression)
     }
 
     override fun setResultField(newResult: String) {
