@@ -38,22 +38,23 @@ class NumpadFragmentN(
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = binding.root
 
     // Bottom sheet
-    val numpadBottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.numpadLayout) }
+    private val numpadBottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.numpadLayout) }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        numpadBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        numpadBottomSheetBehavior.apply {
+            state = BottomSheetBehavior.STATE_EXPANDED
 
-        numpadBottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
 
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                numpadBottomBehaviorListener?.onStateNumpadChanged(bottomSheet, newState)
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) { }
-        })
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                    numpadBottomBehaviorListener?.onStateNumpadChanged(bottomSheet, newState)
+                }
+                override fun onSlide(bottomSheet: View, slideOffset: Float) { }
+            })
+        }
 
         binding.apply {
 

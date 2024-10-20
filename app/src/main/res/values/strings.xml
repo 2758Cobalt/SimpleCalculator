@@ -68,9 +68,6 @@
     <string name="preference_privacyPolicyDesc">Click here to read our privacy policy</string>
 
 
-    <string name="preference_backToOldCalculator">Back to the old calculator</string>
-
-
     <string name="error_failCalculate">Fail</string>
     <string name="error_numberFormatException">Incorrect expression</string>
 

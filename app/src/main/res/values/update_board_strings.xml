@@ -3,4 +3,13 @@
     <string-array name="updateBoard_news">
         <item>Revisions were made to the conversion of some values</item>
     </string-array>
+
+    <string name="updatesHistory_title">Update 1.5v</string>
+
+    <string-array name="updatesHistory_changelogs">
+        <item>Upd 1</item>
+        <item>Upd 2</item>
+        <item>Upd 3</item>
+    </string-array>
+
 </resources>
