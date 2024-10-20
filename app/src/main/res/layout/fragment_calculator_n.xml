@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/calculatorNavigationLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,13 +26,22 @@
         tools:showIn="@layout/fragment_calculator_n">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/calculatorMenuIcon"
+            android:id="@+id/calculatorConvertersIcon"
             style="?attr/materialIconButtonStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
             android:contentDescription="@string/preference_miniMode"
-            app:icon="@drawable/menu_32" />
+            app:icon="@drawable/ic_navigate_converter" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/calculatorMiniModeIcon"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_toEndOf="@id/calculatorConvertersIcon"
+            android:contentDescription="@string/preference_miniMode"
+            app:icon="@drawable/ic_numpad_reduce" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorBackSpaceIcon"

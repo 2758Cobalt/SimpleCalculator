@@ -79,7 +79,8 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
         engineeringController.setNewMediator(mediatorController)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = binding.root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
+    : View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,7 +101,9 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
             numpadController.setVibrationListener(vibrationService)
 
-            calculatorMenuIcon.setOnClickListener { calculatorNavigationListener?.openNavigationMenu() }
+            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener?.goConverters() }
+
+            calculatorMiniModeIcon.setOnClickListener { numpadController.reduceKeyboard() }
             // The backspace icon
             calculatorBackSpaceIcon.apply {
                 alpha = 0f
