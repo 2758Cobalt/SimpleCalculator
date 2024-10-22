@@ -102,8 +102,6 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
             numpadController.setVibrationListener(vibrationService)
 
             calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener?.goConverters() }
-
-            calculatorMiniModeIcon.setOnClickListener { numpadController.reduceKeyboard() }
             // The backspace icon
             calculatorBackSpaceIcon.apply {
                 alpha = 0f
@@ -115,7 +113,9 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
             calculatorSettingsIcon.setOnClickListener { preferencesManager.openPreferencesDialog() }
 
             // Add mediator as a updater listener
-            preferencesManager.updaterListener = mediatorController
+            preferencesManager.addUpdaterListener(mediatorController)
+            preferencesManager.addUpdaterListener(numpadController)
+            preferencesManager.addUpdaterListener(vibrationService)
 
             // Load data from preferences
             val loadedConfig = preferencesManager.loadData()

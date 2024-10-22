@@ -14,8 +14,7 @@
         android:backgroundTint="@color/md_theme_surfaceContainerLowest"
         android:elevation="2dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        app:behavior_peekHeight="32dp"
-        >
+        app:behavior_peekHeight="32dp">
 
         <com.google.android.material.bottomsheet.BottomSheetDragHandleView
             android:id="@+id/numpadDragHandle"

@@ -28,8 +28,6 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
 
             prefKeepLastRecord.setOnCheckedChangeListener { _, checked -> preferencesUserData.keepLastRecord = checked }
 
-            prefOneHandedMode.setOnCheckedChangeListener { _, checked -> preferencesUserData.oneHandedMode = checked }
-
             prefVibration.setOnCheckedChangeListener { _, checked ->
                 if (checked) {
                     vibrator.playVibration(vibrationStrength)
@@ -69,7 +67,6 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
             with(newConfig) {
                 prefAutoSave.isChecked = memoryAutoSave
                 prefKeepLastRecord.isChecked = keepLastRecord
-                prefOneHandedMode.isChecked = oneHandedMode
                 prefVibration.isChecked = allowVibration
                 if (vibrationStrength < prefVibrationStrengthSlider.valueFrom || vibrationStrength > prefVibrationStrengthSlider.valueTo) {
                     vibrationStrength = prefVibrationStrengthSlider.valueFrom.toLong()

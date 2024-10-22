@@ -15,7 +15,7 @@ class PreferencesManager(context: Context): PreferencesDataManagerListener {
 
     val preferencesDataManager = PreferencesDataManager(sharedPreferences)
 
-    var updaterListener: PreferencesUpdaterListener? = null
+    var updaterListener: MutableList<PreferencesUpdaterListener> = mutableListOf()
 
     init {
         sideSheetDialog.setOnShowListener {
@@ -24,8 +24,12 @@ class PreferencesManager(context: Context): PreferencesDataManagerListener {
 
         sideSheetDialog.setOnDismissListener {
             saveData(sideSheetDialog.preferencesUserData)
-            updaterListener?.updatePreferences(sideSheetDialog.preferencesUserData)
+            updaterListener.forEach { it.updatePreferences(sideSheetDialog.preferencesUserData) }
         }
+    }
+
+    fun addUpdaterListener(newListener: PreferencesUpdaterListener) {
+        updaterListener.add(newListener)
     }
 
     override fun loadData(): PreferencesUserData {

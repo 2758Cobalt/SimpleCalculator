@@ -8,10 +8,14 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.mast
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
 
 // Котроллер, который контроллирует действия numpad
-class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener {
+class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener,
+    PreferencesUpdaterListener {
     private val numpadLogger = NumpadLogger()
+    private var canVibrate = true
 
     override fun getInstance(instance: KeyboardMaster) {
         controlledKeyboardMaster = instance as NumpadKeyboard
@@ -20,26 +24,36 @@ class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener {
     // Обработка нажатий и действий
     override fun onClickNumber(number: Number) {
         mediator?.handleOnClickNumber(number)
-        vibrationServiceListener?.playVibration()
+        playVibration()
         numpadLogger.onClickNumber(number)
     }
 
     override fun onClickMathOperation(operation: MathOperation) {
         mediator?.handleOnClickMathOperation(operation)
-        vibrationServiceListener?.playVibration()
+        playVibration()
         numpadLogger.onClickMathOperation(operation)
     }
 
     override fun onClickSpecialOperation(operation: KeyboardSpecialOperation) {
         mediator?.handleOnClickSpecialOperation(operation)
-        vibrationServiceListener?.playVibration()
+        playVibration()
         numpadLogger.onClickSpecialOperation(operation)
     }
 
     override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
         mediator?.handleOnClickSpecialFunction(function)
-        vibrationServiceListener?.playVibration()
+        playVibration()
         numpadLogger.onClickSpecialFunction(function)
     }
 
+    private fun playVibration() {
+        if (canVibrate)
+            vibrationServiceListener?.playVibration()
+    }
+
+    override fun updatePreferences(newPrefConfig: PreferencesUserData) {
+        newPrefConfig.apply {
+            canVibrate = allowVibration
+        }
+    }
 }

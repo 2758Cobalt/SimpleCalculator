@@ -6,12 +6,14 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
 import com.cobaltumapps.simplecalculator.references.LogTags
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
 
 class VibrationService(
     private val context: Context
-): VibrationServiceController {
+): VibrationServiceController, PreferencesUpdaterListener {
     var isEnalbed = true
-    var duration = 5L
+    var duration = 25L
 
 
     // Воспроизводит вибрацию
@@ -39,8 +41,10 @@ class VibrationService(
             Log.w(LogTags.LOG_VIBRATOR_SERVICE, "VibrationService is blocked")
         }
     }
+
+    /** Обновляет настройку с силой вибрации */
+    override fun updatePreferences(newPrefConfig: PreferencesUserData) {
+        duration = newPrefConfig.vibrationStrength
+    }
 }
 
-interface VibrationServiceController {
-    fun playVibration()
-}

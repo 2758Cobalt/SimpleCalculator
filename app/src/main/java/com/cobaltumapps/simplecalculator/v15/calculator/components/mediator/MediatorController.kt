@@ -157,7 +157,6 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
         Log.i(LOG_TAG, "Updated data:\n" +
                 "autoSaveMemory: ${newPrefConfig.memoryAutoSave}\n" +
                 "keepLastRecord: ${newPrefConfig.keepLastRecord}\n" +
-                "oneHand: ${newPrefConfig.oneHandedMode}\n" +
                 "allowVibration: ${newPrefConfig.allowVibration}")
     }
 

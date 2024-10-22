@@ -35,7 +35,8 @@ class NumpadFragmentN(
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = binding.root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
+    : View = binding.root
 
     // Bottom sheet
     private val numpadBottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.numpadLayout) }
@@ -144,6 +145,9 @@ class NumpadFragmentN(
                 }
             }
         }
+    }
+
+    fun reduceKeyboard() {
     }
 
     companion object {
