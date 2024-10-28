@@ -248,11 +248,17 @@ class CalculatorCore: Calculator() {
             while (stackOperators.isNotEmpty()) {
                 parseExpression(stackOperands, stackOperators)
             }
-            return stackOperands.peek()
+            return try {
+                stackOperands.peek()
+            }catch (ex: java.util.EmptyStackException) {
+                Log.e("DebugTag", "EmptyStackException: ${javaClass.simpleName} ERROR calculation")
+                -27.58
+            }
+
 
         } catch (ex: java.lang.NumberFormatException) {
             Log.e("DebugTag","Fatal error")
-            return 0.0
+            return -4.04
         }
 
     }

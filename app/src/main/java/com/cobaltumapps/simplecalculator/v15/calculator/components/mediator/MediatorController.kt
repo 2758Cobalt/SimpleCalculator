@@ -36,7 +36,6 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     override fun handleOnClickNumber(number: Number) {
         val newExpression = calculatorController?.addToExpression(number.toString())!!
         displayController?.setExpressionField(newExpression)
-        Log.i("DebugTag", "worked")
     }
 
     // Обрабокта клика (мат. операция)
