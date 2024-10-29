@@ -9,35 +9,43 @@ import com.cobaltumapps.simplecalculator.v15.calculator.preferences.sidesheet.Pr
 
 /**Основной менеджер, отвечающий за работу с данными предпочтений*/
 class PreferencesManager(context: Context): PreferencesDataManagerListener {
-    private val sharedPreferences by lazy { context.getSharedPreferences(ConstantsCalculator.vault,Context.MODE_PRIVATE) }
+    private val sharedPreferences by lazy { context.getSharedPreferences(ConstantsCalculator.vault, Context.MODE_PRIVATE) }
 
     private val sideSheetDialog = PreferencesSideSheetDialog(context)
 
-    val preferencesDataManager = PreferencesDataManager(sharedPreferences)
+    private val preferencesDataManager = PreferencesDataManager(sharedPreferences)
 
-    var updaterListener: MutableList<PreferencesUpdaterListener> = mutableListOf()
+    private var updateListeners: MutableList<PreferencesUpdaterListener> = mutableListOf()
 
     init {
+        // При показе диалога
         sideSheetDialog.setOnShowListener {
             sideSheetDialog.loadConfig(loadData())
         }
 
+        // При отклонении диалога
         sideSheetDialog.setOnDismissListener {
             saveData(sideSheetDialog.preferencesUserData)
-            updaterListener.forEach { it.updatePreferences(sideSheetDialog.preferencesUserData) }
+            callListeners(loadData())
         }
     }
 
-    fun addUpdaterListener(newListener: PreferencesUpdaterListener) {
-        updaterListener.add(newListener)
+    fun addUpdateListener(newListener: PreferencesUpdaterListener) {
+        updateListeners.add(newListener)
     }
 
     override fun loadData(): PreferencesUserData {
-        return preferencesDataManager.loadData()
+        val loadedData =  preferencesDataManager.loadData()
+        callListeners(loadedData)
+        return loadedData
     }
 
     override fun saveData(newData: PreferencesUserData) {
         preferencesDataManager.saveData(newData)
+    }
+
+    private fun callListeners(updateData: PreferencesUserData) {
+        updateListeners.forEach { it.updatePreferences(updateData) }
     }
 
     fun openPreferencesDialog() {

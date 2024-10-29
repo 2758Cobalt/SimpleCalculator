@@ -26,4 +26,3 @@ class PreferencesDataManager(
         prefSaver.saveData(newData)
     }
 }
-
