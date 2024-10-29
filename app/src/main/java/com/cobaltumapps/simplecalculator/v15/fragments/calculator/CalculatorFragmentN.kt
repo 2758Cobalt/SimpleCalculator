@@ -113,9 +113,9 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
             calculatorSettingsIcon.setOnClickListener { preferencesManager.openPreferencesDialog() }
 
             // Add mediator as a updater listener
-            preferencesManager.addUpdaterListener(mediatorController)
-            preferencesManager.addUpdaterListener(numpadController)
-            preferencesManager.addUpdaterListener(vibrationService)
+            preferencesManager.addUpdateListener(mediatorController)
+            preferencesManager.addUpdateListener(numpadController)
+            preferencesManager.addUpdateListener(vibrationService)
 
             // Load data from preferences
             val loadedConfig = preferencesManager.loadData()
@@ -123,11 +123,21 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
             // Display fragments
             if (savedInstanceState == null) {
+                // Добавляет фрагменты, если родитель не был пересоздан
                 parentFragmentManager.commit {
                     add(calculatorDisplayHolder.id, displayFragment, DisplayFragmentN.TAG)
                     add(numpadHolder.id, numpadFragment, NumpadFragmentN.TAG)
                     add(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragmentN.TAG)
                     add(calculatorHistoryHolder.id, historyDisplayFragment)
+                }
+            }
+            else {
+                // Заменяет старые фрагменты на новые, когда родитель был пересоздан
+                parentFragmentManager.commit {
+                    replace(calculatorDisplayHolder.id, displayFragment, DisplayFragmentN.TAG)
+                    replace(numpadHolder.id, numpadFragment, NumpadFragmentN.TAG)
+                    replace(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragmentN.TAG)
+                    replace(calculatorHistoryHolder.id, historyDisplayFragment)
                 }
             }
         }
