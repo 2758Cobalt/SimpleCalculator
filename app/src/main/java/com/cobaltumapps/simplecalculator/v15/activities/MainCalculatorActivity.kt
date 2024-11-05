@@ -1,5 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,7 @@ class MainCalculatorActivity : AppCompatActivity(),
         /*supportFragmentManager.commit {
             replace(binding.placeHolder.id, ConverterCalculatorFragment())
         }*/
+        startActivity(Intent(this, MainConverterActivity::class.java))
         Toast.makeText(this, "Go converters", Toast.LENGTH_SHORT).show()
     }
 
