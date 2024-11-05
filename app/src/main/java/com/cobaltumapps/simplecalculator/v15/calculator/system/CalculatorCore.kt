@@ -252,13 +252,13 @@ class CalculatorCore: Calculator() {
                 stackOperands.peek()
             }catch (ex: java.util.EmptyStackException) {
                 Log.e("DebugTag", "EmptyStackException: ${javaClass.simpleName} ERROR calculation")
-                -27.58
+                0.0
             }
 
 
         } catch (ex: java.lang.NumberFormatException) {
             Log.e("DebugTag","Fatal error")
-            return -4.04
+            return 0.0
         }
 
     }
@@ -297,32 +297,36 @@ class CalculatorCore: Calculator() {
         var output = expression
 
         regex.findAll(expression).forEach { match ->
-            val functionName = match.groupValues[1]
-            val argument = match.groupValues[2].toDouble()
-            val value =
-                when(angleMode) {
-                    AngleMode.RAD -> {
-                        when (functionName) {
-                            sinSymbol -> sin(argument)
-                            cosSymbol -> cos(argument)
-                            tanSymbol -> tan(argument)
-                            "cot" -> 1.0 / tan(result)
-                            else -> throw IllegalArgumentException("Неподдерживаемая функция: $functionName при переводе в радианы")
+            try {
+                val functionName = match.groupValues[1]
+                val argument = match.groupValues[2].toDouble()
+                val value =
+                    when(angleMode) {
+                        AngleMode.RAD -> {
+                            when (functionName) {
+                                sinSymbol -> sin(argument)
+                                cosSymbol -> cos(argument)
+                                tanSymbol -> tan(argument)
+                                "cot" -> 1.0 / tan(result)
+                                else -> throw IllegalArgumentException("Неподдерживаемая функция: $functionName при переводе в радианы")
+                            }
+                        }
+
+                        AngleMode.DEG -> {
+                            when (functionName) {
+                                sinSymbol -> sin(Math.toRadians(argument))
+                                cosSymbol -> cos(Math.toRadians(argument))
+                                tanSymbol -> tan(Math.toRadians(argument))
+                                "cot" -> 1.0 / tan(Math.toRadians(result))
+                                else -> throw IllegalArgumentException("Неподдерживаемая функция: $functionName при переводе в градусы")
+                            }
                         }
                     }
 
-                    AngleMode.DEG -> {
-                        when (functionName) {
-                            sinSymbol -> sin(Math.toRadians(argument))
-                            cosSymbol -> cos(Math.toRadians(argument))
-                            tanSymbol -> tan(Math.toRadians(argument))
-                            "cot" -> 1.0 / tan(Math.toRadians(result))
-                            else -> throw IllegalArgumentException("Неподдерживаемая функция: $functionName при переводе в градусы")
-                        }
-                    }
-                }
-
-            output = output.replace(match.value, "($value)")
+                output = output.replace(match.value, "($value)")
+            } catch (ex: NumberFormatException) {
+                output = "Fatal error Trigonometry"
+            }
         }
 
         // Обработка логарифмов
