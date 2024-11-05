@@ -5,6 +5,16 @@
     <string name="converter_unitInputHint">Enter a value</string>
     <string name="converter_header">Unit converters</string>
 
+    <!-- Selector -->
+    <string name="selector_favorite_text">Favorites</string>
+    <string name="selector_units_text">Units</string>
+
+    <string name="selector_icon_description">Unit icon</string>
+    <string name="selector_text_description">Unit text</string>
+
+    <string name="selector_gridview_description">Grid view items</string>
+    <string name="selector_listview_description">List view items</string>
+
 
     <!--Units-->
     <string name="converter_weight">Weight</string>
