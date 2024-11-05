@@ -101,8 +101,8 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
             numpadController.setVibrationListener(vibrationService)
 
-            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener?.goConverters() }
             // The backspace icon
+            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener?.goConverters() }
             calculatorBackSpaceIcon.apply {
                 alpha = 0f
                 setOnClickListener {
