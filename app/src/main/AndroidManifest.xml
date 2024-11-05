@@ -16,7 +16,7 @@
         android:theme="@style/MyTheme"
         tools:targetApi="33">
         <activity
-            android:name=".v15.activities.ConverterActivity"
+            android:name=".v15.activities.MainConverterActivity"
             android:exported="false" />
         <activity
             android:name=".v15.activities.MainCalculatorActivity"
