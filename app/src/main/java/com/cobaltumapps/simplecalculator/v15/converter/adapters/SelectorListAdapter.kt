@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.v15.fragments.converter.adapters
+package com.cobaltumapps.simplecalculator.v15.converter.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.LayoutSelectorListItemBinding
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.data.SelectorDataItem
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.interfaces.SelectorFragmentListener
+import com.cobaltumapps.simplecalculator.v15.converter.data.SelectorDataItem
+import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
 
 class SelectorListAdapter(
     val context: Context,

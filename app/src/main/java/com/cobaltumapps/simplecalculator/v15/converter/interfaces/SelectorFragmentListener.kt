@@ -1,6 +1,6 @@
-package com.cobaltumapps.simplecalculator.v15.fragments.converter.interfaces
+package com.cobaltumapps.simplecalculator.v15.converter.interfaces
 
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.enums.ConverterUnit
+import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
 
 interface SelectorFragmentListener {
     /** Method, works when the item has been selected
