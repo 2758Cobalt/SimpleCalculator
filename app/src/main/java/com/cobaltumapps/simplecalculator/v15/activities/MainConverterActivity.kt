@@ -8,8 +8,8 @@ import com.cobaltumapps.simplecalculator.adapters.viewpagers.ConverterViewPagerA
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterNBinding
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterSelectorFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterUnitFragment
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.enums.ConverterUnit
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.interfaces.SelectorFragmentListener
+import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
+import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
 
 class MainConverterActivity : AppCompatActivity(), SelectorFragmentListener {
     private val binding by lazy { ActivityConverterNBinding.inflate(layoutInflater) }

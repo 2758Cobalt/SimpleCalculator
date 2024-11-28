@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentConverterSelectorBinding
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.adapters.SelectorListAdapter
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.data.SelectorDataItem
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.enums.ConverterUnit
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.interfaces.SelectorFragmentListener
+import com.cobaltumapps.simplecalculator.v15.converter.adapters.SelectorListAdapter
+import com.cobaltumapps.simplecalculator.v15.converter.data.SelectorDataItem
+import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
+import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
 
 class ConverterSelectorFragment(
     private val listener: SelectorFragmentListener? = null
