@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/fragment_converter_numpad_n">
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:columnCount="4">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpadMS"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolMemorySave" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpadMR"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolMemoryRead" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpadMC"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolMemoryClear" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad1"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad2"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad3"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum3" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpadAC"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolAC" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad4"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum4" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad5"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad6"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum6" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpadBackspace"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolBackSpace" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad7"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum7" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad8"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad9"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="68dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum9" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpadEnter"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolEnter" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpadPoint"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="68dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolPoint" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad0"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="68dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/converterNumpad00"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="68dp"
+            android:layout_height="64dp"
+            android:text="@string/symbolNum00" />
+
+
+    </androidx.gridlayout.widget.GridLayout>
+</merge>

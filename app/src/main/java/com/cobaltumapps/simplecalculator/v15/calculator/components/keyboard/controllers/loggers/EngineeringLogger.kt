@@ -2,10 +2,11 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.con
 
 import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialFunctionsListener
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialOperationListener
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 
-class EngineeringLogger : KeyboardSpecialFunctionsListener {
+class EngineeringLogger : KeyboardSpecialFunctionsListener, KeyboardSpecialOperationListener {
     override fun onClickSpecialOperation(operation: KeyboardSpecialOperation) {
         Log.i(LOG_TAG, "onClickSpecialOperation: $operation")
     }

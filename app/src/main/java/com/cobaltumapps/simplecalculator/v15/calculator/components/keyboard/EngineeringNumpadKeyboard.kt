@@ -2,11 +2,12 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard
 
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialFunctionsListener
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialOperationListener
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardMaster
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 
-open class EngineeringNumpadKeyboard : KeyboardMaster(), KeyboardSpecialFunctionsListener {
+open class EngineeringNumpadKeyboard : KeyboardMaster(), KeyboardSpecialFunctionsListener, KeyboardSpecialOperationListener {
 
     override fun onClickSpecialOperation(operation: KeyboardSpecialOperation) {
         (keyboardController as EngineeringController).onClickSpecialOperation(operation)

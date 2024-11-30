@@ -8,7 +8,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 interface KeyboardNumpadListener:
     KeyboardNumbersListener,
     KeyboardMathOperationsListener,
-    KeyboardSpecialFunctionsListener
+    KeyboardSpecialFunctionsListener,
+    KeyboardSpecialOperationListener
 
 // Интерфейс, отвечающий за передачу экземпляра контроллеру
 interface KeyboardInstanceSender {
@@ -32,6 +33,9 @@ interface KeyboardMathOperationsListener {
 
 // Интерфейс, отвечающий за нажатия на функцию
 interface KeyboardSpecialFunctionsListener {
-    fun onClickSpecialOperation(operation: KeyboardSpecialOperation)
     fun onClickSpecialFunction(function: KeyboardSpecialFunction)
+}
+
+interface KeyboardSpecialOperationListener {
+    fun onClickSpecialOperation(operation: KeyboardSpecialOperation)
 }
