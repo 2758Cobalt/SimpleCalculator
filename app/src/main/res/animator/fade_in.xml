@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animator
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="400">
     <propertyValuesHolder
         android:propertyName="alpha"
         android:valueFrom="0"
