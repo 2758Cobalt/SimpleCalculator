@@ -154,6 +154,7 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
 
     /** Метод, который вызывается при смене состояния BottomSheet EngineeringNumpad-клавиатуры */
     override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {
+        engineeringSwiper.onStateEngNumpadChanged(bottomSheet, newState)
     }
 
     override fun onSlideEngNumpad(bottomSheet: View, slideOffset: Float) {
