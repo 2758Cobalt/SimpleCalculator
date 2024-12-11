@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.cobaltumapps.simplecalculator.adapters.viewpagers.ConverterViewPagerAdapter
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterNBinding
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterSelectorFragment
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterUnitFragment
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterViewPagerAdapterN
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
 import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
+import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterSelectorFragment
+import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterUnitFragment
 
 class MainConverterActivity : AppCompatActivity(), SelectorFragmentListener {
     private val binding by lazy { ActivityConverterNBinding.inflate(layoutInflater) }
@@ -27,7 +27,7 @@ class MainConverterActivity : AppCompatActivity(), SelectorFragmentListener {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.converterViewPager.apply {
-            adapter = ConverterViewPagerAdapter(this@MainConverterActivity, listOf(converterSelector, converterUnitFragment))
+            adapter = ConverterViewPagerAdapterN(this@MainConverterActivity, listOf(converterSelector, converterUnitFragment))
             isUserInputEnabled = false
         }
 

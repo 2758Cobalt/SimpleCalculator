@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.references
+package com.cobaltumapps.simplecalculator.v15.calculator.references
 
 object LogTags {
     const val LOG_CONVERTER = "SC_Converter"

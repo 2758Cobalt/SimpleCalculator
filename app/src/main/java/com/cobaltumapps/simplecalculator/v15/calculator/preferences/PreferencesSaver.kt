@@ -1,9 +1,9 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.preferences
 
 import android.content.SharedPreferences
-import com.cobaltumapps.simplecalculator.references.PreferenceKeys
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesSaverListener
+import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
 
 class PreferencesSaver(
     private val sharedPreferences: SharedPreferences,
@@ -14,10 +14,10 @@ class PreferencesSaver(
     override fun saveData(newData: PreferencesUserData) {
         val editor = sharedPreferences.edit()
         with(editor) {
-            putBoolean(PreferenceKeys.keyMemoryAutoSave, newData.memoryAutoSave)
-            putBoolean(PreferenceKeys.keyKeepLastRecord, newData.keepLastRecord)
-            putBoolean(PreferenceKeys.keyAllowVibration, newData.allowVibration)
-            putLong(PreferenceKeys.keyVibrationStrength, newData.vibrationStrength)
+            putBoolean(PreferencesKeys.keyMemoryAutoSave, newData.memoryAutoSave)
+            putBoolean(PreferencesKeys.keyKeepLastRecord, newData.keepLastRecord)
+            putBoolean(PreferencesKeys.keyAllowVibration, newData.allowVibration)
+            putLong(PreferencesKeys.keyVibrationStrength, newData.vibrationStrength)
         }
         editor.apply()
 

@@ -1,9 +1,9 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.preferences
 
 import android.content.SharedPreferences
-import com.cobaltumapps.simplecalculator.references.PreferenceKeys
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesLoaderListener
+import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
 
 class PreferencesLoader(
     private val sharedPreferences: SharedPreferences,
@@ -13,10 +13,10 @@ class PreferencesLoader(
         val loadedConfig =
         with(sharedPreferences) {
             PreferencesUserData(
-                getBoolean(PreferenceKeys.keyMemoryAutoSave, false),
-                getBoolean(PreferenceKeys.keyKeepLastRecord, true),
-                getBoolean(PreferenceKeys.keyAllowVibration, true),
-                getLong(PreferenceKeys.keyVibrationStrength, 1L)
+                getBoolean(PreferencesKeys.keyMemoryAutoSave, false),
+                getBoolean(PreferencesKeys.keyKeepLastRecord, true),
+                getBoolean(PreferencesKeys.keyAllowVibration, true),
+                getLong(PreferencesKeys.keyVibrationStrength, 1L)
             )
         }
 

@@ -36,6 +36,7 @@ class SqliteDatabaseControllerImpl(private val dbHelper: SQLiteOpenHelper): Data
                     HistoryData(
                         cursor.getString(1), // Expression
                         cursor.getString(2), // Result
+                        0
                     )
                 )
             }

@@ -28,7 +28,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     var numpadController: NumpadController? = null
     var engNumpadController: EngineeringController? = null
 
-    // Services
+    // ServiceClipboard
     var historyService: HistoryControllerImpl? = null
     var memoryService: MemoryControllerImpl? = null
 
@@ -64,7 +64,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
                     displayController?.setResultField(calculatedResult)
 
                     // Добавляем в историю новый элемент
-                    historyService?.addExpressionItem(HistoryData(userExpression, calculatedResult))
+                    historyService?.addExpressionItem(HistoryData(userExpression, calculatedResult, 0))
 
                     if (preferencesUserData.memoryAutoSave) {
                         handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)

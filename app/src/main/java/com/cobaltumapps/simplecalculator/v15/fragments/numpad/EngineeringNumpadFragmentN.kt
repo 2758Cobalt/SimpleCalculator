@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentEngineeringNBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutEngineeringBinding
-import com.cobaltumapps.simplecalculator.references.Animations
+import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.EngineeringNumpadKeyboard
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
@@ -103,7 +103,7 @@ class EngineeringNumpadFragmentN(
     }
 
     fun setActiveKeyboard(isActivated: Boolean) {
-        Animations.animatePropertyChange(
+        AnimationsService.animatePropertyChange(
             binding.root,
             Property.alpha.name,
             binding.root.alpha,

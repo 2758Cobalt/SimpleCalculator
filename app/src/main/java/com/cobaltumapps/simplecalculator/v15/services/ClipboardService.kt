@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.references
+package com.cobaltumapps.simplecalculator.v15.services
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -6,7 +6,7 @@ import android.content.Context
 import android.widget.Toast
 import com.cobaltumapps.simplecalculator.R
 
-object Services {
+object ClipboardService {
 
     // Копирует в буфер обмена
     fun copyToClipboard(context: Context, text: String) {

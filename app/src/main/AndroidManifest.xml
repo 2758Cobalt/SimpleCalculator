@@ -16,9 +16,6 @@
         android:theme="@style/MyTheme"
         tools:targetApi="33">
         <activity
-            android:name=".v15.activities.MainConverterActivity"
-            android:exported="false" />
-        <activity
             android:name=".v15.activities.MainCalculatorActivity"
             android:exported="true">
             <intent-filter>
@@ -26,17 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".v15.activities.MainConverterActivity"
+            android:exported="false" />
+
         <activity
             android:name=".onBoarding.OnBoardingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.ConverterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.OptionsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.MainActivity"
             android:exported="false" />
 
         <meta-data

@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.references
+package com.cobaltumapps.simplecalculator.v15.services
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -9,7 +9,7 @@ import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
 import android.view.animation.OvershootInterpolator
 
-object Animations {
+object AnimationsService {
     val overshootInterpolator = OvershootInterpolator()
 
     fun playAnimation(activity: Activity, animObject: View, animResource: Int, interpolator: Interpolator? = null) {

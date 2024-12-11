@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.preferences
 
 import android.content.Context
-import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesDataManagerListener
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener

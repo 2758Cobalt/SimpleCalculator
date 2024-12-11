@@ -21,7 +21,7 @@ class HistoryStorageLogger: HistoryStorageSaver, HistoryStorageLoader, HistorySt
 
     override fun load(): HistoryData {
         Log.d(LOG_TAG, "HistoryStorage: The data of history has been loaded")
-        return HistoryData("", "")
+        return HistoryData("", "", 0)
     }
 
     override fun clear() {

@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
 import androidx.core.view.isVisible
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayNBinding
-import com.cobaltumapps.simplecalculator.references.Animations
+import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayAnimations
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 
@@ -16,24 +16,24 @@ class DisplayAnimator : DisplayAnimations {
 
     override fun playDisplayResultAnim(onEnd: (() -> Unit)?) {
         displaybinding?.displayResultField?.isVisible = true
-        Animations.animatePropertyChange(
+        AnimationsService.animatePropertyChange(
             displaybinding?.displayResultField!!,
             Property.scaleY.name,
              displaybinding?.displayResultField?.scaleY!!,
             1f,
             animationDuration,
-            Animations.overshootInterpolator
+            AnimationsService.overshootInterpolator
         )
     }
 
     override fun playHiddenResultAnim(onEnd: (() -> Unit)?) {
-        Animations.animatePropertyChange(
+        AnimationsService.animatePropertyChange(
             displaybinding?.displayResultField!!,
             Property.scaleY.name,
             displaybinding?.displayResultField?.scaleY!!,
             0f,
             animationDuration,
-            Animations.overshootInterpolator
+            AnimationsService.overshootInterpolator
         ) {
             displaybinding?.displayResultField?.isVisible = false
             onEnd?.invoke()

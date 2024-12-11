@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.expression_manager
 
 import android.content.Context
-import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.services.expression_manager.interfaces.ExpressionStorageListener
 
 class ExpressionStorageManager(context: Context): ExpressionStorageListener {

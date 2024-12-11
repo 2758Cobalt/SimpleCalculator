@@ -3,8 +3,8 @@ package com.cobaltumapps.simplecalculator.v15.calculator.preferences.sidesheet
 import android.content.Context
 import android.os.Bundle
 import com.cobaltumapps.simplecalculator.databinding.SideSheetPreferencesBinding
-import com.cobaltumapps.simplecalculator.services.VibratorService
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
 import com.google.android.material.sidesheet.SideSheetDialog
 import com.google.android.material.slider.Slider
 
@@ -17,9 +17,7 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val vibrator = VibratorService()
-        vibrator.context = context
-
+        val vibrator = VibrationService(context)
         binding.apply {
             setContentView(root)
 
@@ -30,7 +28,8 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
 
             prefVibration.setOnCheckedChangeListener { _, checked ->
                 if (checked) {
-                    vibrator.playVibration(vibrationStrength)
+                    vibrator.duration = vibrationStrength
+                    vibrator.playVibration()
                 }
 
                 preferencesUserData.allowVibration = checked
@@ -43,7 +42,8 @@ class PreferencesSideSheetDialog(context: Context) : SideSheetDialog(context)  {
 
                 override fun onStopTrackingTouch(slider: Slider) {
                     vibrationStrength = slider.value.toLong()
-                    vibrator.playVibration(vibrationStrength)
+                    vibrator.duration = vibrationStrength
+                    vibrator.playVibration()
                     preferencesUserData.vibrationStrength = vibrationStrength
                 }
             })

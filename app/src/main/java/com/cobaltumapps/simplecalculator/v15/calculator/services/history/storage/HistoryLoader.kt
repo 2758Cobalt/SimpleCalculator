@@ -9,6 +9,6 @@ class HistoryLoader(private val database: SqliteRoomDatabase): HistoryStorageLoa
 
     override fun load(): HistoryData {
         return HistoryData(
-            "","")
+            "","", 0)
     }
 }

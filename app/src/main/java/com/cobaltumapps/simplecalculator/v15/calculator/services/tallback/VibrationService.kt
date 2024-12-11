@@ -5,9 +5,9 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
-import com.cobaltumapps.simplecalculator.references.LogTags
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
+import com.cobaltumapps.simplecalculator.v15.calculator.references.LogTags
 
 class VibrationService(
     private val context: Context

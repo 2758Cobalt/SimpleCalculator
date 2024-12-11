@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBinding
-import com.cobaltumapps.simplecalculator.references.Animations
+import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
@@ -93,7 +93,7 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
     private fun showHistory(forceAnimate: Boolean = false) {
         binding.historyRecyclerView.apply {
             isVisible = true
-            Animations.animatePropertyChange(
+            AnimationsService.animatePropertyChange(
                 this,
                 Property.alpha.name,
                 this.alpha,
@@ -108,7 +108,7 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
     /** Прячет список истории */
     private fun hideHistory(forceAnimate: Boolean = false) {
         binding.historyRecyclerView.apply {
-            Animations.animatePropertyChange(
+            AnimationsService.animatePropertyChange(
                 this,
                 Property.alpha.name,
                 this.alpha,
@@ -126,7 +126,7 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
         if (historyAdapter.itemCount > 0) {
             binding.historyDisplayClearFab.apply {
                 isVisible = true
-                Animations.animatePropertyChange(
+                AnimationsService.animatePropertyChange(
                     this,
                     Property.alpha.name,
                     this.alpha,
@@ -140,7 +140,7 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
     /** Прячет кнопку очистки истории */
     private fun hideClearHistoryFab() {
         binding.historyDisplayClearFab.apply {
-            Animations.animatePropertyChange(
+            AnimationsService.animatePropertyChange(
                 this,
                 Property.alpha.name,
                 this.alpha,

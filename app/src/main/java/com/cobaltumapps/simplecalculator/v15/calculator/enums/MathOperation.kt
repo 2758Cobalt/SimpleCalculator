@@ -1,6 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.enums
 
-import com.cobaltumapps.simplecalculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 
 enum class MathOperation (val symbol: Char) {
     None(' '),
