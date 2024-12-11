@@ -1,10 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.sqlite
 
 import android.content.Context
-import androidx.room.ColumnInfo
 import androidx.room.Database
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.cobaltumapps.simplecalculator.v15.sqlite.interfaces.Dao
@@ -28,14 +25,3 @@ abstract class SqliteRoomDatabase: RoomDatabase() {
     }
 }
 
-@Entity (tableName = "SC_history")
-data class RoomHistoryData(
-    @PrimaryKey(autoGenerate = true)
-    var id: Int? = null,
-
-    @ColumnInfo(name = "expression")
-    var expression: String,
-
-    @ColumnInfo(name = "result")
-    var result: String
-)

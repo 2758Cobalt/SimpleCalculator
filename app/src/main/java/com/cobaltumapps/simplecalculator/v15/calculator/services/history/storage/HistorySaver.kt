@@ -10,7 +10,7 @@ class HistorySaver(private val database: SqliteRoomDatabase): HistoryStorageSave
 
     override fun save(historyData: HistoryData) {
         Thread {
-            val newItem = RoomHistoryData(null, historyData.expression, historyData.result)
+            val newItem = RoomHistoryData(null, historyData.expression, historyData.result, historyData.date)
             databaseDao.insertItem(newItem)
         }.start()
     }
