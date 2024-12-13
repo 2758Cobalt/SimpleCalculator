@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "SC_history")
+@Entity(tableName = RoomHistory_TableNames.scHistoryTable)
 data class RoomHistoryData(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
@@ -16,5 +16,5 @@ data class RoomHistoryData(
     var result: String,
 
     @ColumnInfo(name = RoomHistory_ColumnNames.expressionDate)
-    var date: Int
+    var date: String
 )

@@ -5,3 +5,7 @@ object RoomHistory_ColumnNames {
     const val expressionResult = "SC_result"
     const val expressionDate = "SC_date"
 }
+
+object  RoomHistory_TableNames {
+    const val scHistoryTable = "SC_history"
+}
