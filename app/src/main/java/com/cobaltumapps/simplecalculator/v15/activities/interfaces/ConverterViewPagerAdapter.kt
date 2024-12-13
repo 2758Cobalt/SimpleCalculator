@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ConverterViewPagerAdapterN(fa: FragmentActivity, private var list: List<Fragment>): FragmentStateAdapter(fa) {
+class ConverterViewPagerAdapter(fa: FragmentActivity, private var list: List<Fragment>): FragmentStateAdapter(fa) {
     override fun getItemCount(): Int {
         return list.size
     }
