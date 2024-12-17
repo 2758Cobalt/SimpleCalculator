@@ -16,28 +16,28 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.Medi
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.numpad.engineering.EngineeringSwiper
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
-import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragmentN
+import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.history.HistoryDisplayFragment
-import com.cobaltumapps.simplecalculator.v15.fragments.numpad.EngineeringNumpadFragmentN
-import com.cobaltumapps.simplecalculator.v15.fragments.numpad.NumpadFragmentN
+import com.cobaltumapps.simplecalculator.v15.fragments.numpad.EngineeringNumpadFragment
+import com.cobaltumapps.simplecalculator.v15.fragments.numpad.NumpadFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 /** Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора */
-class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
+class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
     EngineeringBottomBehaviorListener {
 
     private val binding by lazy { FragmentCalculatorNBinding.inflate(layoutInflater) }
 
     // Fragments
-    private val displayFragment by lazy { DisplayFragmentN() }
-    private val numpadFragment by lazy { NumpadFragmentN(numpadController, this) }
-    private val engineeringFragment by lazy { EngineeringNumpadFragmentN(engineeringController, this) }
+    private val displayFragment by lazy { DisplayFragment() }
+    private val numpadFragment by lazy { NumpadFragment(numpadController, this) }
+    private val engineeringFragment by lazy { EngineeringNumpadFragment(engineeringController, this) }
     private val historyDisplayFragment by lazy { HistoryDisplayFragment(mediatorController) }
 
     // Controllers
@@ -88,12 +88,12 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
             // Setup the mediator controller
             mediatorController.apply {
                 displayController = displayFragment.displayController
-                numpadController = this@CalculatorFragmentN.numpadController
+                numpadController = this@CalculatorFragment.numpadController
                 engNumpadController = engineeringController
-                historyService = HistoryControllerImpl(historyDisplayFragment.historyAdapter)
+                historyService = CalculatorHistoryController(historyDisplayFragment.historyAdapter)
                 memoryService = MemoryControllerImpl()
 
-                calculatorController = this@CalculatorFragmentN.calculatorController
+                calculatorController = this@CalculatorFragment.calculatorController
             }
             // Setup the controllers
             numpadFragment.setNewKeyboardController(numpadController)
@@ -125,18 +125,18 @@ class CalculatorFragmentN: Fragment(), NumpadBottomBehaviorListener,
             if (savedInstanceState == null) {
                 // Добавляет фрагменты, если родитель не был пересоздан
                 parentFragmentManager.commit {
-                    add(calculatorDisplayHolder.id, displayFragment, DisplayFragmentN.TAG)
-                    add(numpadHolder.id, numpadFragment, NumpadFragmentN.TAG)
-                    add(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragmentN.TAG)
+                    add(calculatorDisplayHolder.id, displayFragment, DisplayFragment.TAG)
+                    add(numpadHolder.id, numpadFragment, NumpadFragment.TAG)
+                    add(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragment.TAG)
                     add(calculatorHistoryHolder.id, historyDisplayFragment)
                 }
             }
             else {
                 // Заменяет старые фрагменты на новые, когда родитель был пересоздан
                 parentFragmentManager.commit {
-                    replace(calculatorDisplayHolder.id, displayFragment, DisplayFragmentN.TAG)
-                    replace(numpadHolder.id, numpadFragment, NumpadFragmentN.TAG)
-                    replace(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragmentN.TAG)
+                    replace(calculatorDisplayHolder.id, displayFragment, DisplayFragment.TAG)
+                    replace(numpadHolder.id, numpadFragment, NumpadFragment.TAG)
+                    replace(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragment.TAG)
                     replace(calculatorHistoryHolder.id, historyDisplayFragment)
                 }
             }

@@ -17,7 +17,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class NumpadFragmentN(
+class NumpadFragment(
     private var numpadController: NumpadController? = null,
     private var numpadBottomBehaviorListener: NumpadBottomBehaviorListener? = null
 ): NumpadKeyboard() {

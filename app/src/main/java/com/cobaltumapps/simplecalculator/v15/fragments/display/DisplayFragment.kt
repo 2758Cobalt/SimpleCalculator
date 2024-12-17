@@ -12,7 +12,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.display.Displ
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
 // Фрагмент, содержащий дисплей калькулятора. Является наследником Display-компонента
-class DisplayFragmentN: DisplayComponent()  {
+class DisplayFragment: DisplayComponent()  {
     private val binding by lazy { FragmentDisplayNBinding.inflate(layoutInflater) }
 
     @SuppressLint("ClickableViewAccessibility")

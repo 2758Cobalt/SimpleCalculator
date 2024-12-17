@@ -18,7 +18,7 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.Enginee
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 
-class EngineeringNumpadFragmentN(
+class EngineeringNumpadFragment(
     private var engController: EngineeringController? = null,
     private var bottomBehaviorListener: EngineeringBottomBehaviorListener? = null
 ): EngineeringNumpadKeyboard() {
