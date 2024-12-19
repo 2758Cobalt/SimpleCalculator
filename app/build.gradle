@@ -2,13 +2,11 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'androidx.room'
 }
 
 android {
     namespace 'com.cobaltumapps.simplecalculator'
     compileSdk 34
-    compileSdkVersion 34
 
     defaultConfig {
         applicationId 'com.cobaltumapps.simplecalculator'
@@ -19,10 +17,6 @@ android {
         versionName "1.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    room {
-        schemaDirectory "$projectDir/schemas"
     }
 
     buildTypes {
