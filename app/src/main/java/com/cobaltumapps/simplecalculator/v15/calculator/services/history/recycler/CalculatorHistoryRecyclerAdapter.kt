@@ -9,16 +9,16 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfa
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 
-class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: HolderOnClickListener? = null): RecyclerView.Adapter<HistoryItemHolder>(),
+class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: HolderOnClickListener? = null): RecyclerView.Adapter<CalculatorHistoryItemHolder>(),
     HistoryController
 {
     private var expressionsHistoryList: MutableList<HistoryData> = mutableListOf()
     var updaterListener: HistoryAdapterUpdater? = null
 
     /** Создаёт макет для каждого холдера */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryItemHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalculatorHistoryItemHolder {
         val binding = RecyclerHistoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HistoryItemHolder(binding)
+        return CalculatorHistoryItemHolder(binding)
     }
 
     /** Возвращает полный список элементов */
@@ -27,7 +27,7 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
     }
 
     /** Привязывает логику для каждого холдера */
-    override fun onBindViewHolder(holder: HistoryItemHolder, position: Int) {
+    override fun onBindViewHolder(holder: CalculatorHistoryItemHolder, position: Int) {
         val historyObject = expressionsHistoryList[position]
         holder.bind(historyObject)
         holder.bindOnClickHistoryItem(onClickHistoryListener)
@@ -43,25 +43,19 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
     }
 
     /** Добавляет новый элемент в список выражений */
-    override fun addExpressionItem(historyData: HistoryData) {
+    override fun addHistoryItem(historyData: HistoryData) {
         expressionsHistoryList.addItem(historyData)
         updaterListener?.updateAdapter()
     }
 
-    /** Обновляет элемент в нужной позиции */
-    override fun updateExpressionItem(historyData: HistoryData, pos: Int) {
-        expressionsHistoryList[pos] = historyData
-        updaterListener?.updateAdapter()
-    }
-
     /** Удаляет элемент в нужной позиции */
-    override fun removeExpressionItem(index: Int) {
+    override fun removeHistoryItem(index: Int) {
         expressionsHistoryList.removeItem(index)
         updaterListener?.updateAdapter()
     }
 
     /** Удаляет последний элемент */
-    override fun clearExpressionItem() {
+    override fun clearHistory() {
         val oldestSize = expressionsHistoryList.size
         expressionsHistoryList.clear()
         notifyItemRangeRemoved(0, oldestSize)
@@ -81,8 +75,9 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
     }
 
     companion object {
-        const val LOG_TAG = "SC_CalculatorHistoryRecyclerTag"
-        const val STATE_TAG = "SC_InstanceStateCalcHistoryTag"
+        const val LOG_TAG = "SC_CalculatorHistory" +
+                "Recycler" +
+                "Tag"
     }
 
 

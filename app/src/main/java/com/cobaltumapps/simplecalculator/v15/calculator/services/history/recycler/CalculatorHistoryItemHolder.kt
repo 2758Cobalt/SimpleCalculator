@@ -7,7 +7,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.Hi
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 
 // Класс, реализующий объект истории
-class HistoryItemHolder(private val itemBinding: RecyclerHistoryItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+class CalculatorHistoryItemHolder(private val itemBinding: RecyclerHistoryItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
     private var currentExpression = ""
 
     fun bind(historyData: HistoryData) {

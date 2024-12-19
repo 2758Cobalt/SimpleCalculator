@@ -6,29 +6,38 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBinding
-import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers.HistoryStorageController
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers.CalculatorHistoryStorageController
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
+import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener,
+/** Фрагмент, цель которого - отображать историю расчётов в виде списка и предоставлять управление над каждым элементом.
+ * @param historyAdapter Адаптер, отображающий список расчётов.
+ * @param calculatorHistoryController Контроллер, управляющий адаптера отображения списка и контроллера базы данных, для сохранения и удаления записей в БД */
+
+class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener,
     HistoryAdapterUpdater {
     private val binding by lazy { FragmentHistoryDisplayBinding.inflate(layoutInflater) }
 
-    val historyAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener) }
-    private val historyControllerImpl = HistoryControllerImpl(historyAdapter)
+    // Адаптер для отображения списка расчётов
+    val calculatorHistoryRecyclerAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener) }
+
+    // Контроллер для управления адаптером и контроллером хранилища расчётов (БД в Room)
+    private val calculatorHistoryController = CalculatorHistoryController(calculatorHistoryRecyclerAdapter)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        historyControllerImpl.historyStorageController = HistoryStorageController(context)
+        calculatorHistoryController.calculatorHistoryStorageController =
+            CalculatorHistoryStorageController(requireContext(), viewLifecycleOwner.lifecycleScope)
         return binding.root
     }
 
@@ -36,26 +45,25 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
         super.onViewCreated(view, savedInstanceState)
         hideHistory()
 
-
         binding.apply {
             historyRecyclerView.apply {
-                isVisible = false
                 layoutManager = LinearLayoutManager(context)
-                adapter = historyAdapter
+                adapter = calculatorHistoryRecyclerAdapter
             }
 
             historyDisplayClearFab.apply {
-                isVisible = false
                 setOnClickListener {
-                    historyAdapter.clearExpressionItem()
-                    historyControllerImpl.historyStorageController?.clear()
+                    calculatorHistoryRecyclerAdapter.clearHistory()
+                    //calculatorHistoryController.calculatorHistoryStorageController?.clear()
                     hideHistory()
                     showHistoryHint()
                 }
             }
 
-            historyAdapter.updaterListener = this@HistoryDisplayFragment
+            calculatorHistoryRecyclerAdapter.updaterListener = this@CalculatorHistoryDisplayFragment
         }
+
+        hideHistoryList()
 
         val touchHelper = ItemTouchHelper(
             object: ItemTouchHelper.Callback() {
@@ -79,7 +87,7 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     when(direction) {
                         ItemTouchHelper.START -> {
-                            historyAdapter.removeExpressionItem(viewHolder.bindingAdapterPosition)
+                            calculatorHistoryRecyclerAdapter.removeHistoryItem(viewHolder.bindingAdapterPosition)
                         }
                     }
                 }
@@ -123,7 +131,7 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
 
     /** Показывает кнопку очистки истории */
     private fun showClearHistoryFab() {
-        if (historyAdapter.itemCount > 0) {
+        if (calculatorHistoryRecyclerAdapter.itemCount > 0) {
             binding.historyDisplayClearFab.apply {
                 isVisible = true
                 AnimationsService.animatePropertyChange(
@@ -162,17 +170,25 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
         binding.historyListHint.isVisible = false
     }
 
+    /** Показывает список */
+    private fun showHistoryList() {
+        showClearHistoryFab()
+        hideHistoryHint()
+    }
+
+    /** Прячет список */
+    private fun hideHistoryList() {
+        hideClearHistoryFab()
+        showHistoryHint()
+    }
+
     /** Проверяет размер списка */
     private fun checkListSize(): Boolean {
-        val checkResult = historyAdapter.getItemList().isEmpty()
-        if (checkResult) {
-            hideClearHistoryFab()
-            showHistoryHint()
-        }
-        else {
-            showClearHistoryFab()
-            hideHistoryHint()
-        }
+        val checkResult = calculatorHistoryRecyclerAdapter.getItemList().isEmpty()
+        if (checkResult)
+            hideHistoryList()
+        else
+            showHistoryList()
 
         return checkResult
     }
@@ -189,7 +205,8 @@ class HistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = nul
     }
 
     companion object {
-        const val LOG_TAG = "SC_HistoryDisplayTag"
+        const val LOG_TAG = "SC_HistoryDisplay" +
+                "Tag"
         const val DEF_ANIM_DURATION = 400L
     }
 }

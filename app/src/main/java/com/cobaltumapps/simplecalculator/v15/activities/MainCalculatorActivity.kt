@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.cobaltumapps.simplecalculator.databinding.ActivityMainCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
-import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragmentN
+import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
 
 class MainCalculatorActivity : AppCompatActivity(),
     CalculatorNavigationListener
@@ -20,11 +20,11 @@ class MainCalculatorActivity : AppCompatActivity(),
 
         window.setBackgroundDrawable(null)
 
-        val calculatorFragment = supportFragmentManager.findFragmentByTag(CalculatorFragmentN.TAG) as? CalculatorFragmentN
+        val calculatorFragment = supportFragmentManager.findFragmentByTag(CalculatorFragment.TAG) as? CalculatorFragment
         if (calculatorFragment == null) {
-            val newFragment = CalculatorFragmentN()
+            val newFragment = CalculatorFragment()
             supportFragmentManager.commit {
-                replace(binding.placeHolder.id, newFragment, CalculatorFragmentN.TAG)
+                replace(binding.placeHolder.id, newFragment, CalculatorFragment.TAG)
             }
         } else {
             calculatorFragment.setCalculatorNavigationListener(this)

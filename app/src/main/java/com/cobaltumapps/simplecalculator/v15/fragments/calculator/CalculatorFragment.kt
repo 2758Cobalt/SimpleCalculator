@@ -21,7 +21,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryCo
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
 import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragment
-import com.cobaltumapps.simplecalculator.v15.fragments.history.HistoryDisplayFragment
+import com.cobaltumapps.simplecalculator.v15.fragments.history.CalculatorHistoryDisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.EngineeringNumpadFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.NumpadFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
@@ -38,7 +38,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
     private val displayFragment by lazy { DisplayFragment() }
     private val numpadFragment by lazy { NumpadFragment(numpadController, this) }
     private val engineeringFragment by lazy { EngineeringNumpadFragment(engineeringController, this) }
-    private val historyDisplayFragment by lazy { HistoryDisplayFragment(mediatorController) }
+    private val calculatorHistoryDisplayFragment by lazy { CalculatorHistoryDisplayFragment(mediatorController) }
 
     // Controllers
     private val numpadController = NumpadController()
@@ -90,7 +90,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
                 displayController = displayFragment.displayController
                 numpadController = this@CalculatorFragment.numpadController
                 engNumpadController = engineeringController
-                historyService = CalculatorHistoryController(historyDisplayFragment.historyAdapter)
+                historyService = CalculatorHistoryController(calculatorHistoryDisplayFragment.calculatorHistoryRecyclerAdapter)
                 memoryService = MemoryControllerImpl()
 
                 calculatorController = this@CalculatorFragment.calculatorController
@@ -128,7 +128,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
                     add(calculatorDisplayHolder.id, displayFragment, DisplayFragment.TAG)
                     add(numpadHolder.id, numpadFragment, NumpadFragment.TAG)
                     add(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragment.TAG)
-                    add(calculatorHistoryHolder.id, historyDisplayFragment)
+                    add(calculatorHistoryHolder.id, calculatorHistoryDisplayFragment)
                 }
             }
             else {
@@ -137,7 +137,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
                     replace(calculatorDisplayHolder.id, displayFragment, DisplayFragment.TAG)
                     replace(numpadHolder.id, numpadFragment, NumpadFragment.TAG)
                     replace(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragment.TAG)
-                    replace(calculatorHistoryHolder.id, historyDisplayFragment)
+                    replace(calculatorHistoryHolder.id, calculatorHistoryDisplayFragment)
                 }
             }
         }
@@ -145,7 +145,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
 
     /** Метод, который вызывается при смене состояния BottomSheet Numpad-клавиатуры */
     override fun onStateNumpadChanged(bottomSheet: View, newState: Int) {
-        historyDisplayFragment.onStateNumpadChanged(bottomSheet, newState)
+        calculatorHistoryDisplayFragment.onStateNumpadChanged(bottomSheet, newState)
         when(newState) {
             BottomSheetBehavior.STATE_EXPANDED -> engineeringFragment.setActiveKeyboard(true)
             BottomSheetBehavior.STATE_DRAGGING -> engineeringFragment.setActiveKeyboard(false)

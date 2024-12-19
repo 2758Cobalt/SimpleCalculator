@@ -5,7 +5,7 @@ import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterNBinding
-import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterViewPagerAdapterN
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterViewPagerAdapter
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
 import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterSelectorFragment
@@ -27,7 +27,7 @@ class MainConverterActivity : AppCompatActivity(), SelectorFragmentListener {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.converterViewPager.apply {
-            adapter = ConverterViewPagerAdapterN(this@MainConverterActivity, listOf(converterSelector, converterUnitFragment))
+            adapter = ConverterViewPagerAdapter(this@MainConverterActivity, listOf(converterSelector, converterUnitFragment))
             isUserInputEnabled = false
         }
 

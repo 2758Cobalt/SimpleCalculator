@@ -10,7 +10,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOpe
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.HistoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
@@ -29,8 +29,11 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     var engNumpadController: EngineeringController? = null
 
     // ServiceClipboard
-    var historyService: HistoryControllerImpl? = null
+    var historyService: CalculatorHistoryController? = null
     var memoryService: MemoryControllerImpl? = null
+
+    var userExpression = ""
+    var calculatedResult = ""
 
     // Обработка клика (число)
     override fun handleOnClickNumber(number: Number) {
@@ -53,99 +56,103 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
 
     // Обработка клика (спец. функция)
     override fun handleOnClickSpecialFunction(function: KeyboardSpecialFunction) {
-        when(function) {
+        try {
+            when(function) {
+                // Функция - равно (=)
+                KeyboardSpecialFunction.Equal -> {
+                    // Обновляет поля выражения и результата вычисления
+                    updateCalculationFields()
 
-            // Функция - равно (=)
-            KeyboardSpecialFunction.Equal -> {
-                calculatorController?.let {
-                    val userExpression = it.getUserExpression().getExpression()
-                    val calculatedResult = it.calculateExpression()
-
+                    // Устанавливает результат вычислений
                     displayController?.setResultField(calculatedResult)
 
-                    // Добавляем в историю новый элемент
-                    historyService?.addExpressionItem(HistoryData(userExpression, calculatedResult, 0))
+                    // Запись вычислений в историю
+                    makeHistoryRecord()
 
-                    if (preferencesUserData.memoryAutoSave) {
+                    // Проверка предпочтения и выполнение действия, если истина
+                    if (preferencesUserData.memoryAutoSave)
                         handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
-                    }
                 }
-            }
 
-            // Функция - очистки последнего символа (Backspace)
-            KeyboardSpecialFunction.Backspace -> {
-                calculatorController?.removeLastSymbolExpression()
-                displayController?.setExpressionField(calculatorController?.getUserExpression()?.getExpression()!!)
-                displayController?.clearResultField()
-            }
+                // Функция - очистки последнего символа (Backspace)
+                KeyboardSpecialFunction.Backspace -> {
+                    calculatorController?.removeLastSymbolExpression()
+                    displayController?.setExpressionField(calculatorController?.getUserExpression()?.getExpression()!!)
+                    displayController?.clearResultField()
+                }
 
-            // Функция - всё очистить (All clear)
-            KeyboardSpecialFunction.AllClear -> {
-                displayController?.allClearFields()
-                calculatorController?.clearExpression()
-            }
+                // Функция - всё очистить (All clear)
+                KeyboardSpecialFunction.AllClear -> {
+                    displayController?.allClearFields()
+                    calculatorController?.clearExpression()
+                }
 
-            // Функция - удаление группы символов
-            KeyboardSpecialFunction.GroupDigitsCleaning -> {
-                calculatorController?.removeDigitsGroup()
-                displayController?.setExpressionField(calculatorController?.getUserExpression()?.getExpression()!!)
-            }
+                // Функция - удаление группы символов
+                KeyboardSpecialFunction.GroupDigitsCleaning -> {
+                    calculatorController?.removeDigitsGroup()
+                    displayController?.setExpressionField(calculatorController?.getUserExpression()?.getExpression()!!)
+                }
 
-            KeyboardSpecialFunction.Invert -> {
-                displayController?.setExpressionField(calculatorController?.closeExpressionString()!!)
-            }
+                KeyboardSpecialFunction.Invert -> {
+                    displayController?.setExpressionField(calculatorController?.closeExpressionString()!!)
+                }
 
-            // MemoryStorageManager
-            KeyboardSpecialFunction.MemorySave -> {
-                memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
-            }
+                // MemoryStorageManager
+                KeyboardSpecialFunction.MemorySave -> {
+                    memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                }
 
-            KeyboardSpecialFunction.MemoryRead -> {
-                calculatorController?.setExpression(memoryService?.readMemory()!!)
-                updateDisplay()
-            }
+                KeyboardSpecialFunction.MemoryRead -> {
+                    calculatorController?.setExpression(memoryService?.readMemory()!!)
+                    updateDisplayExpression()
+                }
 
-            KeyboardSpecialFunction.MemoryClear -> {
-                memoryService?.clearMemory { result -> displayController?.setMemoryField(result) }
-            }
+                KeyboardSpecialFunction.MemoryClear -> {
+                    memoryService?.clearMemory { result -> displayController?.setMemoryField(result) }
+                }
 
-            // MemoryStorageManager operations
-            KeyboardSpecialFunction.MemoryAdd -> {
-                memoryService?.addToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
-            }
+                // MemoryStorageManager operations
+                KeyboardSpecialFunction.MemoryAdd -> {
+                    memoryService?.addToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                }
 
-            KeyboardSpecialFunction.MemorySubtract -> {
-                memoryService?.subtractFromMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
-            }
+                KeyboardSpecialFunction.MemorySubtract -> {
+                    memoryService?.subtractFromMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                }
 
-            KeyboardSpecialFunction.MemoryMultiply -> {
-                memoryService?.multiplyToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
-            }
+                KeyboardSpecialFunction.MemoryMultiply -> {
+                    memoryService?.multiplyToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                }
 
-            KeyboardSpecialFunction.MemoryDivide -> {
-                memoryService?.divideAtMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
-            }
+                KeyboardSpecialFunction.MemoryDivide -> {
+                    memoryService?.divideAtMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                }
 
-            // Angle mode
-            KeyboardSpecialFunction.AngleMode -> {
-                displayController?.setAngleField(
-                    calculatorController?.setSwitchAngleMode()!!
-                )
-            }
+                // Angle mode
+                KeyboardSpecialFunction.AngleMode -> {
+                    displayController?.setAngleField(
+                        calculatorController?.setSwitchAngleMode()!!
+                    )
+                }
 
-            // Функция - пропускает действие (если нужно)
-            KeyboardSpecialFunction.Skip -> {
-                Log.d(LOG_TAG, "The special function is skipped")
-            }
+                // Функция - пропускает действие (если нужно)
+                KeyboardSpecialFunction.Skip -> {
+                    Log.d(LOG_TAG, "The special function is skipped")
+                }
 
-            else -> KeyboardSpecialFunction.Skip
+                else -> KeyboardSpecialFunction.Skip
+            }
         }
+        catch (ex: NullPointerException) {
+            Log.e(LOG_TAG, "The special function is skipped")
+        }
+
     }
 
     /** При нажатии на элемент "Истории" - устанавливает в калькулятор выбраное выражение. Возвращает выбраное выражение */
     override fun onHistoryItemClicked(expression: String): String {
         calculatorController?.setExpression(expression)
-        updateDisplay()
+        updateDisplayExpression()
         return expression
     }
 
@@ -159,13 +166,30 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
                 "allowVibration: ${newPrefConfig.allowVibration}")
     }
 
-    private fun updateDisplay() {
+    /** Обновление дисплея */
+    private fun updateDisplayExpression() {
         displayController?.setExpressionField(
             calculatorController?.getUserExpression()?.getExpression()!!
         )
     }
 
+    /** Обновляет локальные поля */
+    private fun updateCalculationFields() {
+        calculatorController?.let {
+            userExpression = it.getUserExpression().getExpression()
+            calculatedResult = it.calculateExpression()
+        }
+    }
+
+    /** Добавляем в историю новый элемент */
+    private fun makeHistoryRecord() {
+        historyService?.addHistoryItem(
+            HistoryData(userExpression, calculatedResult, 5)
+        )
+    }
+
     companion object {
-        const val LOG_TAG = "SC_MediatorTag"
+        const val LOG_TAG = "SC_MediatorController" +
+                "Tag"
     }
 }
