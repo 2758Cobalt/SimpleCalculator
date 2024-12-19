@@ -3,8 +3,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.services.history.interf
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 
 interface HistoryController {
-    fun addExpressionItem(historyData: HistoryData)
-    fun updateExpressionItem(historyData: HistoryData, pos: Int)
-    fun removeExpressionItem(index: Int)
-    fun clearExpressionItem()
+    fun addHistoryItem(historyData: HistoryData)
+    fun removeHistoryItem(index: Int)
+    fun clearHistory()
 }
