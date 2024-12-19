@@ -1,20 +1,12 @@
 package com.cobaltumapps.simplecalculator.v15.sqlite
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = RoomHistory_TableNames.scHistoryTable)
 data class RoomHistoryData(
-    @PrimaryKey(autoGenerate = true)
-    var id: Int? = null,
-
-    @ColumnInfo(name = RoomHistory_ColumnNames.expression)
-    var expression: String,
-
-    @ColumnInfo(name = RoomHistory_ColumnNames.expressionResult)
-    var result: String,
-
-    @ColumnInfo(name = RoomHistory_ColumnNames.expressionDate)
-    var date: String
+    @PrimaryKey(autoGenerate = true) val id: Int? = null,
+    val expression: String,
+    val result: String,
+    val dateUnix: Int
 )
