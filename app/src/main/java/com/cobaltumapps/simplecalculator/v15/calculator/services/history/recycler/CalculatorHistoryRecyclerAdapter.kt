@@ -9,11 +9,13 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfa
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 
-class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: HolderOnClickListener? = null): RecyclerView.Adapter<CalculatorHistoryItemHolder>(),
+class CalculatorHistoryRecyclerAdapter(
+    private val onClickHistoryListener: HolderOnClickListener? = null,
+    private val updaterListener: HistoryAdapterUpdater? = null
+): RecyclerView.Adapter<CalculatorHistoryItemHolder>(),
     HistoryController
 {
     private var expressionsHistoryList: MutableList<HistoryData> = mutableListOf()
-    var updaterListener: HistoryAdapterUpdater? = null
 
     /** Создаёт макет для каждого холдера */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalculatorHistoryItemHolder {
@@ -34,8 +36,9 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
     }
 
     /** Устанавливает новый список истории (если необходимо) */
-    fun setNewList(newExpressionList: MutableList<HistoryData>){
-        expressionsHistoryList = newExpressionList
+    fun setNewList(newExpressionList: List<HistoryData>?){
+        expressionsHistoryList = newExpressionList?.toMutableList() ?: mutableListOf()
+        updaterListener?.updateAdapter()
     }
 
     fun getItemList(): List<HistoryData> {
@@ -52,6 +55,10 @@ class CalculatorHistoryRecyclerAdapter(private val onClickHistoryListener: Holde
     override fun removeHistoryItem(index: Int) {
         expressionsHistoryList.removeItem(index)
         updaterListener?.updateAdapter()
+    }
+
+    override fun getHistoryList(): List<HistoryData> {
+        return expressionsHistoryList
     }
 
     /** Удаляет последний элемент */

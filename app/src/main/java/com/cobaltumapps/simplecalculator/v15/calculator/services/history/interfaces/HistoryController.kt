@@ -5,5 +5,6 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.Hi
 interface HistoryController {
     fun addHistoryItem(historyData: HistoryData)
     fun removeHistoryItem(index: Int)
+    fun getHistoryList(): List<HistoryData>?
     fun clearHistory()
 }

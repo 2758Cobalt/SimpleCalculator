@@ -13,7 +13,7 @@ interface Dao {
     @Insert
     suspend fun insertItem(vararg historyItem: RoomHistoryData)
 
-    @Query("SELECT * FROM ${RoomHistory_TableNames.scHistoryTable}")
+    @Query("SELECT * FROM ${RoomHistory_TableNames.scHistoryTable} ORDER BY `id` DESC")
     fun getItems(): Flow<List<RoomHistoryData>>
 
     @Delete

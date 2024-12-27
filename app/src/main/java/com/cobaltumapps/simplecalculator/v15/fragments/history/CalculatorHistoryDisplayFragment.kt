@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,20 +29,20 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     private val binding by lazy { FragmentHistoryDisplayBinding.inflate(layoutInflater) }
 
     // Адаптер для отображения списка расчётов
-    val calculatorHistoryRecyclerAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener) }
+    val calculatorHistoryRecyclerAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener, this@CalculatorHistoryDisplayFragment) }
 
     // Контроллер для управления адаптером и контроллером хранилища расчётов (БД в Room)
-    private val calculatorHistoryController = CalculatorHistoryController(calculatorHistoryRecyclerAdapter)
+    var calculatorHistoryController = CalculatorHistoryController(calculatorHistoryRecyclerAdapter)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        calculatorHistoryController.calculatorHistoryStorageController =
-            CalculatorHistoryStorageController(requireContext(), viewLifecycleOwner.lifecycleScope)
+        calculatorHistoryController.calculatorHistoryStorageController = CalculatorHistoryStorageController(requireContext(), viewLifecycleOwner)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hideHistory()
+
 
         binding.apply {
             historyRecyclerView.apply {
@@ -54,13 +53,11 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
             historyDisplayClearFab.apply {
                 setOnClickListener {
                     calculatorHistoryRecyclerAdapter.clearHistory()
-                    //calculatorHistoryController.calculatorHistoryStorageController?.clear()
+                    calculatorHistoryController.calculatorHistoryStorageController?.clearHistory()
                     hideHistory()
                     showHistoryHint()
                 }
             }
-
-            calculatorHistoryRecyclerAdapter.updaterListener = this@CalculatorHistoryDisplayFragment
         }
 
         hideHistoryList()
@@ -111,6 +108,8 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
             )
             showClearHistoryFab()
         }
+
+        loadHistoryList()
     }
 
     /** Прячет список истории */
@@ -180,6 +179,10 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     private fun hideHistoryList() {
         hideClearHistoryFab()
         showHistoryHint()
+    }
+
+    private fun loadHistoryList() {
+        calculatorHistoryController.getHistoryList()
     }
 
     /** Проверяет размер списка */

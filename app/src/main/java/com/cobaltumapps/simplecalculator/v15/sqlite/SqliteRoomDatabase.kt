@@ -13,7 +13,7 @@ abstract class SqliteRoomDatabase: RoomDatabase() {
     abstract fun getDao(): Dao
 
     companion object {
-        private const val dbName = "SC_Room.db"
+        private const val dbName = "SC_CalculatorHistoryDB.db"
 
         fun getDatabase(context: Context): SqliteRoomDatabase {
             return Room.databaseBuilder(
