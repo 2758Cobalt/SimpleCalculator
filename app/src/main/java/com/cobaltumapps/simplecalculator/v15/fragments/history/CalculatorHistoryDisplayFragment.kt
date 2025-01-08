@@ -1,24 +1,28 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.history
 
+import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers.CalculatorHistoryStorageController
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+
 
 /** Фрагмент, цель которого - отображать историю расчётов в виде списка и предоставлять управление над каждым элементом.
  * @param historyAdapter Адаптер, отображающий список расчётов.
@@ -35,7 +39,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     var calculatorHistoryController = CalculatorHistoryController(calculatorHistoryRecyclerAdapter)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        calculatorHistoryController.calculatorHistoryStorageController = CalculatorHistoryStorageController(requireContext(), viewLifecycleOwner)
         return binding.root
     }
 
@@ -53,7 +56,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
             historyDisplayClearFab.apply {
                 setOnClickListener {
                     calculatorHistoryRecyclerAdapter.clearHistory()
-                    calculatorHistoryController.calculatorHistoryStorageController?.clearHistory()
                     hideHistory()
                     showHistoryHint()
                 }
@@ -62,34 +64,84 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
         hideHistoryList()
 
-        val touchHelper = ItemTouchHelper(
-            object: ItemTouchHelper.Callback() {
-                override fun getMovementFlags(
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder
-                ): Int {
-                    return makeMovementFlags(
-                        0, ItemTouchHelper.START
-                    )
-                }
 
-                override fun onMove(
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
-                    target: RecyclerView.ViewHolder
-                ): Boolean {
-                    return false
-                }
+        val deleteIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_action_delete, requireContext().theme)
+        val archiveIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_archive_pack, requireContext().theme)
 
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    when(direction) {
-                        ItemTouchHelper.START -> {
-                            calculatorHistoryRecyclerAdapter.removeHistoryItem(viewHolder.bindingAdapterPosition)
-                        }
+        val simpleCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                when(direction) {
+                    ItemTouchHelper.LEFT -> calculatorHistoryRecyclerAdapter.removeHistoryItem(viewHolder.bindingAdapterPosition)
+                    ItemTouchHelper.RIGHT -> {
+                        calculatorHistoryRecyclerAdapter.removeHistoryItem(viewHolder.bindingAdapterPosition)
+                        Toast.makeText(context, "Record has been send to archive", Toast.LENGTH_SHORT).show()
                     }
                 }
-            })
+            }
 
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val itemView = viewHolder.itemView
+
+                // Swipe to left
+                if (dX < 0) {
+                    // Drawing the delete icon
+                    deleteIcon?.apply {
+                        val iconMargin = (itemView.height - intrinsicHeight) / 2
+
+                        val iconTop = itemView.top + iconMargin
+                        val iconBottom = iconTop + intrinsicHeight
+
+                        val iconLeft = itemView.right - (iconMargin - (dX.toInt() / 10)) - intrinsicWidth
+                        val iconRight = itemView.right - (iconMargin - (dX.toInt() / 10))
+
+                        // Установка прозрачности иконки в зависимости от длины вектора dX (length = endTouchX - startTouchX)
+                        alpha = if (dX > -255) dX.toInt() * -1 else 255
+                        setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                        draw(c)
+                    }
+                }
+
+                // Swipe to right
+                else {
+                    // Drawing the archive icon
+                    archiveIcon?.apply {
+                        val iconMargin = (itemView.height - intrinsicHeight) / 2
+
+                        val iconTop = itemView.top + iconMargin
+                        val iconBottom = iconTop + intrinsicHeight
+
+                        val iconLeft = itemView.left + (iconMargin + (dX.toInt() / 10))
+                        val iconRight = iconLeft + intrinsicWidth
+
+                        // Установка прозрачности иконки в зависимости от длины вектора dX (length = endTouchX - startTouchX)
+                        alpha = if (dX < 255) dX.toInt() else 255
+                        setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                        draw(c)
+                    }
+                }
+
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+            }
+
+        }
+
+        val touchHelper = ItemTouchHelper(simpleCallback)
         touchHelper.attachToRecyclerView(binding.historyRecyclerView)
     }
 

@@ -1,6 +1,5 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerHistoryItemBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
@@ -17,8 +16,6 @@ class CalculatorHistoryItemHolder(private val itemBinding: RecyclerHistoryItemBi
     }
 
     fun bindOnClickHistoryItem(historyItemListener: HolderOnClickListener?) {
-        if (historyItemListener == null)
-            Log.e("DebugTag", "!!! The history listener is null !!!")
         itemBinding.historyCard.setOnClickListener { historyItemListener?.onHistoryItemClicked(currentExpression) }
     }
 

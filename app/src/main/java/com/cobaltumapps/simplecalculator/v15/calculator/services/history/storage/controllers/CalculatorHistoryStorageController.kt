@@ -1,7 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.history.storage.controllers
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
@@ -21,10 +20,6 @@ class CalculatorHistoryStorageController(val context: Context, val historyLifecy
     private val roomDBInstance by lazy { roomSqliteManager.getDao() }
 
     private val historyLifecycleScope by lazy { historyLifecycleOwner.lifecycleScope }
-
-    init {
-        Log.d(LOG_TAG, "Instance ${javaClass.simpleName} has been created")
-    }
 
     override fun addHistoryItem(historyData: HistoryData) {
         historyLifecycleScope.launch {
