@@ -21,9 +21,9 @@
         <item name="android:padding">0dp</item>
 
         <item name="autoSizeTextType">uniform</item>
-        <item name="autoSizeMaxTextSize">20dp</item>
-        <item name="autoSizeMinTextSize">6dp</item>
-        <item name="autoSizeStepGranularity">2dp</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
+        <item name="autoSizeMinTextSize">6sp</item>
+        <item name="autoSizeStepGranularity">2sp</item>
     </style>
 
     <style name="numpad_secondaryButtons_n" parent="numpad_primaryButtons_n">
@@ -57,9 +57,9 @@
         <item name="android:padding">0dp</item>
 
         <item name="autoSizeTextType">uniform</item>
-        <item name="autoSizeMaxTextSize">20dp</item>
-        <item name="autoSizeMinTextSize">6dp</item>
-        <item name="autoSizeStepGranularity">2dp</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
+        <item name="autoSizeMinTextSize">6sp</item>
+        <item name="autoSizeStepGranularity">2sp</item>
     </style>
 
 </resources>
