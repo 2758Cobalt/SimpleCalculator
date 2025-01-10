@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.cobaltumapps.simplecalculator.databinding.FragmentConverterNBinding
+import com.cobaltumapps.simplecalculator.databinding.FragmentConverterBinding
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
 import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.ConverterNumpadFragment
@@ -13,7 +13,7 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.ConverterNumpadFra
 class ConverterUnitFragment(
     private val listener: SelectorFragmentListener? = null
 ): Fragment(), SelectorFragmentListener {
-    private val binding by lazy { FragmentConverterNBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentConverterBinding.inflate(layoutInflater) }
     private var currentlySelectedUnit: ConverterUnit? = null
 
     private var converterNumpadFragment = ConverterNumpadFragment()

@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import com.cobaltumapps.simplecalculator.databinding.FragmentNumpadNBinding
+import com.cobaltumapps.simplecalculator.databinding.FragmentNumpadBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutNumpadBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.NumpadKeyboard
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
@@ -22,7 +22,7 @@ class NumpadFragment(
     private var numpadBottomBehaviorListener: NumpadBottomBehaviorListener? = null
 ): NumpadKeyboard() {
     // Binding
-    private val binding by lazy { FragmentNumpadNBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentNumpadBinding.inflate(layoutInflater) }
     private val bindingNumpadContent by lazy { LayoutNumpadBinding.bind(binding.root) }
 
     private var isInputOpenBracket = true

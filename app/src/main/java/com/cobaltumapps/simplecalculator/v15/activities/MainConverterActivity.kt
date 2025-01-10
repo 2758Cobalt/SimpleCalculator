@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.cobaltumapps.simplecalculator.databinding.ActivityConverterNBinding
+import com.cobaltumapps.simplecalculator.databinding.ActivityConverterBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterViewPagerAdapter
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
 import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
@@ -12,7 +12,7 @@ import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterSelect
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterUnitFragment
 
 class MainConverterActivity : AppCompatActivity(), SelectorFragmentListener {
-    private val binding by lazy { ActivityConverterNBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityConverterBinding.inflate(layoutInflater) }
 
     private val converterSelector by lazy { ConverterSelectorFragment(this) }
     private val converterUnitFragment by lazy { ConverterUnitFragment(this) }

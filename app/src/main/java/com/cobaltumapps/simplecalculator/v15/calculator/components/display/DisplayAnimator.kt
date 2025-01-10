@@ -1,16 +1,16 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
 import androidx.core.view.isVisible
-import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayNBinding
-import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
+import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayAnimations
 import com.cobaltumapps.simplecalculator.v15.constants.Property
+import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 
 class DisplayAnimator : DisplayAnimations {
-    private var displaybinding: FragmentDisplayNBinding? = null
+    private var displaybinding: FragmentDisplayBinding? = null
     private var animationDuration = 200L
 
-    fun setNewBinding(newBinding: FragmentDisplayNBinding) {
+    fun setNewBinding(newBinding: FragmentDisplayBinding) {
         displaybinding = newBinding
     }
 

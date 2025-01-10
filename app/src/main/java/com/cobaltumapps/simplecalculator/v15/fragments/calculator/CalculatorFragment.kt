@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.cobaltumapps.simplecalculator.databinding.FragmentCalculatorNBinding
+import com.cobaltumapps.simplecalculator.databinding.FragmentCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
@@ -31,7 +31,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
     EngineeringBottomBehaviorListener {
 
-    private val binding by lazy { FragmentCalculatorNBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentCalculatorBinding.inflate(layoutInflater) }
 
     // Fragments
     private val displayFragment by lazy { DisplayFragment() }
