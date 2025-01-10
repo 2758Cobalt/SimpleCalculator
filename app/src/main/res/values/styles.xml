@@ -30,7 +30,7 @@
     </style>
 
     <style name="SC.EngineeringKeyboard" parent="SC.Keyboard.Sheet">
-        <item name="android:backgroundTint">@color/theme_primary</item>
+        <item name="android:backgroundTint">@color/md_theme_surfaceBright_highContrast</item>
     </style>
 
     <style name="SC.EngineeringDragHandle" parent="Widget.Material3.BottomSheet.DragHandle">

@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/numpadLayout"
+        android:id="@+id/numpadEngLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/numpad_sheet_n"
-        android:backgroundTint="@color/md_theme_surfaceContainerLowest"
-        android:elevation="2dp"
+        app:behavior_peekHeight="32dp"
+        app:behavior_hideable="false"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        app:behavior_peekHeight="32dp">
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/engineeringCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/numpadDragHandle"
+            android:id="@+id/numpadEngSwipeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
-            layout="@layout/layout_numpad"
+            layout="@layout/layout_engineering"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/numpadDragHandle" />
+            app:layout_constraintTop_toBottomOf="@id/numpadEngSwipeView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

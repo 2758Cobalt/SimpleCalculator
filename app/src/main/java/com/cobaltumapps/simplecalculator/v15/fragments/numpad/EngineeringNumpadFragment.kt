@@ -6,15 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cobaltumapps.simplecalculator.R
-import com.cobaltumapps.simplecalculator.databinding.FragmentEngineeringNBinding
+import com.cobaltumapps.simplecalculator.databinding.FragmentEngineeringBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutEngineeringBinding
-import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.EngineeringNumpadKeyboard
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
+import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 
@@ -23,7 +23,7 @@ class EngineeringNumpadFragment(
     private var bottomBehaviorListener: EngineeringBottomBehaviorListener? = null
 ): EngineeringNumpadKeyboard() {
 
-    private val binding by lazy { FragmentEngineeringNBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentEngineeringBinding.inflate(layoutInflater) }
     private val bindingEngContent by lazy { LayoutEngineeringBinding.bind(binding.root) }
 
     private val numpadEngBottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.numpadEngLayout) }
