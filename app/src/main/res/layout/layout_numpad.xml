@@ -21,7 +21,7 @@
         app:flow_maxElementsWrap="4"
         app:flow_wrapMode="chain"
         app:flow_horizontalGap="8dp"
-        app:flow_verticalGap="4dp"
+        app:flow_verticalGap="8dp"
         app:flow_horizontalStyle="packed"
         app:flow_verticalStyle="packed" />
 

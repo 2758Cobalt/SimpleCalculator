@@ -9,11 +9,12 @@
         <item name="android:stateListAnimator">@null</item>
         <item name="layout_constraintDimensionRatio">1:1</item>
 
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.NumpadButtonCorner</item>
+
         <item name="android:backgroundTint">@color/theme_primary</item>
         <item name="android:textColor">@color/md_theme_onPrimary</item>
         <item name="rippleColor">@color/md_theme_primaryContainer</item>
 
-        <item name="cornerRadius">24dp</item>
         <item name="android:elevation">2dp</item>
 
         <item name="android:insetTop">0dp</item>
@@ -24,6 +25,10 @@
         <item name="autoSizeMaxTextSize">20sp</item>
         <item name="autoSizeMinTextSize">6sp</item>
         <item name="autoSizeStepGranularity">2sp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.NumpadButtonCorner" parent="">
+        <item name="cornerSize">20%</item>
     </style>
 
     <style name="numpad_secondaryButtons_n" parent="numpad_primaryButtons_n">
