@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toStartOf="@+id/numpadCloseBracket"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadCloseBracket"
@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toStartOf="@+id/numpadAllClear"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadOpenBracket"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadAllClear"
@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toStartOf="@+id/numpadDivide"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadCloseBracket"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadDivide"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadAllClear"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
 
     <!-- Second row -->
     <com.google.android.material.button.MaterialButton
