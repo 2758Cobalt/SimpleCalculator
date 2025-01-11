@@ -45,18 +45,18 @@ class EngineeringNumpadFragment(
 
         binding.apply {
 
-            numpadEngBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            numpadEngBottomSheetBehavior.apply {
+                state = BottomSheetBehavior.STATE_HIDDEN
+                addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+                    override fun onStateChanged(bottomSheet: View, newState: Int) {
+                        bottomBehaviorListener?.onStateEngNumpadChanged(bottomSheet, newState)
+                    }
 
-            numpadEngBottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    bottomBehaviorListener?.onStateEngNumpadChanged(bottomSheet, newState)
-                }
-
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    bottomBehaviorListener?.onSlideEngNumpad(bottomSheet, slideOffset)
-                }
-            })
+                    override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                        bottomBehaviorListener?.onSlideEngNumpad(bottomSheet, slideOffset)
+                    }
+                })
+            }
 
             bindingEngContent.apply {
                 numpadEngMS.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.MemorySave) }

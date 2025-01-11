@@ -82,9 +82,10 @@
             android:id="@+id/numpadHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="32dp"
             android:layout_centerHorizontal="true"
-            android:elevation="4dp"
-            android:layout_marginBottom="32dp"/>
+            android:layout_alignParentBottom="true"
+            android:elevation="4dp" />
 
         <FrameLayout
             android:id="@+id/engineeringNumpadHolder"
