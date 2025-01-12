@@ -1,10 +1,9 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces
 
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 
 interface HistoryController {
-    fun addHistoryItem(historyData: HistoryData)
-    fun removeHistoryItem(index: Int)
-    fun getHistoryList(): List<HistoryData>?
-    fun clearHistory()
+    fun addHistoryItem(history: History)
+    fun updateHistoryItem(history: History)
+    fun deleteHistoryItem(history: History)
 }

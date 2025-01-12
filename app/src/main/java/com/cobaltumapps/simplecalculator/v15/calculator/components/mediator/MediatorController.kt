@@ -11,9 +11,9 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
 class MediatorController: MediatorClickHandler, HolderOnClickListener, PreferencesUpdaterListener {
@@ -184,7 +184,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     /** Добавляем в историю новый элемент */
     private fun makeHistoryRecord() {
         historyService?.addHistoryItem(
-            HistoryData(userExpression, calculatedResult, 5)
+            History(null, userExpression, calculatedResult, 5, false)
         )
     }
 

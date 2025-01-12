@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +17,11 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.viewmodel.HistoryViewModel
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
@@ -29,14 +33,14 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
  * @param calculatorHistoryController Контроллер, управляющий адаптера отображения списка и контроллера базы данных, для сохранения и удаления записей в БД */
 
 class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener,
-    HistoryAdapterUpdater {
+    HistoryAdapterUpdater, HistoryController {
     private val binding by lazy { FragmentHistoryDisplayBinding.inflate(layoutInflater) }
+    private lateinit var historyViewModel: HistoryViewModel
 
     // Адаптер для отображения списка расчётов
-    val calculatorHistoryRecyclerAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener, this@CalculatorHistoryDisplayFragment) }
+    private val calculatorHistoryRecyclerAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener, this@CalculatorHistoryDisplayFragment) }
 
-    // Контроллер для управления адаптером и контроллером хранилища расчётов (БД в Room)
-    var calculatorHistoryController = CalculatorHistoryController(calculatorHistoryRecyclerAdapter)
+    var calculatorHistoryController = CalculatorHistoryController(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return binding.root
@@ -46,6 +50,8 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         super.onViewCreated(view, savedInstanceState)
         hideHistory()
 
+        // Creation ViewModel
+        historyViewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
 
         binding.apply {
             historyRecyclerView.apply {
@@ -55,7 +61,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
             historyDisplayClearFab.apply {
                 setOnClickListener {
-                    calculatorHistoryRecyclerAdapter.clearHistory()
                     hideHistory()
                     showHistoryHint()
                 }
@@ -63,7 +68,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         }
 
         hideHistoryList()
-
 
         val deleteIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_action_delete, requireContext().theme)
         val archiveIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_archive_pack, requireContext().theme)
@@ -79,10 +83,13 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when(direction) {
-                    ItemTouchHelper.LEFT -> calculatorHistoryRecyclerAdapter.removeHistoryItem(viewHolder.bindingAdapterPosition)
+                    ItemTouchHelper.LEFT -> deleteHistoryItem(
+                        calculatorHistoryRecyclerAdapter.getItemList()[viewHolder.bindingAdapterPosition]
+                    )
                     ItemTouchHelper.RIGHT -> {
-                        calculatorHistoryRecyclerAdapter.removeHistoryItem(viewHolder.bindingAdapterPosition)
-                        Toast.makeText(context, "Record has been send to archive", Toast.LENGTH_SHORT).show()
+                        val updatedItem = calculatorHistoryRecyclerAdapter.getItemList()[viewHolder.bindingAdapterPosition]
+                        updatedItem.isArchived = true
+                        updateHistoryItem(updatedItem)
                     }
                 }
             }
@@ -135,16 +142,28 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                         draw(c)
                     }
                 }
-
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             }
-
         }
 
         val touchHelper = ItemTouchHelper(simpleCallback)
         touchHelper.attachToRecyclerView(binding.historyRecyclerView)
     }
 
+    override fun addHistoryItem(history: History) {
+        calculatorHistoryRecyclerAdapter.addHistoryItem(history)
+        historyViewModel.insertHistoryItem(history)
+    }
+
+    override fun updateHistoryItem(history: History) {
+        calculatorHistoryRecyclerAdapter.updateHistoryItem(history)
+        historyViewModel.updateHistoryItem(history)
+    }
+
+    override fun deleteHistoryItem(history: History) {
+        calculatorHistoryRecyclerAdapter.deleteHistoryItem(history)
+        historyViewModel.deleteHistoryItem(history)
+    }
 
     /** Показывает список истории */
     private fun showHistory(forceAnimate: Boolean = false) {
@@ -160,7 +179,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
             )
             showClearHistoryFab()
         }
-
         loadHistoryList()
     }
 
@@ -234,7 +252,9 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     }
 
     private fun loadHistoryList() {
-        calculatorHistoryController.getHistoryList()
+        historyViewModel.historyList.observe(viewLifecycleOwner, Observer { history ->
+            calculatorHistoryRecyclerAdapter.setNewList(history)
+        })
     }
 
     /** Проверяет размер списка */

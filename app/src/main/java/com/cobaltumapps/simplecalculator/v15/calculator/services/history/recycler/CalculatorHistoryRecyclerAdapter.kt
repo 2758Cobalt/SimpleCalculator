@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerHistoryItemBinding
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.data.HistoryData
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 
 class CalculatorHistoryRecyclerAdapter(
     private val onClickHistoryListener: HolderOnClickListener? = null,
@@ -15,7 +15,7 @@ class CalculatorHistoryRecyclerAdapter(
 ): RecyclerView.Adapter<CalculatorHistoryItemHolder>(),
     HistoryController
 {
-    private var expressionsHistoryList: MutableList<HistoryData> = mutableListOf()
+    private var expressionsHistoryList: MutableList<History> = mutableListOf()
 
     /** Создаёт макет для каждого холдера */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalculatorHistoryItemHolder {
@@ -36,48 +36,48 @@ class CalculatorHistoryRecyclerAdapter(
     }
 
     /** Устанавливает новый список истории (если необходимо) */
-    fun setNewList(newExpressionList: List<HistoryData>?){
+    fun setNewList(newExpressionList: List<History>?){
         expressionsHistoryList = newExpressionList?.toMutableList() ?: mutableListOf()
         updaterListener?.updateAdapter()
+        notifyItemRangeChanged(0, expressionsHistoryList.size)
     }
 
-    fun getItemList(): List<HistoryData> {
+    fun getItemList(): List<History> {
         return expressionsHistoryList
     }
 
+    override fun updateHistoryItem(history: History) {
+        if (history.isArchived)
+            expressionsHistoryList.removeItem(history)
+        else
+            expressionsHistoryList.addItem(history)
+
+        updaterListener?.updateAdapter()
+    }
+
     /** Добавляет новый элемент в список выражений */
-    override fun addHistoryItem(historyData: HistoryData) {
-        expressionsHistoryList.addItem(historyData)
+    override fun addHistoryItem(history: History) {
+        expressionsHistoryList.addItem(history)
         updaterListener?.updateAdapter()
     }
 
     /** Удаляет элемент в нужной позиции */
-    override fun removeHistoryItem(index: Int) {
-        expressionsHistoryList.removeItem(index)
+    override fun deleteHistoryItem(history: History) {
+        expressionsHistoryList.removeItem(history)
         updaterListener?.updateAdapter()
     }
 
-    override fun getHistoryList(): List<HistoryData> {
-        return expressionsHistoryList
-    }
-
-    /** Удаляет последний элемент */
-    override fun clearHistory() {
-        val oldestSize = expressionsHistoryList.size
-        expressionsHistoryList.clear()
-        notifyItemRangeRemoved(0, oldestSize)
-    }
-
     /* Функции расширения - extensions */
-    private fun MutableList<HistoryData>.removeItem(index: Int){
+    private fun MutableList<History>.removeItem(history: History){
         if (expressionsHistoryList.isNotEmpty()) {
-            this.removeAt(index)
-            notifyItemRemoved(index)
+            val indexAdapterItem = expressionsHistoryList.indexOf(history)
+            this.removeAt(indexAdapterItem)
+            notifyItemRemoved(indexAdapterItem)
         }
     }
 
-    private fun MutableList<HistoryData>.addItem(historyData: HistoryData){
-        this.add(historyData)
+    private fun MutableList<History>.addItem(history: History){
+        this.add(history)
         notifyItemInserted(this.lastIndex)
     }
 
