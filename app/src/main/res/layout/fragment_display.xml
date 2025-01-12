@@ -10,6 +10,7 @@
         android:id="@+id/displayMemoryContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:alpha="0.6"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,46 +21,48 @@
             android:id="@+id/displayMemoryField"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="32dp"
-            android:paddingHorizontal="16dp"
+            android:maxLines="1"
+            android:ellipsize="start"
             android:text="@string/display_memory_n"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+            app:layout_constraintWidth_percent="0.9"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/display_angle_mode_field"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/display_angle_mode_field"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="end"
+            android:gravity="end"
             android:text="@string/symbolRad"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+            app:layout_constraintWidth_percent="0.1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/displayMemoryField"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/displayExpressionField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
         android:gravity="top|end"
-        android:background="@android:color/transparent"
-        android:maxLines="1"
+        android:text=""
+        android:maxLines="2"
+        android:ellipsize="start"
         android:hint="0"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-        android:ellipsize="start"
         app:layout_constraintBottom_toTopOf="@+id/displayResultField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/displayMemoryContainer" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/displayResultField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

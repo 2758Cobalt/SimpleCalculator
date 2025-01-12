@@ -113,9 +113,11 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
             calculatorSettingsIcon.setOnClickListener { preferencesManager.openPreferencesDialog() }
 
             // Add mediator as a updater listener
-            preferencesManager.addUpdateListener(mediatorController)
-            preferencesManager.addUpdateListener(numpadController)
-            preferencesManager.addUpdateListener(vibrationService)
+            preferencesManager.apply {
+                addUpdateListener(mediatorController)
+                addUpdateListener(numpadController)
+                addUpdateListener(vibrationService)
+            }
 
             // Load data from preferences
             val loadedConfig = preferencesManager.loadData()
