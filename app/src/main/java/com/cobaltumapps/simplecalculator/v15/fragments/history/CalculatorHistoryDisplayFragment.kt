@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -267,9 +266,9 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     }
 
     private fun loadHistoryList() {
-        historyViewModel.historyList.observe(viewLifecycleOwner, Observer { history ->
+        historyViewModel.historyList.observe(viewLifecycleOwner) { history ->
             calculatorHistoryRecyclerAdapter.setNewList(history)
-        })
+        }
     }
 
     /** Проверяет размер списка */

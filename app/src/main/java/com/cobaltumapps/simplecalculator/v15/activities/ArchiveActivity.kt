@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -137,9 +136,9 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
     }
 
     private fun loadHistoryList() {
-        archivedHistoryViewModel.archivedHistoryList.observe(this, Observer { archivedItemsList ->
+        archivedHistoryViewModel.archivedHistoryList.observe(this) { archivedItemsList ->
             archiveRecyclerAdapter.setNewList(archivedItemsList)
-        })
+        }
     }
 
     fun unarchiveHistoryItem(archivedHistory: ArchivedHistory) {
