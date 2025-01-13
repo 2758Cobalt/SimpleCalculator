@@ -13,7 +13,7 @@ android {
         minSdk 23
         targetSdk 34
         targetSdkVersion 34
-        versionCode 33
+        versionCode 34
         versionName "1.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -69,7 +69,7 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.6.1' // Дополнительно для Kotlin Coroutines, Kotlin Flows
     kapt 'androidx.room:room-compiler:2.6.1' // Кодогенератор
 
-    implementation 'com.google.android.gms:play-services-ads:23.6.0'
+    implementation 'com.google.android.gms:play-services-ads:23.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.8.4'
