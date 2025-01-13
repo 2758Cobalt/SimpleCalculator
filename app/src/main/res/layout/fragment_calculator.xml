@@ -35,7 +35,17 @@
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:contentDescription="@string/converter_header"
-            app:icon="@drawable/ic_navigate_converter" />
+            app:icon="@drawable/ic_navigate_converters" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/calculatorArchiveIcon"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/calculatorConvertersIcon"
+            android:contentDescription="Archive"
+            app:icon="@drawable/ic_action_archive" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorBackSpaceIcon"

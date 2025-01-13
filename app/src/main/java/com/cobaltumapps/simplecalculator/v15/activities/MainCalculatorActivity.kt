@@ -2,7 +2,6 @@ package com.cobaltumapps.simplecalculator.v15.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.cobaltumapps.simplecalculator.databinding.ActivityMainCalculatorBinding
@@ -31,12 +30,12 @@ class MainCalculatorActivity : AppCompatActivity(),
         }
     }
 
-    override fun goConverters() {
-        /*supportFragmentManager.commit {
-            replace(binding.placeHolder.id, ConverterCalculatorFragment())
-        }*/
+    override fun goArchive() {
         startActivity(Intent(this, ArchiveActivity::class.java))
-        Toast.makeText(this, "Go converters", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun goConverters() {
+        startActivity(Intent(this, MainConverterActivity::class.java))
     }
 
     companion object {
