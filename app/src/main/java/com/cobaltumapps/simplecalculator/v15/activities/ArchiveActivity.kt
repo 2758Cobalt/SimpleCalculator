@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityArchiveBinding
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ArchiveController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.archive.ArchiveRecyclerAdapter
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.ArchivedHistory
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.viewmodel.ArchivedHistoryViewModel
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.viewmodel.HistoryViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class ArchiveActivity : AppCompatActivity(), ArchiveController {
     private val binding by lazy { ActivityArchiveBinding.inflate(layoutInflater) }
@@ -126,21 +128,26 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
         return super.onCreateOptionsMenu(menu)
     }
 
+    /** Вставляет запись архива в адаптер */
     override fun insertArchiveItem(archivedHistory: ArchivedHistory) {
         archiveRecyclerAdapter.insertArchiveItem(archivedHistory)
     }
 
+    /** Удаляет запись архива из БД и адаптера */
     override fun deleteArchiveItem(archivedHistory: ArchivedHistory) {
         archiveRecyclerAdapter.deleteArchiveItem(archivedHistory)
         archivedHistoryViewModel.deleteArchivedHistoryItem(archivedHistory)
     }
 
+
+    /** Получает из БД список записей архива */
     private fun loadHistoryList() {
         archivedHistoryViewModel.archivedHistoryList.observe(this) { archivedItemsList ->
             archiveRecyclerAdapter.setNewList(archivedItemsList)
         }
     }
 
+    /** Возвращает запись обратно в историю и удаляет из архива */
     fun unarchiveHistoryItem(archivedHistory: ArchivedHistory) {
         historyViewModel.insertHistoryItem(
             History(
@@ -150,7 +157,13 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
                 archivedHistory.date_time_calculation
             )
         )
+        Snackbar.make(binding.root, "This item has been returned", Snackbar.LENGTH_SHORT).show()
+        archiveRecyclerAdapter.deleteArchiveItem(archivedHistory)
         archivedHistoryViewModel.deleteArchivedHistoryItem(archivedHistory)
+    }
+
+    fun clearArchive() {
+
     }
 }
 

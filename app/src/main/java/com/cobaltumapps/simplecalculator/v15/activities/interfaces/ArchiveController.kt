@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.v15.activities
+package com.cobaltumapps.simplecalculator.v15.activities.interfaces
 
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.ArchivedHistory
 

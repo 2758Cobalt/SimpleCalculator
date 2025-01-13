@@ -27,6 +27,7 @@ import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.Snackbar
 
 
 /** Фрагмент, цель которого - отображать историю расчётов в виде списка и предоставлять управление над каждым элементом.
@@ -105,10 +106,11 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                             )
                         )
 
-
                         // Удаляем запись из обычной истории расчётов
                         deleteHistoryItem(historyItem)
 
+                        // Уведомлеяем пользователя
+                        Snackbar.make(binding.root, "This item has been moved to archive", Snackbar.LENGTH_SHORT).show()
                     }
                 }
             }
