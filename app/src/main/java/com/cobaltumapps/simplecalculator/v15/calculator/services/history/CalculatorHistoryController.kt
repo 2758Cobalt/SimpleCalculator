@@ -10,10 +10,6 @@ class CalculatorHistoryController(private var listener: HistoryController? = nul
         listener?.addHistoryItem(history)
     }
 
-    override fun updateHistoryItem(history: History) {
-        listener?.updateHistoryItem(history)
-    }
-
     override fun deleteHistoryItem(history: History) {
         listener?.deleteHistoryItem(history)
     }
