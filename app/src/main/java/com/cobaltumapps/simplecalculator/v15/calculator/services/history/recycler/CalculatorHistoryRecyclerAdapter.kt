@@ -46,14 +46,6 @@ class CalculatorHistoryRecyclerAdapter(
         return expressionsHistoryList
     }
 
-    override fun updateHistoryItem(history: History) {
-        if (history.isArchived)
-            expressionsHistoryList.removeItem(history)
-        else
-            expressionsHistoryList.addItem(history)
-
-        updaterListener?.updateAdapter()
-    }
 
     /** Добавляет новый элемент в список выражений */
     override fun addHistoryItem(history: History) {
