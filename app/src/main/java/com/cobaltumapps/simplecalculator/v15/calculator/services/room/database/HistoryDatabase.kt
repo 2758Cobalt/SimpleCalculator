@@ -5,12 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.constants.RoomHistoryConstants
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.dao.ArchivedHistoryDao
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.dao.HistoryDao
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.ArchivedHistory
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 
-@Database(entities = [History::class], version = 1)
+@Database(entities = [History::class, ArchivedHistory::class], version = 1)
 abstract class HistoryDatabase: RoomDatabase() {
     abstract fun getHistoryDao(): HistoryDao
+    abstract fun getArchivedHistoryDao(): ArchivedHistoryDao
 
     companion object {
         @Volatile
