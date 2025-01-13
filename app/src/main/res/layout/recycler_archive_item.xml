@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/archiveContainer"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/archiveItemDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="2000" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/archiveCard"
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="8dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.NumpadButtonCorner"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/archiveExpressionField"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:ellipsize="start"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="16dp"
+            android:text="1"
+            android:textSize="16sp"
+            android:gravity="end|center_vertical" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="4dp"
+                android:alpha="0.6"
+                android:text="@string/symbolEqual"
+                android:textSize="16sp"
+                android:gravity="end|center_vertical" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/archiveResultField"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="16dp"
+                android:alpha="0.6"
+                android:text="0"
+                android:textSize="16sp"
+                android:gravity="end|center_vertical" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/archiveItemDateArchived"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd"
+        android:layout_margin="8dp"
+        android:text="80" />
+
+</LinearLayout>

@@ -35,7 +35,7 @@ class MainCalculatorActivity : AppCompatActivity(),
         /*supportFragmentManager.commit {
             replace(binding.placeHolder.id, ConverterCalculatorFragment())
         }*/
-        startActivity(Intent(this, MainConverterActivity::class.java))
+        startActivity(Intent(this, ArchiveActivity::class.java))
         Toast.makeText(this, "Go converters", Toast.LENGTH_SHORT).show()
     }
 

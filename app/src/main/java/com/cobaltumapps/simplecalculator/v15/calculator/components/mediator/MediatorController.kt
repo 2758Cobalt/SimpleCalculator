@@ -184,7 +184,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     /** Добавляем в историю новый элемент */
     private fun makeHistoryRecord() {
         historyService?.addHistoryItem(
-            History(null, userExpression, calculatedResult, 5, false)
+            History(null, userExpression, calculatedResult, 5)
         )
     }
 

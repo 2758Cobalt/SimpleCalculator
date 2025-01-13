@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler
+package com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.history
 
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerHistoryItemBinding

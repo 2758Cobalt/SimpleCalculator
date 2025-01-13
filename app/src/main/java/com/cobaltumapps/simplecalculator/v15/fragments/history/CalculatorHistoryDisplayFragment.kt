@@ -19,8 +19,10 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.history.Calcula
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
-import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.CalculatorHistoryRecyclerAdapter
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.history.CalculatorHistoryRecyclerAdapter
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.ArchivedHistory
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
+import com.cobaltumapps.simplecalculator.v15.calculator.services.room.viewmodel.ArchivedHistoryViewModel
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.viewmodel.HistoryViewModel
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
@@ -35,7 +37,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener,
     HistoryAdapterUpdater, HistoryController {
     private val binding by lazy { FragmentHistoryDisplayBinding.inflate(layoutInflater) }
+
     private lateinit var historyViewModel: HistoryViewModel
+    private lateinit var archivedHistoryViewModel: ArchivedHistoryViewModel
 
     // Адаптер для отображения списка расчётов
     private val calculatorHistoryRecyclerAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener, this@CalculatorHistoryDisplayFragment) }
@@ -52,6 +56,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
         // Creation ViewModel
         historyViewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
+        archivedHistoryViewModel = ViewModelProvider(this)[ArchivedHistoryViewModel::class.java]
 
         binding.apply {
             historyRecyclerView.apply {
@@ -70,7 +75,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         hideHistoryList()
 
         val deleteIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_action_delete, requireContext().theme)
-        val archiveIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_archive_pack, requireContext().theme)
+        val archiveIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_action_archive, requireContext().theme)
 
         val simpleCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(
@@ -87,9 +92,24 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                         calculatorHistoryRecyclerAdapter.getItemList()[viewHolder.bindingAdapterPosition]
                     )
                     ItemTouchHelper.RIGHT -> {
-                        val updatedItem = calculatorHistoryRecyclerAdapter.getItemList()[viewHolder.bindingAdapterPosition]
-                        updatedItem.isArchived = true
-                        updateHistoryItem(updatedItem)
+
+                        val historyItem = calculatorHistoryRecyclerAdapter.getItemList()[viewHolder.bindingAdapterPosition]
+
+                        // Добавляем в архив запись, которую выбрали
+                        archivedHistoryViewModel.insertArchivedHistoryItem(
+                            ArchivedHistory(
+                                null,
+                                historyItem.user_expression,
+                                historyItem.result_calculation,
+                                historyItem.date_time_calculation,
+                                12
+                            )
+                        )
+
+
+                        // Удаляем запись из обычной истории расчётов
+                        deleteHistoryItem(historyItem)
+
                     }
                 }
             }

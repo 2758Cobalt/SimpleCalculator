@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_archive_clear"
+        android:icon="@drawable/ic_action_delete"
+        app:showAsAction="ifRoom"
+        android:contentDescription="ClearArchive"
+        android:title="ClearArchive" />
+
+    <item
+        android:id="@+id/menu_archive_restore_all"
+        android:icon="@drawable/ic_action_restore"
+        app:showAsAction="ifRoom"
+        android:contentDescription="RestoreArchive"
+        android:title="RestoreArchive" />
+</menu>
