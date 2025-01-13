@@ -155,11 +155,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         historyViewModel.insertHistoryItem(history)
     }
 
-    override fun updateHistoryItem(history: History) {
-        calculatorHistoryRecyclerAdapter.updateHistoryItem(history)
-        historyViewModel.updateHistoryItem(history)
-    }
-
     override fun deleteHistoryItem(history: History) {
         calculatorHistoryRecyclerAdapter.deleteHistoryItem(history)
         historyViewModel.deleteHistoryItem(history)

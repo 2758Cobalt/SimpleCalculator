@@ -11,10 +11,6 @@ class HistoryRepository(private val historyDao: HistoryDao) {
         historyDao.insertHistoryItem(history)
     }
 
-    suspend fun updateHistoryItem(history: History) {
-        historyDao.updateHistoryItem(history)
-    }
-
     suspend fun deleteHistoryItem(history: History) {
         historyDao.deleteHistoryItem(history)
     }

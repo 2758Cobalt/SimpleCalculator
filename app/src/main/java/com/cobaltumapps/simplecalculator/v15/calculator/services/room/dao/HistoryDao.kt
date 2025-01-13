@@ -6,16 +6,12 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 
 @Dao
 interface HistoryDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertHistoryItem(history: History)
-
-    @Update
-    suspend fun updateHistoryItem(history: History)
 
     @Query("SELECT * FROM SC_HistoryTable ORDER BY id ASC")
     fun getHistoryList(): LiveData<List<History>>
