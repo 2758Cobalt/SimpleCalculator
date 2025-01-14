@@ -2,36 +2,31 @@ package com.cobaltumapps.simplecalculator.v15.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import com.cobaltumapps.simplecalculator.databinding.ActivityMainCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
+import com.cobaltumapps.simplecalculator.v15.google.SimpleApplication
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainCalculatorActivity : AppCompatActivity(),
     CalculatorNavigationListener
 {
     private val binding by lazy { ActivityMainCalculatorBinding.inflate(layoutInflater) }
 
-    private lateinit var adRequest : AdRequest
+    // Ad (Advertisement)
+    private val adRequest by lazy { AdRequest.Builder().build() }
 
-    private val handler = Handler()
-    private val delayMillis = 45000L // 20 секунд
-
-    private val requestAdRunnable = object : Runnable {
-        override fun run() {
-            requestAd()
-
-            // Повторно запускаем себя через delayMillis
-            handler.postDelayed(this, delayMillis)
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        (application as SimpleApplication).showAdIfAvailable(this) { }
 
         window.setBackgroundDrawable(null)
 
@@ -45,29 +40,26 @@ class MainCalculatorActivity : AppCompatActivity(),
             calculatorFragment.setCalculatorNavigationListener(this)
         }
 
+        lifecycleScope.launch(Dispatchers.IO) {
+            MobileAds.initialize(this@MainCalculatorActivity) {
+                binding.adViewBanner.loadAd(adRequest)
+            }
+        }
     }
 
     override fun onResume() {
         super.onResume()
-
-        // Запрашиваем рекламу
-        requestAd()
-
-        // Планируем выполнение запроса рекламы каждые 20 секунд
-        handler.postDelayed(requestAdRunnable, delayMillis)
+        binding.adViewBanner.resume()
     }
 
     override fun onPause() {
         super.onPause()
-        handler.removeCallbacks(requestAdRunnable)
+        binding.adViewBanner.pause()
     }
 
-    private fun requestAd() {
-        adRequest = AdRequest.Builder().build()
-        MobileAds.initialize(this) {
-            binding.adViewBanner.loadAd(adRequest)
-
-        }
+    override fun onDestroy() {
+        binding.adViewBanner.destroy()
+        super.onDestroy()
     }
 
     override fun goArchive() {
@@ -79,6 +71,7 @@ class MainCalculatorActivity : AppCompatActivity(),
     }
 
     companion object {
-        const val LOG_TAG = "SC_MainActivityTag"
+        const val LOG_TAG = "SC_MainCalculatorActivity" +
+                "Tag"
     }
 }
