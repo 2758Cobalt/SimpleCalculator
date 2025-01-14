@@ -68,6 +68,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                 setOnClickListener {
                     hideHistory()
                     showHistoryHint()
+                    clearHistory()
                 }
             }
         }
@@ -179,6 +180,11 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     override fun deleteHistoryItem(history: History) {
         calculatorHistoryRecyclerAdapter.deleteHistoryItem(history)
         historyViewModel.deleteHistoryItem(history)
+    }
+
+    override fun clearHistory() {
+        calculatorHistoryRecyclerAdapter.clearHistory()
+        historyViewModel.clearHistory()
     }
 
     /** Показывает список истории */

@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.cobaltumapps.simplecalculator.databinding.ActivityMainCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
-import com.cobaltumapps.simplecalculator.v15.google.SimpleApplication
+import com.cobaltumapps.simplecalculator.v15.google.admob.SimpleApplication
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import kotlinx.coroutines.Dispatchers

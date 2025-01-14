@@ -13,4 +13,8 @@ class CalculatorHistoryController(private var listener: HistoryController? = nul
     override fun deleteHistoryItem(history: History) {
         listener?.deleteHistoryItem(history)
     }
+
+    override fun clearHistory() {
+        listener?.clearHistory()
+    }
 }

@@ -59,6 +59,11 @@ class CalculatorHistoryRecyclerAdapter(
         updaterListener?.updateAdapter()
     }
 
+    override fun clearHistory() {
+        expressionsHistoryList.clearList()
+        updaterListener?.updateAdapter()
+    }
+
     /* Функции расширения - extensions */
     private fun MutableList<History>.removeItem(history: History){
         if (expressionsHistoryList.isNotEmpty()) {
@@ -71,6 +76,11 @@ class CalculatorHistoryRecyclerAdapter(
     private fun MutableList<History>.addItem(history: History){
         this.add(history)
         notifyItemInserted(this.lastIndex)
+    }
+
+    private fun MutableList<History>.clearList() {
+        this.clear()
+        notifyItemRangeRemoved(0,expressionsHistoryList.size)
     }
 
     companion object {

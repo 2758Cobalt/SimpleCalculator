@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.v15.google;
+package com.cobaltumapps.simplecalculator.v15.google.admob;
 
 import android.app.Activity;
 import android.app.Application;

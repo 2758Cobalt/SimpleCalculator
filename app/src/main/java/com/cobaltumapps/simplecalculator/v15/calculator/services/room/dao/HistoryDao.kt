@@ -16,6 +16,9 @@ interface HistoryDao {
     @Query("SELECT * FROM SC_HistoryTable ORDER BY id ASC")
     fun getHistoryList(): LiveData<List<History>>
 
+    @Query("DELETE FROM SC_HistoryTable")
+    suspend fun clearHistory()
+
     @Delete
     suspend fun deleteHistoryItem(history: History)
 
