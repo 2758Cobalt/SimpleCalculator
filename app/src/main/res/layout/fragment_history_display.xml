@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/historyListHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,9 +28,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:text="this is where your history is kept\nBut, right now, it's empty"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -48,17 +48,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:elevation="2dp"
-        android:contentDescription="ClearHistory"
         android:backgroundTint="@color/md_theme_errorContainer"
+        android:contentDescription="ClearHistory"
+        android:elevation="2dp"
+        android:text="clear"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textColor="@color/md_theme_error"
         app:icon="@drawable/ic_clear_history"
         app:iconTint="@color/md_theme_error"
-        android:text="clear"
-        android:textColor="@color/md_theme_error"
-        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/historyDisplayArchiveAllFab" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/historyDisplayArchiveAllFab"
+        style="@style/Widget.Material3.FloatingActionButton.Tertiary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="ArchiveAllHistory"
+        android:elevation="2dp"
+        android:text="Store"
+        android:textAllCaps="true"
+        app:icon="@drawable/ic_action_archive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/historyDisplayClearFab"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

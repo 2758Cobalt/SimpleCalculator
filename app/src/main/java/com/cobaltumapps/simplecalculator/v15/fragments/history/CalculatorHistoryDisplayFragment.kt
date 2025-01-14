@@ -71,6 +71,27 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                     clearHistory()
                 }
             }
+
+            historyDisplayArchiveAllFab.apply {
+                setOnClickListener {
+                    for (x in calculatorHistoryRecyclerAdapter.getItemList()) {
+                        archivedHistoryViewModel.insertArchivedHistoryItem(
+                            ArchivedHistory(
+                                null,
+                                x.user_expression,
+                                x.result_calculation,
+                                x.date_time_calculation,
+                                17
+                            )
+                        )
+                    }
+                    hideHistory()
+                    showHistoryList()
+                    clearHistory()
+
+                    Snackbar.make(binding.root, "History has been moved to archive", Snackbar.LENGTH_SHORT).show()
+                }
+            }
         }
 
         hideHistoryList()
@@ -200,6 +221,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                 else 0L
             )
             showClearHistoryFab()
+            showArchiveHistoryFab()
         }
         loadHistoryList()
     }
@@ -216,6 +238,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                 else 0L) {
                 isVisible = false
                 hideClearHistoryFab()
+                hideArchiveHistoryFab()
             }
         }
     }
@@ -224,6 +247,22 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     private fun showClearHistoryFab() {
         if (calculatorHistoryRecyclerAdapter.itemCount > 0) {
             binding.historyDisplayClearFab.apply {
+                isVisible = true
+                AnimationsService.animatePropertyChange(
+                    this,
+                    Property.alpha.name,
+                    this.alpha,
+                    1f,
+                    DEF_ANIM_DURATION
+                )
+            }
+        }
+    }
+
+    /** Показывает кнопку архивации истории */
+    private fun showArchiveHistoryFab() {
+        if (calculatorHistoryRecyclerAdapter.itemCount > 0) {
+            binding.historyDisplayArchiveAllFab.apply {
                 isVisible = true
                 AnimationsService.animatePropertyChange(
                     this,
@@ -251,6 +290,21 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         }
     }
 
+    /** Прячет кнопку архивации истории */
+    private fun hideArchiveHistoryFab() {
+        binding.historyDisplayArchiveAllFab.apply {
+            AnimationsService.animatePropertyChange(
+                this,
+                Property.alpha.name,
+                this.alpha,
+                0f,
+                DEF_ANIM_DURATION
+            ) {
+                isVisible = false
+            }
+        }
+    }
+
     /** Показывает подсказку */
     private fun showHistoryHint() {
         binding.historyListHint.isVisible = true
@@ -264,12 +318,14 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     /** Показывает список */
     private fun showHistoryList() {
         showClearHistoryFab()
+        showArchiveHistoryFab()
         hideHistoryHint()
     }
 
     /** Прячет список */
     private fun hideHistoryList() {
         hideClearHistoryFab()
+        hideArchiveHistoryFab()
         showHistoryHint()
     }
 
