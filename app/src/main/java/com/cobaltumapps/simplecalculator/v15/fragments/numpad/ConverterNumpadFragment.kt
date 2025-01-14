@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.cobaltumapps.simplecalculator.databinding.FragmentConverterNumpadNBinding
+import com.cobaltumapps.simplecalculator.databinding.FragmentConverterNumpadBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutConverterNumpadBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNumpadController
@@ -14,8 +14,8 @@ import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNump
 class ConverterNumpadFragment(
     private var converterNumpadController: ConverterNumpadController? = null
 ): Fragment() {
-    // Binding
-    private val binding by lazy { FragmentConverterNumpadNBinding.inflate(layoutInflater) }
+
+    private val binding by lazy { FragmentConverterNumpadBinding.inflate(layoutInflater) }
     private val bindingNumpadContent by lazy { LayoutConverterNumpadBinding.bind(binding.root) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
@@ -43,14 +43,5 @@ class ConverterNumpadFragment(
                 converterNumpadAC.setOnClickListener { converterNumpadController?.onClickSpecialFunction(KeyboardSpecialFunction.AllClear) }
             }
         }
-    }
-
-    companion object {
-        const val LOG_TAG = "SC_ConverterNumpad" +
-                "Fragment" +
-                "Tag"
-        const val TAG = "SC_ConverterNumpad" +
-                "Fragment" +
-                "Tag"
     }
 }
