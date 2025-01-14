@@ -42,10 +42,10 @@ class CalculatorHistoryRecyclerAdapter(
         notifyItemRangeChanged(0, expressionsHistoryList.size)
     }
 
+    /** Возвращает список элементов */
     fun getItemList(): List<History> {
         return expressionsHistoryList
     }
-
 
     /** Добавляет новый элемент в список выражений */
     override fun addHistoryItem(history: History) {
@@ -59,12 +59,13 @@ class CalculatorHistoryRecyclerAdapter(
         updaterListener?.updateAdapter()
     }
 
+    /** Очищает всю историю */
     override fun clearHistory() {
         expressionsHistoryList.clearList()
         updaterListener?.updateAdapter()
     }
 
-    /* Функции расширения - extensions */
+    /** Функции расширения - extensions */
     private fun MutableList<History>.removeItem(history: History){
         if (expressionsHistoryList.isNotEmpty()) {
             val indexAdapterItem = expressionsHistoryList.indexOf(history)
@@ -88,7 +89,4 @@ class CalculatorHistoryRecyclerAdapter(
                 "Recycler" +
                 "Tag"
     }
-
-
 }
-

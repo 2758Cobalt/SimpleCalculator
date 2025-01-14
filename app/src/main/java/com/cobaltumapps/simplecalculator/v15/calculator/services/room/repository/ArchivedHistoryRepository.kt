@@ -14,4 +14,8 @@ class ArchivedHistoryRepository(private val archivedHistoryDao: ArchivedHistoryD
     suspend fun deleteArchivedHistoryItem(archivedHistory: ArchivedHistory) {
         archivedHistoryDao.deleteArchivedHistoryItem(archivedHistory)
     }
+
+    suspend fun clearArchivedHistory() {
+        archivedHistoryDao.clearArchivedHistory()
+    }
 }

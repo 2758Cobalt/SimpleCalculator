@@ -16,6 +16,9 @@ interface ArchivedHistoryDao {
     @Query("SELECT * FROM SC_ArchivedHistoryTable ORDER BY id ASC")
     fun getArchivedHistoryList(): LiveData<List<ArchivedHistory>>
 
+    @Query("DELETE FROM SC_ArchivedHistoryTable")
+    suspend fun clearArchivedHistory()
+
     @Delete
     suspend fun deleteArchivedHistoryItem(archivedHistory: ArchivedHistory)
 

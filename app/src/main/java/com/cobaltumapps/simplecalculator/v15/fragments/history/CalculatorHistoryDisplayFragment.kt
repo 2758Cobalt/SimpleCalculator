@@ -31,8 +31,7 @@ import com.google.android.material.snackbar.Snackbar
 
 
 /** Фрагмент, цель которого - отображать историю расчётов в виде списка и предоставлять управление над каждым элементом.
- * @param historyAdapter Адаптер, отображающий список расчётов.
- * @param calculatorHistoryController Контроллер, управляющий адаптера отображения списка и контроллера базы данных, для сохранения и удаления записей в БД */
+ * @param onClickHolderListener Слушатель нажатия элемента в RecyclerView */
 
 class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListener? = null): Fragment(), NumpadBottomBehaviorListener,
     HistoryAdapterUpdater, HistoryController {
@@ -54,7 +53,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         super.onViewCreated(view, savedInstanceState)
         hideHistory()
 
-        // Creation ViewModel
+        // Creation ViewModels
         historyViewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
         archivedHistoryViewModel = ViewModelProvider(this)[ArchivedHistoryViewModel::class.java]
 
@@ -329,6 +328,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         showHistoryHint()
     }
 
+    /** Считывает историю из ViewModel*/
     private fun loadHistoryList() {
         historyViewModel.historyList.observe(viewLifecycleOwner) { history ->
             calculatorHistoryRecyclerAdapter.setNewList(history)

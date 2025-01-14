@@ -5,4 +5,5 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.Arch
 interface ArchiveController {
     fun insertArchiveItem(archivedHistory: ArchivedHistory)
     fun deleteArchiveItem(archivedHistory: ArchivedHistory)
+    fun clearArchive()
 }

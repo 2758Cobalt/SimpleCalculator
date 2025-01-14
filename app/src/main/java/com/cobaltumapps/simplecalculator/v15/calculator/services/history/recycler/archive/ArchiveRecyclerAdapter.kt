@@ -26,7 +26,6 @@ class ArchiveRecyclerAdapter: RecyclerView.Adapter<ArchiveItemHolder>(), Archive
     /** Привязывает логику для каждого холдера */
     override fun onBindViewHolder(holder: ArchiveItemHolder, position: Int) {
         val archiveItem = archivedHistoryList[position]
-
         holder.bind(archiveItem)
     }
 
@@ -47,7 +46,11 @@ class ArchiveRecyclerAdapter: RecyclerView.Adapter<ArchiveItemHolder>(), Archive
         archivedHistoryList.removeItem(archivedHistory)
     }
 
-    /* Функции расширения - extensions */
+    override fun clearArchive() {
+        archivedHistoryList.clearList()
+    }
+
+    /** Функции расширения - extensions */
     private fun MutableList<ArchivedHistory>.removeItem(archivedHistory: ArchivedHistory){
         if (archivedHistoryList.isNotEmpty()) {
             val indexAdapterItem = archivedHistoryList.indexOf(archivedHistory)
@@ -59,6 +62,11 @@ class ArchiveRecyclerAdapter: RecyclerView.Adapter<ArchiveItemHolder>(), Archive
     private fun MutableList<ArchivedHistory>.addItem(archivedHistory: ArchivedHistory){
         this.add(archivedHistory)
         notifyItemInserted(this.lastIndex)
+    }
+
+    private fun MutableList<ArchivedHistory>.clearList() {
+        this.clear()
+        notifyItemRangeRemoved(0, archivedHistoryList.size)
     }
 
     companion object {

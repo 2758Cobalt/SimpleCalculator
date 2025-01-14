@@ -3,6 +3,7 @@ package com.cobaltumapps.simplecalculator.v15.activities
 import android.graphics.Canvas
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
@@ -128,6 +129,18 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menu_archive_clear -> {
+                clearArchive()
+            }
+            R.id.menu_archive_restore_all -> {
+                restoreAllItemsToHistory()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     /** Вставляет запись архива в адаптер */
     override fun insertArchiveItem(archivedHistory: ArchivedHistory) {
         archiveRecyclerAdapter.insertArchiveItem(archivedHistory)
@@ -138,7 +151,6 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
         archiveRecyclerAdapter.deleteArchiveItem(archivedHistory)
         archivedHistoryViewModel.deleteArchivedHistoryItem(archivedHistory)
     }
-
 
     /** Получает из БД список записей архива */
     private fun loadHistoryList() {
@@ -162,8 +174,25 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
         archivedHistoryViewModel.deleteArchivedHistoryItem(archivedHistory)
     }
 
-    fun clearArchive() {
+    /** Возвращает все записи в историю */
+    private fun restoreAllItemsToHistory() {
+        for (x in archiveRecyclerAdapter.getArchiveList()) {
+            historyViewModel.insertHistoryItem(
+                History(
+                    null,
+                    x.user_expression,
+                    x.result_calculation,
+                    x.date_time_calculation
+                )
+            )
+        }
+        clearArchive()
+    }
 
+    /** Очищает все элементы архива */
+    override fun clearArchive() {
+        archiveRecyclerAdapter.clearArchive()
+        archivedHistoryViewModel.clearArchivedHistory()
     }
 }
 

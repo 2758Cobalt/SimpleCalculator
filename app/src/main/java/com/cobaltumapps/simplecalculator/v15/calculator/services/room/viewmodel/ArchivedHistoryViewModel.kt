@@ -31,4 +31,10 @@ class ArchivedHistoryViewModel(application: Application): AndroidViewModel(appli
             repository.deleteArchivedHistoryItem(archivedHistory)
         }
     }
+
+    fun clearArchivedHistory() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.clearArchivedHistory()
+        }
+    }
 }
