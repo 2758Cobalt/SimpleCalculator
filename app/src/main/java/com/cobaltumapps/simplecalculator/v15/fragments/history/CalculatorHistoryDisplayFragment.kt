@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentHistoryDisplayBinding
-import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.DateTimeService
+import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.CalendarService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
@@ -41,7 +41,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     private lateinit var historyViewModel: HistoryViewModel
     private lateinit var archivedHistoryViewModel: ArchivedHistoryViewModel
 
-    private val dateTimeService = DateTimeService()
+    private val calendarService = CalendarService()
 
     // Адаптер для отображения списка расчётов
     private val calculatorHistoryRecyclerAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener, this@CalculatorHistoryDisplayFragment) }
@@ -126,7 +126,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                                 historyItem.user_expression,
                                 historyItem.result_calculation,
                                 historyItem.date_time_calculation,
-                                dateTimeService.getUnixTime()
+                                calendarService.getUnixTime()
                             )
                         )
 

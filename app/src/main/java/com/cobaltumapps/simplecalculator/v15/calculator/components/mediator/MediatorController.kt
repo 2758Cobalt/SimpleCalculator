@@ -10,7 +10,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOpe
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
-import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.DateTimeService
+import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.CalendarService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
@@ -33,7 +33,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     var historyService: CalculatorHistoryController? = null
     var memoryService: MemoryControllerImpl? = null
 
-    private val dateTimeService = DateTimeService()
+    private val calendarService = CalendarService()
 
     var userExpression = ""
     var calculatedResult = ""
@@ -191,7 +191,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
                 null,
                 userExpression,
                 calculatedResult,
-                dateTimeService.getUnixTime()
+                calendarService.getUnixTime()
             )
         )
     }
