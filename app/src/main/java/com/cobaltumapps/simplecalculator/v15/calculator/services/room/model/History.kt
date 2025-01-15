@@ -11,5 +11,5 @@ data class History(
     var id: Int?,
     var user_expression: String,
     var result_calculation: String,
-    var date_time_calculation: Int
+    var date_time_calculation: Long
 ): Serializable
