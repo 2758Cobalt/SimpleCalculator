@@ -1,9 +1,9 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.system
 
-import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.components.expression.Expression
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.managers.CalculatorManager
+import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 
 open class Calculator {
     // Входные данные
@@ -53,7 +53,11 @@ open class Calculator {
 
     // Расчитывает выражение
     open fun calculate(canTrimExpression: Boolean = false){
-        result = 0.05
+        result = 0.00
+    }
+
+    companion object {
+        const val LOG_TAG = "SC_CalculatorTag"
     }
 }
 

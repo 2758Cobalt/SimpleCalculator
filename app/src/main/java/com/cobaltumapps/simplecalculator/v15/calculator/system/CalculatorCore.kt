@@ -28,9 +28,9 @@ class CalculatorCore: Calculator() {
             val resultTrim = if(canTrimExpression) trimExpression(trimRange,resultCalculation) else resultCalculation // Сокращает числа после точки
             this.result = resultTrim
         }
-        else{
+        else {
             // Вызов исключения, если происходит попытка расчитать выражение пустой строки
-            throw NumberFormatException("Empty expression string - calculate is impossible\nПустая строка выражения - расчёт невозможен")
+            Log.w(LOG_TAG, "expression is empty")
         }
     }
 
@@ -52,7 +52,7 @@ class CalculatorCore: Calculator() {
                         c = a + b
                         stackOperand.push(c)
                     }
-                    else{
+                    else {
                         // Если нет первого операнда
                         a = stackOperand.pop()
                         c = a
@@ -68,7 +68,7 @@ class CalculatorCore: Calculator() {
                         c = b - a
                         stackOperand.push(c)
                     }
-                    else{
+                    else {
                         a = stackOperand.pop()
                         c = -1 * a
                         stackOperand.push(c)
@@ -83,7 +83,7 @@ class CalculatorCore: Calculator() {
                         c = a * b
                         stackOperand.push(c)
                     }
-                    else{
+                    else {
                         a = stackOperand.pop()
                         c = 1 * a
                         stackOperand.push(c)
@@ -99,7 +99,7 @@ class CalculatorCore: Calculator() {
                         c = b / a
                         stackOperand.push(c)
                     }
-                    else{
+                    else {
                         a = stackOperand.pop()
                         c = 1 / a
                         stackOperand.push(c)
@@ -124,7 +124,7 @@ class CalculatorCore: Calculator() {
                         else
                             stackOperand.push(c)
                     }
-                    else{
+                    else {
                         a = stackOperand.pop()
                         c = sqrt(a)
                         stackOperand.push(1 * c) // 1√x
