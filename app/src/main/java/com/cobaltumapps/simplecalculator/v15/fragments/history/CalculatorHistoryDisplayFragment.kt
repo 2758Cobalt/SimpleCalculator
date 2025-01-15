@@ -76,22 +76,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
             historyDisplayArchiveAllFab.apply {
                 setOnClickListener {
-                    for (x in calculatorHistoryRecyclerAdapter.getItemList()) {
-                        archivedHistoryViewModel.insertArchivedHistoryItem(
-                            ArchivedHistory(
-                                null,
-                                x.user_expression,
-                                x.result_calculation,
-                                x.date_time_calculation,
-                                17
-                            )
-                        )
-                    }
-                    hideHistory()
-                    showHistoryList()
-                    clearHistory()
-
-                    Snackbar.make(binding.root, "History has been moved to archive", Snackbar.LENGTH_SHORT).show()
+                    storeAllHistoryToArchive()
                 }
             }
         }
@@ -116,7 +101,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                         calculatorHistoryRecyclerAdapter.getItemList()[viewHolder.bindingAdapterPosition]
                     )
                     ItemTouchHelper.RIGHT -> {
-
                         val historyItem = calculatorHistoryRecyclerAdapter.getItemList()[viewHolder.bindingAdapterPosition]
 
                         // Добавляем в архив запись, которую выбрали
@@ -193,6 +177,29 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
         val touchHelper = ItemTouchHelper(simpleCallback)
         touchHelper.attachToRecyclerView(binding.historyRecyclerView)
+    }
+
+    /** Перемещает всю историю в архив */
+    private fun storeAllHistoryToArchive() {
+        for (historyItem in calculatorHistoryRecyclerAdapter.getItemList()) {
+            archivedHistoryViewModel.insertArchivedHistoryItem(
+                ArchivedHistory(
+                    null,
+                    historyItem.user_expression,
+                    historyItem.result_calculation,
+                    historyItem.date_time_calculation,
+                    calendarService.getUnixTime()
+                )
+            )
+        }
+        hideHistory()
+        showHistoryList()
+        clearHistory()
+
+        Snackbar.make(binding.root, "History has been moved to archive", Snackbar.LENGTH_SHORT)
+            .setAction("Done") {
+            }
+            .show()
     }
 
     override fun addHistoryItem(history: History) {
