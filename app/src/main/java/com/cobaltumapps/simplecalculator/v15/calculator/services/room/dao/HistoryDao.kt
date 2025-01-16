@@ -13,7 +13,7 @@ interface HistoryDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertHistoryItem(history: History)
 
-    @Query("SELECT * FROM SC_HistoryTable ORDER BY id ASC")
+    @Query("SELECT * FROM SC_HistoryTable ORDER BY date_time_calculation DESC")
     fun getHistoryList(): LiveData<List<History>>
 
     @Query("DELETE FROM SC_HistoryTable")

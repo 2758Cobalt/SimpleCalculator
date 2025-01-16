@@ -13,7 +13,7 @@ interface ArchivedHistoryDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertArchivedHistoryItem(archivedHistory: ArchivedHistory)
 
-    @Query("SELECT * FROM SC_ArchivedHistoryTable ORDER BY id ASC")
+    @Query("SELECT * FROM SC_ArchivedHistoryTable ORDER BY date_time_archived DESC")
     fun getArchivedHistoryList(): LiveData<List<ArchivedHistory>>
 
     @Query("DELETE FROM SC_ArchivedHistoryTable")
