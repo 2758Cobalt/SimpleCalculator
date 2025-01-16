@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="display_history_dialogAlertTitle">Warning!</string>
+
+    <string name="display_history_storeToArchive_dialogMessage">You want to move all records to the archive?</string>
+    <string name="display_history_clearAllHistory_dialogMessage">You want to delete all records from the history?</string>
+
+
+    <string name="display_history_dialog_accept">Accept</string>
+    <string name="display_history_dialog_cancel">Cancel</string>
+</resources>

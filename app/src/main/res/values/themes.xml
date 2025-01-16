@@ -57,8 +57,6 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
 
-
-
     <style name="SimpleCalculatorToolbarTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:textColorPrimary">@color/white</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
@@ -69,30 +67,12 @@
         <item name="color">@android:color/white</item>
     </style>
 
-
-    <!--Тема для полей-->
-    <style name="inputFieldText">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textColorHint">@color/gray75</item>
-    </style>
-
-    <style name="resultFieldText">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textColorHint">@color/gray120</item>
-    </style>
-
-    <style name="expandButtonTheme">
-        <item name="android:backgroundTint">@color/white</item>
-        <item name="android:textColor">@color/black</item>
-    </style>
-
     <style name="MyTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
     <style name="MyTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="MyTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 

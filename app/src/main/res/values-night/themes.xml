@@ -57,21 +57,4 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
 
-    <style name="inputFieldText">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textColorHint">@color/white200</item>
-    </style>
-
-    <style name="resultFieldText">
-        <item name="android:textColor">@color/white200</item>
-        <item name="android:textColorHint">#979797</item>
-    </style>
-
-    <style name="expandButtonTheme" parent="numberButtonStyle">
-        <item name="android:backgroundTint">@color/gray120</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="elevationOverlayColor">@color/white</item>
-    </style>
-
-
 </resources>

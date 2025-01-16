@@ -28,6 +28,7 @@ import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -68,9 +69,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
             historyDisplayClearFab.apply {
                 setOnClickListener {
-                    hideHistory()
-                    showHistoryHint()
-                    clearHistory()
+                    clearAllHistory()
                 }
             }
 
@@ -181,25 +180,40 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
     /** Перемещает всю историю в архив */
     private fun storeAllHistoryToArchive() {
-        for (historyItem in calculatorHistoryRecyclerAdapter.getItemList()) {
-            archivedHistoryViewModel.insertArchivedHistoryItem(
-                ArchivedHistory(
-                    null,
-                    historyItem.user_expression,
-                    historyItem.result_calculation,
-                    historyItem.date_time_calculation,
-                    calendarService.getUnixTime()
+        alertArchiveAllHistory {
+            for (historyItem in calculatorHistoryRecyclerAdapter.getItemList()) {
+                archivedHistoryViewModel.insertArchivedHistoryItem(
+                    ArchivedHistory(
+                        null,
+                        historyItem.user_expression,
+                        historyItem.result_calculation,
+                        historyItem.date_time_calculation,
+                        calendarService.getUnixTime()
+                    )
                 )
-            )
-        }
-        hideHistory()
-        showHistoryList()
-        clearHistory()
-
-        Snackbar.make(binding.root, "History has been moved to archive", Snackbar.LENGTH_SHORT)
-            .setAction("Done") {
             }
-            .show()
+            hideHistory()
+            showHistoryList()
+            clearHistory()
+
+            Snackbar.make(binding.root, "History has been moved to archive", Snackbar.LENGTH_SHORT)
+                .setAction("Done") {
+                }
+                .show()
+        }
+    }
+
+    private fun clearAllHistory() {
+        alertHistoryClearAll {
+            hideHistory()
+            showHistoryHint()
+            clearHistory()
+
+            Snackbar.make(binding.root, "History has been deleted", Snackbar.LENGTH_SHORT)
+                .setAction("Done") {
+                }
+                .show()
+        }
     }
 
     override fun addHistoryItem(history: History) {
@@ -354,6 +368,33 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
             showHistoryList()
 
         return checkResult
+    }
+
+    /** Вызов предупредительного диалога */
+    private fun alertArchiveAllHistory(onAccepted: () -> Unit) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.display_history_dialogAlertTitle)
+            .setMessage(R.string.display_history_storeToArchive_dialogMessage)
+            .setNeutralButton(R.string.display_history_dialog_cancel)  { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton(R.string.display_history_dialog_accept) { _, _ ->
+                onAccepted.invoke()
+            }
+            .show()
+    }
+
+    private fun alertHistoryClearAll(onAccepted: () -> Unit) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.display_history_dialogAlertTitle)
+            .setMessage(R.string.display_history_clearAllHistory_dialogMessage)
+            .setNeutralButton(R.string.display_history_dialog_cancel)  { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton(R.string.display_history_dialog_accept) { _, _ ->
+                onAccepted.invoke()
+            }
+            .show()
     }
 
     override fun updateAdapter() {
