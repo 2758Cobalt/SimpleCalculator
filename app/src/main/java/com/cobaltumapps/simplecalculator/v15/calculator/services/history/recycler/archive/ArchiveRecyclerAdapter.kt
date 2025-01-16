@@ -33,15 +33,23 @@ class ArchiveRecyclerAdapter: RecyclerView.Adapter<ArchiveItemHolder>(), Archive
         val archiveItem = archivedHistoryList[position]
         val dayOfItem = dateService.getCalendarDate(archiveItem.date_time_archived).day
 
-        if (currentDayCursor >= 0) {
+        // Отображаем дату в любом случае первому элементу
+        if (position == 0)
+            holder.hideDateField = false
 
-            // Если текущий месяц (в рамках метода) равен месяцу записи
+        if (currentDayCursor >= 0 && position != 0) {
+
+            // Если текущий день (в рамках метода) равен дню архивации записи
             if (currentDayCursor == dayOfItem)
-                holder.hideDateTime = true
+                holder.hideDateField = true
         }
 
         currentDayCursor = dayOfItem
         holder.bind(archiveItem)
+
+        // Сброс значения курсора после бинда последнего элемента
+        if (position == archivedHistoryList.size)
+            currentDayCursor = -1
     }
 
     fun setNewList(newList: List<ArchivedHistory>) {

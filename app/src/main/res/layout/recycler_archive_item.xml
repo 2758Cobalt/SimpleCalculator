@@ -11,14 +11,18 @@
         android:id="@+id/archiveDateArchivedField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="N/A-dateOfArchivation" />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:text="N/A-dateOfArchivation"
+        android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/archiveCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.NumpadButtonCorner">
 
         <LinearLayout
@@ -27,26 +31,19 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <!--<com.google.android.material.textview.MaterialTextView
-                android:id="@+id/archiveDateField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="N/A-dateOfCalculation/" />-->
-
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/archiveExpressionField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="N/A - user_expression"
+                android:text="N/A-user_expression"
                 android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/archiveResultField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="N/A - result_expression"
+                android:text="N/A-result_expression"
                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                android:textSize="14sp"
                 android:gravity="end" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -12,7 +12,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.room.dao.Histor
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.ArchivedHistory
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 
-@Database(entities = [History::class, ArchivedHistory::class], version = 2)
+@Database(entities = [History::class, ArchivedHistory::class], version = 2, exportSchema = false)
 abstract class HistoryDatabase: RoomDatabase() {
     abstract fun getHistoryDao(): HistoryDao
     abstract fun getArchivedHistoryDao(): ArchivedHistoryDao

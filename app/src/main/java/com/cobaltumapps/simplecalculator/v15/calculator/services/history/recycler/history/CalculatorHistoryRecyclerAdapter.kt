@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerHistoryItemBinding
+import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.DateService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryAdapterUpdater
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
@@ -15,7 +16,8 @@ class CalculatorHistoryRecyclerAdapter(
 ): RecyclerView.Adapter<CalculatorHistoryItemHolder>(),
     HistoryController
 {
-    private var expressionsHistoryList: MutableList<History> = mutableListOf()
+    private var historyList: MutableList<History> = mutableListOf()
+    private val dateService = DateService()
 
     /** Создаёт макет для каждого холдера */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalculatorHistoryItemHolder {
@@ -25,50 +27,72 @@ class CalculatorHistoryRecyclerAdapter(
 
     /** Возвращает полный список элементов */
     override fun getItemCount(): Int {
-        return expressionsHistoryList.size
+        return historyList.size
     }
+
+    /** Курсор для сохранения дня между элементами */
+    private var currentDayCursor = -1
 
     /** Привязывает логику для каждого холдера */
     override fun onBindViewHolder(holder: CalculatorHistoryItemHolder, position: Int) {
-        val historyObject = expressionsHistoryList[position]
+        val historyObject = historyList[position]
+        val dayOfItem = dateService.getCalendarDate(historyObject.date_time_calculation).day
+
+        // Отображаем дату в любом случае первому элементу
+        if (position == 0)
+            holder.hideDateField = false
+
+        if (currentDayCursor >= 0 && position != 0) {
+
+            // Если текущий день (в рамках метода) равен дню создания записи
+            if (currentDayCursor == dayOfItem)
+                holder.hideDateField = true
+        }
+
+        currentDayCursor = dayOfItem
+
         holder.bind(historyObject)
         holder.bindOnClickHistoryItem(onClickHistoryListener)
+
+        // Сброс значения курсора после бинда последнего элемента
+        if (position == historyList.size)
+            currentDayCursor = -1
     }
 
     /** Устанавливает новый список истории (если необходимо) */
     fun setNewList(newExpressionList: List<History>?){
-        expressionsHistoryList = newExpressionList?.toMutableList() ?: mutableListOf()
+        historyList = newExpressionList?.toMutableList() ?: mutableListOf()
         updaterListener?.updateAdapter()
-        notifyItemRangeChanged(0, expressionsHistoryList.size)
+        notifyItemRangeChanged(0, historyList.size)
     }
 
     /** Возвращает список элементов */
     fun getItemList(): List<History> {
-        return expressionsHistoryList
+        return historyList
     }
 
     /** Добавляет новый элемент в список выражений */
     override fun addHistoryItem(history: History) {
-        expressionsHistoryList.addItem(history)
+        historyList.addItem(history)
         updaterListener?.updateAdapter()
     }
 
     /** Удаляет элемент в нужной позиции */
     override fun deleteHistoryItem(history: History) {
-        expressionsHistoryList.removeItem(history)
+        historyList.removeItem(history)
         updaterListener?.updateAdapter()
     }
 
     /** Очищает всю историю */
     override fun clearHistory() {
-        expressionsHistoryList.clearList()
+        historyList.clearList()
         updaterListener?.updateAdapter()
     }
 
     /** Функции расширения - extensions */
     private fun MutableList<History>.removeItem(history: History){
-        if (expressionsHistoryList.isNotEmpty()) {
-            val indexAdapterItem = expressionsHistoryList.indexOf(history)
+        if (historyList.isNotEmpty()) {
+            val indexAdapterItem = historyList.indexOf(history)
             this.removeAt(indexAdapterItem)
             notifyItemRemoved(indexAdapterItem)
         }
@@ -81,7 +105,7 @@ class CalculatorHistoryRecyclerAdapter(
 
     private fun MutableList<History>.clearList() {
         this.clear()
-        notifyItemRangeRemoved(0,expressionsHistoryList.size)
+        notifyItemRangeRemoved(0,historyList.size)
     }
 
     companion object {

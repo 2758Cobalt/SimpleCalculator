@@ -10,16 +10,15 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.Arch
 class ArchiveItemHolder(private val itemBinding: RecyclerArchiveItemBinding) : RecyclerView.ViewHolder(itemBinding.root)
 {
     private val calendarService = CalendarService()
-    var hideDateTime: Boolean = false
+    var hideDateField: Boolean = false
 
     fun bind(archivedHistory: ArchivedHistory) {
         itemBinding.apply {
             archiveExpressionField.text = archivedHistory.user_expression
             archiveResultField.text = archivedHistory.result_calculation
-//            archiveDateField.text = archivedHistory.date_time_calculation.toString()
 
             // Отключаем отображения поля даты, если флаг включен
-            if (hideDateTime)
+            if (hideDateField)
                 archiveDateArchivedField.isVisible = false
             else {
                 // Форматируем дату и устанавливаем выходную строку в поле
