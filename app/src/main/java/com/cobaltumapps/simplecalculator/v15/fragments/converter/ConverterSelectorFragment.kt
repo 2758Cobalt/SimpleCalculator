@@ -8,14 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentConverterSelectorBinding
-import com.cobaltumapps.simplecalculator.v15.converter.adapters.SelectorListAdapter
+import com.cobaltumapps.simplecalculator.v15.activities.ConverterPagerManager
+import com.cobaltumapps.simplecalculator.v15.converter.adapters.ConverterSelectorAdapter
 import com.cobaltumapps.simplecalculator.v15.converter.data.SelectorDataItem
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
 import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
 
 class ConverterSelectorFragment(
-    private val listener: SelectorFragmentListener? = null
-): Fragment(), SelectorFragmentListener {
+    private val listener: ConverterPagerManager? = null,
+    private val converterListener: ConverterUnitFragment? = null
+): Fragment(), SelectorFragmentListener
+{
     private val binding by lazy { FragmentConverterSelectorBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
@@ -35,13 +38,14 @@ class ConverterSelectorFragment(
         )
 
         binding.selectorListRecycler.apply {
-            adapter = SelectorListAdapter(context, itemsListview, this@ConverterSelectorFragment)
+            adapter = ConverterSelectorAdapter(context, itemsListview, this@ConverterSelectorFragment)
             layoutManager = LinearLayoutManager(context)
         }
     }
 
     override fun onSelectedItem(selectedUnit: ConverterUnit) {
-        listener?.onSelectedItem(selectedUnit)
+        listener?.goUnitConverter()
+        converterListener?.onSelectedItem(selectedUnit)
     }
 }
 

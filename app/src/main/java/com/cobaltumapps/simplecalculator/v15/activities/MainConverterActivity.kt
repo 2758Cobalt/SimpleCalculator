@@ -6,26 +6,25 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterViewPagerAdapter
-import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
-import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterSelectorFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterUnitFragment
 
-class MainConverterActivity : AppCompatActivity(), SelectorFragmentListener {
+class MainConverterActivity : AppCompatActivity(), ConverterPagerManager {
     private val binding by lazy { ActivityConverterBinding.inflate(layoutInflater) }
 
-    private val converterSelector by lazy { ConverterSelectorFragment(this) }
-    private val converterUnitFragment by lazy { ConverterUnitFragment(this) }
+    private val converterSelector by lazy { ConverterSelectorFragment(this, converterUnitFragment) }
+    private val converterUnitFragment by lazy { ConverterUnitFragment() }
+
     private var canLeaveFromSelector = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
-
         setSupportActionBar(binding.converterToolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding.converterViewPager.apply {
             adapter = ConverterViewPagerAdapter(this@MainConverterActivity, listOf(converterSelector, converterUnitFragment))
             isUserInputEnabled = false
@@ -37,11 +36,9 @@ class MainConverterActivity : AppCompatActivity(), SelectorFragmentListener {
                     finish()
                 }
                 else {
-                    binding.converterViewPager.setCurrentItem(0, true)
-                    canLeaveFromSelector = true
+                    goSelector()
                 }
             }
-
         })
     }
 
@@ -55,9 +52,19 @@ class MainConverterActivity : AppCompatActivity(), SelectorFragmentListener {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onSelectedItem(selectedUnit: ConverterUnit) {
+    override fun goSelector() {
+        binding.converterViewPager.setCurrentItem(0, true)
+        canLeaveFromSelector = true
+    }
+
+    override fun goUnitConverter() {
         binding.converterViewPager.setCurrentItem(1, true)
-        converterUnitFragment.onSelectedItem(selectedUnit)
         canLeaveFromSelector = false
     }
+
+}
+
+interface ConverterPagerManager {
+    fun goSelector()
+    fun goUnitConverter()
 }

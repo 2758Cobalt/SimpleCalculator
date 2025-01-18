@@ -9,7 +9,7 @@
         <item name="android:stateListAnimator">@null</item>
         <item name="layout_constraintDimensionRatio">1:1</item>
 
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.NumpadButtonCorner</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.CornerSize_20</item>
 
         <item name="android:backgroundTint">@color/theme_primary</item>
         <item name="android:textColor">@color/md_theme_onPrimary</item>
@@ -27,7 +27,7 @@
         <item name="autoSizeStepGranularity">2sp</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.NumpadButtonCorner" parent="">
+    <style name="ShapeAppearanceOverlay.CornerSize_20" parent="">
         <item name="cornerSize">20%</item>
     </style>
 
