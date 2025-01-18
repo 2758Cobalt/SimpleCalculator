@@ -49,7 +49,11 @@ class ArchiveRecyclerAdapter: RecyclerView.Adapter<ArchiveItemHolder>(), Archive
 
         // Сброс значения курсора после бинда последнего элемента
         if (position == archivedHistoryList.size)
-            currentDayCursor = -1
+            resetCursorTimeStamp()
+    }
+
+    private fun resetCursorTimeStamp() {
+        currentDayCursor = -1
     }
 
     fun setNewList(newList: List<ArchivedHistory>) {
@@ -74,22 +78,25 @@ class ArchiveRecyclerAdapter: RecyclerView.Adapter<ArchiveItemHolder>(), Archive
     }
 
     /** Функции расширения - extensions */
+    private fun MutableList<ArchivedHistory>.addItem(archivedHistory: ArchivedHistory){
+        this.add(archivedHistory)
+        notifyItemInserted(this.lastIndex)
+        resetCursorTimeStamp()
+    }
+
     private fun MutableList<ArchivedHistory>.removeItem(archivedHistory: ArchivedHistory){
         if (archivedHistoryList.isNotEmpty()) {
             val indexAdapterItem = archivedHistoryList.indexOf(archivedHistory)
             this.removeAt(indexAdapterItem)
             notifyItemRemoved(indexAdapterItem)
+            resetCursorTimeStamp()
         }
-    }
-
-    private fun MutableList<ArchivedHistory>.addItem(archivedHistory: ArchivedHistory){
-        this.add(archivedHistory)
-        notifyItemInserted(this.lastIndex)
     }
 
     private fun MutableList<ArchivedHistory>.clearList() {
         this.clear()
         notifyItemRangeRemoved(0, archivedHistoryList.size)
+        resetCursorTimeStamp()
     }
 
     companion object {

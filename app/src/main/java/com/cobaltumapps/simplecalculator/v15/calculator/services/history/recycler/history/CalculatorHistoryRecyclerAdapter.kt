@@ -56,7 +56,11 @@ class CalculatorHistoryRecyclerAdapter(
 
         // Сброс значения курсора после бинда последнего элемента
         if (position == historyList.size)
-            currentDayCursor = -1
+            resetCursorTimeStamp()
+    }
+
+    private fun resetCursorTimeStamp() {
+        currentDayCursor = -1
     }
 
     /** Устанавливает новый список истории (если необходимо) */
@@ -95,17 +99,20 @@ class CalculatorHistoryRecyclerAdapter(
             val indexAdapterItem = historyList.indexOf(history)
             this.removeAt(indexAdapterItem)
             notifyItemRemoved(indexAdapterItem)
+            resetCursorTimeStamp()
         }
     }
 
     private fun MutableList<History>.addItem(history: History){
         this.add(history)
         notifyItemInserted(this.lastIndex)
+        resetCursorTimeStamp()
     }
 
     private fun MutableList<History>.clearList() {
         this.clear()
         notifyItemRangeRemoved(0,historyList.size)
+        resetCursorTimeStamp()
     }
 
     companion object {
