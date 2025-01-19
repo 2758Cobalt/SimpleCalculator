@@ -19,10 +19,33 @@
             android:id="@+id/archiveToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/toolbar_archive_menu"
             app:title="Archive" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:id="@+id/archiveRestoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Restore"
+        android:textAllCaps="true"
+        app:icon="@drawable/ic_action_restore"
+        android:contentDescription="Restore archive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/archiveDeleteButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:icon="@drawable/ic_action_delete"
+        android:contentDescription="Clear archive"
+        app:layout_constraintBottom_toTopOf="@+id/archiveRestoreButton"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/archiveRecyclerView"

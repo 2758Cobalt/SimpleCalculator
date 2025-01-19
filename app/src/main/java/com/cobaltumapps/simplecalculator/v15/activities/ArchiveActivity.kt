@@ -2,8 +2,6 @@ package com.cobaltumapps.simplecalculator.v15.activities
 
 import android.graphics.Canvas
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
@@ -43,6 +41,13 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
         binding.archiveRecyclerView.apply {
             adapter = archiveRecyclerAdapter
             layoutManager = LinearLayoutManager(this@ArchiveActivity.applicationContext)
+        }
+
+        binding.archiveDeleteButton.setOnClickListener {
+            clearArchive()
+        }
+        binding.archiveRestoreButton.setOnClickListener {
+            restoreAllItemsToHistory()
         }
 
         val deleteIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_action_delete, theme)
@@ -122,23 +127,6 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
 
         loadHistoryList()
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_archive_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.menu_archive_clear -> {
-                clearArchive()
-            }
-            R.id.menu_archive_restore_all -> {
-                restoreAllItemsToHistory()
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     /** Вставляет запись архива в адаптер */
