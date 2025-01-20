@@ -2,20 +2,28 @@ package com.cobaltumapps.simplecalculator.v15.activities
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
+import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterBinding
-import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterViewPagerAdapter
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterSelectorFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterUnitFragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class MainConverterActivity : AppCompatActivity(), ConverterPagerManager {
+class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val binding by lazy { ActivityConverterBinding.inflate(layoutInflater) }
 
-    private val converterSelector by lazy { ConverterSelectorFragment(this, converterUnitFragment) }
+    // Ad (Advertisement)
+    private val adRequest by lazy { AdRequest.Builder().build() }
+
     private val converterUnitFragment by lazy { ConverterUnitFragment() }
 
-    private var canLeaveFromSelector = true
+    private lateinit var toggleButtonDrawer: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,48 +31,53 @@ class MainConverterActivity : AppCompatActivity(), ConverterPagerManager {
         setContentView(binding.root)
         setSupportActionBar(binding.converterToolbar)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        binding.converterViewPager.apply {
-            adapter = ConverterViewPagerAdapter(this@MainConverterActivity, listOf(converterSelector, converterUnitFragment))
-            isUserInputEnabled = false
+        supportFragmentManager.commit {
+            add(binding.converterViewHolder.id, converterUnitFragment, ConverterUnitFragment.TAG)
         }
 
-        onBackPressedDispatcher.addCallback(object :  OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (canLeaveFromSelector) {
-                    finish()
-                }
-                else {
-                    goSelector()
-                }
+        toggleButtonDrawer = ActionBarDrawerToggle(
+            this@MainConverterActivity, binding.converterDrawer, binding.converterToolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+
+        binding.converterDrawer.addDrawerListener(toggleButtonDrawer)
+        toggleButtonDrawer.syncState()
+
+        // Ad initialization
+        lifecycleScope.launch(Dispatchers.Main) {
+            MobileAds.initialize(this@MainConverterActivity) {
+                binding.converterAdViewBanner.loadAd(adRequest)
             }
-        })
+        }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
+            R.id.menu_weight -> {  }
+            else -> {}
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 
-    override fun goSelector() {
-        binding.converterViewPager.setCurrentItem(0, true)
-        canLeaveFromSelector = true
+    override fun onResume() {
+        super.onResume()
+        binding.converterAdViewBanner.resume()
     }
 
-    override fun goUnitConverter() {
-        binding.converterViewPager.setCurrentItem(1, true)
-        canLeaveFromSelector = false
+    override fun onPause() {
+        super.onPause()
+        binding.converterAdViewBanner.pause()
     }
 
-}
+    override fun onDestroy() {
+        binding.converterAdViewBanner.destroy()
+        binding.converterDrawer.removeDrawerListener(toggleButtonDrawer)
+        super.onDestroy()
+    }
 
-interface ConverterPagerManager {
-    fun goSelector()
-    fun goUnitConverter()
+    companion object {
+        const val LOG_TAG = "MainConverterActivity" +
+                "LogTag"
+    }
 }

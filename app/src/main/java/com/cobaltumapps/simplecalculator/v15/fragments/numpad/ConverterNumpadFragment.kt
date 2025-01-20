@@ -44,4 +44,8 @@ class ConverterNumpadFragment(
             }
         }
     }
+
+    companion object {
+        const val TAG = "ConverterNumpadFragmentTag"
+    }
 }

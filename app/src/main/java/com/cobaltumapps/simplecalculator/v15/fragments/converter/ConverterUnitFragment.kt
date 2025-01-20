@@ -5,36 +5,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cobaltumapps.simplecalculator.databinding.FragmentConverterBinding
-import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterUnit
-import com.cobaltumapps.simplecalculator.v15.converter.interfaces.SelectorFragmentListener
+import com.cobaltumapps.simplecalculator.v15.converter.adapters.UnitItemsAdapter
+import com.cobaltumapps.simplecalculator.v15.fragments.numpad.ConverterNumpadFragment
 
-class ConverterUnitFragment: Fragment(), SelectorFragmentListener {
-    private lateinit var binding: FragmentConverterBinding
-    private var currentlySelectedUnit: ConverterUnit? = null
+class ConverterUnitFragment: Fragment() {
+    private val binding by lazy { FragmentConverterBinding.inflate(layoutInflater) }
+    private val converterNumpadFragment = ConverterNumpadFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentConverterBinding.inflate(layoutInflater)
-        return binding.root
-    }
+    ): View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUnitTitle()
-    }
 
-    override fun onSelectedItem(selectedUnit: ConverterUnit) {
-        currentlySelectedUnit = selectedUnit
-        if (::binding.isInitialized) {
-            setUnitTitle()
+        binding.converterUnitRecycler.apply {
+            adapter = UnitItemsAdapter(listOf())
+            layoutManager = LinearLayoutManager(context)
+        }
+
+        parentFragmentManager.commit {
+            add(binding.converterNumpadFrame.id, converterNumpadFragment, ConverterNumpadFragment.TAG)
         }
     }
 
-    private fun setUnitTitle() {
-        binding.converterUnitTitle.text = currentlySelectedUnit?.name
+    companion object {
+        const val TAG = "UnitFragmentTag"
     }
 }

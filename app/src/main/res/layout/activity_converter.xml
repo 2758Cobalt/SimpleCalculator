@@ -1,33 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context=".v15.activities.MainConverterActivity">
 
+    <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/converterAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/converterToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/converter_header" />
-
+            app:title="Preview unit text" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/converterViewPager"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/converterDrawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/converterAppBar"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/appBarLayout" />
+        android:layout_centerVertical="true"
+        tools:openDrawer="start">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Main Content -->
+            <FrameLayout
+                android:id="@+id/converterViewHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/converterAdViewBanner"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/converterAdViewBanner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:adSize="BANNER"
+                app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+        <!-- Navigation Drawer -->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/converterNavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/nav_converter_menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </RelativeLayout>

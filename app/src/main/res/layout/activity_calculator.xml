@@ -9,17 +9,17 @@
     tools:context=".v15.activities.MainCalculatorActivity">
 
     <FrameLayout
-        android:id="@+id/placeHolder"
+        android:id="@+id/calculatorPlaceHolder"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@+id/adViewBanner"
-        app:layout_constraintBottom_toTopOf="@+id/adViewBanner"
+        android:layout_above="@+id/calculatorAdViewBanner"
+        app:layout_constraintBottom_toTopOf="@+id/calculatorAdViewBanner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewBanner"
+        android:id="@+id/calculatorAdViewBanner"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:adSize="BANNER"

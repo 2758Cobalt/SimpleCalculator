@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
-import com.cobaltumapps.simplecalculator.databinding.ActivityMainCalculatorBinding
+import com.cobaltumapps.simplecalculator.databinding.ActivityCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
 import com.cobaltumapps.simplecalculator.v15.google.admob.SimpleApplication
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class MainCalculatorActivity : AppCompatActivity(),
     CalculatorNavigationListener
 {
-    private val binding by lazy { ActivityMainCalculatorBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityCalculatorBinding.inflate(layoutInflater) }
 
     // Ad (Advertisement)
     private val adRequest by lazy { AdRequest.Builder().build() }
@@ -34,7 +34,7 @@ class MainCalculatorActivity : AppCompatActivity(),
         if (calculatorFragment == null) {
             val newFragment = CalculatorFragment()
             supportFragmentManager.commit {
-                replace(binding.placeHolder.id, newFragment, CalculatorFragment.TAG)
+                replace(binding.calculatorPlaceHolder.id, newFragment, CalculatorFragment.TAG)
             }
         } else {
             calculatorFragment.setCalculatorNavigationListener(this)
@@ -42,23 +42,23 @@ class MainCalculatorActivity : AppCompatActivity(),
 
         lifecycleScope.launch(Dispatchers.IO) {
             MobileAds.initialize(this@MainCalculatorActivity) {
-                binding.adViewBanner.loadAd(adRequest)
+                binding.calculatorAdViewBanner.loadAd(adRequest)
             }
         }
     }
 
     override fun onResume() {
         super.onResume()
-        binding.adViewBanner.resume()
+        binding.calculatorAdViewBanner.resume()
     }
 
     override fun onPause() {
         super.onPause()
-        binding.adViewBanner.pause()
+        binding.calculatorAdViewBanner.pause()
     }
 
     override fun onDestroy() {
-        binding.adViewBanner.destroy()
+        binding.calculatorAdViewBanner.destroy()
         super.onDestroy()
     }
 

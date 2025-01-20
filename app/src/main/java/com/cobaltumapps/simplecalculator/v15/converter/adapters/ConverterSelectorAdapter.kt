@@ -12,9 +12,9 @@ class ConverterSelectorAdapter(
     val context: Context,
     private val dataList: List<SelectorDataItem>,
     private val listener: SelectorFragmentListener? = null
-): RecyclerView.Adapter<ConverterSelectorAdapter.ListViewHolder>() {
+): RecyclerView.Adapter<ConverterSelectorAdapter.SelectorItemHolder>() {
 
-    inner class ListViewHolder(private val itemBinding: RecyclerSelectorItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
+    inner class SelectorItemHolder(private val itemBinding: RecyclerSelectorItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(selectorData: SelectorDataItem) {
             with(selectorData) {
                 itemBinding.apply {
@@ -25,12 +25,12 @@ class ConverterSelectorAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectorItemHolder {
         val binding = RecyclerSelectorItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ListViewHolder(binding)
+        return SelectorItemHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SelectorItemHolder, position: Int) {
         val item = dataList[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
