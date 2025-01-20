@@ -5,17 +5,6 @@
     <string name="converter_unitInputHint">Enter a value</string>
     <string name="converter_header">Unit converters</string>
 
-    <!-- Selector -->
-    <string name="selector_favorite_text">Favorites</string>
-    <string name="selector_units_text">Units</string>
-
-    <string name="selector_icon_description">Unit icon</string>
-    <string name="selector_text_description">Unit text</string>
-
-    <string name="selector_gridview_description">Grid view items</string>
-    <string name="selector_listview_description">List view items</string>
-
-
     <!--Units-->
     <string name="converter_weight">Weight</string>
     <string name="converter_length">Length</string>
@@ -29,26 +18,8 @@
     <string name="converter_frequency">Frequency</string>
     <string name="converter_data">Data</string>
 
-    <!--Coming soon-->
-    <string name="converter_math_ratio">Ratio</string>
-    <string name="converter_geometry_square">Square</string>
-    <string name="converter_unit_price">Unit price</string>
-    <!--Coming soon-->
-
-    <!--Mechanics-->
-    <string name="converter_revolutions">Revolutions</string>
 
     <!--Categories-->
     <string name="converter_category_general">General</string>
-
-    <!--Coming soon-->
-    <string name="converter_category_energy">Energy</string>
-    <string name="converter_category_electronics">Electronics</string>
-
-    <string name="converter_category_mechanics">Mechanics</string>
-
-    <string name="converter_category_math">Math</string>
-    <string name="converter_category_geometry">Geometry formulas</string>
-    <!--Coming soon-->
 
 </resources>
