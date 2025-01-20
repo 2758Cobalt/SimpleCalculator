@@ -8,7 +8,10 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterBinding
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterUnitFragment
+import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterData
+import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
+import com.cobaltumapps.simplecalculator.v15.converter.services.ConverterModelCreatorService
+import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
@@ -21,7 +24,8 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     // Ad (Advertisement)
     private val adRequest by lazy { AdRequest.Builder().build() }
 
-    private val converterUnitFragment by lazy { ConverterUnitFragment() }
+    private val converterFragment by lazy { ConverterFragment() }
+    private val converterModelCreatorService = ConverterModelCreatorService(this)
 
     private lateinit var toggleButtonDrawer: ActionBarDrawerToggle
 
@@ -30,9 +34,10 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
         setContentView(binding.root)
         setSupportActionBar(binding.converterToolbar)
+        binding.converterNavigationView.setNavigationItemSelectedListener(this@MainConverterActivity)
 
         supportFragmentManager.commit {
-            add(binding.converterViewHolder.id, converterUnitFragment, ConverterUnitFragment.TAG)
+            add(binding.converterViewHolder.id, converterFragment, ConverterFragment.TAG)
         }
 
         toggleButtonDrawer = ActionBarDrawerToggle(
@@ -53,10 +58,21 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.menu_weight -> {  }
-            else -> {}
+        // Создаём креатор моделей конвертера
+        val createdConverterData = when(item.itemId) {
+            R.id.menu_weight -> getConverterData(ConverterType.Weight)
+            R.id.menu_length -> getConverterData(ConverterType.Length)
+            R.id.menu_time -> getConverterData(ConverterType.Time)
+            R.id.menu_speed -> getConverterData(ConverterType.Speed)
+            R.id.menu_temperature -> getConverterData(ConverterType.Temperature)
+            R.id.menu_volume -> getConverterData(ConverterType.Volume)
+            R.id.menu_area -> getConverterData(ConverterType.Area)
+            R.id.menu_frequency -> getConverterData(ConverterType.Frequency)
+            R.id.menu_data -> getConverterData(ConverterType.Data)
+            else -> getConverterData(ConverterType.Weight)
         }
+
+        converterFragment.setNewConverterData(createdConverterData)
         return true
     }
 
@@ -74,6 +90,11 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         binding.converterAdViewBanner.destroy()
         binding.converterDrawer.removeDrawerListener(toggleButtonDrawer)
         super.onDestroy()
+    }
+
+    /** Возвращает данные для конвертера исходя из выбраного типа конвертера с помощью навигации */
+    private fun getConverterData(converterType: ConverterType): ConverterData {
+        return converterModelCreatorService.getConverterModel(converterType)
     }
 
     companion object {

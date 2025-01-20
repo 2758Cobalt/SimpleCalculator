@@ -28,8 +28,6 @@ class MainCalculatorActivity : AppCompatActivity(),
 
         (application as SimpleApplication).showAdIfAvailable(this) { }
 
-        window.setBackgroundDrawable(null)
-
         val calculatorFragment = supportFragmentManager.findFragmentByTag(CalculatorFragment.TAG) as? CalculatorFragment
         if (calculatorFragment == null) {
             val newFragment = CalculatorFragment()

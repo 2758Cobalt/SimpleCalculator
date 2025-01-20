@@ -25,17 +25,26 @@
             android:text="@string/converter_weight"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
+        <ImageButton
+            android:id="@+id/converterUnitThumbnail"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_weight"
+            android:scaleType="fitCenter"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/converterUnitRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/recycler_converter_unit_item"
-        app:layout_constraintBottom_toTopOf="@+id/converterNumpadFrame"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/converterUnitHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/converterUnitHeader"
+        tools:listitem="@layout/recycler_converter_unit_item" />
 
     <FrameLayout
         android:id="@+id/converterNumpadFrame"
