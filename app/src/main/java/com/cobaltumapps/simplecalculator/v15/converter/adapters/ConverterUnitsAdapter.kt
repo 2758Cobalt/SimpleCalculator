@@ -20,7 +20,14 @@ class ConverterUnitsAdapter(private var dataList: ConverterUnitsModel): Recycler
 
     override fun onBindViewHolder(holder: ConverterUnitViewHolder, position: Int) {
         val unitTitle = dataList.unitsNameList[position]
-        val specialSymbol = dataList.unitsSpecialSymbolsList[position]
+
+        // Если спец. символ отсувствует - то вместо него просто печатается первая буква названия
+        val specialSymbol =
+            try {
+                dataList.unitsSpecialSymbolsList[position]
+            } catch (ex: IndexOutOfBoundsException) {
+                unitTitle.first().uppercase()
+            }
 
         holder.bind(
             ConverterUnitModel(unitTitle, specialSymbol)
