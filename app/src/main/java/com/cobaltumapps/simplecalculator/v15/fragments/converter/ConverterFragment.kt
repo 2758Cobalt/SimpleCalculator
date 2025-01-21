@@ -32,7 +32,7 @@ class ConverterFragment: Fragment(), OnAdapterSelectedItem {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        converterUnitsAdapter = ConverterUnitsAdapter(ConverterUnitsModel())
+        converterUnitsAdapter = ConverterUnitsAdapter(converterData?.converterUnitsModel ?: ConverterUnitsModel(), this@ConverterFragment)
 
         binding.converterUnitRecycler.apply {
             adapter = converterUnitsAdapter
@@ -58,7 +58,9 @@ class ConverterFragment: Fragment(), OnAdapterSelectedItem {
 
     /** Запоминаем позицию выбраного элемента */
     override fun selectedItemPosition(position: Int) {
-        selectedItemPos = position
+        if (converterData != null) {
+            selectedItemPos = position
+        }
     }
 
     companion object {
