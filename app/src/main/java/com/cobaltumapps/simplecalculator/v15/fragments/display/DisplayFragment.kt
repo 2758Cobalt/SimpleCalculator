@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayExpressionComponent
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayComponent
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
 /** Фрагмент, содержащий дисплей калькулятора. Является наследником Display-компонента */
-class DisplayExpressionFragment: DisplayExpressionComponent()  {
+class DisplayFragment: DisplayComponent()  {
     private val binding by lazy { FragmentDisplayBinding.inflate(layoutInflater) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

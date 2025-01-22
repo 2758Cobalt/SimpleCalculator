@@ -5,7 +5,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.ValueTranslator
 
 open class DisplayExpressionController(
-    private var displayComponent: DisplayExpressionComponent
+    private var displayComponent: DisplayComponent
 ): DisplayExpressionControl {
     private var displayLogger = DisplayExpressionLogger()
     private val displayValueTranslator = ValueTranslator()

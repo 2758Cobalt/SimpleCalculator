@@ -19,7 +19,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesM
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
-import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayExpressionFragment
+import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.history.CalculatorHistoryDisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.EngineeringNumpadFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.NumpadFragment
@@ -34,7 +34,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
     private val binding by lazy { FragmentCalculatorBinding.inflate(layoutInflater) }
 
     // Fragments
-    private val displayFragment by lazy { DisplayExpressionFragment() }
+    private val displayFragment by lazy { DisplayFragment() }
     private val numpadFragment by lazy { NumpadFragment(numpadController, this) }
     private val engineeringFragment by lazy { EngineeringNumpadFragment(engineeringController, this) }
     private val calculatorHistoryDisplayFragment by lazy { CalculatorHistoryDisplayFragment(mediatorController) }
@@ -129,7 +129,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
             if (savedInstanceState == null) {
                 // Добавляет фрагменты, если родитель не был пересоздан
                 parentFragmentManager.commit {
-                    add(calculatorDisplayHolder.id, displayFragment, DisplayExpressionFragment.TAG)
+                    add(calculatorDisplayHolder.id, displayFragment, DisplayFragment.TAG)
                     add(numpadHolder.id, numpadFragment, NumpadFragment.TAG)
                     add(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragment.TAG)
                     add(calculatorHistoryHolder.id, calculatorHistoryDisplayFragment)
@@ -138,7 +138,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
             else {
                 // Заменяет старые фрагменты на новые, когда родитель был пересоздан
                 parentFragmentManager.commit {
-                    replace(calculatorDisplayHolder.id, displayFragment, DisplayExpressionFragment.TAG)
+                    replace(calculatorDisplayHolder.id, displayFragment, DisplayFragment.TAG)
                     replace(numpadHolder.id, numpadFragment, NumpadFragment.TAG)
                     replace(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragment.TAG)
                     replace(calculatorHistoryHolder.id, calculatorHistoryDisplayFragment)

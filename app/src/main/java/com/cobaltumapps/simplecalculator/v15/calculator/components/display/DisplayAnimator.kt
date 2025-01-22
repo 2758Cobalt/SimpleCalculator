@@ -28,7 +28,7 @@ class DisplayAnimator : DisplayAnimationResult, DisplayAnimationCleaning {
             )
         }
         else
-            Log.e(DisplayExpressionComponent.ERROR_TRACE, "Called method playDisplayResultAnim.\nDisplay binding is not initialized !!!")
+            Log.e(DisplayComponent.ERROR_TRACE, "Called method playDisplayResultAnim.\nDisplay binding is not initialized !!!")
     }
 
     override fun playHiddenResultAnim(onEnd: (() -> Unit)?) {
@@ -46,7 +46,7 @@ class DisplayAnimator : DisplayAnimationResult, DisplayAnimationCleaning {
             }
         }
         else
-            Log.e(DisplayExpressionComponent.ERROR_TRACE, "Called method playHiddenResultAnim.\nDisplay binding is not initialized !!!")
+            Log.e(DisplayComponent.ERROR_TRACE, "Called method playHiddenResultAnim.\nDisplay binding is not initialized !!!")
     }
 
     override fun playClearAnimation(onEnd: (() -> Unit)?) {
@@ -64,7 +64,7 @@ class DisplayAnimator : DisplayAnimationResult, DisplayAnimationCleaning {
             }
         }
         else
-            Log.e(DisplayExpressionComponent.ERROR_TRACE, "Called method playClearAnimation.\nDisplay binding is not initialized !!!")
+            Log.e(DisplayComponent.ERROR_TRACE, "Called method playClearAnimation.\nDisplay binding is not initialized !!!")
     }
 
     companion object {

@@ -25,12 +25,14 @@ class DisplayExpressionLogger:
 
     override fun setExpressionField(newExpression: String) {
         Log.i(TAG,"A new value has been set in the expression field: " +
-                "$newExpression")
+                newExpression
+        )
     }
 
     override fun setResultField(newResult: String) {
         Log.i(TAG,"A new value has been set in the result field: " +
-                "$newResult")
+                newResult
+        )
     }
 
     override fun clearExpressionField() {

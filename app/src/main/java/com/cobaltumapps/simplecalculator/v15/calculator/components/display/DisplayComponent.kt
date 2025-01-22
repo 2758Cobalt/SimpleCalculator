@@ -7,7 +7,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.display.inter
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayViewerCleaner
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
-open class DisplayExpressionComponent:
+open class DisplayComponent:
     Fragment(),
     DisplayExpressionViewer,
     DisplayViewerCleaner,
