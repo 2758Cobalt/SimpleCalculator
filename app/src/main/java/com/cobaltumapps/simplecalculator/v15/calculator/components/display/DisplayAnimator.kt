@@ -1,54 +1,73 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
+import android.util.Log
 import androidx.core.view.isVisible
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayAnimations
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.animation.DisplayAnimationCleaning
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.animation.DisplayAnimationResult
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 
-class DisplayAnimator : DisplayAnimations {
-    private var displaybinding: FragmentDisplayBinding? = null
-    private var animationDuration = 200L
+class DisplayAnimator : DisplayAnimationResult, DisplayAnimationCleaning {
+    private lateinit var binding: FragmentDisplayBinding
 
     fun setNewBinding(newBinding: FragmentDisplayBinding) {
-        displaybinding = newBinding
+        binding = newBinding
     }
 
     override fun playDisplayResultAnim(onEnd: (() -> Unit)?) {
-        displaybinding?.displayResultField?.isVisible = true
-        AnimationsService.animatePropertyChange(
-            displaybinding?.displayResultField!!,
-            Property.scaleY.name,
-             displaybinding?.displayResultField?.scaleY!!,
-            1f,
-            animationDuration,
-            AnimationsService.overshootInterpolator
-        )
+        if (this::binding.isInitialized) {
+            binding.displayResultField.isVisible = true
+            AnimationsService.animatePropertyChange(
+                binding.displayResultField,
+                Property.scaleY.name,
+                 binding.displayResultField.scaleY,
+                1f,
+                ANIM_DURATION,
+                AnimationsService.overshootInterpolator
+            )
+        }
+        else
+            Log.e(DisplayExpressionComponent.ERROR_TRACE, "Called method playDisplayResultAnim.\nDisplay binding is not initialized !!!")
     }
 
     override fun playHiddenResultAnim(onEnd: (() -> Unit)?) {
-        AnimationsService.animatePropertyChange(
-            displaybinding?.displayResultField!!,
-            Property.scaleY.name,
-            displaybinding?.displayResultField?.scaleY!!,
-            0f,
-            animationDuration,
-            AnimationsService.overshootInterpolator
-        ) {
-            displaybinding?.displayResultField?.isVisible = false
-            onEnd?.invoke()
+        if (this::binding.isInitialized) {
+            AnimationsService.animatePropertyChange(
+                binding.displayResultField,
+                Property.scaleY.name,
+                binding.displayResultField.scaleY,
+                0f,
+                ANIM_DURATION,
+                AnimationsService.overshootInterpolator
+            ) {
+                binding.displayResultField.isVisible = false
+                onEnd?.invoke()
+            }
         }
+        else
+            Log.e(DisplayExpressionComponent.ERROR_TRACE, "Called method playHiddenResultAnim.\nDisplay binding is not initialized !!!")
     }
 
     override fun playClearAnimation(onEnd: (() -> Unit)?) {
-        TODO("Not yet implemented")
+        if (this::binding.isInitialized) {
+            AnimationsService.animatePropertyChange(
+                binding.displayResultField,
+                Property.scaleY.name,
+                binding.displayResultField.scaleY,
+                0f,
+                ANIM_DURATION,
+                AnimationsService.overshootInterpolator
+            ) {
+                binding.displayResultField.isVisible = false
+                onEnd?.invoke()
+            }
+        }
+        else
+            Log.e(DisplayExpressionComponent.ERROR_TRACE, "Called method playClearAnimation.\nDisplay binding is not initialized !!!")
     }
 
-    override fun playMemoryFieldAnimation(onEnd: (() -> Unit)?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun playAngleFieldAnimation(onEnd: (() -> Unit)?) {
-        TODO("Not yet implemented")
+    companion object {
+        const val ANIM_DURATION = 200L
     }
 }

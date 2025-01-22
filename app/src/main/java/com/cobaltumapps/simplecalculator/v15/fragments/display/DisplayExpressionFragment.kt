@@ -1,21 +1,20 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.display
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayComponent
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayExpressionComponent
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
-// Фрагмент, содержащий дисплей калькулятора. Является наследником Display-компонента
-class DisplayFragment: DisplayComponent()  {
+/** Фрагмент, содержащий дисплей калькулятора. Является наследником Display-компонента */
+class DisplayExpressionFragment: DisplayExpressionComponent()  {
     private val binding by lazy { FragmentDisplayBinding.inflate(layoutInflater) }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         displayAnimator.setNewBinding(binding)
 
@@ -23,11 +22,15 @@ class DisplayFragment: DisplayComponent()  {
             displayResultField.apply {
                 pivotX = 100f
                 pivotY = 100f
+                isVisible = false
             }
 
             displayExpressionField.inputType = InputType.TYPE_NULL
-        }
 
+            displayAnimator.playHiddenResultAnim {
+                displayResultField.isVisible = true
+            }
+        }
 
         return binding.root
     }
@@ -38,7 +41,7 @@ class DisplayFragment: DisplayComponent()  {
 
         /* Если состояние пересоздано - восстанавливаем значения в полях */
         savedInstanceState?.apply {
-            binding.displayExpressionField.setText(getString(KEY_DISPLAY_FIELD, ""))
+            binding.displayExpressionField.text = getString(KEY_DISPLAY_FIELD, "")
             binding.displayResultField.text = getString(KEY_RESULT_FIELD, "")
             binding.displayMemoryField.text = getString(KEY_MEMORY_FIELD, "")
             binding.displayAngleModeField.text = getString(KEY_ANGLE_FIELD, "")
@@ -69,7 +72,7 @@ class DisplayFragment: DisplayComponent()  {
 
     // Установка любого числового значения в поле выражения
     override fun setExpressionField(newExpression: String) {
-        binding.displayExpressionField.setText(newExpression)
+        binding.displayExpressionField.text = newExpression
     }
 
     // Установка значение в поле с результатом

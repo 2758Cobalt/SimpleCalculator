@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.mediator
 
 import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayController
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayExpressionController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
@@ -23,7 +23,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     var calculatorController: CalculatorController? = null
 
     // Display
-    var displayController: DisplayController? = null
+    var displayController: DisplayExpressionController? = null
 
     // Keyboards
     var numpadController: NumpadController? = null

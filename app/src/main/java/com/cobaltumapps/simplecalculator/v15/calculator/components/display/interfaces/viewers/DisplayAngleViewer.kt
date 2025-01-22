@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces
+package com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers
 
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 

@@ -1,22 +1,18 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
 import android.util.Log
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayAngleViewer
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayMemoryViewer
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewer
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayViewerCleaner
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayAngleViewer
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayExpressionViewer
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayMemoryViewer
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayViewerCleaner
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
-class DisplayLogger:
-    DisplayViewer,
+class DisplayExpressionLogger:
+    DisplayExpressionViewer,
     DisplayViewerCleaner,
     DisplayMemoryViewer,
     DisplayAngleViewer
 {
-
-    fun newInstanceLog(instance: DisplayComponent) {
-        Log.i(TAG,"New component: $instance, has been connected")
-    }
 
     override fun setAngleField(angleMode: AngleMode) {
         Log.i(TAG,"Angle mode changed: $angleMode")

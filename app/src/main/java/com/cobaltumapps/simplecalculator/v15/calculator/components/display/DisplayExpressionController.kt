@@ -1,13 +1,13 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayControl
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayExpressionControl
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.ValueTranslator
 
-open class DisplayController(
-    private var displayComponent: DisplayComponent
-): DisplayControl {
-    private var displayLogger = DisplayLogger()
+open class DisplayExpressionController(
+    private var displayComponent: DisplayExpressionComponent
+): DisplayExpressionControl {
+    private var displayLogger = DisplayExpressionLogger()
     private val displayValueTranslator = ValueTranslator()
 
     // Logic
