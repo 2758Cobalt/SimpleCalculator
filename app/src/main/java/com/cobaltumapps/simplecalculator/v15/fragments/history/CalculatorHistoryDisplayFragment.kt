@@ -233,6 +233,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
     /** Показывает список истории */
     private fun showHistory(forceAnimate: Boolean = false) {
+        loadHistoryList()
         binding.historyRecyclerView.apply {
             isVisible = true
             AnimationsService.animatePropertyChange(
@@ -246,7 +247,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
             showClearHistoryFab()
             showArchiveHistoryFab()
         }
-        loadHistoryList()
     }
 
     /** Прячет список истории */

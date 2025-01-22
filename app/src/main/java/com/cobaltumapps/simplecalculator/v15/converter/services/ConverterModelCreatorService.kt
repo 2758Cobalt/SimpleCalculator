@@ -8,7 +8,8 @@ import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterData
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterUnitsModel
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
 
-/** Класс который создаёт и возвращает готовую модель конвертера исходя из выбраного типа конвертера */
+/** Класс который создаёт и возвращает готовую модель конвертера исходя из выбраного типа конвертера.
+ * Не проходит SOLID */
 class ConverterModelCreatorService(private val context: Context) {
 
     /** Возвращает созданую модель для конвертера исходя из типа выбраного конвертера*/
