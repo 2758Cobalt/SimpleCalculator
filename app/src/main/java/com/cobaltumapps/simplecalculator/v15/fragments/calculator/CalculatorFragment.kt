@@ -101,10 +101,8 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
 
             numpadController.setVibrationListener(vibrationService)
 
-            // The backspace icon
-            calculatorConvertersIcon.setOnClickListener { calculatorNavigationListener?.goConverters() }
-            calculatorArchiveIcon.setOnClickListener { calculatorNavigationListener?.goArchive() }
-            calculatorSettingsIcon.setOnClickListener { preferencesManager.openPreferencesDialog() }
+            // The icons listener
+            calculatorNavigationMenuIcon.setOnClickListener { calculatorNavigationListener?.openNavigationMenu() }
 
             calculatorBackSpaceIcon.apply {
                 alpha = 0f
