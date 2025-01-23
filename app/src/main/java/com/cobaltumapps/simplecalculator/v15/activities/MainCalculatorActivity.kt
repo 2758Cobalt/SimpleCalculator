@@ -3,7 +3,6 @@ package com.cobaltumapps.simplecalculator.v15.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -40,11 +39,6 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
         actionBarDrawerToggle.syncState()
 
         binding.calculatorNavigationView.setNavigationItemSelectedListener(this@MainCalculatorActivity)
-
-        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-            }
-        })
 
         (application as SimpleApplication).showAdIfAvailable(this) { }
 
@@ -83,6 +77,7 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
     override fun onResume() {
         super.onResume()
         binding.calculatorAdViewBanner.resume()
+        binding.calculatorDrawer.closeDrawer(GravityCompat.START)
     }
 
     override fun onPause() {
