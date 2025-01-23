@@ -67,13 +67,13 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
                 adapter = calculatorHistoryRecyclerAdapter
             }
 
-            historyDisplayClearFab.apply {
+            historyDisplayClear.apply {
                 setOnClickListener {
                     clearAllHistory()
                 }
             }
 
-            historyDisplayArchiveAllFab.apply {
+            historyDisplayArchiveAll.apply {
                 setOnClickListener {
                     storeAllHistoryToArchive()
                 }
@@ -269,7 +269,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     /** Показывает кнопку очистки истории */
     private fun showClearHistoryFab() {
         if (calculatorHistoryRecyclerAdapter.itemCount > 0) {
-            binding.historyDisplayClearFab.apply {
+            binding.historyDisplayClear.apply {
                 isVisible = true
                 AnimationsService.animatePropertyChange(
                     this,
@@ -285,7 +285,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     /** Показывает кнопку архивации истории */
     private fun showArchiveHistoryFab() {
         if (calculatorHistoryRecyclerAdapter.itemCount > 0) {
-            binding.historyDisplayArchiveAllFab.apply {
+            binding.historyDisplayArchiveAll.apply {
                 isVisible = true
                 AnimationsService.animatePropertyChange(
                     this,
@@ -300,7 +300,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
     /** Прячет кнопку очистки истории */
     private fun hideClearHistoryFab() {
-        binding.historyDisplayClearFab.apply {
+        binding.historyDisplayClear.apply {
             AnimationsService.animatePropertyChange(
                 this,
                 Property.alpha.name,
@@ -315,7 +315,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
     /** Прячет кнопку архивации истории */
     private fun hideArchiveHistoryFab() {
-        binding.historyDisplayArchiveAllFab.apply {
+        binding.historyDisplayArchiveAll.apply {
             AnimationsService.animatePropertyChange(
                 this,
                 Property.alpha.name,
