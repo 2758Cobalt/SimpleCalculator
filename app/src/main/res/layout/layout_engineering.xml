@@ -46,6 +46,15 @@
 
     <!-- Group 2 -->
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngPercent"
+        style="@style/numpad_engineering"
+        android:text="@string/symbolPercent"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngSin"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngSqrt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngMS" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadEngSqrt"
         style="@style/numpad_engineering"
         android:text="@string/symbolSqrt"
@@ -109,7 +118,7 @@
         android:id="@+id/numpadEngLog"
         style="@style/numpad_engineering"
         android:text="@string/symbolLog"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngLn"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngBackspace"
         app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryDiv"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngCot"
@@ -130,7 +139,7 @@
         android:id="@+id/numpadEngTan"
         style="@style/numpad_engineering"
         android:text="@string/symbolTan"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngExp"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngLn"
         app:layout_constraintEnd_toStartOf="@+id/numpadEngCot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngSin" />
@@ -139,27 +148,19 @@
         android:id="@+id/numpadEngCot"
         style="@style/numpad_engineering"
         android:text="@string/symbolCot"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngPi"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngAngleType"
         app:layout_constraintEnd_toStartOf="@+id/numpadEngLog"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngTan"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngCos" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadEngLn"
-        style="@style/numpad_engineering"
-        android:text="@string/symbolLn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngAngleType"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngPi"
-        app:layout_constraintTop_toBottomOf="@+id/numpadEngLog" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadEngMemoryDiv"
         style="@style/numpad_engineering"
         android:text="@string/symbolMemoryDiv"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngAngleType"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngEqual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngLog"
@@ -167,40 +168,41 @@
 
     <!-- Group 4 -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadEngExp"
+        android:id="@+id/numpadEngLn"
         style="@style/numpad_engineering"
-        android:text="@string/symbolExp"
+        android:text="@string/symbolLn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngPi"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngAngleType"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngTan" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadEngPi"
-        style="@style/numpad_engineering"
-        android:text="@string/symbolPI"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngLn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngExp"
-        app:layout_constraintTop_toBottomOf="@+id/numpadEngCot" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadEngPercent"
-        style="@style/numpad_engineering"
-        android:text="@string/symbolPercent"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngSin"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngSqrt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numpadEngMS" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadEngAngleType"
         style="@style/numpad_engineering"
         android:text="@string/symbolRad"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngBackspace"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngLn"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngCot" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngBackspace"
+        style="@style/numpad_engineering"
+        android:text="@string/symbolBackSpace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngEqual"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngAngleType"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngLog" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngEqual"
+        style="@style/numpad_engineering_special"
+        android:text="@string/symbolEqual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngBackspace"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryDiv" />
 </merge>

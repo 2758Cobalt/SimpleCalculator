@@ -13,26 +13,32 @@
                 <item
                     android:id="@+id/menu_nav_converters"
                     android:icon="@drawable/ic_navigate_converters"
-                    android:contentDescription="Go to converters"
-                    android:title="Cconverters" />
+                    android:contentDescription="Go to a converters page"
+                    android:title="Converters" />
 
                 <item
                     android:id="@+id/menu_nav_archive"
                     android:icon="@drawable/ic_action_archive"
-                    android:contentDescription="Go to archive"
+                    android:contentDescription="Go to an archive page"
                     android:title="Archive" />
 
                 <item
                     android:id="@+id/menu_nav_features"
                     android:icon="@drawable/ic_navigate_features"
-                    android:contentDescription="Go to features"
+                    android:contentDescription="Go to a features page"
                     android:title="Features" />
 
                 <item
-                    android:id="@+id/menu_nav_settings"
-                    android:icon="@drawable/ic_setting"
-                    android:contentDescription="Go to settings"
-                    android:title="@string/action_settings" />
+                    android:id="@+id/menu_nav_update_news"
+                    android:icon="@drawable/ic_nav_update_news"
+                    android:contentDescription="Go to an update news page"
+                    android:title="Update news" />
+
+                <item
+                    android:id="@+id/menu_nav_bug_report"
+                    android:icon="@drawable/ic_nav_bug_report"
+                    android:contentDescription="Report a bug"
+                    android:title="Report a bug" />
             </menu>
 
         </item>

@@ -79,8 +79,8 @@ class EngineeringNumpadFragment(
                 numpadEngLog.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Log) }
                 numpadEngLn.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Ln) }
 
-                numpadEngExp.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Exp) }
-                numpadEngPi.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.PI) }
+                numpadEngBackspace.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
+                numpadEngEqual.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.Equal) }
 
                 numpadEngSqrt.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.SQRT) }
                 numpadEngFactorial.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Factorial) }
@@ -90,8 +90,6 @@ class EngineeringNumpadFragment(
                     changeAngleModeText()
                 }
             }
-
-
         }
     }
 

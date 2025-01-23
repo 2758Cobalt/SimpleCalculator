@@ -44,13 +44,14 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
 
         val calculatorFragment = supportFragmentManager.findFragmentByTag(CalculatorFragment.TAG) as? CalculatorFragment
         if (calculatorFragment == null) {
-            val newFragment = CalculatorFragment()
+            val newFragment = CalculatorFragment(this)
             supportFragmentManager.commit {
                 replace(binding.calculatorPlaceHolder.id, newFragment, CalculatorFragment.TAG)
             }
-        } else {
-            calculatorFragment.setCalculatorNavigationListener(this)
         }
+        else
+            calculatorFragment.calculatorNavigationListener = this
+
 
         // Инициализация на потоке IO
         lifecycleScope.launch(Dispatchers.IO) {
@@ -68,7 +69,6 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
             R.id.menu_nav_converters -> startActivity(Intent(this@MainCalculatorActivity, MainConverterActivity::class.java))
             R.id.menu_nav_features -> startActivity(Intent(this@MainCalculatorActivity, FeaturesActivity::class.java))
             R.id.menu_nav_archive -> startActivity(Intent(this@MainCalculatorActivity, ArchiveActivity::class.java))
-            R.id.menu_nav_settings -> startActivity(Intent(this@MainCalculatorActivity, FeaturesActivity::class.java))
         }
         return true
     }

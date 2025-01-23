@@ -29,106 +29,106 @@
         <!-- First row -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadOpenBracket"
-            style="@style/numpad_secondaryButtons_n"
+            style="@style/numpad_secondaryButtons"
             android:text="@string/symbolOpenBracket" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadCloseBracket"
-            style="@style/numpad_secondaryButtons_n"
+            style="@style/numpad_secondaryButtons"
             android:text="@string/symbolCloseBracket" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadAllClear"
-            style="@style/numpad_secondaryButtons_n"
+            style="@style/numpad_secondaryButtons"
             android:text="@string/symbolAC" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadDivide"
-            style="@style/numpad_primaryButtons_n"
+            style="@style/numpad_primaryButtons"
             android:text="@string/symbolDiv" />
 
         <!-- Second row -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum7"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum7" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum8"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum8" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum9"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum9" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadMul"
-            style="@style/numpad_primaryButtons_n"
+            style="@style/numpad_primaryButtons"
             android:text="@string/symbolMul" />
 
         <!-- Third row -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum4"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum4" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum5"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum5" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum6"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum6" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadSub"
-            style="@style/numpad_primaryButtons_n"
+            style="@style/numpad_primaryButtons"
             android:text="@string/symbolSub" />
 
         <!-- Fourth row -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum1"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum1" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum2"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum2" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum3"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum3" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadAdd"
-            style="@style/numpad_primaryButtons_n"
+            style="@style/numpad_primaryButtons"
             android:text="@string/symbolAdd" />
 
         <!-- Fifth row -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadPoint"
-            style="@style/numpad_secondaryButtons_n"
+            style="@style/numpad_secondaryButtons"
             android:text="@string/symbolPoint" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadNum0"
-            style="@style/numpad_tertiaryButtons_n"
+            style="@style/numpad_tertiaryButtons"
             android:text="@string/symbolNum0" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadBackspace"
-            style="@style/numpad_secondaryButtons_n"
+            style="@style/numpad_secondaryButtons"
             android:text="@string/symbolBackSpace" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/numpadEqual"
-            style="@style/numpad_primaryButtons_n"
+            style="@style/numpad_primaryButtons"
             android:text="@string/symbolEqual" />
 
 </merge>

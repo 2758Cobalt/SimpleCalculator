@@ -1,6 +1,5 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.calculator
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.numpad.engineering.EngineeringSwiper
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
@@ -28,7 +26,9 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadB
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 /** Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора */
-class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
+class CalculatorFragment(
+    var calculatorNavigationListener: CalculatorNavigationListener? = null
+): Fragment(), NumpadBottomBehaviorListener,
     EngineeringBottomBehaviorListener {
 
     private val binding by lazy { FragmentCalculatorBinding.inflate(layoutInflater) }
@@ -49,26 +49,9 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
     private val vibrationService by lazy { VibrationService(requireContext()) }
 
     // Instance
-    private val engineeringSwiper by lazy { EngineeringSwiper(binding.calculatorBackspaceIcon) }
 
     private val calculatorCoreInstance = CalculatorCore()
-
     private val preferencesManager by lazy { PreferencesManager(requireContext()) }
-
-    private var calculatorNavigationListener: CalculatorNavigationListener? = null
-
-    fun setCalculatorNavigationListener(listener: CalculatorNavigationListener?) {
-        calculatorNavigationListener = listener
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is CalculatorNavigationListener) {
-            calculatorNavigationListener = context
-        } else {
-            throw RuntimeException("$context must implement CalculatorNavigationListener")
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -161,21 +144,19 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
     }
 
     /** Метод, который вызывается при смене состояния BottomSheet EngineeringNumpad-клавиатуры */
-    override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) {
-        engineeringSwiper.onStateEngNumpadChanged(bottomSheet, newState)
-    }
+    override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) { }
 
+
+    /** Метод, который вызывается при состояния слайда контейнера BottomSheet EngineeringNumpad-клавиатуры */
     override fun onSlideEngNumpad(bottomSheet: View, slideOffset: Float) {
-        val multiplier = 25f
         binding.apply {
-            numpadHolder.scaleX = 1f - (slideOffset / multiplier)
-            numpadHolder.scaleY = 1f - (slideOffset / multiplier)
+            numpadHolder.scaleX = 1f - (slideOffset / NUMPAD_FADING_MULTIPLIER)
+            numpadHolder.scaleY = 1f - (slideOffset / NUMPAD_FADING_MULTIPLIER)
         }
-
-        engineeringSwiper.onSlideEngNumpad(bottomSheet, slideOffset)
     }
 
     companion object {
         const val TAG = "SC_CalculatorFragmentTag"
+        const val NUMPAD_FADING_MULTIPLIER = 25f
     }
 }
