@@ -52,10 +52,14 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
             calculatorFragment.setCalculatorNavigationListener(this)
         }
 
+        // Инициализация на потоке IO
         lifecycleScope.launch(Dispatchers.IO) {
-            MobileAds.initialize(this@MainCalculatorActivity) {
-                binding.calculatorAdViewBanner.loadAd(adRequest)
-            }
+            MobileAds.initialize(this@MainCalculatorActivity)
+        }
+
+        // Загрузка рекламы на потоке Main
+        lifecycleScope.launch {
+            binding.calculatorAdViewBanner.loadAd(adRequest)
         }
     }
 
