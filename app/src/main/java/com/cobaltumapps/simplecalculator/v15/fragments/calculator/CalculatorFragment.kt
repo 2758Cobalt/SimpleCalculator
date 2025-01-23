@@ -49,7 +49,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
     private val vibrationService by lazy { VibrationService(requireContext()) }
 
     // Instance
-    private val engineeringSwiper by lazy { EngineeringSwiper(binding.calculatorBackSpaceIcon) }
+    private val engineeringSwiper by lazy { EngineeringSwiper(binding.calculatorBackspaceIcon) }
 
     private val calculatorCoreInstance = CalculatorCore()
 
@@ -104,7 +104,7 @@ class CalculatorFragment: Fragment(), NumpadBottomBehaviorListener,
             // The icons listener
             calculatorNavigationMenuIcon.setOnClickListener { calculatorNavigationListener?.openNavigationMenu() }
 
-            calculatorBackSpaceIcon.apply {
+            calculatorBackspaceIcon.apply {
                 alpha = 0f
                 setOnClickListener {
                     mediatorController.handleOnClickSpecialFunction(KeyboardSpecialFunction.Backspace)
