@@ -105,4 +105,17 @@
 
     <!-- Display - memory -->
     <string name="display_memory_n" translatable="false">M: %s</string>
+    
+    <!--ARCHIVE STRINGS-->
+    <string name="archive_toolbar_title">Archive</string>
+
+    <string name="archive_snackbar_action_caption">OK</string>
+    <string name="archive_snackbar_restoreAllItems">This item has been returned</string>
+
+
+    <string name="archive_btn_restore_text">Restore</string>
+    <string name="archive_btn_restore_description">Move all items to the calculation history</string>
+
+    <string name="archive_btn_removeAll_text">Delete</string>
+    <string name="archive_btn_removeAll_description">Delete all items from the archive store</string>
 </resources>

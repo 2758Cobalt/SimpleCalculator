@@ -157,7 +157,9 @@ class ArchiveActivity : AppCompatActivity(), ArchiveController {
                 archivedHistory.date_time_calculation
             )
         )
-        Snackbar.make(binding.root, "This item has been returned", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, getString(R.string.archive_snackbar_restoreAllItems), Snackbar.LENGTH_SHORT)
+            .setAction(R.string.archive_snackbar_action_caption) {}
+            .show()
         archiveRecyclerAdapter.deleteArchiveItem(archivedHistory)
         archivedHistoryViewModel.deleteArchivedHistoryItem(archivedHistory)
     }
