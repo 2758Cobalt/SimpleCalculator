@@ -17,6 +17,9 @@
         android:theme="@style/MyTheme"
         tools:targetApi="33">
         <activity
+            android:name=".v15.activities.SubscribeActivity"
+            android:exported="false" />
+        <activity
             android:name=".v15.activities.ArchiveActivity"
             android:exported="false" />
         <activity
