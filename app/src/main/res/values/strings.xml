@@ -130,10 +130,6 @@
     <string name="features_not_acquired_hint">Not acquired</string>
     <string name="features_acquired_hint">Acquired</string>
 
-    <!--Features: chip-->
-    <string name="feature_chip_activated">Activated</string>
-    <string name="feature_chip_disabled">Disabled</string>
-
     <!--UPDATE NEWS STRINGS-->
     <string name="newsUpdate_toolbar_title">News update</string>
 </resources>

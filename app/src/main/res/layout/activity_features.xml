@@ -36,26 +36,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/features_not_acquired_hint"
-                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/subChipStatus"
+                app:layout_constraintEnd_toStartOf="@+id/featuresChipPurchase"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/materialTextView"
+                    android:id="@+id/featuresAdBlockTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -63,6 +55,7 @@
                     android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/featuresAdBlockDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -70,16 +63,26 @@
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
             </LinearLayout>
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/featuresAdBlockPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="price"
+                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
             <com.google.android.material.chip.Chip
+                android:id="@+id/featuresChipPurchase"
                 style="@style/Widget.Material3.Chip.Filter"
-                android:id="@+id/subChipStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:elevation="2dp"
-                android:checked="true"
-                android:enabled="false"
-                android:text="@string/feature_chip_activated"
+                android:checked="false"
+                android:text="@string/features_not_acquired_hint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
