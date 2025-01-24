@@ -24,7 +24,6 @@ import java.util.Date;
 
 public class SimpleApplication extends Application implements Application.ActivityLifecycleCallbacks, LifecycleObserver {
 
-
     private AppOpenAdManager appOpenAdManager;
     private Activity currentActivity;
 
@@ -59,6 +58,7 @@ public class SimpleApplication extends Application implements Application.Activi
         // one that shows the ad.
         if (!appOpenAdManager.isShowingAd) {
             currentActivity = activity;
+            appOpenAdManager.showAdIfAvailable(currentActivity);
         }
     }
 
@@ -86,8 +86,6 @@ public class SimpleApplication extends Application implements Application.Activi
     public void showAdIfAvailable(
             @NonNull Activity activity,
             @NonNull OnShowAdCompleteListener onShowAdCompleteListener) {
-        // We wrap the showAdIfAvailable to enforce that other classes only interact with MyApplication
-        // class.
         appOpenAdManager.showAdIfAvailable(activity, onShowAdCompleteListener);
     }
 
@@ -120,8 +118,9 @@ public class SimpleApplication extends Application implements Application.Activi
          *
          * @param context the context of the activity that loads the ad
          */
+        private boolean shouldShowAdWhenLoaded = false; // Флаг для показа рекламы после загрузки
+
         private void loadAd(Context context) {
-            // Do not load ad if there is an unused ad or one is already loading.
             if (isLoadingAd || isAdAvailable()) {
                 return;
             }
@@ -134,11 +133,6 @@ public class SimpleApplication extends Application implements Application.Activi
                     request,
                     AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
                     new AppOpenAd.AppOpenAdLoadCallback() {
-                        /**
-                         * Called when an app open ad has loaded.
-                         *
-                         * @param ad the loaded app open ad.
-                         */
                         @Override
                         public void onAdLoaded(AppOpenAd ad) {
                             appOpenAd = ad;
@@ -146,22 +140,68 @@ public class SimpleApplication extends Application implements Application.Activi
                             loadTime = (new Date()).getTime();
 
                             Log.d(LOG_TAG, "onAdLoaded.");
-                            //Toast.makeText(context, "onAdLoaded", Toast.LENGTH_SHORT).show();
+
+                            // Если требуется показать рекламу сразу после загрузки
+                            if (shouldShowAdWhenLoaded && pendingShowActivity != null) {
+                                showAdIfAvailable(pendingShowActivity);
+                                shouldShowAdWhenLoaded = false; // Сбрасываем флаг
+                            }
                         }
 
-                        /**
-                         * Called when an app open ad has failed to load.
-                         *
-                         * @param loadAdError the error.
-                         */
                         @Override
                         public void onAdFailedToLoad(LoadAdError loadAdError) {
                             isLoadingAd = false;
                             Log.d(LOG_TAG, "onAdFailedToLoad: " + loadAdError.getMessage());
-                            //Toast.makeText(context, "onAdFailedToLoad", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
+
+        private Activity pendingShowActivity = null;
+
+        private void showAdIfAvailable(@NonNull final Activity activity) {
+            if (isShowingAd) {
+                Log.d(LOG_TAG, "The app open ad is already showing.");
+                return;
+            }
+
+            if (!isAdAvailable()) {
+                Log.d(LOG_TAG, "The app open ad is not ready yet.");
+
+                // Устанавливаем активити для показа после загрузки
+                pendingShowActivity = activity;
+                shouldShowAdWhenLoaded = true; // Устанавливаем флаг
+                loadAd(activity); // Загружаем рекламу
+                return;
+            }
+
+            Log.d(LOG_TAG, "Will show ad.");
+
+            appOpenAd.setFullScreenContentCallback(
+                    new FullScreenContentCallback() {
+                        @Override
+                        public void onAdDismissedFullScreenContent() {
+                            appOpenAd = null;
+                            isShowingAd = false;
+                            loadAd(activity); // Загружаем новую рекламу после закрытия
+                        }
+
+                        @Override
+                        public void onAdFailedToShowFullScreenContent(AdError adError) {
+                            appOpenAd = null;
+                            isShowingAd = false;
+                            loadAd(activity); // Загружаем новую рекламу в случае ошибки
+                        }
+
+                        @Override
+                        public void onAdShowedFullScreenContent() {
+                            isShowingAd = true;
+                        }
+                    });
+
+            isShowingAd = true;
+            appOpenAd.show(activity);
+        }
+
 
         /** Check if ad was loaded more than n hours ago. */
         private boolean wasLoadTimeLessThanNHoursAgo(long numHours) {
@@ -183,16 +223,7 @@ public class SimpleApplication extends Application implements Application.Activi
          *
          * @param activity the activity that shows the app open ad
          */
-        private void showAdIfAvailable(@NonNull final Activity activity) {
-            showAdIfAvailable(
-                    activity,
-                    new OnShowAdCompleteListener() {
-                        @Override
-                        public void onShowAdComplete() {
-                            // Empty because the user will go back to the activity that shows the ad.
-                        }
-                    });
-        }
+
 
         /**
          * Show the ad if one isn't already showing.

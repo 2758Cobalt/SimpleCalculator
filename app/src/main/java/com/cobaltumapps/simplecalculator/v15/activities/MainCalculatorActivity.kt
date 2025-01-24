@@ -12,7 +12,6 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
-import com.cobaltumapps.simplecalculator.v15.google.admob.SimpleApplication
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
@@ -39,8 +38,6 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
         actionBarDrawerToggle.syncState()
 
         binding.calculatorNavigationView.setNavigationItemSelectedListener(this@MainCalculatorActivity)
-
-        (application as SimpleApplication).showAdIfAvailable(this) { }
 
         val calculatorFragment = supportFragmentManager.findFragmentByTag(CalculatorFragment.TAG) as? CalculatorFragment
         if (calculatorFragment == null) {
