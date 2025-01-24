@@ -12,7 +12,6 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.Ca
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
@@ -86,13 +85,6 @@ class CalculatorFragment(
 
             // The icons OnClickListeners
             calculatorNavigationMenuIcon.setOnClickListener { calculatorNavigationListener?.openNavigationMenu() }
-
-            calculatorBackspaceIcon.apply {
-                alpha = 0f
-                setOnClickListener {
-                    mediatorController.handleOnClickSpecialFunction(KeyboardSpecialFunction.Backspace)
-                }
-            }
 
             calculatorSettingsIcon.apply {
                 setOnClickListener {

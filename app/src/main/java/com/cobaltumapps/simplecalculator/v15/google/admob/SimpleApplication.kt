@@ -38,10 +38,10 @@ class SimpleApplication : Application(), Application.ActivityLifecycleCallbacks,
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
 
     override fun onActivityStarted(activity: Activity) {
-//        if (!appOpenAdManager.isShowingAd) {
-//            currentActivity = activity
-//            appOpenAdManager.showAdIfAvailable(currentActivity)
-//        }
+        if (!appOpenAdManager.isShowingAd) {
+            currentActivity = activity
+            //appOpenAdManager.showAdIfAvailable(currentActivity)
+        }
     }
 
     override fun onActivityResumed(activity: Activity) {}

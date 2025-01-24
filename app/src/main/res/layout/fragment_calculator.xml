@@ -9,6 +9,7 @@
         android:id="@+id/calculatorDisplayHolder"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/calculatorNavigationLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,50 +18,39 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/calculatorNavigationLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:paddingHorizontal="8dp"
+        app:layout_constraintTop_toBottomOf="@id/calculatorDisplayHolder"
         app:layout_constraintBottom_toTopOf="@+id/calculatorNumpadHolder"
         app:layout_constraintEnd_toEndOf="@+id/calculatorDisplayHolder"
-        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="@+id/calculatorDisplayHolder"
         tools:showIn="@layout/fragment_calculator">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorNavigationMenuIcon"
             style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:contentDescription="Open navigation menu of app"
             app:icon="@drawable/ic_menu"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/calculatorBackspaceIcon"
+            app:layout_constraintEnd_toStartOf="@+id/calculatorSettingsIcon"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/calculatorBackspaceIcon"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/contentDescription_backspace"
-            app:icon="@drawable/ic_action_backspace"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/calculatorSettingsIcon"
-            app:layout_constraintStart_toEndOf="@+id/calculatorNavigationMenuIcon"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.button.MaterialButton
             android:id="@+id/calculatorSettingsIcon"
             style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:contentDescription="@string/contentDescription_settings"
             app:icon="@drawable/ic_setting"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/calculatorNavigationMenuIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -80,7 +70,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:elevation="3dp"
-        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintVertical_weight="4"
+        app:layout_constraintTop_toBottomOf="@id/calculatorNavigationLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
