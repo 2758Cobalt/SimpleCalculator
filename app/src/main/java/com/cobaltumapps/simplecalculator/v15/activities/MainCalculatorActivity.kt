@@ -49,14 +49,13 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
         else
             calculatorFragment.calculatorNavigationListener = this
 
-
         // Инициализация на потоке IO
         lifecycleScope.launch(Dispatchers.IO) {
             MobileAds.initialize(this@MainCalculatorActivity)
         }
 
         // Загрузка рекламы на потоке Main
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.Main) {
             binding.calculatorAdViewBanner.loadAd(adRequest)
         }
     }

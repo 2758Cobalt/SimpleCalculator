@@ -17,6 +17,9 @@
         android:theme="@style/MyTheme"
         tools:targetApi="33">
         <activity
+            android:name=".v15.activities.UpdateNewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".v15.activities.FeaturesActivity"
             android:exported="false" />
         <activity
@@ -24,9 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".v15.activities.MainCalculatorActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false"></activity>
         <activity
             android:name=".v15.activities.SplashActivity"
             android:exported="true">
@@ -36,7 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".v15.activities.MainConverterActivity"
             android:exported="false" />

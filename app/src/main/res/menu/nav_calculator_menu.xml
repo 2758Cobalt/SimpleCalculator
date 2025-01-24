@@ -34,11 +34,6 @@
                     android:contentDescription="Go to an update news page"
                     android:title="Update news" />
 
-                <item
-                    android:id="@+id/menu_nav_bug_report"
-                    android:icon="@drawable/ic_nav_bug_report"
-                    android:contentDescription="Report a bug"
-                    android:title="Report a bug" />
             </menu>
 
         </item>
