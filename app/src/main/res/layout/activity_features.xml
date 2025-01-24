@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:minHeight="?attr/actionBarSize"
-            app:title="Offers" />
+            app:title="@string/features_toolbar_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="Not purchased"
+                android:text="@string/features_not_acquired_hint"
                 android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,14 +59,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="Ad blocking"
+                    android:text="@string/feature_abBlock_title"
                     android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="Disables the display of an advertising banner at the bottom of the screen"
+                    android:text="@string/feature_abBlock_description"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
             </LinearLayout>
 
@@ -79,7 +79,7 @@
                 android:elevation="2dp"
                 android:checked="true"
                 android:enabled="false"
-                android:text="Activated"
+                android:text="@string/feature_chip_activated"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

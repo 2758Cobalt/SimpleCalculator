@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".v15.activities.UpdateNewsActivity">
+    tools:context=".v15.activities.NewsUpdateActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/updatesAppBarLayout"
+        android:id="@+id/newsUpdateAppBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:minHeight="?attr/actionBarSize"
-            app:title="Update" />
+            app:title="@string/newsUpdate_toolbar_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

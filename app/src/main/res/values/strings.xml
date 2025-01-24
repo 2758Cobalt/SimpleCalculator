@@ -118,4 +118,22 @@
 
     <string name="archive_btn_removeAll_text">Delete</string>
     <string name="archive_btn_removeAll_description">Delete all items from the archive store</string>
+
+    <!--FEATURES STRINGS-->
+    <string name="features_toolbar_title">Features</string>
+
+    <!--Feature: Ad blocking-->
+    <string name="feature_abBlock_title">Ad blocking</string>
+    <string name="feature_abBlock_description">Disables the display of an advertising banner at the bottom of the screen</string>
+
+    <!--Features: acquired-->
+    <string name="features_not_acquired_hint">Not acquired</string>
+    <string name="features_acquired_hint">Acquired</string>
+
+    <!--Features: chip-->
+    <string name="feature_chip_activated">Activated</string>
+    <string name="feature_chip_disabled">Disabled</string>
+
+    <!--UPDATE NEWS STRINGS-->
+    <string name="newsUpdate_toolbar_title">News update</string>
 </resources>

@@ -65,6 +65,7 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
             R.id.menu_nav_converters -> startActivity(Intent(this@MainCalculatorActivity, MainConverterActivity::class.java))
             R.id.menu_nav_features -> startActivity(Intent(this@MainCalculatorActivity, FeaturesActivity::class.java))
             R.id.menu_nav_archive -> startActivity(Intent(this@MainCalculatorActivity, ArchiveActivity::class.java))
+            R.id.menu_nav_news_update -> startActivity(Intent(this@MainCalculatorActivity, NewsUpdateActivity::class.java))
         }
         return true
     }

@@ -29,7 +29,7 @@
                     android:title="Features" />
 
                 <item
-                    android:id="@+id/menu_nav_update_news"
+                    android:id="@+id/menu_nav_news_update"
                     android:icon="@drawable/ic_nav_update_news"
                     android:contentDescription="Go to an update news page"
                     android:title="Update news" />

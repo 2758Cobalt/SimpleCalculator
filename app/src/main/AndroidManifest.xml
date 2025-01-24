@@ -19,7 +19,7 @@
         android:theme="@style/MyTheme"
         tools:targetApi="33">
         <activity
-            android:name=".v15.activities.UpdateNewsActivity"
+            android:name=".v15.activities.NewsUpdateActivity"
             android:exported="false" />
         <activity
             android:name=".v15.activities.FeaturesActivity"
