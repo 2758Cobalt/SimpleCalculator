@@ -28,7 +28,6 @@ import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -44,6 +43,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
     private val calendarService = CalendarService()
 
+    private val calculatorHistoryDisplayAlerts by lazy { CalculatorHistoryDisplayAlerts(requireContext()) }
     // Адаптер для отображения списка расчётов
     private val calculatorHistoryRecyclerAdapter by lazy { CalculatorHistoryRecyclerAdapter(onClickHolderListener, this@CalculatorHistoryDisplayFragment) }
 
@@ -180,7 +180,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
 
     /** Перемещает всю историю в архив */
     private fun storeAllHistoryToArchive() {
-        alertArchiveAllHistory {
+        calculatorHistoryDisplayAlerts.alertStoreToArchive {
             for (historyItem in calculatorHistoryRecyclerAdapter.getItemList()) {
                 archivedHistoryViewModel.insertArchivedHistoryItem(
                     ArchivedHistory(
@@ -204,7 +204,7 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
     }
 
     private fun clearAllHistory() {
-        alertHistoryClearAll {
+        calculatorHistoryDisplayAlerts.alertHistoryCleaning {
             hideHistory()
             showHistoryHint()
             clearHistory()
@@ -370,33 +370,6 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         return checkResult
     }
 
-    /** Вызов предупредительного диалога */
-    private fun alertArchiveAllHistory(onAccepted: () -> Unit) {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.display_history_dialogAlertTitle)
-            .setMessage(R.string.display_history_storeToArchive_dialogMessage)
-            .setNeutralButton(R.string.display_history_dialog_cancel)  { dialog, _ ->
-                dialog.dismiss()
-            }
-            .setPositiveButton(R.string.display_history_dialog_accept) { _, _ ->
-                onAccepted.invoke()
-            }
-            .show()
-    }
-
-    private fun alertHistoryClearAll(onAccepted: () -> Unit) {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.display_history_dialogAlertTitle)
-            .setMessage(R.string.display_history_clearAllHistory_dialogMessage)
-            .setNeutralButton(R.string.display_history_dialog_cancel)  { dialog, _ ->
-                dialog.dismiss()
-            }
-            .setPositiveButton(R.string.display_history_dialog_accept) { _, _ ->
-                onAccepted.invoke()
-            }
-            .show()
-    }
-
     override fun updateAdapter() {
         checkListSize()
     }
@@ -414,3 +387,4 @@ class CalculatorHistoryDisplayFragment(onClickHolderListener: HolderOnClickListe
         const val DEF_ANIM_DURATION = 400L
     }
 }
+
