@@ -13,8 +13,8 @@
                 <item
                     android:id="@+id/menu_nav_converters"
                     android:icon="@drawable/ic_navigate_converters"
-                    android:contentDescription="Go to a converters page"
                     android:enabled="false"
+                    android:contentDescription="Go to a converters page"
                     android:title="Converters" />
 
                 <item
@@ -26,6 +26,7 @@
                 <item
                     android:id="@+id/menu_nav_features"
                     android:icon="@drawable/ic_navigate_features"
+                    android:enabled="false"
                     android:contentDescription="Go to a features page"
                     android:title="Features" />
 

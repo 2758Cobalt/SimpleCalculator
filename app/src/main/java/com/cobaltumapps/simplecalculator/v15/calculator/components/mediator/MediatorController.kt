@@ -35,9 +35,6 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
 
     private val calendarService = CalendarService()
 
-    var userExpression = ""
-    var calculatedResult = ""
-
     // Обработка клика (число)
     override fun handleOnClickNumber(number: Number) {
         val newExpression = calculatorController?.addToExpression(number.toString())!!
@@ -63,14 +60,14 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
             when(function) {
                 // Функция - равно (=)
                 KeyboardSpecialFunction.Equal -> {
-                    // Обновляет поля выражения и результата вычисления
-                    updateCalculationFields()
+                    // Обновляет поля выражения и результата вычисления и возвращает Pair<Выражение, результат вычисления>
+                    val result = updateCalculationFields()
 
                     // Устанавливает результат вычислений
-                    displayController?.setResultField(calculatedResult)
+                    displayController?.setResultField(result.second)
 
                     // Запись вычислений в историю
-                    makeHistoryRecord()
+                    makeHistoryRecord(result)
 
                     // Проверка предпочтения и выполнение действия, если истина
                     if (preferencesUserData.memoryAutoSave)
@@ -160,13 +157,8 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     }
 
     /** Метод, обновляющий предпочтения (нгстройки) */
-    override fun updatePreferences(newPrefConfig: PreferencesUserData) {
-        this.preferencesUserData = newPrefConfig
-        Log.i(LOG_TAG, "preferences in mediator has been updated:")
-        Log.i(LOG_TAG, "Updated data:\n" +
-                "autoSaveMemory: ${newPrefConfig.memoryAutoSave}\n" +
-                "keepLastRecord: ${newPrefConfig.keepLastRecord}\n" +
-                "allowVibration: ${newPrefConfig.allowVibration}")
+    override fun updatePreferences(newPreferencesData: PreferencesUserData) {
+        this.preferencesUserData = newPreferencesData
     }
 
     /** Обновление дисплея */
@@ -177,20 +169,24 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
     }
 
     /** Обновляет локальные поля */
-    private fun updateCalculationFields() {
+    private fun updateCalculationFields(): Pair<String, String> {
+        var userExpression = ""
+        var calculatedResult = ""
+
         calculatorController?.let {
             userExpression = it.getUserExpression().getExpression()
             calculatedResult = it.calculateExpression()
         }
+        return Pair(userExpression, calculatedResult)
     }
 
     /** Добавляем в историю новый элемент */
-    private fun makeHistoryRecord() {
+    private fun makeHistoryRecord(calculationData: Pair<String, String>) {
         historyService?.addHistoryItem(
             History(
                 null,
-                userExpression,
-                calculatedResult,
+                calculationData.first,
+                calculationData.second,
                 calendarService.getUnixTime()
             )
         )

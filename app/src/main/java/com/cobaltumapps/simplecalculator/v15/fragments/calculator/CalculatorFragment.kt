@@ -92,7 +92,6 @@ class CalculatorFragment(
                 }
             }
 
-
             // Add mediator as a updater listener
             preferencesManager.apply {
                 addUpdateListener(mediatorController)
