@@ -21,11 +21,12 @@ class CalculatorCore: Calculator() {
 
     // Расчитывает выражение и записывает в ответ
     override fun calculate(canTrimExpression: Boolean) {
-        if (userExpression.getExpression().isNotEmpty())             // Расчёт выражения если выражение(строка) не пустое
+        // Расчёт выражения если выражение(строка) не пустое
+        if (userExpression.getExpression().isNotEmpty())
         {
             val resultParseTrigonometry = parseTrigonometryFunctions(userExpression.getExpression()) // Расчитывает тригонометрические функции
             val resultCalculation = calculateExpression(resultParseTrigonometry) // Производит операцию над числами, и расчитывает выражение
-            val resultTrim = if(canTrimExpression) trimExpression(trimRange,resultCalculation) else resultCalculation // Сокращает числа после точки
+            val resultTrim = if(canTrimExpression) trimExpression(trimRange, resultCalculation) else resultCalculation // Сокращает числа после точки
             this.result = resultTrim
         }
         else {
@@ -162,11 +163,13 @@ class CalculatorCore: Calculator() {
                     // Обработка пробела
                     x == ' ' -> continue
 
+                    // В случае, если текущий символ цифра или точка
                     x.isDigit() || x == symbolPoint -> {
                         // Добавляем цифры и точки, чтобы сформировать число
                         currentNumber.append(x)
                     }
 
+                    // В случае, если текущий символ - открывающиеся скобка '('
                     x == symbolOpenBracket -> {
                         // Помещаем открывающую скобку в стек операторов
                         if (i > 0 && (expression[i - 1].isDigit() || expression[i - 1] == symbolPoint)) {
@@ -307,8 +310,8 @@ class CalculatorCore: Calculator() {
                                 sinSymbol -> sin(argument)
                                 cosSymbol -> cos(argument)
                                 tanSymbol -> tan(argument)
-                                "cot" -> 1.0 / tan(result)
-                                else -> throw IllegalArgumentException("Неподдерживаемая функция: $functionName при переводе в радианы")
+                                cotSymbol -> 1.0 / tan(result)
+                                else -> Log.e(LOG_TAG, "Неподдерживаемая функция: $functionName при переводе в радианы")
                             }
                         }
 
@@ -317,15 +320,15 @@ class CalculatorCore: Calculator() {
                                 sinSymbol -> sin(Math.toRadians(argument))
                                 cosSymbol -> cos(Math.toRadians(argument))
                                 tanSymbol -> tan(Math.toRadians(argument))
-                                "cot" -> 1.0 / tan(Math.toRadians(result))
-                                else -> throw IllegalArgumentException("Неподдерживаемая функция: $functionName при переводе в градусы")
+                                cotSymbol -> 1.0 / tan(Math.toRadians(result))
+                                else -> Log.e(LOG_TAG, "Неподдерживаемая функция: $functionName при переводе в градусы")
                             }
                         }
                     }
 
                 output = output.replace(match.value, "($value)")
             } catch (ex: NumberFormatException) {
-                output = "Fatal error Trigonometry"
+                output = "Error Trigonometry"
             }
         }
 

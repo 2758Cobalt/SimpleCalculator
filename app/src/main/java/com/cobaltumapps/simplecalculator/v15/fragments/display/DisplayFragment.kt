@@ -73,6 +73,7 @@ class DisplayFragment: DisplayComponent()  {
     // Установка любого числового значения в поле выражения
     override fun setExpressionField(newExpression: String) {
         binding.displayExpressionField.text = newExpression
+        binding.displayExpressionField.requestLayout()
     }
 
     // Установка значение в поле с результатом
