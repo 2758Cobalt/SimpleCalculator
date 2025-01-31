@@ -83,15 +83,14 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginBottom="32dp"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:elevation="4dp" />
+            android:layout_alignParentBottom="true" />
 
         <FrameLayout
             android:id="@+id/engineeringNumpadHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:elevation="5dp" />
+            android:elevation="4dp" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
