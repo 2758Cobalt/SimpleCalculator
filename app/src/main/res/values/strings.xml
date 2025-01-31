@@ -6,7 +6,6 @@
     <!-- Navigation drawer -->
     <string name="main_nav_converter_title">Converter</string>
     <string name="main_nav_calculator_title">Calculator</string>
-    <string name="main_nav_news_title">News</string>
 
     <string name="buttonOk">OK</string>
     <string name="buttonConfirm">Confirm</string>
