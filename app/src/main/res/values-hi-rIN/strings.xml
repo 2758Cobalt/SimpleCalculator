@@ -6,8 +6,8 @@
 
     <string name="preference_memoryAutoSave">मेमोरी में ऑटो सेव</string>
     <string name="preference_memoryAutoSaveDesc">परिणाम को स्वचालित रूप से मेमोरी में सहेजा जाएगा</string>
-    <string name="preference_saveLastCalculation">गणना का रिकॉर्ड रखें</string>
-    <string name="preference_saveLastCalculationDesc">अंतिम गणना का रिकॉर्ड रखें</string>
+    <string name="preference_keepLastCalculation">गणना का रिकॉर्ड रखें</string>
+    <string name="preference_keepLastCalculationDesc">अंतिम गणना का रिकॉर्ड रखें</string>
     <string name="preference_leftMode">बाएं हाथ का मोड</string>
     <string name="preference_leftModeDesc">बाएं हाथ के लिए मिरर कीबोर्ड होगा</string>
     <string name="preference_miniMode">एक हाथ का मोड</string>
@@ -34,7 +34,6 @@
     <string name="contentDescription_backspace">बैक स्पेस</string>
     <string name="contentDescription_settings">सेटिंग्स</string>
     <string name="contentDescription_ClearAll">सभी क्षेत्रों को साफ़ करें</string>
-    <string name="contentDescription_LastExpressionTextField">अंतिम अभिव्यक्ति पाठ क्षेत्र</string>
 
     <string name="navigation_drawer_open">नेविगेशन ड्रॉअर खोलें</string>
     <string name="navigation_drawer_close">नेविगेशन ड्रॉअर बंद करें</string>

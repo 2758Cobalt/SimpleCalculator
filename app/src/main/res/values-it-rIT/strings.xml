@@ -32,8 +32,8 @@
 
     <string name="preference_memoryAutoSave">Salva automaticamente in memoria</string>
     <string name="preference_memoryAutoSaveDesc">Il risultato verrà salvato automaticamente in memoria</string>
-    <string name="preference_saveLastCalculation">Salva calcolo</string>
-    <string name="preference_saveLastCalculationDesc">Salva l\'ultimo calcolo</string>
+    <string name="preference_keepLastCalculation">Salva calcolo</string>
+    <string name="preference_keepLastCalculationDesc">Salva l\'ultimo calcolo</string>
     <string name="preference_leftMode">Modalità mancina</string>
     <string name="preference_leftModeDesc">Mostra una tastiera speculare per mancini</string>
     <string name="preference_miniMode">Modalità a una mano</string>
@@ -65,8 +65,6 @@
     <string name="contentDescription_backspace">Indietro</string>
     <string name="contentDescription_settings">Impostazioni</string>
     <string name="contentDescription_ClearAll">Cancella tutti i campi</string>
-
-    <string name="contentDescription_LastExpressionTextField">campo di testo dell\'ultima espressione</string>
 
     <string name="navigation_drawer_open">Apri il menu di navigazione</string>
     <string name="navigation_drawer_close">Chiudi il menu di navigazione</string>

@@ -31,8 +31,8 @@
 
     <string name="preference_memoryAutoSave">Автоматичне збереження у пам\'ять</string>
     <string name="preference_memoryAutoSaveDesc">Результат буде автоматично збережено в пам\'ять</string>
-    <string name="preference_saveLastCalculation">Зберігати розрахунок</string>
-    <string name="preference_saveLastCalculationDesc">Зберігати останній розрахунок</string>
+    <string name="preference_keepLastCalculation">Зберігати розрахунок</string>
+    <string name="preference_keepLastCalculationDesc">Зберігати останній розрахунок</string>
     <string name="preference_leftMode">Ліворучний режим</string>
     <string name="preference_leftModeDesc">Для лівшів буде відображено дзеркальну клавіатуру</string>
     <string name="preference_miniMode">Режим однієї руки</string>
@@ -61,8 +61,6 @@
     <string name="contentDescription_backspace">Видалення</string>
     <string name="contentDescription_settings">Налаштування</string>
     <string name="contentDescription_ClearAll">Очистити всі поля</string>
-
-    <string name="contentDescription_LastExpressionTextField">Останній вираз</string>
 
     <string name="navigation_drawer_open">Відкрити меню</string>
     <string name="navigation_drawer_close">Закрити меню</string>

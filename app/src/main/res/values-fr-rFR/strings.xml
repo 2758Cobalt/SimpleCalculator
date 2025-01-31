@@ -32,8 +32,8 @@
     <string name="preference_memoryAutoSave">Sauvegarde automatique en mémoire</string>
     <string name="preference_memoryAutoSaveDesc">Le résultat sera automatiquement sauvegardé en mémoire</string>
 
-    <string name="preference_saveLastCalculation">Conserver l\'historique des calculs</string>
-    <string name="preference_saveLastCalculationDesc">Conserver le dernier historique des calculs</string>
+    <string name="preference_keepLastCalculation">Conserver l\'historique des calculs</string>
+    <string name="preference_keepLastCalculationDesc">Conserver le dernier historique des calculs</string>
 
     <string name="preference_leftMode">Mode gaucher</string>
     <string name="preference_leftModeDesc">Afficher un clavier inversé pour les gauchers</string>
@@ -71,8 +71,6 @@
     <string name="contentDescription_backspace">Retour arrière</string>
     <string name="contentDescription_settings">Paramètres</string>
     <string name="contentDescription_ClearAll">Effacer tous les champs</string>
-
-    <string name="contentDescription_LastExpressionTextField">champ de texte de la dernière expression</string>
 
     <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
     <string name="navigation_drawer_close">Fermer le tiroir de navigation</string>

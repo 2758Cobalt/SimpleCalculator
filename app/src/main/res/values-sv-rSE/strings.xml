@@ -31,8 +31,8 @@
 
     <string name="preference_memoryAutoSave">Automatiskt spara i minnet</string>
     <string name="preference_memoryAutoSaveDesc">Resultatet kommer att sparas automatiskt i minnet</string>
-    <string name="preference_saveLastCalculation">Spara beräkning</string>
-    <string name="preference_saveLastCalculationDesc">Spara den senaste beräkningen</string>
+    <string name="preference_keepLastCalculation">Spara beräkning</string>
+    <string name="preference_keepLastCalculationDesc">Spara den senaste beräkningen</string>
     <string name="preference_leftMode">Vänsterhänt läge</string>
     <string name="preference_leftModeDesc">Visa spegelvänd tangentbord för vänsterhänta</string>
     <string name="preference_miniMode">Enhandsläge</string>
@@ -64,8 +64,6 @@
     <string name="contentDescription_backspace">Bakåt</string>
     <string name="contentDescription_settings">Inställningar</string>
     <string name="contentDescription_ClearAll">Rensa alla fält</string>
-
-    <string name="contentDescription_LastExpressionTextField">senaste uttryckstextfältet</string>
 
     <string name="navigation_drawer_open">Öppna navigeringsfältet</string>
     <string name="navigation_drawer_close">Stäng navigeringsfältet</string>

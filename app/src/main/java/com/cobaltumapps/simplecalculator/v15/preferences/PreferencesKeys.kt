@@ -4,6 +4,7 @@ object PreferencesKeys {
     // Calculator
     const val keyMemoryAutoSave = "key_memoryAutoSave"
     const val keyKeepLastRecord = "key_saveLastCalculation"
+    const val keyAllowCalculationsHistory = "key_AllowCalculationsHistory"
 
     // Keyboard
     const val keyLeftHandMode = "key_leftHandMode"

@@ -21,8 +21,8 @@
     <string name="labelFragment_trigonometry">Тригонометрия</string>
     <string name="preference_memoryAutoSave">Автосохранение в память</string>
     <string name="preference_memoryAutoSaveDesc">Будет автоматически сохранять результат в память</string>
-    <string name="preference_saveLastCalculation">Сохранять расчёт</string>
-    <string name="preference_saveLastCalculationDesc">Сохранять последний расчёт</string>
+    <string name="preference_keepLastCalculation">Сохранять расчёт</string>
+    <string name="preference_keepLastCalculationDesc">Сохранять последний расчёт</string>
     <string name="preference_leftMode">Режим левой руки</string>
     <string name="preference_leftModeDesc">Отзеркаливает клавиатуру для левой руки</string>
     <string name="preference_miniMode">Управление одной рукой</string>
@@ -62,7 +62,6 @@
     <string name="contentDescription_backspace">Удаление</string>
     <string name="contentDescription_settings">Настройки</string>
     <string name="contentDescription_ClearAll">Очистить все поля</string>
-    <string name="contentDescription_LastExpressionTextField">Последнее выражение</string>
     <string name="navigation_drawer_open">Открыть меню</string>
     <string name="navigation_drawer_close">Закрыть меню</string>
     <string name="action_settings">Настройки</string>

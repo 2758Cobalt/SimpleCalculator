@@ -36,6 +36,12 @@
                     android:contentDescription="Go to an update news page"
                     android:title="Update news" />
 
+                <item
+                    android:id="@+id/menu_nav_settings"
+                    android:icon="@drawable/ic_setting"
+                    android:contentDescription="Go to a settings page"
+                    android:title="Settings" />
+
             </menu>
 
         </item>

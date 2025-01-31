@@ -8,8 +8,6 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.CalendarService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
@@ -17,8 +15,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryCo
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
-class MediatorController: MediatorClickHandler, HolderOnClickListener, PreferencesUpdaterListener {
-    private var preferencesUserData = PreferencesUserData()
+class MediatorController: MediatorClickHandler, HolderOnClickListener {
+
     // Calculator
     var calculatorController: CalculatorController? = null
 
@@ -67,11 +65,13 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
                     displayController?.setResultField(result.second)
 
                     // Запись вычислений в историю
+                    //TODO("Реализовать параметр ведения истории")
                     makeHistoryRecord(result)
 
                     // Проверка предпочтения и выполнение действия, если истина
-                    if (preferencesUserData.memoryAutoSave)
-                        handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
+                    //TODO("Реализовать параметр автосохранения памяти")
+//                    if (preferencesUserData.memoryAutoSave)
+//                        handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
                 }
 
                 // Функция - очистки последнего символа (Backspace)
@@ -154,11 +154,6 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, Preferenc
         calculatorController?.setExpression(expression)
         updateDisplayExpression()
         return expression
-    }
-
-    /** Метод, обновляющий предпочтения (нгстройки) */
-    override fun updatePreferences(newPreferencesData: PreferencesUserData) {
-        this.preferencesUserData = newPreferencesData
     }
 
     /** Обновление дисплея */

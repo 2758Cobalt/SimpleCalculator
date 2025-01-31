@@ -31,8 +31,8 @@
 
     <string name="preference_memoryAutoSave">Automatyczne zapisywanie w pamięci</string>
     <string name="preference_memoryAutoSaveDesc">Wynik zostanie automatycznie zapisany w pamięci</string>
-    <string name="preference_saveLastCalculation">Zapisz obliczenia</string>
-    <string name="preference_saveLastCalculationDesc">Zapisz ostatnie obliczenia</string>
+    <string name="preference_keepLastCalculation">Zapisz obliczenia</string>
+    <string name="preference_keepLastCalculationDesc">Zapisz ostatnie obliczenia</string>
     <string name="preference_leftMode">Tryb leworęczny</string>
     <string name="preference_leftModeDesc">Pokaż klawiaturę lustrzaną dla osób leworęcznych</string>
 
@@ -69,8 +69,6 @@
     <string name="contentDescription_backspace">Wstecz</string>
     <string name="contentDescription_settings">Ustawienia</string>
     <string name="contentDescription_ClearAll">Wyczyść wszystkie pola</string>
-
-    <string name="contentDescription_LastExpressionTextField">pole tekstowe ostatniego wyrażenia</string>
 
     <string name="navigation_drawer_open">Otwórz menu nawigacyjne</string>
     <string name="navigation_drawer_close">Zamknij menu nawigacyjne</string>

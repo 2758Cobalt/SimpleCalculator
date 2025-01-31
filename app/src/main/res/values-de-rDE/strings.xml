@@ -32,9 +32,8 @@
     <string name="preference_memoryAutoSave">Automatisches Speichern im Speicher</string>
     <string name="preference_memoryAutoSaveDesc">Das Ergebnis wird automatisch im Speicher gespeichert</string>
 
-    <string name="preference_saveLastCalculation">Berechnung speichern</string>
-    <string name="preference_saveLastCalculationDesc">Letzte Berechnung speichern</string>
-
+    <string name="preference_keepLastCalculation">Berechnung speichern</string>
+    <string name="preference_keepLastCalculationDesc">Letzte Berechnung speichern</string>
 
     <string name="preference_leftMode">Linkshändermodus</string>
     <string name="preference_leftModeDesc">Zeigen Sie eine gespiegelte Tastatur für Linkshänder an</string>
@@ -72,8 +71,6 @@
     <string name="contentDescription_backspace">Rücktaste</string>
     <string name="contentDescription_settings">Einstellungen</string>
     <string name="contentDescription_ClearAll">Alle Felder löschen</string>
-
-    <string name="contentDescription_LastExpressionTextField">Textfeld des letzten Ausdrucks</string>
 
     <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
     <string name="navigation_drawer_close">Navigationsleiste schließen</string>

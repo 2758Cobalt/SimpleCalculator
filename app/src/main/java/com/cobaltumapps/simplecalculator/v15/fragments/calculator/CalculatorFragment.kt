@@ -12,7 +12,6 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.Ca
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
@@ -50,7 +49,6 @@ class CalculatorFragment(
     // Instance
 
     private val calculatorCoreInstance = CalculatorCore()
-    private val preferencesManager by lazy { PreferencesManager(requireContext()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,23 +83,6 @@ class CalculatorFragment(
 
             // The icons OnClickListeners
             calculatorNavigationMenuIcon.setOnClickListener { calculatorNavigationListener?.openNavigationMenu() }
-
-            calculatorSettingsIcon.apply {
-                setOnClickListener {
-                    preferencesManager.openPreferencesDialog()
-                }
-            }
-
-            // Add mediator as a updater listener
-            preferencesManager.apply {
-                addUpdateListener(mediatorController)
-                addUpdateListener(numpadController)
-                addUpdateListener(vibrationService)
-            }
-
-            // Load data from preferences
-            val loadedConfig = preferencesManager.loadData()
-            mediatorController.updatePreferences(loadedConfig)
 
             // Display fragments
             if (savedInstanceState == null) {

@@ -27,19 +27,19 @@
             android:orientation="vertical">
 
             <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/prefAutoSave"
+                android:id="@+id/prefAutoSaveMemoryCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:text="@string/preference_memoryAutoSave" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/prefKeepLastRecord"
+                android:id="@+id/prefKeepLastRecordCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:checked="true"
-                android:text="@string/preference_saveLastCalculationDesc" />
+                android:text="@string/preference_keepLastCalculationDesc" />
 
         </LinearLayout>
 
@@ -59,7 +59,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/prefVibration"
+                android:id="@+id/prefAllowVibrationSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"

@@ -18,21 +18,13 @@
     <string name="buttonSkip">Skip</string>
     <string name="buttonExit">Exit</string>
 
-
     <string name="text_degrees">Degrees</string>
     <string name="text_radians">Radians</string>
-
 
     <string name="symbolRad">RAD</string>
     <string name="symbolDeg">DEG</string>
 
-
     <string name="drawerMenuButton_description">Open navigation menu</string>
-
-    <string name="display_memory">Memory</string>
-
-    <string name="sampleButton" translatable="false">SampleButton</string>
-    <string name="sampleText" translatable="false">SampleText</string>
 
     <string name="tooltip_enterText">Enter Text</string>
 
@@ -40,11 +32,14 @@
 
     <string name="labelFragment_trigonometry">Trigonometry</string>
 
-    <string name="preference_memoryAutoSave">AutoSave to memory</string>
-    <string name="preference_memoryAutoSaveDesc">will be auto save result to memory</string>
+    <string name="preference_memoryAutoSave">Auto-save the result of the calculation in memory</string>
+    <string name="preference_memoryAutoSaveDesc">Automatically maintain the result of the calculation in memory</string>
 
-    <string name="preference_saveLastCalculation">Keep the calculation record</string>
-    <string name="preference_saveLastCalculationDesc">Keep the last calculation record</string>
+    <string name="preference_keepLastCalculation">Keep the calculation record</string>
+    <string name="preference_keepLastCalculationDesc">Keep the last calculation record</string>
+
+    <string name="preference_allowCalculationsHistory">Allow the history of calculations</string>
+    <string name="preference_allowCalculationsHistoryDesc">Allow the history of calculations</string>
 
     <string name="preference_leftMode">Left hand mode</string>
     <string name="preference_leftModeDesc">Will be mirror keyboard for left hand</string>
@@ -58,15 +53,13 @@
     <string name="preference_vibrationDesc">Vibrate when a button is clicked</string>
 
     <string name="preference_vibrationStrength">Vibration response strength</string>
-    <string name="preference_vibrationStrengthDesc">Set the strength of the vibration response</string>
+    <string name="preference_vibrationStrengthDesc">Defines the power of the vibration response</string>
 
     <string name="preference_swapBackSpace">Reverse buttons "point" and "backspace"</string>
     <string name="preference_swapBackSpaceDesc">Reverses the "dot" and "backspace" buttons</string>
 
-
     <string name="preference_privacyPolicy">Privacy policy</string>
     <string name="preference_privacyPolicyDesc">Click here to read our privacy policy</string>
-
 
     <string name="error_failCalculate">Fail</string>
     <string name="error_numberFormatException">Incorrect expression</string>
@@ -80,18 +73,12 @@
     <string name="preferenceTitle_aboutCategory">About</string>
     <string name="preferenceTitle_supportCategory">Support</string>
 
-
     <string name="system_restartMessage">Restart app for apply changes</string>
-
-
     <string name="system_copyToClipboard">Copied to clipboard</string>
-
 
     <string name="contentDescription_backspace">Back space</string>
     <string name="contentDescription_settings">Settings</string>
     <string name="contentDescription_ClearAll">Clear all fields</string>
-
-    <string name="contentDescription_LastExpressionTextField">last expression text field</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
