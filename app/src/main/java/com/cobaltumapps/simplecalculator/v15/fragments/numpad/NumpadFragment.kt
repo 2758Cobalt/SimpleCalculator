@@ -59,11 +59,6 @@ class NumpadFragment(
 
         binding.apply {
 
-            with(root) {
-                pivotX = width.toFloat()
-                pivotY = height.toFloat()
-            }
-
             bindingNumpadContent.apply {
                 numpadNum0.setOnClickListener { onClickNumber(0) }
                 numpadNum1.setOnClickListener { onClickNumber(1) }
@@ -147,11 +142,7 @@ class NumpadFragment(
         }
     }
 
-    fun reduceKeyboard() {
-    }
-
     companion object {
-        const val LOG_TAG = "SC_NumpadFragmentTag"
         const val TAG = "SC_NumpadFragmentTag"
     }
 

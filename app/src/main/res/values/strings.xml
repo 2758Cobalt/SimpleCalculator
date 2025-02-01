@@ -23,7 +23,7 @@
     <string name="symbolRad">RAD</string>
     <string name="symbolDeg">DEG</string>
 
-    <string name="drawerMenuButton_description">Open navigation menu</string>
+    <string name="drawerMenuButton_description">Open navigation menu of app</string>
 
     <string name="tooltip_enterText">Enter Text</string>
 
@@ -36,9 +36,6 @@
 
     <string name="preference_keepLastCalculation">Keep the calculation record</string>
     <string name="preference_keepLastCalculationDesc">Keep the last calculation record</string>
-
-    <string name="preference_allowCalculationsHistory">Allow the history of calculations</string>
-    <string name="preference_allowCalculationsHistoryDesc">Allow the history of calculations</string>
 
     <string name="preference_leftMode">Left hand mode</string>
     <string name="preference_leftModeDesc">Will be mirror keyboard for left hand</string>

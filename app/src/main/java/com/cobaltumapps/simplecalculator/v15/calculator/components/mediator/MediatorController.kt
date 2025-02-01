@@ -1,6 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.mediator
 
 import android.util.Log
+import com.cobaltumapps.simplecalculator.v15.activities.SettingsActivity
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayExpressionController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
@@ -27,9 +28,11 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
     var numpadController: NumpadController? = null
     var engNumpadController: EngineeringController? = null
 
-    // ServiceClipboard
+    // Services
     var historyService: CalculatorHistoryController? = null
     var memoryService: MemoryControllerImpl? = null
+
+    var preferencesManager: PreferencesManager? = null
 
     private val calendarService = CalendarService()
 
@@ -64,14 +67,9 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
                     // Устанавливает результат вычислений
                     displayController?.setResultField(result.second)
 
-                    // Запись вычислений в историю
-                    //TODO("Реализовать параметр ведения истории")
-                    makeHistoryRecord(result)
+                    makeHistoryRecordFeature(result)
 
-                    // Проверка предпочтения и выполнение действия, если истина
-                    //TODO("Реализовать параметр автосохранения памяти")
-//                    if (preferencesUserData.memoryAutoSave)
-//                        handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
+                    saveResultToMemoryFeature()
                 }
 
                 // Функция - очистки последнего символа (Backspace)
@@ -176,7 +174,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
     }
 
     /** Добавляем в историю новый элемент */
-    private fun makeHistoryRecord(calculationData: Pair<String, String>) {
+    private fun makeHistoryRecordFeature(calculationData: Pair<String, String>) {
         historyService?.addHistoryItem(
             History(
                 null,
@@ -185,6 +183,13 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
                 calendarService.getUnixTime()
             )
         )
+    }
+
+    private fun saveResultToMemoryFeature() {
+        preferencesManager?.getPreference(SettingsActivity.OptionName.AutoSaveMemory) { condition ->
+            if (condition)
+                handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
+        }
     }
 
     companion object {

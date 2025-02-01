@@ -23,14 +23,13 @@ class SettingsActivity : AppCompatActivity() {
     enum class OptionName (keyOptionName: String) {
         AutoSaveMemory(PreferencesKeys.keyMemoryAutoSave),
         KeepLastRecord(PreferencesKeys.keyKeepLastRecord),
-        AllowCalculationsHistory(PreferencesKeys.keyAllowCalculationsHistory),
         AllowVibration(PreferencesKeys.keyAllowVibration),
         VibrationStrength(PreferencesKeys.keyVibrationStrength)
     }
 
     // Configuration
     var preferencesUserData = PreferencesUserData()
-    private val sharedPreferences by lazy { getSharedPreferences(ConstantsCalculator.vault, Context.MODE_PRIVATE) }
+    private val sharedPreferences by lazy { getSharedPreferences(ConstantsCalculator.vaultPreferences, Context.MODE_PRIVATE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +41,6 @@ class SettingsActivity : AppCompatActivity() {
             preferencesUserData.apply {
                 memoryAutoSave = savedInstanceState.getBoolean(IntentKeys.SETTINGS_autoSaveMemoryKey, binding.prefAutoSaveMemoryCheckBox.isChecked)
                 keepLastRecord = savedInstanceState.getBoolean(IntentKeys.SETTINGS_keepLastCalculationKey, binding.prefKeepLastRecordCheckBox.isChecked)
-                allowCalculationsHistory = savedInstanceState.getBoolean(IntentKeys.SETTINGS_allowCalculationsHistoryKey, binding.prefAllowCalcHistoryCheckBox.isChecked)
 
                 allowVibration = savedInstanceState.getBoolean(IntentKeys.SETTINGS_allowVibrationKey, binding.prefAllowVibrationSwitch.isChecked)
                 vibrationStrength = savedInstanceState.getLong(IntentKeys.SETTINGS_vibrationStrengthKey, binding.prefVibrationStrengthSlider.value.toLong())
@@ -51,7 +49,6 @@ class SettingsActivity : AppCompatActivity() {
             with(binding) {
                 prefAutoSaveMemoryCheckBox.isChecked = savedInstanceState.getBoolean(IntentKeys.SETTINGS_autoSaveMemoryKey, false)
                 prefKeepLastRecordCheckBox.isChecked = savedInstanceState.getBoolean(IntentKeys.SETTINGS_keepLastCalculationKey, false)
-                prefAllowCalcHistoryCheckBox.isChecked = savedInstanceState.getBoolean(IntentKeys.SETTINGS_allowCalculationsHistoryKey, true)
 
                 prefAllowVibrationSwitch.isChecked = savedInstanceState.getBoolean(IntentKeys.SETTINGS_autoSaveMemoryKey, true)
                 prefVibrationStrengthSlider.value = savedInstanceState.getLong(IntentKeys.SETTINGS_vibrationStrengthKey, vibrationStrength).toFloat()
@@ -65,10 +62,6 @@ class SettingsActivity : AppCompatActivity() {
 
             prefKeepLastRecordCheckBox.setOnCheckedChangeListener { _, checked ->
                 preferencesUserData.keepLastRecord = checked
-            }
-
-            prefAllowCalcHistoryCheckBox.setOnCheckedChangeListener { _, checked ->
-                preferencesUserData.allowCalculationsHistory = checked
             }
 
             prefAllowVibrationSwitch.setOnCheckedChangeListener { _, checked ->
@@ -106,7 +99,6 @@ class SettingsActivity : AppCompatActivity() {
         outState.apply {
             putBoolean(IntentKeys.SETTINGS_autoSaveMemoryKey, binding.prefAutoSaveMemoryCheckBox.isChecked)
             putBoolean(IntentKeys.SETTINGS_keepLastCalculationKey, binding.prefKeepLastRecordCheckBox.isChecked)
-            putBoolean(IntentKeys.SETTINGS_allowCalculationsHistoryKey, binding.prefAllowCalcHistoryCheckBox.isChecked)
             putBoolean(IntentKeys.SETTINGS_allowVibrationKey, binding.prefAllowVibrationSwitch.isChecked)
             putLong(IntentKeys.SETTINGS_vibrationStrengthKey, binding.prefVibrationStrengthSlider.value.toLong())
         }
@@ -125,7 +117,6 @@ class SettingsActivity : AppCompatActivity() {
             with(preferencesUserData) {
                 prefAutoSaveMemoryCheckBox.isChecked = memoryAutoSave
                 prefKeepLastRecordCheckBox.isChecked = keepLastRecord
-                prefAllowCalcHistoryCheckBox.isChecked = allowCalculationsHistory
 
                 prefAllowVibrationSwitch.isChecked = allowVibration
                 this@SettingsActivity.vibrationStrength = vibrationStrength
@@ -148,7 +139,6 @@ class SettingsActivity : AppCompatActivity() {
             preferencesUserData.apply {
                 memoryAutoSave = getBoolean(OptionName.AutoSaveMemory.name, false)
                 keepLastRecord = getBoolean(OptionName.KeepLastRecord.name, false)
-                allowCalculationsHistory = getBoolean(OptionName.AllowCalculationsHistory.name, true)
                 allowVibration = getBoolean(OptionName.AllowVibration.name, true)
                 vibrationStrength = getLong(OptionName.VibrationStrength.name, vibrationStrength)
             }
@@ -161,7 +151,6 @@ class SettingsActivity : AppCompatActivity() {
             with(preferencesUserData) {
                 putBoolean(OptionName.AutoSaveMemory.name, memoryAutoSave)
                 putBoolean(OptionName.KeepLastRecord.name, keepLastRecord)
-                putBoolean(OptionName.AllowCalculationsHistory.name, allowCalculationsHistory)
                 putBoolean(OptionName.AllowVibration.name, allowVibration)
                 putLong(OptionName.VibrationStrength.name, vibrationStrength)
             }

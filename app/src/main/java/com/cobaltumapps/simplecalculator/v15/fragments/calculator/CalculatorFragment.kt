@@ -1,5 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.calculator
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.Ca
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
+import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.PreferencesManager
+import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
@@ -42,7 +45,11 @@ class CalculatorFragment(
     private val engineeringController = EngineeringController()
 
     private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
+
     private val mediatorController = MediatorController()
+    private val preferencesManager by lazy { PreferencesManager(
+        requireContext().getSharedPreferences(ConstantsCalculator.vaultPreferences, Context.MODE_PRIVATE)
+    ) }
 
     private val vibrationService by lazy { VibrationService(requireContext()) }
 
@@ -66,11 +73,13 @@ class CalculatorFragment(
         binding.apply {
             // Setup the mediator controller
             mediatorController.apply {
+                preferencesManager = this@CalculatorFragment.preferencesManager
+
                 displayController = displayFragment.displayController
                 numpadController = this@CalculatorFragment.numpadController
                 engNumpadController = engineeringController
-                historyService = calculatorHistoryDisplayFragment.calculatorHistoryController
 
+                historyService = calculatorHistoryDisplayFragment.calculatorHistoryController
                 memoryService = MemoryControllerImpl()
 
                 calculatorController = this@CalculatorFragment.calculatorController

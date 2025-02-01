@@ -23,11 +23,9 @@ object ConstantsCalculator {
     const val symbolOpenBracket = '('
     const val symbolCloseBracket = ')'
     const val symbolPoint = '.'
-    const val symbolEqual = '='
 
     const val privacyPolicyLink = "https://sites.google.com/view/cobaltumappsgroup/privacy-policy"
-    const val telegramLink = "https://t.me/CobaltBo1"
 
-    const val vault = "preferences"
+    const val vaultPreferences = "preferences"
 
 }
