@@ -145,7 +145,6 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
         catch (ex: NullPointerException) {
             Log.e(LOG_TAG, "The special function is skipped")
         }
-
     }
 
     /** При нажатии на элемент "Истории" - устанавливает в калькулятор выбраное выражение. Возвращает выбраное выражение */
@@ -187,7 +186,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
     }
 
     private fun saveResultToMemoryFeature() {
-        preferencesManager?.getPreference(OptionName.AutoSaveMemory) { condition ->
+        preferencesManager?.getPreferenceCondition(OptionName.AutoSaveMemory) { condition ->
             if (condition)
                 handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
         }

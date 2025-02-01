@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.cobaltumapps.simplecalculator.databinding.FragmentCalculatorBinding
@@ -24,6 +25,7 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.EngineeringNumpadF
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.NumpadFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
+import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 /** Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора */
@@ -33,6 +35,7 @@ class CalculatorFragment(
     EngineeringBottomBehaviorListener {
 
     private val binding by lazy { FragmentCalculatorBinding.inflate(layoutInflater) }
+    private val sharedPreferences by lazy { requireContext().getSharedPreferences(ConstantsCalculator.vaultPreferences, Context.MODE_PRIVATE) }
 
     // Fragments
     private val displayFragment by lazy { DisplayFragment() }
@@ -47,9 +50,7 @@ class CalculatorFragment(
     private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
 
     private val mediatorController = MediatorController()
-    private val preferencesManager by lazy { PreferencesManager(
-        requireContext().getSharedPreferences(ConstantsCalculator.vaultPreferences, Context.MODE_PRIVATE)
-    ) }
+    private val preferencesManager by lazy { PreferencesManager(sharedPreferences) }
 
     private val vibrationService by lazy { VibrationService(requireContext()) }
 
@@ -62,6 +63,7 @@ class CalculatorFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+
 
             vibrationService.preferencesManager = this@CalculatorFragment.preferencesManager
 
@@ -85,7 +87,6 @@ class CalculatorFragment(
 
                 calculatorController = this@CalculatorFragment.calculatorController
             }
-
             // Setup the controllers
             numpadFragment.setNewKeyboardController(numpadController)
             engineeringFragment.setNewKeyboardController(engineeringController)
@@ -113,6 +114,13 @@ class CalculatorFragment(
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        sharedPreferences.edit {
+            putString(PreferencesKeys.keyLastExpression, calculatorController.getUserExpression().getExpression())
+        }
+        super.onDestroyView()
     }
 
     /** Метод, который вызывается при смене состояния BottomSheet Numpad-клавиатуры */
