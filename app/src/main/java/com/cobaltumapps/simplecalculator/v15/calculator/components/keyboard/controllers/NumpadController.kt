@@ -8,14 +8,10 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.mast
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.PreferencesUserData
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.interfaces.PreferencesUpdaterListener
 
 // Котроллер, который контроллирует действия numpad
-class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener,
-    PreferencesUpdaterListener {
+class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener {
     private val numpadLogger = NumpadLogger()
-    private var canVibrate = true
 
     override fun getInstance(instance: KeyboardMaster) {
         controlledKeyboardMaster = instance as NumpadKeyboard
@@ -47,13 +43,6 @@ class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener,
     }
 
     private fun playVibration() {
-        if (canVibrate)
-            vibrationServiceListener?.playVibration()
-    }
-
-    override fun updatePreferences(newPrefConfig: PreferencesUserData) {
-        newPrefConfig.apply {
-            canVibrate = allowVibration
-        }
+        vibrationServiceListener?.playVibration()
     }
 }

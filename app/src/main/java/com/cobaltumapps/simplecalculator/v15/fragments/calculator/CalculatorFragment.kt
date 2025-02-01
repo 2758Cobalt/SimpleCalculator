@@ -13,7 +13,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.Ca
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
-import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.PreferencesManager
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
@@ -63,8 +63,13 @@ class CalculatorFragment(
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
 
+            vibrationService.preferencesManager = this@CalculatorFragment.preferencesManager
+
             // Setup the keyboard controllers
-            numpadController.setNewMediator(mediatorController)
+            numpadController.apply {
+                setNewMediator(mediatorController)
+                setVibrationListener(vibrationService)
+            }
             engineeringController.setNewMediator(mediatorController)
 
             // Setup the mediator controller
@@ -80,11 +85,10 @@ class CalculatorFragment(
 
                 calculatorController = this@CalculatorFragment.calculatorController
             }
+
             // Setup the controllers
             numpadFragment.setNewKeyboardController(numpadController)
             engineeringFragment.setNewKeyboardController(engineeringController)
-
-            numpadController.setVibrationListener(vibrationService)
 
             // The icons OnClickListeners
             calculatorNavigationMenuIcon.setOnClickListener { calculatorNavigationListener?.openNavigationMenu() }

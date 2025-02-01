@@ -1,7 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.mediator
 
 import android.util.Log
-import com.cobaltumapps.simplecalculator.v15.activities.SettingsActivity
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.CalculatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayExpressionController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
@@ -9,6 +8,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
 import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.CalendarService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
@@ -186,7 +187,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
     }
 
     private fun saveResultToMemoryFeature() {
-        preferencesManager?.getPreference(SettingsActivity.OptionName.AutoSaveMemory) { condition ->
+        preferencesManager?.getPreference(OptionName.AutoSaveMemory) { condition ->
             if (condition)
                 handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
         }
