@@ -37,14 +37,17 @@ class DisplayFragment: DisplayComponent()  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setMemoryField(0)
 
         /* Если состояние пересоздано - восстанавливаем значения в полях */
-        savedInstanceState?.apply {
-            binding.displayExpressionField.text = getString(KEY_DISPLAY_FIELD, "")
-            binding.displayResultField.text = getString(KEY_RESULT_FIELD, "")
-            binding.displayMemoryField.text = getString(KEY_MEMORY_FIELD, "")
-            binding.displayAngleModeField.text = getString(KEY_ANGLE_FIELD, "")
+        if (savedInstanceState != null) {
+            with(binding) {
+                with(savedInstanceState) {
+                    displayExpressionField.text = getString(KEY_DISPLAY_FIELD, "")
+                    displayResultField.text = getString(KEY_RESULT_FIELD, "")
+                    displayMemoryField.text = getString(KEY_MEMORY_FIELD, "")
+                    displayAngleModeField.text = getString(KEY_ANGLE_FIELD, "")
+                }
+            }
         }
     }
 
@@ -67,7 +70,7 @@ class DisplayFragment: DisplayComponent()  {
 
     // Установка любого числового значения в поле памяти
     override fun setMemoryField(memoryValue: Number) {
-        binding.displayMemoryField.text = getString(R.string.display_memory_n).format(memoryValue.toString())
+        binding.displayMemoryField.text = getString(R.string.display_memory).format(memoryValue.toString())
     }
 
     // Установка любого числового значения в поле выражения

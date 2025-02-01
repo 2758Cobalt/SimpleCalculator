@@ -14,7 +14,6 @@
     <string name="symbolRad">РАД</string>
     <string name="symbolDeg">ГРАД</string>
     <string name="drawerMenuButton_description">Открыть меню навигации</string>
-    <string name="display_memory">Память</string>
     <string name="tooltip_enterText">Введите текст</string>
     <string name="editText_enterNum">Введите число</string>
     <string name="system_restartMessage">Перезапустите приложение</string>

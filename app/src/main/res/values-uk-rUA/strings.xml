@@ -22,7 +22,6 @@
     <string name="symbolDeg">ГРАД</string>
 
     <string name="drawerMenuButton_description">Відкрити меню навігації</string>
-    <string name="display_memory">Пам\'ять</string>
 
     <string name="tooltip_enterText">Введіть текст</string>
     <string name="editText_enterNum">Введіть число</string>

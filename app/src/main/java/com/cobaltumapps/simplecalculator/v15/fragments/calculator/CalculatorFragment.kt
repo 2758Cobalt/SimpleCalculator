@@ -56,20 +56,17 @@ class CalculatorFragment(
     // Instance
     private val calculatorCoreInstance = CalculatorCore()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // Setup the keyboard controllers
-        numpadController.setNewMediator(mediatorController)
-        engineeringController.setNewMediator(mediatorController)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
     : View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+
+            // Setup the keyboard controllers
+            numpadController.setNewMediator(mediatorController)
+            engineeringController.setNewMediator(mediatorController)
+
             // Setup the mediator controller
             mediatorController.apply {
                 preferencesManager = this@CalculatorFragment.preferencesManager
