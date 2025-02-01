@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="update_news">
+        <item>Додано конвертери одиниць вимірювання</item>
+        <item>Виправлено деякі проблеми з відображенням великого тексту</item>
+        <item>Виправлено помилки на стартовій сторінці, які призводили до збоїв у роботі додатку</item>
+    </string-array>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="update_news">
+        <item>Испралена 1 функция</item>
+        <item>Fixed some problems with displaying large text</item>
+        <item>Bugs on the start page that caused the application to crash have been fixed</item>
+    </string-array>
+</resources>
