@@ -54,7 +54,6 @@ class CalculatorFragment(
     private val vibrationService by lazy { VibrationService(requireContext()) }
 
     // Instance
-
     private val calculatorCoreInstance = CalculatorCore()
 
     override fun onCreate(savedInstanceState: Bundle?) {

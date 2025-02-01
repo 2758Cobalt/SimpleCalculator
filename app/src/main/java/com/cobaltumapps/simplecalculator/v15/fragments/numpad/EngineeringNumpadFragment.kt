@@ -106,14 +106,14 @@ class EngineeringNumpadFragment(
             Property.alpha.name,
             binding.root.alpha,
             if (isActivated) 1f else 0f,
-            300L) {
+            ANIM_DURATION) {
             numpadEngBottomSheetBehavior.isDraggable = isActivated
         }
     }
 
     companion object {
-        const val LOG_TAG = "SC_EngNumpadFragmentTag"
         const val TAG = "SC_EngNumpadFragmentTag"
+        const val ANIM_DURATION = 300L
     }
 
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Operator buttons -->
+    <style name="numpad_primaryButtons" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">4dp</item>
+
+        <item name="android:stateListAnimator">@null</item>
+
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.CornerSize_20</item>
+
+        <item name="android:backgroundTint">@color/theme_primary</item>
+        <item name="android:textColor">@color/md_theme_onPrimary</item>
+        <item name="rippleColor">@color/md_theme_primaryContainer</item>
+
+        <item name="android:elevation">0dp</item>
+
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:padding">0dp</item>
+
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
+        <item name="autoSizeMinTextSize">8sp</item>
+        <item name="autoSizeStepGranularity">2sp</item>
+    </style>
+
+    <style name="numpad_engineering_special" parent="Widget.Material3.Button.IconButton.Filled">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">4dp</item>
+
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.CornerSize_20</item>
+        <item name="android:stateListAnimator">@null</item>
+
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:padding">0dp</item>
+
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
+        <item name="autoSizeMinTextSize">8sp</item>
+        <item name="autoSizeStepGranularity">2sp</item>
+    </style>
+
+</resources>
