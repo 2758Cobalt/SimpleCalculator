@@ -119,24 +119,38 @@ class SettingsActivity : AppCompatActivity() {
 
     // Устанавливает состояние переключателям согласно параметрам (если они отсувствуют - устанавливаются значения по-умолчанию)
     private fun setConditionOptions() {
+        loadSettings()
+
+        with(binding) {
+            with(preferencesUserData) {
+                prefAutoSaveMemoryCheckBox.isChecked = memoryAutoSave
+                prefKeepLastRecordCheckBox.isChecked = keepLastRecord
+                prefAllowCalcHistoryCheckBox.isChecked = allowCalculationsHistory
+
+                prefAllowVibrationSwitch.isChecked = allowVibration
+                this@SettingsActivity.vibrationStrength = vibrationStrength
+            }
+
+            // Проверка, которая проверяет выход за предел значений prefVibrationStrengthSlider
+            if (vibrationStrength < prefVibrationStrengthSlider.valueFrom
+                || vibrationStrength > prefVibrationStrengthSlider.valueTo)
+            {
+                vibrationStrength = prefVibrationStrengthSlider.valueFrom.toLong()
+                prefVibrationStrengthSlider.value = prefVibrationStrengthSlider.valueFrom
+            }
+            prefVibrationStrengthSlider.value = vibrationStrength.toFloat()
+            prefVibrationStrengthSlider.isEnabled = prefAllowVibrationSwitch.isChecked
+        }
+    }
+
+    private fun loadSettings() {
         with(sharedPreferences) {
-            with(binding) {
-                prefAutoSaveMemoryCheckBox.isChecked = getBoolean(OptionName.AutoSaveMemory.name, false)
-                prefKeepLastRecordCheckBox.isChecked = getBoolean(OptionName.KeepLastRecord.name, false)
-                prefAllowCalcHistoryCheckBox.isChecked = getBoolean(OptionName.AllowCalculationsHistory.name, true)
-
-                prefAllowVibrationSwitch.isChecked = getBoolean(OptionName.AllowVibration.name, true)
+            preferencesUserData.apply {
+                memoryAutoSave = getBoolean(OptionName.AutoSaveMemory.name, false)
+                keepLastRecord = getBoolean(OptionName.KeepLastRecord.name, false)
+                allowCalculationsHistory = getBoolean(OptionName.AllowCalculationsHistory.name, true)
+                allowVibration = getBoolean(OptionName.AllowVibration.name, true)
                 vibrationStrength = getLong(OptionName.VibrationStrength.name, vibrationStrength)
-
-                // Проверка, которая проверяет выход за предел значений prefVibrationStrengthSlider
-                if (vibrationStrength < prefVibrationStrengthSlider.valueFrom
-                    || vibrationStrength > prefVibrationStrengthSlider.valueTo)
-                {
-                    vibrationStrength = prefVibrationStrengthSlider.valueFrom.toLong()
-                    prefVibrationStrengthSlider.value = prefVibrationStrengthSlider.valueFrom
-                }
-                prefVibrationStrengthSlider.value = vibrationStrength.toFloat()
-                prefVibrationStrengthSlider.isEnabled = prefAllowVibrationSwitch.isChecked
             }
         }
     }
