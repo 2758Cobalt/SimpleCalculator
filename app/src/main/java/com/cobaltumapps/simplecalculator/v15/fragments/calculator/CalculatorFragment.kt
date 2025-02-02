@@ -50,9 +50,10 @@ class CalculatorFragment(
     private val calculatorController by lazy { CalculatorController(calculatorCoreInstance) }
 
     private val mediatorController = MediatorController()
-    private val preferencesManager by lazy { PreferencesManager(sharedPreferences) }
 
     private val vibrationService by lazy { VibrationService(requireContext()) }
+
+    private val preferencesManager by lazy { PreferencesManager(sharedPreferences) }
 
     // Instance
     private val calculatorCoreInstance = CalculatorCore()
@@ -63,9 +64,6 @@ class CalculatorFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-
-
-            vibrationService.preferencesManager = this@CalculatorFragment.preferencesManager
 
             // Setup the keyboard controllers
             numpadController.apply {
@@ -113,6 +111,7 @@ class CalculatorFragment(
                     replace(calculatorHistoryHolder.id, calculatorHistoryDisplayFragment)
                 }
             }
+            mediatorController.getLastExpression()
         }
     }
 

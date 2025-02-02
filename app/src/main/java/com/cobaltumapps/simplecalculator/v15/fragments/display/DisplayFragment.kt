@@ -1,19 +1,34 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.display
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
 import androidx.core.view.isVisible
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayComponent
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.DisplayPreferencesManager
+import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
+import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
+import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
 
 /** Фрагмент, содержащий дисплей калькулятора. Является наследником Display-компонента */
 class DisplayFragment: DisplayComponent()  {
     private val binding by lazy { FragmentDisplayBinding.inflate(layoutInflater) }
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private val displayPreferencesManager by lazy { DisplayPreferencesManager(sharedPreferences) }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+         sharedPreferences = context.getSharedPreferences(ConstantsCalculator.vaultPreferences, Context.MODE_PRIVATE)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         displayAnimator.setNewBinding(binding)
@@ -38,16 +53,9 @@ class DisplayFragment: DisplayComponent()  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /* Если состояние пересоздано - восстанавливаем значения в полях */
-        if (savedInstanceState != null) {
-            with(binding) {
-                with(savedInstanceState) {
-                    displayExpressionField.text = getString(KEY_DISPLAY_FIELD, "")
-                    displayResultField.text = getString(KEY_RESULT_FIELD, "")
-                    displayMemoryField.text = getString(KEY_MEMORY_FIELD, "")
-                    displayAngleModeField.text = getString(KEY_ANGLE_FIELD, "")
-                }
-            }
+        displayPreferencesManager.getPreferenceCondition(OptionName.KeepLastRecord) { condition ->
+            if (condition)
+                loadLastExpression()
         }
     }
 
@@ -84,6 +92,19 @@ class DisplayFragment: DisplayComponent()  {
         binding.displayResultField.text = newResult
     }
 
+    private fun loadLastExpression() {
+        val getExpression = sharedPreferences.getString(PreferencesKeys.keyLastExpression, "")
+
+        if (getExpression != null)
+            binding.displayExpressionField.text = getExpression
+    }
+
+    override fun onDestroyView() {
+        sharedPreferences.edit {
+            putString(PreferencesKeys.keyLastExpression, binding.displayExpressionField.text.toString())
+        }
+        super.onDestroyView()
+    }
     companion object {
         const val KEY_DISPLAY_FIELD = "SC_SavedStateDisplayField"
         const val KEY_RESULT_FIELD = "SC_SavedStateResultField"

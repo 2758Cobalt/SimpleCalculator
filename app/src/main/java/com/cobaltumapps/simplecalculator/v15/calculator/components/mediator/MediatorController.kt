@@ -15,6 +15,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.history.Calcula
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
+import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
 
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
 class MediatorController: MediatorClickHandler, HolderOnClickListener {
@@ -185,10 +186,20 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
         )
     }
 
+    /** Сохранение результата в память */
     private fun saveResultToMemoryFeature() {
         preferencesManager?.getPreferenceCondition(OptionName.AutoSaveMemory) { condition ->
             if (condition)
                 handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
+        }
+    }
+
+    fun getLastExpression() {
+        preferencesManager?.getPreferenceCondition(OptionName.KeepLastRecord) { condition ->
+            val gotExpression = preferencesManager?.sharedPreferences?.getString(PreferencesKeys.keyLastExpression, "")
+
+            if (condition && gotExpression != null)
+                calculatorController?.setExpression(gotExpression)
         }
     }
 

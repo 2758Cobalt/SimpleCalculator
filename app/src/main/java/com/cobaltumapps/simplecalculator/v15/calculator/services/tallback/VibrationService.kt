@@ -14,15 +14,10 @@ class VibrationService(
 
     // Воспроизводит вибрацию
     override fun playVibration(ignorePreference: Boolean) {
-        if (!ignorePreference) {
-            preferencesManager?.getPreferenceCondition(OptionName.AllowVibration) { condition ->
-                if (condition) {
-                    vibrate()
-                }
-            }
+        preferencesManager?.getPreferenceCondition(OptionName.AllowVibration) { condition ->
+            if (condition)
+                vibrate()
         }
-        else
-            vibrate()
     }
 
     private fun vibrate() {

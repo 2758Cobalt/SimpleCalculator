@@ -5,6 +5,5 @@ import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
 enum class OptionName (keyOptionName: String) {
         AutoSaveMemory(PreferencesKeys.keyMemoryAutoSave),
         KeepLastRecord(PreferencesKeys.keyKeepLastRecord),
-        AllowVibration(PreferencesKeys.keyAllowVibration),
-        VibrationStrength(PreferencesKeys.keyVibrationStrength)
+        AllowVibration(PreferencesKeys.keyAllowVibration)
     }
