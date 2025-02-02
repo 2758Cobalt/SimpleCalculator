@@ -1,16 +1,20 @@
 package com.cobaltumapps.simplecalculator.v15.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
+import com.cobaltumapps.simplecalculator.v15.activities.onBoarding.IntroductionActivity
+import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
@@ -22,7 +26,9 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
     CalculatorNavigationListener
 {
     private val binding by lazy { ActivityCalculatorBinding.inflate(layoutInflater) }
-
+    private val sharedPreferences by lazy {
+        getSharedPreferences(ConstantsCalculator.vaultPreferences, Context.MODE_PRIVATE)
+    }
     // Ad (Advertisement)
     private val adRequest by lazy { AdRequest.Builder().build() }
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
@@ -58,6 +64,12 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
         lifecycleScope.launch(Dispatchers.Main) {
             binding.calculatorAdViewBanner.loadAd(adRequest)
         }
+
+        val introductionCondition = sharedPreferences.getBoolean(INTRODUCTION_PREFERENCE_KEY, false)
+        if (!introductionCondition) {
+            startActivity(Intent(this@MainCalculatorActivity, IntroductionActivity::class.java))
+            sharedPreferences.edit { putBoolean(INTRODUCTION_PREFERENCE_KEY, true) }
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -66,6 +78,7 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
             R.id.menu_nav_features -> startActivity(Intent(this@MainCalculatorActivity, FeaturesActivity::class.java))
             R.id.menu_nav_archive -> startActivity(Intent(this@MainCalculatorActivity, ArchiveActivity::class.java))
             R.id.menu_nav_news_update -> startActivity(Intent(this@MainCalculatorActivity, NewsUpdateActivity::class.java))
+            R.id.menu_nav_introduction -> startActivity(Intent(this@MainCalculatorActivity, IntroductionActivity::class.java))
             R.id.menu_nav_settings -> startActivity(Intent(this@MainCalculatorActivity, SettingsActivity::class.java))
         }
         return true
@@ -96,5 +109,6 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
     companion object {
         const val LOG_TAG = "SC_MainCalculatorActivity" +
                 "Tag"
+        const val INTRODUCTION_PREFERENCE_KEY = "SC_IntroductionConditionShowedKey"
     }
 }

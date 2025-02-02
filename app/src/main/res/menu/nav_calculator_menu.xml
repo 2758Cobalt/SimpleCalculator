@@ -37,6 +37,12 @@
                     android:title="Update news" />
 
                 <item
+                    android:id="@+id/menu_nav_introduction"
+                    android:icon="@drawable/ic_nav_info"
+                    android:contentDescription="Go to an introduction page"
+                    android:title="Introduction" />
+
+                <item
                     android:id="@+id/menu_nav_settings"
                     android:icon="@drawable/ic_setting"
                     android:contentDescription="Go to a settings page"

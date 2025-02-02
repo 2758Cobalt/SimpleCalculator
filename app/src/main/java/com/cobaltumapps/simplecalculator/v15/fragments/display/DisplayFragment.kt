@@ -99,12 +99,13 @@ class DisplayFragment: DisplayComponent()  {
             binding.displayExpressionField.text = getExpression
     }
 
-    override fun onDestroyView() {
+    override fun onStop() {
+        super.onStop()
         sharedPreferences.edit {
             putString(PreferencesKeys.keyLastExpression, binding.displayExpressionField.text.toString())
         }
-        super.onDestroyView()
     }
+
     companion object {
         const val KEY_DISPLAY_FIELD = "SC_SavedStateDisplayField"
         const val KEY_RESULT_FIELD = "SC_SavedStateResultField"

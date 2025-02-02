@@ -134,10 +134,9 @@ class CalculatorFragment(
     /** Метод, который вызывается при смене состояния BottomSheet EngineeringNumpad-клавиатуры */
     override fun onStateEngNumpadChanged(bottomSheet: View, newState: Int) { }
 
-
     /** Метод, который вызывается при состояния слайда контейнера BottomSheet EngineeringNumpad-клавиатуры */
     override fun onSlideEngNumpad(bottomSheet: View, slideOffset: Float) {
-        binding.apply {
+        with(binding) {
             numpadHolder.scaleX = 1f - (slideOffset / NUMPAD_FADING_MULTIPLIER)
             numpadHolder.scaleY = 1f - (slideOffset / NUMPAD_FADING_MULTIPLIER)
         }
