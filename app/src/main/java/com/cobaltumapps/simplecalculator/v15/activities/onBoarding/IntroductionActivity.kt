@@ -74,7 +74,6 @@ class IntroductionActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        outState.putInt("testKey1", binding.boardingViewPager.currentItem)
         super.onSaveInstanceState(outState, outPersistentState)
     }
 }
