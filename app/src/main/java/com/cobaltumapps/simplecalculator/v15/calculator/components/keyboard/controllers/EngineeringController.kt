@@ -19,5 +19,4 @@ class EngineeringController : KeyboardControllerMaster(), KeyboardSpecialFunctio
         mediator?.handleOnClickSpecialFunction(function)
         engineeringLogger.onClickSpecialFunction(function)
     }
-
 }

@@ -2,6 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.fragments.calculator
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
 import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
-import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
+import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
 import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.history.CalculatorHistoryDisplayFragment
@@ -50,8 +51,6 @@ class CalculatorFragment(
 
     private val mediatorController = MediatorController()
 
-    private val vibrationService by lazy { VibrationService(requireContext()) }
-
     // Instance
     private val calculatorCoreInstance = CalculatorCore()
 
@@ -60,12 +59,16 @@ class CalculatorFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        VibrationSingleton.getInstance(
+            requireContext().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        )
+
         binding.apply {
 
             // Setup the keyboard controllers
             numpadController.apply {
                 setNewMediator(mediatorController)
-                setVibrationListener(vibrationService)
             }
             engineeringController.setNewMediator(mediatorController)
 

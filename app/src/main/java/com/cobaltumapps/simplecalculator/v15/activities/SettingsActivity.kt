@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cobaltumapps.simplecalculator.databinding.ActivitySettingsBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
+import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationSingleton
 
 /** Активность, предоставляющая набор параметров для настройки приложения */
 class SettingsActivity : AppCompatActivity() {
@@ -49,6 +50,9 @@ class SettingsActivity : AppCompatActivity() {
                     OptionName.AllowVibration.name,
                     checked
                 )
+                if(checked) {
+                    VibrationSingleton.playVibration()
+                }
             }
         }
     }
