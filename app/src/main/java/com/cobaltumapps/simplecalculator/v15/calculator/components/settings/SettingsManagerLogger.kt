@@ -23,6 +23,25 @@ class SettingsManagerLogger(private val sharedPreferences: SharedPreferences): S
         )
     }
 
+    override fun getPreferenceCondition(keyName: String, defaultValue: String): String {
+        val source = sharedPreferences.getString(keyName, defaultValue)
+        Log.i(
+            LOG_TAG, "getPreferenceCondition:\n" +
+                    "KeyName: $keyName\n" +
+                    "Value: $source\n" +
+                    "Default value: $defaultValue"
+        )
+        return source ?: ""
+    }
+
+    override fun setPreferenceCondition(keyName: String, value: String) {
+        Log.i(
+            LOG_TAG, "setPreferenceCondition:\n" +
+                    "KeyName: $keyName\n" +
+                    "Value: $value"
+        )
+    }
+
     companion object {
         const val LOG_TAG = "SC_SettingManagerLoggerTag"
     }

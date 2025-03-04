@@ -10,6 +10,5 @@ object PreferencesKeys {
 
     // Keyboard
     const val keyAllowVibration = "key_vibration"
-    const val keyVibrationStrength = "key_vibrationStrength"
 
 }

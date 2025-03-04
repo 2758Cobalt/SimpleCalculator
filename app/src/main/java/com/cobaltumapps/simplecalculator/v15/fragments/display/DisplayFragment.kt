@@ -93,10 +93,7 @@ class DisplayFragment: DisplayComponent()  {
     }
 
     private fun loadLastExpression() {
-        val getExpression = sharedPreferences.getString(PreferencesKeys.keyLastExpression, "")
-
-        if (getExpression != null)
-            binding.displayExpressionField.text = getExpression
+        binding.displayExpressionField.text = sharedPreferences.getString(PreferencesKeys.keyLastExpression, "")
     }
 
     override fun onStop() {

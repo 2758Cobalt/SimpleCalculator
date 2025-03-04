@@ -5,10 +5,10 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.Ca
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayExpressionController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
+import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
 import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.CalendarService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
@@ -33,8 +33,6 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
     // Services
     var historyService: CalculatorHistoryController? = null
     var memoryService: MemoryControllerImpl? = null
-
-    var preferencesManager: PreferencesManager? = null
 
     private val calendarService = CalendarService()
 
@@ -188,18 +186,15 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
 
     /** Сохранение результата в память */
     private fun saveResultToMemoryFeature() {
-        preferencesManager?.getPreferenceCondition(OptionName.AutoSaveMemory) { condition ->
-            if (condition)
-                handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
-        }
+        val condition = SettingsSingleton.getPreferenceCondition(OptionName.AutoSaveMemory.name, false)
+        if (condition) handleOnClickSpecialFunction(KeyboardSpecialFunction.MemorySave)
     }
 
     fun getLastExpression() {
-        preferencesManager?.getPreferenceCondition(OptionName.KeepLastRecord) { condition ->
-            val gotExpression = preferencesManager?.sharedPreferences?.getString(PreferencesKeys.keyLastExpression, "")
-
-            if (condition && gotExpression != null)
-                calculatorController?.setExpression(gotExpression)
+        val condition = SettingsSingleton.getPreferenceCondition(OptionName.KeepLastRecord.name, false)
+        if (condition) {
+            val gotExpression = SettingsSingleton.getPreferenceCondition(PreferencesKeys.keyLastExpression, "")
+            calculatorController?.setExpression(gotExpression)
         }
     }
 

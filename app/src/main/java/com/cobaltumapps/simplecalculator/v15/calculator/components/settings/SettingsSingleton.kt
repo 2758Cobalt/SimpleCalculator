@@ -16,7 +16,15 @@ object SettingsSingleton: Settings {
         return instance?.getPreferenceCondition(keyName, defaultValue) ?: false
     }
 
-    override fun setPreferenceCondition(keyName: String, defaultValue: Boolean) {
-        instance?.setPreferenceCondition(keyName, defaultValue)
+    override fun setPreferenceCondition(keyName: String, value: Boolean) {
+        instance?.setPreferenceCondition(keyName, value)
+    }
+
+    override fun getPreferenceCondition(keyName: String, defaultValue: String): String {
+        return instance?.getPreferenceCondition(keyName, defaultValue) ?: ""
+    }
+
+    override fun setPreferenceCondition(keyName: String, value: String) {
+        instance?.setPreferenceCondition(keyName, value)
     }
 }

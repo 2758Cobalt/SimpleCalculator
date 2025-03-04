@@ -4,20 +4,18 @@ import android.content.Context
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
+import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
 
 class VibrationService(
     private val context: Context
 ): VibrationServiceController {
-    var preferencesManager: PreferencesManager? = null
 
     // Воспроизводит вибрацию
     override fun playVibration(ignorePreference: Boolean) {
-        preferencesManager?.getPreferenceCondition(OptionName.AllowVibration) { condition ->
-            if (condition)
-                vibrate()
-        }
+        val condition = SettingsSingleton.getPreferenceCondition(OptionName.AllowVibration.name, true)
+        if (condition)
+            vibrate()
     }
 
     private fun vibrate() {

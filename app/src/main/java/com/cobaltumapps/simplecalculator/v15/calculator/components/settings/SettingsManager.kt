@@ -21,5 +21,18 @@ class SettingsManager(
             settingsManagerLogger.setPreferenceCondition(keyName, value)
         }
     }
+
+    override fun getPreferenceCondition(keyName: String, defaultValue: String): String {
+        val source = sharedPreferences.getString(keyName, defaultValue)
+        settingsManagerLogger.getPreferenceCondition(keyName, defaultValue)
+        return source ?: ""
+    }
+
+    override fun setPreferenceCondition(keyName: String, value: String) {
+        sharedPreferences.edit {
+            putString(keyName, value)
+            settingsManagerLogger.setPreferenceCondition(keyName, value)
+        }
+    }
 }
 

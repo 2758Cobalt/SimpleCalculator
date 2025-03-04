@@ -14,7 +14,6 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.Ca
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
-import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationService
@@ -53,8 +52,6 @@ class CalculatorFragment(
 
     private val vibrationService by lazy { VibrationService(requireContext()) }
 
-    private val preferencesManager by lazy { PreferencesManager(sharedPreferences) }
-
     // Instance
     private val calculatorCoreInstance = CalculatorCore()
 
@@ -74,8 +71,6 @@ class CalculatorFragment(
 
             // Setup the mediator controller
             mediatorController.apply {
-                preferencesManager = this@CalculatorFragment.preferencesManager
-
                 displayController = displayFragment.displayController
                 numpadController = this@CalculatorFragment.numpadController
                 engNumpadController = engineeringController
