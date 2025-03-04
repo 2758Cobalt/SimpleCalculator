@@ -17,8 +17,7 @@ import com.cobaltumapps.simplecalculator.v15.activities.onBoarding.IntroductionA
 import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
+import com.cobaltumapps.simplecalculator.v15.google.admob.BannerAdMobSingleton
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,8 +29,7 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
     private val sharedPreferences by lazy {
         getSharedPreferences(ConstantsCalculator.vaultPreferences, Context.MODE_PRIVATE)
     }
-    // Ad (Advertisement)
-    private val adRequest by lazy { AdRequest.Builder().build() }
+
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,14 +56,9 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
         else
             calculatorFragment.calculatorNavigationListener = this
 
-        // Инициализация на потоке IO
-        lifecycleScope.launch(Dispatchers.IO) {
-            MobileAds.initialize(this@MainCalculatorActivity)
-        }
-
         // Загрузка рекламы на потоке Main
         lifecycleScope.launch(Dispatchers.Main) {
-            binding.calculatorAdViewBanner.loadAd(adRequest)
+            BannerAdMobSingleton.loadAd(binding.calculatorAdViewBanner)
         }
 
         val introductionCondition = sharedPreferences.getBoolean(INTRODUCTION_PREFERENCE_KEY, false)
@@ -94,17 +87,17 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
 
     override fun onResume() {
         super.onResume()
-        binding.calculatorAdViewBanner.resume()
+        BannerAdMobSingleton.resumeAd()
         binding.calculatorDrawer.closeDrawer(GravityCompat.START)
     }
 
     override fun onPause() {
         super.onPause()
-        binding.calculatorAdViewBanner.pause()
+        BannerAdMobSingleton.pauseAd()
     }
 
     override fun onDestroy() {
-        binding.calculatorAdViewBanner.destroy()
+        BannerAdMobSingleton.destroyAd()
         binding.calculatorDrawer.removeDrawerListener(actionBarDrawerToggle)
         super.onDestroy()
     }

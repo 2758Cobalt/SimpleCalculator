@@ -25,8 +25,10 @@ class SimpleApplication : Application(), Application.ActivityLifecycleCallbacks,
     override fun onCreate() {
         super.onCreate()
         registerActivityLifecycleCallbacks(this)
-        MobileAds.initialize(this) {}
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
+        MobileAds.initialize(this) {
+            BannerAdMobSingleton.getInstance()
+        }
         appOpenAdManager = AppOpenAdManager()
     }
 
