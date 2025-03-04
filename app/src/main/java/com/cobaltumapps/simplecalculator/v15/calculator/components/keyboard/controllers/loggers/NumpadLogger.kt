@@ -5,14 +5,14 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.inte
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardControllerMaster
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 
 class NumpadLogger: KeyboardControllerMaster(), KeyboardNumpadListener {
     override fun onClickNumber(number: Number) {
         Log.i(LOG_TAG, "onClickNumber: $number")
     }
 
-    override fun onClickMathOperation(operation: MathOperation) {
+    override fun onClickMathOperation(operation: KeyboardArifmeticOperation) {
         Log.i(LOG_TAG, "onClickOperation: ${operation.symbol}")
     }
 

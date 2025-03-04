@@ -13,7 +13,7 @@ import com.cobaltumapps.simplecalculator.databinding.LayoutNumpadBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.NumpadKeyboard
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -71,20 +71,20 @@ class NumpadFragment(
                 numpadNum8.setOnClickListener { onClickNumber(8) }
                 numpadNum9.setOnClickListener { onClickNumber(9) }
 
-                numpadAdd.setOnClickListener { onClickMathOperation(MathOperation.Add) }
-                numpadSub.setOnClickListener { onClickMathOperation(MathOperation.Subtract) }
-                numpadMul.setOnClickListener { onClickMathOperation(MathOperation.Multiply) }
-                numpadDivide.setOnClickListener { onClickMathOperation(MathOperation.Divide) }
+                numpadAdd.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.Add) }
+                numpadSub.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.Subtract) }
+                numpadMul.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.Multiply) }
+                numpadDivide.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.Divide) }
 
-                numpadPoint.setOnClickListener { onClickMathOperation(MathOperation.Point) }
+                numpadPoint.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.Point) }
 
                 numpadEqual.setOnClickListener {
                     onClickSpecialFunction(KeyboardSpecialFunction.Equal)
                     isInputOpenBracket = false
                 }
 
-                numpadOpenBracket.setOnClickListener { onClickMathOperation(MathOperation.OpenBracket) }
-                numpadCloseBracket.setOnClickListener { onClickMathOperation(MathOperation.CloseBracket) }
+                numpadOpenBracket.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.OpenBracket) }
+                numpadCloseBracket.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.CloseBracket) }
                 numpadAllClear.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.AllClear) }
 
                 val delay = 500

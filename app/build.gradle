@@ -1,18 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+    id 'com.google.devtools.ksp' version '2.1.0-1.0.29'
 }
 
 android {
     namespace 'com.cobaltumapps.simplecalculator'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId 'com.cobaltumapps.simplecalculator'
         minSdk 23
-        targetSdk 34
-        targetSdkVersion 34
+        targetSdk 35
+        targetSdkVersion 35
         versionCode 36
         versionName "1.5"
 
@@ -39,26 +39,18 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildToolsVersion '30.0.3'
     buildFeatures {
         viewBinding true
-    }
-
-    defaultConfig {
-        kapt {
-            arguments {arg("room.schemaLocation","$projectDir/schemas")}
-        }
     }
 
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
-    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.core:core-ktx:1.15.0'
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.material:material:1.12.0'
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'androidx.viewpager2:viewpager2:1.1.0'
     implementation 'androidx.preference:preference-ktx:1.2.1'
@@ -69,11 +61,11 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
     implementation 'androidx.room:room-ktx:2.6.1' // Дополнительно для Kotlin Coroutines, Kotlin Flows
-    kapt 'androidx.room:room-compiler:2.6.1' // Кодогенератор
+    ksp 'androidx.room:room-compiler:2.6.1' // Кодогенератор
 
     implementation 'com.google.android.gms:play-services-ads:23.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
 
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.8.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.8'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.8.8'
 }

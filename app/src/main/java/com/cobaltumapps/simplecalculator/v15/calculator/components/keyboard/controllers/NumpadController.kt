@@ -7,7 +7,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.mast
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardMaster
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 
 // Котроллер, который контроллирует действия numpad
 class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener {
@@ -24,7 +24,7 @@ class NumpadController: KeyboardControllerMaster(), KeyboardNumpadListener {
         numpadLogger.onClickNumber(number)
     }
 
-    override fun onClickMathOperation(operation: MathOperation) {
+    override fun onClickMathOperation(operation: KeyboardArifmeticOperation) {
         mediator?.handleOnClickMathOperation(operation)
         playVibration()
         numpadLogger.onClickMathOperation(operation)

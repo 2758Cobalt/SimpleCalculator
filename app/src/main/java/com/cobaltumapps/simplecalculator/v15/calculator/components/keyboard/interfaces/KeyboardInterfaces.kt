@@ -3,7 +3,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.int
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardMaster
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 
 interface KeyboardNumpadListener:
     KeyboardNumbersListener,
@@ -28,7 +28,7 @@ interface KeyboardNumbersListener {
 
 // Интерфейс, отвечающий за нажатие арифметичекой операции
 interface KeyboardMathOperationsListener {
-    fun onClickMathOperation(operation: MathOperation)
+    fun onClickMathOperation(operation: KeyboardArifmeticOperation)
 }
 
 // Интерфейс, отвечающий за нажатия на функцию

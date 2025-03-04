@@ -15,16 +15,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/MyTheme"
-        tools:targetApi="33">
-        <activity
-            android:name=".v15.activities.onBoarding.IntroductionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".v15.activities.SettingsActivity"
-            android:exported="false" />
-
-        <profileable android:shell="true" />
-
+        tools:targetApi="35">
         <activity
             android:name=".v15.activities.MainCalculatorActivity"
             android:exported="true">
@@ -34,6 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".v15.activities.onBoarding.IntroductionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".v15.activities.SettingsActivity"
+            android:exported="false" />
+
         <activity
             android:name=".v15.activities.MainConverterActivity"
             android:exported="false" />
@@ -41,13 +41,10 @@
             android:name=".v15.activities.NewsUpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".v15.activities.FeaturesActivity"
+            android:name=".v15.activities.PurchasesActivity"
             android:exported="false" />
         <activity
             android:name=".v15.activities.ArchiveActivity"
-            android:exported="false" />
-        <activity
-            android:name=".onBoarding.OnBoardingActivity"
             android:exported="false" />
 
         <meta-data

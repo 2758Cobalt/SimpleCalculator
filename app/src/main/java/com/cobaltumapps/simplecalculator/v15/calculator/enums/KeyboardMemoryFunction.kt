@@ -1,7 +1,0 @@
-package com.cobaltumapps.simplecalculator.v15.calculator.enums
-
-enum class KeyboardMemoryFunction {
-    MemorySave,
-    MemoryRead,
-    MemoryClear
-}

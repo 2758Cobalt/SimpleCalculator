@@ -8,7 +8,7 @@ import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.PurchasesUpdatedListener
 import com.android.billingclient.api.QueryProductDetailsParams
 
-class BillingClientManager(private val context: Context) {
+class BillingClientManager_d(private val context: Context) {
 
     private lateinit var billingClient: BillingClient
 

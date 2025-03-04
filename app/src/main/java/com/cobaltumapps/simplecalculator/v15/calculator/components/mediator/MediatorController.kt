@@ -7,7 +7,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.MathOperation
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.PreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
 import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.CalendarService
@@ -45,7 +45,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
     }
 
     // Обрабокта клика (мат. операция)
-    override fun handleOnClickMathOperation(operation: MathOperation) {
+    override fun handleOnClickMathOperation(operation: KeyboardArifmeticOperation) {
         val newExpression = calculatorController?.addToExpression(operation.symbol.toString())!!
         displayController?.setExpressionField(newExpression)
     }

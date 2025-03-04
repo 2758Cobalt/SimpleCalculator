@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.enums
 
 import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 
-enum class MathOperation (val symbol: Char) {
+enum class KeyboardArifmeticOperation (val symbol: Char) {
     None(' '),
     Add(ConstantsCalculator.symbolAdd),
     Subtract(ConstantsCalculator.symbolSub),

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class FeaturesViewModel(
-    private val billingClientManager: BillingClientManager,
+    private val billingClientManagerD: BillingClientManager_d,
     private val billingConnectionManager: BillingConnectionManager
 ) : ViewModel() {
 
@@ -24,7 +24,7 @@ class FeaturesViewModel(
         viewModelScope.launch {
             billingConnectionManager.connect {
                 // Когда подключение успешно, загружаем данные о продуктах
-                billingClientManager.queryProductDetails { productDetailsList ->
+                billingClientManagerD.queryProductDetails { productDetailsList ->
                     _productDetails.value = productDetailsList
                 }
             }
@@ -32,6 +32,6 @@ class FeaturesViewModel(
     }
 
     fun purchaseProduct(activity: Activity, productDetails: ProductDetails) {
-        billingClientManager.launchPurchaseFlow(activity, productDetails)
+        billingClientManagerD.launchPurchaseFlow(activity, productDetails)
     }
 }
