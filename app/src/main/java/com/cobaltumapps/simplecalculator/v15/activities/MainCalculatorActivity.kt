@@ -14,6 +14,7 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.activities.onBoarding.IntroductionActivity
+import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
 import com.google.android.gms.ads.AdRequest
@@ -36,6 +37,8 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        SettingsSingleton.getInstance(sharedPreferences)
 
         actionBarDrawerToggle = ActionBarDrawerToggle(this@MainCalculatorActivity,
             binding.calculatorDrawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
