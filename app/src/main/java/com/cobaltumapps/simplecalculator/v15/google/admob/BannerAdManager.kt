@@ -4,6 +4,4 @@ import com.google.android.gms.ads.AdView
 
 interface BannerAdManager {
     fun loadAd(adView: AdView)
-    fun hideAd()
-    fun showAd()
 }

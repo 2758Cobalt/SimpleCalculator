@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.commit
-import androidx.lifecycle.lifecycleScope
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
@@ -17,14 +16,10 @@ import com.cobaltumapps.simplecalculator.v15.activities.onBoarding.IntroductionA
 import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
-import com.cobaltumapps.simplecalculator.v15.google.admob.BannerAdMobSingleton
 import com.google.android.material.navigation.NavigationView
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    CalculatorNavigationListener
-{
+    CalculatorNavigationListener {
     private val binding by lazy { ActivityCalculatorBinding.inflate(layoutInflater) }
     private val sharedPreferences by lazy {
         getSharedPreferences(ConstantsCalculator.vaultPreferences, Context.MODE_PRIVATE)
@@ -56,11 +51,6 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
         else
             calculatorFragment.calculatorNavigationListener = this
 
-        // Загрузка рекламы на потоке Main
-        lifecycleScope.launch(Dispatchers.Main) {
-            BannerAdMobSingleton.loadAd(binding.calculatorAdViewBanner)
-        }
-
         val introductionCondition = sharedPreferences.getBoolean(INTRODUCTION_PREFERENCE_KEY, false)
         if (!introductionCondition) {
             startActivity(Intent(this@MainCalculatorActivity, IntroductionActivity::class.java))
@@ -87,17 +77,14 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
 
     override fun onResume() {
         super.onResume()
-        BannerAdMobSingleton.resumeAd()
         binding.calculatorDrawer.closeDrawer(GravityCompat.START)
     }
 
     override fun onPause() {
         super.onPause()
-        BannerAdMobSingleton.pauseAd()
     }
 
     override fun onDestroy() {
-        BannerAdMobSingleton.destroyAd()
         binding.calculatorDrawer.removeDrawerListener(actionBarDrawerToggle)
         super.onDestroy()
     }

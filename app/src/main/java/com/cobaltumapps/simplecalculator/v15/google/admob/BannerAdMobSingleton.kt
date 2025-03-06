@@ -1,40 +1,14 @@
 package com.cobaltumapps.simplecalculator.v15.google.admob
 
-import com.google.android.gms.ads.AdView
-
-object BannerAdMobSingleton: BannerAdManager, BannerAdStates {
+object BannerAdMobSingleton {
     @Volatile
-    private var instance: BannerAdMobManager? = null
+    private var instance: AdMobBannerManager? = null
 
-    fun getInstance(): BannerAdMobManager {
+    fun getInstance(): AdMobBannerManager {
         return instance ?: synchronized(this) {
-            instance ?: BannerAdMobManager().also {
+            instance ?: AdMobBannerManager().also {
                 instance = it
             }
         }
-    }
-
-    override fun loadAd(adView: AdView) {
-        instance?.loadAd(adView)
-    }
-
-    override fun hideAd() {
-        instance?.hideAd()
-    }
-
-    override fun showAd() {
-        instance?.showAd()
-    }
-
-    override fun pauseAd() {
-        instance?.pauseAd()
-    }
-
-    override fun resumeAd() {
-        instance?.resumeAd()
-    }
-
-    override fun destroyAd() {
-        instance?.destroyAd()
     }
 }

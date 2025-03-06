@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "852354108345",
+    "project_id": "simplecalculator-c846d",
+    "storage_bucket": "simplecalculator-c846d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852354108345:android:fd32a6df6b84344f64c468",
+        "android_client_info": {
+          "package_name": "com.cobaltumapps.simplecalculator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOaUJzg44Dhw2hFl_WO3yZn9Biw8UVlgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
