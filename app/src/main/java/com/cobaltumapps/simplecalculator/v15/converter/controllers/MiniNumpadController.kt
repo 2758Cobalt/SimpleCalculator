@@ -4,7 +4,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.inte
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialFunctionsListener
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 
-class ConverterNumpadController: KeyboardNumbersListener, KeyboardSpecialFunctionsListener {
+class MiniNumpadController: KeyboardNumbersListener, KeyboardSpecialFunctionsListener {
     override fun onClickNumber(number: Number) {
         TODO("Нужно реализовать обработку нажатия на число")
     }

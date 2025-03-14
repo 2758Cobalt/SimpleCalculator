@@ -10,10 +10,10 @@ import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterUnitModel
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterUnitsModel
 
 /** Адаптер отображающий список элементов конвертеров, где каждый элемент - конвертер*/
-class ConverterUnitsAdapter(
-    private var dataList: ConverterUnitsModel,
+class ConverterUnitsCycleAdapter(
     private var listener: OnAdapterSelectedItem? = null
 ): RecyclerView.Adapter<ConverterUnitViewHolder>(), OnAdapterSelectedItem {
+    private var dataList: ConverterUnitsModel = ConverterUnitsModel()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConverterUnitViewHolder {
         val binding = RecyclerConverterUnitItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,9 +24,8 @@ class ConverterUnitsAdapter(
         val unitTitle = dataList.unitsNameList[position]
 
         // Если спец. символ отсувствует - то вместо него просто печатается первая буква названия
-        val specialSymbol =
-            try {
-                dataList.unitsSpecialSymbolsList[position]
+        val specialSymbol = try {
+                dataList.unitsSpecialSymbolsList?.get(position)
             } catch (ex: IndexOutOfBoundsException) {
                 unitTitle.first().uppercase()
             }
@@ -37,6 +36,10 @@ class ConverterUnitsAdapter(
 
         holder.itemView.setOnClickListener {
             selectedItemPosition(position)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            TODO("Реализовать копирывание значения выбраного элемента в буфер обмена")
         }
     }
 
@@ -53,6 +56,10 @@ class ConverterUnitsAdapter(
     fun setNewData(newData: ConverterUnitsModel) {
         this.dataList = newData
         notifyDataSetChanged()
+    }
+
+    companion object {
+        const val LOG_TAG = "UnitsCycleAdapter"
     }
 }
 

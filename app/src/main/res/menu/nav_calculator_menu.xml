@@ -13,7 +13,6 @@
                 <item
                     android:id="@+id/menu_nav_converters"
                     android:icon="@drawable/ic_navigate_converters"
-                    android:enabled="false"
                     android:contentDescription="Go to a converters page"
                     android:title="Converters" />
 
@@ -26,10 +25,21 @@
                 <item
                     android:id="@+id/menu_nav_features"
                     android:icon="@drawable/ic_navigate_features"
-                    android:enabled="false"
                     android:contentDescription="Go to a features page"
                     android:title="Features" />
 
+                <item
+                    android:id="@+id/menu_nav_settings"
+                    android:icon="@drawable/ic_setting"
+                    android:contentDescription="Go to a settings page"
+                    android:title="Settings" />
+            </menu>
+
+        </item>
+
+        <item
+            android:title="Information">
+            <menu>
                 <item
                     android:id="@+id/menu_nav_news_update"
                     android:icon="@drawable/ic_nav_update_news"
@@ -41,16 +51,9 @@
                     android:icon="@drawable/ic_nav_info"
                     android:contentDescription="Go to an introduction page"
                     android:title="Introduction" />
-
-                <item
-                    android:id="@+id/menu_nav_settings"
-                    android:icon="@drawable/ic_setting"
-                    android:contentDescription="Go to a settings page"
-                    android:title="Settings" />
-
             </menu>
-
         </item>
+
 
     </group>
 </menu>

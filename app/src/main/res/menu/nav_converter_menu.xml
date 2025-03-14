@@ -13,46 +13,55 @@
                 <item
                     android:id="@+id/menu_weight"
                     android:icon="@drawable/ic_weight"
+                    android:checkable="true"
                     android:title="@string/converter_weight"/>
 
                 <item
                     android:id="@+id/menu_length"
                     android:icon="@drawable/ic_length"
+                    android:checkable="true"
                     android:title="@string/converter_length"/>
 
                 <item
                     android:id="@+id/menu_time"
                     android:icon="@drawable/ic_time"
+                    android:checkable="true"
                     android:title="@string/converter_time"/>
 
                 <item
                     android:id="@+id/menu_speed"
                     android:icon="@drawable/ic_speed"
+                    android:checkable="true"
                     android:title="@string/converter_speed"/>
 
                 <item
                     android:id="@+id/menu_temperature"
                     android:icon="@drawable/ic_temperatures"
+                    android:checkable="true"
                     android:title="@string/converter_temperature"/>
 
                 <item
                     android:id="@+id/menu_volume"
                     android:icon="@drawable/ic_volume"
+                    android:checkable="true"
                     android:title="@string/converter_volume"/>
 
                 <item
                     android:id="@+id/menu_area"
                     android:icon="@drawable/ic_area"
+                    android:checkable="true"
                     android:title="@string/converter_area"/>
 
                 <item
                     android:id="@+id/menu_frequency"
                     android:icon="@drawable/ic_frequency"
+                    android:checkable="true"
                     android:title="@string/converter_frequency"/>
 
                 <item
                     android:id="@+id/menu_data"
                     android:icon="@drawable/ic_data"
+                    android:checkable="true"
                     android:title="@string/converter_data"/>
             </menu>
 

@@ -28,20 +28,10 @@
         android:id="@+id/converterNumpadMC"
         style="@style/numpad_engineering"
         android:text="@string/symbolMemoryClear"
-        app:layout_constraintBottom_toTopOf="@+id/converterNumpad3"
-        app:layout_constraintEnd_toStartOf="@+id/materialButton"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/converterNumpadMR"
-        app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
-        style="@style/numpad_engineering"
-        android:text="/"
-        app:layout_constraintBottom_toTopOf="@+id/converterNumpadAC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/converterNumpadMC"
+        app:layout_constraintBottom_toTopOf="@+id/converterNumpad3"
         app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
 
     <com.google.android.material.button.MaterialButton
@@ -68,21 +58,11 @@
         android:id="@+id/converterNumpad3"
         style="@style/numpad_engineering"
         android:text="@string/symbolNum3"
-        app:layout_constraintBottom_toTopOf="@+id/converterNumpad6"
-        app:layout_constraintEnd_toStartOf="@+id/converterNumpadAC"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/converterNumpad2"
-        app:layout_constraintTop_toBottomOf="@+id/converterNumpadMC" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/converterNumpadAC"
-        style="@style/numpad_engineering"
-        android:text="@string/symbolAC"
-        app:layout_constraintBottom_toTopOf="@+id/converterNumpadBackspace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/converterNumpad3"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+        app:layout_constraintBottom_toTopOf="@+id/converterNumpad6"
+        app:layout_constraintTop_toBottomOf="@+id/converterNumpadMC" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/converterNumpad4"
@@ -109,20 +89,10 @@
         style="@style/numpad_engineering"
         android:text="@string/symbolNum6"
         app:layout_constraintBottom_toTopOf="@+id/converterNumpad9"
-        app:layout_constraintEnd_toStartOf="@+id/converterNumpadBackspace"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/converterNumpad5"
         app:layout_constraintTop_toBottomOf="@+id/converterNumpad3" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/converterNumpadBackspace"
-        style="@style/numpad_engineering"
-        android:text="@string/symbolBackSpace"
-        app:layout_constraintBottom_toTopOf="@+id/converterNumpadEnter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/converterNumpad6"
-        app:layout_constraintTop_toBottomOf="@+id/converterNumpadAC" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/converterNumpad7"
@@ -148,24 +118,16 @@
         android:id="@+id/converterNumpad9"
         style="@style/numpad_engineering"
         android:text="@string/symbolNum9"
-        app:layout_constraintBottom_toTopOf="@+id/converterNumpad00"
-        app:layout_constraintEnd_toStartOf="@+id/converterNumpadEnter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/converterNumpadBackspace"
         app:layout_constraintStart_toEndOf="@+id/converterNumpad8"
         app:layout_constraintTop_toBottomOf="@+id/converterNumpad6" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/converterNumpadEnter"
-        style="@style/numpad_engineering"
-        android:text="@string/symbolEnter"
-        app:layout_constraintStart_toEndOf="@id/converterNumpad9"
-        app:layout_constraintBottom_toTopOf="@+id/materialButtonCap2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/converterNumpadBackspace" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/converterNumpadPoint"
         style="@style/numpad_engineering"
         android:text="@string/symbolPoint"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/converterNumpad0"
         app:layout_constraintHorizontal_bias="0.5"
@@ -177,28 +139,18 @@
         style="@style/numpad_engineering"
         android:text="@string/symbolNum0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/converterNumpad00"
+        app:layout_constraintEnd_toStartOf="@+id/converterNumpadBackspace"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/converterNumpadPoint"
         app:layout_constraintTop_toBottomOf="@+id/converterNumpad8" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/converterNumpad00"
+        android:id="@+id/converterNumpadBackspace"
         style="@style/numpad_engineering"
-        android:text="@string/symbolNum00"
-        app:layout_constraintEnd_toStartOf="@id/materialButtonCap2"
+        android:text="@string/symbolBackSpace"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/converterNumpad0"
         app:layout_constraintTop_toBottomOf="@+id/converterNumpad9" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButtonCap2"
-        style="@style/numpad_engineering"
-        android:text="/"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/converterNumpad00"
-        app:layout_constraintTop_toBottomOf="@+id/converterNumpadEnter" />
 
 </merge>

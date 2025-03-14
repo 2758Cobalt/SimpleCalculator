@@ -63,10 +63,7 @@
         <item name="android:insetRight">0dp</item>
         <item name="android:padding">0dp</item>
 
-        <item name="autoSizeTextType">uniform</item>
-        <item name="autoSizeMaxTextSize">20sp</item>
-        <item name="autoSizeMinTextSize">8sp</item>
-        <item name="autoSizeStepGranularity">2sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleLarge</item>
     </style>
 
     <style name="numpad_engineering_special" parent="Widget.Material3.Button.IconButton.Filled">
@@ -84,10 +81,7 @@
         <item name="android:insetRight">0dp</item>
         <item name="android:padding">0dp</item>
 
-        <item name="autoSizeTextType">uniform</item>
-        <item name="autoSizeMaxTextSize">20sp</item>
-        <item name="autoSizeMinTextSize">8sp</item>
-        <item name="autoSizeStepGranularity">2sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleLarge</item>
     </style>
 
 </resources>
