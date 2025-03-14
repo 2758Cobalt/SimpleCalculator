@@ -39,6 +39,7 @@ class DisplayFragment: DisplayComponent()  {
                 pivotY = 100f
                 isVisible = false
             }
+            setMemoryField(0)
 
             displayExpressionField.inputType = InputType.TYPE_NULL
 
