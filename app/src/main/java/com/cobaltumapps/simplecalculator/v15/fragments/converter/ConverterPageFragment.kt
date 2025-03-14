@@ -12,12 +12,13 @@ import com.cobaltumapps.simplecalculator.databinding.FragmentConverterBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterNavigationItemSelectedListener
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.ConverterUnitsCycleAdapter
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.OnAdapterSelectedItem
+import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNumpadController
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterData
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
 import com.cobaltumapps.simplecalculator.v15.converter.loader.ConverterInfoLoader
 import com.cobaltumapps.simplecalculator.v15.converter.loader.interfaces.InfoLoaderListener
 import com.cobaltumapps.simplecalculator.v15.converter.loggers.ConverterPageLogger
-import com.cobaltumapps.simplecalculator.v15.fragments.numpad.MiniNumpadFragment
+import com.cobaltumapps.simplecalculator.v15.fragments.numpad.ConverterNumpadFragment
 
 /** Фрагмент, который содержит общую информацию о конвертере */
 class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem {
@@ -25,14 +26,15 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
 
     // Instances
     private val converterPageLogger = ConverterPageLogger()
-    private val miniNumpadFragment = MiniNumpadFragment()
+    private val converterNumpadController = ConverterNumpadController()
 
     private var converterData = ConverterData()
     private var converterUnitsCycleAdapter = ConverterUnitsCycleAdapter(this@ConverterPageFragment)
 
     private lateinit var converterInfoLoader: ConverterInfoLoader
+    private lateinit var converterNumpadFragment: ConverterNumpadFragment
 
-    private var selectedItemPos: Int = 0
+    private var selectedItemPos: Int = -1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +49,7 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
         super.onViewCreated(view, savedInstanceState)
 
         converterInfoLoader = ConverterInfoLoader(requireContext())
+        converterNumpadFragment = ConverterNumpadFragment(converterNumpadController)
 
         with(binding) {
             converterUnitRecycler.apply {
@@ -55,7 +58,7 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
             }
 
             parentFragmentManager.commit {
-                replace(converterNumpadFrame.id, miniNumpadFragment, MiniNumpadFragment.FRAG_TAG)
+                replace(converterNumpadFrame.id, converterNumpadFragment, ConverterNumpadFragment.FRAG_TAG)
             }
 
         }
@@ -76,10 +79,10 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
             converterUnitsCycleAdapter.setNewData(it.converterUnitsModel)
         }
         converterPageLogger.updateConverterData(converterData)
-        if (::binding.isInitialized) updateDataFields()
+        if (::binding.isInitialized) updatePageDataFields()
     }
 
-    private fun updateDataFields() {
+    private fun updatePageDataFields() {
         with(binding) {
             converterData.let {
                 converterUnitTitle.text = it.converterPageData.title

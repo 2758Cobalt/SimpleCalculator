@@ -4,9 +4,17 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.inte
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialFunctionsListener
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 
-class MiniNumpadController: KeyboardNumbersListener, KeyboardSpecialFunctionsListener {
+class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerListener? = null): KeyboardNumbersListener, KeyboardSpecialFunctionsListener, ConverterUserInputHandlerListener {
+    private var userInput = "0"
+
     override fun onClickNumber(number: Number) {
-        TODO("Нужно реализовать обработку нажатия на число")
+        if (userInput == "0") {
+            userInput = number.toString()
+        } else {
+            userInput += number.toString()
+        }
+
+        listener?.receiveUserInput()
     }
 
     override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
@@ -21,12 +29,23 @@ class MiniNumpadController: KeyboardNumbersListener, KeyboardSpecialFunctionsLis
                 TODO("Нужно реализовать функцию очистку памяти")
             }
             KeyboardSpecialFunction.AllClear -> {
-                TODO("Нужно реализовать функцию очистки")
+                userInput = "0"
+                listener?.receiveUserInput()
             }
             KeyboardSpecialFunction.Backspace -> {
-                TODO("Нужно реализовать функцию стирания")
+                val useInputBuilder = StringBuilder(userInput)
+
+                useInputBuilder.deleteCharAt(userInput.lastIndex)
+                userInput = useInputBuilder.toString()
+                listener?.receiveUserInput()
             }
-            else -> { KeyboardSpecialFunction.Skip }
+            else -> {
+                KeyboardSpecialFunction.Skip
+            }
         }
+    }
+
+    override fun receiveUserInput(): String {
+        return userInput
     }
 }
