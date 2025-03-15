@@ -19,6 +19,7 @@ import com.cobaltumapps.simplecalculator.v15.converter.loader.ConverterInfoLoade
 import com.cobaltumapps.simplecalculator.v15.converter.loader.interfaces.InfoLoaderListener
 import com.cobaltumapps.simplecalculator.v15.converter.loggers.ConverterPageLogger
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.ConverterNumpadFragment
+import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
 /** Фрагмент, который содержит общую информацию о конвертере */
 class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem {
@@ -94,11 +95,10 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
     /** Срабатывает при выборе элемента */
     override fun selectedItemPosition(position: Int) {
         selectedItemPos = position
-        Log.d(LOG_TAG, "Item selected position - $position")
+        Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "Item selected position - $position")
     }
 
     companion object {
         const val FRAG_TAG = "ConverterPageFragmentTag"
-        const val LOG_TAG = "ConverterPageFragmentLogTag"
     }
 }

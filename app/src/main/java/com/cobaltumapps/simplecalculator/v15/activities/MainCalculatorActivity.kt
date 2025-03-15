@@ -14,8 +14,8 @@ import com.cobaltumapps.simplecalculator.databinding.ActivityCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.activities.onBoarding.IntroductionActivity
 import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
-import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
-import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorFragment
+import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorPageFragment
+import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 import com.google.android.material.navigation.NavigationView
 
 class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
@@ -41,15 +41,15 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
 
         binding.calculatorNavigationView.setNavigationItemSelectedListener(this@MainCalculatorActivity)
 
-        val calculatorFragment = supportFragmentManager.findFragmentByTag(CalculatorFragment.TAG) as? CalculatorFragment
-        if (calculatorFragment == null) {
-            val newFragment = CalculatorFragment(this)
+        val calculatorPageFragment = supportFragmentManager.findFragmentByTag(CalculatorPageFragment.FRAG_TAG) as? CalculatorPageFragment
+        if (calculatorPageFragment == null) {
+            val newFragment = CalculatorPageFragment(this)
             supportFragmentManager.commit {
-                replace(binding.calculatorPlaceHolder.id, newFragment, CalculatorFragment.TAG)
+                replace(binding.calculatorPlaceHolder.id, newFragment, CalculatorPageFragment.FRAG_TAG)
             }
         }
         else
-            calculatorFragment.calculatorNavigationListener = this
+            calculatorPageFragment.calculatorNavigationListener = this
 
         val introductionCondition = sharedPreferences.getBoolean(INTRODUCTION_PREFERENCE_KEY, false)
         if (!introductionCondition) {
@@ -90,8 +90,6 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
     }
 
     companion object {
-        const val LOG_TAG = "SC_MainCalculatorActivity" +
-                "Tag"
         const val INTRODUCTION_PREFERENCE_KEY = "SC_IntroductionConditionShowedKey"
     }
 }

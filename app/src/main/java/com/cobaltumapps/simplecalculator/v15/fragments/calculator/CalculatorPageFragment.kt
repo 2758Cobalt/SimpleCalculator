@@ -15,8 +15,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.Ca
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
-import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
-import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryStorageControllerSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
 import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragment
@@ -26,10 +25,11 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.NumpadFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
+import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 /** Этот класс является хостом и хранит холдеры (place holders) для других модулей калькулятора */
-class CalculatorFragment(
+class CalculatorPageFragment(
     var calculatorNavigationListener: CalculatorNavigationListener? = null
 ): Fragment(), NumpadBottomBehaviorListener,
     EngineeringBottomBehaviorListener {
@@ -64,6 +64,8 @@ class CalculatorFragment(
             requireContext().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         )
 
+        MemoryStorageControllerSingleton.getInstance()
+
         binding.apply {
 
             // Setup the keyboard controllers
@@ -75,13 +77,12 @@ class CalculatorFragment(
             // Setup the mediator controller
             mediatorController.apply {
                 displayController = displayFragment.displayController
-                numpadController = this@CalculatorFragment.numpadController
+                numpadController = this@CalculatorPageFragment.numpadController
                 engNumpadController = engineeringController
 
                 historyService = calculatorHistoryDisplayFragment.calculatorHistoryController
-                memoryService = MemoryControllerImpl()
 
-                calculatorController = this@CalculatorFragment.calculatorController
+                calculatorController = this@CalculatorPageFragment.calculatorController
             }
             // Setup the controllers
             numpadFragment.setNewKeyboardController(numpadController)
@@ -94,7 +95,7 @@ class CalculatorFragment(
             if (savedInstanceState == null) {
                 // Добавляет фрагменты, если родитель не был пересоздан
                 parentFragmentManager.commit {
-                    add(calculatorDisplayHolder.id, displayFragment, DisplayFragment.TAG)
+                    add(calculatorDisplayHolder.id, displayFragment, DisplayFragment.FRAG_TAG)
                     add(numpadHolder.id, numpadFragment, NumpadFragment.TAG)
                     add(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragment.TAG)
                     add(calculatorHistoryHolder.id, calculatorHistoryDisplayFragment)
@@ -103,7 +104,7 @@ class CalculatorFragment(
             else {
                 // Заменяет старые фрагменты на новые, когда родитель был пересоздан
                 parentFragmentManager.commit {
-                    replace(calculatorDisplayHolder.id, displayFragment, DisplayFragment.TAG)
+                    replace(calculatorDisplayHolder.id, displayFragment, DisplayFragment.FRAG_TAG)
                     replace(numpadHolder.id, numpadFragment, NumpadFragment.TAG)
                     replace(engineeringNumpadHolder.id, engineeringFragment, EngineeringNumpadFragment.TAG)
                     replace(calculatorHistoryHolder.id, calculatorHistoryDisplayFragment)
@@ -141,7 +142,7 @@ class CalculatorFragment(
     }
 
     companion object {
-        const val TAG = "SC_CalculatorFragmentTag"
+        const val FRAG_TAG = "CalculatorPageFragmentTag"
         const val NUMPAD_FADING_MULTIPLIER = 25f
     }
 }

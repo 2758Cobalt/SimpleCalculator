@@ -15,8 +15,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.display.Displ
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.DisplayPreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
-import com.cobaltumapps.simplecalculator.v15.calculator.references.ConstantsCalculator
 import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
+import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 
 /** Фрагмент, содержащий дисплей калькулятора. Является наследником Display-компонента */
 class DisplayFragment: DisplayComponent()  {
@@ -109,7 +109,7 @@ class DisplayFragment: DisplayComponent()  {
         const val KEY_RESULT_FIELD = "SC_SavedStateResultField"
         const val KEY_MEMORY_FIELD = "SC_SavedStateMemoryField"
         const val KEY_ANGLE_FIELD = "SC_SavedStateAngleField"
-        const val TAG = "SC_DisplayFragmentTag"
+        const val FRAG_TAG = "DisplayFragmentTag"
     }
 
 }

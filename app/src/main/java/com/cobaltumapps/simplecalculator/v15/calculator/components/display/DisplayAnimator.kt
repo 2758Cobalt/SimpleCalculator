@@ -6,6 +6,7 @@ import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.animation.DisplayAnimationCleaning
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.animation.DisplayAnimationResult
 import com.cobaltumapps.simplecalculator.v15.constants.Property
+import com.cobaltumapps.simplecalculator.v15.references.LogTags
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 
 class DisplayAnimator : DisplayAnimationResult, DisplayAnimationCleaning {
@@ -28,7 +29,7 @@ class DisplayAnimator : DisplayAnimationResult, DisplayAnimationCleaning {
             )
         }
         else
-            Log.e(DisplayComponent.ERROR_TRACE, "Called method playDisplayResultAnim.\nDisplay binding is not initialized !!!")
+            Log.e(LogTags.LOG_DISPLAY_ANIMATOR, "Called method playDisplayResultAnim.\nDisplay binding is not initialized !!!")
     }
 
     override fun playHiddenResultAnim(onEnd: (() -> Unit)?) {
@@ -46,7 +47,7 @@ class DisplayAnimator : DisplayAnimationResult, DisplayAnimationCleaning {
             }
         }
         else
-            Log.e(DisplayComponent.ERROR_TRACE, "Called method playHiddenResultAnim.\nDisplay binding is not initialized !!!")
+            Log.e(LogTags.LOG_DISPLAY_ANIMATOR, "Called method playHiddenResultAnim.\nDisplay binding is not initialized !!!")
     }
 
     override fun playClearAnimation(onEnd: (() -> Unit)?) {
@@ -64,7 +65,7 @@ class DisplayAnimator : DisplayAnimationResult, DisplayAnimationCleaning {
             }
         }
         else
-            Log.e(DisplayComponent.ERROR_TRACE, "Called method playClearAnimation.\nDisplay binding is not initialized !!!")
+            Log.e(LogTags.LOG_DISPLAY_ANIMATOR, "Called method playClearAnimation.\nDisplay binding is not initialized !!!")
     }
 
     companion object {

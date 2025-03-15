@@ -41,7 +41,4 @@ open class DisplayComponent:
         displayController.clearResultField()
     }
 
-    companion object {
-        const val ERROR_TRACE = "DisplayComponent_ErrorTraceTag"
-    }
 }

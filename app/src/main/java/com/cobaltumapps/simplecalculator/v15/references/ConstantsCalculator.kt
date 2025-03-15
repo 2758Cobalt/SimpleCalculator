@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.v15.calculator.references
+package com.cobaltumapps.simplecalculator.v15.references
 
 object ConstantsCalculator {
     const val symbolAdd = '+'
