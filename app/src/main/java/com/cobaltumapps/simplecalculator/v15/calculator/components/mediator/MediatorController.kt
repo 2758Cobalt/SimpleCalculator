@@ -13,9 +13,10 @@ import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionN
 import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.CalendarService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfaces.HolderOnClickListener
-import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryControllerImpl
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryStorageControllerSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
+import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
 class MediatorController: MediatorClickHandler, HolderOnClickListener {
@@ -32,7 +33,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
 
     // Services
     var historyService: CalculatorHistoryController? = null
-    var memoryService: MemoryControllerImpl? = null
+    private val memoryStorageManager by lazy { MemoryStorageControllerSingleton.getInstance() }
 
     private val calendarService = CalendarService()
 
@@ -97,33 +98,33 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
 
                 // MemoryStorageManager
                 KeyboardSpecialFunction.MemorySave -> {
-                    memoryService?.saveMemoryValue(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                    memoryStorageManager.saveMemoryValue(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
                 }
 
                 KeyboardSpecialFunction.MemoryRead -> {
-                    calculatorController?.setExpression(memoryService?.readMemory()!!)
+                    calculatorController?.setExpression(memoryStorageManager.readMemory())
                     updateDisplayExpression()
                 }
 
                 KeyboardSpecialFunction.MemoryClear -> {
-                    memoryService?.clearMemory { result -> displayController?.setMemoryField(result) }
+                    memoryStorageManager.clearMemory { result -> displayController?.setMemoryField(result) }
                 }
 
                 // MemoryStorageManager operations
                 KeyboardSpecialFunction.MemoryAdd -> {
-                    memoryService?.addToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                    memoryStorageManager.addToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
                 }
 
                 KeyboardSpecialFunction.MemorySubtract -> {
-                    memoryService?.subtractFromMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                    memoryStorageManager.subtractFromMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
                 }
 
                 KeyboardSpecialFunction.MemoryMultiply -> {
-                    memoryService?.multiplyToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                    memoryStorageManager.multiplyToMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
                 }
 
                 KeyboardSpecialFunction.MemoryDivide -> {
-                    memoryService?.divideAtMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
+                    memoryStorageManager.divideAtMemory(calculatorController?.getCalculatedExpression()!!) { result -> displayController?.setMemoryField(result) }
                 }
 
                 // Angle mode
@@ -135,14 +136,14 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
 
                 // Функция - пропускает действие (если нужно)
                 KeyboardSpecialFunction.Skip -> {
-                    Log.d(LOG_TAG, "The special function is skipped")
+                    Log.d(LogTags.LOG_MEDIATOR_CONTROLLER, "The special function is skipped")
                 }
 
                 else -> KeyboardSpecialFunction.Skip
             }
         }
         catch (ex: NullPointerException) {
-            Log.e(LOG_TAG, "The special function is skipped")
+            Log.e(LogTags.LOG_MEDIATOR_CONTROLLER, "The special function is skipped")
         }
     }
 
@@ -198,8 +199,4 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
         }
     }
 
-    companion object {
-        const val LOG_TAG = "SC_MediatorController" +
-                "Tag"
-    }
 }
