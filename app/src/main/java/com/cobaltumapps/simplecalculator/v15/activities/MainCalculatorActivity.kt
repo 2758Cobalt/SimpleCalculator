@@ -65,14 +65,16 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
             R.id.menu_nav_archive -> startActivity(Intent(this@MainCalculatorActivity, ArchiveActivity::class.java))
             R.id.menu_nav_news_update -> startActivity(Intent(this@MainCalculatorActivity, NewsUpdateActivity::class.java))
             R.id.menu_nav_introduction -> startActivity(Intent(this@MainCalculatorActivity, IntroductionActivity::class.java))
-            R.id.menu_nav_settings -> startActivity(Intent(this@MainCalculatorActivity, SettingsActivity::class.java))
         }
         return true
     }
 
-    /** Открывает навигационное меню */
     override fun openNavigationMenu() {
         binding.calculatorDrawer.openDrawer(GravityCompat.START)
+    }
+
+    override fun openSettings() {
+        startActivity(Intent(this@MainCalculatorActivity, SettingsActivity::class.java))
     }
 
     override fun onResume() {

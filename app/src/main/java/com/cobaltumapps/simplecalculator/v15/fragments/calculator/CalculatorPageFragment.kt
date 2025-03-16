@@ -69,9 +69,7 @@ class CalculatorPageFragment(
         binding.apply {
 
             // Setup the keyboard controllers
-            numpadController.apply {
-                setNewMediator(mediatorController)
-            }
+            numpadController.setNewMediator(mediatorController)
             engineeringController.setNewMediator(mediatorController)
 
             // Setup the mediator controller
@@ -90,6 +88,7 @@ class CalculatorPageFragment(
 
             // The icons OnClickListeners
             calculatorNavigationMenuIcon.setOnClickListener { calculatorNavigationListener?.openNavigationMenu() }
+            calculatorSettingsIcon.setOnClickListener { calculatorNavigationListener?.openSettings() }
 
             // Display fragments
             if (savedInstanceState == null) {

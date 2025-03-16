@@ -17,4 +17,3 @@ open class MemoryStorageManager: MemoryStorageController {
         memoryStorage = 0.0
     }
 }
-

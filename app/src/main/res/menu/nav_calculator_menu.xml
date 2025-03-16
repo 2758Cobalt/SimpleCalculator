@@ -27,12 +27,6 @@
                     android:icon="@drawable/ic_navigate_features"
                     android:contentDescription="Go to a features page"
                     android:title="Features" />
-
-                <item
-                    android:id="@+id/menu_nav_settings"
-                    android:icon="@drawable/ic_setting"
-                    android:contentDescription="Go to a settings page"
-                    android:title="Settings" />
             </menu>
 
         </item>
