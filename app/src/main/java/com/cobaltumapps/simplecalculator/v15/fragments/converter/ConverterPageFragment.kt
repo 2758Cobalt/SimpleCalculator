@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cobaltumapps.simplecalculator.databinding.FragmentConverterBinding
+import com.cobaltumapps.simplecalculator.databinding.FragmentConverterPageBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterNavigationItemSelectedListener
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.ConverterUnitsCycleAdapter
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.OnAdapterSelectedItem
@@ -23,7 +23,7 @@ import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
 /** Фрагмент, который содержит общую информацию о конвертере */
 class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem {
-    private lateinit var binding: FragmentConverterBinding
+    private lateinit var binding: FragmentConverterPageBinding
 
     // Instances
     private val converterPageLogger = ConverterPageLogger()
@@ -42,7 +42,7 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentConverterBinding.inflate(layoutInflater)
+        binding = FragmentConverterPageBinding.inflate(layoutInflater)
         return binding.root
     }
 
