@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.converter.loader
 
 import android.content.Context
-import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterData
+import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterLoaderData
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterPageData
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterUnitsModel
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
@@ -14,12 +14,12 @@ class ConverterInfoLoader(
     private val converterInfoDrawableLoader = ConverterInfoDrawableLoader(applicationContext)
     private val converterInfoUnitLoader = ConverterInfoUnitLoader(applicationContext)
 
-    override fun getConverterData(converterType: ConverterType): ConverterData {
+    override fun getConverterData(converterType: ConverterType): ConverterLoaderData {
         val unitTitle = converterInfoTitleLoader.getTitle(converterType)
         val unitDrawable = converterInfoDrawableLoader.getDrawable(converterType)
         val unitResourcesList = converterInfoUnitLoader.getUnitModel(converterType)
 
-        return ConverterData(
+        return ConverterLoaderData(
             ConverterPageData(unitTitle, unitDrawable),
             ConverterUnitsModel(
                 unitResourcesList.unitsNameList,

@@ -13,7 +13,7 @@ import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterNavi
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.ConverterUnitsCycleAdapter
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.OnAdapterSelectedItem
 import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNumpadController
-import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterData
+import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterLoaderData
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
 import com.cobaltumapps.simplecalculator.v15.converter.loader.ConverterInfoLoader
 import com.cobaltumapps.simplecalculator.v15.converter.loader.interfaces.InfoLoaderListener
@@ -29,7 +29,7 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
     private val converterPageLogger = ConverterPageLogger()
     private val converterNumpadController = ConverterNumpadController()
 
-    private var converterData = ConverterData()
+    private var converterLoaderData = ConverterLoaderData()
     private var converterUnitsCycleAdapter = ConverterUnitsCycleAdapter(this@ConverterPageFragment)
 
     private lateinit var converterInfoLoader: ConverterInfoLoader
@@ -75,17 +75,17 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
         )
     }
 
-    override fun updateConverterData(converterData: ConverterData) {
-        this.converterData = converterData.also {
+    override fun updateConverterData(converterLoaderData: ConverterLoaderData) {
+        this.converterLoaderData = converterLoaderData.also {
             converterUnitsCycleAdapter.setNewData(it.converterUnitsModel)
         }
-        converterPageLogger.updateConverterData(converterData)
+        converterPageLogger.updateConverterData(converterLoaderData)
         if (::binding.isInitialized) updatePageDataFields()
     }
 
     private fun updatePageDataFields() {
         with(binding) {
-            converterData.let {
+            converterLoaderData.let {
                 converterUnitTitle.text = it.converterPageData.title
                 converterUnitThumbnail.setImageDrawable(it.converterPageData.drawable)
             }
