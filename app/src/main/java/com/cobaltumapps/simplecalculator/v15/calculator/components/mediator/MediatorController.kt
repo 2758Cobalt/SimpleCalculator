@@ -19,7 +19,9 @@ import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
 import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
 /* Класс-посредник который взаимодействует с нужными классами и их методами  */
-class MediatorController: MediatorClickHandler, HolderOnClickListener {
+class MediatorController: MediatorClickHandler, HolderOnClickListener, MediatorResultListener {
+    // Mediator
+    private val mediatorResultController = MediatorResultController()
 
     // Calculator
     var calculatorController: CalculatorController? = null
@@ -39,18 +41,21 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
 
     // Обработка клика (число)
     override fun handleOnClickNumber(number: Number) {
+        mediatorResultController.handleOnClickNumber(number)
         val newExpression = calculatorController?.addToExpression(number.toString())!!
         displayController?.setExpressionField(newExpression)
     }
 
     // Обрабокта клика (мат. операция)
     override fun handleOnClickMathOperation(operation: KeyboardArifmeticOperation) {
+        mediatorResultController.handleOnClickMathOperation(operation)
         val newExpression = calculatorController?.addToExpression(operation.symbol.toString())!!
         displayController?.setExpressionField(newExpression)
     }
 
     // Обработка клика (спец. операция)
     override fun handleOnClickSpecialOperation(operation: KeyboardSpecialOperation) {
+        mediatorResultController.handleOnClickSpecialOperation(operation)
         // Тут описываются только особенные операции, если такие есть
         val newExpression = calculatorController?.addToExpression(operation.symbol)!!
         displayController?.setExpressionField(newExpression)
@@ -62,15 +67,28 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
             when(function) {
                 // Функция - равно (=)
                 KeyboardSpecialFunction.Equal -> {
-                    // Обновляет поля выражения и результата вычисления и возвращает Pair<Выражение, результат вычисления>
-                    val result = updateCalculationFields()
+                    mediatorResultController.isResultCondition { isResult ->
+                        if (isResult) {
+                            val result = updateCalculationFields()
 
-                    // Устанавливает результат вычислений
-                    displayController?.setResultField(result.second)
+                            calculatorController?.setExpression(result.second)
 
-                    makeHistoryRecordFeature(result)
+                            displayController?.setExpressionField(result.second)
+                            displayController?.clearResultField()
+                        }
+                        else {
+                            // Обновляет поля выражения и результата вычисления и возвращает Pair<Выражение, результат вычисления>
+                            val result = updateCalculationFields()
 
-                    saveResultToMemoryFeature()
+                            // Устанавливает результат вычислений
+                            displayController?.setResultField(result.second)
+
+                            makeHistoryRecordFeature(result)
+
+                            saveResultToMemoryFeature()
+                        }
+
+                    }
                 }
 
                 // Функция - очистки последнего символа (Backspace)
@@ -141,10 +159,15 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
 
                 else -> KeyboardSpecialFunction.Skip
             }
+
+            mediatorResultController.handleOnClickSpecialFunction(function)
         }
         catch (ex: NullPointerException) {
             Log.e(LogTags.LOG_MEDIATOR_CONTROLLER, "The special function is skipped")
         }
+    }
+
+    override fun isResultCondition(onCalculatedResult: ((condition: Boolean) -> Unit?)?) {
     }
 
     /** При нажатии на элемент "Истории" - устанавливает в калькулятор выбраное выражение. Возвращает выбраное выражение */
@@ -173,7 +196,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
         return Pair(userExpression, calculatedResult)
     }
 
-    /** Добавляем в историю новый элемент */
+    /** Добавление в историю нового элемента */
     private fun makeHistoryRecordFeature(calculationData: Pair<String, String>) {
         historyService?.addHistoryItem(
             History(
@@ -200,3 +223,4 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener {
     }
 
 }
+
