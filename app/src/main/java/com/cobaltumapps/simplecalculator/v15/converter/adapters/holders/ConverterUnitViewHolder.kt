@@ -9,5 +9,6 @@ class ConverterUnitViewHolder(private val itemBinding: RecyclerConverterUnitItem
     fun bind(converterUnitModel: ConverterUnitModel) {
         itemBinding.unitTitleField.text = converterUnitModel.unitName
         itemBinding.unitSymbolField.text = converterUnitModel.unitSpecialSymbol
+        itemBinding.unitCalculationResultField.text = converterUnitModel.unitValue.toString()
     }
 }

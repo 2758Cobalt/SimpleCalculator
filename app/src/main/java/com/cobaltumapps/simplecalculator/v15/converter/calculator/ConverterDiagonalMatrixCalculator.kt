@@ -10,28 +10,31 @@ class ConverterDiagonalMatrixCalculator {
         valuesToConvertArray = newValues
     }
 
-    private fun getValue(sourceValue: Number, selectedItemPos: Int): Number {
-        var result = 0.0
+    private fun getValue(userInput: String, selectedItemPos: Int): Array<Number> {
+        val resultArray = mutableListOf<Number>()
 
         if (valuesToConvertArray.isNotEmpty() && selectedItemPos >= 0) {
             for (column in valuesToConvertArray.indices) {
                 try {
                     val valueToConvert = valuesToConvertArray[selectedItemPos][column]
-                    result = BigDecimal(sourceValue.toDouble()).also {
-                        it.multiply(
-                            valueToConvert.toBigDecimal(),
-                            MathContext.DECIMAL128
-                        )
-                    }.toDouble()
+
+                    val result = BigDecimal(userInput).multiply(
+                        valueToConvert.toBigDecimal(), MathContext.DECIMAL128)
+
+                    resultArray.add(result)
 
                 } catch (ex: ArrayIndexOutOfBoundsException) {
-                    return -256
+                    return arrayOf()
                 }
 
             }
 
         }
-        return result
+        return resultArray.toTypedArray()
+    }
+
+    fun calculate(userInput: String, selectedItemPos: Int): Array<Number> {
+        return getValue(userInput, selectedItemPos)
     }
 
 }

@@ -33,10 +33,12 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
                 listener?.receiveUserInput()
             }
             KeyboardSpecialFunction.Backspace -> {
-                val useInputBuilder = StringBuilder(userInput)
+                if (userInput.isNotEmpty()) {
+                    val useInputBuilder = StringBuilder(userInput)
 
-                useInputBuilder.deleteCharAt(userInput.lastIndex)
-                userInput = useInputBuilder.toString()
+                    useInputBuilder.deleteCharAt(userInput.lastIndex)
+                    userInput = useInputBuilder.toString()
+                }
                 listener?.receiveUserInput()
             }
             else -> {

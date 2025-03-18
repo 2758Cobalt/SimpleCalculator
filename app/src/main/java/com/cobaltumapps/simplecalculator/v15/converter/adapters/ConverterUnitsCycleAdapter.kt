@@ -13,7 +13,10 @@ import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterUnitsModel
 class ConverterUnitsCycleAdapter(
     private var listener: OnAdapterSelectedItem? = null
 ): RecyclerView.Adapter<ConverterUnitViewHolder>(), OnAdapterSelectedItem {
+    private var selectedItem = -1
+
     private var dataList: ConverterUnitsModel = ConverterUnitsModel()
+    private var valuesArray : Array<Number> = arrayOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConverterUnitViewHolder {
         val binding = RecyclerConverterUnitItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -30,17 +33,19 @@ class ConverterUnitsCycleAdapter(
                 unitTitle.first().uppercase()
             }
 
-        holder.bind(
-            ConverterUnitModel(unitTitle, specialSymbol)
-        )
+        if (selectedItem == position) {
+            holder.bind(ConverterUnitModel(unitTitle, specialSymbol, valuesArray[position]))
+        }
+        else {
+            holder.bind(
+                ConverterUnitModel(unitTitle, specialSymbol, valuesArray.getOrNull(position) ?: 0)
+            )
+        }
 
         holder.itemView.setOnClickListener {
             selectedItemPosition(position)
         }
 
-        holder.itemView.setOnLongClickListener {
-            TODO("Реализовать копирывание значения выбраного элемента в буфер обмена")
-        }
     }
 
     override fun getItemCount(): Int {
@@ -50,6 +55,7 @@ class ConverterUnitsCycleAdapter(
     /** При нажатии на элемент - слушателю отправляется позиция выбраного элемента */
     override fun selectedItemPosition(position: Int) {
         listener?.selectedItemPosition(position)
+        selectedItem = position
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -58,6 +64,11 @@ class ConverterUnitsCycleAdapter(
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setNewResults(newResults: Array<Number>) {
+        valuesArray = newResults
+        notifyDataSetChanged()
+    }
     companion object {
         const val LOG_TAG = "UnitsCycleAdapter"
     }

@@ -13,18 +13,22 @@ class ConverterInfoLoader(
     private val converterInfoTitleLoader = ConverterInfoTitleLoader(applicationContext)
     private val converterInfoDrawableLoader = ConverterInfoDrawableLoader(applicationContext)
     private val converterInfoUnitLoader = ConverterInfoUnitLoader(applicationContext)
+    private val converterInfoUnitValuesLoader = ConverterInfoUnitValuesLoader()
 
     override fun getConverterData(converterType: ConverterType): ConverterLoaderData {
         val unitTitle = converterInfoTitleLoader.getTitle(converterType)
         val unitDrawable = converterInfoDrawableLoader.getDrawable(converterType)
         val unitResourcesList = converterInfoUnitLoader.getUnitModel(converterType)
+        val unitValues = converterInfoUnitValuesLoader.getValuesToConvert(converterType)
 
         return ConverterLoaderData(
             ConverterPageData(unitTitle, unitDrawable),
             ConverterUnitsModel(
                 unitResourcesList.unitsNameList,
-                unitResourcesList.unitsSpecialSymbolsList
+                unitResourcesList.unitsSpecialSymbolsList,
+                unitValues
             )
         )
     }
 }
+

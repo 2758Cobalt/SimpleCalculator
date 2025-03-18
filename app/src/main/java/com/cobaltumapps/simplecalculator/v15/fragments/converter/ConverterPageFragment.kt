@@ -12,6 +12,7 @@ import com.cobaltumapps.simplecalculator.databinding.FragmentConverterPageBindin
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterNavigationItemSelectedListener
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.ConverterUnitsCycleAdapter
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.OnAdapterSelectedItem
+import com.cobaltumapps.simplecalculator.v15.converter.calculator.ConverterDiagonalMatrixCalculator
 import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNumpadController
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterLoaderData
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
@@ -35,7 +36,7 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
     private lateinit var converterInfoLoader: ConverterInfoLoader
     private lateinit var converterNumpadFragment: ConverterNumpadFragment
 
-    private var selectedItemPos: Int = -1
+    private val converterDiagonalMatrixCalculator = ConverterDiagonalMatrixCalculator()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -94,8 +95,16 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
 
     /** Срабатывает при выборе элемента */
     override fun selectedItemPosition(position: Int) {
-        selectedItemPos = position
+        val userInput = converterNumpadController.receiveUserInput()
+
+        converterDiagonalMatrixCalculator.setNewValuesToConvert(converterLoaderData.converterUnitsModel.unitsValuesToConvertArray)
+        val results = converterDiagonalMatrixCalculator.calculate(userInput, position)
+
+        converterUnitsCycleAdapter.setNewResults(results)
+
         Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "Item selected position - $position")
+        Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "UserInput: $userInput")
+        Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "CallculatedValues: $results")
     }
 
     companion object {

@@ -14,7 +14,7 @@
                     android:id="@+id/menu_nav_converters"
                     android:icon="@drawable/ic_navigate_converters"
                     android:contentDescription="Go to a converters page"
-                    android:title="Converters" />
+                    android:title="Calculators" />
 
                 <item
                     android:id="@+id/menu_nav_archive"
