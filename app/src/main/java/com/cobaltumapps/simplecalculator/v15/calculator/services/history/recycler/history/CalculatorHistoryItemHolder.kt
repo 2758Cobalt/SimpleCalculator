@@ -18,7 +18,7 @@ class CalculatorHistoryItemHolder(private val itemBinding: RecyclerHistoryItemBi
     }
 
     fun bindOnClickHistoryItem(historyItemListener: HolderOnClickListener?) {
-        itemBinding.historyCard.setOnClickListener { historyItemListener?.onHistoryItemClicked(currentExpression) }
+        itemBinding.historyContainer.setOnClickListener { historyItemListener?.onHistoryItemClicked(currentExpression) }
     }
 
 }
