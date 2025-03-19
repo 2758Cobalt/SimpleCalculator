@@ -71,6 +71,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:23.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
 
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.8'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.8.8'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.9'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.8.9'
+
+
+    testImplementation 'junit:junit:4.13.2'
 }

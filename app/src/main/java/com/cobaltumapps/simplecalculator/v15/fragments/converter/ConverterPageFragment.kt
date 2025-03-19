@@ -18,7 +18,6 @@ import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterLoaderData
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
 import com.cobaltumapps.simplecalculator.v15.converter.loader.ConverterInfoLoader
 import com.cobaltumapps.simplecalculator.v15.converter.loader.interfaces.InfoLoaderListener
-import com.cobaltumapps.simplecalculator.v15.converter.loggers.ConverterPageLogger
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.ConverterNumpadFragment
 import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
@@ -27,7 +26,6 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
     private lateinit var binding: FragmentConverterPageBinding
 
     // Instances
-    private val converterPageLogger = ConverterPageLogger()
     private val converterNumpadController = ConverterNumpadController()
 
     private var converterLoaderData = ConverterLoaderData()
@@ -80,7 +78,6 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
         this.converterLoaderData = converterLoaderData.also {
             converterUnitsCycleAdapter.setNewData(it.converterUnitsModel)
         }
-        converterPageLogger.updateConverterData(converterLoaderData)
         if (::binding.isInitialized) updatePageDataFields()
     }
 
@@ -103,8 +100,6 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
         converterUnitsCycleAdapter.setNewResults(results)
 
         Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "Item selected position - $position")
-        Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "UserInput: $userInput")
-        Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "CallculatedValues: $results")
     }
 
     companion object {

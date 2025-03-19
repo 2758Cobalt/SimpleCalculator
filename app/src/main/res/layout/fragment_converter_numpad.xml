@@ -15,6 +15,8 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/engineeringCard"
+            style="@style/Widget.Material3.CardView.Filled"
+            android:backgroundTint="@color/md_theme_surfaceContainerLowest"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.KeyboardSheet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

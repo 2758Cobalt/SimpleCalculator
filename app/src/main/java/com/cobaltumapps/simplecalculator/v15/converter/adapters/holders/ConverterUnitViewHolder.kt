@@ -11,4 +11,11 @@ class ConverterUnitViewHolder(private val itemBinding: RecyclerConverterUnitItem
         itemBinding.unitSymbolField.text = converterUnitModel.unitSpecialSymbol
         itemBinding.unitCalculationResultField.text = converterUnitModel.unitValue.toString()
     }
+
+    fun isSelected(condition: Boolean) {
+        itemBinding.unitCardView.apply {
+            isSelected = condition
+            strokeWidth = if (condition) 8 else 2
+        }
+    }
 }

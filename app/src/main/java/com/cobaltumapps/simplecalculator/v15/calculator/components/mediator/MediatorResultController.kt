@@ -20,11 +20,10 @@ class MediatorResultController: MediatorClickHandler, MediatorResultListener {
     }
 
     override fun handleOnClickSpecialFunction(function: KeyboardSpecialFunction) {
-        if (function == KeyboardSpecialFunction.Equal) {
-            isResult = !isResult
-        }
-        else {
-            isResult = false
+        isResult = if (function == KeyboardSpecialFunction.Equal) {
+            !isResult
+        } else {
+            false
         }
     }
 

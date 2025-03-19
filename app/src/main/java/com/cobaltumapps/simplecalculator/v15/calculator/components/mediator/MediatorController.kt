@@ -42,23 +42,20 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, MediatorR
     // Обработка клика (число)
     override fun handleOnClickNumber(number: Number) {
         mediatorResultController.handleOnClickNumber(number)
-        val newExpression = calculatorController?.addToExpression(number.toString())!!
-        displayController?.setExpressionField(newExpression)
+
+        addToExpression(number.toString())
     }
 
     // Обрабокта клика (мат. операция)
     override fun handleOnClickMathOperation(operation: KeyboardArifmeticOperation) {
         mediatorResultController.handleOnClickMathOperation(operation)
-        val newExpression = calculatorController?.addToExpression(operation.symbol.toString())!!
-        displayController?.setExpressionField(newExpression)
+        addToExpression(operation.symbol.toString())
     }
 
     // Обработка клика (спец. операция)
     override fun handleOnClickSpecialOperation(operation: KeyboardSpecialOperation) {
         mediatorResultController.handleOnClickSpecialOperation(operation)
-        // Тут описываются только особенные операции, если такие есть
-        val newExpression = calculatorController?.addToExpression(operation.symbol)!!
-        displayController?.setExpressionField(newExpression)
+        addToExpression(operation.symbol)
     }
 
     // Обработка клика (спец. функция)
@@ -175,6 +172,13 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, MediatorR
         calculatorController?.setExpression(expression)
         updateDisplayExpression()
         return expression
+    }
+
+    private fun addToExpression(newSymbol: String) {
+        calculatorController?.let {
+            val newExpression = it.addToExpression(newSymbol)
+            displayController?.setExpressionField(newExpression)
+        }
     }
 
     /** Обновление дисплея */

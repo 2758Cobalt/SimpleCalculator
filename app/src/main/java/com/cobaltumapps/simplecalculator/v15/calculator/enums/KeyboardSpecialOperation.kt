@@ -5,7 +5,6 @@ import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 enum class KeyboardSpecialOperation(val symbol: String) {
     SkipOperation(" "),
 
-    Point(ConstantsCalculator.symbolPoint.toString()),
     Percent(ConstantsCalculator.symbolPercent.toString()),
     Power(ConstantsCalculator.symbolPower.toString()),
     SQRT(ConstantsCalculator.symbolSqrt.toString()),
