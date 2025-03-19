@@ -71,5 +71,6 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     override fun onConverterNavigationItemSelected(converterType: ConverterType) {
         converterPageFragment.onConverterNavigationItemSelected(converterType)
+        binding.converterToolbar.title = converterType.name
     }
 }

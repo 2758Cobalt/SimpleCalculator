@@ -14,7 +14,7 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
             userInput += number.toString()
         }
 
-        listener?.receiveUserInput()
+        receiveUserInput(userInput)
     }
 
     override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
@@ -30,7 +30,7 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
             }
             KeyboardSpecialFunction.AllClear -> {
                 userInput = "0"
-                listener?.receiveUserInput()
+                receiveUserInput(userInput)
             }
             KeyboardSpecialFunction.Backspace -> {
                 if (userInput.isNotEmpty()) {
@@ -39,7 +39,8 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
                     useInputBuilder.deleteCharAt(userInput.lastIndex)
                     userInput = useInputBuilder.toString()
                 }
-                listener?.receiveUserInput()
+
+                receiveUserInput(userInput)
             }
             else -> {
                 KeyboardSpecialFunction.Skip
@@ -47,7 +48,7 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
         }
     }
 
-    override fun receiveUserInput(): String {
-        return userInput
+    override fun receiveUserInput(receivedInput: String) {
+        listener?.receiveUserInput(receivedInput)
     }
 }

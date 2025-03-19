@@ -14,6 +14,7 @@ import com.cobaltumapps.simplecalculator.v15.converter.adapters.ConverterUnitsCy
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.OnAdapterSelectedItem
 import com.cobaltumapps.simplecalculator.v15.converter.calculator.ConverterDiagonalMatrixCalculator
 import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNumpadController
+import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterUserInputHandlerListener
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterLoaderData
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
 import com.cobaltumapps.simplecalculator.v15.converter.loader.ConverterInfoLoader
@@ -22,11 +23,11 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.ConverterNumpadFra
 import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
 /** Фрагмент, который содержит общую информацию о конвертере */
-class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem {
+class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem, ConverterUserInputHandlerListener {
     private lateinit var binding: FragmentConverterPageBinding
 
     // Instances
-    private val converterNumpadController = ConverterNumpadController()
+    private val converterNumpadController = ConverterNumpadController(this@ConverterPageFragment)
 
     private var converterLoaderData = ConverterLoaderData()
     private var converterUnitsCycleAdapter = ConverterUnitsCycleAdapter(this@ConverterPageFragment)
@@ -35,6 +36,9 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
     private lateinit var converterNumpadFragment: ConverterNumpadFragment
 
     private val converterDiagonalMatrixCalculator = ConverterDiagonalMatrixCalculator()
+
+    private var selectedItemPosition = -1
+    private var userInput = "0"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,37 +73,33 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
 
     /** Срабатывает при выборе конвертера в меню */
     override fun onConverterNavigationItemSelected(converterType: ConverterType) {
-        updateConverterData(
-            converterInfoLoader.getConverterData(converterType)
-        )
+        updateConverterData(converterInfoLoader.getConverterData(converterType))
     }
 
     override fun updateConverterData(converterLoaderData: ConverterLoaderData) {
         this.converterLoaderData = converterLoaderData.also {
             converterUnitsCycleAdapter.setNewData(it.converterUnitsModel)
         }
-        if (::binding.isInitialized) updatePageDataFields()
-    }
 
-    private fun updatePageDataFields() {
-        with(binding) {
-            converterLoaderData.let {
-                converterUnitTitle.text = it.converterPageData.title
-                converterUnitThumbnail.setImageDrawable(it.converterPageData.drawable)
-            }
-        }
     }
 
     /** Срабатывает при выборе элемента */
     override fun selectedItemPosition(position: Int) {
-        val userInput = converterNumpadController.receiveUserInput()
+        selectedItemPosition = position
+        fillDataConverters()
+        Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "Item selected position - $position")
+    }
 
+    override fun receiveUserInput(receivedInput: String) {
+        userInput = receivedInput
+        fillDataConverters()
+    }
+
+    private fun fillDataConverters() {
         converterDiagonalMatrixCalculator.setNewValuesToConvert(converterLoaderData.converterUnitsModel.unitsValuesToConvertArray)
-        val results = converterDiagonalMatrixCalculator.calculate(userInput, position)
+        val results = converterDiagonalMatrixCalculator.calculate(userInput, selectedItemPosition)
 
         converterUnitsCycleAdapter.setNewResults(results)
-
-        Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "Item selected position - $position")
     }
 
     companion object {

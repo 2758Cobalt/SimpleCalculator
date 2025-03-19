@@ -5,7 +5,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.inte
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationSingleton
 
-class ConverterNumpadController: KeyboardNumbersListener, KeyboardSpecialFunctionsListener, ConverterUserInputHandlerListener {
+class ConverterNumpadController(private var listener: ConverterUserInputHandlerListener?): KeyboardNumbersListener, KeyboardSpecialFunctionsListener, ConverterUserInputHandlerListener {
     private val converterUserInputHandler = ConverterUserInputHandler(this@ConverterNumpadController)
 
     override fun onClickNumber(number: Number) {
@@ -17,8 +17,8 @@ class ConverterNumpadController: KeyboardNumbersListener, KeyboardSpecialFunctio
         converterUserInputHandler.onClickSpecialFunction(function)
     }
 
-    override fun receiveUserInput(): String {
-        return converterUserInputHandler.receiveUserInput()
+    override fun receiveUserInput(receivedInput: String) {
+        listener?.receiveUserInput(receivedInput)
     }
 
 }

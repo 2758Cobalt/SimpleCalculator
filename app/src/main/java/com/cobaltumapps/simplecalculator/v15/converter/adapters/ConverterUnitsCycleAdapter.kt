@@ -34,7 +34,7 @@ class ConverterUnitsCycleAdapter(
             }
 
         if (selectedItem == position) {
-            holder.bind(ConverterUnitModel(unitTitle, specialSymbol, valuesArray[position]))
+            holder.bind(ConverterUnitModel(unitTitle, specialSymbol, valuesArray.getOrNull(position) ?: 0))
             holder.isSelected(true)
         }
         else {
