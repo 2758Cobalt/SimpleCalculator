@@ -19,12 +19,16 @@
                 <item
                     android:id="@+id/menu_nav_archive"
                     android:icon="@drawable/ic_action_archive"
+                    android:enabled="false"
+                    android:visible="false"
                     android:contentDescription="Go to an archive page"
                     android:title="Archive" />
 
                 <item
                     android:id="@+id/menu_nav_features"
                     android:icon="@drawable/ic_navigate_features"
+                    android:enabled="false"
+                    android:visible="false"
                     android:contentDescription="Go to a features page"
                     android:title="Features" />
             </menu>
