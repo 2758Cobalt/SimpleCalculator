@@ -3,7 +3,6 @@ package com.cobaltumapps.simplecalculator.v15.calculator.enums
 import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 
 enum class KeyboardSpecialOperation(val symbol: String) {
-    SkipOperation(" "),
 
     Percent(ConstantsCalculator.symbolPercent.toString()),
     Power(ConstantsCalculator.symbolPower.toString()),

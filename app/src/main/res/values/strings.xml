@@ -116,5 +116,4 @@
     <!--UPDATE NEWS STRINGS-->
     <string name="newsUpdate_toolbar_title">News update</string>
 
-    <string name="history_display_titleHistoryEmpty">Your history is empty</string>
 </resources>

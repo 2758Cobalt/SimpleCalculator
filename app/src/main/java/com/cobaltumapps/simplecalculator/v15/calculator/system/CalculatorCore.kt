@@ -21,17 +21,19 @@ class CalculatorCore: Calculator() {
 
     // Расчитывает выражение и записывает в ответ
     override fun calculate(canTrimExpression: Boolean) {
-        // Расчёт выражения если выражение(строка) не пустое
-        if (userExpression.getExpression().isNotEmpty())
-        {
-            val resultParseTrigonometry = parseTrigonometryFunctions(userExpression.getExpression()) // Расчитывает тригонометрические функции
-            val resultCalculation = calculateExpression(resultParseTrigonometry) // Производит операцию над числами, и расчитывает выражение
-            val resultTrim = if(canTrimExpression) trimExpression(trimRange, resultCalculation) else resultCalculation // Сокращает числа после точки
-            this.result = resultTrim
-        }
-        else {
-            // Вызов исключения, если происходит попытка расчитать выражение пустой строки
-            Log.w(LOG_TAG, "expression is empty")
+        try {
+            // Расчёт выражения если выражение(строка) не пустое
+            if (userExpression.getExpression().isNotEmpty()) {
+                val resultParseTrigonometry = parseTrigonometryFunctions(userExpression.getExpression()) // Расчитывает тригонометрические функции
+                val resultCalculation = calculateExpression(resultParseTrigonometry) // Производит операцию над числами, и расчитывает выражение
+                val resultTrim = if(canTrimExpression) trimExpression(trimRange, resultCalculation) else resultCalculation // Сокращает числа после точки
+                this.result = resultTrim
+            }
+            else {
+                Log.w(LOG_TAG, "Expression is empty")
+            }
+        } catch(ex: Throwable) {
+            Log.e(LOG_TAG, "Calculator error: ${ex.cause}")
         }
     }
 
@@ -41,7 +43,7 @@ class CalculatorCore: Calculator() {
         val b: Double
         val c: Double
 
-        if (stackOperator.isNotEmpty()) // Проверка, что стек операторов не пуст
+        if (stackOperator.isNotEmpty() && stackOperand.isNotEmpty()) // Проверка, что стек операторов не пуст
         {
             when (stackOperator.peek()) {
                 // add (+)
@@ -145,6 +147,9 @@ class CalculatorCore: Calculator() {
                 }
             }
             stackOperator.pop()
+        }
+        else {
+            stackOperand.push(0.0)
         }
     }
 
