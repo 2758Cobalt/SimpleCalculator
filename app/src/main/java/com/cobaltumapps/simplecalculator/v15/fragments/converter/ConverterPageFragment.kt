@@ -23,7 +23,8 @@ import com.cobaltumapps.simplecalculator.v15.fragments.numpad.ConverterNumpadFra
 import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
 /** Фрагмент, который содержит общую информацию о конвертере */
-class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem, ConverterUserInputHandlerListener {
+class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem,
+    ConverterUserInputHandlerListener {
     private lateinit var binding: FragmentConverterPageBinding
 
     // Instances
@@ -80,7 +81,6 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
         this.converterLoaderData = converterLoaderData.also {
             converterUnitsCycleAdapter.setNewData(it.converterUnitsModel)
         }
-
     }
 
     /** Срабатывает при выборе элемента */

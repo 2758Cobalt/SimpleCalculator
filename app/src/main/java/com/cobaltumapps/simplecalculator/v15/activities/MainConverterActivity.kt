@@ -13,9 +13,9 @@ import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterPageFr
 import com.google.android.material.navigation.NavigationView
 
 class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    ConverterNavigationItemSelectedListener {
+    ConverterNavigationItemSelectedListener
+{
     private val binding by lazy { ActivityConverterBinding.inflate(layoutInflater) }
-
     private val converterPageFragment by lazy { ConverterPageFragment() }
 
     private lateinit var toggleButtonDrawer: ActionBarDrawerToggle
