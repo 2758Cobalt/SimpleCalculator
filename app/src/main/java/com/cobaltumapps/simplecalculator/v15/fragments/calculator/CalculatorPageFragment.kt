@@ -115,7 +115,7 @@ class CalculatorPageFragment(
 
     override fun onDestroyView() {
         sharedPreferences.edit {
-            putString(PreferencesKeys.keyLastExpression, calculatorController.getUserExpression().getExpression())
+            putString(PreferencesKeys.KEY_LAST_EXPRESSION, calculatorController.getUserExpression().getExpression())
         }
         super.onDestroyView()
     }

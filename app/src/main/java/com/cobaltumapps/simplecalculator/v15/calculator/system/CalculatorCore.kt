@@ -2,6 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.system
 
 import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
+import com.cobaltumapps.simplecalculator.v15.references.LogTags
 import java.math.BigInteger
 import java.util.Locale
 import java.util.Stack
@@ -30,10 +31,11 @@ class CalculatorCore: Calculator() {
                 this.result = resultTrim
             }
             else {
-                Log.w(LOG_TAG, "Expression is empty")
+                Log.e(LogTags.LOG_CALCULATOR_CORE, "User expression is empty")
+                this.result = 0.0
             }
         } catch(ex: Throwable) {
-            Log.e(LOG_TAG, "Calculator error: ${ex.cause}")
+            Log.e(LogTags.LOG_CALCULATOR_CORE, "Calculator error: ${ex.cause}")
         }
     }
 
@@ -249,7 +251,7 @@ class CalculatorCore: Calculator() {
                 if (currentNumber.toString().toDoubleOrNull() != null)
                     stackOperands.push(currentNumber.toString().toDouble())
                 else
-                    throw NumberFormatException("Невозможно перевести число в Double и добавить в стек с операндами")
+                    Log.e(LogTags.LOG_CALCULATOR_CORE, "EmptyStackException: ${javaClass.simpleName} ERROR calculation")
             }
 
             // Перебирает оставшиеся операторы
@@ -259,26 +261,26 @@ class CalculatorCore: Calculator() {
             return try {
                 stackOperands.peek()
             }catch (ex: java.util.EmptyStackException) {
-                Log.e("DebugTag", "EmptyStackException: ${javaClass.simpleName} ERROR calculation")
+                Log.e(LogTags.LOG_CALCULATOR_CORE, "EmptyStackException: ${javaClass.simpleName} ERROR calculation")
                 0.0
             }
 
 
         } catch (ex: java.lang.NumberFormatException) {
-            Log.e("DebugTag","Fatal error")
+            Log.e(LogTags.LOG_CALCULATOR_CORE,"calculateExpression: NumberFormatException")
             return 0.0
         }
 
     }
 
-    // Функция для определения приоритета оператора
+    /** Function of changing precedence */
     private fun getPrecedence(operator: Char): Int {
         return when (operator) {
             symbolAdd, symbolSub -> 1
             symbolMul, symbolFactorial, symbolDiv, symbolSqrt -> 2
             symbolPower -> 3
-            symbolPercent -> 4 // Наивысший приоритет
-            else -> 0  // Для '('
+            symbolPercent -> 4
+            else -> 0
         }
     }
 
@@ -316,7 +318,10 @@ class CalculatorCore: Calculator() {
                                 cosSymbol -> cos(argument)
                                 tanSymbol -> tan(argument)
                                 cotSymbol -> 1.0 / tan(result)
-                                else -> Log.e(LOG_TAG, "Неподдерживаемая функция: $functionName при переводе в радианы")
+                                else -> {
+                                    Log.e(LogTags.LOG_CALCULATOR_CORE, "Invalid trigonometry function: $functionName when translate to radians")
+                                    0.0
+                                }
                             }
                         }
 
@@ -326,14 +331,18 @@ class CalculatorCore: Calculator() {
                                 cosSymbol -> cos(Math.toRadians(argument))
                                 tanSymbol -> tan(Math.toRadians(argument))
                                 cotSymbol -> 1.0 / tan(Math.toRadians(result))
-                                else -> Log.e(LOG_TAG, "Неподдерживаемая функция: $functionName при переводе в градусы")
+                                else -> {
+                                    Log.e(LogTags.LOG_CALCULATOR_CORE, "Invalid trigonometry function: $functionName when translate to degrees")
+                                    0.0
+                                }
                             }
                         }
                     }
 
                 output = output.replace(match.value, "($value)")
             } catch (ex: NumberFormatException) {
-                output = "Error Trigonometry"
+                output = "0"
+                Log.e(LogTags.LOG_CALCULATOR_CORE, "Trigonometry: NumberFormatException: ${ex.message} ${ex.localizedMessage}\ncaused ${ex.cause}")
             }
         }
 
@@ -344,7 +353,7 @@ class CalculatorCore: Calculator() {
             val value = when (functionName) {
                 logSymbol -> log10(argument)
                 lnSymbol -> ln(argument)
-                else -> throw IllegalArgumentException("Неподдерживаемая функция: $functionName")
+                else -> throw IllegalArgumentException("Invalid log function: $functionName")
             }
             output = output.replace(match.value, "($value)")
         }

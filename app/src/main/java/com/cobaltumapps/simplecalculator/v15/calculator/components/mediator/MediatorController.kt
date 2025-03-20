@@ -221,7 +221,7 @@ class MediatorController: MediatorClickHandler, HolderOnClickListener, MediatorR
     fun getLastExpression() {
         val condition = SettingsSingleton.getPreferenceCondition(OptionName.KeepLastRecord.name, false)
         if (condition) {
-            val gotExpression = SettingsSingleton.getPreferenceCondition(PreferencesKeys.keyLastExpression, "")
+            val gotExpression = SettingsSingleton.getPreferenceCondition(PreferencesKeys.KEY_LAST_EXPRESSION, "")
             calculatorController?.setExpression(gotExpression)
         }
     }

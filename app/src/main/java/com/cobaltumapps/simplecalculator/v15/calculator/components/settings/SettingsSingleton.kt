@@ -27,4 +27,5 @@ object SettingsSingleton: Settings {
     override fun setPreferenceCondition(keyName: String, value: String) {
         instance?.setPreferenceCondition(keyName, value)
     }
+
 }

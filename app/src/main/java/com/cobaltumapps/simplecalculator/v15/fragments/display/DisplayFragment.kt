@@ -96,13 +96,13 @@ class DisplayFragment: DisplayComponent()  {
     }
 
     private fun loadLastExpression() {
-        binding.displayExpressionField.text = sharedPreferences.getString(PreferencesKeys.keyLastExpression, "")
+        binding.displayExpressionField.text = sharedPreferences.getString(PreferencesKeys.KEY_LAST_EXPRESSION, "")
     }
 
     override fun onStop() {
         super.onStop()
         sharedPreferences.edit {
-            putString(PreferencesKeys.keyLastExpression, binding.displayExpressionField.text.toString())
+            putString(PreferencesKeys.KEY_LAST_EXPRESSION, binding.displayExpressionField.text.toString())
         }
     }
 

@@ -2,7 +2,6 @@ package com.cobaltumapps.simplecalculator.v15.calculator.system
 
 import com.cobaltumapps.simplecalculator.v15.calculator.components.expression.Expression
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
-import com.cobaltumapps.simplecalculator.v15.calculator.managers.CalculatorManager
 import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 
 open class Calculator {
@@ -11,9 +10,6 @@ open class Calculator {
 
     protected var trimRange: Int = 9
     protected var angleMode: AngleMode = AngleMode.RAD
-
-    // Экземпляры
-    var calculatorManagerInstance: CalculatorManager? = null
 
     // Обищие данные
     var result: Double = 0.0
@@ -56,8 +52,4 @@ open class Calculator {
         result = 0.00
     }
 
-    companion object {
-        const val LOG_TAG = "SC_CalculatorTag"
-    }
 }
-

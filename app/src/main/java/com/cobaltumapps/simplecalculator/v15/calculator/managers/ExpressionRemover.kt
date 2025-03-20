@@ -2,8 +2,10 @@ package com.cobaltumapps.simplecalculator.v15.calculator.managers
 
 import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.managers.interfaces.CalculatorExpressionRemover
+import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
 class ExpressionRemover: CalculatorExpressionRemover {
+
     override fun removeLastSymbolExpression(sourceString: String): String {
         return if (sourceString.isNotEmpty()) {
                 val stringBuilder = StringBuilder(sourceString)
@@ -13,7 +15,7 @@ class ExpressionRemover: CalculatorExpressionRemover {
                 stringBuilder.toString()
             }
             else {
-                Log.e(LOG_TAG, "removeLastSymbolExpression: sourceString is blank or null")
+                Log.e(LogTags.LOG_EXPRESSION_REMOVER, "removeLastSymbolExpression: sourceString is blank or null")
                 return ""
         }
     }
@@ -27,7 +29,7 @@ class ExpressionRemover: CalculatorExpressionRemover {
                 if (!stringBuilder[index].isDigit()) {
                     deleteCharAt(index)
                 } else {
-                    // Находим первый символ, который не является цифрой
+
                     while (index >= 0 && stringBuilder[index].isDigit()) {
                         deleteCharAt(index)
                         index--
@@ -39,12 +41,8 @@ class ExpressionRemover: CalculatorExpressionRemover {
         }
 
         else {
-            Log.e(LOG_TAG, "removeDigitsFromEnd: sourceString is blank or null")
+            Log.e(LogTags.LOG_EXPRESSION_REMOVER, "removeDigitsFromEnd: sourceString is blank or null")
             return ""
         }
-    }
-
-    companion object {
-        const val LOG_TAG = ""
     }
 }
