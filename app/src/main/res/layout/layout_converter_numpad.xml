@@ -12,7 +12,7 @@
         app:layout_constraintEnd_toStartOf="@+id/converterNumpadMR"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
+        app:layout_constraintTop_toBottomOf="@+id/converterNumpadDragHandle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/converterNumpadMR"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toStartOf="@+id/converterNumpadMC"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/converterNumpadMS"
-        app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
+        app:layout_constraintTop_toBottomOf="@+id/converterNumpadDragHandle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/converterNumpadMC"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toTopOf="@+id/converterNumpad3"
-        app:layout_constraintTop_toBottomOf="@+id/numpadDragHandle" />
+        app:layout_constraintTop_toBottomOf="@+id/converterNumpadDragHandle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/converterNumpad1"

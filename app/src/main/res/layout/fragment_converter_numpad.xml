@@ -6,15 +6,15 @@
     android:layout_marginTop="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/numpadLayout"
+        android:id="@+id/converterNumpadLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:behavior_peekHeight="32dp"
-        app:behavior_hideable="false"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_hideable="false">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/engineeringCard"
+            android:id="@+id/converterNumpadCard"
             style="@style/Widget.Material3.CardView.Filled"
             android:backgroundTint="@color/md_theme_surfaceContainerLowest"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.KeyboardSheet"
@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/numpadDragHandle"
+            android:id="@+id/converterNumpadDragHandle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

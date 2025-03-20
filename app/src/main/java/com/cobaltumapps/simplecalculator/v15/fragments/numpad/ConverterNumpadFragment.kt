@@ -1,5 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.numpad
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,13 +14,13 @@ import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNump
 class ConverterNumpadFragment(
     private var converterNumpadController: ConverterNumpadController? = null
 ): Fragment() {
-
     private val binding by lazy { FragmentConverterNumpadBinding.inflate(layoutInflater) }
     private val bindingNumpadContent by lazy { LayoutConverterNumpadBinding.bind(binding.root) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
     : View = binding.root
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -36,8 +37,11 @@ class ConverterNumpadFragment(
                 converterNumpad8.setOnClickListener { converterNumpadController?.onClickNumber(8) }
                 converterNumpad9.setOnClickListener { converterNumpadController?.onClickNumber(9) }
 
-                converterNumpadBackspace.setOnClickListener { converterNumpadController?.onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
-                //converterNumpadAC.setOnClickListener { converterNumpadController?.onClickSpecialFunction(KeyboardSpecialFunction.AllClear) }
+                converterNumpadBackspace.apply {
+                    setOnClickListener { converterNumpadController?.onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
+                    setOnLongClickListener { converterNumpadController?.onClickSpecialFunction(KeyboardSpecialFunction.AllClear); true }
+                }
+
             }
         }
     }

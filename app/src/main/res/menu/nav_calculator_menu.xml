@@ -31,13 +31,7 @@
                     android:visible="false"
                     android:contentDescription="Go to a features page"
                     android:title="Features" />
-            </menu>
 
-        </item>
-
-        <item
-            android:title="Information">
-            <menu>
                 <item
                     android:id="@+id/menu_nav_news_update"
                     android:icon="@drawable/ic_nav_update_news"
@@ -50,6 +44,7 @@
                     android:contentDescription="Go to an introduction page"
                     android:title="Introduction" />
             </menu>
+
         </item>
 
 

@@ -26,6 +26,8 @@ class ConverterUnitsCycleAdapter(
     override fun onBindViewHolder(holder: ConverterUnitViewHolder, position: Int) {
         val unitTitle = dataList.unitsNameList[position]
 
+        val unitValue = valuesArray.getOrNull(position) ?: 0
+
         // Если спец. символ отсувствует - то вместо него просто печатается первая буква названия
         val specialSymbol = try {
                 dataList.unitsSpecialSymbolsList?.get(position)
@@ -34,12 +36,14 @@ class ConverterUnitsCycleAdapter(
             }
 
         if (selectedItem == position) {
-            holder.bind(ConverterUnitModel(unitTitle, specialSymbol, valuesArray.getOrNull(position) ?: 0))
+            holder.bind(
+                ConverterUnitModel(unitTitle, specialSymbol, unitValue)
+            )
             holder.isSelected(true)
         }
         else {
             holder.bind(
-                ConverterUnitModel(unitTitle, specialSymbol, valuesArray.getOrNull(position) ?: 0)
+                ConverterUnitModel(unitTitle, specialSymbol, unitValue)
             )
             holder.isSelected(false)
         }

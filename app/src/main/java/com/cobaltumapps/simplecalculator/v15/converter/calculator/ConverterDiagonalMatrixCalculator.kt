@@ -13,7 +13,7 @@ class ConverterDiagonalMatrixCalculator {
     private fun getValue(userInput: String, selectedItemPos: Int): Array<Number> {
         val resultArray = mutableListOf<Number>()
 
-        if (valuesToConvertArray.isNotEmpty() && selectedItemPos >= 0 && userInput.isNotEmpty()) {
+        if (valuesToConvertArray.isNotEmpty() && selectedItemPos >= 0 && userInput.isNotEmpty() && userInput != "0") {
             for (column in valuesToConvertArray.indices) {
                 try {
                     val valueToConvert = valuesToConvertArray[selectedItemPos][column]
