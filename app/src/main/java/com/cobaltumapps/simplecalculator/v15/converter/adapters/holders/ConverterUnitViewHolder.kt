@@ -18,4 +18,8 @@ class ConverterUnitViewHolder(private val itemBinding: RecyclerConverterUnitItem
             strokeWidth = if (condition) 8 else 2
         }
     }
+
+    fun setNewValue(value: String) {
+        itemBinding.unitCalculationResultField.text = value
+    }
 }

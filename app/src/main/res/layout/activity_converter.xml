@@ -37,13 +37,13 @@
             android:layout_height="match_parent">
 
             <!-- Main Content -->
-            <FrameLayout
-                android:id="@+id/converterViewHolder"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/converterViewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/converterAdViewBanner"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"/>
+                android:layout_centerVertical="true" />
 
             <com.google.android.gms.ads.AdView
                 android:id="@+id/converterAdViewBanner"

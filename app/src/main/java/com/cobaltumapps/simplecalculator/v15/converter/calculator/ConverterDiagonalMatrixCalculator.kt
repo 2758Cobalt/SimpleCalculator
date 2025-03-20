@@ -21,14 +21,13 @@ class ConverterDiagonalMatrixCalculator {
                     val result = BigDecimal(userInput).multiply(
                         valueToConvert.toBigDecimal(), MathContext.DECIMAL128)
 
-                    resultArray.add(result)
+                    resultArray.add(result.toDouble())
 
                 } catch (ex: ArrayIndexOutOfBoundsException) {
                     return arrayOf()
                 }
 
             }
-
         }
         return resultArray.toTypedArray()
     }

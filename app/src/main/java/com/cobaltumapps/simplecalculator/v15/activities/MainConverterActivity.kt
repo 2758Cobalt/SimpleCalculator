@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterBinding
+import com.cobaltumapps.simplecalculator.onBoarding.ViewPagerAdapter
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterNavigationItemSelectedListener
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
+import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterCalculatorFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterPageFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -16,7 +17,9 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     ConverterNavigationItemSelectedListener
 {
     private val binding by lazy { ActivityConverterBinding.inflate(layoutInflater) }
+
     private val converterPageFragment by lazy { ConverterPageFragment() }
+    private val converterCalculatorFragment by lazy { ConverterCalculatorFragment() }
 
     private lateinit var toggleButtonDrawer: ActionBarDrawerToggle
 
@@ -29,8 +32,12 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         with(binding) {
             converterNavigationView.setNavigationItemSelectedListener(this@MainConverterActivity)
 
-            supportFragmentManager.commit {
-                add(converterViewHolder.id, converterPageFragment, ConverterPageFragment.FRAG_TAG)
+            converterViewPager.apply {
+                adapter = ViewPagerAdapter(
+                    listOf(converterPageFragment, converterCalculatorFragment),
+                    supportFragmentManager,
+                    lifecycle
+                )
             }
 
             toggleButtonDrawer = ActionBarDrawerToggle(

@@ -13,7 +13,7 @@ import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNump
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class ConverterNumpadFragment(
-    private var converterNumpadController: ConverterNumpadController? = null
+    private var converterNumpadController: ConverterNumpadController
 ): Fragment() {
     private val binding by lazy { FragmentConverterNumpadBinding.inflate(layoutInflater) }
     private val bindingNumpadContent by lazy { LayoutConverterNumpadBinding.bind(binding.root) }
@@ -28,20 +28,20 @@ class ConverterNumpadFragment(
         super.onViewCreated(view, savedInstanceState)
 
         with(bindingNumpadContent) {
-            converterNumpad0.setOnClickListener { converterNumpadController?.onClickNumber(0) }
-            converterNumpad1.setOnClickListener { converterNumpadController?.onClickNumber(1) }
-            converterNumpad2.setOnClickListener { converterNumpadController?.onClickNumber(2) }
-            converterNumpad3.setOnClickListener { converterNumpadController?.onClickNumber(3) }
-            converterNumpad4.setOnClickListener { converterNumpadController?.onClickNumber(4) }
-            converterNumpad5.setOnClickListener { converterNumpadController?.onClickNumber(5) }
-            converterNumpad6.setOnClickListener { converterNumpadController?.onClickNumber(6) }
-            converterNumpad7.setOnClickListener { converterNumpadController?.onClickNumber(7) }
-            converterNumpad8.setOnClickListener { converterNumpadController?.onClickNumber(8) }
-            converterNumpad9.setOnClickListener { converterNumpadController?.onClickNumber(9) }
+            converterNumpad0.setOnClickListener { converterNumpadController.onClickNumber(0) }
+            converterNumpad1.setOnClickListener { converterNumpadController.onClickNumber(1) }
+            converterNumpad2.setOnClickListener { converterNumpadController.onClickNumber(2) }
+            converterNumpad3.setOnClickListener { converterNumpadController.onClickNumber(3) }
+            converterNumpad4.setOnClickListener { converterNumpadController.onClickNumber(4) }
+            converterNumpad5.setOnClickListener { converterNumpadController.onClickNumber(5) }
+            converterNumpad6.setOnClickListener { converterNumpadController.onClickNumber(6) }
+            converterNumpad7.setOnClickListener { converterNumpadController.onClickNumber(7) }
+            converterNumpad8.setOnClickListener { converterNumpadController.onClickNumber(8) }
+            converterNumpad9.setOnClickListener { converterNumpadController.onClickNumber(9) }
 
             converterNumpadBackspace.apply {
-                setOnClickListener { converterNumpadController?.onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
-                setOnLongClickListener { converterNumpadController?.onClickSpecialFunction(KeyboardSpecialFunction.AllClear); true }
+                setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
+                setOnLongClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.AllClear); true }
             }
         }
 
