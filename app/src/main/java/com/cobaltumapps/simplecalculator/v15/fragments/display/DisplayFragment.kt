@@ -11,6 +11,7 @@ import androidx.core.content.edit
 import androidx.core.view.isVisible
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.formatter.DisplayFormatter
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayComponent
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.DisplayPreferencesManager
@@ -24,6 +25,8 @@ class DisplayFragment: DisplayComponent()  {
 
     private lateinit var sharedPreferences: SharedPreferences
     private val displayPreferencesManager by lazy { DisplayPreferencesManager(sharedPreferences) }
+
+    private val displayFormatter = DisplayFormatter()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -85,12 +88,11 @@ class DisplayFragment: DisplayComponent()  {
     // Установка любого числового значения в поле выражения
     override fun setExpressionField(newExpression: String) {
         binding.displayExpressionField.text = newExpression
-        binding.displayExpressionField.requestLayout()
     }
 
     // Установка значение в поле с результатом
     override fun setResultField(newResult: String) {
-        binding.displayResultField.text = newResult
+        binding.displayResultField.text = displayFormatter.formatResult(newResult)
     }
 
     private fun loadLastExpression() {
