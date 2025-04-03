@@ -8,18 +8,19 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterBinding
 import com.cobaltumapps.simplecalculator.onBoarding.ViewPagerAdapter
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterNavigationItemSelectedListener
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterPageListener
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterCalculatorFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterPageFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    ConverterNavigationItemSelectedListener
+    ConverterNavigationItemSelectedListener, ConverterPageListener
 {
     private val binding by lazy { ActivityConverterBinding.inflate(layoutInflater) }
 
-    private val converterPageFragment by lazy { ConverterPageFragment() }
-    private val converterCalculatorFragment by lazy { ConverterCalculatorFragment() }
+    private val converterPageFragment = ConverterPageFragment(this@MainConverterActivity)
+    private val converterCalculatorFragment = ConverterCalculatorFragment()
 
     private lateinit var toggleButtonDrawer: ActionBarDrawerToggle
 
@@ -38,6 +39,7 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                     supportFragmentManager,
                     lifecycle
                 )
+                offscreenPageLimit = 2
             }
 
             toggleButtonDrawer = ActionBarDrawerToggle(
@@ -79,5 +81,9 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     override fun onConverterNavigationItemSelected(converterType: ConverterType) {
         converterPageFragment.onConverterNavigationItemSelected(converterType)
         binding.converterToolbar.title = converterType.name
+    }
+
+    override fun onClickedCalculatorButton() {
+        binding.converterViewPager.setCurrentItem(1, true)
     }
 }
