@@ -12,34 +12,38 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
     KeyboardMathOperationsListener,
     ConverterUserInputHandlerListener
 {
-    private var userInput = "0"
+    private var userEntry = "0"
 
     override fun onClickNumber(number: Number) {
-        if (userInput == "0") {
-            userInput = number.toString()
+        if (userEntry == "0") {
+            userEntry = number.toString()
         } else {
-            userInput += number.toString()
+            userEntry += number.toString()
         }
 
-        receiveUserEntry(userInput)
+        receiveUserEntry(userEntry)
     }
 
     override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
         when(function) {
             KeyboardSpecialFunction.AllClear -> {
-                userInput = "0"
-                receiveUserEntry(userInput)
+                userEntry = "0"
+                receiveUserEntry(userEntry)
             }
 
             KeyboardSpecialFunction.Backspace -> {
-                if (userInput.isNotEmpty()) {
-                    val useInputBuilder = StringBuilder(userInput)
+                if (userEntry.isNotEmpty()) {
+                    val useInputBuilder = StringBuilder(userEntry)
 
-                    useInputBuilder.deleteCharAt(userInput.lastIndex)
-                    userInput = useInputBuilder.toString()
+                    useInputBuilder.deleteCharAt(userEntry.lastIndex)
+                    userEntry = useInputBuilder.toString()
+                    if (userEntry.isEmpty())
+                        userEntry = "0"
                 }
+                else
+                    userEntry = "0"
 
-                receiveUserEntry(userInput)
+                receiveUserEntry(userEntry)
             }
 
             else -> {
@@ -51,8 +55,8 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
     override fun onClickMathOperation(operation: KeyboardArifmeticOperation) {
         when(operation) {
             KeyboardArifmeticOperation.Point -> {
-                userInput += operation.symbol
-                receiveUserEntry(userInput)
+                userEntry += operation.symbol
+                receiveUserEntry(userEntry)
             }
 
             else -> KeyboardArifmeticOperation.None
