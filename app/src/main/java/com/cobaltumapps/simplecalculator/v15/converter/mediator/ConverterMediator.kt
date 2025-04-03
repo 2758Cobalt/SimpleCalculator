@@ -5,19 +5,19 @@ import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNump
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterLoaderData
 import com.cobaltumapps.simplecalculator.v15.converter.loader.interfaces.InfoLoaderListener
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterCalculatorFragment
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.interfaces.ConverterCalculatorListener
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterCalculatorManager
-import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterPageFragment
+import com.cobaltumapps.simplecalculator.v15.fragments.converter.interfaces.ConverterCalculatorListener
 
 class ConverterMediator :
     OnAdapterSelectedItem, ConverterCalculatorListener,
-    ConverterNumpadControllerListener, InfoLoaderListener
+    ConverterNumpadControllerListener, InfoLoaderListener,
+    ConverterMediatorHardUpdater
 {
     private val converterCalculatorManager = ConverterCalculatorManager()
 
     // Сюда лучше интерфейсы фрагментов
     var calculatorFragmentInstance: ConverterCalculatorFragment? = null
-    var pageFragmentInstance: ConverterPageFragment? = null
+    var pageFragmentListener: ConverterCalculatorListener? = null
 
     private var calculatedResults: Array<Number> = arrayOf()
 
@@ -26,7 +26,7 @@ class ConverterMediator :
     }
 
     override fun listenCalculatedResults(results: Array<Number>) {
-        pageFragmentInstance?.listenCalculatedResults(results)
+        pageFragmentListener?.listenCalculatedResults(results)
     }
 
     override fun receiveUserEntry(userEntry: String) {
@@ -41,5 +41,9 @@ class ConverterMediator :
     override fun updateConverterData(converterLoaderData: ConverterLoaderData) {
         converterCalculatorManager.setNewData(converterLoaderData.converterUnitsModel.unitsValuesToConvertArray)
     }
-}
 
+    override fun hardUpdateCalculations() {
+        confirmEntry()
+    }
+
+}

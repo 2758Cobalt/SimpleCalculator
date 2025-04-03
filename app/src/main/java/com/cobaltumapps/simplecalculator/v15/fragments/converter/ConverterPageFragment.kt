@@ -34,7 +34,8 @@ class ConverterPageFragment(private val mediator: ConverterMediator): Fragment()
     private lateinit var converterInfoLoader: ConverterInfoLoader
 
     init {
-        mediator.pageFragmentInstance = this@ConverterPageFragment
+        mediator.pageFragmentListener = this@ConverterPageFragment
+        converterUnitsCycleAdapter.mediatorHardUpdaterListener = mediator
     }
 
     override fun onCreateView(

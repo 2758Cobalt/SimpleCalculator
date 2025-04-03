@@ -1,6 +1,5 @@
 package com.cobaltumapps.simplecalculator.v15.converter.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,11 +7,16 @@ import com.cobaltumapps.simplecalculator.databinding.RecyclerConverterUnitItemBi
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.holders.ConverterUnitViewHolder
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterUnitModel
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterUnitsModel
+import com.cobaltumapps.simplecalculator.v15.converter.mediator.ConverterMediatorHardUpdater
 
 /** Адаптер отображающий список элементов конвертеров, где каждый элемент - конвертер*/
 class ConverterUnitsCycleAdapter(
     private var listener: OnAdapterSelectedItem? = null
-): RecyclerView.Adapter<ConverterUnitViewHolder>(), OnAdapterSelectedItem {
+): RecyclerView.Adapter<ConverterUnitViewHolder>(),
+    OnAdapterSelectedItem, ConverterMediatorHardUpdater
+{
+    var mediatorHardUpdaterListener: ConverterMediatorHardUpdater? = null
+
     private var selectedItem = -1
 
     private var dataList: ConverterUnitsModel = ConverterUnitsModel()
@@ -60,23 +64,47 @@ class ConverterUnitsCycleAdapter(
 
     /** При нажатии на элемент - слушателю отправляется позиция выбраного элемента */
     override fun selectedItemPosition(position: Int) {
-        listener?.selectedItemPosition(position)
-        selectedItem = position
+        if (position < 0 || position >= itemCount) return // Проверка на выход за границы
+
+        if (selectedItem != position) {
+            val prevSelected = selectedItem
+            selectedItem = position
+
+            listener?.selectedItemPosition(position)
+            hardUpdateCalculations()
+
+            updateHolders(prevSelected, position)
+        }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setNewData(newData: ConverterUnitsModel) {
-        this.dataList = newData
-        notifyDataSetChanged()
+        dataList = newData.also {
+            notifyItemRangeChanged(0, it.unitsNameList.size)
+        }
+        selectedItem = -1
+        hardUpdateCalculations()
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setNewResults(newResults: Array<Number>) {
         valuesArray = newResults
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, dataList.unitsNameList.size)
     }
+
+    private fun updateHolders(prevPosition: Int, newPosition: Int) {
+        if (prevPosition in 0..<itemCount) {
+            notifyItemChanged(prevPosition)
+        }
+        if (newPosition in 0..<itemCount) {
+            notifyItemChanged(newPosition)
+        }
+    }
+
+    override fun hardUpdateCalculations() {
+        mediatorHardUpdaterListener?.hardUpdateCalculations()
+    }
+
     companion object {
         const val LOG_TAG = "UnitsCycleAdapter"
     }
-}
 
+}
