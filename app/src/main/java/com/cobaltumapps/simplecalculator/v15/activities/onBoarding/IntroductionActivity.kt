@@ -50,6 +50,9 @@ class IntroductionActivity : AppCompatActivity() {
             )
         }
 
+        // Open Beta caution
+        createdFragmentsList.add(IntroductionOpenBetaDemoFragment())
+
         binding.boardingViewPager.apply {
             adapter = ViewPagerAdapter(createdFragmentsList, supportFragmentManager, lifecycle)
             registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {

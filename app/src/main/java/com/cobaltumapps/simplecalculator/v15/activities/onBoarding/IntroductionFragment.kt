@@ -8,7 +8,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.cobaltumapps.simplecalculator.databinding.FragmentIntroductionBinding
 
-class IntroductionFragment: Fragment() {
+open class IntroductionFragment: Fragment() {
     private val binding by lazy { FragmentIntroductionBinding.inflate(layoutInflater) }
     private var boardingModel: IntroductionModel? = null
 
@@ -41,8 +41,11 @@ class IntroductionFragment: Fragment() {
         outState.putString(STATE_SUBTITLE_KEY, binding.subtitleContent.text.toString())
         super.onSaveInstanceState(outState)
     }
+
     companion object {
         const val STATE_TITLE_KEY = "SC_TestKey"
         const val STATE_SUBTITLE_KEY = "SC_TestKey1"
     }
+
 }
+

@@ -116,4 +116,15 @@
     <!--UPDATE NEWS STRINGS-->
     <string name="newsUpdate_toolbar_title">News update</string>
 
+
+    <!--OPEN BETA PAGE STRINGS-->
+    <string name="openBeta_cautionTitle">Pay attention!</string>
+    <string name="openBeta_unsupportAlert">This version of the application is open for beta testing, so there may be errors\n(although we try to prevent them)</string>
+
+    <string name="openBeta_unsupportedFunctionsTitle">Beta version of the application does not support</string>
+    <string name="openBeta_unsupportedAccessibility">Accessibility</string>
+    <string name="openBeta_unsupportedTablet">Layout support for tablets</string>
+    <string name="openBeta_unsupportedAppearance">Appearance</string>
+    <string name="openBeta_unsupportedCalculatorExtensions">Calculator extensions</string>
+
 </resources>
