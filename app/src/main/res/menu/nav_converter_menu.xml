@@ -14,6 +14,7 @@
                     android:id="@+id/menu_weight"
                     android:icon="@drawable/ic_weight"
                     android:checkable="true"
+                    android:checked="true"
                     android:title="@string/converter_weight"/>
 
                 <item
@@ -67,43 +68,70 @@
 
         </item>
 
-<!--        <item-->
-<!--            android:title="Algebra">-->
-<!--            <menu>-->
-<!--                <item-->
-<!--                    android:id="@+id/menu_ratio"-->
-<!--                    android:icon="@drawable/ic_length"-->
-<!--                    android:title="@string/converter_algebra_ratio"/>-->
+        <item android:title="General (American)">
+            <menu>
+                <item
+                    android:icon="@drawable/ic_weight"
+                    android:enabled="false"
+                    android:title="@string/converter_weight" />
 
-<!--            </menu>-->
-<!--        </item>-->
+                <item
+                    android:icon="@drawable/ic_length"
+                    android:enabled="false"
+                    android:title="@string/converter_length" />
 
-<!--        <item-->
-<!--            android:title="Geometry">-->
-<!--            <menu>-->
-<!--                <item-->
-<!--                    android:id="@+id/menu_square"-->
-<!--                    android:icon="@drawable/ic_frequency"-->
-<!--                    android:title="@string/converter_geometry_square"/>-->
+                <item
+                    android:icon="@drawable/ic_speed"
+                    android:enabled="false"
+                    android:title="@string/converter_speed" />
+            </menu>
+        </item>
 
-<!--            </menu>-->
-<!--        </item>-->
+        <item android:title="Algebra">
+            <menu>
+                <item
+                    android:title="Equation"
+                    android:enabled="false" />
+                <item
+                    android:title="Ratio"
+                    android:enabled="false" />
+                <item
+                    android:title="Proportion"
+                    android:enabled="false" />
+                <item
+                    android:title="Frops"
+                    android:enabled="false" />
+            </menu>
 
-<!--        <item-->
-<!--            android:title="Finance">-->
-<!--            <menu>-->
-<!--                <item-->
-<!--                    android:id="@+id/menu_unit_price"-->
-<!--                    android:icon="@drawable/ic_weight"-->
-<!--                    android:title="@string/converter_unit_price"/>-->
+        </item>
 
-<!--            </menu>-->
-<!--        </item>-->
+        <item android:title="Geometry">
+            <menu>
+                <item
+                    android:title="Shapes"
+                    android:icon="@drawable/ic_area"
+                    android:enabled="false" />
+                <item
+                    android:title="Equation"
+                    android:enabled="false" />
+            </menu>
+        </item>
 
-<!--        <item-->
-<!--            android:title="Other">-->
-<!--        </item>-->
+        <item android:title="Finance">
+            <menu>
+                <item
+                    android:title="Comming soon"
+                    android:enabled="false" />
+            </menu>
+        </item>
 
+        <item android:title="Science">
+            <menu>
+                <item
+                    android:title="Comming soon"
+                    android:enabled="false" />
+            </menu>
+        </item>
 
     </group>
 </menu>
