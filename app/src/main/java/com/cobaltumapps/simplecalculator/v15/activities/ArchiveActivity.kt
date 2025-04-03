@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityArchiveBinding
-import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ArchiveController
+import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.archive.ArchiveController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.archive.ArchiveRecyclerAdapter
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.ArchivedHistory
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History

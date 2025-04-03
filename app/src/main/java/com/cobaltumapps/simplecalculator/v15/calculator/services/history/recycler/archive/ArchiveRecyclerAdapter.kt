@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.databinding.RecyclerArchiveItemBinding
-import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ArchiveController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.DateService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.ArchivedHistory
 
