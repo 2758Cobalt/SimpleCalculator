@@ -4,7 +4,7 @@ import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemoryController
 
 class MemoryLogger: MemoryController {
-    override fun saveMemoryValue(value: Number, onSuccessful: ((result: Double) -> Unit?)) {
+    override fun saveMemoryValue(value: Number, onSuccessful: ((result: Double) -> Unit?)?) {
         Log.d(LOG_TAG, "The value: $value has been saved to the memory")
     }
 
@@ -13,7 +13,7 @@ class MemoryLogger: MemoryController {
         return 0.0
     }
 
-    override fun clearMemory(onSuccessful: ((result: Double) -> Unit?)) {
+    override fun clearMemory(onSuccessful: ((result: Double) -> Unit?)?) {
         Log.d(LOG_TAG, "The memory has been cleared")
     }
 

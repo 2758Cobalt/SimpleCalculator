@@ -12,7 +12,7 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
     KeyboardMathOperationsListener,
     ConverterUserInputHandlerListener
 {
-    private var userEntry = "0"
+    var userEntry = "0"
 
     override fun onClickNumber(number: Number) {
         if (userEntry == "0") {
@@ -66,4 +66,5 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
     override fun receiveUserEntry(receivedEntry: String) {
         listener?.receiveUserEntry(receivedEntry)
     }
+
 }

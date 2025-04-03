@@ -5,6 +5,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.inte
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialFunctionsListener
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryStorageControllerSingleton
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.interfaces.MemoryController
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationSingleton
 
 class ConverterNumpadController(private var controllerListener: ConverterNumpadControllerListener?):
@@ -13,7 +15,10 @@ class ConverterNumpadController(private var controllerListener: ConverterNumpadC
     KeyboardMathOperationsListener,
     ConverterUserInputHandlerListener
 {
+
     private val converterUserInputHandler = ConverterUserInputHandler(this@ConverterNumpadController)
+    private val memoryStorageController = MemoryStorageControllerSingleton.getInstance()
+    var memoryManagerListener: MemoryController? = null
 
     override fun onClickNumber(number: Number) {
         converterUserInputHandler.onClickNumber(number)
@@ -22,12 +27,19 @@ class ConverterNumpadController(private var controllerListener: ConverterNumpadC
 
     override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
         when(function) {
-            KeyboardSpecialFunction.MemorySave -> {}
-            KeyboardSpecialFunction.MemoryRead -> {}
-            KeyboardSpecialFunction.MemoryClear -> {}
+            KeyboardSpecialFunction.MemorySave -> memoryManagerListener?.saveMemoryValue(converterUserInputHandler.userEntry.toDoubleOrNull() ?: 0.0)
+            KeyboardSpecialFunction.MemoryRead -> {
+                memoryManagerListener?.readMemory()
+                converterUserInputHandler.userEntry = memoryStorageController.readMemory().toString()
+                TODO("Нужно реализовать чтение из памяти более правильным способом. Исправить костыли")
+            }
+            KeyboardSpecialFunction.MemoryClear -> memoryManagerListener?.clearMemory()
+
             KeyboardSpecialFunction.Enter -> { controllerListener?.confirmEntry() }
+
             else -> KeyboardSpecialFunction.Skip
         }
+
         converterUserInputHandler.onClickSpecialFunction(function)
     }
 
