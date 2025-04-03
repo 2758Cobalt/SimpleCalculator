@@ -19,7 +19,4 @@ class ConverterUnitViewHolder(private val itemBinding: RecyclerConverterUnitItem
         }
     }
 
-    fun setNewValue(value: String) {
-        itemBinding.unitCalculationResultField.text = value
-    }
 }

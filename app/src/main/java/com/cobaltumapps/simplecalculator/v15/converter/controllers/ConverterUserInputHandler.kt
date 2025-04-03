@@ -1,10 +1,17 @@
 package com.cobaltumapps.simplecalculator.v15.converter.controllers
 
+import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardMathOperationsListener
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardNumbersListener
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialFunctionsListener
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 
-class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerListener? = null): KeyboardNumbersListener, KeyboardSpecialFunctionsListener, ConverterUserInputHandlerListener {
+class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerListener? = null):
+    KeyboardNumbersListener,
+    KeyboardSpecialFunctionsListener,
+    KeyboardMathOperationsListener,
+    ConverterUserInputHandlerListener
+{
     private var userInput = "0"
 
     override fun onClickNumber(number: Number) {
@@ -14,24 +21,16 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
             userInput += number.toString()
         }
 
-        receiveUserInput(userInput)
+        receiveUserEntry(userInput)
     }
 
     override fun onClickSpecialFunction(function: KeyboardSpecialFunction) {
         when(function) {
-            KeyboardSpecialFunction.MemorySave -> {
-                TODO("Нужно реализовать функцию сохранения в память")
-            }
-            KeyboardSpecialFunction.MemoryRead -> {
-                TODO("Нужно реализовать функцию чтение из памяти")
-            }
-            KeyboardSpecialFunction.MemoryClear -> {
-                TODO("Нужно реализовать функцию очистку памяти")
-            }
             KeyboardSpecialFunction.AllClear -> {
                 userInput = "0"
-                receiveUserInput(userInput)
+                receiveUserEntry(userInput)
             }
+
             KeyboardSpecialFunction.Backspace -> {
                 if (userInput.isNotEmpty()) {
                     val useInputBuilder = StringBuilder(userInput)
@@ -40,15 +39,27 @@ class ConverterUserInputHandler(private val listener: ConverterUserInputHandlerL
                     userInput = useInputBuilder.toString()
                 }
 
-                receiveUserInput(userInput)
+                receiveUserEntry(userInput)
             }
+
             else -> {
                 KeyboardSpecialFunction.Skip
             }
         }
     }
 
-    override fun receiveUserInput(receivedInput: String) {
-        listener?.receiveUserInput(receivedInput)
+    override fun onClickMathOperation(operation: KeyboardArifmeticOperation) {
+        when(operation) {
+            KeyboardArifmeticOperation.Point -> {
+                userInput += operation.symbol
+                receiveUserEntry(userInput)
+            }
+
+            else -> KeyboardArifmeticOperation.None
+        }
+    }
+
+    override fun receiveUserEntry(receivedEntry: String) {
+        listener?.receiveUserEntry(receivedEntry)
     }
 }

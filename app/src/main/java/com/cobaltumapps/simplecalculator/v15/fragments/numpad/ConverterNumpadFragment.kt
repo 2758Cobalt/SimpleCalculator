@@ -47,6 +47,8 @@ class ConverterNumpadFragment(
             converterNumpadMS.setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.MemorySave) }
             converterNumpadMR.setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.MemoryRead) }
             converterNumpadMC.setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.MemoryClear) }
+
+            converterNumpadEnter.setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.Enter) }
         }
 
     }

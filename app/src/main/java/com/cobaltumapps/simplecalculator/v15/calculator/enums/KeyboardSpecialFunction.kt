@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.v15.calculator.enums
 
 enum class KeyboardSpecialFunction {
     Skip,
-    ApplyChanges,
+    Enter,
 
     AllClear,
     Backspace,

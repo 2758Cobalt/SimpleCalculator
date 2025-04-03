@@ -7,20 +7,25 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityConverterBinding
 import com.cobaltumapps.simplecalculator.onBoarding.ViewPagerAdapter
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterCalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterNavigationItemSelectedListener
-import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterPageListener
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterPageNavigationListener
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
+import com.cobaltumapps.simplecalculator.v15.converter.mediator.ConverterMediator
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterCalculatorFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.ConverterPageFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    ConverterNavigationItemSelectedListener, ConverterPageListener
+    ConverterNavigationItemSelectedListener, ConverterPageNavigationListener, ConverterCalculatorNavigationListener
 {
     private val binding by lazy { ActivityConverterBinding.inflate(layoutInflater) }
 
-    private val converterPageFragment = ConverterPageFragment(this@MainConverterActivity)
-    private val converterCalculatorFragment = ConverterCalculatorFragment()
+    private val converterMediator = ConverterMediator()
+
+    private val converterPageFragment = ConverterPageFragment(converterMediator)
+    private val converterCalculatorFragment = ConverterCalculatorFragment(converterMediator)
+
 
     private lateinit var toggleButtonDrawer: ActionBarDrawerToggle
 
@@ -29,6 +34,9 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
         setContentView(binding.root)
         setSupportActionBar(binding.converterToolbar)
+
+        converterPageFragment.navigationListener = this@MainConverterActivity
+        converterCalculatorFragment.navigationListener = this@MainConverterActivity
 
         with(binding) {
             converterNavigationView.setNavigationItemSelectedListener(this@MainConverterActivity)
@@ -85,5 +93,9 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     override fun onClickedCalculatorButton() {
         binding.converterViewPager.setCurrentItem(1, true)
+    }
+
+    override fun onConfirmUserEntry() {
+        binding.converterViewPager.setCurrentItem(0, true)
     }
 }

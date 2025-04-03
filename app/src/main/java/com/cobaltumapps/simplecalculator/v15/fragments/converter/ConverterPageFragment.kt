@@ -1,7 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.fragments.converter
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,19 +8,24 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cobaltumapps.simplecalculator.databinding.FragmentConverterPageBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterNavigationItemSelectedListener
+import com.cobaltumapps.simplecalculator.v15.activities.interfaces.ConverterPageNavigationListener
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.ConverterUnitsCycleAdapter
 import com.cobaltumapps.simplecalculator.v15.converter.adapters.OnAdapterSelectedItem
 import com.cobaltumapps.simplecalculator.v15.converter.data.ConverterLoaderData
 import com.cobaltumapps.simplecalculator.v15.converter.enums.ConverterType
 import com.cobaltumapps.simplecalculator.v15.converter.loader.ConverterInfoLoader
 import com.cobaltumapps.simplecalculator.v15.converter.loader.interfaces.InfoLoaderListener
+import com.cobaltumapps.simplecalculator.v15.converter.mediator.ConverterMediator
 import com.cobaltumapps.simplecalculator.v15.fragments.converter.interfaces.ConverterCalculatorListener
-import com.cobaltumapps.simplecalculator.v15.references.LogTags
 
 /** Фрагмент, который содержит общую информацию о конвертере */
-class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem,
-    ConverterCalculatorListener {
+class ConverterPageFragment(private val mediator: ConverterMediator): Fragment(),
+    ConverterNavigationItemSelectedListener, InfoLoaderListener, OnAdapterSelectedItem,
+    ConverterCalculatorListener
+{
     private lateinit var binding: FragmentConverterPageBinding
+
+    var navigationListener: ConverterPageNavigationListener? = null
 
     // Instances
     private var converterLoaderData = ConverterLoaderData()
@@ -29,7 +33,9 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
 
     private lateinit var converterInfoLoader: ConverterInfoLoader
 
-    private var selectedItemPosition = -1
+    init {
+        mediator.pageFragmentInstance = this@ConverterPageFragment
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,6 +66,10 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
                 }
             }
 
+            converterFAB.setOnClickListener {
+                navigationListener?.onClickedCalculatorButton()
+            }
+
         }
 
         // Default selected item
@@ -75,20 +85,21 @@ class ConverterPageFragment: Fragment(), ConverterNavigationItemSelectedListener
         this.converterLoaderData = converterLoaderData.also {
             converterUnitsCycleAdapter.setNewData(it.converterUnitsModel)
         }
+
+        mediator.updateConverterData(converterLoaderData)
     }
 
     /** Срабатывает при выборе элемента */
     override fun selectedItemPosition(position: Int) {
-        selectedItemPosition = position
-        Log.d(LogTags.LOG_CONVERTER_PAGE_FRAGMENT, "Item selected position - $position")
+        mediator.selectedItemPosition(position)
     }
 
-    override fun userEnteredValue() {
-
+    override fun listenCalculatedResults(results: Array<Number>) {
+        converterUnitsCycleAdapter.setNewResults(results)
     }
 
     companion object {
         const val FRAG_TAG = "ConverterPageFragmentTag"
     }
-}
 
+}
