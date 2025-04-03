@@ -4,7 +4,7 @@ class DisplayFormatter {
     private val calculationResultSeparator = CalculationResultSeparator()
 
     fun formatResult(sourceResult: String): String {
-        return calculationResultSeparator.separateResult(sourceResult)
+        return calculationResultSeparator.separateString(sourceResult)
     }
 
 }
