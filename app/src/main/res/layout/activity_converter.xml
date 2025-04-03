@@ -19,7 +19,8 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/converterToolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="?attr/actionBarSize"
+            app:title="" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -26,6 +26,10 @@ class ConverterNumpadFragment(
         super.onViewCreated(view, savedInstanceState)
 
         with(bindingNumpadContent) {
+            converterNumpad00.setOnClickListener {
+                converterNumpadController.onClickNumber(0)
+                converterNumpadController.onClickNumber(0)
+            }
             converterNumpad0.setOnClickListener { converterNumpadController.onClickNumber(0) }
             converterNumpad1.setOnClickListener { converterNumpadController.onClickNumber(1) }
             converterNumpad2.setOnClickListener { converterNumpadController.onClickNumber(2) }
@@ -38,6 +42,7 @@ class ConverterNumpadFragment(
             converterNumpad9.setOnClickListener { converterNumpadController.onClickNumber(9) }
 
             converterNumpadPoint.setOnClickListener { converterNumpadController.onClickMathOperation(KeyboardArifmeticOperation.Point) }
+            converterNumpadAllClear.setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.AllClear) }
 
             converterNumpadBackspace.apply {
                 setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
