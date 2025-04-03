@@ -11,8 +11,8 @@ import androidx.core.content.edit
 import androidx.core.view.isVisible
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
-import com.cobaltumapps.simplecalculator.v15.calculator.components.display.formatter.DisplayFormatter
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayComponent
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.formatter.DisplayFormatter
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.DisplayPreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName

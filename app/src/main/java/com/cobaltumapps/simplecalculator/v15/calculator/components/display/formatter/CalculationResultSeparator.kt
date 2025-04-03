@@ -3,18 +3,30 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.display.form
 class CalculationResultSeparator {
     private val separatorSymbol = " "
 
-    fun separateResult(sourceResult: String): String {
+    fun separateString(sourceString: String): String {
+        val pointInString = sourceString.contains('.')
+
+        var pointIsFound = false
         var currentSymbol = 0
 
         val resultString = StringBuilder()
 
-        sourceResult.reversed().forEach {
-            if (currentSymbol == 3) {
-                resultString.append(separatorSymbol)
-                currentSymbol = 0
+        sourceString.reversed().forEach {
+            if (pointInString && !pointIsFound) {
+                resultString.append(it)
+
+                if (it == '.') {
+                    pointIsFound = true
+                }
             }
-            resultString.append(it)
-            currentSymbol += 1
+            else {
+                if (currentSymbol == 3) {
+                    resultString.append(separatorSymbol)
+                    currentSymbol = 0
+                }
+                resultString.append(it)
+                currentSymbol += 1
+            }
         }
         return resultString.reversed().toString()
     }
