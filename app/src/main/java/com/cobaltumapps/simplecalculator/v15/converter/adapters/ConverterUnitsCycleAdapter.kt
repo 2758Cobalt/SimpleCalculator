@@ -20,7 +20,7 @@ class ConverterUnitsCycleAdapter(
     private var selectedItem = -1
 
     private var dataList: ConverterUnitsModel = ConverterUnitsModel()
-    private var valuesArray : Array<Number> = arrayOf()
+    private var valuesArray : MutableList<Number> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConverterUnitViewHolder {
         val binding = RecyclerConverterUnitItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -78,15 +78,14 @@ class ConverterUnitsCycleAdapter(
     }
 
     fun setNewData(newData: ConverterUnitsModel) {
-        dataList = newData.also {
-            notifyItemRangeChanged(0, it.unitsNameList.size)
-        }
+        valuesArray.clear()
         selectedItem = -1
-        hardUpdateCalculations()
+        dataList = newData
+        notifyDataSetChanged()
     }
 
     fun setNewResults(newResults: Array<Number>) {
-        valuesArray = newResults
+        valuesArray = newResults.toMutableList()
         notifyItemRangeChanged(0, dataList.unitsNameList.size)
     }
 
