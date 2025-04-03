@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.cobaltumapps.simplecalculator.databinding.FragmentConverterNumpadBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutConverterNumpadBinding
+import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.v15.converter.controllers.ConverterNumpadController
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class ConverterNumpadFragment(
     private var converterNumpadController: ConverterNumpadController
@@ -20,8 +20,6 @@ class ConverterNumpadFragment(
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
     : View = binding.root
-
-    private val converterNumpadBottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.converterNumpadLayout) }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,19 +37,18 @@ class ConverterNumpadFragment(
             converterNumpad8.setOnClickListener { converterNumpadController.onClickNumber(8) }
             converterNumpad9.setOnClickListener { converterNumpadController.onClickNumber(9) }
 
+            converterNumpadPoint.setOnClickListener { converterNumpadController.onClickMathOperation(KeyboardArifmeticOperation.Point) }
+
             converterNumpadBackspace.apply {
                 setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
                 setOnLongClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.AllClear); true }
             }
+
+            converterNumpadMS.setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.MemorySave) }
+            converterNumpadMR.setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.MemoryRead) }
+            converterNumpadMC.setOnClickListener { converterNumpadController.onClickSpecialFunction(KeyboardSpecialFunction.MemoryClear) }
         }
 
-        converterNumpadBottomSheetBehavior.addBottomSheetCallback(object:  BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            }
-        })
     }
 
     companion object {
