@@ -12,8 +12,7 @@
         android:layout_height="match_parent"
         app:behavior_peekHeight="32dp"
         app:behavior_hideable="false"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        >
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/engineeringCard"
@@ -36,9 +35,11 @@
         <include
             layout="@layout/layout_engineering"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/numpadEngSwipeView" />
+            app:layout_constraintEnd_toStartOf="@+id/numpadEngBackspace"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numpadEngAngleType"
+            app:layout_constraintTop_toBottomOf="@+id/numpadEngInvert" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

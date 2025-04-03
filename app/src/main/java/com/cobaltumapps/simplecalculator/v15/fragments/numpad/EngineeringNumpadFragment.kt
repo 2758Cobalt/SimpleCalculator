@@ -80,7 +80,7 @@ class EngineeringNumpadFragment(
                 numpadEngLn.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Ln) }
 
                 numpadEngBackspace.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
-                numpadEngEqual.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.Equal) }
+                numpadEngPower.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Power) }
 
                 numpadEngSqrt.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.SQRT) }
                 numpadEngFactorial.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Factorial) }

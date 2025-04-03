@@ -28,7 +28,7 @@
         android:id="@+id/numpadEngMC"
         style="@style/numpad_engineering"
         android:text="@string/symbolMemoryClear"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngFactorial"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngPower"
         app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryAdd"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngMR"
@@ -65,23 +65,33 @@
         app:layout_constraintTop_toBottomOf="@+id/numpadEngMR" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadEngFactorial"
+        android:id="@+id/numpadEngPower"
         style="@style/numpad_engineering"
-        android:text="@string/symbolFactorial"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngInvert"
+        android:text="@string/symbolPower"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngFactorial"
         app:layout_constraintEnd_toStartOf="@+id/numpadEngMemorySub"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngSqrt"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngMC" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/numpadEngFactorial"
+        style="@style/numpad_engineering"
+        android:text="@string/symbolFactorial"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngInvert"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryMul"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngCos"
+        app:layout_constraintTop_toBottomOf="@+id/numpadEngPower" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadEngInvert"
         style="@style/numpad_engineering"
         android:text="@string/symbolInvert"
         app:layout_constraintBottom_toTopOf="@+id/numpadEngLog"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryMul"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryDiv"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngCos"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngCot"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngFactorial" />
 
     <com.google.android.material.button.MaterialButton
@@ -118,10 +128,10 @@
         android:id="@+id/numpadEngLog"
         style="@style/numpad_engineering"
         android:text="@string/symbolLog"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngBackspace"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngMemoryDiv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngBackspace"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngCot"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngAngleType"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngInvert" />
 
     <com.google.android.material.button.MaterialButton
@@ -154,13 +164,11 @@
         app:layout_constraintStart_toEndOf="@+id/numpadEngTan"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngCos" />
 
-
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/numpadEngMemoryDiv"
         style="@style/numpad_engineering"
         android:text="@string/symbolMemoryDiv"
-        app:layout_constraintBottom_toTopOf="@+id/numpadEngEqual"
+        app:layout_constraintBottom_toTopOf="@+id/numpadEngBackspace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngLog"
@@ -181,7 +189,7 @@
         style="@style/numpad_engineering"
         android:text="@string/symbolRad"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngBackspace"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngLog"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngLn"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngCot" />
@@ -191,18 +199,8 @@
         style="@style/numpad_engineering"
         android:text="@string/symbolBackSpace"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngEqual"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngAngleType"
-        app:layout_constraintTop_toBottomOf="@+id/numpadEngLog" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/numpadEngEqual"
-        style="@style/numpad_engineering_special"
-        android:text="@string/symbolEqual"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngBackspace"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngLog"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryDiv" />
 </merge>
