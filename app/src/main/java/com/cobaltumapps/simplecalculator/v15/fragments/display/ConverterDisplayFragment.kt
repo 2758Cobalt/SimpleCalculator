@@ -15,6 +15,7 @@ import com.cobaltumapps.simplecalculator.v15.fragments.display.interfaces.Conver
 class ConverterDisplayFragment: DisplayComponent(),
     ConverterDisplayViewer, ConverterUserInputHandlerListener {
     private val binding by lazy { FragmentConverterDisplayBinding.inflate(layoutInflater) }
+    private val memoryStorageController = MemoryStorageControllerSingleton.getInstance()
 
     private val displayFormatter = DisplayFormatter()
 
@@ -25,7 +26,11 @@ class ConverterDisplayFragment: DisplayComponent(),
         if (savedInstanceState != null)
             binding.converterUserInputField.text = savedInstanceState.getString(KEY_USER_INPUT_FIELD)
 
-        setMemoryViewField(MemoryStorageControllerSingleton.getInstance().readMemory())
+    }
+
+    override fun onResume() {
+        setMemoryViewField(memoryStorageController.readMemory())
+        super.onResume()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

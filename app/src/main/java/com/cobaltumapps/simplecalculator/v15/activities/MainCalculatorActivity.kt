@@ -3,6 +3,7 @@ package com.cobaltumapps.simplecalculator.v15.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Vibrator
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,8 @@ import com.cobaltumapps.simplecalculator.databinding.ActivityCalculatorBinding
 import com.cobaltumapps.simplecalculator.v15.activities.interfaces.CalculatorNavigationListener
 import com.cobaltumapps.simplecalculator.v15.activities.onBoarding.IntroductionActivity
 import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryStorageControllerSingleton
+import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationSingleton
 import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorPageFragment
 import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 import com.google.android.material.navigation.NavigationView
@@ -32,6 +35,8 @@ class MainCalculatorActivity : AppCompatActivity(), NavigationView.OnNavigationI
         setContentView(binding.root)
 
         SettingsSingleton.getInstance(sharedPreferences)
+        VibrationSingleton.getInstance(getSystemService(Context.VIBRATOR_SERVICE) as Vibrator)
+        MemoryStorageControllerSingleton.getInstance()
 
         actionBarDrawerToggle = ActionBarDrawerToggle(this@MainCalculatorActivity,
             binding.calculatorDrawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close)

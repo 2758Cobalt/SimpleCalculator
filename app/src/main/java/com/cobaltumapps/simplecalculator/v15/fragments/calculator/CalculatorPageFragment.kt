@@ -2,7 +2,6 @@ package com.cobaltumapps.simplecalculator.v15.fragments.calculator
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,6 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.Ca
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.mediator.MediatorController
-import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryStorageControllerSingleton
-import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
 import com.cobaltumapps.simplecalculator.v15.fragments.display.DisplayFragment
 import com.cobaltumapps.simplecalculator.v15.fragments.history.CalculatorHistoryDisplayFragment
@@ -59,12 +56,6 @@ class CalculatorPageFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        VibrationSingleton.getInstance(
-            requireContext().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        )
-
-        MemoryStorageControllerSingleton.getInstance()
 
         binding.apply {
 

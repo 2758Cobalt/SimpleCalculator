@@ -16,6 +16,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.display.forma
 import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.DisplayPreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
+import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryStorageControllerSingleton
 import com.cobaltumapps.simplecalculator.v15.preferences.PreferencesKeys
 import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 
@@ -25,6 +26,7 @@ class DisplayFragment: DisplayComponent()  {
 
     private lateinit var sharedPreferences: SharedPreferences
     private val displayPreferencesManager by lazy { DisplayPreferencesManager(sharedPreferences) }
+    private val memoryStorageController = MemoryStorageControllerSingleton.getInstance()
 
     private val displayFormatter = DisplayFormatter()
 
@@ -42,7 +44,6 @@ class DisplayFragment: DisplayComponent()  {
                 pivotY = 100f
                 isVisible = false
             }
-            setMemoryField(0)
 
             displayExpressionField.inputType = InputType.TYPE_NULL
 
@@ -97,6 +98,11 @@ class DisplayFragment: DisplayComponent()  {
 
     private fun loadLastExpression() {
         binding.displayExpressionField.text = sharedPreferences.getString(PreferencesKeys.KEY_LAST_EXPRESSION, "")
+    }
+
+    override fun onResume() {
+        setMemoryField(memoryStorageController.readMemory())
+        super.onResume()
     }
 
     override fun onStop() {
