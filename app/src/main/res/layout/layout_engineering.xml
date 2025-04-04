@@ -59,7 +59,7 @@
         style="@style/numpad_engineering"
         android:text="@string/symbolSqrt"
         app:layout_constraintBottom_toTopOf="@+id/numpadEngCos"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngFactorial"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngPower"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngPercent"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngMR" />
@@ -101,7 +101,7 @@
         app:layout_constraintBottom_toTopOf="@+id/numpadEngMemoryMul"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngFactorial"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngPower"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryAdd" />
 
     <!-- Group 3 -->
@@ -119,7 +119,7 @@
         style="@style/numpad_engineering"
         android:text="@string/symbolCos"
         app:layout_constraintBottom_toTopOf="@+id/numpadEngCot"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngInvert"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngFactorial"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngSin"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngSqrt" />
@@ -141,7 +141,7 @@
         app:layout_constraintBottom_toTopOf="@+id/numpadEngMemoryDiv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngInvert"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngFactorial"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngMemorySub" />
 
     <!-- Group 3 -->
@@ -159,7 +159,7 @@
         style="@style/numpad_engineering"
         android:text="@string/symbolCot"
         app:layout_constraintBottom_toTopOf="@+id/numpadEngAngleType"
-        app:layout_constraintEnd_toStartOf="@+id/numpadEngLog"
+        app:layout_constraintEnd_toStartOf="@+id/numpadEngInvert"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/numpadEngTan"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngCos" />
@@ -171,7 +171,7 @@
         app:layout_constraintBottom_toTopOf="@+id/numpadEngBackspace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/numpadEngLog"
+        app:layout_constraintStart_toEndOf="@+id/numpadEngInvert"
         app:layout_constraintTop_toBottomOf="@+id/numpadEngMemoryMul" />
 
     <!-- Group 4 -->

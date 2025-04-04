@@ -23,9 +23,8 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     private val converterMediator = ConverterMediator()
 
-    private val converterPageFragment = ConverterPageFragment(converterMediator)
-    private val converterCalculatorFragment = ConverterCalculatorFragment(converterMediator)
-
+    private lateinit var converterPageFragment: ConverterPageFragment
+    private lateinit var converterCalculatorFragment: ConverterCalculatorFragment
 
     private lateinit var toggleButtonDrawer: ActionBarDrawerToggle
 
@@ -35,8 +34,13 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         setContentView(binding.root)
         setSupportActionBar(binding.converterToolbar)
 
-        converterPageFragment.navigationListener = this@MainConverterActivity
-        converterCalculatorFragment.navigationListener = this@MainConverterActivity
+        if (savedInstanceState == null) {
+            converterPageFragment = ConverterPageFragment(converterMediator)
+            converterCalculatorFragment = ConverterCalculatorFragment(converterMediator)
+
+            converterPageFragment.navigationListener = this@MainConverterActivity
+            converterCalculatorFragment.navigationListener = this@MainConverterActivity
+        }
 
         with(binding) {
             converterNavigationView.setNavigationItemSelectedListener(this@MainConverterActivity)
