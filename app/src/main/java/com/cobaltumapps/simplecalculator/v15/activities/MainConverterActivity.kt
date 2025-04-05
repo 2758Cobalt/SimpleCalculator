@@ -1,6 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.activities
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -88,6 +89,18 @@ class MainConverterActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     override fun onDestroy() {
         binding.converterDrawer.removeDrawerListener(toggleButtonDrawer)
         super.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_converter_options, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.converter_action_home -> finishActivity(0)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onConverterNavigationItemSelected(converterType: ConverterType) {
