@@ -14,14 +14,14 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.Hist
 
 @Database(entities = [History::class, ArchivedHistory::class], version = 2, exportSchema = false)
 abstract class HistoryDatabase: RoomDatabase() {
+
     abstract fun getHistoryDao(): HistoryDao
     abstract fun getArchivedHistoryDao(): ArchivedHistoryDao
-
 
     companion object {
         private val MIGRATION_1_2 = object: Migration(1,2) {
             override fun migrate(db: SupportSQLiteDatabase) {
-                // Создание новой таблицы с изменённым типом столбца
+
                 val table_migration_name = "SC_HistoryTableMIGRATION1_2"
                 val table_default_name = "SC_HistoryTable"
                 db.execSQL("""
@@ -39,13 +39,12 @@ abstract class HistoryDatabase: RoomDatabase() {
                     FROM `$table_default_name`
                 """.trimIndent())
 
-                // Удаление старой таблицы
                 db.execSQL("DROP TABLE `$table_default_name`")
 
-                // Переименование новой таблицы в оригинальное имя
                 db.execSQL("ALTER TABLE `$table_migration_name` RENAME TO $table_default_name")
             }
         }
+
         @Volatile
         private var instance: HistoryDatabase? = null
 

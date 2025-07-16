@@ -1,0 +1,57 @@
+package com.cobaltumapps.simplecalculator.data.extra
+
+object ExtraCalculatorsKeys {
+    private const val CALC_ID_PREFIX = "SC_"
+    private const val CALC_ID_POSTFIX = "Calc"
+
+    // Unit
+    const val CALC_UNIT_WEIGHT_ID = CALC_ID_PREFIX + "Weight" + CALC_ID_POSTFIX
+    const val CALC_UNIT_LENGTH_ID = CALC_ID_PREFIX + "Length" + CALC_ID_POSTFIX
+    const val CALC_UNIT_TIME_ID = CALC_ID_PREFIX + "Time" + CALC_ID_POSTFIX
+    const val CALC_UNIT_SPEED_ID = CALC_ID_PREFIX + "Speed" + CALC_ID_POSTFIX
+    const val CALC_UNIT_TEMPERATURE_ID = CALC_ID_PREFIX + "Temperature" + CALC_ID_POSTFIX
+    const val CALC_UNIT_VOLUME_ID = CALC_ID_PREFIX + "Volume" + CALC_ID_POSTFIX
+    const val CALC_UNIT_AREA_ID = CALC_ID_PREFIX + "Area" + CALC_ID_POSTFIX
+    const val CALC_UNIT_FREQUENCY_ID = CALC_ID_PREFIX + "Frequency" + CALC_ID_POSTFIX
+    const val CALC_UNIT_DATA_STORAGE_ID = CALC_ID_PREFIX + "DataStorage" + CALC_ID_POSTFIX
+    const val CALC_UNIT_POWER_ID = CALC_ID_PREFIX + "Power" + CALC_ID_POSTFIX
+    const val CALC_UNIT_DATA_TRANSFER_ID = CALC_ID_PREFIX + "DataTransfer" + CALC_ID_POSTFIX
+    const val CALC_UNIT_ANGLE_ID = CALC_ID_PREFIX + "Angle" + CALC_ID_POSTFIX
+    const val CALC_UNIT_RADIATION_ID = CALC_ID_PREFIX + "Radiation" + CALC_ID_POSTFIX
+
+    // Algebra
+    const val CALC_ALGEBRA_PROPORTION_ID = CALC_ID_PREFIX + "Proportion" + CALC_ID_POSTFIX
+    const val CALC_ALGEBRA_AVERAGE_ID = CALC_ID_PREFIX + "Average" + CALC_ID_POSTFIX
+    const val CALC_ALGEBRA_PERCENTAGE_ID = CALC_ID_PREFIX + "Percentage" + CALC_ID_POSTFIX
+    const val CALC_ALGEBRA_RATIO_ID = CALC_ID_PREFIX + "Ratio" + CALC_ID_POSTFIX
+
+    // Shapes
+    const val CALC_SHAPES_RIGHT_TRIANGLE_ID = CALC_ID_PREFIX + "RightTriangle" + CALC_ID_POSTFIX
+    const val CALC_SHAPES_POLYGON_ID = CALC_ID_PREFIX + "Polygon" + CALC_ID_POSTFIX
+    const val CALC_SHAPES_RECTANGLE_ID = CALC_ID_PREFIX + "Rectangle" + CALC_ID_POSTFIX
+    const val CALC_SHAPES_TRAPEZOID_ID = CALC_ID_PREFIX + "Trapezoid" + CALC_ID_POSTFIX
+    const val CALC_SHAPES_RHOMBUS_ID = CALC_ID_PREFIX + "Rhombus" + CALC_ID_POSTFIX
+    const val CALC_SHAPES_CIRCLE_ID = CALC_ID_PREFIX + "Circle" + CALC_ID_POSTFIX
+    const val CALC_SHAPES_ELLIPSE_ID = CALC_ID_PREFIX + "Ellipse" + CALC_ID_POSTFIX
+
+    // Bodies
+    const val CALC_BODIES_PRISM_ID = CALC_ID_PREFIX + "Prism" + CALC_ID_POSTFIX
+    const val CALC_BODIES_PYRAMID_ID = CALC_ID_PREFIX + "Pyramid" + CALC_ID_POSTFIX
+    const val CALC_BODIES_PYRAMID_FRUSTUM_ID = CALC_ID_PREFIX + "PyramidFrustum" + CALC_ID_POSTFIX
+    const val CALC_BODIES_CONE_ID = CALC_ID_PREFIX + "Cone" + CALC_ID_POSTFIX
+    const val CALC_BODIES_CONE_FRUSTUM_ID = CALC_ID_PREFIX + "ConeFrustum" + CALC_ID_POSTFIX
+    const val CALC_BODIES_CYLINDER_ID = CALC_ID_PREFIX + "Cylinder" + CALC_ID_POSTFIX
+    const val CALC_BODIES_SPHERE_ID = CALC_ID_PREFIX + "Sphere" + CALC_ID_POSTFIX
+    const val CALC_BODIES_ELLIPSOID_ID = CALC_ID_PREFIX + "Ellipsoid" + CALC_ID_POSTFIX
+
+    // Mechanics
+    const val CALC_MECHANICS_ENERGY_ID = CALC_ID_PREFIX + "Energy" + CALC_ID_POSTFIX
+
+    // Data & time
+    const val CALC_DATETIME_AGE_ID = CALC_ID_PREFIX + "Age" + CALC_ID_POSTFIX
+    const val CALC_DATETIME_DATE_ID = CALC_ID_PREFIX + "Date" + CALC_ID_POSTFIX
+    const val CALC_DATETIME_TIME_ID = CALC_ID_PREFIX + "Time" + CALC_ID_POSTFIX
+    const val CALC_DATETIME_INTERVAL_ID = CALC_ID_PREFIX + "Interval" + CALC_ID_POSTFIX
+
+
+}

@@ -2,7 +2,7 @@
 <resources>
     <string name="display_history_dialogAlertTitle">Warning!</string>
 
-    <string name="history_display_titleHistoryEmpty">Your history is empty</string>
+    <string name="history_display_titleHistoryEmpty">Your history is empty.\nYour calculations will be displayed here.</string>
 
     <string name="display_history_storeToArchive_dialogMessage">You want to move all records to the archive?</string>
     <string name="display_history_clearAllHistory_dialogMessage">You want to delete all records from the history?</string>

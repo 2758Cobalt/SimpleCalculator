@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- GENERAL -->
+    <string name="extra_calculator_weight_unit" translatable="false">g, kg, t</string>
+    <string name="extra_calculator_length_unit" translatable="false">cm, m, km</string>
+    <string name="extra_calculator_time_unit" translatable="false">s, min, h</string>
+
+    <string name="extra_calculator_speed_unit" translatable="false">m/s, km/h, mph</string>
+    <string name="extra_calculator_temperature_unit" translatable="false">°C, °F, K</string>
+    <string name="extra_calculator_volume_unit" translatable="false">ml, l, m³</string>
+
+    <string name="extra_calculator_area_unit" translatable="false">cm², m², km²</string>
+    <string name="extra_calculator_frequency_unit" translatable="false">Hz, kHz, MHz</string>
+    <string name="extra_calculator_data_storage_unit" translatable="false">KB, MB, GB</string>
+</resources>

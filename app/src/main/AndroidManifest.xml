@@ -16,7 +16,10 @@
         android:theme="@style/MyTheme"
         tools:targetApi="35">
         <activity
-            android:name=".v15.activities.MainCalculatorActivity"
+            android:name=".ui.activities.extra.calculators.unit.ExtraUnitCalculatorActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.main.MainCalculatorActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,26 +27,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".v15.activities.onBoarding.IntroductionActivity"
             android:exported="false" />
-
         <activity
-            android:name=".v15.activities.SettingsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".v15.activities.MainConverterActivity"
+            android:name=".ui.activities.extra.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".v15.activities.NewsUpdateActivity"
+            android:name=".ui.activities.main.ExtraCalculatorsActivity"
             android:exported="false" />
         <activity
-            android:name=".v15.activities.PurchasesActivity"
+            android:name=".ui.activities.extra.NewsUpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".v15.activities.ArchiveActivity"
+            android:name=".ui.activities.extra.PurchasesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.extra.ArchiveActivity"
             android:exported="false" />
 
         <meta-data

@@ -10,8 +10,8 @@ import com.cobaltumapps.simplecalculator.databinding.FragmentEngineeringBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutEngineeringBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.EngineeringNumpadKeyboard
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialFunction
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.constants.Property
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.EngineeringBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
@@ -63,13 +63,18 @@ class EngineeringNumpadFragment(
                 numpadEngMR.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.MemoryRead) }
                 numpadEngMC.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.MemoryClear) }
 
-                numpadEngMemoryAdd.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.MemoryAdd) }
-                numpadEngMemorySub.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.MemorySubtract) }
-                numpadEngMemoryMul.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.MemoryMultiply) }
-                numpadEngMemoryDiv.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.MemoryDivide) }
+                numpadEngMemoryAdd.setOnClickListener { onClickSpecialFunction(
+                    KeyboardSpecialFunction.MemoryAdd) }
+                numpadEngMemorySub.setOnClickListener { onClickSpecialFunction(
+                    KeyboardSpecialFunction.MemorySubtract) }
+                numpadEngMemoryMul.setOnClickListener { onClickSpecialFunction(
+                    KeyboardSpecialFunction.MemoryMultiply) }
+                numpadEngMemoryDiv.setOnClickListener { onClickSpecialFunction(
+                    KeyboardSpecialFunction.MemoryDivide) }
 
                 numpadEngInvert.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.Invert) }
-                numpadEngPercent.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Percent) }
+                numpadEngPercent.setOnClickListener { onClickSpecialOperation(
+                    KeyboardSpecialOperation.Percent) }
 
                 numpadEngSin.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Sinus) }
                 numpadEngCos.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Cosine) }
@@ -79,11 +84,13 @@ class EngineeringNumpadFragment(
                 numpadEngLog.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Log) }
                 numpadEngLn.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Ln) }
 
-                numpadEngBackspace.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.Backspace) }
+                numpadEngBackspace.setOnClickListener { onClickSpecialFunction(
+                    KeyboardSpecialFunction.Backspace) }
                 numpadEngPower.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Power) }
 
                 numpadEngSqrt.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.SQRT) }
-                numpadEngFactorial.setOnClickListener { onClickSpecialOperation(KeyboardSpecialOperation.Factorial) }
+                numpadEngFactorial.setOnClickListener { onClickSpecialOperation(
+                    KeyboardSpecialOperation.Factorial) }
 
                 numpadEngAngleType.setOnClickListener {
                     onClickSpecialFunction(KeyboardSpecialFunction.AngleMode)

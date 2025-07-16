@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.ActivityIntroductionBinding
-import com.cobaltumapps.simplecalculator.onBoarding.ViewPagerAdapter
+import com.cobaltumapps.simplecalculator.ui.viewpager.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class IntroductionActivity : AppCompatActivity() {

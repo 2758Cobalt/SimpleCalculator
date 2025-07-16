@@ -5,7 +5,7 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.display.inter
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayExpressionViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayMemoryViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayViewerCleaner
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
+import com.cobaltumapps.simplecalculator.data.calculator.enums.AngleMode
 
 class DisplayExpressionLogger:
     DisplayExpressionViewer,

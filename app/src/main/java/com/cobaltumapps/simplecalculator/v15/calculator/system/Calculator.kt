@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.system
 
 import com.cobaltumapps.simplecalculator.v15.calculator.components.expression.Expression
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
+import com.cobaltumapps.simplecalculator.data.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 
 open class Calculator {

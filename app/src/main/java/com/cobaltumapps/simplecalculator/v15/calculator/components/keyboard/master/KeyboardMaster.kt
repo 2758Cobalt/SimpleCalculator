@@ -20,4 +20,3 @@ open class KeyboardMaster: Fragment(), KeyboardInstanceSender {
         keyboardController?.getInstance(instance)
     }
 }
-

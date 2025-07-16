@@ -3,9 +3,9 @@ package com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.con
 import android.util.Log
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardNumpadListener
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardControllerMaster
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialFunction
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardArifmeticOperation
 
 class NumpadLogger: KeyboardControllerMaster(), KeyboardNumpadListener {
     override fun onClickNumber(number: Number) {

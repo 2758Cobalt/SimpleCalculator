@@ -4,8 +4,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.cont
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialFunctionsListener
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces.KeyboardSpecialOperationListener
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardMaster
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialFunction
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialOperation
 
 open class EngineeringNumpadKeyboard : KeyboardMaster(), KeyboardSpecialFunctionsListener, KeyboardSpecialOperationListener {
 

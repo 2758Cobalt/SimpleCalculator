@@ -8,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardArifmeticOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialFunction
 import com.cobaltumapps.simplecalculator.databinding.FragmentNumpadBinding
 import com.cobaltumapps.simplecalculator.databinding.LayoutNumpadBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.NumpadKeyboard
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
 import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -83,8 +83,10 @@ class NumpadFragment(
                     isInputOpenBracket = false
                 }
 
-                numpadOpenBracket.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.OpenBracket) }
-                numpadCloseBracket.setOnClickListener { onClickMathOperation(KeyboardArifmeticOperation.CloseBracket) }
+                numpadOpenBracket.setOnClickListener { onClickMathOperation(
+                    KeyboardArifmeticOperation.OpenBracket) }
+                numpadCloseBracket.setOnClickListener { onClickMathOperation(
+                    KeyboardArifmeticOperation.CloseBracket) }
                 numpadAllClear.setOnClickListener { onClickSpecialFunction(KeyboardSpecialFunction.AllClear) }
 
                 val delay = 500
@@ -147,4 +149,3 @@ class NumpadFragment(
     }
 
 }
-

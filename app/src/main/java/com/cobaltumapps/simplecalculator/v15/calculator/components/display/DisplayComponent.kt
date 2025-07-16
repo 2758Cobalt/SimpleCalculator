@@ -1,11 +1,11 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
 import androidx.fragment.app.Fragment
+import com.cobaltumapps.simplecalculator.data.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayAngleViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayExpressionViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayMemoryViewer
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.viewers.DisplayViewerCleaner
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 
 open class DisplayComponent:
     Fragment(),

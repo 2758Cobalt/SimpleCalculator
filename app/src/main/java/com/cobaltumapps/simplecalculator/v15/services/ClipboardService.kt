@@ -8,7 +8,6 @@ import com.cobaltumapps.simplecalculator.R
 
 object ClipboardService {
 
-    // Копирует в буфер обмена
     fun copyToClipboard(context: Context, text: String) {
         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("text", text)

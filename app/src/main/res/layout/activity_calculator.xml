@@ -5,7 +5,7 @@
     android:id="@+id/calculatorDrawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".v15.activities.MainCalculatorActivity">
+    tools:context=".ui.activities.main.MainCalculatorActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

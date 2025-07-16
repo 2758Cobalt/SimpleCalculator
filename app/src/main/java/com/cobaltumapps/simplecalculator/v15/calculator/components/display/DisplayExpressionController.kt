@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.display
 
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.interfaces.DisplayExpressionControl
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
+import com.cobaltumapps.simplecalculator.data.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.ValueTranslator
 
 open class DisplayExpressionController(

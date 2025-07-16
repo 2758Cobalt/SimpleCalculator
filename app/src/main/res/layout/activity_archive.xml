@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".v15.activities.ArchiveActivity">
+    tools:context=".ui.activities.extra.ArchiveActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"

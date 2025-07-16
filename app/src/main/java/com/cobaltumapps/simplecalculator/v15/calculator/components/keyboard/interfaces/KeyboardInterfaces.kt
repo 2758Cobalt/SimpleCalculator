@@ -1,9 +1,9 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.interfaces
 
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.master.KeyboardMaster
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialFunction
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardArifmeticOperation
 
 interface KeyboardNumpadListener:
     KeyboardNumbersListener,

@@ -86,8 +86,8 @@
 
     <string name="updateBoard_summary">Click to show board</string>
 
-    <!-- Display - memory -->
-    <string name="display_memory" translatable="false">M: %s</string>
+    <!-- CALCULATOR: DISPLAY-->
+    <string name="calculator_display_memoryViewFormat" translatable="false">M: %s</string>
 
     <!--ARCHIVE STRINGS-->
     <string name="archive_toolbar_title">Archive</string>
@@ -115,6 +115,9 @@
 
     <!--UPDATE NEWS STRINGS-->
     <string name="newsUpdate_toolbar_title">News update</string>
+
+    <!-- EXTRA UNIT CALCULATOR: ENTRY DIALOG TITLE-->
+    <string name="extra_unit_calculator_entryDialigTitle">Enter value %s</string>
 
 
     <!--OPEN BETA PAGE STRINGS-->

@@ -6,9 +6,9 @@ import com.cobaltumapps.simplecalculator.v15.calculator.components.display.Displ
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.EngineeringController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.keyboard.controllers.NumpadController
 import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardArifmeticOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialFunction
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialOperation
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
 import com.cobaltumapps.simplecalculator.v15.calculator.services.datetime_calendar.CalendarService
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.CalculatorHistoryController

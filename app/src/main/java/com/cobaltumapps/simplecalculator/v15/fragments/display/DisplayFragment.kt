@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import androidx.core.content.edit
 import androidx.core.view.isVisible
 import com.cobaltumapps.simplecalculator.R
+import com.cobaltumapps.simplecalculator.data.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.databinding.FragmentDisplayBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.DisplayComponent
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.formatter.DisplayFormatter
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.DisplayPreferencesManager
 import com.cobaltumapps.simplecalculator.v15.calculator.preferences.data.OptionName
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryStorageControllerSingleton
@@ -83,7 +83,7 @@ class DisplayFragment: DisplayComponent()  {
 
     // Установка любого числового значения в поле памяти
     override fun setMemoryField(memoryValue: Number) {
-        binding.displayMemoryField.text = getString(R.string.display_memory).format(memoryValue.toString())
+        binding.displayMemoryField.text = getString(R.string.calculator_display_memoryViewFormat).format(memoryValue.toString())
     }
 
     // Установка любого числового значения в поле выражения

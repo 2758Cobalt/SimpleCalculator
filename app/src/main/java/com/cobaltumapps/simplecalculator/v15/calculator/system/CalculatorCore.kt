@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.system
 
 import android.util.Log
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
+import com.cobaltumapps.simplecalculator.data.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.references.LogTags
 import java.math.BigInteger
 import java.util.Locale

@@ -1,8 +1,8 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.mediator
 
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardArifmeticOperation
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialFunction
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.KeyboardSpecialOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardArifmeticOperation
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialFunction
+import com.cobaltumapps.simplecalculator.data.calculator.enums.KeyboardSpecialOperation
 
 class MediatorPointInputController: MediatorClickHandler, MediatorPointInputListener {
     private var inputedNumber = false

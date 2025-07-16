@@ -1,9 +1,9 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.calculator
 
+import com.cobaltumapps.simplecalculator.data.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.interfaces.CalculatorControllerCalculation
 import com.cobaltumapps.simplecalculator.v15.calculator.components.calculator.interfaces.CalculatorControllerOperations
 import com.cobaltumapps.simplecalculator.v15.calculator.components.expression.Expression
-import com.cobaltumapps.simplecalculator.v15.calculator.enums.AngleMode
 import com.cobaltumapps.simplecalculator.v15.calculator.managers.ExpressionRemover
 import com.cobaltumapps.simplecalculator.v15.calculator.system.CalculatorCore
 
