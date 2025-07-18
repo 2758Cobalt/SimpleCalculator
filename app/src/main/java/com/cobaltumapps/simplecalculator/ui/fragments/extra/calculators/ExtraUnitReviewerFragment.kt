@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.databinding.FragmentExtraUnitCalculatorBinding
-import com.cobaltumapps.simplecalculator.domain.repository.extra.loader.ExtraUnitInfoLoader
 import com.cobaltumapps.simplecalculator.domain.viewmodel.ExtraUnitReviewerViewModel
 import com.cobaltumapps.simplecalculator.domain.viewmodel.UnitCalculatorViewModel
 import com.cobaltumapps.simplecalculator.ui.recycler.adapters.extra.ExtraUnitFeedAdapter
@@ -21,8 +20,6 @@ class ExtraUnitReviewerFragment: Fragment() {
 
     private val extraUnitReviewerViewModel by activityViewModels<ExtraUnitReviewerViewModel>()
     private val unitCalculatorViewModel by activityViewModels<UnitCalculatorViewModel>()
-
-    private val extraUnitInfoLoader by lazy { ExtraUnitInfoLoader(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +34,7 @@ class ExtraUnitReviewerFragment: Fragment() {
             adapter = extraReviewerAdapter
         }
 
-        extraUnitReviewerViewModel.selectedCalcId.observe(viewLifecycleOwner) {
-            val unitInfo = extraUnitInfoLoader.getUnitInfo(it)
+        extraUnitReviewerViewModel.selectedCalcId.observe(viewLifecycleOwner) { unitInfo ->
             extraReviewerAdapter.submitList(unitInfo)
         }
 

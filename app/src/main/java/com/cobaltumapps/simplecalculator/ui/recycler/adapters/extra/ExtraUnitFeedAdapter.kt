@@ -7,7 +7,8 @@ import com.cobaltumapps.simplecalculator.data.extra.calculator_unit.ExtraUnitInf
 import com.cobaltumapps.simplecalculator.databinding.ViewholderCalculatorsFeedItemBinding
 import com.cobaltumapps.simplecalculator.domain.viewmodel.UnitCalculatorViewModel
 import com.cobaltumapps.simplecalculator.ui.recycler.comparators.extra.reviewer.ExtraUnitsFeedComparator
-import com.cobaltumapps.simplecalculator.ui.recycler.viewholders.extra.reviewer.ExtraCalculatorsFeedViewHolder
+import com.cobaltumapps.simplecalculator.ui.recycler.viewholders.extra.reviewer.unit.ExtraCalculatorsFeedViewHolder
+import com.cobaltumapps.simplecalculator.v15.services.ClipboardService
 
 class ExtraUnitFeedAdapter(private val unitCalculatorViewModel: UnitCalculatorViewModel): ListAdapter<ExtraUnitInfo, ExtraCalculatorsFeedViewHolder>(
     ExtraUnitsFeedComparator()
@@ -27,8 +28,13 @@ class ExtraUnitFeedAdapter(private val unitCalculatorViewModel: UnitCalculatorVi
         if (position == selectedItemIndex) holder.onSelect()
         else holder.onDeselect()
 
-        holder.bindOnPickItem {
+        holder.bindOnClick {
             unitCalculatorViewModel.onSelectedItem(position)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            ClipboardService.copyToClipboard(it.context, holder.getUnitValue())
+            true
         }
 
     }
@@ -40,10 +46,10 @@ class ExtraUnitFeedAdapter(private val unitCalculatorViewModel: UnitCalculatorVi
         if (newIndex != -1) notifyItemChanged(newIndex)
     }
 
-    fun updateValueItemByPos(position: Int, newValue: Float) {
+    fun updateValueItemByPos(pos: Int, newValue: Float) {
         val updatedList = currentList.toMutableList().apply {
-            val oldItem = get(position)
-            this[position] = oldItem.copy(unitValue = newValue)
+            val oldItem = get(pos)
+            this[pos] = oldItem.copy(unitValue = newValue)
         }
 
         submitList(updatedList)

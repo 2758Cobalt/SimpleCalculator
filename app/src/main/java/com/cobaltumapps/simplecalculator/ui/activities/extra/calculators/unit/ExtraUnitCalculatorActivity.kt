@@ -12,7 +12,6 @@ class ExtraUnitCalculatorActivity : AppCompatActivity() {
     private val binding by lazy { ActivityExtraUnitCalculatorBinding.inflate(layoutInflater) }
 
     private val extraUnitReviewerViewModel by lazy { ViewModelProvider(this)[ExtraUnitReviewerViewModel::class] }
-    private val extraReviewerFragment = ExtraUnitReviewerFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +26,7 @@ class ExtraUnitCalculatorActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.commit {
-            replace(binding.extraUnitActivityContent.id, extraReviewerFragment, "UnitReviewerTag")
+            replace(binding.extraUnitActivityContent.id, ExtraUnitReviewerFragment(), "UnitReviewerTag")
         }
     }
 

@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.ui.recycler.viewholders.extra.reviewer
+package com.cobaltumapps.simplecalculator.ui.recycler.viewholders.extra.reviewer.unit
 
 import android.animation.ValueAnimator
 import android.view.View
@@ -23,9 +23,11 @@ class ExtraCalculatorsFeedViewHolder(val binding: ViewholderCalculatorsFeedItemB
         }
     }
 
-    fun bindOnPickItem(onClickListener: View.OnClickListener) {
+    fun bindOnClick(onClickListener: View.OnClickListener) {
         binding.extraCalculatorUnitCard.setOnClickListener { onClickListener.onClick(it) }
     }
+
+    fun getUnitValue(): String = binding.extraCalculatorUnitValue.text.toString()
 
     fun onSelect() {
         val colorAnim = ValueAnimator.ofArgb(binding.extraCalculatorUnitSymbolCard.cardBackgroundColor.defaultColor, onSelectedColor)
