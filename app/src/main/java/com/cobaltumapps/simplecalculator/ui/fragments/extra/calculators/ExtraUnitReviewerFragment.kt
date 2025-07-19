@@ -1,13 +1,16 @@
 package com.cobaltumapps.simplecalculator.ui.fragments.extra.calculators
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.cobaltumapps.simplecalculator.R
+import com.cobaltumapps.simplecalculator.data.extra.ExtraCalculatorsKeys
 import com.cobaltumapps.simplecalculator.databinding.FragmentExtraUnitCalculatorBinding
+import com.cobaltumapps.simplecalculator.domain.repository.extra.fabric.unit.ExtraUnitConversionFabric
 import com.cobaltumapps.simplecalculator.domain.viewmodel.ExtraUnitReviewerViewModel
 import com.cobaltumapps.simplecalculator.domain.viewmodel.UnitCalculatorViewModel
 import com.cobaltumapps.simplecalculator.ui.recycler.adapters.extra.ExtraUnitFeedAdapter
@@ -21,11 +24,16 @@ class ExtraUnitReviewerFragment: Fragment() {
     private val extraUnitReviewerViewModel by activityViewModels<ExtraUnitReviewerViewModel>()
     private val unitCalculatorViewModel by activityViewModels<UnitCalculatorViewModel>()
 
+    private val extraUnitConversionFabric = ExtraUnitConversionFabric()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = binding.root
+
+    private var selectedCalculatorId: String = ""
+    private var enteredUserValue = 0f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,8 +42,12 @@ class ExtraUnitReviewerFragment: Fragment() {
             adapter = extraReviewerAdapter
         }
 
-        extraUnitReviewerViewModel.selectedCalcId.observe(viewLifecycleOwner) { unitInfo ->
-            extraReviewerAdapter.submitList(unitInfo)
+        extraUnitReviewerViewModel.apply {
+            selectedCalcId.observe(viewLifecycleOwner) { selectedCalculatorId = it }
+
+            loadedCalcInfo.observe(viewLifecycleOwner) { unitInfo ->
+                extraReviewerAdapter.submitList(unitInfo)
+            }
         }
 
         unitCalculatorViewModel.apply {
@@ -46,20 +58,30 @@ class ExtraUnitReviewerFragment: Fragment() {
                     showInputDialog(getString(R.string.extra_unit_calculator_entryDialigTitle).format(itemId.toString()))
                 }
             }
+
+            onEnteredValue.observe(viewLifecycleOwner) { enteredUserValue = it }
         }
 
     }
 
     private fun showInputDialog(title: String) {
-        InputDialog.showInputDialog(requireContext(), title) {
+        InputDialog.showInputDialog(requireContext(), title, enteredUserValue) {
             unitCalculatorViewModel.onEnteredUnitValue(it) { pos, entry ->
                 extraReviewerAdapter.updateValueItemByPos(pos, entry)
+                calculate(entry, pos)
             }
         }
     }
 
     private fun selectedItem(itemPosition: Int) {
-        extraReviewerAdapter.updateSelection(itemPosition)
+        extraReviewerAdapter.updateAdapterItems(itemPosition)
+    }
+
+    private fun calculate(userEntry: Float, selectedItemPos: Int) {
+        val calcId = if (selectedCalculatorId.isNotEmpty()) selectedCalculatorId else ExtraCalculatorsKeys.CALC_UNIT_WEIGHT_ID
+
+        val result = extraUnitConversionFabric.calculateUnitsById(calcId, userEntry, selectedItemPos)
+        Log.i("DebugTag", "Result calculation:\nPosition: $selectedItemPos\nResult: $result")
     }
 
 }

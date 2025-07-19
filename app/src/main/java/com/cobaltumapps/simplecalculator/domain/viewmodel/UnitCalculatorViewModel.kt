@@ -11,14 +11,18 @@ class UnitCalculatorViewModel: ViewModel() {
     private val _onDialogCall = MutableLiveData<Event<Int>>()
     val onDialogCall: LiveData<Event<Int>> = _onDialogCall
 
+    private val _onEnteredValue = MutableLiveData<Float>(0f)
+    val onEnteredValue: LiveData<Float> = _onEnteredValue
+
     fun onSelectedItem(itemPos: Int) {
         if (_selectedItemPos.value != itemPos) {
-            _selectedItemPos.postValue(itemPos)
+            _selectedItemPos.value = itemPos
         } else _onDialogCall.value = Event(itemPos)
     }
 
     fun onEnteredUnitValue(value: Float, onUpdateValue: (selectedItemPosition: Int, enteredValue: Float) -> Unit) {
         _selectedItemPos.value?.let {
+            _onEnteredValue.value = value
             onUpdateValue.invoke(it, value)
         }
     }

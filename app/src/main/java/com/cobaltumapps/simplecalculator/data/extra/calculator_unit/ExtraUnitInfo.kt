@@ -5,5 +5,5 @@ package com.cobaltumapps.simplecalculator.data.extra.calculator_unit
 data class ExtraUnitInfo(
     val unitName: String,
     val unitPreview: String?,
-    val unitValue: Float
+    var unitValue: Float
 )

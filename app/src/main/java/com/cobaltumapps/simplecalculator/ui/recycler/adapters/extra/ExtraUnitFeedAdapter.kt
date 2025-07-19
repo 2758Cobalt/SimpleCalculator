@@ -39,11 +39,9 @@ class ExtraUnitFeedAdapter(private val unitCalculatorViewModel: UnitCalculatorVi
 
     }
 
-    fun updateSelection(newIndex: Int) {
-        val oldIndex = selectedItemIndex
-        selectedItemIndex = newIndex
-        if (oldIndex != -1) notifyItemChanged(oldIndex)
-        if (newIndex != -1) notifyItemChanged(newIndex)
+    fun updateAdapterItems(itemPos: Int) {
+        selectedItemIndex = itemPos
+        notifyItemRangeChanged(0, itemCount)
     }
 
     fun updateValueItemByPos(pos: Int, newValue: Float) {

@@ -10,10 +10,14 @@ import com.cobaltumapps.simplecalculator.domain.repository.extra.loader.ExtraUni
 class ExtraUnitReviewerViewModel(application: Application): AndroidViewModel(application) {
     private val extraUnitInfoLoader by lazy { ExtraUnitInfoLoader(application) }
 
-    private val _selectedCalcId = MutableLiveData<List<ExtraUnitInfo>>()
-    val selectedCalcId: LiveData<List<ExtraUnitInfo>> = _selectedCalcId
+    private val _selectedCalcId = MutableLiveData<String>()
+    val selectedCalcId: LiveData<String> = _selectedCalcId
+
+    private val _loadedCalcInfo = MutableLiveData<List<ExtraUnitInfo>>()
+    val loadedCalcInfo: LiveData<List<ExtraUnitInfo>> = _loadedCalcInfo
 
     fun onSelectedCalculator(calcId: String) {
-        _selectedCalcId.postValue(extraUnitInfoLoader.getUnitInfo(calcId))
+        _selectedCalcId.value = calcId
+        _loadedCalcInfo.value = extraUnitInfoLoader.getUnitInfo(calcId)
     }
 }

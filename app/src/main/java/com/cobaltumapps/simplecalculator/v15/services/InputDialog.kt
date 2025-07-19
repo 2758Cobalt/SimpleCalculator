@@ -21,4 +21,22 @@ object InputDialog {
             }
             .show()
     }
+
+    fun showInputDialog(context: Context, title: String = "Title", defaultValue: Number, onSubmitValue: (Float) -> Unit) {
+        val binding = DialogEnterManuallyBinding.inflate(LayoutInflater.from(context))
+
+        MaterialAlertDialogBuilder(context)
+            .setTitle(title)
+            .setView(binding.root)
+            .setPositiveButton("Accept") { dialog, _ ->
+                onSubmitValue(binding.inputDialogForm.text.toString().toFloat())
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+
+        binding.inputDialogForm.setText(defaultValue.toString())
+    }
 }
