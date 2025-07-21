@@ -41,6 +41,15 @@ class ExtraUnitFeedAdapter(private val unitCalculatorViewModel: UnitCalculatorVi
 
     fun updateAdapterItems(itemPos: Int) {
         selectedItemIndex = itemPos
+        updateAdapterData()
+    }
+
+    fun updateAdapterData() {
+        notifyItemRangeChanged(0, itemCount)
+    }
+
+    fun updateAdapterData(newDataList: List<ExtraUnitInfo>) {
+        submitList(newDataList)
         notifyItemRangeChanged(0, itemCount)
     }
 

@@ -17,6 +17,8 @@
         <item>cm</item>
         <item>dm</item>
         <item>m</item>
+        <item>dam</item>
+        <item>hm</item>
         <item>km</item>
     </string-array>
 
@@ -25,10 +27,11 @@
         <item>µs</item>
         <item>ms</item>
         <item>s</item>
-        <item>m</item>
+        <item>min</item>
         <item>h</item>
-        <item>d</item>
+        <item>day</item>
         <item>wk</item>
+        <item>wk/m</item>
         <item>m</item>
         <item>yr</item>
         <item>ct</item>

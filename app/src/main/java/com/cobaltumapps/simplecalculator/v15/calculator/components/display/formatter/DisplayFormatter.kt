@@ -1,10 +1,10 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.display.formatter
 
-class DisplayFormatter {
+class DisplayFormatter: Formatter {
     private val calculationResultSeparator = CalculationResultSeparator()
 
-    fun formatResult(sourceResult: String): String {
-        return calculationResultSeparator.separateString(sourceResult)
+    override fun format(sourceString: String): String {
+        return calculationResultSeparator.separateString(sourceString)
     }
 
 }

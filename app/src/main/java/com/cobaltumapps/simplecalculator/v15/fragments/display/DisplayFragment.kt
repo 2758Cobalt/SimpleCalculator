@@ -93,7 +93,7 @@ class DisplayFragment: DisplayComponent()  {
 
     // Установка значение в поле с результатом
     override fun setResultField(newResult: String) {
-        binding.displayResultField.text = displayFormatter.formatResult(newResult)
+        binding.displayResultField.text = displayFormatter.format(newResult)
     }
 
     private fun loadLastExpression() {

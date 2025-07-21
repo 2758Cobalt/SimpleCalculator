@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--Вес / Weight-->
 
@@ -22,6 +22,7 @@
         <item>Hours</item>
         <item>Days</item>
         <item>Weeks</item>
+        <item>Weeks per month</item>
         <item>Months</item>
         <item>Years</item>
         <item>Centuries</item>
@@ -34,6 +35,8 @@
         <item>Centimeters</item>
         <item>Decimeters</item>
         <item>Meters</item>
+        <item>Decameters</item>
+        <item>Hectometers</item>
         <item>Kilometers</item>
     </string-array>
 

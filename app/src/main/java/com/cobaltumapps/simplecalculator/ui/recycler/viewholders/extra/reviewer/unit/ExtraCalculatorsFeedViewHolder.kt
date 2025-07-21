@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.data.extra.calculator_unit.ExtraUnitInfo
 import com.cobaltumapps.simplecalculator.databinding.ViewholderCalculatorsFeedItemBinding
+import com.cobaltumapps.simplecalculator.v15.calculator.components.display.formatter.DisplayFormatter
 
 class ExtraCalculatorsFeedViewHolder(val binding: ViewholderCalculatorsFeedItemBinding): RecyclerView.ViewHolder(binding.root) {
     private val context = binding.root.context
+    private val displayFormatter = DisplayFormatter()
 
     private val onSelectedColor by lazy { context.getColor(R.color.md_theme_primaryContainer) }
     private val onDefaultColor by lazy { context.getColor(R.color.md_theme_surfaceContainer) }
@@ -19,7 +21,8 @@ class ExtraCalculatorsFeedViewHolder(val binding: ViewholderCalculatorsFeedItemB
             unitCalculatorUnitSymbol.text =
                 unitCalcInfo.unitPreview ?:
                 "${unitCalcInfo.unitName.first()}${unitCalcInfo.unitName.last()}"
-            extraCalculatorUnitValue.text = unitCalcInfo.unitValue.toString()
+
+            extraCalculatorUnitValue.text = displayFormatter.format(unitCalcInfo.unitValue.toString())
         }
     }
 
