@@ -26,16 +26,11 @@ class ExtraUnitNamesLoader(private val context: Context) {
                 ECK.CALC_UNIT_FREQUENCY_ID -> applicationContext.resources.getStringArray(
                     R.array.frequency_unit).toList()
                 ECK.CALC_UNIT_DATA_STORAGE_ID -> applicationContext.resources.getStringArray(
-                    R.array.data_unit).toList()
-
-                ECK.CALC_UNIT_POWER_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
+                    R.array.data_storage_unit).toList()
                 ECK.CALC_UNIT_DATA_TRANSFER_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
+                    R.array.data_transfer_unit).toList()
                 ECK.CALC_UNIT_ANGLE_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
-                ECK.CALC_UNIT_RADIATION_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
+                    R.array.angle_unit).toList()
 
                 else -> getUnitNames(ECK.CALC_UNIT_WEIGHT_ID)
             }

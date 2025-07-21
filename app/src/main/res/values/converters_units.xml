@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <!--Вес / Weight-->
+<resources>
 
     <string-array name="weight_unit">
         <item>Microgram</item>
@@ -79,13 +77,18 @@
     </string-array>
 
     <string-array name="frequency_unit">
+        <item>Millihertz</item>
+        <item>Centihertz</item>
+        <item>Decihertz</item>
         <item>Hertz</item>
         <item>Kilohertz</item>
         <item>Megahertz</item>
         <item>Gigahertz</item>
+        <item>Terahertz</item>
+        <item>Petahertz</item>
     </string-array>
 
-    <string-array name="data_unit">
+    <string-array name="data_storage_unit">
         <item>Bit</item>
         <item>Byte</item>
         <item>Kilobyte</item>
@@ -96,6 +99,21 @@
         <item>Exabyte</item>
         <item>Zettabyte</item>
         <item>Yottabyte</item>
+    </string-array>
+
+    <string-array name="data_transfer_unit">
+        <item>kBit/s</item>
+        <item>MBit/s</item>
+        <item>GBit/s</item>
+        <item>TBit/s</item>
+        <item>PBit/s</item>
+    </string-array>
+
+    <string-array name="angle_unit">
+        <item>Degrees</item>
+        <item>Radians</item>
+        <item>Minutes</item>
+        <item>Seconds</item>
     </string-array>
 
 </resources>

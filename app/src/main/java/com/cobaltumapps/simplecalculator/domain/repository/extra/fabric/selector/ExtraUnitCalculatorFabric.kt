@@ -64,8 +64,8 @@ class ExtraUnitCalculatorFabric: ExtraSelectableCalculatorFabric {
                 ECK.CALC_UNIT_DATA_STORAGE_ID to getString(R.string.extra_calculator_data_storage_unit),
 
                 ECK.CALC_UNIT_POWER_ID to getString(R.string.extra_calculator_data_storage_unit),
-                ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_data_storage_unit),
-                ECK.CALC_UNIT_ANGLE_ID to getString(R.string.extra_calculator_data_storage_unit),
+                ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_data_transfer_unit),
+                ECK.CALC_UNIT_ANGLE_ID to getString(R.string.extra_calculator_angle_unit),
                 ECK.CALC_UNIT_RADIATION_ID to getString(R.string.extra_calculator_data_storage_unit)
             )
         }

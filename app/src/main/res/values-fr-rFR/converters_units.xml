@@ -82,7 +82,7 @@
         <item>Gigahertz</item>
     </string-array>
 
-    <string-array name="data_unit">
+    <string-array name="data_storage_unit">
         <item>Bit</item>
         <item>Octet</item>
         <item>Kilo-octet</item>

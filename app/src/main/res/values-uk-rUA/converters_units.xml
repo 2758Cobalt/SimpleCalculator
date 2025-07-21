@@ -80,7 +80,7 @@
         <item>Гігагерц</item>
     </string-array>
 
-    <string-array name="data_unit">
+    <string-array name="data_storage_unit">
         <item>Біт</item>
         <item>Байт</item>
         <item>Кілобайт</item>

@@ -26,15 +26,11 @@ class ExtraUnitSymbolsLoader(private val context: Context) {
                 ECK.CALC_UNIT_FREQUENCY_ID -> applicationContext.resources.getStringArray(
                     R.array.frequency_symbols).toList()
                 ECK.CALC_UNIT_DATA_STORAGE_ID -> applicationContext.resources.getStringArray(
-                    R.array.data_symbols).toList()
-                ECK.CALC_UNIT_POWER_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
+                    R.array.data_storage_symbols).toList()
                 ECK.CALC_UNIT_DATA_TRANSFER_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
+                    R.array.data_transfer_symbols).toList()
                 ECK.CALC_UNIT_ANGLE_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
-                ECK.CALC_UNIT_RADIATION_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
+                    R.array.angle_symbols).toList()
 
                 else -> getUnitSymbols(ECK.CALC_UNIT_WEIGHT_ID)
             }

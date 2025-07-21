@@ -37,7 +37,6 @@
         <item>ct</item>
     </string-array>
 
-
     <string-array name="speed_symbols" translated="false">
         <item>km/h</item>
         <item>km/s</item>
@@ -77,13 +76,19 @@
     </string-array>
 
     <string-array name="frequency_symbols" translated="false">
+        <item>mHz</item>
+        <item>cHz</item>
+        <item>dHz</item>
         <item>Hz</item>
-        <item>KHz</item>
+        <item>Hz</item>
+        <item>kHz</item>
         <item>MHz</item>
         <item>GHz</item>
+        <item>THz</item>
+        <item>PHz</item>
     </string-array>
 
-    <string-array translatable="false" name="data_symbols">
+    <string-array translatable="false" name="data_storage_symbols">
         <item>bit</item>
         <item>B</item>
         <item>KB</item>
@@ -95,4 +100,20 @@
         <item>ZB</item>
         <item>YB</item>
     </string-array>
+
+    <string-array name="data_transfer_symbols" translatable="false">
+        <item>Kbps</item>
+        <item>Mbps</item>
+        <item>Gbps</item>
+        <item>Tbps</item>
+        <item>Pbps</item>
+    </string-array>
+
+    <string-array name="angle_symbols" translatable="false">
+        <item>Deg°</item>
+        <item>Rad</item>
+        <item>Min\'</item>
+        <item>Sec\"</item>
+    </string-array>
+
 </resources>
