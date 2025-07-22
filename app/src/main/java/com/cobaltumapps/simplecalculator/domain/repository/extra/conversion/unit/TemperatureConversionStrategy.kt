@@ -1,5 +1,7 @@
 package com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.unit
 
+import com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.interfaces.ConversionStrategy
+
 class TemperatureConversionStrategy: ConversionStrategy {
 
     override fun calculate(

@@ -88,6 +88,16 @@
         <item>PHz</item>
     </string-array>
 
+    <string-array name="pressure_symbols" translatable="false">
+    <item>Pa</item>
+    <item>HPa</item>
+    <item>KPa</item>
+    <item>Bar</item>
+    <item>Atm</item>
+    <item>Torr</item>
+    <item>PSI</item>
+    </string-array>
+
     <string-array translatable="false" name="data_storage_symbols">
         <item>bit</item>
         <item>B</item>
@@ -110,10 +120,24 @@
     </string-array>
 
     <string-array name="angle_symbols" translatable="false">
-        <item>Deg°</item>
         <item>Rad</item>
+        <item>Deg°</item>
+        <item>Grad</item>
         <item>Min\'</item>
         <item>Sec\"</item>
+        <item>Crl</item>
+        <item>Qdr</item>
+    </string-array>
+
+    <string-array name="power_symbols" translatable="false">
+        <item>mW</item>
+        <item>W</item>
+        <item>KW</item>
+        <item>MW</item>
+        <item>HP</item>
+        <item>BTU</item>
+        <item>Cal</item>
+        <item>ERG</item>
     </string-array>
 
 </resources>

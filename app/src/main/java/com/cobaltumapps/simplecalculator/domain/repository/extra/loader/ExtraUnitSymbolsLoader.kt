@@ -6,35 +6,29 @@ import com.cobaltumapps.simplecalculator.data.extra.ExtraCalculatorsKeys as ECK
 
 class ExtraUnitSymbolsLoader(private val context: Context) {
 
-    fun getUnitSymbols(calculatorId: String): List<String>? {
-        return with(context) {
-            when(calculatorId) {
-                ECK.CALC_UNIT_WEIGHT_ID -> applicationContext.resources.getStringArray(
-                    R.array.weight_symbols).toList()
-                ECK.CALC_UNIT_LENGTH_ID -> applicationContext.resources.getStringArray(
-                    R.array.length_symbols).toList()
-                ECK.CALC_UNIT_TIME_ID -> applicationContext.resources.getStringArray(
-                    R.array.time_symbols).toList()
-                ECK.CALC_UNIT_SPEED_ID -> applicationContext.resources.getStringArray(
-                    R.array.speed_symbols).toList()
-                ECK.CALC_UNIT_TEMPERATURE_ID -> applicationContext.resources.getStringArray(
-                    R.array.temperature_symbols).toList()
-                ECK.CALC_UNIT_VOLUME_ID -> applicationContext.resources.getStringArray(
-                    R.array.volume_symbols).toList()
-                ECK.CALC_UNIT_AREA_ID -> applicationContext.resources.getStringArray(
-                    R.array.area_symbols).toList()
-                ECK.CALC_UNIT_FREQUENCY_ID -> applicationContext.resources.getStringArray(
-                    R.array.frequency_symbols).toList()
-                ECK.CALC_UNIT_DATA_STORAGE_ID -> applicationContext.resources.getStringArray(
-                    R.array.data_storage_symbols).toList()
-                ECK.CALC_UNIT_DATA_TRANSFER_ID -> applicationContext.resources.getStringArray(
-                    R.array.data_transfer_symbols).toList()
-                ECK.CALC_UNIT_ANGLE_ID -> applicationContext.resources.getStringArray(
-                    R.array.angle_symbols).toList()
+    private val unitResourceMap = mapOf(
+        ECK.CALC_UNIT_WEIGHT_ID to R.array.weight_symbols,
+        ECK.CALC_UNIT_LENGTH_ID to R.array.length_symbols,
+        ECK.CALC_UNIT_TIME_ID to R.array.time_symbols,
+        ECK.CALC_UNIT_SPEED_ID to R.array.speed_symbols,
+        ECK.CALC_UNIT_TEMPERATURE_ID to R.array.temperature_symbols,
+        ECK.CALC_UNIT_VOLUME_ID to R.array.volume_symbols,
+        ECK.CALC_UNIT_AREA_ID to R.array.area_symbols,
+        ECK.CALC_UNIT_FREQUENCY_ID to R.array.frequency_symbols,
+        ECK.CALC_UNIT_PRESSURE_ID to R.array.pressure_symbols,
+        ECK.CALC_UNIT_ANGLE_ID to R.array.angle_symbols,
+        ECK.CALC_UNIT_POWER_ID to R.array.power_symbols,
+        ECK.CALC_UNIT_DATA_STORAGE_ID to R.array.data_storage_symbols,
+        ECK.CALC_UNIT_DATA_TRANSFER_ID to R.array.data_transfer_symbols,
+    )
 
-                else -> getUnitSymbols(ECK.CALC_UNIT_WEIGHT_ID)
-            }
-        }
+    fun getUnitSymbols(calculatorId: String): List<String> {
+        val resId = unitResourceMap[calculatorId] ?: return emptyList()
+        return loadFromResources(resId)
+    }
+
+    private fun loadFromResources(resId: Int): List<String> {
+        return context.resources.getStringArray(resId).toList()
     }
 
 }

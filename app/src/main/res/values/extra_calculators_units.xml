@@ -15,5 +15,8 @@
     <string name="extra_calculator_data_storage_unit" translatable="false">KB, MB, GB</string>
     <string name="extra_calculator_data_transfer_unit" translatable="false">Kbps, Mbps, Gbps</string>
 
+    <string name="extra_calculator_pressure_unit" translatable="false">PA, BAR, ATM</string>
+    <string name="extra_calculator_power_unit" translatable="false">Watt, KWatt, MWatt</string>
     <string name="extra_calculator_angle_unit" translatable="false">Deg, Rad</string>
+
 </resources>

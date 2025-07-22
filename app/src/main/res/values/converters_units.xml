@@ -88,6 +88,16 @@
         <item>Petahertz</item>
     </string-array>
 
+    <string-array name="pressure_unit">
+        <item>Pascal</item>
+        <item>Hectopascal</item>
+        <item>Kilopascal</item>
+        <item>Bar</item>
+        <item>Atmosphere</item>
+        <item>Torr</item>
+        <item>PSI</item>
+    </string-array>
+
     <string-array name="data_storage_unit">
         <item>Bit</item>
         <item>Byte</item>
@@ -110,10 +120,24 @@
     </string-array>
 
     <string-array name="angle_unit">
-        <item>Degrees</item>
         <item>Radians</item>
+        <item>Degrees</item>
+        <item>Gradian</item>
         <item>Minutes</item>
         <item>Seconds</item>
+        <item>Circle</item>
+        <item>Quadrant</item>
+    </string-array>
+
+    <string-array name="power_unit">
+        <item>Milliwatt</item>
+        <item>Watt</item>
+        <item>Kilowatt</item>
+        <item>Megawatt</item>
+        <item>Horse power</item>
+        <item>BTU per hour</item>
+        <item>Calorie per second</item>
+        <item>Erg per second</item>
     </string-array>
 
 </resources>

@@ -23,11 +23,11 @@ class ExtraUnitCalculatorFabric: ExtraSelectableCalculatorFabric {
                 ECK.CALC_UNIT_VOLUME_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_volume, theme),
                 ECK.CALC_UNIT_AREA_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_area, theme),
                 ECK.CALC_UNIT_FREQUENCY_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_frequency, theme),
-                ECK.CALC_UNIT_DATA_STORAGE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_data_storage, theme),
-
                 ECK.CALC_UNIT_POWER_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_power, theme),
-                ECK.CALC_UNIT_DATA_TRANSFER_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_data_transfer, theme),
+                ECK.CALC_UNIT_PRESSURE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_pressure, theme),
                 ECK.CALC_UNIT_ANGLE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_angle, theme),
+                ECK.CALC_UNIT_DATA_STORAGE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_data_storage, theme),
+                ECK.CALC_UNIT_DATA_TRANSFER_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_data_transfer, theme),
                 ECK.CALC_UNIT_RADIATION_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_radiation, theme),
             )
         }
@@ -42,11 +42,11 @@ class ExtraUnitCalculatorFabric: ExtraSelectableCalculatorFabric {
                 ECK.CALC_UNIT_VOLUME_ID to getString(R.string.converter_volume),
                 ECK.CALC_UNIT_AREA_ID to getString(R.string.converter_area),
                 ECK.CALC_UNIT_FREQUENCY_ID to getString(R.string.converter_frequency),
-                ECK.CALC_UNIT_DATA_STORAGE_ID to getString(R.string.converter_data),
-
                 ECK.CALC_UNIT_POWER_ID to getString(R.string.extra_calculator_power_name),
-                ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_dataTransfer_name),
                 ECK.CALC_UNIT_ANGLE_ID to getString(R.string.extra_calculator_angle_name),
+                ECK.CALC_UNIT_PRESSURE_ID to getString(R.string.extra_calculator_pressure_name),
+                ECK.CALC_UNIT_DATA_STORAGE_ID to getString(R.string.converter_data),
+                ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_dataTransfer_name),
                 ECK.CALC_UNIT_RADIATION_ID to getString(R.string.extra_calculator_radiation_name)
             )
         }
@@ -61,11 +61,12 @@ class ExtraUnitCalculatorFabric: ExtraSelectableCalculatorFabric {
                 ECK.CALC_UNIT_VOLUME_ID to getString(R.string.extra_calculator_volume_unit),
                 ECK.CALC_UNIT_AREA_ID to getString(R.string.extra_calculator_area_unit),
                 ECK.CALC_UNIT_FREQUENCY_ID to getString(R.string.extra_calculator_frequency_unit),
-                ECK.CALC_UNIT_DATA_STORAGE_ID to getString(R.string.extra_calculator_data_storage_unit),
-
-                ECK.CALC_UNIT_POWER_ID to getString(R.string.extra_calculator_data_storage_unit),
-                ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_data_transfer_unit),
+                ECK.CALC_UNIT_POWER_ID to getString(R.string.extra_calculator_power_unit),
+                ECK.CALC_UNIT_PRESSURE_ID to getString(R.string.extra_calculator_pressure_unit),
                 ECK.CALC_UNIT_ANGLE_ID to getString(R.string.extra_calculator_angle_unit),
+                ECK.CALC_UNIT_DATA_STORAGE_ID to getString(R.string.extra_calculator_data_storage_unit),
+                ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_data_transfer_unit),
+
                 ECK.CALC_UNIT_RADIATION_ID to getString(R.string.extra_calculator_data_storage_unit)
             )
         }
@@ -79,10 +80,11 @@ class ExtraUnitCalculatorFabric: ExtraSelectableCalculatorFabric {
             ECK.CALC_UNIT_VOLUME_ID,
             ECK.CALC_UNIT_AREA_ID,
             ECK.CALC_UNIT_FREQUENCY_ID,
-            ECK.CALC_UNIT_DATA_STORAGE_ID,
             ECK.CALC_UNIT_POWER_ID,
-            ECK.CALC_UNIT_DATA_TRANSFER_ID,
+            ECK.CALC_UNIT_PRESSURE_ID,
             ECK.CALC_UNIT_ANGLE_ID,
+            ECK.CALC_UNIT_DATA_STORAGE_ID,
+            ECK.CALC_UNIT_DATA_TRANSFER_ID,
             ECK.CALC_UNIT_RADIATION_ID
         )
 

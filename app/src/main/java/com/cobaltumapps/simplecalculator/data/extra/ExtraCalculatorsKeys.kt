@@ -13,10 +13,11 @@ object ExtraCalculatorsKeys {
     const val CALC_UNIT_VOLUME_ID = CALC_ID_PREFIX + "Volume" + CALC_ID_POSTFIX
     const val CALC_UNIT_AREA_ID = CALC_ID_PREFIX + "Area" + CALC_ID_POSTFIX
     const val CALC_UNIT_FREQUENCY_ID = CALC_ID_PREFIX + "Frequency" + CALC_ID_POSTFIX
-    const val CALC_UNIT_DATA_STORAGE_ID = CALC_ID_PREFIX + "DataStorage" + CALC_ID_POSTFIX
+    const val CALC_UNIT_PRESSURE_ID = CALC_ID_PREFIX + "Pressure" + CALC_ID_POSTFIX
     const val CALC_UNIT_POWER_ID = CALC_ID_PREFIX + "Power" + CALC_ID_POSTFIX
-    const val CALC_UNIT_DATA_TRANSFER_ID = CALC_ID_PREFIX + "DataTransfer" + CALC_ID_POSTFIX
     const val CALC_UNIT_ANGLE_ID = CALC_ID_PREFIX + "Angle" + CALC_ID_POSTFIX
+    const val CALC_UNIT_DATA_STORAGE_ID = CALC_ID_PREFIX + "DataStorage" + CALC_ID_POSTFIX
+    const val CALC_UNIT_DATA_TRANSFER_ID = CALC_ID_PREFIX + "DataTransfer" + CALC_ID_POSTFIX
     const val CALC_UNIT_RADIATION_ID = CALC_ID_PREFIX + "Radiation" + CALC_ID_POSTFIX
 
     // Algebra
@@ -52,6 +53,4 @@ object ExtraCalculatorsKeys {
     const val CALC_DATETIME_DATE_ID = CALC_ID_PREFIX + "Date" + CALC_ID_POSTFIX
     const val CALC_DATETIME_TIME_ID = CALC_ID_PREFIX + "Time" + CALC_ID_POSTFIX
     const val CALC_DATETIME_INTERVAL_ID = CALC_ID_PREFIX + "Interval" + CALC_ID_POSTFIX
-
-
 }

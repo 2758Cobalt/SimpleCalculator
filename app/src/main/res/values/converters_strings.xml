@@ -22,6 +22,7 @@
     <string name="extra_calculator_dataTransfer_name">Data Transfer</string>
     <string name="extra_calculator_angle_name">Angle</string>
     <string name="extra_calculator_radiation_name">Radiation</string>
+    <string name="extra_calculator_pressure_name">Pressure</string>
 
     <!-- Algebra -->
     <string name="extra_calculator_proportion_name">Proportion</string>
