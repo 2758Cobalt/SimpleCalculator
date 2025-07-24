@@ -53,13 +53,4 @@ class ExtraUnitFeedAdapter(private val unitCalculatorViewModel: UnitCalculatorVi
         notifyItemRangeChanged(0, itemCount)
     }
 
-    fun updateValueItemByPos(pos: Int, newValue: Float) {
-        val updatedList = currentList.toMutableList().apply {
-            val oldItem = get(pos)
-            this[pos] = oldItem.copy(unitValue = newValue)
-        }
-
-        submitList(updatedList)
-    }
-
 }

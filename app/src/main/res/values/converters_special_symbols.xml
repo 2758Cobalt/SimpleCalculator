@@ -31,9 +31,9 @@
         <item>h</item>
         <item>day</item>
         <item>wk</item>
-        <item>wk/m</item>
         <item>m</item>
         <item>yr</item>
+        <item>dec</item>
         <item>ct</item>
     </string-array>
 

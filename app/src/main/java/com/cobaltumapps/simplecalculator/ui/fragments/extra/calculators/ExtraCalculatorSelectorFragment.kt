@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cobaltumapps.simplecalculator.data.extra.ExtraCalculatorsKeys
+import com.cobaltumapps.simplecalculator.data.extra.constants.ExtraCalculatorsKeys
 import com.cobaltumapps.simplecalculator.data.extra.contracts.ExtraUnitCalculatorContract
 import com.cobaltumapps.simplecalculator.data.extra.enums.ExtraCalculatorType
 import com.cobaltumapps.simplecalculator.data.extra.selector.ExtraSelectableCalculatorInfo

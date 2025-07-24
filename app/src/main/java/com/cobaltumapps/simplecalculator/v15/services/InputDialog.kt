@@ -22,14 +22,14 @@ object InputDialog {
             .show()
     }
 
-    fun showInputDialog(context: Context, title: String = "Title", defaultValue: Number, onSubmitValue: (Float) -> Unit) {
+    fun showInputDialog(context: Context, title: String = "Title", defaultValue: String, onSubmitValue: (String) -> Unit) {
         val binding = DialogEnterManuallyBinding.inflate(LayoutInflater.from(context))
 
         MaterialAlertDialogBuilder(context)
             .setTitle(title)
             .setView(binding.root)
             .setPositiveButton("Accept") { dialog, _ ->
-                onSubmitValue(binding.inputDialogForm.text.toString().toFloat())
+                onSubmitValue(binding.inputDialogForm.text.toString())
                 dialog.dismiss()
             }
             .setNegativeButton("Cancel") { dialog, _ ->
@@ -39,4 +39,5 @@ object InputDialog {
 
         binding.inputDialogForm.setText(defaultValue.toString())
     }
+
 }

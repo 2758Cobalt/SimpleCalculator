@@ -18,6 +18,7 @@ import com.cobaltumapps.simplecalculator.domain.viewmodel.UnitCalculatorViewMode
 import com.cobaltumapps.simplecalculator.ui.recycler.adapters.extra.ExtraUnitFeedAdapter
 import com.cobaltumapps.simplecalculator.v15.services.InputDialog
 import java.io.IOException
+import java.math.BigDecimal
 
 /** Fragment for display list of calculators */
 class ExtraUnitReviewerFragment: Fragment() {
@@ -36,7 +37,7 @@ class ExtraUnitReviewerFragment: Fragment() {
     ): View = binding.root
 
     private var selectedCalculatorId: String = ""
-    private var enteredUserValue = 0f
+    private var enteredUserValue = "0.0"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,7 +64,9 @@ class ExtraUnitReviewerFragment: Fragment() {
 
             onDialogCall.observe(viewLifecycleOwner) { event ->
                 event.getContentIfNotHandled()?.let { itemId ->
-                    showInputDialog(getString(R.string.extra_unit_calculator_entryDialigTitle).format(itemId.toString()))
+
+                    val unitName = extraUnitReviewerViewModel.loadedCalcInfo.value?.get(itemId)?.unitName ?: itemId.toString()
+                    showInputDialog(getString(R.string.extra_unit_calculator_entryDialigTitle).format(unitName))
                 }
             }
 
@@ -84,9 +87,8 @@ class ExtraUnitReviewerFragment: Fragment() {
         extraReviewerAdapter.updateAdapterItems(itemPosition)
     }
 
-    private fun calculate(userEntry: Float, selectedItemPos: Int) {
+    private fun calculate(userEntry: String, selectedItemPos: Int) {
         val result = unitConversionContext.calculate(selectedCalculatorId, userEntry, selectedItemPos)
-        Log.i("DebugTag", "Result calculation:\nPosition: $selectedItemPos\nResult: $result")
 
         val updatedInfo = updateUnitsValues(result)
         if (updatedInfo.isNotEmpty()) extraReviewerAdapter.updateAdapterData(updatedInfo)
@@ -96,14 +98,16 @@ class ExtraUnitReviewerFragment: Fragment() {
         return extraReviewerAdapter.currentList.onEachIndexed { index, item ->
 
             item.unitValue = try {
-                valuesToUpdate[index].toFloat()
+                BigDecimal(valuesToUpdate[index].toString())
+
             } catch (ex: IndexOutOfBoundsException) {
                 Log.e("DebugTag", "FATAL: ${ex.localizedMessage}")
-                0f
+                BigDecimal("0.0")
+
             } catch (ex: IOException) {
                 Toast.makeText(requireContext(), "An unknown error occurred.", Toast.LENGTH_LONG).show()
                 Log.e("DebugTag", "FATAL: ${ex.localizedMessage}")
-                0f
+                BigDecimal("0.0")
             }
 
         }

@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.domain.repository.extra.loader
 
 import android.content.Context
 import com.cobaltumapps.simplecalculator.R
-import com.cobaltumapps.simplecalculator.data.extra.ExtraCalculatorsKeys as ECK
+import com.cobaltumapps.simplecalculator.data.extra.constants.ExtraCalculatorsKeys as ECK
 
 class ExtraUnitNamesLoader(private val context: Context) {
 

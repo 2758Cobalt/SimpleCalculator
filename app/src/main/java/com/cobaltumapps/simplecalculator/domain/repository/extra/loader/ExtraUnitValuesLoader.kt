@@ -1,7 +1,7 @@
 package com.cobaltumapps.simplecalculator.domain.repository.extra.loader
 
 import com.cobaltumapps.simplecalculator.data.extra.constants.ConvertersValues
-import com.cobaltumapps.simplecalculator.data.extra.ExtraCalculatorsKeys as ECK
+import com.cobaltumapps.simplecalculator.data.extra.constants.ExtraCalculatorsKeys as ECK
 
 class ExtraUnitValuesLoader {
 

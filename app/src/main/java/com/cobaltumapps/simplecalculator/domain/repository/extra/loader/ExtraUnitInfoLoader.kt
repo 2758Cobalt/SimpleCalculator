@@ -2,10 +2,9 @@ package com.cobaltumapps.simplecalculator.domain.repository.extra.loader
 
 import android.content.Context
 import com.cobaltumapps.simplecalculator.data.extra.calculator_unit.ExtraUnitInfo
+import java.math.BigDecimal
 
-class ExtraUnitInfoLoader(
-    private val context: Context
-) {
+class ExtraUnitInfoLoader(context: Context) {
     private val extraUnitNamesLoader = ExtraUnitNamesLoader(context)
     private val extraUnitSymbolsLoader = ExtraUnitSymbolsLoader(context)
 
@@ -16,8 +15,8 @@ class ExtraUnitInfoLoader(
         val builtUnitInfo = unitNames.mapIndexed { index, item ->
             ExtraUnitInfo(
                 item,
-                unitSymbols?.get(index),
-                0f
+                unitSymbols[index],
+                BigDecimal("0.0")
             )
         }
 

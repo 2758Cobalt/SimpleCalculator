@@ -20,9 +20,9 @@
         <item>Hours</item>
         <item>Days</item>
         <item>Weeks</item>
-        <item>Weeks per month</item>
         <item>Months</item>
         <item>Years</item>
+        <item>Decade</item>
         <item>Centuries</item>
     </string-array>
 

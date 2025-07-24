@@ -33,9 +33,15 @@ class ExtraUnitCalculatorActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        intent.getStringExtra(INTENT_CALC_ID)?.let {
-            extraUnitReviewerViewModel.onSelectedCalculator(it)
+        intent.getStringExtra(INTENT_CALC_ID)?.let { calcId ->
+            extraUnitReviewerViewModel.onSelectedCalculator(calcId)
         }
+
+    }
+
+    private fun setExtraCalculatorData(title: String, imageRes: Int) {
+        binding.extraUnitCalculatorName.text = title
+        binding.extraUnitCalculatorImage.setImageResource(imageRes)
     }
 
     companion object {

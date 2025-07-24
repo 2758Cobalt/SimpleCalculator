@@ -8,7 +8,7 @@ class UnitConversionContext(
 
     override fun calculate(
         calculatorId: String,
-        userEntry: Float,
+        userEntry: String,
         selectedItemIndex: Int
     ): List<Number> {
         val strategy = strategies[calculatorId] ?: return emptyList()

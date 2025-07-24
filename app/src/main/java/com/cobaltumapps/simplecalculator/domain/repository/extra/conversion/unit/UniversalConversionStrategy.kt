@@ -3,12 +3,14 @@ package com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.uni
 import com.cobaltumapps.simplecalculator.data.extra.constants.UniversalConversionStrategyContext
 import com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.interfaces.ConversionStrategy
 import com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.interfaces.UnitConversion
+import java.math.BigDecimal
+import java.math.MathContext
 
 class UniversalConversionStrategy: ConversionStrategy {
 
     override fun calculate(
         calculatorId: String,
-        userEntry: Float,
+        userEntry: String,
         selectedItemIndex: Int
     ): List<Number> {
         val units = UniversalConversionStrategyContext.unitsByCalculatorId[calculatorId] ?: emptyArray()
@@ -16,14 +18,17 @@ class UniversalConversionStrategy: ConversionStrategy {
     }
 
     private fun convert(
-        userEntry: Float,
+        userEntry: String,
         fromIndex: Int,
         units: Array<UnitConversion>
-    ): List<Number> {
+    ): List<BigDecimal> {
         val fromUnit = units[fromIndex]
-        val inBase = userEntry * fromUnit.factor
+        val inputValue = BigDecimal(userEntry)
+        val inBase = inputValue.multiply(BigDecimal.valueOf(fromUnit.factor), MathContext.UNLIMITED)
+
         return units.map { to ->
-            inBase / to.factor
+            inBase.divide(BigDecimal.valueOf(to.factor), MathContext.UNLIMITED)
         }
     }
+
 }

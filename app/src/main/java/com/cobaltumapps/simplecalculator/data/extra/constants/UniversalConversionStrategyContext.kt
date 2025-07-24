@@ -1,6 +1,6 @@
 package com.cobaltumapps.simplecalculator.data.extra.constants
 
-import com.cobaltumapps.simplecalculator.data.extra.ExtraCalculatorsKeys
+import com.cobaltumapps.simplecalculator.data.extra.constants.ExtraCalculatorsKeys
 import com.cobaltumapps.simplecalculator.data.extra.enums.units.AngleUnit
 import com.cobaltumapps.simplecalculator.data.extra.enums.units.AreaUnit
 import com.cobaltumapps.simplecalculator.data.extra.enums.units.DataStorageUnit

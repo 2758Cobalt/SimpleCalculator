@@ -2,7 +2,7 @@ package com.cobaltumapps.simplecalculator.data.extra.constants
 
 import com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.unit.TemperatureConversionStrategy
 import com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.unit.UniversalConversionStrategy
-import com.cobaltumapps.simplecalculator.data.extra.ExtraCalculatorsKeys as ECK
+import com.cobaltumapps.simplecalculator.data.extra.constants.ExtraCalculatorsKeys as ECK
 
 object ConversionContext {
     val conversionContext = mapOf(

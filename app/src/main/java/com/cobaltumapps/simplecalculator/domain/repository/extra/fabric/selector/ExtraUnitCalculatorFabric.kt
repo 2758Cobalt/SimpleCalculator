@@ -6,7 +6,7 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.data.extra.enums.ExtraCalculatorType
 import com.cobaltumapps.simplecalculator.data.extra.selector.ExtraSelectableCalculatorInfo
 import com.cobaltumapps.simplecalculator.domain.repository.extra.interfaces.ExtraSelectableCalculatorFabric
-import com.cobaltumapps.simplecalculator.data.extra.ExtraCalculatorsKeys as ECK
+import com.cobaltumapps.simplecalculator.data.extra.constants.ExtraCalculatorsKeys as ECK
 
 /** Фабрика, которая создает заранее заготовленные Unit-калькуляторы.
  * Эти калькуляторы являются базовыми и должны всегда присувствовать в приложении. */

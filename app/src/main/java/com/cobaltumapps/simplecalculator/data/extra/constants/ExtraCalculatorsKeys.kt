@@ -1,4 +1,4 @@
-package com.cobaltumapps.simplecalculator.data.extra
+package com.cobaltumapps.simplecalculator.data.extra.constants
 
 object ExtraCalculatorsKeys {
     private const val CALC_ID_PREFIX = "SC_"

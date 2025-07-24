@@ -7,10 +7,11 @@ import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.data.extra.calculator_unit.ExtraUnitInfo
 import com.cobaltumapps.simplecalculator.databinding.ViewholderCalculatorsFeedItemBinding
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.formatter.DisplayFormatter
+import java.math.BigDecimal
 
 class ExtraCalculatorsFeedViewHolder(val binding: ViewholderCalculatorsFeedItemBinding): RecyclerView.ViewHolder(binding.root) {
     private val context = binding.root.context
-    private val displayFormatter = DisplayFormatter()
+    private val bigDecimalFormatter = BigDecimalFormatter(DisplayFormatter())
 
     private val onSelectedColor by lazy { context.getColor(R.color.md_theme_primaryContainer) }
     private val onDefaultColor by lazy { context.getColor(R.color.md_theme_surfaceContainer) }
@@ -22,7 +23,10 @@ class ExtraCalculatorsFeedViewHolder(val binding: ViewholderCalculatorsFeedItemB
                 unitCalcInfo.unitPreview ?:
                 "${unitCalcInfo.unitName.first()}${unitCalcInfo.unitName.last()}"
 
-            extraCalculatorUnitValue.text = displayFormatter.format(unitCalcInfo.unitValue.toString())
+            val userEntry = unitCalcInfo.unitValue
+
+            extraCalculatorUnitValue.text = if (userEntry.compareTo(BigDecimal("0.0")) == 0) "0"
+            else bigDecimalFormatter.format(userEntry.toString())
         }
     }
 
@@ -33,20 +37,36 @@ class ExtraCalculatorsFeedViewHolder(val binding: ViewholderCalculatorsFeedItemB
     fun getUnitValue(): String = binding.extraCalculatorUnitValue.text.toString()
 
     fun onSelect() {
-        val colorAnim = ValueAnimator.ofArgb(binding.extraCalculatorUnitSymbolCard.cardBackgroundColor.defaultColor, onSelectedColor)
-        colorAnim.duration = 250
-        colorAnim.addUpdateListener {
-            binding.extraCalculatorUnitSymbolCard.setCardBackgroundColor(it.animatedValue as Int)
+        val colorAnim = ValueAnimator.ofArgb(binding.extraCalculatorUnitSymbolCard.cardBackgroundColor.defaultColor, onSelectedColor).apply {
+            duration = ANIM_COLOR_DURATION
+            addUpdateListener { binding.extraCalculatorUnitSymbolCard.setCardBackgroundColor(it.animatedValue as Int) }
         }
+
+        val elevationAnim = ValueAnimator.ofFloat(binding.extraCalculatorUnitCard.cardElevation, 2f).apply {
+            duration = ANIM_COLOR_DURATION
+            addUpdateListener { binding.extraCalculatorUnitCard.cardElevation = it.animatedValue as Float }
+        }
+
         colorAnim.start()
+        elevationAnim.start()
     }
 
     fun onDeselect() {
-        val colorAnim = ValueAnimator.ofArgb(binding.extraCalculatorUnitSymbolCard.cardBackgroundColor.defaultColor, onDefaultColor)
-        colorAnim.duration = 250
-        colorAnim.addUpdateListener {
-            binding.extraCalculatorUnitSymbolCard.setCardBackgroundColor(it.animatedValue as Int)
+        val colorAnim = ValueAnimator.ofArgb(binding.extraCalculatorUnitSymbolCard.cardBackgroundColor.defaultColor, onDefaultColor).apply {
+            duration = ANIM_COLOR_DURATION
+            addUpdateListener { binding.extraCalculatorUnitSymbolCard.setCardBackgroundColor(it.animatedValue as Int) }
         }
+
+        val elevationAnim = ValueAnimator.ofFloat(binding.extraCalculatorUnitCard.cardElevation, 0f).apply {
+            duration = ANIM_COLOR_DURATION
+            addUpdateListener { binding.extraCalculatorUnitCard.cardElevation = it.animatedValue as Float }
+        }
+
         colorAnim.start()
+        elevationAnim.start()
+    }
+
+    companion object {
+        const val ANIM_COLOR_DURATION = 250L
     }
 }
