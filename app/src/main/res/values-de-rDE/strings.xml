@@ -84,16 +84,16 @@
 
     <string name="converter_unitInputHint">Einen Wert eingeben</string>
     <string name="converter_header">Einheitsumrichter</string>
-    <string name="converter_weight">Gewicht</string>
-    <string name="converter_length">Länge</string>
-    <string name="converter_time">Zeit</string>
-    <string name="converter_speed">Geschwindigkeit</string>
-    <string name="converter_temperature">Temperatur</string>
-    <string name="converter_volume">Volumen</string>
-    <string name="converter_area">Fläche</string>
-    <string name="converter_frequency">Frequenz</string>
-    <string name="converter_data">Datenmenge</string>
+    <string name="extra_calculator_weight_unit_name">Gewicht</string>
+    <string name="extra_calculator_length_unit_name">Länge</string>
+    <string name="extra_calculator_time_unit_name">Zeit</string>
+    <string name="extra_calculator_speed_unit_name">Geschwindigkeit</string>
+    <string name="extra_calculator_temperature_unit_name">Temperatur</string>
+    <string name="extra_calculator_volume_unit_name">Volumen</string>
+    <string name="extra_calculator_area_unit_name">Fläche</string>
+    <string name="extra_calculator_frequency_unit_name">Frequenz</string>
+    <string name="extra_calculator_data_storage_name">Datenmenge</string>
     <string name="updateBoard_summary">Zum Anzeigen der Tafel anklicken</string>
-    <string name="converter_category_general">Allgemein</string>
+    <string name="extra_calculator_category_unit">Allgemein</string>
 
 </resources>

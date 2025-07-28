@@ -71,16 +71,16 @@
 
     <string name="converter_unitInputHint">Введіть значення</string>
     <string name="converter_header">Перетворювачі одиниць виміру</string>
-    <string name="converter_weight">Вага</string>
-    <string name="converter_length">Довжина</string>
-    <string name="converter_time">Час</string>
-    <string name="converter_speed">Швидкість</string>
-    <string name="converter_temperature">Температура</string>
-    <string name="converter_volume">Об\'єм</string>
-    <string name="converter_area">Площа</string>
-    <string name="converter_frequency">Частота</string>
-    <string name="converter_data">Об\'єм даних</string>
+    <string name="extra_calculator_weight_unit_name">Вага</string>
+    <string name="extra_calculator_length_unit_name">Довжина</string>
+    <string name="extra_calculator_time_unit_name">Час</string>
+    <string name="extra_calculator_speed_unit_name">Швидкість</string>
+    <string name="extra_calculator_temperature_unit_name">Температура</string>
+    <string name="extra_calculator_volume_unit_name">Об\'єм</string>
+    <string name="extra_calculator_area_unit_name">Площа</string>
+    <string name="extra_calculator_frequency_unit_name">Частота</string>
+    <string name="extra_calculator_data_storage_name">Об\'єм даних</string>
     <string name="updateBoard_summary">Натисність щоб відобразити вікно</string>
-    <string name="converter_category_general">Загальне</string>
+    <string name="extra_calculator_category_unit">Загальне</string>
 
 </resources>

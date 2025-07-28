@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--UI-->
+    <string name="converter_unitInputHint">Enter a value</string>
+    <string name="converter_header">Unit converters</string>
+
+    <!--Units-->
+    <string name="extra_calculator_weight_unit_name">Weight</string>
+    <string name="extra_calculator_length_unit_name">Length</string>
+    <string name="extra_calculator_time_unit_name">Time</string>
+
+    <string name="extra_calculator_speed_unit_name">Speed</string>
+    <string name="extra_calculator_temperature_unit_name">Temperature</string>
+    <string name="extra_calculator_volume_unit_name">Volume</string>
+
+    <string name="extra_calculator_area_unit_name">Area</string>
+    <string name="extra_calculator_frequency_unit_name">Frequency</string>
+    <string name="extra_calculator_data_storage_name">Data storage</string>
+
+    <string name="extra_calculator_dataTransfer_unit_name">Data Transfer</string>
+    <string name="extra_calculator_power_unit_name">Power</string>
+    <string name="extra_calculator_angle_unit_name">Angle</string>
+    <string name="extra_calculator_radiation_unit_name">Radiation</string>
+    <string name="extra_calculator_pressure_unit_name">Pressure</string>
+
+    <!-- Algebra -->
+    <string name="extra_calculator_proportion_algebra_name">Proportion</string>
+    <string name="extra_calculator_average_algebra_name">Average</string>
+    <string name="extra_calculator_percentage_algebra_name">Percentage</string>
+    <string name="extra_calculator_ratio_algebra_name">Ratio</string>
+
+    <!-- Shapes -->
+    <string name="extra_calculator_right_triangle_shapes_name">Right triangle</string>
+    <string name="extra_calculator_polygon_shape_name">Polygon</string>
+    <string name="extra_calculator_rectangle_shape_name">Rectangle</string>
+    <string name="extra_calculator_trapezoid_shape_name">Trapezoid</string>
+    <string name="extra_calculator_rhombus_shape_name">Rhombus</string>
+    <string name="extra_calculator_circle_shape_name">Circle</string>
+    <string name="extra_calculator_ellipse_shape_name">Ellipse</string>
+
+    <!-- Bodies -->
+    <string name="extra_calculator_prism_body_name">Prism</string>
+    <string name="extra_calculator_pyramid_body_name">Pyramid</string>
+    <string name="extra_calculator_pyramidFrustum_body_name">Pyramid Frustum</string>
+    <string name="extra_calculator_cone_body_name">Cone</string>
+    <string name="extra_calculator_coneFrustum_body_name">Cone Frustum</string>
+    <string name="extra_calculator_cylinder_body_name">Cylinder</string>
+    <string name="extra_calculator_sphere_body_name">Sphere</string>
+    <string name="extra_calculator_ellipsoid_body_name">Ellipsoid</string>
+
+    <!-- Mechanics -->
+    <string name="extra_calculator_energy_mechanic_name">Energy</string>
+
+    <!-- Data & Time -->
+    <string name="extra_calculator_age_dateTime_name">Age</string>
+    <string name="extra_calculator_dateTime_date_name">Date</string>
+    <string name="extra_calculator_dateTime_time_name">Time</string>
+    <string name="extra_calculator_interval_dateTime_name">Interval</string>
+
+    <!-- Categories -->
+    <string name="extra_calculator_category_unit">Unit</string>
+    <string name="extra_calculator_category_algebra">Algebra</string>
+    <string name="extra_calculator_category_shapes">Shapes</string>
+    <string name="extra_calculator_category_bodies">Bodies</string>
+    <string name="extra_calculator_category_mechanics">Mechanic</string>
+
+</resources>

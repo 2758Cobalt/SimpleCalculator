@@ -1,7 +1,6 @@
 package com.cobaltumapps.simplecalculator.domain.repository.extra.fabric.selector
 
 import android.content.Context
-import androidx.core.content.res.ResourcesCompat
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.data.extra.enums.ExtraCalculatorType
 import com.cobaltumapps.simplecalculator.data.extra.selector.ExtraSelectableCalculatorInfo
@@ -12,19 +11,19 @@ class ExtraAlgebraCalculatorFabric: ExtraSelectableCalculatorFabric {
     override fun createCalculators(context: Context): List<ExtraSelectableCalculatorInfo> {
         val extraDrawables = with(context) {
             mapOf(
-                ECK.CALC_ALGEBRA_PROPORTION_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_proportional, theme),
-                ECK.CALC_ALGEBRA_AVERAGE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_average, theme),
-                ECK.CALC_ALGEBRA_PERCENTAGE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_weight, theme),
-                ECK.CALC_ALGEBRA_RATIO_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_weight, theme),
+                ECK.CALC_ALGEBRA_PROPORTION_ID to R.drawable.ic_proportional,
+                ECK.CALC_ALGEBRA_AVERAGE_ID to R.drawable.ic_average,
+                ECK.CALC_ALGEBRA_PERCENTAGE_ID to R.drawable.ic_weight,
+                ECK.CALC_ALGEBRA_RATIO_ID to R.drawable.ic_weight
             )
         }
 
         val extraTitles = with(context) {
             mapOf(
-                ECK.CALC_ALGEBRA_PROPORTION_ID to getString(R.string.extra_calculator_proportion_name),
-                ECK.CALC_ALGEBRA_AVERAGE_ID to getString(R.string.extra_calculator_average_name),
-                ECK.CALC_ALGEBRA_PERCENTAGE_ID to getString(R.string.extra_calculator_percentage_name),
-                ECK.CALC_ALGEBRA_RATIO_ID to getString(R.string.extra_calculator_ratio_name)
+                ECK.CALC_ALGEBRA_PROPORTION_ID to getString(R.string.extra_calculator_proportion_algebra_name),
+                ECK.CALC_ALGEBRA_AVERAGE_ID to getString(R.string.extra_calculator_average_algebra_name),
+                ECK.CALC_ALGEBRA_PERCENTAGE_ID to getString(R.string.extra_calculator_percentage_algebra_name),
+                ECK.CALC_ALGEBRA_RATIO_ID to getString(R.string.extra_calculator_ratio_algebra_name)
             )
         }
 
@@ -48,7 +47,7 @@ class ExtraAlgebraCalculatorFabric: ExtraSelectableCalculatorFabric {
             ExtraSelectableCalculatorInfo(
                 calculatorId = calcId,
                 title = extraTitles[calcId] ?: "Unnamed",
-                drawable = extraDrawables[calcId],
+                drawableResId = extraDrawables[calcId],
                 previewValues = extraUnits[calcId] ?: "",
                 type = ExtraCalculatorType.Algebra
             )

@@ -79,17 +79,17 @@
 
     <string name="converter_unitInputHint">Wprowadź wartość</string>
     <string name="converter_header">Konwertery jednostek</string>
-    <string name="converter_weight">Waga</string>
-    <string name="converter_length">Długość</string>
-    <string name="converter_time">Czas</string>
-    <string name="converter_speed">Prędkość</string>
-    <string name="converter_temperature">Temperatura</string>
-    <string name="converter_volume">Objętość</string>
-    <string name="converter_area">Powierzchnia</string>
-    <string name="converter_frequency">Częstotliwość</string>
-    <string name="converter_data">Dane</string>
+    <string name="extra_calculator_weight_unit_name">Waga</string>
+    <string name="extra_calculator_length_unit_name">Długość</string>
+    <string name="extra_calculator_time_unit_name">Czas</string>
+    <string name="extra_calculator_speed_unit_name">Prędkość</string>
+    <string name="extra_calculator_temperature_unit_name">Temperatura</string>
+    <string name="extra_calculator_volume_unit_name">Objętość</string>
+    <string name="extra_calculator_area_unit_name">Powierzchnia</string>
+    <string name="extra_calculator_frequency_unit_name">Częstotliwość</string>
+    <string name="extra_calculator_data_storage_name">Dane</string>
     <string name="updateBoard_summary">Kliknij, aby wyświetlić planszę</string>
-    <string name="converter_category_general">Ogólny</string>
+    <string name="extra_calculator_category_unit">Ogólny</string>
 
 
 </resources>

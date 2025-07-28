@@ -27,7 +27,7 @@ class UniversalConversionStrategy: ConversionStrategy {
         val inBase = inputValue.multiply(BigDecimal.valueOf(fromUnit.factor), MathContext.UNLIMITED)
 
         return units.map { to ->
-            inBase.divide(BigDecimal.valueOf(to.factor), MathContext.UNLIMITED)
+            inBase.divide(BigDecimal.valueOf(to.factor), MathContext.DECIMAL128)
         }
     }
 

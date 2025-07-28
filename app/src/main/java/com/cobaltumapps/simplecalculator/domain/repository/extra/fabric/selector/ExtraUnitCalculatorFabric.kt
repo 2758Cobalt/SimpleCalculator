@@ -1,7 +1,6 @@
 package com.cobaltumapps.simplecalculator.domain.repository.extra.fabric.selector
 
 import android.content.Context
-import androidx.core.content.res.ResourcesCompat
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.data.extra.enums.ExtraCalculatorType
 import com.cobaltumapps.simplecalculator.data.extra.selector.ExtraSelectableCalculatorInfo
@@ -15,39 +14,39 @@ class ExtraUnitCalculatorFabric: ExtraSelectableCalculatorFabric {
     override fun createCalculators(context: Context): List<ExtraSelectableCalculatorInfo> {
         val extraDrawables = with(context) {
             mapOf(
-                ECK.CALC_UNIT_WEIGHT_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_weight, theme),
-                ECK.CALC_UNIT_LENGTH_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_length, theme),
-                ECK.CALC_UNIT_TIME_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_time, theme),
-                ECK.CALC_UNIT_SPEED_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_speed, theme),
-                ECK.CALC_UNIT_TEMPERATURE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_temperature, theme),
-                ECK.CALC_UNIT_VOLUME_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_volume, theme),
-                ECK.CALC_UNIT_AREA_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_area, theme),
-                ECK.CALC_UNIT_FREQUENCY_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_frequency, theme),
-                ECK.CALC_UNIT_POWER_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_power, theme),
-                ECK.CALC_UNIT_PRESSURE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_pressure, theme),
-                ECK.CALC_UNIT_ANGLE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_angle, theme),
-                ECK.CALC_UNIT_DATA_STORAGE_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_data_storage, theme),
-                ECK.CALC_UNIT_DATA_TRANSFER_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_data_transfer, theme),
-                ECK.CALC_UNIT_RADIATION_ID to ResourcesCompat.getDrawable(resources, R.drawable.ic_radiation, theme),
+                ECK.CALC_UNIT_WEIGHT_ID to R.drawable.ic_weight,
+                ECK.CALC_UNIT_LENGTH_ID to R.drawable.ic_length,
+                ECK.CALC_UNIT_TIME_ID to R.drawable.ic_time,
+                ECK.CALC_UNIT_SPEED_ID to R.drawable.ic_speed,
+                ECK.CALC_UNIT_TEMPERATURE_ID to R.drawable.ic_temperature,
+                ECK.CALC_UNIT_VOLUME_ID to R.drawable.ic_volume,
+                ECK.CALC_UNIT_AREA_ID to R.drawable.ic_area,
+                ECK.CALC_UNIT_FREQUENCY_ID to R.drawable.ic_frequency,
+                ECK.CALC_UNIT_POWER_ID to R.drawable.ic_power,
+                ECK.CALC_UNIT_PRESSURE_ID to R.drawable.ic_pressure,
+                ECK.CALC_UNIT_ANGLE_ID to R.drawable.ic_angle,
+                ECK.CALC_UNIT_DATA_STORAGE_ID to R.drawable.ic_data_storage,
+                ECK.CALC_UNIT_DATA_TRANSFER_ID to R.drawable.ic_data_transfer,
+                ECK.CALC_UNIT_RADIATION_ID to R.drawable.ic_radiation
             )
         }
 
         val extraTitles = with(context) {
             mapOf(
-                ECK.CALC_UNIT_WEIGHT_ID to getString(R.string.converter_weight),
-                ECK.CALC_UNIT_LENGTH_ID to getString(R.string.converter_length),
-                ECK.CALC_UNIT_TIME_ID to getString(R.string.converter_time),
-                ECK.CALC_UNIT_SPEED_ID to getString(R.string.converter_speed),
-                ECK.CALC_UNIT_TEMPERATURE_ID to getString(R.string.converter_temperature),
-                ECK.CALC_UNIT_VOLUME_ID to getString(R.string.converter_volume),
-                ECK.CALC_UNIT_AREA_ID to getString(R.string.converter_area),
-                ECK.CALC_UNIT_FREQUENCY_ID to getString(R.string.converter_frequency),
-                ECK.CALC_UNIT_POWER_ID to getString(R.string.extra_calculator_power_name),
-                ECK.CALC_UNIT_ANGLE_ID to getString(R.string.extra_calculator_angle_name),
-                ECK.CALC_UNIT_PRESSURE_ID to getString(R.string.extra_calculator_pressure_name),
-                ECK.CALC_UNIT_DATA_STORAGE_ID to getString(R.string.converter_data),
-                ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_dataTransfer_name),
-                ECK.CALC_UNIT_RADIATION_ID to getString(R.string.extra_calculator_radiation_name)
+                ECK.CALC_UNIT_WEIGHT_ID to getString(R.string.extra_calculator_weight_unit_name),
+                ECK.CALC_UNIT_LENGTH_ID to getString(R.string.extra_calculator_length_unit_name),
+                ECK.CALC_UNIT_TIME_ID to getString(R.string.extra_calculator_time_unit_name),
+                ECK.CALC_UNIT_SPEED_ID to getString(R.string.extra_calculator_speed_unit_name),
+                ECK.CALC_UNIT_TEMPERATURE_ID to getString(R.string.extra_calculator_temperature_unit_name),
+                ECK.CALC_UNIT_VOLUME_ID to getString(R.string.extra_calculator_volume_unit_name),
+                ECK.CALC_UNIT_AREA_ID to getString(R.string.extra_calculator_area_unit_name),
+                ECK.CALC_UNIT_FREQUENCY_ID to getString(R.string.extra_calculator_frequency_unit_name),
+                ECK.CALC_UNIT_POWER_ID to getString(R.string.extra_calculator_power_unit_name),
+                ECK.CALC_UNIT_ANGLE_ID to getString(R.string.extra_calculator_angle_unit_name),
+                ECK.CALC_UNIT_PRESSURE_ID to getString(R.string.extra_calculator_pressure_unit_name),
+                ECK.CALC_UNIT_DATA_STORAGE_ID to getString(R.string.extra_calculator_data_storage_name),
+                ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_dataTransfer_unit_name),
+                ECK.CALC_UNIT_RADIATION_ID to getString(R.string.extra_calculator_radiation_unit_name)
             )
         }
 
@@ -66,7 +65,6 @@ class ExtraUnitCalculatorFabric: ExtraSelectableCalculatorFabric {
                 ECK.CALC_UNIT_ANGLE_ID to getString(R.string.extra_calculator_angle_unit),
                 ECK.CALC_UNIT_DATA_STORAGE_ID to getString(R.string.extra_calculator_data_storage_unit),
                 ECK.CALC_UNIT_DATA_TRANSFER_ID to getString(R.string.extra_calculator_data_transfer_unit),
-
                 ECK.CALC_UNIT_RADIATION_ID to getString(R.string.extra_calculator_data_storage_unit)
             )
         }
@@ -92,7 +90,7 @@ class ExtraUnitCalculatorFabric: ExtraSelectableCalculatorFabric {
             ExtraSelectableCalculatorInfo(
                 calculatorId = calcId,
                 title = extraTitles[calcId] ?: "Unnamed",
-                drawable = extraDrawables[calcId],
+                drawableResId = extraDrawables[calcId],
                 previewValues = extraUnits[calcId] ?: "",
                 type = ExtraCalculatorType.Unit
             )

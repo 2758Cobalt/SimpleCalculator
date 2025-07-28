@@ -76,16 +76,16 @@
 
     <string name="converter_unitInputHint">Ange ett värde</string>
     <string name="converter_header">Enhetsomvandlare</string>
-    <string name="converter_weight">Vikt</string>
-    <string name="converter_length">Längd</string>
-    <string name="converter_time">Tid</string>
-    <string name="converter_speed">Hastighet</string>
-    <string name="converter_temperature">Temperatur</string>
-    <string name="converter_volume">Volym</string>
-    <string name="converter_area">Area</string>
-    <string name="converter_frequency">Frekvens</string>
-    <string name="converter_data">Datastorlek</string>
+    <string name="extra_calculator_weight_unit_name">Vikt</string>
+    <string name="extra_calculator_length_unit_name">Längd</string>
+    <string name="extra_calculator_time_unit_name">Tid</string>
+    <string name="extra_calculator_speed_unit_name">Hastighet</string>
+    <string name="extra_calculator_temperature_unit_name">Temperatur</string>
+    <string name="extra_calculator_volume_unit_name">Volym</string>
+    <string name="extra_calculator_area_unit_name">Area</string>
+    <string name="extra_calculator_frequency_unit_name">Frekvens</string>
+    <string name="extra_calculator_data_storage_name">Datastorlek</string>
     <string name="updateBoard_summary">Klicka för att visa tavlan</string>
-    <string name="converter_category_general">Allmän</string>
+    <string name="extra_calculator_category_unit">Allmän</string>
 
 </resources>

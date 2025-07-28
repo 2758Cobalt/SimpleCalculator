@@ -2,46 +2,33 @@ package com.cobaltumapps.simplecalculator.ui.recycler.viewholders.extra.reviewer
 
 import com.cobaltumapps.simplecalculator.v15.calculator.components.display.formatter.Formatter
 import java.math.BigDecimal
-import java.math.MathContext
-import java.math.RoundingMode
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.Locale
 
 class BigDecimalFormatter(private val formatter: Formatter): Formatter {
-    private val decimalPrecision: Int = 20
-    private val maxZeroDigitsThreshold: Int = 10
 
     override fun format(sourceString: String): String {
-        return formatter.format(formatDecimal(sourceString))
+        val formattedDecimal = formatDecimal(sourceString)
+        return if (BigDecimal(formattedDecimal).compareTo(BigDecimal("0.0")) == 0) "0"
+        else formatter.format(formattedDecimal)
     }
 
-    private fun formatDecimal(sourceString: String): String {
+    private fun formatDecimal(sourceString: String, minFraction: Int = 8, maxFraction: Int = 8): String {
         val value = BigDecimal(sourceString)
+        val absValue = value.abs()
+        val symbols = DecimalFormatSymbols(Locale.US)
 
-        if (value.compareTo(BigDecimal.ZERO) == 0) {
-            return "0"
-        }
+        val scientificFormat = DecimalFormat("0." + "#".repeat(minFraction) + "E0", symbols)
+        scientificFormat.maximumFractionDigits = minFraction
 
-        val scaled = value
-            .setScale(decimalPrecision, RoundingMode.HALF_UP)
-            .stripTrailingZeros()
+        val plainFormat = DecimalFormat("0." + "#".repeat(maxFraction), symbols)
 
-        val plain = scaled.toPlainString()
-
-        val parts = plain.split('.')
-        val integerPart = parts[0].trimStart('-')
-        val fractionalPart = if (parts.size > 1) parts[1] else ""
-
-        val leadingZeros = fractionalPart.takeWhile { it == '0' }.length
-        val trailingZerosInInt = integerPart.reversed().takeWhile { it == '0' }.length
-
-        val tooManyZeros =
-            leadingZeros >= maxZeroDigitsThreshold ||
-                    trailingZerosInInt >= maxZeroDigitsThreshold ||
-                    integerPart.length >= maxZeroDigitsThreshold + 1
-
-        return if (tooManyZeros) {
-            scaled.round(MathContext(decimalPrecision)).toEngineeringString()
-        } else {
-            plain
+        return when {
+            absValue < BigDecimal("1E-6") || absValue >= BigDecimal("1E6") ->
+                scientificFormat.format(value)
+            else ->
+                plainFormat.format(value)
         }
     }
 

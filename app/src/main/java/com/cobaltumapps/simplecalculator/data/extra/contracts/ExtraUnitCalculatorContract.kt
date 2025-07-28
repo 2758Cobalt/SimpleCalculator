@@ -4,12 +4,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
+import com.cobaltumapps.simplecalculator.data.extra.selector.ExtraSelectableCalculatorInfo
 import com.cobaltumapps.simplecalculator.ui.activities.extra.calculators.unit.ExtraUnitCalculatorActivity
 
-class ExtraUnitCalculatorContract: ActivityResultContract<String, Boolean>() {
+class ExtraUnitCalculatorContract: ActivityResultContract<ExtraSelectableCalculatorInfo, Boolean>() {
     override fun createIntent(
         context: Context,
-        input: String
+        input: ExtraSelectableCalculatorInfo
     ): Intent {
         return Intent(context, ExtraUnitCalculatorActivity::class.java).apply {
             putExtra(ExtraUnitCalculatorActivity.Companion.INTENT_CALC_ID, input)

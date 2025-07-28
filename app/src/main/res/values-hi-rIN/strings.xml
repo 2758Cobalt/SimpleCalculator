@@ -62,16 +62,16 @@
 
     <string name="converter_unitInputHint">मान दर्ज करें</string>
     <string name="converter_header">यूनिट कन्वर्टर्स</string>
-    <string name="converter_weight">वजन</string>
-    <string name="converter_length">लंबाई</string>
-    <string name="converter_time">समय</string>
-    <string name="converter_speed">गति</string>
-    <string name="converter_temperature">तापमान</string>
-    <string name="converter_volume">आयतन</string>
-    <string name="converter_area">क्षेत्रफल</string>
-    <string name="converter_frequency">फ़्रीक्वेंसी</string>
-    <string name="converter_data">डेटा</string>
+    <string name="extra_calculator_weight_unit_name">वजन</string>
+    <string name="extra_calculator_length_unit_name">लंबाई</string>
+    <string name="extra_calculator_time_unit_name">समय</string>
+    <string name="extra_calculator_speed_unit_name">गति</string>
+    <string name="extra_calculator_temperature_unit_name">तापमान</string>
+    <string name="extra_calculator_volume_unit_name">आयतन</string>
+    <string name="extra_calculator_area_unit_name">क्षेत्रफल</string>
+    <string name="extra_calculator_frequency_unit_name">फ़्रीक्वेंसी</string>
+    <string name="extra_calculator_data_storage_name">डेटा</string>
     <string name="updateBoard_summary">बोर्ड दिखाने के लिए क्लिक करें</string>
-    <string name="converter_category_general">सामान्य</string>
+    <string name="extra_calculator_category_unit">सामान्य</string>
 
 </resources>

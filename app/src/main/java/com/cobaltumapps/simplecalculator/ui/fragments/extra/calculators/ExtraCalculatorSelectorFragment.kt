@@ -1,14 +1,12 @@
 package com.cobaltumapps.simplecalculator.ui.fragments.extra.calculators
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cobaltumapps.simplecalculator.data.extra.constants.ExtraCalculatorsKeys
 import com.cobaltumapps.simplecalculator.data.extra.contracts.ExtraUnitCalculatorContract
 import com.cobaltumapps.simplecalculator.data.extra.enums.ExtraCalculatorType
 import com.cobaltumapps.simplecalculator.data.extra.selector.ExtraSelectableCalculatorInfo
@@ -45,9 +43,8 @@ class ExtraCalculatorSelectorFragment: Fragment(), ExtraSelector {
 
     override fun onSelectedItem(calculatorItem: ExtraSelectableCalculatorInfo) {
         when(calculatorItem.type) {
-            ExtraCalculatorType.Unit -> extraSelectorUnitContract.launch(calculatorItem.calculatorId)
-            else -> extraSelectorUnitContract.launch(ExtraCalculatorsKeys.CALC_UNIT_WEIGHT_ID)
+            ExtraCalculatorType.Unit -> extraSelectorUnitContract.launch(calculatorItem)
+            else -> extraSelectorUnitContract.launch(calculatorItem)
         }
-        Log.d("DebugTag", "picked item ${calculatorItem.title} type: ${calculatorItem.type}. ID: ${calculatorItem.calculatorId}")
     }
 }

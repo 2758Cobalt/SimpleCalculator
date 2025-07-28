@@ -77,16 +77,16 @@
 
     <string name="converter_unitInputHint">Immettere un valore</string>
     <string name="converter_header">Convertitori di unità</string>
-    <string name="converter_weight">Peso</string>
-    <string name="converter_length">Lunghezza</string>
-    <string name="converter_time">Tempo</string>
-    <string name="converter_speed">Velocità</string>
-    <string name="converter_temperature">Temperatura</string>
-    <string name="converter_volume">Volume</string>
-    <string name="converter_area">Area</string>
-    <string name="converter_frequency">Frequenza</string>
-    <string name="converter_data">Dati</string>
+    <string name="extra_calculator_weight_unit_name">Peso</string>
+    <string name="extra_calculator_length_unit_name">Lunghezza</string>
+    <string name="extra_calculator_time_unit_name">Tempo</string>
+    <string name="extra_calculator_speed_unit_name">Velocità</string>
+    <string name="extra_calculator_temperature_unit_name">Temperatura</string>
+    <string name="extra_calculator_volume_unit_name">Volume</string>
+    <string name="extra_calculator_area_unit_name">Area</string>
+    <string name="extra_calculator_frequency_unit_name">Frequenza</string>
+    <string name="extra_calculator_data_storage_name">Dati</string>
     <string name="updateBoard_summary">Fare clic per visualizzare la scheda</string>
-    <string name="converter_category_general">Generale</string>
+    <string name="extra_calculator_category_unit">Generale</string>
 
 </resources>
