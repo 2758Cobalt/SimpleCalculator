@@ -49,6 +49,22 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-5716202368702544~4660357166" />
+        
+        <service
+            android:name=".v15.google.QuickLaunchCalculatorService"
+            android:label="@string/app_name"
+            android:icon="@drawable/ic_nav_calculator"
+            android:exported="true"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
+
+        </service>
     </application>
 
 </manifest>
