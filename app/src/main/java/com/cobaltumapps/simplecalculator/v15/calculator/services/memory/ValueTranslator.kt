@@ -1,26 +1,20 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.services.memory
 
-
 import android.util.Log
-
-/**
-Класс, преобразующий число типа Double эквивалентному числу  типа Int
-*/
+import java.math.BigDecimal
 
 class ValueTranslator {
-    fun translate(value: Double): String {
-        return(
-                try {
-                    if (value % 1 == 0.0) value.toInt()
-                    else value
-                }
-                catch (ex: NumberFormatException) {
-                    Log.d(LOG_TAG, "NumberFormatException: Value can't translated to Int")
-                    value
-                }
+    fun translate(value: String): String {
+        return try {
+            val decimal = BigDecimal(value)
 
-                ).toString()
+            if (decimal.stripTrailingZeros().scale() <= 0) decimal.toBigInteger().toString()
+            else decimal.toPlainString()
 
+        } catch (ex: NumberFormatException) {
+            Log.d(LOG_TAG, "NumberFormatException: Value can't be parsed to BigDecimal")
+            value
+        }
     }
 
     companion object {

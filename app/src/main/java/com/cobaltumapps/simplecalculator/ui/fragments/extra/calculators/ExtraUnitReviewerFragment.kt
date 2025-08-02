@@ -1,7 +1,6 @@
 package com.cobaltumapps.simplecalculator.ui.fragments.extra.calculators
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.cobaltumapps.simplecalculator.R
 import com.cobaltumapps.simplecalculator.data.extra.calculator_unit.ExtraUnitInfo
-import com.cobaltumapps.simplecalculator.data.extra.constants.ConversionContext
+import com.cobaltumapps.simplecalculator.data.extra.constants.context.ConversionContext
 import com.cobaltumapps.simplecalculator.databinding.FragmentExtraUnitCalculatorBinding
 import com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.unit.UnitConversionContext
 import com.cobaltumapps.simplecalculator.domain.viewmodel.ExtraUnitReviewerViewModel
@@ -101,12 +100,10 @@ class ExtraUnitReviewerFragment: Fragment() {
                 BigDecimal(valuesToUpdate[index].toString())
 
             } catch (ex: IndexOutOfBoundsException) {
-                Log.e("DebugTag", "FATAL: ${ex.localizedMessage}")
                 BigDecimal("0.0")
 
             } catch (ex: IOException) {
                 Toast.makeText(requireContext(), "An unknown error occurred.", Toast.LENGTH_LONG).show()
-                Log.e("DebugTag", "FATAL: ${ex.localizedMessage}")
                 BigDecimal("0.0")
             }
 

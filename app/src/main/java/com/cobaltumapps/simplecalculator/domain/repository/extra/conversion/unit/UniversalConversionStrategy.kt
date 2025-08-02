@@ -1,6 +1,6 @@
 package com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.unit
 
-import com.cobaltumapps.simplecalculator.data.extra.constants.UniversalConversionStrategyContext
+import com.cobaltumapps.simplecalculator.data.extra.constants.context.UniversalConversionStrategyContext
 import com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.interfaces.ConversionStrategy
 import com.cobaltumapps.simplecalculator.domain.repository.extra.conversion.interfaces.UnitConversion
 import java.math.BigDecimal

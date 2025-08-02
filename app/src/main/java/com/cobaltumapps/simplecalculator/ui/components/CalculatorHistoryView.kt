@@ -16,8 +16,8 @@ import com.cobaltumapps.simplecalculator.v15.calculator.services.history.interfa
 import com.cobaltumapps.simplecalculator.v15.calculator.services.history.recycler.history.CalculatorHistoryRecyclerAdapter
 import com.cobaltumapps.simplecalculator.v15.calculator.services.room.model.History
 import com.cobaltumapps.simplecalculator.v15.constants.Property
-import com.cobaltumapps.simplecalculator.v15.fragments.history.CalculatorHistoryDisplayFragment.Companion.DEF_ANIM_DURATION
-import com.cobaltumapps.simplecalculator.v15.fragments.numpad.interfaces.NumpadBottomBehaviorListener
+import com.cobaltumapps.simplecalculator.ui.fragments.calculator.history.CalculatorHistoryDisplayFragment.Companion.DEF_ANIM_DURATION
+import com.cobaltumapps.simplecalculator.ui.fragments.calculator.keyboard.interfaces.NumpadBottomBehaviorListener
 import com.cobaltumapps.simplecalculator.v15.services.AnimationsService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 

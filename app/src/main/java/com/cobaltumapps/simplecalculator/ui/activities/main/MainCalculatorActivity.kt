@@ -20,7 +20,7 @@ import com.cobaltumapps.simplecalculator.v15.activities.onBoarding.IntroductionA
 import com.cobaltumapps.simplecalculator.v15.calculator.components.settings.SettingsSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.services.memory.MemoryStorageControllerSingleton
 import com.cobaltumapps.simplecalculator.v15.calculator.services.tallback.VibrationSingleton
-import com.cobaltumapps.simplecalculator.v15.fragments.calculator.CalculatorPageFragment
+import com.cobaltumapps.simplecalculator.ui.fragments.calculator.CalculatorPageFragment
 import com.cobaltumapps.simplecalculator.v15.references.ConstantsCalculator
 import com.google.android.material.navigation.NavigationView
 

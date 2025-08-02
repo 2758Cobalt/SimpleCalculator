@@ -1,6 +1,6 @@
 package com.cobaltumapps.simplecalculator.v15.references
 
-object ConstantsCalculator {
+object ConstantsBaseCalculator {
     const val symbolAdd = '+'
     const val symbolSub = '-'
     const val symbolMul = '×'
@@ -10,7 +10,7 @@ object ConstantsCalculator {
     const val symbolFactorial = '!'
     const val symbolSqrt = '√'
     const val symbolPI = 'π'
-    const val symbolExp = 'e'
+    const val symbolExponent = 'e'
 
     const val sinSymbol = "sin"
     const val cosSymbol = "cos"
@@ -23,10 +23,4 @@ object ConstantsCalculator {
     const val symbolOpenBracket = '('
     const val symbolCloseBracket = ')'
     const val symbolPoint = '.'
-
-    const val privacyPolicyLink = "https://sites.google.com/view/cobaltumappsgroup/privacy-policy"
-
-    const val vaultPreferences = "preferences"
-
 }
-

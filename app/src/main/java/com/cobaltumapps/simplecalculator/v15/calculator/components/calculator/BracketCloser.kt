@@ -1,7 +1,9 @@
 package com.cobaltumapps.simplecalculator.v15.calculator.components.calculator
 
-class BracketCloser {
-    fun closeBracketExpression(sourceExpression: String): String {
+import com.cobaltumapps.simplecalculator.domain.calculator.expression.ExpressionCloser
+
+class BracketCloser: ExpressionCloser {
+    override fun closeExpression(sourceExpression: String): String {
         val builtExpression = StringBuilder(sourceExpression)
         var bracketOpenedCount = 0
 
